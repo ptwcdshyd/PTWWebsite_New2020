@@ -1,0 +1,9 @@
+C:\Users\spartan\source\repos\PTWWebsite\PTW.DataAccess\bin\Debug\netstandard2.0\PTW.DataAccess.deps.json
+C:\Users\spartan\source\repos\PTWWebsite\PTW.DataAccess\bin\Debug\netstandard2.0\PTW.DataAccess.dll
+C:\Users\spartan\source\repos\PTWWebsite\PTW.DataAccess\bin\Debug\netstandard2.0\PTW.DataAccess.pdb
+C:\Users\spartan\source\repos\PTWWebsite\PTW.DataAccess\obj\Debug\netstandard2.0\PTW.DataAccess.csprojAssemblyReference.cache
+C:\Users\spartan\source\repos\PTWWebsite\PTW.DataAccess\obj\Debug\netstandard2.0\PTW.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\spartan\source\repos\PTWWebsite\PTW.DataAccess\obj\Debug\netstandard2.0\PTW.DataAccess.AssemblyInfoInputs.cache
+C:\Users\spartan\source\repos\PTWWebsite\PTW.DataAccess\obj\Debug\netstandard2.0\PTW.DataAccess.AssemblyInfo.cs
+C:\Users\spartan\source\repos\PTWWebsite\PTW.DataAccess\obj\Debug\netstandard2.0\PTW.DataAccess.dll
+C:\Users\spartan\source\repos\PTWWebsite\PTW.DataAccess\obj\Debug\netstandard2.0\PTW.DataAccess.pdb

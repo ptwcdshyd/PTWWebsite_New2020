@@ -1,0 +1,9 @@
+C:\Users\spartan\source\repos\PTWWebsite\LoggerService\bin\Debug\netstandard2.0\LoggerService.deps.json
+C:\Users\spartan\source\repos\PTWWebsite\LoggerService\bin\Debug\netstandard2.0\LoggerService.dll
+C:\Users\spartan\source\repos\PTWWebsite\LoggerService\bin\Debug\netstandard2.0\LoggerService.pdb
+C:\Users\spartan\source\repos\PTWWebsite\LoggerService\obj\Debug\netstandard2.0\LoggerService.csprojAssemblyReference.cache
+C:\Users\spartan\source\repos\PTWWebsite\LoggerService\obj\Debug\netstandard2.0\LoggerService.csproj.CoreCompileInputs.cache
+C:\Users\spartan\source\repos\PTWWebsite\LoggerService\obj\Debug\netstandard2.0\LoggerService.AssemblyInfoInputs.cache
+C:\Users\spartan\source\repos\PTWWebsite\LoggerService\obj\Debug\netstandard2.0\LoggerService.AssemblyInfo.cs
+C:\Users\spartan\source\repos\PTWWebsite\LoggerService\obj\Debug\netstandard2.0\LoggerService.dll
+C:\Users\spartan\source\repos\PTWWebsite\LoggerService\obj\Debug\netstandard2.0\LoggerService.pdb

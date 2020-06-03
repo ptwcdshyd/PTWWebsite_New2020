@@ -1,0 +1,11 @@
+C:\Users\spartan\source\repos\PTWWebsite\PTW.DbAccess\bin\Debug\netstandard2.0\PTW.DBAccess.deps.json
+C:\Users\spartan\source\repos\PTWWebsite\PTW.DbAccess\bin\Debug\netstandard2.0\PTW.DBAccess.dll
+C:\Users\spartan\source\repos\PTWWebsite\PTW.DbAccess\bin\Debug\netstandard2.0\PTW.DBAccess.pdb
+C:\Users\spartan\source\repos\PTWWebsite\PTW.DbAccess\bin\Debug\netstandard2.0\MySql.Data.dll
+C:\Users\spartan\source\repos\PTWWebsite\PTW.DbAccess\obj\Debug\netstandard2.0\PTW.DBAccess.csprojAssemblyReference.cache
+C:\Users\spartan\source\repos\PTWWebsite\PTW.DbAccess\obj\Debug\netstandard2.0\PTW.DBAccess.csproj.CoreCompileInputs.cache
+C:\Users\spartan\source\repos\PTWWebsite\PTW.DbAccess\obj\Debug\netstandard2.0\PTW.DBAccess.AssemblyInfoInputs.cache
+C:\Users\spartan\source\repos\PTWWebsite\PTW.DbAccess\obj\Debug\netstandard2.0\PTW.DBAccess.AssemblyInfo.cs
+C:\Users\spartan\source\repos\PTWWebsite\PTW.DbAccess\obj\Debug\netstandard2.0\PTW.DBAccess.csproj.CopyComplete
+C:\Users\spartan\source\repos\PTWWebsite\PTW.DbAccess\obj\Debug\netstandard2.0\PTW.DBAccess.dll
+C:\Users\spartan\source\repos\PTWWebsite\PTW.DbAccess\obj\Debug\netstandard2.0\PTW.DBAccess.pdb
