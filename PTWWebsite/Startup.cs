@@ -14,6 +14,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NLog;
+using PTW.DataAccess.Services;
+using PTW.DataAccess.ServicesImpl;
 using PTWWebsite.CustomMiddleware;
 
 namespace PTWWebsite
@@ -31,8 +33,8 @@ namespace PTWWebsite
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAuthentication("ZendeskSecurityScheme")
-                   .AddCookie("ZendeskSecurityScheme", options =>
+            services.AddAuthentication("PTWSecurityScheme")
+                   .AddCookie("PTWSecurityScheme", options =>
                    {
                        options.AccessDeniedPath = new PathString("/Security/Access");
                        options.LoginPath = "/Login/";
@@ -44,7 +46,7 @@ namespace PTWWebsite
                    });
             
             services.AddTransient<ILoggerManager, LoggerManager>();
-            //services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IMasterService, MasterService>();
             //services.AddTransient<ITicketService, TicketService>();
             //services.AddTransient<IClientService, ClientService>();
             //services.AddTransient<IMasterService, MasterService>();
@@ -106,7 +108,7 @@ namespace PTWWebsite
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Login}/{action=Login}/{id?}");
+                    template: "{controller=Home}/{action=Home}/{id?}");
             });
         }
     }

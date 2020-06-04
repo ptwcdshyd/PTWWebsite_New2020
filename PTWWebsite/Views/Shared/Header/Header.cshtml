@@ -1,0 +1,131 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container-fluid">
+        <div class="overlap-div">
+            <a titlevalue="1" href='<%= this.ResolveUrl("~/home")%>'>
+                <img src="~/Images/Logo/PTW.png" class="no-margin-bottom text-white text-center d-block" alt="PTW Logo" />
+            </a>
+        </div>
+        <button class="navbar-toggler pull-xs-right hidden-md-up menu-btn" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" onclick="myFunction(this);">
+            <span class="bar1"></span>
+            <span class="bar2"></span>
+            <span class="bar3"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="pull-xs-right nav navbar-nav navbar-toggleable-sm">
+                <li class="nav-item">
+                    <a id="A1" class="nav-link" titlevalue="1" onserverclick="menu_onserverclick" href='<%= this.ResolveUrl("~/home")%>' runat="server" meta:resourcekey="menu_home">HOME</a>
+                </li>
+                <li class="nav-item" id="nav_Services">
+                    <a id="A2" class="nav-link" titlevalue="2" onserverclick="menu_onserverclick" href='<%= this.ResolveUrl("~/services-industries")%>' runat="server" meta:resourcekey="menu_services_and_industries">SERVICES & INDUSTRIES</a>
+                </li>
+                <li class="nav-item dropdown v-hidden" id="dropdown_Services">
+                    <a class="dropdown-toggle color-black" href="#" id="A8" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <span id="hService" runat="server" meta:resourcekey="menu_services_and_industries">SERVICES & INDUSTRIES</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right " aria-labelledby="bd-versions">
+                        <p onclick="serviceChange('2')" class="dropdown-item pl64" runat="server" meta:resourcekey="AllServicesListItem">
+                            All Services
+                        </p>
+                        <div class="dropdown-divider"></div>
+                        <p onclick="serviceChange('2001')" class="dropdown-item" runat="server" meta:resourcekey="CXListItem">
+                            <img src='<% = ResolveUrl("~/Images/hover-over/Serv_ind-ICONS-grey.png") %>' alt="" class="service-icon">Customer Experience
+                        </p>
+                        <div class="dropdown-divider"></div>
+                        <p onclick="serviceChange('2002')" class="dropdown-item" runat="server" meta:resourcekey="QAListItem">
+                            <img src='<% = ResolveUrl("~/Images/hover-over/Serv_ind-ICONS-grey2.png") %>' alt="" class="service-icon">Quality Assurance
+                        </p>
+                        <div class="dropdown-divider"></div>
+                        <p onclick="serviceChange('2003')" class="dropdown-item" runat="server" meta:resourcekey="LocListItem">
+                            <img src='<% = ResolveUrl("~/Images/hover-over/Serv_ind-ICONS-grey3.png") %>' alt="" class="service-icon">
+                            Localization
+                        </p>
+                        <div class="dropdown-divider"></div>
+                        <p onclick="serviceChange('2004')" class="dropdown-item" runat="server" meta:resourcekey="AudioListItem">
+                            <img src='<% = ResolveUrl("~/Images/hover-over/Serv_ind-ICONS-grey4.png") %>' alt="" class="service-icon">Audio Production
+                        </p>
+                        <div class="dropdown-divider"></div>
+                        <p onclick="serviceChange('2005')" class="dropdown-item" runat="server" meta:resourcekey="EngListItem">
+                            <img src='<% = ResolveUrl("~/Images/hover-over/Serv_ind-ICONS-grey5.png") %>' alt="" class="service-icon">Engineering
+                        </p>
+                    </div>
+                    @*<asp:DropDownList ID="ddlServices" CssClass="ddlServices d-none" runat="server" meta:resourcekey="ddlServicesResource1" AutoPostBack="True" OnSelectedIndexChanged="ddlServices_SelectedIndexChanged">
+                        <asp:ListItem Text="All" Value="0" Selected="True"></asp:ListItem>
+                        <asp:ListItem Text="All Services" Value="2" meta:resourcekey="AllServicesListItem"></asp:ListItem>
+                        <asp:ListItem Text="Customer Experience" Value="2001" meta:resourcekey="CXListItem"></asp:ListItem>
+                        <asp:ListItem Text="Quality Assurance" Value="2002" meta:resourcekey="QAListItem"></asp:ListItem>
+                        <asp:ListItem Text="Localization" Value="2003" meta:resourcekey="LocListItem"></asp:ListItem>
+                        <asp:ListItem Text="Audio Production" Value="2004" meta:resourcekey="AudioListItem"></asp:ListItem>
+                        <asp:ListItem Text="Engineering" Value="2005" meta:resourcekey="EngListItem"></asp:ListItem>
+                    </asp:DropDownList>*@
+                </li>
+                <li class="nav-item">
+                    <a id="A3" class="nav-link" titlevalue="3" onserverclick="menu_onserverclick" href='<%= this.ResolveUrl("~/about")%>' runat="server" meta:resourcekey="menu_about">ABOUT</a>
+                </li>
+                <li class="nav-item">
+                    <a id="A4" class="nav-link" titlevalue="4" onserverclick="menu_onserverclick" href='<%= this.ResolveUrl("~/news-events")%>' runat="server" meta:resourcekey="menu_news_and_events">NEWS & EVENTS</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item newpad">
+                    <a id="A5" class="nav-link" titlevalue="5" onserverclick="menu_onserverclick" href='<%= this.ResolveUrl("~/careers")%>' runat="server" meta:resourcekey="menu_careers">CAREERS</a>
+                </li>
+                <li class="nav-item newpad">
+                    <a id="A6" class="nav-link contact" titlevalue="6" onserverclick="menu_onserverclick" href='<%= this.ResolveUrl("~/contact")%>' runat="server" meta:resourcekey="menu_contact_and_locations">CONTACT & LOCATIONS</a>
+                </li>
+                <li class="nav-item newpad">
+                    <a id="A7" class="nav-link Zelda" titlevalue="7" onserverclick="menu_onserverclick" href='<%= this.ResolveUrl("~/lab")%>' runat="server" meta:resourcekey="menu_lab">LAB</a>
+                    @*<a class="nav-link" titleValue="7" href="contact.html" onmouseover="hover(this,'../Images/LAB-icon.png');" onmouseout="unhover(this,'../Images/LAB-icon.png');">
+                        <img src="../Images/LAB-icon.png" style="width: 42px;height: 20px;" />
+                    </a>*@
+                </li>
+                <li class="nav-item menu-social" style="padding: 17px 0px 0px 20px;">
+                    <a class=" p-r-0 l-h-2p8" titlevalue="8" href="https://twitter.com/PTW" target="_blank" rel="noopener noreferrer" title="Twitter"><i class="fa fa-twitter"></i></a>
+                </li>
+                <li class="nav-item menu-social" style="padding: 17px 6px 0px 6px;">
+                    <a class=" p-l-5 p-r-5 l-h-2p8" titlevalue="9" href="https://www.facebook.com/PTWintl/" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fa fa-facebook"></i></a>
+                </li>
+                <li class="nav-item menu-social" style="padding: 17px 10px 0px 0px;">
+                    <a class="  p-l-0 l-h-2p8" titlevalue="10" href="https://www.linkedin.com/company/ptwintl/" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fa fa-linkedin-square"></i></a>
+                </li>
+                <li class="nav-item dropdown ">
+                    <a class="dropdown-toggle color-black" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <span id="hLanguage" runat="server">English</span>
+                    </a>
+                    @*<a class="color-black" href="#" id="bd-versions" data-toggle="" style="cursor:default;" aria-haspopup="true" aria-expanded="true">
+                        <span id="hLanguage" runat="server">English</span>
+                    </a>*@
+                    <div class="dropdown-menu dropdown-menu-right " aria-labelledby="bd-versions">
+                        <p onclick="languageChange('en-US')" class="dropdown-item" meta:resourcekey="EnglishListItem">English</p>
+                        <div class="dropdown-divider"></div>
+                        <p onclick="languageChange('fr-CA')" class="dropdown-item" meta:resourcekey="CAFrenchListItem">Canadian French</p>
+                        <div class="dropdown-divider"></div>
+                        <p onclick="languageChange('ja')" class="dropdown-item" meta:resourcekey="JapaneseListItem">Japanese 日本語</p>
+                        <div class="dropdown-divider"></div>
+                        <p onclick="languageChange('ko')" class="dropdown-item" meta:resourcekey="KoreanListItem">Korean 한국어</p>
+                        <div class="dropdown-divider"></div>
+                        @*<p onclick="languageChange('ro')" class="dropdown-item" meta:resourcekey="RomanianListItem">Romanian Română</p>
+                        <div class="dropdown-divider"></div>*@
+                        <p onclick="languageChange('zh-CHS')" class="dropdown-item" meta:resourcekey="CHSListItem">Simplified Chinese 简体中文</p>
+                        <div class="dropdown-divider"></div>
+                        <p onclick="languageChange('zh-CHT')" class="dropdown-item" meta:resourcekey="CHTListItem">Traditional Chinese 繁體中文</p>
+                    </div>
+                    @*<asp:DropDownList ID="ddlLanguage" CssClass="ddlLanguage d-none" runat="server" meta:resourcekey="ddlLanguageResource1" AutoPostBack="True" OnSelectedIndexChanged="ddlLanguage_SelectedIndexChanged">
+                        <asp:ListItem Text="English" Value="en-US" meta:resourcekey="EnglishListItem" Selected="True"></asp:ListItem>
+                        <asp:ListItem Text="Canadian French" Value="fr-CA" meta:resourcekey="CAFrenchListItem"></asp:ListItem>
+                        <asp:ListItem Text="Japanese 日本語" Value="ja" meta:resourcekey="JapaneseListItem"></asp:ListItem>
+                        <asp:ListItem Text="Korean 한국어" Value="ko" meta:resourcekey="KoreanListItem"></asp:ListItem>
+                        <%-- <asp:ListItem Text="Romanian Română" Value="ro" meta:resourcekey="RomanianListItem"></asp:ListItem>--%>
+                        <asp:ListItem Text="Simplified Chinese 简体中文" Value="zh-CHS" meta:resourcekey="CHSListItem"></asp:ListItem>
+                        <asp:ListItem Text="Traditional Chinese 繁體中文" Value="zh-CHT" meta:resourcekey="CHTListItem"></asp:ListItem>
+                    </asp:DropDownList>*@
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="clearfix">
+    </div>
+</nav>

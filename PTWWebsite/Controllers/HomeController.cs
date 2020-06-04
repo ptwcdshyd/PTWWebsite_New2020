@@ -4,15 +4,24 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using PTW.DataAccess.Models;
+using PTW.DataAccess.Services;
 using PTWWebsite.Models;
 
 namespace PTWWebsite.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly IMasterService _masterService;
+        public HomeController(IMasterService masterService)
         {
-            return View();
+            _masterService = masterService;
+        }
+
+        public IActionResult Home()
+        {
+            MasterPage masterPage = _masterService.GetDashboardDetails(0, 1);
+            return View(masterPage);
         }
 
         public IActionResult About()
