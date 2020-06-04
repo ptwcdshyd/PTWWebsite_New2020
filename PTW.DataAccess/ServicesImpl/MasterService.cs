@@ -28,8 +28,8 @@ namespace PTW.DataAccess.ServicesImpl
                     DataSet dtResult = ExecuteDataSet(command);
                     if (dtResult != null && dtResult.Tables[0].Rows.Count > 0)
                     {
-                        masterPage.HeaderContent = Convert.ToString(dtResult.Tables[0].Rows[0]["HeaderContent"]);
-                        masterPage.FooterContent = Convert.ToString(dtResult.Tables[0].Rows[0]["FooterContent"]);
+                        masterPage.HeaderContent = Convert.ToString(dtResult.Tables[0].Rows[0]["ModuleName"]);
+                        masterPage.FooterContent = Convert.ToString(dtResult.Tables[0].Rows[0]["Content"]);
                     }
                    
                 }

@@ -1,19 +1,15 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using LoggerService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using NLog;
 using PTW.DataAccess.Services;
 using PTW.DataAccess.ServicesImpl;
 using PTWWebsite.CustomMiddleware;
@@ -24,7 +20,6 @@ namespace PTWWebsite
     {
         public Startup(IConfiguration configuration)
         {
-            LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
             Configuration = configuration;
         }
 
@@ -33,6 +28,7 @@ namespace PTWWebsite
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+           
             services.AddAuthentication("PTWSecurityScheme")
                    .AddCookie("PTWSecurityScheme", options =>
                    {
@@ -44,18 +40,10 @@ namespace PTWWebsite
                        options.SlidingExpiration = true;
                        options.Events.OnValidatePrincipal = ClaimPrincipalValidator.ValidateAsync;
                    });
-            
+
             services.AddTransient<ILoggerManager, LoggerManager>();
             services.AddTransient<IMasterService, MasterService>();
-            //services.AddTransient<ITicketService, TicketService>();
-            //services.AddTransient<IClientService, ClientService>();
-            //services.AddTransient<IMasterService, MasterService>();
-            //services.AddTransient<IProjectService, ProjectService>();
-            //services.AddTransient<IGroupService, GroupService>();
-            //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            //services.AddTransient<ILogService, LogService>();
 
-            //services.AddApplicationInsightsTelemetry(Configuration);
             services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromMinutes(20);
@@ -70,8 +58,6 @@ namespace PTWWebsite
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            //services.AddApplicationInsightsTelemetry(Configuration);
-            //Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -89,7 +75,7 @@ namespace PTWWebsite
                 app.UseExceptionHandler("/Error/{0}");
             }
 
-          //  app.ConfigureCustomExceptionMiddleware();
+            //  app.ConfigureCustomExceptionMiddleware();
 
             app.UseStatusCodePagesWithRedirects("/Error/{0}");
 

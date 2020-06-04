@@ -26,11 +26,11 @@ namespace PTW.DBAccess
             // Create instance.
             MySqlConnectionStringBuilder sqlbuilder = new MySqlConnectionStringBuilder(connectionString);
 
-            //sqlbuilder.UserID = UtilityHelper.Decrypt(sqlbuilder.UserID);
+            sqlbuilder.UserID = UtilityHelper.Decrypt(sqlbuilder.UserID);
 
-            //sqlbuilder.Password = UtilityHelper.Decrypt(sqlbuilder.Password);
+            sqlbuilder.Password = UtilityHelper.Decrypt(sqlbuilder.Password);
 
-            //sqlbuilder.Server = UtilityHelper.Decrypt(sqlbuilder.Server);
+            sqlbuilder.Server = UtilityHelper.Decrypt(sqlbuilder.Server);
 
             return sqlbuilder.ToString();
 

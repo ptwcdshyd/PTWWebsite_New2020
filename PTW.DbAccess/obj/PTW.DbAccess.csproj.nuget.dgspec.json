@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\spartan\\source\\repos\\GitHub\\ptwcdshyd\\PTWWebsite_New2020\\PTW.DbAccess\\PTW.DBAccess.csproj": {}
+    "C:\\GitHub\\PTWWebsite_New2020\\PTW.DBAccess\\PTW.DBAccess.csproj": {}
   },
   "projects": {
-    "C:\\Users\\spartan\\source\\repos\\GitHub\\ptwcdshyd\\PTWWebsite_New2020\\PTW.DbAccess\\PTW.DBAccess.csproj": {
+    "C:\\GitHub\\PTWWebsite_New2020\\PTW.DBAccess\\PTW.DBAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\spartan\\source\\repos\\GitHub\\ptwcdshyd\\PTWWebsite_New2020\\PTW.DbAccess\\PTW.DBAccess.csproj",
+        "projectUniqueName": "C:\\GitHub\\PTWWebsite_New2020\\PTW.DBAccess\\PTW.DBAccess.csproj",
         "projectName": "PTW.DBAccess",
-        "projectPath": "C:\\Users\\spartan\\source\\repos\\GitHub\\ptwcdshyd\\PTWWebsite_New2020\\PTW.DbAccess\\PTW.DBAccess.csproj",
-        "packagesPath": "C:\\Users\\spartan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\spartan\\source\\repos\\GitHub\\ptwcdshyd\\PTWWebsite_New2020\\PTW.DbAccess\\obj\\",
+        "projectPath": "C:\\GitHub\\PTWWebsite_New2020\\PTW.DBAccess\\PTW.DBAccess.csproj",
+        "packagesPath": "C:\\Users\\Test\\.nuget\\packages\\",
+        "outputPath": "C:\\GitHub\\PTWWebsite_New2020\\PTW.DBAccess\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\spartan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Test\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,11 +40,15 @@
           "dependencies": {
             "Microsoft.Extensions.Configuration.FileExtensions": {
               "target": "Package",
-              "version": "[3.1.4, )"
+              "version": "[2.1.0, )"
             },
             "Microsoft.Extensions.Configuration.Json": {
               "target": "Package",
-              "version": "[3.1.4, )"
+              "version": "[2.1.0, )"
+            },
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[8.0.20, )"
             },
             "NETStandard.Library": {
               "suppressParent": "All",
@@ -63,7 +67,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
         }
       }
     }

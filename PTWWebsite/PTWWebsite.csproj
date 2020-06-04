@@ -12,6 +12,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LoggerService\LoggerService.csproj" />
+    <ProjectReference Include="..\PTW.DataAccess\PTW.DataAccess.csproj" />
+    <ProjectReference Include="..\PTW.DBAccess\PTW.DBAccess.csproj" />
   </ItemGroup>
 
 </Project>
