@@ -7,6 +7,7 @@ namespace PTW.DataAccess.Services
 {
     public interface IMasterService
     {
-        MasterPage GetDashboardDetails(int LoginUserId, int LanguageID);
+        MasterPage GetDashboardDetails(int LoginUserId, int LanguageID, int ModuleId);
+        string UpdateContentByModelIdAndLanguageId(int moduleId, int languageId, string contentText);
     }
 }

@@ -1,0 +1,24 @@
+﻿@model PTW.DataAccess.Models.MasterPage
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    PTW.DataAccess.ServicesImpl.MasterService masterService = new PTW.DataAccess.ServicesImpl.MasterService();
+
+    var data = masterService.GetDashboardDetails(0, 1, 1);
+
+    }
+
+@Html.Raw(data.HtmlContent);
+
+@*<div class="fixed-header">
+    <div class="container">
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Products</a>
+            <a href="#">Services</a>
+            <a href="#">Contact Us</a>
+        </nav>
+    </div>
+</div>*@

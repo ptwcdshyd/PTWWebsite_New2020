@@ -1,0 +1,13 @@
+﻿
+@{
+    PTW.DataAccess.ServicesImpl.MasterService masterService = new PTW.DataAccess.ServicesImpl.MasterService();
+
+    var data = masterService.GetDashboardDetails(0, 1, 2);
+
+}
+
+@Html.Raw(data.HtmlContent);
+
+@*<div class="fixed-footer">
+        <div class="container">Copyright &copy; 2016 Your Company</div>
+    </div>*@
