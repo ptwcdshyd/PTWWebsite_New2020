@@ -96,6 +96,70 @@ namespace PTW.DataAccess.ServicesImpl
             }
         }
 
+        public MasterPage GetLanguageandModules()
+        {
+            CustomCommand command = null;
+            MasterPage masterPage = new MasterPage();
+
+            try
+            {
+                using (command = new CustomCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "RetrieveModulesAndLanguages";
+                    //  Execute command and get values from output parameters.
+                    DataSet dtResult = ExecuteDataSet(command);
+                    if (dtResult != null && dtResult.Tables[1].Rows.Count > 0)
+                    {
+                        masterPage.LanguageList = new List<Languages>();
+                        for (int i = 0; i < dtResult.Tables[1].Rows.Count; i++)
+                        {
+                            if (i==0)
+                            {
+                                Languages lang = new Languages();
+                                lang.LanguageId = 0;
+                                lang.Language = "Languages";
+                                masterPage.LanguageList.Add(lang);
+                            }
+                            Languages languages = new Languages();
+                            languages.LanguageId= Convert.ToInt32(dtResult.Tables[1].Rows[i]["LanguageId"]);
+                            languages.Language = dtResult.Tables[1].Rows[i]["LanguageName"].ToString();
+                            languages.LanguageCode= dtResult.Tables[1].Rows[i]["Code"].ToString();
+                            masterPage.LanguageList.Add(languages);
+                        }
+                        masterPage.ModuleList = new List<Module>();
+                        for (int i = 0; i < dtResult.Tables[0].Rows.Count; i++)
+                        {
+                            if (i == 0)
+                            {
+                                Module mode = new Module();
+                                mode.ModuleId = 0;
+                                mode.ModuleName = "Module";
+                                masterPage.ModuleList.Add(mode);
+                            }
+
+                            Module module = new Module();
+                            module.ModuleId = Convert.ToInt32(dtResult.Tables[0].Rows[i]["ModuleId"]);
+                            module.ModuleName = dtResult.Tables[0].Rows[i]["ModuleName"].ToString();
+                            
+                            masterPage.ModuleList.Add(module);
+                        }
+                    }
+
+                }
+                return masterPage;
+            }
+
+
+            catch { throw; }
+
+            finally
+            {
+                if (command != null) command.Dispose();
+                command = null;
+
+            }
+        }
 
     }
 }

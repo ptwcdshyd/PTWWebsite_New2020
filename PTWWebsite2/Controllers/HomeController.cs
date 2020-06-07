@@ -28,16 +28,20 @@ namespace PTWWebsite2.Controllers
         public IActionResult Home()
         {
             MasterPage masterPage = _masterService.GetDashboardDetails(0, 1, 1);
+
+            MasterPage masterPage1 = _masterService.GetLanguageandModules();
             ViewBag.HomeContent = "<div class=\"fixed-header\"><div class=\"container\"><nav><a href = \"#\"> Home </a><a href=\"#\">About</a><a href = \"#\" > Products </a><a href=\"#\">Services</a><a href =\"#\"> Contact Us</a></nav></div></div>";
             //ViewBag.HomeContent = "This is Ashok";
-            return View("Home");
+
+            return View(masterPage1);
         }
 
         [Route("Editor")]
         public IActionResult Editor()
         {
+            MasterPage masterPage1 = _masterService.GetLanguageandModules();
             ViewBag.HomeContent = "This is Ashok";
-            return View("Editor");
+            return View(masterPage1);
         }
 
         public IActionResult About()
