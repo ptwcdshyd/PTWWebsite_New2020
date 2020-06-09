@@ -11,5 +11,8 @@ namespace PTW.DataAccess.Services
         string UpdateContentByModelIdAndLanguageId(int moduleId, int languageId, string contentText);
 
         MasterPage GetLanguageandModules();
+        string SaveImages(int imageId,string imageName,string imagePath,int imageSize,int moduleId,string type);
+
+        MasterPage GetImageDetails(int moduleId);
     }
 }

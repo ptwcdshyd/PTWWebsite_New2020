@@ -161,5 +161,117 @@ namespace PTW.DataAccess.ServicesImpl
             }
         }
 
+        MasterPage IMasterService.GetDashboardDetails(int LoginUserId, int LanguageID, int ModuleId)
+        {
+            throw new NotImplementedException();
+        }
+
+        string IMasterService.UpdateContentByModelIdAndLanguageId(int moduleId, int languageId, string contentText)
+        {
+            throw new NotImplementedException();
+        }
+
+        MasterPage IMasterService.GetLanguageandModules()
+        {
+            throw new NotImplementedException();
+        }
+
+        string IMasterService.SaveImages(int imageId, string imageName, string imagePath, int imageSize, int moduleId,string type)
+        {
+            string message;
+            CustomCommand command = null;
+            // MasterPage masterPage = new MasterPage();
+
+            try
+            {
+                using (command = new CustomCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "Insert_Images";
+
+                    command.AddParameterWithValue("@Image_Id", imageId);
+                    command.AddParameterWithValue("@Image_Name", imageName);
+                    command.AddParameterWithValue("@Image_path", imagePath);
+                    command.AddParameterWithValue("@Image_Size", imageSize);
+                    command.AddParameterWithValue("@Module_Id", moduleId);
+                    command.AddParameterWithValue("@Type", type);
+                    //  Execute command and get values from output parameters.
+                    int result = ExecuteNonQuery(command, false);
+                    if (result != 0)
+                    {
+                        message = "successfully saved";
+                    }
+                    else
+                    {
+                        message = "not saved";
+                    }
+
+
+
+                }
+                return message;
+            }
+
+
+
+
+            catch { throw; }
+
+
+
+            finally
+            {
+                if (command != null) command.Dispose();
+                command = null;
+
+
+
+            }
+        }
+
+        public MasterPage GetImageDetails(int moduleId)
+        {
+            CustomCommand command = null;
+            MasterPage masterPage = new MasterPage();
+
+            try
+            {
+                using (command = new CustomCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "RetrieveImages";
+                    command.AddParameterWithValue("@Module_Id", moduleId);
+                    //  Execute command and get values from output parameters.
+                    DataSet dtResult = ExecuteDataSet(command);
+                    if (dtResult != null && dtResult.Tables[0].Rows.Count > 0)
+                    {
+                        masterPage.Images = new List<Images>();
+                        for (int i = 0; i < dtResult.Tables[0].Rows.Count; i++)
+                        {
+                            
+                            Images imag = new Images();
+                            imag.ImageName = dtResult.Tables[0].Rows[i]["ImageName"].ToString();
+                            imag.ImagePath = dtResult.Tables[0].Rows[i]["Imagepath"].ToString();
+                            imag.Type = dtResult.Tables[0].Rows[i]["Type"].ToString();
+                            masterPage.Images.Add(imag);
+                        }
+
+                    }
+
+                }
+                return masterPage;
+            }
+
+
+            catch { throw; }
+
+            finally
+            {
+                if (command != null) command.Dispose();
+                command = null;
+
+            }
+
+        }
     }
 }

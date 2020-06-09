@@ -18,18 +18,28 @@ namespace PTW.DataAccess.Models
 
         public List<Languages> LanguageList { get; set; }
         public List<Module> ModuleList { get; set; }
+
+        public List<Images> Images { get; set; }
     }
 
     public class Languages {
         public int LanguageId { get; set; }
         public string Language { get; set; }
         public string LanguageCode { get; set; }
+
     }
 
     public class Module
     {
         public int ModuleId { get; set; }
         public string ModuleName { get; set; }
+    }
+
+    public class Images
+    {
+        public string ImageName { get; set; }
+        public string ImagePath { get; set; }
+        public string Type { get; set; }
     }
 
 }
