@@ -18,7 +18,7 @@ C:\GitHub\PTWWebsite_New2020\PTW.DataAccess\bin\Debug\netstandard2.0\PTW.DBAcces
 C:\GitHub\PTWWebsite_New2020\PTW.DataAccess\obj\Debug\netstandard2.0\PTW.DataAccess.csprojAssemblyReference.cache
 C:\GitHub\PTWWebsite_New2020\PTW.DataAccess\obj\Debug\netstandard2.0\PTW.DataAccess.AssemblyInfoInputs.cache
 C:\GitHub\PTWWebsite_New2020\PTW.DataAccess\obj\Debug\netstandard2.0\PTW.DataAccess.AssemblyInfo.cs
+C:\GitHub\PTWWebsite_New2020\PTW.DataAccess\obj\Debug\netstandard2.0\PTW.DataAccess.csproj.CoreCompileInputs.cache
 C:\GitHub\PTWWebsite_New2020\PTW.DataAccess\obj\Debug\netstandard2.0\PTW.DataAccess.csproj.CopyComplete
 C:\GitHub\PTWWebsite_New2020\PTW.DataAccess\obj\Debug\netstandard2.0\PTW.DataAccess.dll
 C:\GitHub\PTWWebsite_New2020\PTW.DataAccess\obj\Debug\netstandard2.0\PTW.DataAccess.pdb
-C:\GitHub\PTWWebsite_New2020\PTW.DataAccess\obj\Debug\netstandard2.0\PTW.DataAccess.csproj.CoreCompileInputs.cache

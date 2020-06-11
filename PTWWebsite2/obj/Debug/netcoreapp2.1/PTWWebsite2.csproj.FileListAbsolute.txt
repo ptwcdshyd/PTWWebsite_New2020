@@ -60,6 +60,7 @@ C:\GitHub\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1\PTW.DBAccess.pd
 C:\GitHub\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.csprojAssemblyReference.cache
 C:\GitHub\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.AssemblyInfoInputs.cache
 C:\GitHub\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.AssemblyInfo.cs
+C:\GitHub\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.csproj.CoreCompileInputs.cache
 C:\GitHub\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.RazorAssemblyInfo.cache
 C:\GitHub\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.RazorAssemblyInfo.cs
 C:\GitHub\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.TagHelpers.input.cache
@@ -83,4 +84,3 @@ C:\GitHub\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.csp
 C:\GitHub\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.dll
 C:\GitHub\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.pdb
 C:\GitHub\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.genruntimeconfig.cache
-C:\GitHub\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.csproj.CoreCompileInputs.cache
