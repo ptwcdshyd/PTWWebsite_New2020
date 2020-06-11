@@ -104,7 +104,7 @@ using PTWWebsite2.Models;
     ");
             EndContext();
             BeginContext(1700, 46, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "de1b3f6dea7c45599066c88ddaf59871", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "fb521d917643422b8b058e7ea3303dd3", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -126,7 +126,7 @@ using PTWWebsite2.Models;
             WriteLiteral("<select class=\"my-3\" id=\"Modules\" name=\"\" onchange=\"GetContent()\">\r\n    ");
             EndContext();
             BeginContext(1866, 39, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d037ce8132574d84add376fa784834f9", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "22ec598be40348dc894524b47e7a3f04", async() => {
                 BeginContext(1883, 13, true);
                 WriteLiteral("Select Module");
                 EndContext();
@@ -148,7 +148,7 @@ using PTWWebsite2.Models;
             WriteLiteral("\r\n    ");
             EndContext();
             BeginContext(1911, 37, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8c733fc3135048c283229e1c232218dc", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6863cc90a4f84cb99802a74c0b66a35c", async() => {
                 BeginContext(1929, 10, true);
                 WriteLiteral("HeaderMenu");
                 EndContext();
@@ -170,7 +170,7 @@ using PTWWebsite2.Models;
             WriteLiteral("\r\n    ");
             EndContext();
             BeginContext(1954, 33, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "be60d47f5440478b9e749c39bc5d1ee4", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e2aa54fcfe224cff920138c0013e4dc0", async() => {
                 BeginContext(1972, 6, true);
                 WriteLiteral("Footer");
                 EndContext();
@@ -192,7 +192,7 @@ using PTWWebsite2.Models;
             WriteLiteral("\r\n    ");
             EndContext();
             BeginContext(1993, 31, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f35b9c27241a48d9a981645154f8c586", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9a1bde627e5e4588a47a0c4132579351", async() => {
                 BeginContext(2011, 4, true);
                 WriteLiteral("Home");
                 EndContext();
@@ -214,7 +214,7 @@ using PTWWebsite2.Models;
             WriteLiteral("\r\n</select>\r\n\r\n<select class=\"my-3\" id=\"Languages\" name=\"\" onchange=\"GetContent()\">\r\n    ");
             EndContext();
             BeginContext(2113, 41, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5810abc918c74e919b1768039c8cec42", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1df2617d7a1348eeb6c99f383daeeea2", async() => {
                 BeginContext(2130, 15, true);
                 WriteLiteral("Select Language");
                 EndContext();
@@ -236,7 +236,7 @@ using PTWWebsite2.Models;
             WriteLiteral("\r\n    ");
             EndContext();
             BeginContext(2160, 34, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "81d12e1ad6f74a30bdad6bbc05fe0346", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b174241b18e249108b35093059441073", async() => {
                 BeginContext(2178, 7, true);
                 WriteLiteral("English");
                 EndContext();
@@ -258,7 +258,7 @@ using PTWWebsite2.Models;
             WriteLiteral("\r\n    ");
             EndContext();
             BeginContext(2200, 32, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7aa7b65124e9483283c084491bc62bd2", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a7dc2eff95ba4920a89eb4ad06cc66cf", async() => {
                 BeginContext(2218, 5, true);
                 WriteLiteral("Japan");
                 EndContext();
