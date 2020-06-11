@@ -27,10 +27,12 @@ namespace PTWWebsite2.Controllers
        
         public IActionResult Home()
         {
-            MasterPage masterPage = _masterService.GetDashboardDetails(0, 1, 1);
+            MasterPage masterPage = _masterService.GetDashboardDetails(0, 1,3);
 
             MasterPage masterPage1 = _masterService.GetLanguageandModules();
-            ViewBag.HomeContent = "<div class=\"fixed-header\"><div class=\"container\"><nav><a href = \"#\"> Home </a><a href=\"#\">About</a><a href = \"#\" > Products </a><a href=\"#\">Services</a><a href =\"#\"> Contact Us</a></nav></div></div>";
+            masterPage1.HtmlContent = masterPage.HtmlContent;
+
+            //ViewBag.HomeContent = "<div class=\"fixed-header\"><div class=\"container\"><nav><a href = \"#\"> Home </a><a href=\"#\">About</a><a href = \"#\" > Products </a><a href=\"#\">Services</a><a href =\"#\"> Contact Us</a></nav></div></div>";
             //ViewBag.HomeContent = "This is Ashok";
 
             return View(masterPage1);
@@ -96,6 +98,11 @@ namespace PTWWebsite2.Controllers
             {
                 throw ex;
             }
+        }
+
+        public IActionResult NewsandEvents()
+        {
+            return View();
         }
     }
 }

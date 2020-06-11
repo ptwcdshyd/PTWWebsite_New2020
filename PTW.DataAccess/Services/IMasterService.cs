@@ -1,4 +1,5 @@
-﻿using PTW.DataAccess.Models;
+﻿using Microsoft.AspNetCore.Http;
+using PTW.DataAccess.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,8 +12,7 @@ namespace PTW.DataAccess.Services
         string UpdateContentByModelIdAndLanguageId(int moduleId, int languageId, string contentText);
 
         MasterPage GetLanguageandModules();
-        string SaveImages(int imageId,string imageName,string imagePath,int imageSize,int moduleId,string type);
-
-        MasterPage GetImageDetails(int moduleId);
+        string SaveImages(string imagePath, int moduleId, List<IFormFile> files);
+        List<Images> GetImageDetails(int moduleId);
     }
 }

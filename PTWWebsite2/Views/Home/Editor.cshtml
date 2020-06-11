@@ -11,7 +11,7 @@
 
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
-
+@*<script src="~/js/summernote.min.js"></script>*@
 <style>
     /* Loader Start*/
 
@@ -52,8 +52,8 @@
 <select class="my-3" id="Languages" name="" onchange="GetContent()">
     <option value="">Select Language</option>
     <option value='1'>English</option>
-    @*<option value='2'>Footer</option>
-        <option value='3'>Home</option>*@
+    <option value='2'>Japan</option>
+    @*  <option value='3'>Home</option>*@
 </select>
 <br />
 <div id="summernote"></div>
@@ -70,6 +70,7 @@
         tabsize: 2,
         height: 100,
         dialogsInBody: true
+        //Content
     });
     var model = @Html.Raw(Json.Serialize(@ViewBag.HomeContent));
 
@@ -83,17 +84,19 @@
 
         if ($("#Languages").children("option:selected").val() > 0 && $("#Modules").children("option:selected").val() > 0) {
             $("#PostBackMsg").show();
-            $('#summernote').summernote('code', '')
+            $('#summernote').summernote('code', '');
             $.ajax({
                 type: "GET",
                 url: '../Home/GetContent?ModuleId=' + parseInt($("#Modules").children("option:selected").val()) + '&LanguageId=' + parseInt($("#Languages").children("option:selected").val()) + '',
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (result) {
-
+                    debugger;
                     if (result == 'Logout') {
                         window.location = '../Logout';
                     }
+                    console.log(result);
+
                     $('#summernote').summernote('code', result);
                     $("#PostBackMsg").fadeOut("slow");
                 },
@@ -118,7 +121,7 @@
                 LanguageId: parseInt($("#Languages").children("option:selected").val()),
                 Content: $('#summernote').summernote('code')
             }
-
+            debugger;
             $.ajax({
                 type: "POST",
                 url: '@Url.Action("UpdateContentByModelIdAndLanguageId", "Home")',
@@ -130,8 +133,8 @@
                     if (result == 'Logout') {
                         window.location = '../Logout';
                     }
-                    $('#summernote').summernote('code', result);
-                    //$("#PostBackMsg").fadeOut("slow");
+                    $('#summernote').summernote('code', result.replace("`", '&#39;'));
+                    $("#PostBackMsg").fadeOut("slow");
                 },
 
                 error: function (err) {
@@ -146,6 +149,13 @@
             return false;
         }
     }
+
+    //function encodeHtml(string) {
+    //    return String(string).replace(/[&<>"'`=\/]/g, function (s) {
+    //        s = s.replace("'", '`');
+    //        return entityMap[s];
+    //    });
+    //}
 
 </script>
 

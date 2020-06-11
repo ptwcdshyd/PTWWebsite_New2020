@@ -26,6 +26,7 @@
         "dependencies": {
           "LoggerService": "1.0.0",
           "Microsoft.AspNetCore.App": "2.1.1",
+          "Microsoft.AspNetCore.Http.Features": "2.1.1",
           "Microsoft.AspNetCore.Razor.Design": "2.1.2",
           "Microsoft.NETCore.App": "2.1.0",
           "NLog.Extensions.Logging": "1.6.4",
@@ -421,6 +422,7 @@
       },
       "PTW.DataAccess/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Http.Features": "2.1.1",
           "PTW.DBAccess": "1.0.0"
         },
         "runtime": {
@@ -432,6 +434,7 @@
       },
       "PTW.DBAccess/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Http.Features": "2.1.1",
           "Microsoft.Extensions.Configuration.FileExtensions": "2.1.1",
           "Microsoft.Extensions.Configuration.Json": "2.1.1",
           "MySql.Data": "8.0.20"

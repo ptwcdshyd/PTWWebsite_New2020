@@ -4,23 +4,74 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pole To Win</title>
+    <meta charset="utf-8">
+    <!--   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">-->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
+    <!--<meta name="description" content="Pole To Win (PTW) is the premier global provider of outsourced quality assurance, engineering, customer experience, translation, localization, interactive voice production and audio recording services to leading video games, e-learning, software and technology clients worldwide.">-->
+    <meta name="author" content="Pole To Win">
 
     <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
-        <link href="~/css/Loader.css" rel="stylesheet" />
+        <link href="~/CSS/Poppins.css" rel="stylesheet" type="text/css" />
+        <link href="~/CSS/Poppins-Bold.css" rel="stylesheet" type="text/css" />
+        <link href="~/CSS/Poppins-SemiBold.css" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" />
+        <link rel="icon" type="image/png" href="~/Images/icon-ms.png" />
+        <link href="~/CSS/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/css/clean-blog.min.css" rel="stylesheet" />
+        <!-- Custom fonts for this template -->
+        <link href="~/Fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+        <link rel="stylesheet" type="text/css" href="~/CSS/cookieconsent.min.css" />
     </environment>
     <environment exclude="Development">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+        @*<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
 
-        <link href="~/css/Loader.css" rel="stylesheet" />
+        <link href="~/css/Loader.css" rel="stylesheet" />*@
+
+        <link href="~/CSS/Poppins.css" rel="stylesheet" type="text/css" />
+        <link href="~/CSS/Poppins-Bold.css" rel="stylesheet" type="text/css" />
+        <link href="~/CSS/Poppins-SemiBold.css" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" />
+        <link rel="icon" type="image/png" href="~/Images/icon-ms.png" />
+        <link href="~/CSS/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/css/clean-blog.min.css" rel="stylesheet" />
+        <!-- Custom fonts for this template -->
+        <link href="~/Fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        
+        <link rel="stylesheet" type="text/css" href="~/CSS/cookieconsent.min.css" />
     </environment>
     <style>
-        /* Add some padding on document's body to prevent the content
-        to go underneath the header and footer */
+        .wow {
+            visibility: hidden;
+        }
+
+        .dropdown-toggle::before {
+            width: 0;
+            height: 0;
+            margin: -5px 0.455em 0 0;
+            content: "";
+            border: solid black;
+            border-width: 0 2px 2px 0;
+            display: inline-block;
+            padding: 2.5px;
+            vertical-align: middle;
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+        }
+
+        .dropdown-toggle::after {
+            display: none;
+        }
+    </style>
+
+    @*/* Add some padding on document's body to prevent the content
+    to go underneath the header and footer */*@
+    @*<style>
+
         body {
             padding-top: 60px;
             padding-bottom: 40px;
@@ -57,7 +108,7 @@
         .container p {
             line-height: 200px; /* Create scrollbar to test positioning */
         }
-    </style>
+    </style>*@
 </head>
 <body>
     @{
@@ -65,22 +116,139 @@
     }
 
 
-        @RenderBody()
-        <hr />
+    @RenderBody()
+
 
     @{
         Html.RenderPartial("Footer/_Footer");
     }
 
     <environment include="Development">
-
+        <script src=" ~/JS/jquery.sticky.js"></script>
+        <script src="~/wwwroot/js/wow.min.js"></script>
     </environment>
     <environment exclude="Development">
-        @*<script src=" ~/JS/jquery.sticky.js"></script>*@
-
+        <script src=" ~/JS/jquery.sticky.js"></script>
+        <script src="~/wwwroot/js/wow.min.js"></script>
 
     </environment>
 
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-P23N6P9');</script>
+    <!-- End Google Tag Manager -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-47490486-4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-47490486-4');
+        gtag('config', 'AW-738489994');
+    </script>
+    <script type="text/javascript">
+        jQuery(document).ready(function (e) {
+            "use strict";
+            if (e("form").on("focus", "input,textarea", function () {
+                e(this).prev("i.fa").addClass("focus")
+            }).on("blur", "input,textarea", function () {
+                e(this).prev("i.fa").removeClass("focus")
+            }), e("#rex-sticke-nav").sticky({
+                topSpacing: 0
+            }), e("body").hasClass("single")) {
+                var n = e("#rex-navigation li a");
+                n.each(function () {
+                    var a = e(this).attr("href");
+                    e(this).attr("href", "./" + a)
+                })
+            }
+            e(".backtop").hide(), e(window).on("scroll", function () {
+                e(this).scrollTop() > 400 ? e(".backtop").fadeIn() : e(".backtop").fadeOut()
+            }), e(".backtop").on("click", function () {
+                return e("html, body").animate({
+                    scrollTop: 0
+                }, 800), !1
+            }), (new WOW).init();
+
+        });
+
+        function hover(element, src) {
+            var source = '~/' + src.trim().replace('../', '');
+            $(element).find("img").attr('src', source);
+            $(element).css('cssText', 'cursor: pointer !important');
+        }
+
+        function colorhover(element, src) {
+            $(element).find("img").attr('src', src);
+        }
+
+        function unhover(element, src) {
+            var source = '~/' + src.trim().replace('../', '');
+            $(element).find("img").attr('src', source);
+        }
+
+
+
+        $('[data-toggle="slide-collapse"]').on('click', function () {
+            $navMenuCont = $($(this).data('target'));
+            $navMenuCont.animate({ right: 'toggle' }, 350);
+        });
+
+        function myFunction(x) {
+            x.classList.toggle("change");
+        }
+
+        function scroller(detail) {
+            $('html,body').animate({
+                scrollTop: $(detail).offset().top
+            },
+                'slow');
+
+        }
+
+        function languageChange(language) {
+            debugger;
+            $('.ddlLanguage').val(language).change();
+            var selectedText = $('.ddlLanguage')[0].options[$('.ddlLanguage')[0].selectedIndex].innerHTML.split("\n")[0];
+            $('#hLanguage').text(selectedText);
+            $('#fLanguage').text(selectedText);
+        }
+
+        function serviceChange(service) {
+            $('.ddlServices').val(service).change();
+            var selectedText = $('.ddlServices')[0].options[$('.ddlServices')[0].selectedIndex].innerHTML;
+            $('#hService').text(selectedText);
+        }
+
+        function showHide(showID, hideID) {
+
+            $('#' + showID).css('display', 'block');
+            $('#' + hideID).css('display', 'none');
+        }
+    </script>
+    <!-- START : LinkedIn - Insight Tag -->
+    <script type="text/javascript">
+        _linkedin_partner_id = "921090";
+        window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+        window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+    </script>
+    <script type="text/javascript">
+        (function () {
+            var s = document.getElementsByTagName("script")[0];
+            var b = document.createElement("script");
+            b.type = "text/javascript"; b.async = true;
+            b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+            s.parentNode.insertBefore(b, s);
+        })();
+    </script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

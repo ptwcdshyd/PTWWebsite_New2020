@@ -22,3 +22,125 @@
         </nav>
     </div>
 </div>*@
+   
+    @*<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container-fluid">
+            <div class="overlap-div">
+                <a titlevalue="1" href="/home">
+                    <img src="/Images/Logo/PTW.png" class="no-margin-bottom text-white text-center d-block" alt="PTW Logo">
+                </a>
+            </div>
+            <button class="navbar-toggler pull-xs-right hidden-md-up menu-btn" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" onclick="myFunction(this);">
+                <span class="bar1"></span>
+                <span class="bar2"></span>
+                <span class="bar3"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="pull-xs-right nav navbar-nav navbar-toggleable-sm">
+                    <li class="nav-item">
+                        <a id="Header1_A1" class="nav-link" titlevalue="1" href="javascript:__doPostBack('ctl00$Header1$A1','')">Home</a>
+                    </li>
+                    <li class="nav-item" id="nav_Services">
+                        <a id="Header1_A2" class="nav-link" titlevalue="2" href="javascript:__doPostBack('ctl00$Header1$A2','')">Services &amp; Industries</a>
+                    </li>
+                    <li class="nav-item dropdown v-hidden" id="dropdown_Services">
+                        <a class="dropdown-toggle color-black" href="#" id="A8" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <span id="Header1_hService">Services &amp; Industries</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right " aria-labelledby="bd-versions">
+                            <p onclick="serviceChange('2')" class="dropdown-item pl64">All Services</p>
+                            <div class="dropdown-divider"></div>
+                            <p onclick="serviceChange('2001')" class="dropdown-item">
+                                <img src="/Images/hover-over/Serv_ind-ICONS-grey.png" alt="" class="service-icon">Customer Experience
+                            </p>
+                            <div class="dropdown-divider"></div>
+                            <p onclick="serviceChange('2002')" class="dropdown-item">
+                                <img src="/Images/hover-over/Serv_ind-ICONS-grey2.png" alt="" class="service-icon">Quality Assurance
+                            </p>
+                            <div class="dropdown-divider"></div>
+                            <p onclick="serviceChange('2003')" class="dropdown-item">
+                                <img src="/Images/hover-over/Serv_ind-ICONS-grey3.png" alt="" class="service-icon">
+                                Localization
+                            </p>
+                            <div class="dropdown-divider"></div>
+                            <p onclick="serviceChange('2004')" class="dropdown-item">
+                                <img src="/Images/hover-over/Serv_ind-ICONS-grey4.png" alt="" class="service-icon">Audio Production
+                            </p>
+                            <div class="dropdown-divider"></div>
+                            <p onclick="serviceChange('2005')" class="dropdown-item">
+                                <img src="/Images/hover-over/Serv_ind-ICONS-grey5.png" alt="" class="service-icon">Engineering
+                            </p>
+                        </div>
+                        <select name="ctl00$Header1$ddlServices" onchange="javascript:setTimeout('__doPostBack(\'ctl00$Header1$ddlServices\',\'\')', 0)" id="Header1_ddlServices" class="ddlServices d-none">
+                            <option selected="selected" value="0">All</option>
+                            <option value="2" innertext="All Services">All Services</option>
+                            <option value="2001" innerhtml="<img src=&quot;../Images/hover-over/Serv_ind-ICONS-grey.png&quot; alt=&quot;&quot; class=&quot;service-icon&quot;>Customer Experience">Customer Experience</option>
+                            <option value="2002" innerhtml="<img src=&quot;../Images/hover-over/Serv_ind-ICONS-grey2.png&quot; alt=&quot;&quot; class=&quot;service-icon&quot;>Quality Assurance">Quality Assurance</option>
+                            <option value="2003" innerhtml="<img src=&quot;../Images/hover-over/Serv_ind-ICONS-grey3.png&quot; alt=&quot;&quot; class=&quot;service-icon&quot;>Localization">Localization</option>
+                            <option value="2004" innerhtml="<img src=&quot;../Images/hover-over/Serv_ind-ICONS-grey4.png&quot; alt=&quot;&quot; class=&quot;service-icon&quot;>Audio Production">Audio Production</option>
+                            <option value="2005" innerhtml="<img src=&quot;../Images/hover-over/Serv_ind-ICONS-grey5.png&quot; alt=&quot;&quot; class=&quot;service-icon&quot;>Engineering">Engineering</option>
+
+                        </select>
+                    </li>
+                    <li class="nav-item">
+                        <a id="Header1_A3" class="nav-link" titlevalue="3" href="javascript:__doPostBack('ctl00$Header1$A3','')">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="Header1_A4" class="nav-link" titlevalue="4" href="javascript:__doPostBack('ctl00$Header1$A4','')">News &amp; Events</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item newpad">
+                        <a id="Header1_A5" class="nav-link" titlevalue="5" href="javascript:__doPostBack('ctl00$Header1$A5','')">Careers</a>
+                    </li>
+                    <li class="nav-item newpad">
+                        <a id="Header1_A6" class="nav-link contact" titlevalue="6" href="javascript:__doPostBack('ctl00$Header1$A6','')">Contact &amp; Locations</a>
+                    </li>
+                    <li class="nav-item newpad">
+                        <a id="Header1_A7" class="nav-link Zelda" titlevalue="7" href="javascript:__doPostBack('ctl00$Header1$A7','')">LAB</a>
+
+                    </li>
+                    <li class="nav-item menu-social" style="padding: 17px 0px 0px 20px;">
+                        <a class=" p-r-0 l-h-2p8" titlevalue="8" href="https://twitter.com/PTW" target="_blank" rel="noopener noreferrer" title="Twitter"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li class="nav-item menu-social" style="padding: 17px 6px 0px 6px;">
+                        <a class=" p-l-5 p-r-5 l-h-2p8" titlevalue="9" href="https://www.facebook.com/PTWintl/" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li class="nav-item menu-social" style="padding: 17px 10px 0px 0px;">
+                        <a class="  p-l-0 l-h-2p8" titlevalue="10" href="https://www.linkedin.com/company/ptwintl/" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fa fa-linkedin-square"></i></a>
+                    </li>
+                    <li class="nav-item dropdown ">
+                        <a class="dropdown-toggle color-black" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <span id="Header1_hLanguage">English</span>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right " aria-labelledby="bd-versions">
+                            <p onclick="languageChange('en-US')" class="dropdown-item" meta:resourcekey="EnglishListItem">English</p>
+                            <div class="dropdown-divider"></div>
+                            <p onclick="languageChange('fr-CA')" class="dropdown-item" meta:resourcekey="CAFrenchListItem">Canadian French</p>
+                            <div class="dropdown-divider"></div>
+                            <p onclick="languageChange('ja')" class="dropdown-item" meta:resourcekey="JapaneseListItem">Japanese 日本語</p>
+                            <div class="dropdown-divider"></div>
+                            <p onclick="languageChange('ko')" class="dropdown-item" meta:resourcekey="KoreanListItem">Korean 한국어</p>
+                            <div class="dropdown-divider"></div>
+
+                            <p onclick="languageChange('zh-CHS')" class="dropdown-item" meta:resourcekey="CHSListItem">Simplified Chinese 简体中文</p>
+                            <div class="dropdown-divider"></div>
+                            <p onclick="languageChange('zh-CHT')" class="dropdown-item" meta:resourcekey="CHTListItem">Traditional Chinese 繁體中文</p>
+                        </div>
+                        <select name="ctl00$Header1$ddlLanguage" onchange="javascript:setTimeout('__doPostBack(\'ctl00$Header1$ddlLanguage\',\'\')', 0)" id="Header1_ddlLanguage" class="ddlLanguage d-none">
+                            <option selected="selected" value="en-US">English</option>
+                            <option value="fr-CA">French</option>
+                            <option value="ja">日本語</option>
+                            <option value="ko">한국어</option>
+                            <option value="zh-CHS">简体中文</option>
+                            <option value="zh-CHT">繁體中文</option>
+
+                        </select>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="clearfix">
+        </div>
+    </nav>*@

@@ -1,4 +1,5 @@
-﻿using PTW.DataAccess.Models;
+﻿using Microsoft.AspNetCore.Http;
+using PTW.DataAccess.Models;
 using PTW.DataAccess.Services;
 using PTW.DBAccess;
 using System;
@@ -10,7 +11,7 @@ namespace PTW.DataAccess.ServicesImpl
 {
     public sealed partial class MasterService : DBDataAccess, IMasterService
     {
-        public MasterPage GetDashboardDetails(int LoginUserId,int LanguageID, int ModuleId)
+        public MasterPage GetDashboardDetails(int LoginUserId, int LanguageID, int ModuleId)
         {
             CustomCommand command = null;
             MasterPage masterPage = new MasterPage();
@@ -31,7 +32,7 @@ namespace PTW.DataAccess.ServicesImpl
                         masterPage.HeaderContent = Convert.ToString(dtResult.Tables[0].Rows[0]["ModuleName"]);
                         masterPage.HtmlContent = Convert.ToString(dtResult.Tables[0].Rows[0]["Content"]);
                     }
-                   
+
                 }
                 return masterPage;
             }
@@ -66,7 +67,7 @@ namespace PTW.DataAccess.ServicesImpl
                     int result = ExecuteNonQuery(command, false);
                     if (result != 0)
                     {
-                        message = "successfully updated"; 
+                        message = "successfully updated";
                     }
                     else
                     {
@@ -114,7 +115,7 @@ namespace PTW.DataAccess.ServicesImpl
                         masterPage.LanguageList = new List<Languages>();
                         for (int i = 0; i < dtResult.Tables[1].Rows.Count; i++)
                         {
-                            if (i==0)
+                            if (i == 0)
                             {
                                 Languages lang = new Languages();
                                 lang.LanguageId = 0;
@@ -122,9 +123,9 @@ namespace PTW.DataAccess.ServicesImpl
                                 masterPage.LanguageList.Add(lang);
                             }
                             Languages languages = new Languages();
-                            languages.LanguageId= Convert.ToInt32(dtResult.Tables[1].Rows[i]["LanguageId"]);
+                            languages.LanguageId = Convert.ToInt32(dtResult.Tables[1].Rows[i]["LanguageId"]);
                             languages.Language = dtResult.Tables[1].Rows[i]["LanguageName"].ToString();
-                            languages.LanguageCode= dtResult.Tables[1].Rows[i]["Code"].ToString();
+                            languages.LanguageCode = dtResult.Tables[1].Rows[i]["Code"].ToString();
                             masterPage.LanguageList.Add(languages);
                         }
                         masterPage.ModuleList = new List<Module>();
@@ -141,7 +142,7 @@ namespace PTW.DataAccess.ServicesImpl
                             Module module = new Module();
                             module.ModuleId = Convert.ToInt32(dtResult.Tables[0].Rows[i]["ModuleId"]);
                             module.ModuleName = dtResult.Tables[0].Rows[i]["ModuleName"].ToString();
-                            
+
                             masterPage.ModuleList.Add(module);
                         }
                     }
@@ -161,25 +162,11 @@ namespace PTW.DataAccess.ServicesImpl
             }
         }
 
-        MasterPage IMasterService.GetDashboardDetails(int LoginUserId, int LanguageID, int ModuleId)
-        {
-            throw new NotImplementedException();
-        }
-
-        string IMasterService.UpdateContentByModelIdAndLanguageId(int moduleId, int languageId, string contentText)
-        {
-            throw new NotImplementedException();
-        }
-
-        MasterPage IMasterService.GetLanguageandModules()
-        {
-            throw new NotImplementedException();
-        }
-
-        string IMasterService.SaveImages(int imageId, string imageName, string imagePath, int imageSize, int moduleId,string type)
+        public string SaveImages(string imagePath, int moduleId, List<IFormFile> files)
         {
             string message;
             CustomCommand command = null;
+            CustomXmlHelper customXmlHelper = new CustomXmlHelper();
             // MasterPage masterPage = new MasterPage();
 
             try
@@ -189,12 +176,9 @@ namespace PTW.DataAccess.ServicesImpl
                     command.CommandType = CommandType.StoredProcedure;
                     command.CommandText = "Insert_Images";
 
-                    command.AddParameterWithValue("@Image_Id", imageId);
-                    command.AddParameterWithValue("@Image_Name", imageName);
-                    command.AddParameterWithValue("@Image_path", imagePath);
-                    command.AddParameterWithValue("@Image_Size", imageSize);
+                    command.AddParameterWithValue("@Image_Path", imagePath);
                     command.AddParameterWithValue("@Module_Id", moduleId);
-                    command.AddParameterWithValue("@Type", type);
+                    command.AddParameterWithValue("@Image_Data", customXmlHelper.CustomImagesXml(files));
                     //  Execute command and get values from output parameters.
                     int result = ExecuteNonQuery(command, false);
                     if (result != 0)
@@ -229,10 +213,10 @@ namespace PTW.DataAccess.ServicesImpl
             }
         }
 
-        public MasterPage GetImageDetails(int moduleId)
+        public List<Images> GetImageDetails(int moduleId)
         {
             CustomCommand command = null;
-            MasterPage masterPage = new MasterPage();
+            List<Images> images = new List<Images>();
 
             try
             {
@@ -245,21 +229,20 @@ namespace PTW.DataAccess.ServicesImpl
                     DataSet dtResult = ExecuteDataSet(command);
                     if (dtResult != null && dtResult.Tables[0].Rows.Count > 0)
                     {
-                        masterPage.Images = new List<Images>();
+
                         for (int i = 0; i < dtResult.Tables[0].Rows.Count; i++)
                         {
-                            
+
                             Images imag = new Images();
                             imag.ImageName = dtResult.Tables[0].Rows[i]["ImageName"].ToString();
                             imag.ImagePath = dtResult.Tables[0].Rows[i]["Imagepath"].ToString();
-                            imag.Type = dtResult.Tables[0].Rows[i]["Type"].ToString();
-                            masterPage.Images.Add(imag);
+                            images.Add(imag);
                         }
 
                     }
 
                 }
-                return masterPage;
+                return images;
             }
 
 
