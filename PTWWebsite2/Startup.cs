@@ -43,6 +43,7 @@ namespace PTWWebsite
 
             services.AddTransient<ILoggerManager, LoggerManager>();
             services.AddTransient<IMasterService, MasterService>();
+            services.AddTransient<INewsEventService, NewsEventService>();
 
             services.AddSession(options =>
             {

@@ -15,6 +15,8 @@ namespace PTW.DataAccess.Models
         public int ModuleId { get; set; }
         public int LanguageId { get; set; }
 
+        public int ResultCode { get; set; }
+
         public string LanguageCode { get; set; }
 
         public string Content { get; set; }

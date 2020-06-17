@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
+using MySql.Data.MySqlClient;
 using PTW.DataAccess.Models;
 using PTW.DataAccess.Services;
 using PTW.DBAccess;
 using System;
+using System.Buffers.Text;
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
@@ -11,7 +13,7 @@ namespace PTW.DataAccess.ServicesImpl
 {
     public sealed partial class MasterService : DBDataAccess, IMasterService
     {
-        public MasterPage GetDashboardDetails(int LoginUserId, int LanguageID, int ModuleId)
+        public MasterPage GetDashboardDetails(int LoginUserId, int LanguageID, int ModuleId,string Languagecode)
         {
             CustomCommand command = null;
             MasterPage masterPage = new MasterPage();
@@ -23,8 +25,9 @@ namespace PTW.DataAccess.ServicesImpl
                     command.CommandType = CommandType.StoredProcedure;
                     command.CommandText = "GetLandingPageDetails";
                     command.AddParameterWithValue("@L_userId", LoginUserId);
-                    command.AddParameterWithValue("@LanguageID", LanguageID);
+                    //command.AddParameterWithValue("@LanguageID", LanguageID);
                     command.AddParameterWithValue("@ModuleID", ModuleId);
+                    command.AddParameterWithValue("@Languagecode", Languagecode);
                     //  Execute command and get values from output parameters.
                     DataSet dtResult = ExecuteDataSet(command);
                     if (dtResult != null && dtResult.Tables[0].Rows.Count > 0)
@@ -48,9 +51,45 @@ namespace PTW.DataAccess.ServicesImpl
             }
         }
 
-        public string UpdateContentByModelIdAndLanguageId(int moduleId, int languageId, string contentText)
+        public MasterPage GetHtmlContentForPage(int ModuleId, string Languagecode)
         {
-            string message;
+            CustomCommand command = null;
+            MasterPage masterPage = new MasterPage();
+
+            try
+            {
+                using (command = new CustomCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "GetHtmlContentForPage";
+                    command.AddParameterWithValue("@ModuleID", ModuleId);
+                    command.AddParameterWithValue("@Languagecode", Languagecode);
+                    //  Execute command and get values from output parameters.
+                    DataSet dtResult = ExecuteDataSet(command);
+                    if (dtResult != null && dtResult.Tables[0].Rows.Count > 0)
+                    {
+                        masterPage.HeaderContent = Convert.ToString(dtResult.Tables[0].Rows[0]["ModuleName"]);
+                        masterPage.HtmlContent = Convert.ToString(dtResult.Tables[0].Rows[0]["Content"]);
+                    }
+
+                }
+                return masterPage;
+            }
+
+
+            catch { throw; }
+
+            finally
+            {
+                if (command != null) command.Dispose();
+                command = null;
+
+            }
+        }
+
+        public int UpdateContentByModelIdAndLanguageId(int moduleId, string languageCode, string contentText)
+        {
+            int resultCode=0;
             CustomCommand command = null;
             // MasterPage masterPage = new MasterPage();
 
@@ -61,23 +100,19 @@ namespace PTW.DataAccess.ServicesImpl
                     command.CommandType = CommandType.StoredProcedure;
                     command.CommandText = "UpdateContentByModuleIdAndLanguageId";
                     command.AddParameterWithValue("@Module_Id", moduleId);
-                    command.AddParameterWithValue("@Language_ID", languageId);
+                    command.AddParameterWithValue("@Language_Code", languageCode);
                     command.AddParameterWithValue("@ContentText", contentText);
+                    
                     //  Execute command and get values from output parameters.
                     int result = ExecuteNonQuery(command, false);
-                    if (result != 0)
+                    if (result > 0)
                     {
-                        message = "successfully updated";
+                        resultCode = 1;
                     }
-                    else
-                    {
-                        message = "not updated successfully";
-                    }
-
-
 
                 }
-                return message;
+
+                return resultCode;
             }
 
 

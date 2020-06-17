@@ -3,8 +3,12 @@
     Layout = "";//"_Layout";
     ViewData["Title"] = "PTW | Leading QA, Localization & Player Support Company";
 }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.min.js"></script>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
@@ -35,6 +39,37 @@
 
     /* Loader End*/
 
+    #ModuleId {
+        outline: 0;
+        background-image: none;
+        width: 100%;
+        height: 100%;
+        color: black;
+        cursor: pointer;
+        border: 1px solid black;
+        border-radius: 15px;
+        padding: 6px 6px 6px 6px;
+    }
+
+    #LanguageCode {
+        outline: 0;
+        background-image: none;
+        width: 100%;
+        height: 100%;
+        color: black;
+        cursor: pointer;
+        border: 1px solid black;
+        border-radius: 15px;
+        padding: 6px 6px 6px 6px;
+    }
+    #lblMessage {
+        display: inline-block;
+        margin-bottom: .5rem;
+        color: red;
+        white-space: nowrap;
+        padding-left: 20px;
+        display:none;
+    }
 </style>
 <div id="PostBackMsg" style="display:none;">
 
@@ -42,24 +77,37 @@
 
 </div>
 @*@Html.Raw(ViewBag.HomeContent)*@
-<select class="my-3" id="Modules" name="" onchange="GetContent()">
-    <option value="">Select Module</option>
-    <option value='1'>HeaderMenu</option>
-    <option value='2'>Footer</option>
-    <option value='3'>Home</option>
-</select>
 
-<select class="my-3" id="Languages" name="" onchange="GetContent()">
-    <option value="">Select Language</option>
-    <option value='1'>English</option>
-    <option value='2'>Japan</option>
-    @*  <option value='3'>Home</option>*@
-</select>
-<br />
-<div id="summernote"></div>
-<div>
-    <input type="button" id="Update" onclick="UpdateContent()" value="Update" />
+
+<div class="page-header" style="text-align: center;">
+    <h3>Update module pages</h3>
 </div>
+<div class="contentpanel report" style="border: 1px solid #00b8ff85;width: 1180px;margin-top: 45px;margin-left:50px;">
+    <div class="row distribute-container">
+        <div class="col-md-2" style="margin-top:45px;margin-left:100px">
+            @Html.DropDownList("ModuleId", new SelectList(Model.ModuleList, "ModuleId", "ModuleName"), htmlAttributes: new { @class = "dropdown-select my-3 float-label", onchange = "GetContent();", autocomplete = "off" })
+           
+        </div>
+        <div class="col-md-2" style="margin-top:45px;margin-left:64px">
+            @Html.DropDownList("LanguageCode", new SelectList(Model.LanguageList, "LanguageCode", "Language"), htmlAttributes: new { @class = "dropdown-select my-3 float-label", onchange = "GetContent();", autocomplete = "off" })
+
+        
+        </div>
+    </div>
+    <div class="row distribute-container">
+        <div class="col-lg-10 col-md-8" style="margin-top:45px;margin-left:98px">
+            <div id="summernote"></div>
+        </div>
+    </div>
+    <div class="row distribute-container">
+        <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
+            <button type="button"  id="Update" class="btn btn-success" onclick="UpdateContent()">Update</button>
+            <label id="lblMessage">No data Updated</label>
+            @*<input type="button" class="btn btn-primary" style="background-color:darkgray"  value="Update" />*@
+        </div>
+    </div>
+</div>
+
 
 
 
@@ -68,36 +116,41 @@
     $('#summernote').summernote({
         placeholder: 'Hello Bootstrap 4',
         tabsize: 2,
-        height: 100,
+        height: 300,
         dialogsInBody: true
-        //Content
     });
-    var model = @Html.Raw(Json.Serialize(@ViewBag.HomeContent));
 
-    //$('#summernote').summernote('code', model);
 
     $(document).ready(function () {
+        $("#ModuleId").chosen();
+        $("#LanguageCode").chosen();
     });
 
 
     function GetContent() {
-
-        if ($("#Languages").children("option:selected").val() > 0 && $("#Modules").children("option:selected").val() > 0) {
+        
+        if ($("#ModuleId").children("option:selected").val() > 0 && $("#LanguageCode").children("option:selected").val() !="") {
             $("#PostBackMsg").show();
-            $('#summernote').summernote('code', '');
+            $('#summernote').summernote('code', '')
+            console.log($("#ModuleId").children("option:selected").val());
+            console.log($("#LanguageCode").children("option:selected").val());
             $.ajax({
                 type: "GET",
-                url: '../Home/GetContent?ModuleId=' + parseInt($("#Modules").children("option:selected").val()) + '&LanguageId=' + parseInt($("#Languages").children("option:selected").val()) + '',
+                url: '../Home/GetContent?ModuleId=' + parseInt($("#ModuleId").children("option:selected").val()) + '&LanguageCode=' + $("#LanguageCode").children("option:selected").val() + '',
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (result) {
-                    debugger;
+                    
                     if (result == 'Logout') {
                         window.location = '../Logout';
                     }
                     console.log(result);
 
-                    $('#summernote').summernote('code', result);
+                    if (result != null) {
+                        $('#summernote').summernote('code', result);
+                    }
+
+                    
                     $("#PostBackMsg").fadeOut("slow");
                 },
 
@@ -113,15 +166,15 @@
 
 
     function UpdateContent() {
-
-        if ($("#Languages").children("option:selected").val() > 0 && $("#Modules").children("option:selected").val() > 0) {
+        debugger;
+        if ($("#LanguageCode").children("option:selected").val() != "" && $("#ModuleId").children("option:selected").val() > 0) {
             $("#PostBackMsg").show();
             var objReq= {
-                ModuleId: parseInt($("#Modules").children("option:selected").val()),
-                LanguageId: parseInt($("#Languages").children("option:selected").val()),
+                ModuleId: parseInt($("#ModuleId").children("option:selected").val()),
+                LanguageCode: $("#LanguageCode").children("option:selected").val(),
                 Content: $('#summernote').summernote('code')
             }
-            debugger;
+            
             $.ajax({
                 type: "POST",
                 url: '@Url.Action("UpdateContentByModelIdAndLanguageId", "Home")',
@@ -129,11 +182,17 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (result) {
-
+                    debugger;
                     if (result == 'Logout') {
                         window.location = '../Logout';
                     }
-                    $('#summernote').summernote('code', result.replace("`", '&#39;'));
+                    if (result.ResultCode==0) {
+                        $("#lblMessage").css({ display: 'inline' });
+                    }
+                    else {
+                        $('#summernote').summernote('code', result.HtmlContent);
+                    }
+                   
                     $("#PostBackMsg").fadeOut("slow");
                 },
 
@@ -149,13 +208,6 @@
             return false;
         }
     }
-
-    //function encodeHtml(string) {
-    //    return String(string).replace(/[&<>"'`=\/]/g, function (s) {
-    //        s = s.replace("'", '`');
-    //        return entityMap[s];
-    //    });
-    //}
 
 </script>
 

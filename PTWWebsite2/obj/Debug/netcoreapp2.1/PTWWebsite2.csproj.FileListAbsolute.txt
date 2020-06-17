@@ -84,4 +84,4 @@ C:\GitHub\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.dll
 C:\GitHub\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.pdb
 C:\GitHub\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.genruntimeconfig.cache
 C:\GitHub\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.csproj.CoreCompileInputs.cache
-C:\GitHub\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\NewsEvents\News.cshtml.g.cs
+C:\GitHub\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\News\News.cshtml.g.cs

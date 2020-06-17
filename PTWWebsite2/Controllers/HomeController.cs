@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using PTW.DataAccess.Models;
 using PTW.DataAccess.Services;
@@ -24,10 +25,11 @@ namespace PTWWebsite2.Controllers
             return View();
         }
 
-       
+        [Route("")]
+        [Route("Home")]
         public IActionResult Home()
         {
-            MasterPage masterPage = _masterService.GetDashboardDetails(0, 1, 3);
+            MasterPage masterPage = _masterService.GetDashboardDetails(0, 1, 3, "en-US");
 
             MasterPage masterPage1 = _masterService.GetLanguageandModules();
             masterPage1.HtmlContent = masterPage.HtmlContent;
@@ -71,11 +73,11 @@ namespace PTWWebsite2.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetContent(int ModuleId, int LanguageId)
+        public IActionResult GetContent(int ModuleId, string LanguageCode)
         {
             try
             {
-                MasterPage masterPage = _masterService.GetDashboardDetails(0, LanguageId, ModuleId);
+                MasterPage masterPage = _masterService.GetHtmlContentForPage(ModuleId, LanguageCode);
                 return Json(masterPage.HtmlContent, new JsonSerializerSettings());
             }
             catch (Exception ex)
@@ -89,8 +91,43 @@ namespace PTWWebsite2.Controllers
         {
             try
             {
-                string message = _masterService.UpdateContentByModelIdAndLanguageId(masterContent.ModuleId, masterContent.LanguageId, masterContent.Content);
-                MasterPage masterPage = _masterService.GetDashboardDetails(0, masterContent.LanguageId, masterContent.ModuleId);
+                MasterPage masterPage = new MasterPage();
+                int resultCode = _masterService.UpdateContentByModelIdAndLanguageId(masterContent.ModuleId, masterContent.LanguageCode, masterContent.Content);
+                if (resultCode > 0)
+                {
+                    masterPage = _masterService.GetHtmlContentForPage(masterContent.ModuleId, masterContent.LanguageCode);
+                }
+                masterPage.ResultCode = resultCode;
+                return Json(masterPage, new JsonSerializerSettings());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        [HttpGet]
+        public IActionResult GetHeaderPageDetails(int ModuleId, string Languagecode)
+        {
+            try
+            {
+                MasterPage masterPage = _masterService.GetHtmlContentForPage(ModuleId, Languagecode);
+
+                return Json(masterPage.HtmlContent, new JsonSerializerSettings());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        [HttpGet]
+        public IActionResult GetFooterPageDetails(int ModuleId, string Languagecode)
+        {
+            try
+            {
+                MasterPage masterPage = _masterService.GetHtmlContentForPage(ModuleId, Languagecode);
+
                 return Json(masterPage.HtmlContent, new JsonSerializerSettings());
             }
             catch (Exception ex)

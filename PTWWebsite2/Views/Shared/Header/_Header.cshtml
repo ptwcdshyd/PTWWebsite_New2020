@@ -1,13 +1,54 @@
-﻿@model PTW.DataAccess.Models.MasterPage
-@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-    PTW.DataAccess.ServicesImpl.MasterService masterService = new PTW.DataAccess.ServicesImpl.MasterService();
+﻿@using PTW.DataAccess.ServicesImpl;
 
-    var data = masterService.GetDashboardDetails(0, 1, 1);
+@*@{
+        MasterService masterService = new MasterService();
+
+
+
+        var data = masterService.GetDashboardDetails(0, 1, 1);
 
     }
+    Html.Raw(data.HtmlContent);*@
 
-@Html.Raw(data.HtmlContent);
 
+<div id="navHeader"></div>
+
+
+
+
+
+<script src="~/js/jquery-3.3.1.min.js"></script>
+
+<script>
+    var content;
+    $(document).ready(function () {
+        LoadHeader();
+    });
+
+    function LoadHeader() {
+        var moduleId = 1;
+        var languagecode = "en-US";
+        $("#navHeader").html = '';
+        $.ajax({
+            type: "GET",
+            url: '../Home/GetHeaderPageDetails?ModuleId=' + parseInt(moduleId) + '&Languagecode=' + languagecode + '',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+
+                if (result == 'Logout') {
+                    window.location = '../Logout';
+                }
+                $("#navHeader").append(result);
+
+            },
+
+            error: function (err) {
+                if (err.status === 0) {
+                    window.location = '../Logout';
+                }
+            }
+        });
+
+    }
+</script>
