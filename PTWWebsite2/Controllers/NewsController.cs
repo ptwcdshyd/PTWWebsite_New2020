@@ -16,11 +16,24 @@ namespace PTWWebsite2.Controllers
             _NewsEventService = newsEventService;
         }
 
-      
+
 
         [Route("News")]
         public IActionResult News()
         {
+            NewsEvents newsEvents = new NewsEvents();
+            newsEvents.News = _NewsEventService.GetAllNewsDetails();
+            newsEvents.Events = _NewsEventService.GetAllEventDetails();
+            return View(newsEvents);
+        }
+
+        [Route("News/{NewsTitleUrl}")]
+        public IActionResult NewsArticles(string NewsTitleUrl)
+        {
+            if (!string.IsNullOrEmpty(NewsTitleUrl))
+            {
+                NewsTitleUrl = NewsTitleUrl.Replace(" ", "-");
+            }
             NewsEvents newsEvents = new NewsEvents();
             newsEvents.News = _NewsEventService.GetAllNewsDetails();
             newsEvents.Events = _NewsEventService.GetAllEventDetails();

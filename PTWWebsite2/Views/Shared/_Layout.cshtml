@@ -31,11 +31,11 @@
     </environment>
     <environment exclude="Development">
         @*<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+                  asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+                  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+            <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
 
-        <link href="~/css/Loader.css" rel="stylesheet" />*@
+            <link href="~/css/Loader.css" rel="stylesheet" />*@
 
         <link href="~/CSS/Poppins.css" rel="stylesheet" type="text/css" />
         <link href="~/CSS/Poppins-Bold.css" rel="stylesheet" type="text/css" />
@@ -46,7 +46,7 @@
         <link href="~/css/clean-blog.min.css" rel="stylesheet" />
         <!-- Custom fonts for this template -->
         <link href="~/Fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        
+
         <link rel="stylesheet" type="text/css" href="~/CSS/cookieconsent.min.css" />
     </environment>
     <style>
@@ -74,46 +74,46 @@
     </style>
 
     @*/* Add some padding on document's body to prevent the content
-    to go underneath the header and footer */*@
+        to go underneath the header and footer */*@
     @*<style>
 
-        body {
-            padding-top: 60px;
-            padding-bottom: 40px;
-        }
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+            }
 
-        .container {
-            width: 80%;
-            margin: 0 auto; /* Center the DIV horizontally */
-        }
+            .container {
+                width: 80%;
+                margin: 0 auto; /* Center the DIV horizontally */
+            }
 
-        .fixed-header, .fixed-footer {
-            width: 100%;
-            position: fixed;
-            background: #333;
-            padding: 10px 0;
-            color: #fff;
-        }
+            .fixed-header, .fixed-footer {
+                width: 100%;
+                position: fixed;
+                background: #333;
+                padding: 10px 0;
+                color: #fff;
+            }
 
-        .fixed-header {
-            top: 0;
-        }
+            .fixed-header {
+                top: 0;
+            }
 
-        .fixed-footer {
-            bottom: 0;
-        }
-        /* Some more styles to beutify this example */
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 7px 25px;
-            display: inline-block;
-        }
+            .fixed-footer {
+                bottom: 0;
+            }
+            /* Some more styles to beutify this example */
+            nav a {
+                color: #fff;
+                text-decoration: none;
+                padding: 7px 25px;
+                display: inline-block;
+            }
 
-        .container p {
-            line-height: 200px; /* Create scrollbar to test positioning */
-        }
-    </style>*@
+            .container p {
+                line-height: 200px; /* Create scrollbar to test positioning */
+            }
+        </style>*@
 </head>
 <body>
     @{
@@ -129,12 +129,14 @@
     }
 
     <environment include="Development">
+
         <script src=" ~/JS/jquery.sticky.js"></script>
         <script src="~/wwwroot/js/wow.min.js"></script>
+        <script src="~/js/jquery-3.3.1.min.js"></script>
     </environment>
     <environment exclude="Development">
-        <script src=" ~/JS/jquery.sticky.js"></script>
-        <script src="~/wwwroot/js/wow.min.js"></script>
+        @*<script src=" ~/JS/jquery.sticky.js"></script>
+        <script src="~/wwwroot/js/wow.min.js"></script>*@
 
     </environment>
     <!-- Google Tag Manager -->
@@ -159,7 +161,36 @@
         gtag('config', 'AW-738489994');
     </script>
     <script type="text/javascript">
+        
+        //$("#Languages").change(function () {
+        //    alert();
+        //    var str = window.location.href.replace(window.location.origin, '');
+        //    console.log(str);
+
+        //    var values = $(this).children('option').map(function (i, e) {
+        //        return e.value;
+        //    }).get();
+        //    $.each(values, function (i, val) {
+
+        //        str = str.replace(values[i], '');
+        //    });
+        //    str = str.replace('//', '/');
+        //    console.log(str);
+
+        //    if ($("#Languages").val() == 'en-US') {
+        //        window.location = window.location.origin + str;
+        //    }
+        //    else {
+        //        window.location = window.location.origin + '/' + $("#Languages").val() + str;
+        //    }
+
+        //});
+
         jQuery(document).ready(function (e) {
+            var lan='@(ViewContext.RouteData.Values["culture"]!=null?ViewContext.RouteData.Values["culture"].ToString():"en-US")';
+            //console.log(lan);
+            $("#Languages").val(lan);
+
             "use strict";
             if (e("form").on("focus", "input,textarea", function () {
                 e(this).prev("i.fa").addClass("focus")

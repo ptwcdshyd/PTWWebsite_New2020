@@ -25,6 +25,30 @@
         LoadHeader();
     });
 
+    function ApplyLocalizaiotn () {
+        alert();
+        var str = window.location.href.replace(window.location.origin, '');
+        console.log(str);
+
+        var values = $(this).children('option').map(function (i, e) {
+            return e.value;
+        }).get();
+        $.each(values, function (i, val) {
+
+            str = str.replace(values[i], '');
+        });
+        str = str.replace('//', '/');
+        console.log(str);
+
+        if ($("#Languages").val() == 'en-US') {
+            window.location = window.location.origin + str;
+        }
+        else {
+            window.location = window.location.origin + '/' + $("#Languages").val() + str;
+        }
+
+    }
+
     function LoadHeader() {
         var moduleId = 1;
         var languagecode = "en-US";

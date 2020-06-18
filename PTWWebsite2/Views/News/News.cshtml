@@ -795,7 +795,7 @@
     });
 
     $(window).on('resize', function () {
-        debugger;
+      
         var win = $(this); //this = window
         if (win.width() > 751) {
             $(".events-list").show();
@@ -870,7 +870,7 @@
     });
 
     function loadGridAlign() {
-        debugger;
+      
         if (screen.width > 990) {
 
             $('.newsgrid').each(function (index) {
@@ -903,7 +903,7 @@
 
 
     function loadTabletAlign() {
-        debugger;
+       
         $('.newsgrid').each(function (index) {
             if (index % 10 == 0 || index % 10 == 5) {
                 $(this).attr("class", $(this).attr("class").replace("newsgrid col-lg-4 col-md-6 no-padding", "newsgrid col-lg-8 col-md-12 no-padding"));
@@ -919,7 +919,7 @@
 </script>
 <script>
     $(function () {
-        debugger;
+       
         $('.scrollnews').makeScroll();
     });
 </script>

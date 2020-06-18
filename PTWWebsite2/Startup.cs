@@ -97,6 +97,14 @@ namespace PTWWebsite
                     name: "default",
                     template: "{controller=Home}/{action=Home}/{id?}");
             });
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default1",
+                    template: "{controller=Home}/{action=News}/{NewsTitleUrl}/{id?}");
+                
+            });
         }
     }
 }

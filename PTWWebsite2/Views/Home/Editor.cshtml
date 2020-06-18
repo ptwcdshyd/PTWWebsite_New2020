@@ -166,7 +166,7 @@
 
 
     function UpdateContent() {
-        debugger;
+        
         if ($("#LanguageCode").children("option:selected").val() != "" && $("#ModuleId").children("option:selected").val() > 0) {
             $("#PostBackMsg").show();
             var objReq= {
@@ -182,7 +182,7 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (result) {
-                    debugger;
+                    
                     if (result == 'Logout') {
                         window.location = '../Logout';
                     }

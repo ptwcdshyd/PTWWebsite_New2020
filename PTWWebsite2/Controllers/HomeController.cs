@@ -27,16 +27,22 @@ namespace PTWWebsite2.Controllers
 
         [Route("")]
         [Route("Home")]
-        public IActionResult Home()
+        [Route("{culture}/Home")]
+        [Route("{culture}/")]
+        public IActionResult Home(string culture)
         {
-            MasterPage masterPage = _masterService.GetDashboardDetails(0, 1, 3, "en-US");
+            MasterPage masterPage = new MasterPage();
+            if (culture == null)
+            {
+                masterPage = _masterService.GetHtmlContentForPage(3, "en-US");
+            }
 
-            MasterPage masterPage1 = _masterService.GetLanguageandModules();
-            masterPage1.HtmlContent = masterPage.HtmlContent;
-            ViewBag.HomeContent = "<div class=\"fixed-header\"><div class=\"container\"><nav><a href = \"#\"> Home </a><a href=\"#\">About</a><a href = \"#\" > Products </a><a href=\"#\">Services</a><a href =\"#\"> Contact Us</a></nav></div></div>";
-            //ViewBag.HomeContent = "This is Ashok";
+            else
+            {
+                masterPage = _masterService.GetHtmlContentForPage(3,culture);
+            }
 
-            return View(masterPage1);
+            return View(masterPage);
         }
 
         [Route("Editor")]
