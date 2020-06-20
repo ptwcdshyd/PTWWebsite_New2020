@@ -17,12 +17,14 @@
 <script>
 
     $(document).ready(function () {
-        LoadFooter();
+        var lan = '@(ViewContext.RouteData.Values["culture"]!=null?ViewContext.RouteData.Values["culture"].ToString():"en-US")';
+
+        LoadFooter(lan);
     });
 
-    function LoadFooter() {
+    function LoadFooter(languagecode) {
         var moduleId = 2;
-        var languagecode = "en-US";
+        //var languagecode = "en-US";
         $("#FooterDiv").html = '';
         $.ajax({
             type: "GET",

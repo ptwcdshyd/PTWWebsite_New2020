@@ -1,5 +1,6 @@
 ﻿@using PTW.DataAccess.ServicesImpl;
 
+
 @*@{
         MasterService masterService = new MasterService();
 
@@ -20,17 +21,25 @@
 <script src="~/js/jquery-3.3.1.min.js"></script>
 
 <script>
+
+
     var content;
     $(document).ready(function () {
-        LoadHeader();
-    });
+     var lan = '@(ViewContext.RouteData.Values["culture"]!=null?ViewContext.RouteData.Values["culture"].ToString():"en-US")';
 
-    function ApplyLocalizaiotn () {
-        alert();
+        LoadHeader(lan);
+
+    });
+    //LoadHeader("");
+
+
+
+    function ApplyLocalizaiotn() {
+
         var str = window.location.href.replace(window.location.origin, '');
         console.log(str);
 
-        var values = $(this).children('option').map(function (i, e) {
+        var values = $("#Languages").children('option').map(function (i, e) {
             return e.value;
         }).get();
         $.each(values, function (i, val) {
@@ -38,20 +47,37 @@
             str = str.replace(values[i], '');
         });
         str = str.replace('//', '/');
-        console.log(str);
-
+            console.log(str);
+        LoadHeader($("#Languages").val());
+        //LoadHeader($("#Languages").val());
+        debugger;
         if ($("#Languages").val() == 'en-US') {
             window.location = window.location.origin + str;
         }
         else {
             window.location = window.location.origin + '/' + $("#Languages").val() + str;
+
+            //$("#Languages").val($(this).val());
+
+            //var language = $.session.get('lang');
+            //$(this).val(language);
+            //var str = window.location.href.replace(window.location.origin, '');
+            //str=str.replace('/', '');
+            //$(this).val(str);
         }
 
     }
 
-    function LoadHeader() {
+    //$("#Languages").val($.session.get('lang'));
+
+    function LoadHeader(languagecode) {
+        
         var moduleId = 1;
-        var languagecode = "en-US";
+        //if (languagecode == "") {
+        //    languagecode = "en-US";
+        //}
+
+
         $("#navHeader").html = '';
         $.ajax({
             type: "GET",
@@ -64,6 +90,9 @@
                     window.location = '../Logout';
                 }
                 $("#navHeader").append(result);
+          var lan = '@(ViewContext.RouteData.Values["culture"]!=null?ViewContext.RouteData.Values["culture"].ToString():"en-US")';
+        console.log(lan);
+                $("#Languages").val(lan);
 
             },
 
@@ -75,4 +104,8 @@
         });
 
     }
+
+
+
+
 </script>
