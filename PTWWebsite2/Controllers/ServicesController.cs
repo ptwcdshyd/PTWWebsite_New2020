@@ -15,7 +15,7 @@ namespace PTWWebsite2.Controllers
         
         [Route("Service")]
         [Route("{culture}/Service")]
-        [Route("{culture}/")]
+        
         public IActionResult GetServicecontent(string culture)
         {
             MasterPage masterPage;
@@ -26,14 +26,14 @@ namespace PTWWebsite2.Controllers
 
             else
             {
-                masterPage = _masterService.GetHtmlContentForPage(4,culture);
+                masterPage = _masterService.GetHtmlContentForPage(4, culture);
             }
             return View(masterPage);
         }
 
         [Route("Service_Cx")]
         [Route("{culture}/Service_Cx")]
-        [Route("{culture}/")]
+        
         public IActionResult GetServicCxecontent(string culture)
         {
             MasterPage masterPage;
@@ -51,7 +51,7 @@ namespace PTWWebsite2.Controllers
 
         [Route("Service_QA")]
         [Route("{culture}/Service_QA")]
-        [Route("{culture}/")]
+        //[Route("{culture}/")]
         public IActionResult GetServiceQacontent(string culture)
         {
             MasterPage masterPage;
@@ -69,7 +69,7 @@ namespace PTWWebsite2.Controllers
 
         [Route("Localization")]
         [Route("{culture}/Localization")]
-        [Route("{culture}/")]
+        //[Route("{culture}/")]
         public IActionResult GetServiceLocalizationcontent(string culture)
         {
             MasterPage masterPage;
@@ -88,7 +88,7 @@ namespace PTWWebsite2.Controllers
         [Route("AudioProduction")]
 
         [Route("{culture}/AudioProduction")]
-        [Route("{culture}/")]
+        //[Route("{culture}/")]
         public IActionResult GetServiceAudioProductioncontent(string culture)
         {
             MasterPage masterPage;
@@ -107,7 +107,7 @@ namespace PTWWebsite2.Controllers
         [Route("Engineering")]
 
         [Route("{culture}/Engineering")]
-        [Route("{culture}/")]
+        //[Route("{culture}/")]
         public IActionResult GetServiceEngineeringcontent(string culture)
         {
             MasterPage masterPage;

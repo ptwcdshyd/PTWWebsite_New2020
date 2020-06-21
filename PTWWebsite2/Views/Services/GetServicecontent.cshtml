@@ -1,5 +1,5 @@
 ﻿@model PTW.DataAccess.Models.MasterPage
-@using Microsoft.AspNetCore.Http
+
 @{
     ViewData["Title"] = "GetServicecontent";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -10,18 +10,8 @@
 <link rel="stylesheet" href="/CSS/clean-blog.min.css" />
 <link rel="stylesheet" href="/CSS/custom.css" />
 
-<h2>GetServicecontent</h2>
+@Html.Raw(Model.HtmlContent)  
 
-<script type="text/javascript">
-    import { Session } from "inspector";
 
-    $(document).ready(function () {
 
-    });
-
-</script>
-
-@Html.Raw(Model.HtmlContent)
-
-        $("#Languages").val(lan);
 
