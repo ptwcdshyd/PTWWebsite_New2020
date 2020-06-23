@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "MExbk6xGDzfhG5KHn2tNR5kbLjo3ijMVpg42lfjZvdk5jMmVBUo6c6Czo4Wbpqh92jQEy+oR2h0D54xs/JKfqg==",
+  "dgSpecHash": "6izs+mhqTl+RC4SCLae+ZvOj1GKoBgaV0R+Qh+Wpklk+TkbH4/AudxzTdlRdrNXMULSiqX67D9bqQ4YJwzopiQ==",
   "success": true,
   "projectFilePath": "C:\\GitHub\\PTWWebsite_New2020\\PTWWebsite2\\PTWWebsite2.csproj",
   "expectedPackageFiles": [
@@ -221,7 +221,7 @@
     "C:\\Users\\Test\\.nuget\\packages\\system.collections.immutable\\1.5.0\\system.collections.immutable.1.5.0.nupkg.sha512",
     "C:\\Users\\Test\\.nuget\\packages\\system.collections.nongeneric\\4.3.0\\system.collections.nongeneric.4.3.0.nupkg.sha512",
     "C:\\Users\\Test\\.nuget\\packages\\system.collections.specialized\\4.3.0\\system.collections.specialized.4.3.0.nupkg.sha512",
-    "C:\\Users\\Test\\.nuget\\packages\\system.componentmodel.annotations\\4.5.0\\system.componentmodel.annotations.4.5.0.nupkg.sha512",
+    "C:\\Users\\Test\\.nuget\\packages\\system.componentmodel.annotations\\4.7.0\\system.componentmodel.annotations.4.7.0.nupkg.sha512",
     "C:\\Users\\Test\\.nuget\\packages\\system.composition\\1.0.31\\system.composition.1.0.31.nupkg.sha512",
     "C:\\Users\\Test\\.nuget\\packages\\system.composition.attributedmodel\\1.0.31\\system.composition.attributedmodel.1.0.31.nupkg.sha512",
     "C:\\Users\\Test\\.nuget\\packages\\system.composition.convention\\1.0.31\\system.composition.convention.1.0.31.nupkg.sha512",

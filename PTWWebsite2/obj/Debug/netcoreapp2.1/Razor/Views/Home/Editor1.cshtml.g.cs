@@ -77,7 +77,7 @@ using PTWWebsite2.Models;
             WriteLiteral("<select class=\"my-3\" id=\"Modules\" name=\"\" onchange=\"GetContent()\">\r\n    ");
             EndContext();
             BeginContext(1184, 39, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9472b03dbabb47e1a4409d39a8939397", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d9b95ef2a5f14ce49cc431207531dd57", async() => {
                 BeginContext(1201, 13, true);
                 WriteLiteral("Select Module");
                 EndContext();
@@ -99,7 +99,7 @@ using PTWWebsite2.Models;
             WriteLiteral("\r\n    ");
             EndContext();
             BeginContext(1229, 37, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ad1b9079212046e2bbb66160bd13e6f9", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "61cafef01e4648a98e5dbeae102f0835", async() => {
                 BeginContext(1247, 10, true);
                 WriteLiteral("HeaderMenu");
                 EndContext();
@@ -121,7 +121,7 @@ using PTWWebsite2.Models;
             WriteLiteral("\r\n    ");
             EndContext();
             BeginContext(1272, 33, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b43d1bda545040e78e2acc9676e57de5", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6003d616b0ec422aa0bb1a940ec3ecf6", async() => {
                 BeginContext(1290, 6, true);
                 WriteLiteral("Footer");
                 EndContext();
@@ -143,7 +143,7 @@ using PTWWebsite2.Models;
             WriteLiteral("\r\n    ");
             EndContext();
             BeginContext(1311, 31, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5581c715a0b64d188283d7c23a3e3707", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f3eee558f4c84b2b8f72a298d4714e72", async() => {
                 BeginContext(1329, 4, true);
                 WriteLiteral("Home");
                 EndContext();
@@ -165,7 +165,7 @@ using PTWWebsite2.Models;
             WriteLiteral("\r\n</select>\r\n\r\n<select class=\"my-3\" id=\"Languages\" name=\"\" onchange=\"GetContent()\">\r\n    ");
             EndContext();
             BeginContext(1431, 41, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6678b3ac872e47249d53443eec351d62", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e682229058cd4f5398643cd92f6defd3", async() => {
                 BeginContext(1448, 15, true);
                 WriteLiteral("Select Language");
                 EndContext();
@@ -187,7 +187,7 @@ using PTWWebsite2.Models;
             WriteLiteral("\r\n    ");
             EndContext();
             BeginContext(1478, 34, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7ffc0e214011472a84fa85e9f8c4ebfb", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9037beb00cca447fb40772b286e3344b", async() => {
                 BeginContext(1496, 7, true);
                 WriteLiteral("English");
                 EndContext();
