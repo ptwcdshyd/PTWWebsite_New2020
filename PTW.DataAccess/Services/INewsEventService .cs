@@ -10,6 +10,13 @@ namespace PTW.DataAccess.Services
     {
         List<News> GetAllNewsDetails();
         List<News> GetAllEventDetails();
+        NewsDetails GetNewsDetailsByTitle(string NewsUrlTitle, string LanguageCode);
+        bool AddUpdateNews(string xmNewsData, string Description);
+        News GetAllNewsAndEventDetailsForUpdate();
+
+        News GetNewsAndEventDetailsByNewsId(int NewsId, string LanguageCode);
+
+        bool UpdateNews(int NewsId, string xmNewsData, string Description, string LanguageCode);
 
 
     }

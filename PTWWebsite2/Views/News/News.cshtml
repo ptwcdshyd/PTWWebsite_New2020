@@ -47,9 +47,9 @@
             <div class="col-md-8 full-width no-padding">
                 <div class="row no-margin ">
                     <div class="col-md-12 no-padding himage">
-                        <a href="/news/@Model.News[0].UrlTitle" id="ContentPlaceHolder1_News1Href" titlevalue="4">
+                        <a href="/news/@Model.News[0].ShortDescription.Replace(" ","-")" id="ContentPlaceHolder1_News1Href" titlevalue="4">
                             <div class="news1 news-4x dark-text portfolio-image h-100p">
-                                <img src="@string.Concat(Model.News[0].ShortImageUrl.Replace("~",""),Model.News[0].ShortImageName)" id="ContentPlaceHolder1_News1Img" class="h-100p" alt="@Model.News[0].UrlTitle">
+                                <img src="@string.Concat(Model.News[0].ShortImageUrl.Replace("~",""),Model.News[0].ShortImageName)" id="ContentPlaceHolder1_News1Img" class="h-100p" alt="@Model.News[0].ShortDescription">
                                 <div onmouseover="hover(this,'../Images/news/arrowhover.png');" onmouseout="unhover(this,'../Images/news/arrow.png');" style="cursor: pointer !important;">
                                     <div class="news-separator">
                                         <div id="ContentPlaceHolder1_News1PublishDate" class="news-date">@Model.News[0].PublishedDate</div>
@@ -65,13 +65,13 @@
                     <div class="col-md-12 no-padding himage">
                         <div class="row no-margin w-100p h-100p">
                             <div class="col-md-6 pad-tb4 no-hide">
-                                <a href="/news/@Model.News[1].UrlTitle" id="ContentPlaceHolder1_News2Href" titlevalue="4">
+                                <a href="/news/@Model.News[1].ShortDescription.Replace(" ","-")" id="ContentPlaceHolder1_News2Href" titlevalue="4">
                                     <div class="news3 news-4x news-4x-1 x2 dark-text portfolio-image h-100p">
                                         <img src="@string.Concat(Model.News[1].ShortImageUrl.Replace("~",""),Model.News[1].ShortImageName)" id="ContentPlaceHolder1_News2Img" class="h-100p" alt="@Model.News[1].NewsTitle">
                                         <div onmouseover="hover(this,'../Images/news/arrowhover.png');" onmouseout="unhover(this,'../Images/news/arrow.png');" style="cursor: pointer !important;">
                                             <div class="news-separator">
                                                 <div id="ContentPlaceHolder1_News2PublishDate" class="news-date ">@Model.News[1].PublishedDate</div>
-                                                <div id="ContentPlaceHolder1_News2Title" class="news-name">@Model.News[1].UrlTitle</div>
+                                                <div id="ContentPlaceHolder1_News2Title" class="news-name">@Model.News[1].ShortDescription</div>
                                             </div>
                                             <div class="news-link">
                                                 <img src="/Images/news/arrow.png" alt="Click here to view more details">
@@ -81,7 +81,7 @@
                                 </a>
                             </div>
                             <div class="col-md-6 pad-tb4 no-hide">
-                                <a href="/news/@Model.News[2].UrlTitle" id="ContentPlaceHolder1_News3Href" titlevalue="4">
+                                <a href="/news/@Model.News[2].ShortDescription.Replace(" ","-")" id="ContentPlaceHolder1_News3Href" titlevalue="4">
                                     <div class="news3 news-4x news-4x-1 dark-text portfolio-image h-100p">
                                         <img src="@string.Concat(Model.News[2].ShortImageUrl.Replace("~",""),Model.News[2].ShortImageName)" id="ContentPlaceHolder1_News3Img" class="h-100p" alt="@Model.News[2].NewsTitle">
                                         <div onmouseover="hover(this,'../Images/news/arrowhover.png');" onmouseout="unhover(this,'../Images/news/arrow.png');" style="cursor: pointer !important;">
@@ -126,7 +126,7 @@
                                                 </p>
                                             </div>
                                             <div class="col-md-8 col-sm-8 col-sx-8 events">
-                                                <a href="@Convert.ToString(item.UrlTitle).Replace(" ","-").Replace("&","@").Replace("<br>","")">
+                                                <a href="/news/@Convert.ToString(item.ShortDescription).Replace(" ","-").Replace("&","@").Replace("<br>","")">
                                                     <p class="event-name">@item.NewsTitle</p>
                                                     <p class="event-location">@item.Location</p>
                                                 </a>
@@ -206,7 +206,7 @@
                                                 </p>
                                             </div>
                                             <div class="col-md-8 col-sm-8 col-sx-8 events">
-                                                <a href="@Convert.ToString(item.UrlTitle).Replace(" ","-").Replace("&","@").Replace("<br>","")">
+                                                <a href="/news/@Convert.ToString(item.ShortDescription).Replace(" ","-").Replace("&","@").Replace("<br>","")">
                                                     <p class="event-name">@item.NewsTitle</p>
                                                     <p class="event-location">@item.Location</p>
                                                 </a>
@@ -233,7 +233,7 @@
                 @*if (index % 4 == 0)
                     {
                         <div class="newsgrid col-lg-8 col-md-12 no-padding">
-                            <a titlevalue="4" href="/News/@news.UrlTitle.Replace(" ","-")">
+                            <a titlevalue="4" href="/News/@news.ShortDescription.Replace(" ","-")">
                                 <div class="news6 news-4x light-text portfolio-image">
                                     <div class="mainimage">
                                         <img src="@string.Concat(@news.ShortImageUrl.Replace("~",""),@news.ShortImageName)" alt="@news.NewsTitle">
@@ -259,7 +259,7 @@
                 if (index > 2)
                 {
                     <div class="newsgrid col-lg-4 col-md-6 no-padding">
-                        <a titlevalue="4" href="/News/@news.UrlTitle.Replace(" ", "-")">
+                        <a titlevalue="4" href="/News/@news.ShortDescription.Replace(" ", "-")">
                             <div class="news6 news-4x light-text portfolio-image">
                                 <div class="mainimage">
                                     <img src="@string.Concat(@news.ShortImageUrl.Replace("~", ""), @news.ShortImageName)" alt="@news.NewsTitle">
