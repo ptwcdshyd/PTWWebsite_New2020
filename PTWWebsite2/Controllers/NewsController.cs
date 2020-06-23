@@ -39,7 +39,7 @@ namespace PTWWebsite2.Controllers
         }
 
         [Route("News/{NewsTitleUrl}")]
-        //[Route("{cultures}/News/{NewsTitleUrl}")]
+        [Route("{cultures}/News/{NewsTitleUrl}")]
         public IActionResult NewsArticles(string cultures, string NewsTitleUrl)
         {
             if (!string.IsNullOrEmpty(NewsTitleUrl))
@@ -47,20 +47,12 @@ namespace PTWWebsite2.Controllers
                 NewsTitleUrl = NewsTitleUrl.Replace("-", " ");
             }
             NewsDetails newsDetails = _NewsEventService.GetNewsDetailsByTitle(NewsTitleUrl, cultures == "" ? "en-US" : cultures);
+           
             return View(newsDetails);
         }
 
 
-        [Route("{cultures}/News/{NewsTitleUrl}")]
-        public IActionResult NewsArticlessds(string cultures, string NewsTitleUrl)
-        {
-            if (!string.IsNullOrEmpty(NewsTitleUrl))
-            {
-                NewsTitleUrl = NewsTitleUrl.Replace("-", " ");
-            }
-            NewsDetails newsDetails = _NewsEventService.GetNewsDetailsByTitle(NewsTitleUrl, cultures == "" ? "en-US" : cultures);
-            return View("NewsArticles", newsDetails);
-        }
+        
 
         [Route("AddNews")]
         public IActionResult AddNewsEvents()

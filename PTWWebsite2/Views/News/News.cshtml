@@ -147,13 +147,13 @@
         <div class="row no-margin no-display m-t-5-imp">
             <div class="col-md-6 no-padding">
                 <div class="col-md-12 pad-tb4 h-50p">
-                    <a href="/news/return-to-studio" id="ContentPlaceHolder1_News2Href_Mobile" titlevalue="4">
+                    <a href="/news/@Model.News[0].ShortDescription.Replace(" ","-")" id="ContentPlaceHolder1_News2Href_Mobile" titlevalue="4">
                         <div class="news3 news-4x x2 dark-text portfolio-image h-100p">
-                            <img src="/Images/news/2020/small/68.png" id="ContentPlaceHolder1_News2Img_Mobile" class="h100" alt="Return to Studio">
+                            <img src="@string.Concat(Model.News[0].ShortImageUrl.Replace("~",""),Model.News[0].ShortImageName)" class="h100" alt="@Model.News[0].ShortDescription">
                             <div onmouseover="hover(this,'../Images/news/arrowhover.png');" onmouseout="unhover(this,'../Images/news/arrow.png');">
                                 <div class="news-separator">
-                                    <div id="ContentPlaceHolder1_News2PublishDate_Mobile" class="news-date">20 May 2020</div>
-                                    <div id="ContentPlaceHolder1_News2Title_Mobile" class="news-name">Return to Studio</div>
+                                    <div id="ContentPlaceHolder1_News2PublishDate_Mobile" class="news-date">@Model.News[0].PublishedDate</div>
+                                    <div id="ContentPlaceHolder1_News2Title_Mobile" class="news-name">@Model.News[0].NewsTitle</div>
                                 </div>
                                 <div class="news-link">
                                     <img src="/Images/news/arrow.png" alt="Click here to view more details">
@@ -163,13 +163,13 @@
                     </a>
                 </div>
                 <div class="col-md-12 pad-b4 h-50p">
-                    <a href="/news/a-message-from-our-ceo" id="ContentPlaceHolder1_News3Href_Mobile" titlevalue="4">
+                    <a href="/news/@Model.News[1].ShortDescription.Replace(" ","-")" id="ContentPlaceHolder1_News3Href_Mobile" titlevalue="4">
                         <div class="news3 news-4x dark-text portfolio-image h-100p">
-                            <img src="/Images/news/2020/small/67.png" id="ContentPlaceHolder1_News3Img_Mobile" class="h100" alt="A Message From Our CEO">
+                            <img src="@string.Concat(Model.News[1].ShortImageUrl.Replace("~",""),Model.News[1].ShortImageName)" class="h100" alt="@Model.News[1].ShortDescription">
                             <div onmouseover="hover(this,'../Images/news/arrowhover.png');" onmouseout="unhover(this,'../Images/news/arrow.png');">
                                 <div class="news-separator">
-                                    <div id="ContentPlaceHolder1_News3PublishDate_Mobile" class="news-date">23 March 2020</div>
-                                    <div id="ContentPlaceHolder1_News3Title_Mobile" class="news-name">A Message From Our CEO</div>
+                                    <div id="ContentPlaceHolder1_News3PublishDate_Mobile" class="news-date">@Model.News[1].PublishedDate</div>
+                                    <div id="ContentPlaceHolder1_News3Title_Mobile" class="news-name">@Model.News[1].NewsTitle</div>
                                 </div>
                                 <div class="news-link">
                                     <img src="/Images/news/arrow.png" alt="Click here to view more details">
@@ -197,7 +197,7 @@
                                             <div class="col-md-4 col-sm-4 col-sx-4">
                                                 <p class="event-date">@item.EventDate</p>
                                                 <p class="d-flex">
-                                                    <a href="https://twitter.com/share?ref_src=ptw&amp;text=Gamescom 2020&amp;url=https://www.ptw.com/news-events&amp;via=ptw" target="_blank" rel="noopener noreferrer"><span class="news-tweet"><i class="fa fa-twitter"></i></span></a>
+                                                    <a href="@string.Format("https://twitter.com/share?ref_src=ptw&amp;text={0}&url={1}&;via=ptw",item.NewsTitle.Replace(" ","-"))" target="_blank" rel="noopener noreferrer"><span class="news-tweet"><i class="fa fa-twitter"></i></span></a>
                                                     <a href="/news/@Convert.ToString(item.NewsTitle).Replace(" ","-").Replace("&","@")">
                                                         <span class="event-link-icon" onmouseover="hover(this,'../Images/news/arrowhover.png');" onmouseout="unhover(this,'../Images/news/arrow.png');">
                                                             <img src="/Images/news/arrow.png" alt="Click here to view more details">

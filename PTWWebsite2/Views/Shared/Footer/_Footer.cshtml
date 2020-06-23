@@ -28,7 +28,7 @@
         $("#FooterDiv").html = '';
         $.ajax({
             type: "GET",
-            url: '../Home/GetFooterPageDetails?ModuleId=' + parseInt(moduleId) + '&Languagecode=' + languagecode + '',
+            url: '../../Home/GetFooterPageDetails?ModuleId=' + parseInt(moduleId) + '&Languagecode=' + languagecode + '',
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (result) {

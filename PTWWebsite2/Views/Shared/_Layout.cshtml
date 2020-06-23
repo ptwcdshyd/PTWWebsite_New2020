@@ -30,12 +30,6 @@
         <link rel="stylesheet" type="text/css" href="~/CSS/cookieconsent.min.css" />
     </environment>
     <environment exclude="Development">
-        @*<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-                  asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-                  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-            <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-
-            <link href="~/css/Loader.css" rel="stylesheet" />*@
 
         <link href="~/CSS/Poppins.css" rel="stylesheet" type="text/css" />
         <link href="~/CSS/Poppins-Bold.css" rel="stylesheet" type="text/css" />
@@ -73,47 +67,7 @@
         }
     </style>
 
-    @*/* Add some padding on document's body to prevent the content
-        to go underneath the header and footer */*@
-    @*<style>
-
-            body {
-                padding-top: 60px;
-                padding-bottom: 40px;
-            }
-
-            .container {
-                width: 80%;
-                margin: 0 auto; /* Center the DIV horizontally */
-            }
-
-            .fixed-header, .fixed-footer {
-                width: 100%;
-                position: fixed;
-                background: #333;
-                padding: 10px 0;
-                color: #fff;
-            }
-
-            .fixed-header {
-                top: 0;
-            }
-
-            .fixed-footer {
-                bottom: 0;
-            }
-            /* Some more styles to beutify this example */
-            nav a {
-                color: #fff;
-                text-decoration: none;
-                padding: 7px 25px;
-                display: inline-block;
-            }
-
-            .container p {
-                line-height: 200px; /* Create scrollbar to test positioning */
-            }
-        </style>*@
+  
 </head>
 <body>
     @{
@@ -139,153 +93,8 @@
         <script src="~/wwwroot/js/wow.min.js"></script>*@
 
     </environment>
-    <!-- Google Tag Manager -->
-    <script>
-        (function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-P23N6P9');</script>
-    <!-- End Google Tag Manager -->
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-47490486-4"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
 
-        gtag('config', 'UA-47490486-4');
-        gtag('config', 'AW-738489994');
-    </script>
-    <script type="text/javascript">
-        
-        //$("#Languages").change(function () {
-        //    alert();
-        //    var str = window.location.href.replace(window.location.origin, '');
-        //    console.log(str);
-
-        //    var values = $(this).children('option').map(function (i, e) {
-        //        return e.value;
-        //    }).get();
-        //    $.each(values, function (i, val) {
-
-        //        str = str.replace(values[i], '');
-        //    });
-        //    str = str.replace('//', '/');
-        //    console.log(str);
-
-        //    if ($("#Languages").val() == 'en-US') {
-        //        window.location = window.location.origin + str;
-        //    }
-        //    else {
-        //        window.location = window.location.origin + '/' + $("#Languages").val() + str;
-        //    }
-
-        //});
-
-        jQuery(document).ready(function (e) {
-            var lan='@(ViewContext.RouteData.Values["culture"]!=null?ViewContext.RouteData.Values["culture"].ToString():"en-US")';
-            //console.log(lan);
-            $("#Languages").val(lan);
-
-            "use strict";
-            if (e("form").on("focus", "input,textarea", function () {
-                e(this).prev("i.fa").addClass("focus")
-            }).on("blur", "input,textarea", function () {
-                e(this).prev("i.fa").removeClass("focus")
-            }), e("#rex-sticke-nav").sticky({
-                topSpacing: 0
-            }), e("body").hasClass("single")) {
-                var n = e("#rex-navigation li a");
-                n.each(function () {
-                    var a = e(this).attr("href");
-                    e(this).attr("href", "./" + a)
-                })
-            }
-            e(".backtop").hide(), e(window).on("scroll", function () {
-                e(this).scrollTop() > 400 ? e(".backtop").fadeIn() : e(".backtop").fadeOut()
-            }), e(".backtop").on("click", function () {
-                return e("html, body").animate({
-                    scrollTop: 0
-                }, 800), !1
-            }), (new WOW).init();
-
-        });
-
-        function hover(element, src) {
-            var source = '/' + src.trim().replace('../', '');
-            $(element).find("img").attr('src', source);
-            $(element).css('cssText', 'cursor: pointer !important');
-        }
-
-        function colorhover(element, src) {
-            $(element).find("img").attr('src', src);
-        }
-
-        function unhover(element, src) {
-            var source = '/' + src.trim().replace('../', '');
-            $(element).find("img").attr('src', source);
-        }
-
-
-
-        $('[data-toggle="slide-collapse"]').on('click', function () {
-            $navMenuCont = $($(this).data('target'));
-            $navMenuCont.animate({ right: 'toggle' }, 350);
-        });
-
-        function myFunction(x) {
-            x.classList.toggle("change");
-        }
-
-        function scroller(detail) {
-            $('html,body').animate({
-                scrollTop: $(detail).offset().top
-            },
-                'slow');
-
-        }
-
-        function languageChange(language) {
-            debugger;
-            $('.ddlLanguage').val(language).change();
-            var selectedText = $('.ddlLanguage')[0].options[$('.ddlLanguage')[0].selectedIndex].innerHTML.split("\n")[0];
-            $('#hLanguage').text(selectedText);
-            $('#fLanguage').text(selectedText);
-        }
-
-
-
-        function serviceChange(service) {
-            $('.ddlServices').val(service).change();
-            var selectedText = $('.ddlServices')[0].options[$('.ddlServices')[0].selectedIndex].innerHTML;
-            $('#hService').text(selectedText);
-        }
-
-        function showHide(showID, hideID) {
-
-            $('#' + showID).css('display', 'block');
-            $('#' + hideID).css('display', 'none');
-        }
-    </script>
-    <!-- START : LinkedIn - Insight Tag -->
-    <script type="text/javascript">
-        _linkedin_partner_id = "921090";
-        window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
-        window._linkedin_data_partner_ids.push(_linkedin_partner_id);
-    </script>
-    <script type="text/javascript">
-        (function () {
-            var s = document.getElementsByTagName("script")[0];
-            var b = document.createElement("script");
-            b.type = "text/javascript"; b.async = true;
-            b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
-            s.parentNode.insertBefore(b, s);
-        })();
-    </script>
     @RenderSection("Scripts", required: false)
+
 </body>
 </html>

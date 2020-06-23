@@ -1,20 +1,8 @@
 ﻿@using PTW.DataAccess.ServicesImpl;
 
 
-@*@{
-        MasterService masterService = new MasterService();
-
-
-
-        var data = masterService.GetDashboardDetails(0, 1, 1);
-
-    }
-    Html.Raw(data.HtmlContent);*@
-
 
 <div id="navHeader"></div>
-
-
 
 
 
@@ -27,7 +15,7 @@
     $(document).ready(function () {
      var lan = '@(ViewContext.RouteData.Values["culture"]!=null?ViewContext.RouteData.Values["culture"].ToString():"en-US")';
 
-        LoadHeader(lan);
+       LoadHeader(lan);
 
     });
     //LoadHeader("");
@@ -71,7 +59,7 @@
     //$("#Languages").val($.session.get('lang'));
 
     function LoadHeader(languagecode) {
-        
+
         var moduleId = 1;
         //if (languagecode == "") {
         //    languagecode = "en-US";
@@ -81,7 +69,7 @@
         $("#navHeader").html = '';
         $.ajax({
             type: "GET",
-            url: '../Home/GetHeaderPageDetails?ModuleId=' + parseInt(moduleId) + '&Languagecode=' + languagecode + '',
+            url: '../../Home/GetHeaderPageDetails?ModuleId=' + parseInt(moduleId) + '&Languagecode=' + languagecode + '',
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (result) {
