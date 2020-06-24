@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using PTW.DataAccess.Models;
 using PTW.DataAccess.Services;
 using PTWWebsite2.Models;
+using System.IO;
 
 namespace PTWWebsite2.Controllers
 {
@@ -39,7 +41,8 @@ namespace PTWWebsite2.Controllers
 
             else
             {
-                masterPage = _masterService.GetHtmlContentForPage(3,culture);
+                masterPage = _masterService.GetHtmlContentForPage(3, culture);
+
             }
 
             return View(masterPage);
@@ -93,7 +96,7 @@ namespace PTWWebsite2.Controllers
         }
 
         [HttpPost]
-        public IActionResult UpdateContentByModelIdAndLanguageId([FromBody] MasterPage masterContent)
+        public IActionResult UpdateContentByModelIdAndLanguageId(MasterPage masterContent)
         {
             try
             {
@@ -115,31 +118,125 @@ namespace PTWWebsite2.Controllers
         [HttpGet]
         public IActionResult GetHeaderPageDetails(int ModuleId, string Languagecode)
         {
-            try
-            {
-                MasterPage masterPage = _masterService.GetHtmlContentForPage(ModuleId, Languagecode);
 
-                return Json(masterPage.HtmlContent, new JsonSerializerSettings());
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            MasterPage masterPage = _masterService.GetHtmlContentForPage(ModuleId, Languagecode);
+
+            return Json(masterPage.HtmlContent, new JsonSerializerSettings());
+
+
+
         }
 
         [HttpGet]
         public IActionResult GetFooterPageDetails(int ModuleId, string Languagecode)
         {
-            try
-            {
-                MasterPage masterPage = _masterService.GetHtmlContentForPage(ModuleId, Languagecode);
+            MasterPage masterPage = _masterService.GetHtmlContentForPage(ModuleId, Languagecode);
 
-                return Json(masterPage.HtmlContent, new JsonSerializerSettings());
+            return Json(masterPage.HtmlContent, new JsonSerializerSettings());
+
+
+        }
+
+        [HttpGet]
+        [Route("ImagesUpload")]
+        public IActionResult ImagesUpload()
+        {
+            return View();
+        }
+        [HttpPost]
+        [Route("Image/ImagesUpload")]
+        [ActionName("ImagesUpload")]
+        public IActionResult ImagesUpload_Post(Services model)
+        {
+            try {
+                if (model.Customerexperience.FileName != null)
+                {
+                    string CustomerfileName = model.Customerexperience.FileName;
+                    string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", "hover-over");
+                    string path = createpath + "\\" + CustomerfileName;
+                    using (var bits = new FileStream(path, FileMode.Create))
+                    {
+                        model.Customerexperience.CopyToAsync(bits);
+                    }
+                }
+                if (model.Audioproduction.FileName != null)
+                {
+                    string AudioproductionfileName = model.Customerexperience.FileName;
+                    string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", "hover-over");
+                    string path = createpath + "\\" + AudioproductionfileName;
+                    using (var bits = new FileStream(path, FileMode.Create))
+                    {
+                        model.Customerexperience.CopyToAsync(bits);
+                    }
+                }
+
+                if (model.Qualityassurance.FileName != null)
+                {
+                    string QualityassurancefileName = model.Customerexperience.FileName;
+                    string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", "hover-over");
+                    string path = createpath + "\\" + QualityassurancefileName;
+                    using (var bits = new FileStream(path, FileMode.Create))
+                    {
+                        model.Customerexperience.CopyToAsync(bits);
+                    }
+                }
+                if (model.Localization.FileName != null)
+                {
+                    string LocalizationfileName = model.Customerexperience.FileName;
+                    string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", "hover-over");
+                    string path = createpath + "\\" + LocalizationfileName;
+                    using (var bits = new FileStream(path, FileMode.Create))
+                    {
+                        model.Customerexperience.CopyToAsync(bits);
+                    }
+                }
+
+                if (model.Engineering.FileName != null)
+                {
+                    string EngineeringfileName = model.Customerexperience.FileName;
+                    string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", "hover-over");
+                    string path = createpath + "\\" + EngineeringfileName;
+                    using (var bits = new FileStream(path, FileMode.Create))
+                    {
+                        model.Customerexperience.CopyToAsync(bits);
+                    }
+                }
             }
             catch (Exception ex)
             {
-                throw ex;
+                
             }
+            return View();
         }
+
+        public IActionResult UploadImage(IFormFile file)
+        {
+            try {
+                if(file!=null)
+                {
+                    string CustomerfileName = file.FileName;
+                    string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", "hover-over");
+                    string path = createpath + "\\" + CustomerfileName;
+
+                    using (var bits = new FileStream(path, FileMode.Create))
+                    {
+                        file.CopyToAsync(bits);
+                    }
+                    return Json(new {Message="Success" }, new JsonSerializerSettings());
+                }
+                else
+                {
+                    return Json(new { errorMessage = "Upload Failed" }, new JsonSerializerSettings());
+                }
+                    
+                
+            }
+            catch (Exception ex)
+            {
+                
+            }
+            return Json("", new JsonSerializerSettings());
+        }
+
     }
 }
