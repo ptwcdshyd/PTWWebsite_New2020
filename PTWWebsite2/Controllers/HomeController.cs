@@ -96,10 +96,131 @@ namespace PTWWebsite2.Controllers
         }
 
         [HttpPost]
-        public IActionResult UpdateContentByModelIdAndLanguageId(MasterPage masterContent)
+        public async Task<IActionResult> UpdateContentByModelIdAndLanguageId(MasterPage masterContent)
         {
             try
             {
+                var file = Request.Form.Files.Count() == 0 ? null : Request.Form.Files[0];
+                if (file != null)
+                {
+                    if (masterContent.ModuleId == 5)
+                    {
+                        var fileExtension = file.FileName.Substring(file.FileName.LastIndexOf('.') + 1);
+                        if (fileExtension == "png")
+                        {
+                            string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
+                            string path = createpath + "\\" + "HOME-ICONS-white.png";
+
+                            if (System.IO.File.Exists(path))
+                            {
+                                System.IO.File.Delete(path);
+                            }
+                            using (var stream = new FileStream(path, FileMode.Create))
+                            {
+                                await file.CopyToAsync(stream);
+                            }
+                        }
+                        else
+                        {
+                            return Json(new { Message = "file not suitable format" }, new JsonSerializerSettings());
+                        }
+
+                    }
+                    else if (masterContent.ModuleId == 6)
+                    {
+                        var fileExtension = file.FileName.Substring(file.FileName.LastIndexOf('.') + 1);
+                        if (fileExtension == "png")
+                        {
+                            string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
+                            string path = createpath + "\\" + "HOME-ICONS-white2.png";
+
+                            
+                            if (System.IO.File.Exists(path))
+                            {
+                                System.IO.File.Delete(path);
+                            }
+                            using (var stream = new FileStream(path, FileMode.Create))
+                            {
+                                await file.CopyToAsync(stream);
+                            }
+
+                        }
+                        else
+                        {
+                         return Json(new { Message = "file not suitable format" }, new JsonSerializerSettings());
+                        }
+                    }
+                    else if (masterContent.ModuleId == 7)
+                    {
+                        var fileExtension = file.FileName.Substring(file.FileName.LastIndexOf('.') + 1);
+                        if (fileExtension == "png")
+                        {
+                            string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
+                            string path = createpath + "\\" + "HOME-ICONS-white3.png";
+
+                            if (System.IO.File.Exists(path))
+                            {
+                                System.IO.File.Delete(path);
+                            }
+                            using (var stream = new FileStream(path, FileMode.Create))
+                            {
+                                await file.CopyToAsync(stream);
+                            }
+
+                        }
+                        else
+                        {
+                            return Json(new { Message = "file not suitable format" }, new JsonSerializerSettings());
+                        }
+                         
+                    }
+                    else if (masterContent.ModuleId == 8)
+                    {
+                        var fileExtension = file.FileName.Substring(file.FileName.LastIndexOf('.') + 1);
+                        if (fileExtension == "png")
+                        {
+                            string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
+                            string path = createpath + "\\" + "HOME-ICONS-white4.png";
+
+
+                            if (System.IO.File.Exists(path))
+                            {
+                                System.IO.File.Delete(path);
+                            }
+                            using (var stream = new FileStream(path, FileMode.Create))
+                            {
+                                await file.CopyToAsync(stream);
+                            }
+                        }
+                        else
+                        {
+                            return Json(new { Message = "file not suitable format" }, new JsonSerializerSettings());
+                        }
+                    }
+                    else if (masterContent.ModuleId == 9)
+                    {
+                        var fileExtension = file.FileName.Substring(file.FileName.LastIndexOf('.') + 1);
+                        if (fileExtension == "png")
+                        {
+                            string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
+                            string path = createpath + "\\" + "HOME-ICONS-white5.png";
+
+                            if (System.IO.File.Exists(path))
+                            {
+                                System.IO.File.Delete(path);
+                            }
+                            using (var stream = new FileStream(path, FileMode.Create))
+                            {
+                                await file.CopyToAsync(stream);
+                            }
+                        }
+                        else
+                        {
+                            return Json(new { Message = "file not suitable format" }, new JsonSerializerSettings());
+                        }
+                    }
+                }
+
                 MasterPage masterPage = new MasterPage();
                 int resultCode = _masterService.UpdateContentByModelIdAndLanguageId(masterContent.ModuleId, masterContent.LanguageCode, masterContent.Content);
                 if (resultCode > 0)
@@ -148,7 +269,8 @@ namespace PTWWebsite2.Controllers
         [ActionName("ImagesUpload")]
         public IActionResult ImagesUpload_Post(Services model)
         {
-            try {
+            try
+            {
                 if (model.Customerexperience.FileName != null)
                 {
                     string CustomerfileName = model.Customerexperience.FileName;
@@ -204,36 +326,42 @@ namespace PTWWebsite2.Controllers
             }
             catch (Exception ex)
             {
-                
+
             }
             return View();
         }
 
-        public IActionResult UploadImage(IFormFile file)
+        public IActionResult UploadImage(List<IFormFile> files)
         {
-            try {
-                if(file!=null)
+            try
+            {
+                if (files.Count >= 1)
                 {
-                    string CustomerfileName = file.FileName;
-                    string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", "hover-over");
-                    string path = createpath + "\\" + CustomerfileName;
-
-                    using (var bits = new FileStream(path, FileMode.Create))
+                    foreach (IFormFile file in files)
                     {
-                        file.CopyToAsync(bits);
+                        string CustomerfileName = file.FileName;
+                        string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", "hover-over");
+                        string path = createpath + "\\" + CustomerfileName;
+
+                        using (var bits = new FileStream(path, FileMode.Create))
+                        {
+                            file.CopyToAsync(bits);
+                        }
+
                     }
-                    return Json(new {Message="Success" }, new JsonSerializerSettings());
+                    return Json(new { Message = "Success" }, new JsonSerializerSettings());
                 }
+
                 else
                 {
                     return Json(new { errorMessage = "Upload Failed" }, new JsonSerializerSettings());
                 }
-                    
-                
+
+
             }
             catch (Exception ex)
             {
-                
+
             }
             return Json("", new JsonSerializerSettings());
         }
