@@ -90,11 +90,23 @@
 
         </div>
         <div class="col-md-2" style="margin-top:45px;margin-left:64px">
-            @Html.DropDownList("LanguageCode", new SelectList(Model.LanguageList, "LanguageCode", "Language"),"Languages", htmlAttributes: new { @class = "dropdown-select my-3 float-label", onchange = "GetContent();", autocomplete = "off" })
+            @Html.DropDownList("LanguageCode", new SelectList(Model.LanguageList, "LanguageCode", "Language"), "Languages", htmlAttributes: new { @class = "dropdown-select my-3 float-label", onchange = "GetContent();", autocomplete = "off" })
 
 
         </div>
     </div>
+
+    <div class="row distribute-container myfile">
+        <div class="col-lg-10 col-md-8" style="margin-top:45px;margin-left:98px">
+            <input id="image" type="file" class="form-control" style="display:none" />
+        </div>
+        <div class="col-lg-10 col-md-8" style="margin-top:45px;margin-left:98px">
+            <input id="image1" type="file" class="form-control" style="display:none" />
+        </div>
+
+    </div>s
+
+
     <div class="row distribute-container">
         <div class="col-lg-10 col-md-8" style="margin-top:45px;margin-left:98px">
             <div id="summernote"></div>
@@ -114,6 +126,38 @@
 
 
 <script>
+    $("#ModuleId").change(function () {
+        if ($(this).val() == 5) {
+            $("#image").show();
+            $("#image1").show();
+            $("#UploadImage").show();
+        }
+        else if ($(this).val() == 6) {
+            $("#image").show();
+            $("#image1").show();
+            $("#UploadImage").show();
+        }
+        else if ($(this).val() == 7) {
+            $("#image").show();
+            $("#image1").show();
+            $("#UploadImage").show();
+        }
+        else if ($(this).val() == 8) {
+            $("#image").show();
+            $("#image1").show();
+            $("#UploadImage").show();
+        }
+        else if ($(this).val() == 9) {
+            $("#image").show();
+            $("#image1").show();
+            $("#UploadImage").show();
+        }
+        else {
+            $("#image").hide();
+            $("#UploadImage").hide();
+            $("#image1").hide();
+        }
+    });
     $('#summernote').summernote({
         placeholder: 'Hello Bootstrap 4',
         tabsize: 2,
@@ -170,18 +214,29 @@
 
         if ($("#LanguageCode").children("option:selected").val() != "" && $("#ModuleId").children("option:selected").val() > 0) {
             $("#PostBackMsg").show();
-            var objReq= {
-                ModuleId: parseInt($("#ModuleId").children("option:selected").val()),
-                LanguageCode: $("#LanguageCode").children("option:selected").val(),
-                Content: $('#summernote').summernote('code')
+
+            var fd = new FormData();
+            if ($("#ModuleId").val() == 5) {
+                var files1 = $('#image')[0].files[0];
+                var files2 = $('#image1')[0].files[0];
+                if (files1 != undefined) {
+                    fd.append(files1.name, files1);
+                }
+                if (files2 != undefined) {
+                    fd.append(files2.name, files2);
+                }
+
+                fd.append('ModuleId', parseInt($("#ModuleId").children("option:selected").val()));
+                fd.append('LanguageCode', $("#LanguageCode").children("option:selected").val());
+                fd.append('Content', $('#summernote').summernote('code'));
             }
 
             $.ajax({
                 type: "POST",
                 url: '@Url.Action("UpdateContentByModelIdAndLanguageId", "Home")',
-                data: JSON.stringify(objReq),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
+                data: fd,
+                contentType: false,
+                processData: false,
                 success: function (result) {
 
                     if (result == 'Logout') {

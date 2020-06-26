@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -93,11 +94,40 @@ namespace PTWWebsite2.Controllers
         }
 
         [HttpPost]
-        public IActionResult UpdateContentByModelIdAndLanguageId([FromBody] MasterPage masterContent)
+        public async Task<IActionResult> UpdateContentByModelIdAndLanguageId([FromBody] MasterPage masterContent)
         {
             try
             {
-                MasterPage masterPage = new MasterPage();
+                var file = Request.Form.Files.Count() == 0 ? null : Request.Form.Files[0];
+                if (file != null)
+                {
+                    if (masterContent.ModuleId == 5)
+                    {
+                        var fileExtension = file.FileName.Substring(file.FileName.LastIndexOf('.') + 1);
+                        if (fileExtension == "png")
+                        {
+                            string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
+                            string path = createpath + "\\" + "HOME-ICONS-white.png";
+
+                            if (System.IO.File.Exists(path))
+                            {
+                                System.IO.File.Delete(path);
+                            }
+                            using (var stream = new FileStream(path, FileMode.Create))
+                            {
+                                await file.CopyToAsync(stream);
+                            }
+                        }
+                        else
+                        {
+                            return Json(new { Message = "file not suitable format" }, new JsonSerializerSettings());
+                        }
+
+                    }
+                }
+
+
+                    MasterPage masterPage = new MasterPage();
                 int resultCode = _masterService.UpdateContentByModelIdAndLanguageId(masterContent.ModuleId, masterContent.LanguageCode, masterContent.Content);
                 if (resultCode > 0)
                 {
