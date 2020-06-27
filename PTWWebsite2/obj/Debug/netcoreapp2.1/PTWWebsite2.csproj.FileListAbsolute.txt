@@ -92,3 +92,158 @@ C:\GitHub\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Ser
 C:\GitHub\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Services\GetServiceLocalizationcontent.cshtml.g.cs
 C:\GitHub\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Services\GetServiceAudioProductioncontent.cshtml.g.cs
 C:\GitHub\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Services\GetServiceEngineeringcontent.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1\appsettings.Development.json
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1\appsettings.json
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1\Properties\launchSettings.json
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1\PTWWebsite2.deps.json
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1\PTWWebsite2.runtimeconfig.json
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1\PTWWebsite2.runtimeconfig.dev.json
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1\PTWWebsite2.dll
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1\PTWWebsite2.pdb
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1\PTWWebsite2.Views.dll
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1\PTWWebsite2.Views.pdb
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1\LoggerService.dll
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1\PTW.DataAccess.dll
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1\PTW.DBAccess.dll
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1\LoggerService.pdb
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1\PTW.DataAccess.pdb
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1\PTW.DBAccess.pdb
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.csprojAssemblyReference.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.AssemblyInfoInputs.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.AssemblyInfo.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.csproj.CoreCompileInputs.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.RazorAssemblyInfo.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.RazorAssemblyInfo.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.TagHelpers.input.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.TagHelpers.output.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.RazorCoreGenerate.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Home\Editor.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Home\Editor1.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Home\Home.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\News\News.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\News\NewsArticles.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Services\GetServicCxecontent.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Services\GetServiceAudioProductioncontent.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Services\GetServicecontent.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Services\GetServiceEngineeringcontent.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Services\GetServiceLocalizationcontent.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Services\GetServiceQacontent.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Footer\_Footer.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Header\_Header.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.RazorTargetAssemblyInfo.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.RazorTargetAssemblyInfo.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.Views.pdb
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.csproj.CopyComplete
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.dll
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.pdb
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.genruntimeconfig.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\bin\Debug\netcoreapp2.1\appsettings.Development.json
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\bin\Debug\netcoreapp2.1\appsettings.json
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\bin\Debug\netcoreapp2.1\Properties\launchSettings.json
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\bin\Debug\netcoreapp2.1\PTWWebsite2.deps.json
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\bin\Debug\netcoreapp2.1\PTWWebsite2.runtimeconfig.json
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\bin\Debug\netcoreapp2.1\PTWWebsite2.runtimeconfig.dev.json
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\bin\Debug\netcoreapp2.1\PTWWebsite2.dll
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\bin\Debug\netcoreapp2.1\PTWWebsite2.pdb
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\bin\Debug\netcoreapp2.1\PTWWebsite2.Views.dll
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\bin\Debug\netcoreapp2.1\PTWWebsite2.Views.pdb
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\bin\Debug\netcoreapp2.1\LoggerService.dll
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\bin\Debug\netcoreapp2.1\PTW.DataAccess.dll
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\bin\Debug\netcoreapp2.1\PTW.DBAccess.dll
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\bin\Debug\netcoreapp2.1\LoggerService.pdb
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\bin\Debug\netcoreapp2.1\PTW.DataAccess.pdb
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\bin\Debug\netcoreapp2.1\PTW.DBAccess.pdb
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.csprojAssemblyReference.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.AssemblyInfoInputs.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.AssemblyInfo.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.csproj.CoreCompileInputs.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.RazorAssemblyInfo.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.RazorAssemblyInfo.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.TagHelpers.input.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.TagHelpers.output.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.RazorCoreGenerate.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Home\Editor.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Home\Editor1.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Home\Home.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\News\News.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\News\NewsArticles.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Services\GetServicCxecontent.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Services\GetServiceAudioProductioncontent.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Services\GetServicecontent.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Services\GetServiceEngineeringcontent.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Services\GetServiceLocalizationcontent.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Services\GetServiceQacontent.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Footer\_Footer.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Header\_Header.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.RazorTargetAssemblyInfo.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.RazorTargetAssemblyInfo.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.Views.pdb
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.csproj.CopyComplete
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.dll
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.pdb
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.genruntimeconfig.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Home\ImagesUpload.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\bin\Debug\netcoreapp2.1\appsettings.Development.json
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\bin\Debug\netcoreapp2.1\appsettings.json
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\bin\Debug\netcoreapp2.1\Properties\launchSettings.json
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\bin\Debug\netcoreapp2.1\PTWWebsite2.deps.json
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\bin\Debug\netcoreapp2.1\PTWWebsite2.runtimeconfig.json
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\bin\Debug\netcoreapp2.1\PTWWebsite2.runtimeconfig.dev.json
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\bin\Debug\netcoreapp2.1\PTWWebsite2.dll
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\bin\Debug\netcoreapp2.1\PTWWebsite2.pdb
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\bin\Debug\netcoreapp2.1\PTWWebsite2.Views.dll
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\bin\Debug\netcoreapp2.1\PTWWebsite2.Views.pdb
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\bin\Debug\netcoreapp2.1\LoggerService.dll
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\bin\Debug\netcoreapp2.1\PTW.DataAccess.dll
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\bin\Debug\netcoreapp2.1\PTW.DBAccess.dll
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\bin\Debug\netcoreapp2.1\LoggerService.pdb
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\bin\Debug\netcoreapp2.1\PTW.DataAccess.pdb
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\bin\Debug\netcoreapp2.1\PTW.DBAccess.pdb
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.csprojAssemblyReference.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.AssemblyInfoInputs.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.AssemblyInfo.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.csproj.CoreCompileInputs.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.RazorAssemblyInfo.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.RazorAssemblyInfo.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.TagHelpers.input.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.TagHelpers.output.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.RazorCoreGenerate.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Home\Editor.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Home\Editor1.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Home\Home.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Home\ImagesUpload.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\News\News.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\News\NewsArticles.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Services\GetServicCxecontent.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Services\GetServiceAudioProductioncontent.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Services\GetServicecontent.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Services\GetServiceEngineeringcontent.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Services\GetServiceLocalizationcontent.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Services\GetServiceQacontent.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Footer\_Footer.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Header\_Header.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.cshtml.g.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.RazorTargetAssemblyInfo.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.RazorTargetAssemblyInfo.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.Views.pdb
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.csproj.CopyComplete
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.dll
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.pdb
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTWWebsite2\obj\Debug\netcoreapp2.1\PTWWebsite2.genruntimeconfig.cache

@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "GetServicCxecontent";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    
 }
 <link rel="stylesheet" href="/CSS/videobackground.css" />
 <link rel="stylesheet" href="/CSS/animate.min.css" />
@@ -9,7 +10,33 @@
 <link rel="stylesheet" href="/CSS/custom.css" />
 <h2>GetServicCxecontent</h2>
 
+@*@foreach (var item in Model.NewsAndLabs)
+{
+    @data= @data + "" +
+<div class="col-lg-12 col-md-4 col-sm-12 col-sx-12">
+    <div class="g-underline"></div>
+    <h6>@item.Title</h6>
+    <a titlevalue="4" href="@item.ShortDescription.Replace(" ","-").Replace("&","@")" class="btn btn-default btn-sm btn-r text-lowercase  more pull-down" style="float: left;">more</a>
+</div>
+
+}*@
+
 @Html.Raw(Model.HtmlContent);
+<script src="~/js/jquery-3.3.1.min.js"></script>
+
+
+
+<script type="text/javascript">
+    @*@foreach (var news in Model.NewsAndLabs)
+{
+$(".cxh-div").Append('<div class="col - lg - 12 col - md - 4 col - sm - 12 col - sx - 12">
+<div class="g-underline"></div>
+<h6>Pole To Win Achieves ISO 27001 Certification</h6>
+<a href="/news/ptw-achieves-iso-27001-certification" titlevalue="4" class="btn btn-default btn-sm btn-r text-lowercase  more pull-down float-left">more</a>
+</div>');
+     }*@
+</script>
+
 
 
 

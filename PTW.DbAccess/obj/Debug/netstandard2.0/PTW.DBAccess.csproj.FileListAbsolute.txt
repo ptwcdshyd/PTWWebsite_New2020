@@ -15,3 +15,30 @@ C:\GitHub\PTWWebsite_New2020\PTW.DBAccess\obj\Debug\netstandard2.0\PTW.DBAccess.
 C:\GitHub\PTWWebsite_New2020\PTW.DBAccess\obj\Debug\netstandard2.0\PTW.DBAccess.dll
 C:\GitHub\PTWWebsite_New2020\PTW.DBAccess\obj\Debug\netstandard2.0\PTW.DBAccess.pdb
 C:\GitHub\PTWWebsite_New2020\PTW.DBAccess\obj\Debug\netstandard2.0\PTW.DBAccess.csprojAssemblyReference.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTW.DBAccess\bin\Debug\netstandard2.0\PTW.DBAccess.deps.json
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTW.DBAccess\bin\Debug\netstandard2.0\PTW.DBAccess.dll
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTW.DBAccess\bin\Debug\netstandard2.0\PTW.DBAccess.pdb
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTW.DBAccess\obj\Debug\netstandard2.0\PTW.DBAccess.csprojAssemblyReference.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTW.DBAccess\obj\Debug\netstandard2.0\PTW.DBAccess.AssemblyInfoInputs.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTW.DBAccess\obj\Debug\netstandard2.0\PTW.DBAccess.AssemblyInfo.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTW.DBAccess\obj\Debug\netstandard2.0\PTW.DBAccess.csproj.CoreCompileInputs.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTW.DBAccess\obj\Debug\netstandard2.0\PTW.DBAccess.dll
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\PTW.DBAccess\obj\Debug\netstandard2.0\PTW.DBAccess.pdb
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTW.DBAccess\bin\Debug\netstandard2.0\PTW.DBAccess.deps.json
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTW.DBAccess\bin\Debug\netstandard2.0\PTW.DBAccess.dll
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTW.DBAccess\bin\Debug\netstandard2.0\PTW.DBAccess.pdb
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTW.DBAccess\obj\Debug\netstandard2.0\PTW.DBAccess.csprojAssemblyReference.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTW.DBAccess\obj\Debug\netstandard2.0\PTW.DBAccess.AssemblyInfoInputs.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTW.DBAccess\obj\Debug\netstandard2.0\PTW.DBAccess.AssemblyInfo.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTW.DBAccess\obj\Debug\netstandard2.0\PTW.DBAccess.csproj.CoreCompileInputs.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTW.DBAccess\obj\Debug\netstandard2.0\PTW.DBAccess.dll
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\PTW.DBAccess\obj\Debug\netstandard2.0\PTW.DBAccess.pdb
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTW.DBAccess\bin\Debug\netstandard2.0\PTW.DBAccess.deps.json
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTW.DBAccess\bin\Debug\netstandard2.0\PTW.DBAccess.dll
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTW.DBAccess\bin\Debug\netstandard2.0\PTW.DBAccess.pdb
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTW.DBAccess\obj\Debug\netstandard2.0\PTW.DBAccess.csprojAssemblyReference.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTW.DBAccess\obj\Debug\netstandard2.0\PTW.DBAccess.AssemblyInfoInputs.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTW.DBAccess\obj\Debug\netstandard2.0\PTW.DBAccess.AssemblyInfo.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTW.DBAccess\obj\Debug\netstandard2.0\PTW.DBAccess.csproj.CoreCompileInputs.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTW.DBAccess\obj\Debug\netstandard2.0\PTW.DBAccess.dll
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\PTW.DBAccess\obj\Debug\netstandard2.0\PTW.DBAccess.pdb

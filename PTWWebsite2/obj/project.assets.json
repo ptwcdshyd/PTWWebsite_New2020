@@ -13561,19 +13561,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Test\\.nuget\\packages\\": {}
+    "C:\\Users\\spartan\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\GitHub\\PTWWebsite_New2020\\PTWWebsite2\\PTWWebsite2.csproj",
+      "projectUniqueName": "D:\\GitHub\\ptwcdshyd\\PTWWebsite_New2020 old26th june\\PTWWebsite2\\PTWWebsite2.csproj",
       "projectName": "PTWWebsite2",
-      "projectPath": "C:\\GitHub\\PTWWebsite_New2020\\PTWWebsite2\\PTWWebsite2.csproj",
-      "packagesPath": "C:\\Users\\Test\\.nuget\\packages\\",
-      "outputPath": "C:\\GitHub\\PTWWebsite_New2020\\PTWWebsite2\\obj\\",
+      "projectPath": "D:\\GitHub\\ptwcdshyd\\PTWWebsite_New2020 old26th june\\PTWWebsite2\\PTWWebsite2.csproj",
+      "packagesPath": "C:\\Users\\spartan\\.nuget\\packages\\",
+      "outputPath": "D:\\GitHub\\ptwcdshyd\\PTWWebsite_New2020 old26th june\\PTWWebsite2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Test\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\spartan\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -13586,14 +13586,14 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\GitHub\\PTWWebsite_New2020\\LoggerService\\LoggerService.csproj": {
-              "projectPath": "C:\\GitHub\\PTWWebsite_New2020\\LoggerService\\LoggerService.csproj"
+            "D:\\GitHub\\ptwcdshyd\\PTWWebsite_New2020 old26th june\\LoggerService\\LoggerService.csproj": {
+              "projectPath": "D:\\GitHub\\ptwcdshyd\\PTWWebsite_New2020 old26th june\\LoggerService\\LoggerService.csproj"
             },
-            "C:\\GitHub\\PTWWebsite_New2020\\PTW.DataAccess\\PTW.DataAccess.csproj": {
-              "projectPath": "C:\\GitHub\\PTWWebsite_New2020\\PTW.DataAccess\\PTW.DataAccess.csproj"
+            "D:\\GitHub\\ptwcdshyd\\PTWWebsite_New2020 old26th june\\PTW.DataAccess\\PTW.DataAccess.csproj": {
+              "projectPath": "D:\\GitHub\\ptwcdshyd\\PTWWebsite_New2020 old26th june\\PTW.DataAccess\\PTW.DataAccess.csproj"
             },
-            "C:\\GitHub\\PTWWebsite_New2020\\PTW.DBAccess\\PTW.DBAccess.csproj": {
-              "projectPath": "C:\\GitHub\\PTWWebsite_New2020\\PTW.DBAccess\\PTW.DBAccess.csproj"
+            "D:\\GitHub\\ptwcdshyd\\PTWWebsite_New2020 old26th june\\PTW.DBAccess\\PTW.DBAccess.csproj": {
+              "projectPath": "D:\\GitHub\\ptwcdshyd\\PTWWebsite_New2020 old26th june\\PTW.DBAccess\\PTW.DBAccess.csproj"
             }
           }
         }
@@ -13647,7 +13647,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

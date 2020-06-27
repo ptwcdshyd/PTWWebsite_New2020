@@ -1,27 +1,10 @@
 ﻿@using PTW.DataAccess.ServicesImpl;
 
-
-@*@{
-        MasterService masterService = new MasterService();
-
-
-
-        var data = masterService.GetDashboardDetails(0, 1, 1);
-
-    }
-    Html.Raw(data.HtmlContent);*@
-
-
 <div id="navHeader"></div>
-
-
-
-
 
 <script src="~/js/jquery-3.3.1.min.js"></script>
 
 <script>
-
 
     var content;
     $(document).ready(function () {
@@ -30,10 +13,7 @@
         LoadHeader(lan);
 
     });
-    //LoadHeader("");
-
-
-
+   
     function ApplyLocalizaiotn() {
 
         var str = window.location.href.replace(window.location.origin, '');
@@ -68,8 +48,6 @@
 
     }
 
-    //$("#Languages").val($.session.get('lang'));
-
     function LoadHeader(languagecode) {
         
         var moduleId = 1;
@@ -93,7 +71,7 @@
           var lan = '@(ViewContext.RouteData.Values["culture"]!=null?ViewContext.RouteData.Values["culture"].ToString():"en-US")';
         console.log(lan);
                 $("#Languages").val(lan);
-
+                
             },
 
             error: function (err) {

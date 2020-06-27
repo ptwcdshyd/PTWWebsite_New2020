@@ -33,7 +33,7 @@ namespace PTWWebsite2.Controllers
 
         [Route("Service_Cx")]
         [Route("{culture}/Service_Cx")]
-        
+
         public IActionResult GetServicCxecontent(string culture)
         {
             MasterPage masterPage;
@@ -46,8 +46,23 @@ namespace PTWWebsite2.Controllers
             {
                 masterPage = _masterService.GetHtmlContentForPage(5, culture);
             }
-            return View(masterPage);
+            MasterPage masterPage1 = _masterService.GetNewsAndLabDetails("CX", 1);
+            masterPage1.HtmlContent = masterPage.HtmlContent;
+            string heading = "<div class=\"col-lg-12 col-md-12 col-sm-12 col-sx-12\"><p id=\"ContentPlaceHolder1_P1\">News &amp; LAB Feed</p></div>";
+            string content = "";
+
+            content = "<div class=\"col-lg-12 col-md-12 col-sm-12 col-sx-12\"><p id=\"ContentPlaceHolder1_P1\">News &amp; LAB Feed</p></div>";
+            foreach (var item in masterPage1.NewsAndLabs)
+            {
+                content = content + "<div class=\"col-lg-12 col-md-4 col-sm-12 col-sx-12\"><div class=\"g-underline\"></div><h6>" + item.Title + " </h6> <a href=\"/News/" + item.ShortDescription.Replace(" ", "-").Replace("&", "@") + "\" titlevalue=\"4\" class=\"btn btn-default btn-sm btn-r text-lowercase  more pull-down float-left\">more</a></div>";
+
+            }
+            masterPage1.HtmlContent = masterPage1.HtmlContent.Replace(heading, content);
+
+
+            return View(masterPage1);
         }
+        
 
         [Route("Service_QA")]
         [Route("{culture}/Service_QA")]
