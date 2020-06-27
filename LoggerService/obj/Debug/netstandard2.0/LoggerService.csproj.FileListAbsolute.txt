@@ -16,3 +16,30 @@ C:\GitHub\PTWWebsite_New2020\LoggerService\obj\Debug\netstandard2.0\LoggerServic
 C:\GitHub\PTWWebsite_New2020\LoggerService\obj\Debug\netstandard2.0\LoggerService.dll
 C:\GitHub\PTWWebsite_New2020\LoggerService\obj\Debug\netstandard2.0\LoggerService.pdb
 C:\GitHub\PTWWebsite_New2020\LoggerService\obj\Debug\netstandard2.0\LoggerService.csprojAssemblyReference.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\LoggerService\bin\Debug\netstandard2.0\LoggerService.deps.json
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\LoggerService\bin\Debug\netstandard2.0\LoggerService.dll
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\LoggerService\bin\Debug\netstandard2.0\LoggerService.pdb
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\LoggerService\obj\Debug\netstandard2.0\LoggerService.csprojAssemblyReference.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\LoggerService\obj\Debug\netstandard2.0\LoggerService.AssemblyInfoInputs.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\LoggerService\obj\Debug\netstandard2.0\LoggerService.AssemblyInfo.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\LoggerService\obj\Debug\netstandard2.0\LoggerService.csproj.CoreCompileInputs.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\LoggerService\obj\Debug\netstandard2.0\LoggerService.dll
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020\LoggerService\obj\Debug\netstandard2.0\LoggerService.pdb
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\LoggerService\bin\Debug\netstandard2.0\LoggerService.deps.json
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\LoggerService\bin\Debug\netstandard2.0\LoggerService.dll
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\LoggerService\bin\Debug\netstandard2.0\LoggerService.pdb
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\LoggerService\obj\Debug\netstandard2.0\LoggerService.csprojAssemblyReference.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\LoggerService\obj\Debug\netstandard2.0\LoggerService.AssemblyInfoInputs.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\LoggerService\obj\Debug\netstandard2.0\LoggerService.AssemblyInfo.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\LoggerService\obj\Debug\netstandard2.0\LoggerService.csproj.CoreCompileInputs.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\LoggerService\obj\Debug\netstandard2.0\LoggerService.dll
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 june 20th Old\LoggerService\obj\Debug\netstandard2.0\LoggerService.pdb
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\LoggerService\bin\Debug\netstandard2.0\LoggerService.deps.json
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\LoggerService\bin\Debug\netstandard2.0\LoggerService.dll
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\LoggerService\bin\Debug\netstandard2.0\LoggerService.pdb
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\LoggerService\obj\Debug\netstandard2.0\LoggerService.csprojAssemblyReference.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\LoggerService\obj\Debug\netstandard2.0\LoggerService.AssemblyInfoInputs.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\LoggerService\obj\Debug\netstandard2.0\LoggerService.AssemblyInfo.cs
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\LoggerService\obj\Debug\netstandard2.0\LoggerService.csproj.CoreCompileInputs.cache
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\LoggerService\obj\Debug\netstandard2.0\LoggerService.dll
+D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\LoggerService\obj\Debug\netstandard2.0\LoggerService.pdb

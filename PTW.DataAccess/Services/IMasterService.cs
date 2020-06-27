@@ -16,5 +16,6 @@ namespace PTW.DataAccess.Services
         List<Images> GetImageDetails(int moduleId);
 
         MasterPage GetHtmlContentForPage(int ModuleId, string Languagecode);
+        MasterPage GetNewsAndLabDetails(string serviceType,int languageId);
     }
 }

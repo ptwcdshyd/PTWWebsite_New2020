@@ -291,5 +291,58 @@ namespace PTW.DataAccess.ServicesImpl
             }
 
         }
+      public  MasterPage GetNewsAndLabDetails(string serviceType, int languageId) 
+        {
+
+            MasterPage masterPage = new MasterPage();
+            CustomCommand command = null;
+            // MasterPage masterPage = new MasterPage();
+
+            try
+            {
+                using (command = new CustomCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "RetrieveNewsAndLabsForService";
+                    command.AddParameterWithValue("@ServiceType", serviceType);
+                    command.AddParameterWithValue("@LanguageId", languageId);
+
+                    masterPage.NewsAndLabs = new List<NewsAndLabs>();
+                    //  Execute command and get values from output parameters.
+                    DataSet result = ExecuteDataSet(command);
+
+                    if (result != null && result.Tables[0].Rows.Count > 0)
+                    {
+                        for (int i = 0; i < result.Tables[0].Rows.Count; i++)
+                        {
+                            NewsAndLabs obj = new NewsAndLabs();
+                            obj.Title= result.Tables[0].Rows[i]["Title"].ToString();
+                            obj.ShortDescription= result.Tables[0].Rows[i]["ShortDescription"].ToString();
+                            masterPage.NewsAndLabs.Add(obj);
+                        }
+                    }
+
+                }
+
+                return masterPage;
+            }
+
+
+
+
+            catch { throw; }
+
+
+
+            finally
+            {
+                if (command != null) command.Dispose();
+                command = null;
+
+
+
+            }
+
+        }
     }
 }

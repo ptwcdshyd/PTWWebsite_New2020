@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Permissions;
 using System.Text;
 using Microsoft.AspNetCore.Http;
 
@@ -20,6 +21,7 @@ namespace PTW.DataAccess.Models
         public string LanguageCode { get; set; }
 
         public string Content { get; set; }
+        
 
         public List<Languages> LanguageList { get; set; }
         public List<Module> ModuleList { get; set; }
@@ -27,6 +29,8 @@ namespace PTW.DataAccess.Models
         public List<IFormFile> Photos { get; set; }
 
         public List<Images> Images { get; set; }
+        public List<NewsAndLabs> NewsAndLabs { get; set; }
+        public List<IFormFile> Files { get; set; }
     }
 
     public class Languages {
@@ -48,5 +52,9 @@ namespace PTW.DataAccess.Models
         public string ModuleName { get; set; }
     }
 
-    
+    public class NewsAndLabs
+    {
+        public string Title { get; set; }
+        public string ShortDescription { get; set; }
+    }
 }
