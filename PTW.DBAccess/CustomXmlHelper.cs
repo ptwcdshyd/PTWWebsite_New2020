@@ -72,6 +72,7 @@ namespace PTW.DBAccess
             catch { throw; }
         }
 
+
         //
         public string CustomImagesXml(List<IFormFile> files)
         {

@@ -150,13 +150,6 @@ namespace PTW.DataAccess.ServicesImpl
                         masterPage.LanguageList = new List<Languages>();
                         for (int i = 0; i < dtResult.Tables[1].Rows.Count; i++)
                         {
-                            if (i == 0)
-                            {
-                                Languages lang = new Languages();
-                                lang.LanguageId = 0;
-                                lang.Language = "Languages";
-                                masterPage.LanguageList.Add(lang);
-                            }
                             Languages languages = new Languages();
                             languages.LanguageId = Convert.ToInt32(dtResult.Tables[1].Rows[i]["LanguageId"]);
                             languages.Language = dtResult.Tables[1].Rows[i]["LanguageName"].ToString();

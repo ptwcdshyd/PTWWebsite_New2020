@@ -1,0 +1,53 @@
+﻿@model PTW.DataAccess.Models.MasterPage
+@{
+    ViewData["Title"] = "Careers | PTW -Pole To Win";
+}
+<link href="~/css/clean-blog.min.css" rel="stylesheet" />
+<link href="~/css/custom.css" rel="stylesheet" />
+<link href="~/css/sticky.css" rel="stylesheet" />
+
+
+<style>
+        body {
+            background: #fff;
+        }
+
+        #mainNav {
+            background: #fff !important;
+        }
+
+        .change .bar3, .change .bar1 {
+            background-color: #000 !important;
+        }
+        .more-careers {
+    width: auto !important;
+}
+        @*@media only screen and (min-width:1600px) {
+            .in-press {
+                margin-bottom: 29.94px;
+            }
+        }*@
+
+        .br-ccss {
+            background-color: rgba(0, 156, 188,0.75);
+        }
+
+        .wnrp {
+            white-space: nowrap;
+        }
+</style>
+
+@Html.Raw(Model.HtmlContent)
+
+
+<script src="~/js/jquery-3.3.1.min.js"></script>
+
+<script>$(document).ready(function () {
+                var params = (new URL(document.location)).searchParams;
+                var JobEnquiries = params.get("JobEnquiries");
+                if (JobEnquiries == 'true') {
+                    $('html, body').animate({
+                        scrollTop: $('#cxcontactus').offset().top
+                    }, 'slow');
+                }
+            });</script>
