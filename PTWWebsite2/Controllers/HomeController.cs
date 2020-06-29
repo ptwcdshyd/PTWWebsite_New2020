@@ -12,6 +12,7 @@ using PTW.DataAccess.Models;
 using PTW.DataAccess.Services;
 using PTWWebsite2.Models;
 using System.IO;
+using System.Data;
 
 namespace PTWWebsite2.Controllers
 {
@@ -35,17 +36,10 @@ namespace PTWWebsite2.Controllers
         public IActionResult Home(string culture)
         {
             MasterPage masterPage = new MasterPage();
-            if (culture == null)
-            {
-                masterPage = _masterService.GetHtmlContentForPage(3, "en-US");
-            }
-
-            else
-            {
-                masterPage = _masterService.GetHtmlContentForPage(3, culture);
-
-            }
-
+              DataTable  dtContent = _masterService.GetModuleContent("Home", (culture==null?"en-US": culture));
+                masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Home")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            ViewData["Header"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Header")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            ViewData["Footer"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Footer")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
             return View(masterPage);
         }
 
@@ -87,7 +81,7 @@ namespace PTWWebsite2.Controllers
         {
             try
             {
-                MasterPage masterPage = _masterService.GetHtmlContentForPage(ModuleId, LanguageCode);
+                MasterPage masterPage = _masterService.GetModuleContentById(ModuleId, LanguageCode);
                 return Json(masterPage.HtmlContent, new JsonSerializerSettings());
             }
             catch (Exception ex)
@@ -224,10 +218,10 @@ namespace PTWWebsite2.Controllers
 
                 MasterPage masterPage = new MasterPage();
                 int resultCode = _masterService.UpdateContentByModelIdAndLanguageId(masterContent.ModuleId, masterContent.LanguageCode, masterContent.Content);
-                if (resultCode > 0)
-                {
-                    masterPage = _masterService.GetHtmlContentForPage(masterContent.ModuleId, masterContent.LanguageCode);
-                }
+                //if (resultCode > 0)
+                //{
+                //    masterPage = _masterService.GetModuleContent(masterContent.ModuleId, masterContent.LanguageCode);
+                //}
                 masterPage.ResultCode = resultCode;
                 return Json(masterPage, new JsonSerializerSettings());
             }
@@ -237,27 +231,27 @@ namespace PTWWebsite2.Controllers
             }
         }
 
-        [HttpGet]
-        public IActionResult GetHeaderPageDetails(int ModuleId, string Languagecode)
-        {
+        //[HttpGet]
+        //public IActionResult GetHeaderPageDetails(int ModuleId, string Languagecode)
+        //{
 
-            MasterPage masterPage = _masterService.GetHtmlContentForPage(ModuleId, Languagecode);
+        //    MasterPage masterPage = _masterService.GetModuleContent(ModuleId, Languagecode);
 
-            return Json(masterPage.HtmlContent, new JsonSerializerSettings());
-
-
-
-        }
-
-        [HttpGet]
-        public IActionResult GetFooterPageDetails(int ModuleId, string Languagecode)
-        {
-            MasterPage masterPage = _masterService.GetHtmlContentForPage(ModuleId, Languagecode);
-
-            return Json(masterPage.HtmlContent, new JsonSerializerSettings());
+        //    return Json(masterPage.HtmlContent, new JsonSerializerSettings());
 
 
-        }
+
+        //}
+
+        //[HttpGet]
+        //public IActionResult GetFooterPageDetails(int ModuleId, string Languagecode)
+        //{
+        //    MasterPage masterPage = _masterService.GetModuleContent(ModuleId, Languagecode);
+
+        //    return Json(masterPage.HtmlContent, new JsonSerializerSettings());
+
+
+        //}
 
         [HttpGet]
         [Route("ImagesUpload")]

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -22,17 +23,12 @@ namespace PTWWebsite2.Controllers
         public IActionResult Careers(string culture)
         {
             MasterPage masterPage = new MasterPage();
-            if (culture == null)
-            {
-                masterPage = _masterService.GetHtmlContentForPage(10, "en-US");
-            }
-
-            else
-            {
-                masterPage = _masterService.GetHtmlContentForPage(10, culture);
-            }
-
+            DataTable dtContent = _masterService.GetModuleContent("Careers", (culture == null ? "en-US" : culture));
+            masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Careers")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            ViewData["Header"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Header")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            ViewData["Footer"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Footer")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
             return View(masterPage);
+           
         }
 
         [Route("Jobs")]
@@ -40,17 +36,12 @@ namespace PTWWebsite2.Controllers
         public IActionResult Jobs(string culture)
         {
             MasterPage masterPage = new MasterPage();
-            if (culture == null)
-            {
-                masterPage = _masterService.GetHtmlContentForPage(11, "en-US");
-            }
-
-            else
-            {
-                masterPage = _masterService.GetHtmlContentForPage(11, culture);
-            }
-
+            DataTable dtContent = _masterService.GetModuleContent("Jobs", (culture == null ? "en-US" : culture));
+            masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Jobs")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            ViewData["Header"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Header")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            ViewData["Footer"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Footer")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
             return View(masterPage);
+           
         }
     }
 }

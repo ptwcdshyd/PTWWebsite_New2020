@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PTW.DataAccess.Models;
 using PTW.DataAccess.Services;
+using System;
+using System.Data;
+using System.Linq;
 
 namespace PTWWebsite2.Controllers
 {
@@ -18,16 +21,11 @@ namespace PTWWebsite2.Controllers
         
         public IActionResult GetServicecontent(string culture)
         {
-            MasterPage masterPage;
-            if (culture == null)
-            {
-                masterPage = _masterService.GetHtmlContentForPage(4,"en-US");
-            }
-
-            else
-            {
-                masterPage = _masterService.GetHtmlContentForPage(4, culture);
-            }
+            MasterPage masterPage = new MasterPage();
+            DataTable dtContent = _masterService.GetModuleContent("Services", (culture == null ? "en-US" : culture));
+            masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Services")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            ViewData["Header"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Header")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            ViewData["Footer"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Footer")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
             return View(masterPage);
         }
 
@@ -36,16 +34,11 @@ namespace PTWWebsite2.Controllers
 
         public IActionResult GetServicCxecontent(string culture)
         {
-            MasterPage masterPage;
-            if (culture == null)
-            {
-                masterPage = _masterService.GetHtmlContentForPage(5, "en-US");
-            }
-
-            else
-            {
-                masterPage = _masterService.GetHtmlContentForPage(5, culture);
-            }
+            MasterPage masterPage = new MasterPage();
+            DataTable dtContent = _masterService.GetModuleContent("Services_CX", (culture == null ? "en-US" : culture));
+            masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Services_CX")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            ViewData["Header"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Header")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            ViewData["Footer"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Footer")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
             MasterPage masterPage1 = _masterService.GetNewsAndLabDetails("CX", 1);
             masterPage1.HtmlContent = masterPage.HtmlContent;
             string heading = "<div class=\"col-lg-12 col-md-12 col-sm-12 col-sx-12\"><p id=\"ContentPlaceHolder1_P1\">News &amp; LAB Feed</p></div>";
@@ -69,16 +62,11 @@ namespace PTWWebsite2.Controllers
         //[Route("{culture}/")]
         public IActionResult GetServiceQacontent(string culture)
         {
-            MasterPage masterPage;
-            if (culture == null)
-            {
-                masterPage = _masterService.GetHtmlContentForPage(6, "en-US");
-            }
-
-            else
-            {
-                masterPage = _masterService.GetHtmlContentForPage(6, culture);
-            }
+            MasterPage masterPage = new MasterPage();
+            DataTable dtContent = _masterService.GetModuleContent("Services_QA", (culture == null ? "en-US" : culture));
+            masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Services_QA")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            ViewData["Header"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Header")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            ViewData["Footer"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Footer")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
             return View(masterPage);
         }
 
@@ -87,16 +75,11 @@ namespace PTWWebsite2.Controllers
         //[Route("{culture}/")]
         public IActionResult GetServiceLocalizationcontent(string culture)
         {
-            MasterPage masterPage;
-            if (culture == null)
-            {
-                masterPage = _masterService.GetHtmlContentForPage(7, "en-US");
-            }
-
-            else
-            {
-                masterPage = _masterService.GetHtmlContentForPage(7, culture);
-            }
+            MasterPage masterPage = new MasterPage();
+            DataTable dtContent = _masterService.GetModuleContent("Localization", (culture == null ? "en-US" : culture));
+            masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Localization")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            ViewData["Header"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Header")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            ViewData["Footer"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Footer")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
             return View(masterPage);
         }
 
@@ -106,16 +89,11 @@ namespace PTWWebsite2.Controllers
         //[Route("{culture}/")]
         public IActionResult GetServiceAudioProductioncontent(string culture)
         {
-            MasterPage masterPage;
-            if (culture == null)
-            {
-                masterPage = _masterService.GetHtmlContentForPage(8, "en-US");
-            }
-
-            else
-            {
-                masterPage = _masterService.GetHtmlContentForPage(8, culture);
-            }
+            MasterPage masterPage = new MasterPage();
+            DataTable dtContent = _masterService.GetModuleContent("Audio Production", (culture == null ? "en-US" : culture));
+            masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Audio Production")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            ViewData["Header"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Header")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            ViewData["Footer"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Footer")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
             return View(masterPage);
         }
 
@@ -125,16 +103,11 @@ namespace PTWWebsite2.Controllers
         //[Route("{culture}/")]
         public IActionResult GetServiceEngineeringcontent(string culture)
         {
-            MasterPage masterPage;
-            if (culture == null)
-            {
-                masterPage = _masterService.GetHtmlContentForPage(9, "en-US");
-            }
-
-            else
-            {
-                masterPage = _masterService.GetHtmlContentForPage(9, culture);
-            }
+            MasterPage masterPage = new MasterPage();
+            DataTable dtContent = _masterService.GetModuleContent("Engineering", (culture == null ? "en-US" : culture));
+            masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Engineering")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            ViewData["Header"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Header")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            ViewData["Footer"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Footer")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
             return View(masterPage);
         }
     }
