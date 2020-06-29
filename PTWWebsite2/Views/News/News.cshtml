@@ -197,7 +197,7 @@
                                             <div class="col-md-4 col-sm-4 col-sx-4">
                                                 <p class="event-date">@item.EventDate</p>
                                                 <p class="d-flex">
-                                                    <a href="@string.Format("https://twitter.com/share?ref_src=ptw&amp;text={0}&url={1}&;via=ptw",item.NewsTitle.Replace(" ","-"))" target="_blank" rel="noopener noreferrer"><span class="news-tweet"><i class="fa fa-twitter"></i></span></a>
+                                                    <a href="@string.Format("https://twitter.com/share?ref_src=ptw&amp;text={0}&url={1}&;via=ptw",item.NewsTitle,item.NewsTitle.Replace(" ","-"))" target="_blank" rel="noopener noreferrer"><span class="news-tweet"><i class="fa fa-twitter"></i></span></a>
                                                     <a href="/news/@Convert.ToString(item.NewsTitle).Replace(" ","-").Replace("&","@")">
                                                         <span class="event-link-icon" onmouseover="hover(this,'../Images/news/arrowhover.png');" onmouseout="unhover(this,'../Images/news/arrow.png');">
                                                             <img src="/Images/news/arrow.png" alt="Click here to view more details">
