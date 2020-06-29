@@ -1,0 +1,679 @@
+﻿@model PTW.DataAccess.Models.LabsEvents
+@{
+    ViewData["Title"] = "Index";
+}
+<link href="~/css/clean-blog.min.css" rel="stylesheet" />
+<link href="~/css/custom.css" rel="stylesheet" />
+<link href="~/css/sticky.css" rel="stylesheet" />
+<link href="~/css/lab.css" rel="stylesheet" />
+<link href="~/css/rslides.css" rel="stylesheet" />
+<style>
+
+    body {
+        background: #fff;
+    }
+
+    #mainNav {
+        background: #fff !important;
+    }
+
+    .change .bar3,
+    .change .bar1 {
+        background-color: #000 !important;
+    }
+</style>
+
+<div class="slides1 row">
+    <ul class="rslides rslides1" style="display:-webkit-inline-box;">
+        @if (Model != null)
+        {
+            int count = 0;
+
+            @foreach (var item in Model.Labs)
+                {
+                    
+                <!-- slides -->
+                <li id="@("rslides1_s"+count)" class="rslides1_on" style="display: block; float: left; position: relative; opacity: 1; z-index: 2; transition: opacity 500ms ease-in-out 0s;">
+                    <picture>
+                        
+                        <source srcset="@item.DeskL_ImageURL" media="(min-width: 1367px)">
+                        <source srcset="@item.Desk_ImageURL" media="(min-width: 1113px)">
+                        <source srcset="@item.TabH_ImageURL" media="(min-width: 835px)">
+                        <source srcset="@item.TabV_ImageURL" media="(min-width: 400px)">
+                        <source srcset="@item.Mobile_ImageURL" media="(min-width: 100px)">
+                        <img src="@item.DeskL_ImageURL" alt="A woman with short and curly hair testing a game on mobile at PTW.">
+                    </picture>
+                </li>
+                count = count + 1;
+            }
+        }
+
+     </ul>
+    <ul class="rslides_tabs rslides1_tabs">
+    <li class="rslides1_s1 rslides_here">
+        <a href="#" class="rslides1_s1">1</a></li>
+    <li class="rslides1_s2">
+        <a href="#" class="rslides1_s2">2</a></li>
+    <li class="rslides1_s3"><a href="#" class="rslides1_s3">3</a>
+        </li>
+    </ul>
+</div>
+
+
+
+<div class="col-md-12 filter-row iso-filter-drop">
+
+    <div class="d-lg-none lab-aticles-filter ">
+        <div class="dropdown drp-services">
+            <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span id="drop-span">Latest Insights</span>
+                <i class="fa fa-filter"></i>
+            </button>
+            <div id="myDropdown" class="dropdown-menu dropdown-content iso-filter-drop" aria-labelledby="dropdownMenuButton">
+                <a href="#" data-filter="*" style="padding-left: 88px;">Latest Insights</a>
+                <a href="#" data-filter=".cx1">
+                    <img src="../Images/hover-over/HOME-ICONS-white.png" alt="" class="myDDicons">Customer Experience
+                </a>
+                <a href="#" data-filter=".qa1">
+                    <img src="../Images/hover-over/HOME-ICONS-white2.png" alt="" class="myDDicons">Quality Assurance
+                </a>
+                <a href="#" data-filter=".loc1">
+                    <img src="../Images/hover-over/HOME-ICONS-white3.png" alt="" class="myDDicons">Localization
+                </a>
+                <a href="#" data-filter=".ap1">
+                    <img src="../Images/hover-over/HOME-ICONS-white4.png" alt="" class="myDDicons">Audio Production
+                </a>
+                <a href="#" data-filter=".eng1">
+                    <img src="../Images/hover-over/HOME-ICONS-white5.png" alt="" class="myDDicons">Engineering
+                </a>
+                <a href="#" data-filter=".camp1">
+                    <img src="../Images/hover-over/Campaign.png" alt="" class="myDDicons"><span id="ContentPlaceHolder1_Span7">Campaigns</span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+    <div class="d-none d-lg-block">
+
+
+        <a id="A2" href="#" data-filter="*" class="active" runat="server" meta:resourcekey="lab_latest_insights">
+            Latest Insights
+        </a>
+        <a href="#" data-filter=".camp1">
+            <span id="Span7" runat="server" meta:resourcekey="lab_filter_Camp">Campaigns</span>
+        </a>
+        <a href="#" data-filter=".cx1">
+            <span id="Span2" runat="server" meta:resourcekey="lab_filter_CX">Customer Experience</span>
+        </a>
+        <a href="#" data-filter=".qa1">
+            <span id="Span3" runat="server" meta:resourcekey="lab_filter_QA">Quality Assurance</span>
+        </a>
+        <a href="#" data-filter=".loc1">
+            <span id="Span4" runat="server" meta:resourcekey="lab_filter_Loc">Localization</span>
+        </a>
+        <a href="#" data-filter=".ap1">
+            <span id="Span5" runat="server" meta:resourcekey="lab_filter_Audio">Audio Production</span>
+        </a>
+        <a href="#" data-filter=".eng1">
+            <span id="Span6" runat="server" meta:resourcekey="lab_filter_Eng">Engineering</span>
+        </a>
+    </div>
+</div>
+<div class="container-fluid lab-container">
+    <div class="row">
+        <div class="col-xl-9 col-md-12">
+            <div class="row">
+                @foreach (var item in Model.labInsights)
+                {
+                    <div class="col-xl-8 col-md-12">
+                        <a titlevalue="7" href="/lab/Article-game-localization-strategy">
+
+                            @*<div class="insight-category latest-insight">
+                                <img src=@Model.labInsights[0].CampaignImageUrl alt="alt-text" class="qa-diamond">
+                            </div>*@
+                            <picture>
+                                <source srcset="" media="(min-width: 1367px)">
+
+                                <source srcset="@item.MobileImageNameUrl" media="(max-width: 400px)">
+                                <img class="b-lazy" src="@item.DesktopImageUrl" data-src="@item.DesktopImageUrl" alt="">
+                            </picture>
+                        </a>
+                    </div>
+
+
+                }
+                <div class="col-xl-4 col-md-12 article-info">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a titlevalue="7" href="@Model.labInsights[0].LabId,@Model.labInsights[0].Stopped,@Model.labInsights[0].ShortDescription.Replace(" ", " -").Replace("&", "@" ).ToLower()">
+                                <p class="insight-title">
+                                    @*How to build a video game localization strategy in 5 steps*@
+                                    @Model.labInsights[0].Name
+                                </p>
+                            </a>
+                        </div>
+                        <div class="col-md-12 d-none d-xl-block insight-description">
+                                                     
+                                @*How to build a video game localization strategy in 5 steps*@
+                                @Model.labInsights[0].Name
+                        
+                    </div>
+                </div>
+            </div>
+            </div>
+                
+        </div>
+        <div class="col-xl-3 d-none d-xl-block related-lab">
+            @foreach (var item in Model.labInsights)
+            {
+                <div class="row">
+                    <div class="col-md-12">
+                        <a titlevalue="7" href="/Lab/@item.LabId,@item.LabType,@item.Stopped,@item.ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
+                            <div class="insight-2">
+                                <p class="insight-title">
+                                    @item.Name                                  
+                                </p>
+
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            }
+            </div>
+    </div>
+
+    <div class="row isotope-filter-grid" style="position: relative; height: 2358.2px;">
+
+        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  camp1" style="position: absolute; left: 0px; top: 0px;">
+            <a titlevalue="7" href="/Lab/@Model.allLabs[0].LabId,@Model.allLabs[0].LabType,@Model.allLabs[0].Stopped,@Model.allLabs[0].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
+                <div class="row single-insight-container">
+                    <img class="b-lazy" src="@Model.allLabs[0].MobileImageNameUrl" data-src="@Model.allLabs[0].MobileImageNameUrl" alt="">
+                    <div class="col-md-12">
+                        <div class="insight-category">
+                            <img src="@Model.labInsights[0].CampaignImageUrl" alt="alt-text" class="qa-diamond">
+                        </div>
+                    </div>
+                </div>
+                <div class="row single-insight-details-container">
+                    <div class="col-md-12">
+                        <div class="insight-details">
+                            <p class="insight-title">
+                                @Model.allLabs[0].Name
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  camp1" style="position: absolute; left: 283.333px; top: 0px;">
+            <a titlevalue="7" href="/Lab/@Model.allLabs[1].LabId,@Model.allLabs[1].LabType,@Model.allLabs[1].Stopped,@Model.allLabs[1].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
+                <div class="row single-insight-container">
+                    <img class="b-lazy" src="@Model.allLabs[1].MobileImageNameUrl" data-src="@Model.allLabs[1].MobileImageNameUrl" alt="">
+                    <div class="col-md-12">
+                        <div class="insight-category">
+                            <img src="@Model.labInsights[0].CampaignImageUrl" alt="alt-text" class="qa-diamond">
+                        </div>
+                    </div>
+                </div>
+                <div class="row single-insight-details-container">
+                    <div class="col-md-12">
+                        <div class="insight-details">
+                            <p class="insight-title">
+                                @Model.allLabs[1].Name
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  camp1" style="position: absolute; left: 566.666px; top: 0px;">
+            <a titlevalue="7" href="/Lab/@Model.allLabs[2].LabId,@Model.allLabs[2].LabType,@Model.allLabs[2].Stopped,@Model.allLabs[2].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
+                <div class="row single-insight-container">
+                    <img class="b-lazy" src="@Model.allLabs[2].MobileImageNameUrl" data-src="@Model.allLabs[2].MobileImageNameUrl" alt="">
+                    <div class="col-md-12">
+                        <div class="insight-category">
+                            <img src="@Model.labInsights[0].CampaignImageUrl" alt="alt-text" class="qa-diamond">
+                        </div>
+                    </div>
+                </div>
+                <div class="row single-insight-details-container">
+                    <div class="col-md-12">
+                        <div class="insight-details">
+                            <p class="insight-title">
+                                @Model.allLabs[2].Name
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  camp1" style="position: absolute; left: 0px; top: 304.885px;">
+            <a titlevalue="7" href="/Lab/@Model.allLabs[3].LabId,@Model.allLabs[3].LabType,@Model.allLabs[3].Stopped,@Model.allLabs[3].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
+                <div class="row single-insight-container">
+                    <img class="b-lazy" src="@Model.allLabs[3].MobileImageNameUrl" data-src="@Model.allLabs[3].MobileImageNameUrl" alt="">
+                    <div class="col-md-12">
+                        <div class="insight-category">
+                            <img src="@Model.labInsights[0].CampaignImageUrl" alt="alt-text" class="qa-diamond">
+                        </div>
+                    </div>
+                </div>
+                <div class="row single-insight-details-container">
+                    <div class="col-md-12">
+                        <div class="insight-details">
+                            <p class="insight-title">
+                                @Model.allLabs[3].Name
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  camp1" style="position: absolute; left: 283.333px; top: 304.885px;">
+            <a titlevalue="7" href="/Lab/@Model.allLabs[4].LabId,@Model.allLabs[4].LabType,@Model.allLabs[4].Stopped,@Model.allLabs[4].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
+                <div class="row single-insight-container">
+                    <img class="b-lazy" src="@Model.allLabs[4].MobileImageNameUrl" data-src="@Model.allLabs[4].MobileImageNameUrl" alt="">
+                    <div class="col-md-12">
+                        <div class="insight-category">
+                            <img src="@Model.labInsights[0].CampaignImageUrl" alt="alt-text" class="qa-diamond">
+                        </div>
+                    </div>
+                </div>
+                <div class="row single-insight-details-container">
+                    <div class="col-md-12">
+                        <div class="insight-details">
+                            <p class="insight-title">
+                                @Model.allLabs[4].Name
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  camp1" style="position: absolute; left: 566.666px; top: 304.885px;">
+            <a titlevalue="7" href="/Lab/@Model.allLabs[5].LabId,@Model.allLabs[5].LabType,@Model.allLabs[5].Stopped,@Model.allLabs[5].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
+                <div class="row single-insight-container">
+                    <img class="b-lazy" src="@Model.allLabs[5].MobileImageNameUrl" data-src="@Model.allLabs[5].MobileImageNameUrl" alt="">
+                    <div class="col-md-12">
+                        <div class="insight-category">
+                            <img src="@Model.labInsights[0].CampaignImageUrl" alt="alt-text" class="qa-diamond">
+                        </div>
+                    </div>
+                </div>
+                <div class="row single-insight-details-container">
+                    <div class="col-md-12">
+                        <div class="insight-details">
+                            <p class="insight-title">
+                                @Model.allLabs[5].Name
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  qa1" style="position: absolute; left: 0px; top: 628.437px;">
+            <a titlevalue="7" href="/Lab/@Model.allLabs[6].LabId,@Model.allLabs[6].LabType,@Model.allLabs[6].Stopped,@Model.allLabs[6].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
+                <div class="row single-insight-container">
+                    <img class="b-lazy" src="@Model.allLabs[6].MobileImageNameUrl" data-src="@Model.allLabs[6].MobileImageNameUrl" alt="">
+                    <div class="col-md-12">
+                        <div class="insight-category">
+                            <img src="@Model.allLabs[6].QualityAssuranceImageUrl" alt="alt-text" class="qa-diamond">
+                        </div>
+                    </div>
+                </div>
+                <div class="row single-insight-details-container">
+                    <div class="col-md-12">
+                        <div class="insight-details">
+                            <p class="insight-title">
+                                @Model.allLabs[6].Name
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  cx1" style="position: absolute; left: 283.333px; top: 628.437px;">
+            <a titlevalue="7" href="/Lab/@Model.allLabs[7].LabId,@Model.allLabs[7].LabType,@Model.allLabs[7].Stopped,@Model.allLabs[7].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
+                <div class="row single-insight-container">
+                    <img class="b-lazy" src="@Model.allLabs[7].MobileImageNameUrl" data-src="@Model.allLabs[7].MobileImageNameUrl" alt="">
+                    <div class="col-md-12">
+                        <div class="insight-category">
+                            <img src="@Model.allLabs[7].CustomerExperienceImageUrl" alt="alt-text" class="qa-diamond">
+                        </div>
+                    </div>
+                </div>
+                <div class="row single-insight-details-container">
+                    <div class="col-md-12">
+                        <div class="insight-details">
+                            <p class="insight-title">
+                                @Model.allLabs[7].Name
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  eng1" style="position: absolute; left: 566.666px; top: 628.437px;">
+            <a titlevalue="7" href="/Lab/@Model.allLabs[8].LabId,@Model.allLabs[8].LabType,@Model.allLabs[8].Stopped,@Model.allLabs[8].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
+                <div class="row single-insight-container">
+                    <img class="b-lazy" src="@Model.allLabs[8].MobileImageNameUrl" data-src="@Model.allLabs[8].MobileImageNameUrl" alt="">
+                    <div class="col-md-12">
+                        <div class="insight-category">
+                            <img src="@Model.allLabs[8].EngineeringImageUrl" alt="alt-text" class="qa-diamond">
+                        </div>
+                    </div>
+                </div>
+                <div class="row single-insight-details-container">
+                    <div class="col-md-12">
+                        <div class="insight-details">
+                            <p class="insight-title">
+                                @Model.allLabs[8].Name
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  eng1" style="position: absolute; left: 0px; top: 1007.99px;">
+            <a titlevalue="7" href="/Lab/@Model.allLabs[9].LabId,@Model.allLabs[9].LabType,@Model.allLabs[9].Stopped,@Model.allLabs[9].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
+                <div class="row single-insight-container">
+                    <img class="b-lazy" src="@Model.allLabs[9].MobileImageNameUrl" data-src="@Model.allLabs[9].MobileImageNameUrl" alt="">
+                    <div class="col-md-12">
+                        <div class="insight-category">
+                            <img src="@Model.allLabs[9].EngineeringImageUrl" alt="alt-text" class="qa-diamond">
+                        </div>
+                    </div>
+                </div>
+                <div class="row single-insight-details-container">
+                    <div class="col-md-12">
+                        <div class="insight-details">
+                            <p class="insight-title">
+                                @Model.allLabs[9].Name
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  eng1" style="position: absolute; left: 283.333px; top: 1007.99px;">
+            <a titlevalue="7" href="/Lab/@Model.allLabs[10].LabId,@Model.allLabs[10].LabType,@Model.allLabs[10].Stopped,@Model.allLabs[10].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
+                <div class="row single-insight-container">
+                    <img class="b-lazy" src="@Model.allLabs[10].MobileImageNameUrl" data-src="@Model.allLabs[10].MobileImageNameUrl" alt="">
+                    <div class="col-md-12">
+                        <div class="insight-category">
+                            <img src="@Model.allLabs[10].EngineeringImageUrl" alt="alt-text" class="qa-diamond">
+                        </div>
+                    </div>
+                </div>
+                <div class="row single-insight-details-container">
+                    <div class="col-md-12">
+                        <div class="insight-details">
+                            <p class="insight-title">
+                                @Model.allLabs[10].Name
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  ap1" style="position: absolute; left: 566.666px; top: 1007.99px;">
+            <a titlevalue="7" href="/Lab/@Model.allLabs[11].LabId,@Model.allLabs[11].LabType,@Model.allLabs[11].Stopped,@Model.allLabs[11].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
+                <div class="row single-insight-container">
+                    <img class="b-lazy" src="@Model.allLabs[11].MobileImageNameUrl" data-src="@Model.allLabs[11].MobileImageNameUrl" alt="">
+                    <div class="col-md-12">
+                        <div class="insight-category">
+                            <img src="@Model.allLabs[11].AudioProductionImageUrl" alt="alt-text" class="qa-diamond">
+                        </div>
+                    </div>
+                </div>
+                <div class="row single-insight-details-container">
+                    <div class="col-md-12">
+                        <div class="insight-details">
+                            <p class="insight-title">
+                                @Model.allLabs[11].Name
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  loc1" style="position: absolute; left: 0px; top: 1368.87px;">
+            <a titlevalue="7" href="/Lab/@Model.allLabs[12].LabId,@Model.allLabs[12].LabType,@Model.allLabs[12].Stopped,@Model.allLabs[12].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
+                <div class="row single-insight-container">
+                    <img class="b-lazy" src="@Model.allLabs[12].MobileImageNameUrl" data-src="@Model.allLabs[12].MobileImageNameUrl" alt="">
+                    <div class="col-md-12">
+                        <div class="insight-category">
+                            <img src="@Model.allLabs[12].LocalizationImageUrl" alt="alt-text" class="qa-diamond">
+                        </div>
+                    </div>
+                </div>
+                <div class="row single-insight-details-container">
+                    <div class="col-md-12">
+                        <div class="insight-details">
+                            <p class="insight-title">
+                                @Model.allLabs[12].Name
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  qa1" style="position: absolute; left: 283.333px; top: 1368.87px;">
+            <a titlevalue="7" href="/Lab/@Model.allLabs[13].LabId,@Model.allLabs[13].LabType,@Model.allLabs[13].Stopped,@Model.allLabs[13].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
+                <div class="row single-insight-container">
+                    <img class="b-lazy" src="@Model.allLabs[13].MobileImageNameUrl" data-src="@Model.allLabs[13].MobileImageNameUrl" alt="">
+                    <div class="col-md-12">
+                        <div class="insight-category">
+                            <img src="@Model.allLabs[13].QualityAssuranceImageUrl" alt="alt-text" class="qa-diamond">
+                        </div>
+                    </div>
+                </div>
+                <div class="row single-insight-details-container">
+                    <div class="col-md-12">
+                        <div class="insight-details">
+                            <p class="insight-title">
+                                @Model.allLabs[13].Name
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  qa1" style="position: absolute; left: 566.666px; top: 1368.87px;">
+            <a titlevalue="7" href="/Lab/@Model.allLabs[14].LabId,@Model.allLabs[14].LabType,@Model.allLabs[14].Stopped,@Model.allLabs[14].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
+                <div class="row single-insight-container">
+                    <img class="b-lazy" src="@Model.allLabs[14].MobileImageNameUrl" data-src="@Model.allLabs[14].MobileImageNameUrl" alt="">
+                    <div class="col-md-12">
+                        <div class="insight-category">
+                            <img src="@Model.allLabs[14].QualityAssuranceImageUrl" alt="alt-text" class="qa-diamond">
+                        </div>
+                    </div>
+                </div>
+                <div class="row single-insight-details-container">
+                    <div class="col-md-12">
+                        <div class="insight-details">
+                            <p class="insight-title">
+                                @Model.allLabs[14].Name
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  qa1" style="position: absolute; left: 0px; top: 1692.43px;">
+            <a titlevalue="7" href="/Lab/@Model.allLabs[15].LabId,@Model.allLabs[15].LabType,@Model.allLabs[15].Stopped,@Model.allLabs[15].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
+                <div class="row single-insight-container">
+                    <img class="b-lazy" src="@Model.allLabs[15].MobileImageNameUrl" data-src="@Model.allLabs[15].MobileImageNameUrl" alt="">
+                    <div class="col-md-12">
+                        <div class="insight-category">
+                            <img src="@Model.allLabs[15].QualityAssuranceImageUrl" alt="alt-text" class="qa-diamond">
+                        </div>
+                    </div>
+                </div>
+                <div class="row single-insight-details-container">
+                    <div class="col-md-12">
+                        <div class="insight-details">
+                            <p class="insight-title">
+                                @Model.allLabs[15].Name
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  cx1" style="position: absolute; left: 283.333px; top: 1692.43px;">
+            <a titlevalue="7" href="/Lab/@Model.allLabs[16].LabId,@Model.allLabs[16].LabType,@Model.allLabs[16].Stopped,@Model.allLabs[17].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
+                <div class="row single-insight-container">
+                    <img class="b-lazy" src="@Model.allLabs[16].MobileImageNameUrl" data-src="@Model.allLabs[16].MobileImageNameUrl" alt="">
+                    <div class="col-md-12">
+                        <div class="insight-category">
+                            <img src="@Model.allLabs[16].CustomerExperienceImageUrl" alt="alt-text" class="qa-diamond">
+                        </div>
+                    </div>
+                </div>
+                <div class="row single-insight-details-container">
+                    <div class="col-md-12">
+                        <div class="insight-details">
+                            <p class="insight-title">
+                                @Model.allLabs[16].Name
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  cx1" style="position: absolute; left: 566.666px; top: 1692.43px;">
+            <a titlevalue="7" href="/Lab/@Model.allLabs[17].LabId,@Model.allLabs[17].LabType,@Model.allLabs[17].Stopped,@Model.allLabs[17].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
+                <div class="row single-insight-container">
+                    <img class="b-lazy" src="@Model.allLabs[17].MobileImageNameUrl" data-src="@Model.allLabs[17].MobileImageNameUrl" alt="">
+                    <div class="col-md-12">
+                        <div class="insight-category">
+                            <img src="@Model.allLabs[17].CustomerExperienceImageUrl" alt="alt-text" class="qa-diamond">
+                        </div>
+                    </div>
+                </div>
+                <div class="row single-insight-details-container">
+                    <div class="col-md-12">
+                        <div class="insight-details">
+                            <p class="insight-title">
+                                @Model.allLabs[17].Name
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  cx1" style="position: absolute; left: 0px; top: 2015.98px;">
+            <a titlevalue="7" href="/Lab/@Model.allLabs[18].LabId,@Model.allLabs[18].LabType,@Model.allLabs[18].Stopped,@Model.allLabs[18].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
+                <div class="row single-insight-container">
+                    <img class="b-lazy" src="@Model.allLabs[18].MobileImageNameUrl" data-src="@Model.allLabs[18].MobileImageNameUrl" alt="">
+                    <div class="col-md-12">
+                        <div class="insight-category">
+                            <img src="@Model.allLabs[18].CustomerExperienceImageUrl" alt="alt-text" class="qa-diamond">
+                        </div>
+                    </div>
+                </div>
+                <div class="row single-insight-details-container">
+                    <div class="col-md-12">
+                        <div class="insight-details">
+                            <p class="insight-title">
+                                @Model.allLabs[18].Name
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  cx1" style="position: absolute; left: 283.333px; top: 2015.98px;">
+            <a titlevalue="7" href="/Lab/@Model.allLabs[19].LabId,@Model.allLabs[19].LabType,@Model.allLabs[19].Stopped,@Model.allLabs[19].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
+                <div class="row single-insight-container">
+                    <img class="b-lazy" src="@Model.allLabs[19].MobileImageNameUrl" data-src="@Model.allLabs[19].MobileImageNameUrl" alt="">
+                    <div class="col-md-12">
+                        <div class="insight-category">
+                            <img src="@Model.allLabs[19].CustomerExperienceImageUrl" alt="alt-text" class="qa-diamond">
+                        </div>
+                    </div>
+                </div>
+                <div class="row single-insight-details-container">
+                    <div class="col-md-12">
+                        <div class="insight-details">
+                            <p class="insight-title">
+                                @Model.allLabs[19].Name
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+    </div>
+
+</div>
+<div class="row">
+    <div id="cxcontactus" class="col-lg-12 blue">
+        <h5 id="H1" class="mob-disp getInTouch" runat="server" meta:resourcekey="lab_get_in_touch">Get in touch</h5>
+        <a id="A3" titlevalue="6" href="../Common/Contact" class="btn btn-default btn-sm btn-r contactus f-contact" runat="server" meta:resourcekey="lab_contact_us" title="Contact Us">Contact Us</a>
+    </div>
+</div>
+
+
+<script src="../JS/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="../JS/isotope.pkgd.min.js"></script>
+<script src="../JS/responsiveslider.js"></script>
+<script>
+    $(window).load(function () {
+        $(".rslides").responsiveSlides({
+            auto: true,             // Boolean: Animate automatically, true or false
+            speed: 500,            // Integer: Speed of the transition, in milliseconds
+            timeout: 4000,          // Integer: Time between slide transitions, in milliseconds
+            pager: true,           // Boolean: Show pager, true or false
+            nav: false,             // Boolean: Show navigation, true or false
+
+            pause: true,           // Boolean: Pause on hover, true or false
+            pauseControls: true,    // Boolean: Pause when hovering controls, true or false
+
+            namespace: "rslides",   // String: Change the default namespace used
+            // Function: After callback
+        });
+        var $container = $('.isotope-filter-grid');
+        $container.isotope({
+            filter: '*',
+            transitionDuration: '0.6s',
+            layoutMode: 'fitRows',
+        });
+        $('.iso-filter-drop a').click(function () {
+            var tx1 = $(this).text();
+            document.getElementById('drop-span').innerHTML = tx1;
+
+            // $(this).toggleClass("insight-header");
+            $('.iso-filter-drop .active').removeClass('active');
+            $(this).addClass('active');
+            var selector = $(this).attr('data-filter');
+            $container.isotope({
+                filter: selector
+            });
+            return false;
+        });
+    });</script>
+<script>
+    $("#myDropdown a").on("click", function () {
+
+        $("#myDropdown").toggleClass('show');
+    });</script>

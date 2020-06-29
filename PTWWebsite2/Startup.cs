@@ -44,7 +44,7 @@ namespace PTWWebsite
             services.AddTransient<ILoggerManager, LoggerManager>();
             services.AddTransient<IMasterService, MasterService>();
             services.AddTransient<INewsEventService, NewsEventService>();
-
+            services.AddTransient<ILabService, LabServicecs>();
             services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromMinutes(20);
