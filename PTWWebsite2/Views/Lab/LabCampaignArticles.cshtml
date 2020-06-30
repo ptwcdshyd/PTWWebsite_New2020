@@ -1,0 +1,192 @@
+﻿@model PTW.DataAccess.Models.LabsEvents
+@{
+    ViewData["Title"] = "LabCampaignArticles";
+}
+
+<h2>LabCampaignArticles</h2>
+
+@if (Model != null)
+{
+    @foreach (var item in Model.LabArticledetails)
+    {
+
+        <div class="container-fluid lab-article-container">
+            <div class="jumbotron lab">
+                <div class="lab-title-box">
+                    <p class="lab-article-title">@Model.LabArticledetails[0].Name</p>
+                    <p class="lab-article-tag">PTW Insights</p>
+                </div>
+
+                <picture>
+                    <source srcset="@item.DeskL_ImageURL" media="(min-width: 1367px)">
+                    <source srcset="@item.Desk_ImageURL" media="(min-width: 1113px)">
+                    <source srcset="@item.TabH_ImageURL" media="(min-width: 835px)">
+                    <source srcset="@item.TabV_ImageURL" media="(min-width: 400px)">
+                    <source srcset="@item.Mobile_ImageURL" media="(min-width: 100px)">
+                    <img src="@item.DeskL_ImageURL" alt="A woman with short and curly hair testing a game on mobile at PTW.">
+                </picture>
+                    <a id="buttonPlayVideo" onclick="scroller('.scrollToIframe');"><div class="playvideo white-paper"><span class="wptext">Whitepaper</span><span class="arrowdown camparrow"></span></div></a>
+            </div>
+        </div>
+
+        <div class="article-lab-container">
+            <div class="article-lab">
+                <div class="row no-margin">
+                    <div class="col-xl-3 col-lg-4 col-xs-12 col-md-4 col-sm-12 lab-article-share">
+                        <p class="category-text">     Campaign</p>
+
+
+                        <p class="lb-share-text article-text">Share Article</p>
+                        <p class="lb-share-text case-text">Share Case Study</p>
+                        <p class="share-icons">
+                            <a href="https://twitter.com/share?ref_src=ptw&amp;text=The eLearning opportunities are moving fast. Are you ready?&amp;url=https://www.ptw.com/lab/campaign-ptw-supporting-elearning-innovation&amp;via=ptw" target="_blank" rel="noopener noreferrer"><span><i class="fa fa-twitter"></i></span></a>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.ptw.com/lab/campaign-ptw-supporting-elearning-innovation" target="_blank" rel="noopener noreferrer"><span class="no-hide-small"><i class="fa fa-facebook"></i></span></a>
+                            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.ptw.com/lab/campaign-ptw-supporting-elearning-innovation&amp;title=The eLearning opportunities are moving fast. Are you ready?&amp;source=https://ptw.com" target="_blank" rel="noopener noreferrer"><span><i class="fa fa-linkedin-square"></i></span></a>
+                        </p>
+                        <a href="/lab">
+                            <p class="lb-main-nav">Back to LAB main</p>
+                        </a>
+                    </div>
+                    <div class="col-xl-6 col-lg-8 col-xs-12 col-md-8 col-sm-12 lab-article-desc">
+                        <p> </p><p>By 2022, the global eLearning market is due to increase to $65bn.&nbsp; That’s a massive 51% increase! How can PTW ensure you can deliver on time?</p><p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+        <div class="lab-post-container">
+
+
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-xs-12 col-md-12 col-sm-12">
+                    <p> </p><p> <img src="../Images/Lab/Articles/Contents/11_1.png">  <br><br><br> </p><p></p>
+                </div>
+            </div>
+
+
+
+
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-xs-12 col-md-12 col-sm-12">
+                    <p> </p><p> <img src="../Images/Lab/Articles/Contents/11_2.png" class="pull-right">  <br><br> </p><p></p>
+                </div>
+            </div>
+
+
+
+
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-xs-12 col-md-12 col-sm-12">
+                    <p> <br><br><br> </p><p> <img src="../Images/Lab/Articles/Contents/11_3.png">  <br><br> </p><p></p>
+                </div>
+            </div>
+
+
+
+
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-xs-12 col-md-12 col-sm-12">
+                    <p> <span class="scrollToIframe"></span><br><br></p>
+                    <p>
+                        <a title="PTW-Whitepaper-2019" href="../PDF/PTW-Whitepaper-2019.pdf" download="">
+                            <img src="../Images/Lab/Articles/Contents/11_4.png" class="w-100p">
+                        </a>
+                        <br><br>
+                    </p>
+                    <p>
+
+                    </p>
+                </div>
+            </div>
+
+
+
+
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-xs-12 col-md-12 col-sm-12">
+                    <p> </p><p> <br><img src="../Images/Lab/Articles/Contents/11_5.png" class="pull-right">  <br><br> </p><p></p>
+                </div>
+            </div>
+
+
+
+
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-xs-12 col-md-12 col-sm-12">
+                    <p> </p><p><br><br> <img src="../Images/Lab/Articles/Contents/11_6.png">  <br><br> </p><p></p>
+                </div>
+            </div>
+
+
+
+
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-xs-12 col-md-12 col-sm-12">
+                    <p> </p><p><br><img src="../Images/Lab/Articles/Contents/11_7.png" class="w-100p">  <br><br> </p><p></p>
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="lab-read-more-container">
+
+            <div class="row">
+
+                <div class="col-md-12 col-sm-12">
+                    <p class="read-more-header">Read more on      CAMPAIGNS</p>
+                </div>
+
+            </div>
+            <div class="row">
+
+
+                <div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-6 ">
+                    <a titlevalue="7" href="/lab/LabArticles24">
+                        <p class="read-more-article-image">
+                            <img src="/Images/Lab/Articles/320/10.png" alt="Read more">
+                        </p>
+                        <p class="read-more-article-title">A guide to launching your titles in Asia</p>
+
+                    </a>
+                </div>
+
+
+                <div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-6 ">
+                    <a titlevalue="7" href="/lab/Article-Small-devices-big-challenges">
+                        <p class="read-more-article-image">
+                            <img src="/Images/Lab/Articles/320/13.png" alt="Read more">
+                        </p>
+                        <p class="read-more-article-title">Mobile Games - Small Devices, Big Challenges</p>
+
+                    </a>
+                </div>
+
+
+                <div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-6 ">
+                    <a titlevalue="7" href="/lab/Article-Is-player-support-hurting-your-games">
+                        <p class="read-more-article-image">
+                            <img src="/Images/Lab/Articles/320/14.png" alt="Read more">
+                        </p>
+                        <p class="read-more-article-title">Is player support hurting your games?</p>
+
+                    </a>
+                </div>
+
+
+                <div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-6 ">
+                    <a titlevalue="7" href="/lab/Article-4-Outsourcing-Lessons-From-A-Games-Audio-Pro">
+                        <p class="read-more-article-image">
+                            <img src="/Images/Lab/Articles/320/16.png" alt="Read more">
+                        </p>
+                        <p class="read-more-article-title">4 Outsourcing Lessons From A Games Audio Pro</p>
+
+                    </a>
+                </div>
+
+            </div>
+
+
+        </div>

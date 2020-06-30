@@ -85,8 +85,9 @@ namespace PTW.DataAccess.ServicesImpl
                     command.CommandType = CommandType.StoredProcedure;
                     command.CommandText = "Proc_RetrieveLatestInsights";
                     //  Execute command and get values from output parameters.
-                    DataTable dtResult = ExecuteTable(command);
                     command.AddParameterWithValue("@p_Languagecode", LanguageCode);
+                    DataTable dtResult = ExecuteTable(command);
+                    
                     if (dtResult != null && dtResult.Rows.Count > 0)
                     {
                         for (int i = 0; i < dtResult.Rows.Count; i++)
@@ -198,5 +199,183 @@ namespace PTW.DataAccess.ServicesImpl
 
             }
         }
+
+        public List<Labs> GetFutureLabArticles(string LabIdOrShortDescription)
+        {
+            CustomCommand command = null;
+            List<Labs> LabsList = new List<Labs>();
+            try
+            {
+                using (command = new CustomCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "RetrievTopFutureLABS";
+                    command.AddParameterWithValue("p_LabIdOrShortDescription", LabIdOrShortDescription);
+                    //  Execute command and get values from output parameters.
+                    DataSet dtResult = ExecuteDataSet(command);                    
+                    if (dtResult != null && dtResult.Tables[2].Rows.Count > 0)
+                    {
+                        for (int i = 0; i < dtResult.Tables[2].Rows.Count; i++)
+                        {
+                            Labs labs = new Labs();
+                            labs.LabId = Convert.ToInt32(dtResult.Tables[2].Rows[i]["LabId"]);
+                            labs.Name = Convert.ToString(dtResult.Tables[2].Rows[i]["Name"]);
+                            labs.ShortDescription = Convert.ToString(dtResult.Tables[2].Rows[i]["ShortDescription"]);
+                            labs.Description = Convert.ToString(dtResult.Tables[2].Rows[i]["Description"]);
+                            labs.IsActive = Convert.ToInt32(dtResult.Tables[2].Rows[i]["IsActive"]);
+                            labs.DefaultImageUrl = Convert.ToString(dtResult.Tables[2].Rows[i]["DefaultImageUrl"]);
+
+                            labs.LabType = Convert.ToString(dtResult.Tables[2].Rows[i]["LabType"]);
+                            //labs.CustomerExperience = Convert.ToBoolean(dtResult.Tables[2].Rows[i]["CustomerExperience"]);
+                            //labs.Engineering = Convert.ToBoolean(dtResult.Tables[2].Rows[i]["Engineering"]);
+                            //labs.Localization = Convert.ToBoolean(dtResult.Tables[2].Rows[i]["Localization"]);
+                            //labs.QualityAssurance = Convert.ToBoolean(dtResult.Tables[2].Rows[i]["QualityAssurance"]);
+                            //labs.Campaign = Convert.ToBoolean(dtResult.Tables[2].Rows[i]["Campaign"]);
+                            labs.ReadMoreUrl = Convert.ToString(dtResult.Tables[2].Rows[i]["ReadMoreUrl"]);
+                            labs.Stopped = Convert.ToInt32(dtResult.Tables[2].Rows[i]["Stopped"]);
+
+                            LabsList.Add(labs);
+                        }
+                    }
+
+                }
+                return LabsList;
+            }
+
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            finally
+            {
+                if (command != null) command.Dispose();
+                command = null;
+
+            }
+        }
+
+        public List<Labs> GetLabsArticleDetails(string LabIdOrShortDescription)
+        {
+            CustomCommand command = null;
+            List<Labs> LabsList = new List<Labs>();
+            try
+            {
+                using (command = new CustomCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "Proc_RetrieveLabDetailsById";
+                    command.AddParameterWithValue("p_LabIdOrShortDescription", LabIdOrShortDescription);
+                    //  Execute command and get values from output parameters.
+                    DataTable dtResult = ExecuteTable(command);
+                  
+                    if (dtResult != null && dtResult.Rows.Count > 0)
+                    {
+                        for (int i = 0; i < dtResult.Rows.Count; i++)
+                        {
+                            Labs labs = new Labs();
+
+                            labs.LabId = Convert.ToInt32(dtResult.Rows[i]["LabId"]);
+                            labs.ServiceTypeId = Convert.ToInt32(dtResult.Rows[i]["ServiceTypeId"]);
+                            //labs.LanguageCode = Convert.ToString(dtResult.Rows[i]["LanguageCode"]);
+                            labs.Name = Convert.ToString(dtResult.Rows[i]["Name"]);
+                            labs.ShortDescription = Convert.ToString(dtResult.Rows[i]["ShortDescription"]);
+                            labs.Description = Convert.ToString(dtResult.Rows[i]["Description"]);
+                            labs.ImageName = Convert.ToString(dtResult.Rows[i]["ImageName"]);
+                            labs.ImageUrl = Convert.ToString(dtResult.Rows[i]["ImageUrl"]);
+                            //labs.IsActive = Convert.ToInt32(dtResult.Rows[i]["IsActive"]);
+                            //labs.OnNewWebsiteNow = Convert.ToBoolean(dtResult.Rows[i]["OnNewWebsiteNow"]);
+                            labs.DesktopImageUrl = Convert.ToString(dtResult.Rows[i]["DesktopImageUrl"]);
+                            labs.TabImageNameHorizondaUrl = Convert.ToString(dtResult.Rows[i]["TabImageNameHorizondaUrl"]);
+                            labs.TabImageNamVerticalUrl = Convert.ToString(dtResult.Rows[i]["TabImageNamVerticalUrl"]);
+                            labs.MobileImageNameUrl = Convert.ToString(dtResult.Rows[i]["MobileImageNameUrl"]);
+                            labs.DefaultImageUrl = Convert.ToString(dtResult.Rows[i]["DefaultImageUrl"]);
+                            labs.ImageAlternateText = Convert.ToString(dtResult.Rows[i]["ImageAlternateText"]);                      
+                            labs.LabType = Convert.ToString(dtResult.Rows[i]["LabType"]);
+                            // labs.MetaTags = Convert.ToString(dtResult.Rows[i]["MetaTags"]);
+                            labs.DetailedName = Convert.ToString(dtResult.Rows[i]["DetailedName"]);
+                            labs.DetailedDescription = Convert.ToString(dtResult.Rows[i]["DetailedDescription"]);
+                            labs.DetailedShortOrder = Convert.ToString(dtResult.Rows[i]["DetailedShortOrder"]);
+                           
+
+                            LabsList.Add(labs);
+                        }
+                    }
+
+                }
+                return LabsList;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (command != null) command.Dispose();
+                command = null;
+            }
+        }
+
+        public List<Labs> GetLabCampaignArticleDetails(string LabIdOrShortDescription)
+        {
+            CustomCommand command = null;
+            List<Labs> LabsList = new List<Labs>();
+            try
+            {
+                using (command = new CustomCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "Proc_RetrieveLabDetailsById";
+                    command.AddParameterWithValue("@p_LabIdOrShortDescription", LabIdOrShortDescription);
+                    //  Execute command and get values from output parameters.
+                    DataTable dtResult = ExecuteTable(command);
+                    if (dtResult != null && dtResult.Rows.Count > 0)
+                    {
+                        for (int i = 0; i < dtResult.Rows.Count; i++)
+                        {
+                            Labs labs = new Labs();
+
+                            labs.LabId = Convert.ToInt32(dtResult.Rows[i]["LabId"]);
+                            labs.ServiceTypeId = Convert.ToInt32(dtResult.Rows[i]["ServiceTypeId"]);
+                            //labs.LanguageCode = Convert.ToString(dtResult.Rows[i]["LanguageCode"]);
+                            labs.Name = Convert.ToString(dtResult.Rows[i]["Name"]);
+                            labs.ShortDescription = Convert.ToString(dtResult.Rows[i]["ShortDescription"]);
+                            labs.Description = Convert.ToString(dtResult.Rows[i]["Description"]);
+                            labs.ImageName = Convert.ToString(dtResult.Rows[i]["ImageName"]);
+                            labs.ImageUrl = Convert.ToString(dtResult.Rows[i]["ImageUrl"]);
+                            //labs.IsActive = Convert.ToInt32(dtResult.Rows[i]["IsActive"]);
+                            //labs.OnNewWebsiteNow = Convert.ToBoolean(dtResult.Rows[i]["OnNewWebsiteNow"]);
+                            labs.DesktopImageUrl = Convert.ToString(dtResult.Rows[i]["DesktopImageUrl"]);
+                            labs.TabImageNameHorizondaUrl = Convert.ToString(dtResult.Rows[i]["TabImageNameHorizondaUrl"]);
+                            labs.TabImageNamVerticalUrl = Convert.ToString(dtResult.Rows[i]["TabImageNamVerticalUrl"]);
+                            labs.MobileImageNameUrl = Convert.ToString(dtResult.Rows[i]["MobileImageNameUrl"]);
+                            labs.DefaultImageUrl = Convert.ToString(dtResult.Rows[i]["DefaultImageUrl"]);
+                            labs.ImageAlternateText = Convert.ToString(dtResult.Rows[i]["ImageAlternateText"]);
+                            labs.LabType = Convert.ToString(dtResult.Rows[i]["LabType"]);
+                            // labs.MetaTags = Convert.ToString(dtResult.Rows[i]["MetaTags"]);
+                            
+                            labs.DetailedDescription = Convert.ToString(dtResult.Rows[i]["DetailedDescription"]);
+                            labs.DetailedShortOrder = Convert.ToString(dtResult.Rows[i]["DetailedShortOrder"]);
+
+
+                            LabsList.Add(labs);
+                        }
+                    }
+
+                }
+                return LabsList;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (command != null) command.Dispose();
+                command = null;
+            }
+        }
+
     }
 }

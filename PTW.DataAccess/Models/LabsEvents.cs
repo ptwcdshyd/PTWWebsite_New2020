@@ -11,5 +11,9 @@ namespace PTW.DataAccess.Models
         public List<Labs> labInsights { get; set; }
 
         public List<Labs> allLabs { get; set; }
+
+        public List<Labs> FutureLabArticles { get; set; }
+
+        public List<Labs> LabArticledetails { get; set; }
     }
 }

@@ -122,10 +122,13 @@ namespace PTW.DBAccess
                         cmd.Connection = conn;
                         conn.Open();
 
-                        MySqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                        dt.Load(dr);
+                        MySqlDataAdapter adap = new MySqlDataAdapter(cmd);
+                        adap.Fill(dt);
+                        //MySqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                        //dt.Load(dr);
 
-                        dr.Close();
+                        //dr.Close();
+                        conn.Close();
                     }
                 }
 

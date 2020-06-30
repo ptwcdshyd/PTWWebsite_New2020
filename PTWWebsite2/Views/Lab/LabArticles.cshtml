@@ -1,0 +1,204 @@
+﻿@model PTW.DataAccess.Models.LabsEvents
+@{
+    ViewData["Title"] = "LabArticles";
+}
+
+<h2>LabArticles</h2>
+
+
+<link href="~/css/clean-blog.min.css" rel="stylesheet" />
+<link href="~/css/custom.css" rel="stylesheet" />
+<link href="~/css/sticky.css" rel="stylesheet" />
+<link href="~/css/lab-article.css" rel="stylesheet" />
+<style>
+
+    body {
+        background: #fff;
+    }
+
+    #mainNav {
+        background: #fff !important;
+    }
+
+    .change .bar3,
+    .change .bar1 {
+        background-color: #000 !important;
+    }
+</style>
+
+@if (Model != null)
+{
+
+    <div class="container-fluid lab-article-container">
+        <div class="jumbotron lab">
+
+            <div class="(@Model.LabArticledetails[0].LabId=27 || @Model.LabArticledetails[0].LabId=28 || @Model.LabArticledetails[0].LabId=29) ? " lab-title-nobox" : "lab-title-box">
+                @*<p class="lab-article-title"><"@Model.LabArticledetails[0].Name"></p>*@
+                
+            </div>
+            <picture>
+                @*<source srcset="@item.DeskL_ImageURL" media="(min-width: 1367px)">
+                    <source srcset="@item.Desk_ImageURL" media="(min-width: 1113px)">
+                    <source srcset="@item.TabH_ImageURL" media="(min-width: 835px)">
+                    <source srcset="@item.TabV_ImageURL" media="(min-width: 400px)">*@
+                <source srcset="@Model.LabArticledetails[0].DesktopImageUrl" media="(min-width: 100px)">
+                <img class="b-lazy" src="@Model.LabArticledetails[0].DesktopImageUrl" data-src="@Model.LabArticledetails[0].DesktopImageUrl" alt="">
+            </picture>
+            @*<a id="buttonPlayVideo" onclick="scroller('.scrollToIframe');">
+                    <div class="<%# Convert.ToInt32(Eval(" LabId"))= =27 || Convert.ToInt32(Eval("LabId"))= =28|| Convert.ToInt32(Eval("LabId"))= =29 ? "playvideo d-none-1" : "playvideo" %>"><span class="arrowdown"></span></div>
+                </a>
+                <a id="buttonPlayVideoWP" onclick="scroller('.scrollToIframe');">
+                    <div class="<%# Convert.ToInt32(Eval(" LabId"))= =27 || Convert.ToInt32(Eval("LabId"))= =28 || Convert.ToInt32(Eval("LabId"))= =29? "playvideo d-none-1" : "playvideo white-paper" %>"><span class="wptext">Whitepaper</span><span class="arrowdown camparrow"></span></div>
+                </a>*@
+        </div>
+    </div>
+
+    <div class="article-lab-container">
+        <div class="article-lab" style="padding-top: 50px; padding-bottom: 50px;">
+            <div class="row no-margin">
+                <div class="col-xl-3 col-lg-4 col-xs-12 col-md-4 col-sm-12 lab-article-share">
+                    @*<p class="category-text">@Model.LabArticledetails[0].CustomerExperience @Model.LabArticledetails[0].QualityAssurance@Model.LabArticledetails[0].Localization@Model.LabArticledetails[0].AudioProduction@Model.LabArticledetails[0].Engineering@Model.LabArticledetails[0].Campaign></p>*@
+                    <p class="category-text">Campaign</p>
+
+                    <p class="lb-share-text article-text">Share Article</p>
+                    <p class="lb-share-text case-text">Share Case Study</p>
+                    <p class="share-icons" style="margin-bottom: 27px; margin-top: 27px;">
+                        <a href="https://twitter.com/share?ref_src=ptw&amp;text=How to build a video game localization strategy in 5 steps&amp;url=https://www.ptw.com/lab/article-game-localization-strategy&amp;via=ptw" target="_blank" rel="noopener noreferrer"><span><i class="fa fa-twitter"></i></span></a>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.ptw.com/lab/article-game-localization-strategy" target="_blank" rel="noopener noreferrer"><span class="no-hide-small"><i class="fa fa-facebook"></i></span></a>
+                        <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.ptw.com/lab/article-game-localization-strategy&amp;title=How to build a video game localization strategy in 5 steps&amp;source=https://ptw.com" target="_blank" rel="noopener noreferrer"><span><i class="fa fa-linkedin-square"></i></span></a>
+                    </p>
+                    <a href="/lab">
+                        <p class="lb-main-nav">Back to LAB main</p>
+                    </a>
+                </div>
+                <div class="col-xl-6 col-lg-8 col-xs-12 col-md-8 col-sm-12 lab-article-desc" style="font-size: 26px;">
+                    <p></p>
+                    <p>@Html.Raw(Model.LabArticledetails[0].Description)</p>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="ContentPlaceHolder1_postContainer" class="lab-post-container lab-container-31">
+        <div class="row">
+          
+            @foreach (var item in Model.LabArticledetails)
+            {
+                <div class="col-xl-3 col-lg-4 col-xs-12 col-md-4 col-sm-12">
+
+                    <p class="subpost-num">
+
+                       
+                    </p>
+                    <p class="subpost-title">
+                        @item.DetailedName
+                    </p>
+                </div>
+
+                <div class="col-xl-6 col-lg-8 col-xs-12 col-md-8 col-sm-12 subpost-article">
+                    <p>@Html.Raw(item.DetailedDescription)<br><br>   </p>
+                    @*<p>Jumping head-first into a localization project without a fully-fledged localization strategy is a foolhardy and risky move. Not just because a poor localization turns players off your game (though it really does), but because it actively damages your organization’s reputation. And that makes players second guess buying another game from you. In other words, a bad localization actively loses future revenue (<a href="https://legendsoflocalization.com/bad-game-translation-hall-of-fame/" target="_blank">or worse, puts you in the bad game translation hall of fame</a>).      <br><br>   And this makes a game localization strategy critical. Because with the right strategy acts as a guide to what you’re trying to achieve and how you’ll get there.    <br><br>    So here it is, a five-step guide to building a video game localization strategy.    <br><br>   </p>*@
+
+                </div>
+            }
+        </div>
+    </div>
+    <div class="lab-read-more-container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <p class="read-more-header">Read more on      CAMPAIGNS</p>
+            </div>
+        </div>
+
+        
+        <div class="row">
+            @foreach (var item in Model.FutureLabArticles)
+            {
+                <div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-6 ">
+                    <a titlevalue="7" href="/lab/@item.ShortDescription">
+                        <p class="read-more-article-image">
+                            <img src="@item.ReadMoreUrl" alt="Read more">
+                        </p>
+                        <p class="read-more-article-title">@item.Name</p>
+
+                    </a>
+                </div>
+
+
+                @*<div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-6 ">
+                <a titlevalue="7" href="/lab/LabCampaignArticle25">
+                    <p class="read-more-article-image">
+                        <img src="@item.ReadMoreUrl" alt="Read more">
+                    </p>
+                    <p class="read-more-article-title">@item.Name</p>
+
+                </a>
+            </div>*@
+
+
+                @*<div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-6 ">
+                <a titlevalue="7" href="/lab/Article-Small-devices-big-challenges">
+                    <p class="read-more-article-image">
+                        <img src="@item.ReadMoreUrl" alt="Read more">
+                    </p>
+                    <p class="read-more-article-title">@Model.FutureLabArticles[2].Name</p>
+
+                </a>
+            </div>
+
+
+            <div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-6 ">
+                <a titlevalue="7" href="/lab/Article-Is-player-support-hurting-your-games">
+                    <p class="read-more-article-image">
+                        <img src="@Model.FutureLabArticles[3].ReadMoreUrl" alt="Read more">
+                    </p>
+                    <p class="read-more-article-title">@Model.FutureLabArticles[3].Name</p>
+
+                </a>
+            </div>*@
+            }
+            </div>
+        
+        </div>
+}
+
+<script>
+    $(document).ready(function () {
+        if (($(".subpost-num")[0].innerHTML).trim() == '00') {
+            $(".subpost-num").css("cssText", "visibility:hidden");
+            $(".subpost-title").css("cssText", "visibility:hidden");
+
+            $(".lab-article-desc").css("cssText", "font-size: 26px;");
+            $(".lab-article-tag").html('Video & Article below');
+            $("#buttonPlayVideoWP").css("cssText", "display:none  !important");
+        }
+        else if (($(".subpost-num")[0].innerHTML).trim() == '0-1') {
+            $(".subpost-num").css("cssText", "visibility:hidden");
+            $(".subpost-title").css("cssText", "visibility:hidden");
+            $(".lab-article-desc").css("cssText", "font-size: 26px;");
+        }
+        else if (($(".subpost-num")[0].innerHTML).trim() == '0-2') {
+            $(".subpost-num").css("cssText", "visibility:hidden;line-height: 0px;");
+            $(".subpost-title").css("cssText", "visibility:hidden");
+            $(".subpost-article").css("cssText", "border-top:none;padding-top: 0px;");
+            $(".lab-article-desc").css("cssText", "font-size: 26px;");
+            $("#buttonPlayVideo").css("cssText", "display:none  !important");
+        }
+        else { $("#buttonPlayVideo").css("cssText", "display:none  !important"); $("#buttonPlayVideoWP").css("cssText", "display:none  !important"); }
+    });
+    $(window).on('load resize', function () {
+        if (($(".subpost-num")[0].innerHTML).trim() == '00') {
+            var win = $(this);
+            if (win.width() > 560) {
+                $("p.share-icons").css("cssText", "margin-bottom: 27px;margin-top: 27px;");
+            }
+            else if (win.width() < 576) {
+                $("p.share-icons").css("cssText", "margin-bottom: 0px;margin-top: -43px;");
+            }
+
+            if (win.width() < 561) { $(".article-lab").css("cssText", "padding-top: 0px;padding-bottom: 0px;"); }
+            else if ((win.width() >= 561) && (win.width() < 992)) { $(".article-lab").css("cssText", "padding-top: 40px;padding-bottom: 40px;"); }
+            else if ((win.width() >= 992) && (win.width() < 1200)) { $(".article-lab").css("cssText", "padding-top: 35px;padding-bottom: 70px;"); }
+            else { $(".article-lab").css("cssText", "padding-top: 50px;padding-bottom: 50px;"); }
+        }
+    });</script>

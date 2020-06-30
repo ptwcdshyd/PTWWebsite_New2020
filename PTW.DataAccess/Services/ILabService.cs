@@ -12,5 +12,11 @@ namespace PTW.DataAccess.Services
         List<Labs> GetAllLatestInsights(string LanguageCode);
 
         List<Labs> GetSlider();
+
+        List<Labs> GetFutureLabArticles(string LabIdOrShortDescription);
+
+        List<Labs> GetLabsArticleDetails(string LabIdOrShortDescription);
+
+        List<Labs> GetLabCampaignArticleDetails(string LabIdOrShortDescription);
     }
 }

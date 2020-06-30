@@ -52,6 +52,12 @@ namespace PTW.DataAccess.Models
         public string CampaignImageUrl { get; set; }
         public string LatestInsightImageUrl { get; set; }
         public int Stopped { get; set; }
+
+        public string DetailedDescription { get; set; }
+
+        public string DetailedName { get; set; }
+        public string DetailedShortOrder { get; set; }
+        public string ReadMoreUrl { get; set; }
         public List<Languages> Languages { get; set; }
 
         public List<Labs> LabsList { get; set; }
@@ -59,5 +65,6 @@ namespace PTW.DataAccess.Models
        
     }
 
-   
+    
+
 }
