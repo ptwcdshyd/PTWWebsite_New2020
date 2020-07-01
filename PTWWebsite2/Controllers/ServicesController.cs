@@ -252,7 +252,58 @@ namespace PTWWebsite2.Controllers
             masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Audio Production")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
             ViewData["Header"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Header")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
             ViewData["Footer"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Footer")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
-            return View(masterPage);
+            MasterPage masterPage1 = _masterService.GetNewsAndLabDetails("AUDIO", 1);
+            masterPage1.HtmlContent = masterPage.HtmlContent;
+            string heading = "<div class=\"col-lg-12 col-md-12 col-sm-12 col-sx-12\"><p id=\"ContentPlaceHolder1_P1\">News &amp; LAB Feed</p></div>";
+            switch (culture)
+            {
+                case null:
+                    string content = "";
+
+                    content = "<div class=\"col-lg-12 col-md-12 col-sm-12 col-sx-12\"><p id=\"ContentPlaceHolder1_P1\">News &amp; LAB Feed</p></div>";
+                    string englishContent = Content(masterPage1.NewsAndLabs, content, "more");
+
+                    masterPage1.HtmlContent = masterPage1.HtmlContent.Replace(heading, englishContent);
+
+                    break;
+                case "fr-CA":
+                    string content1 = "";
+
+                    content1 = "<div class=\"col-lg-12 col-md-12 col-sm-12 col-sx-12\"><p id=\"ContentPlaceHolder1_P1\">Fil LABO &amp; Infos</p></div>";
+                    string frenchContent = Content(masterPage1.NewsAndLabs, content1, "Plus");
+
+                    masterPage1.HtmlContent = masterPage1.HtmlContent.Replace(heading, frenchContent);
+
+                    break;
+                case "ko":
+                    string content2 = "";
+
+                    content2 = "<div class=\"col-lg-12 col-md-12 col-sm-12 col-sx-12\"><p id=\"ContentPlaceHolder1_P1\">소식 및 LAB 피드</p></div>";
+                    string koreanContent = Content(masterPage1.NewsAndLabs, content2, "더 보기");
+
+                    masterPage1.HtmlContent = masterPage1.HtmlContent.Replace(heading, koreanContent);
+
+                    break;
+                case "ja":
+                    string content3 = "";
+
+                    content3 = "<div class=\"col-lg-12 col-md-12 col-sm-12 col-sx-12\"><p id=\"ContentPlaceHolder1_P1\">ニュースとLABフィード</p></div>";
+                    string japaneseContent = Content(masterPage1.NewsAndLabs, content3, "詳細");
+
+                    masterPage1.HtmlContent = masterPage1.HtmlContent.Replace(heading, japaneseContent);
+
+                    break;
+                case "zh-CHS":
+                    string content4 = "";
+
+                    content4 = "<div class=\"col-lg-12 col-md-12 col-sm-12 col-sx-12\"><p id=\"ContentPlaceHolder1_P1\">新闻 &amp; 实验反馈</p></div>";
+                    string simplifiedChineseContent = Content(masterPage1.NewsAndLabs, content4, "更多");
+
+                    masterPage1.HtmlContent = masterPage1.HtmlContent.Replace(heading, simplifiedChineseContent);
+
+                    break;
+            }
+            return View(masterPage1);
         }
 
         [Route("Engineering")]
@@ -266,7 +317,58 @@ namespace PTWWebsite2.Controllers
             masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Engineering")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
             ViewData["Header"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Header")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
             ViewData["Footer"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Footer")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
-            return View(masterPage);
+            MasterPage masterPage1 = _masterService.GetNewsAndLabDetails("ENGINEERING", 1);
+            masterPage1.HtmlContent = masterPage.HtmlContent;
+            string heading = "<div class=\"col-lg-12 col-md-12 col-sm-12 col-sx-12\"><p id=\"ContentPlaceHolder1_P1\">News &amp; LAB Feed</p></div>";
+            switch (culture)
+            {
+                case null:
+                    string content = "";
+
+                    content = "<div class=\"col-lg-12 col-md-12 col-sm-12 col-sx-12\"><p id=\"ContentPlaceHolder1_P1\">News &amp; LAB Feed</p></div>";
+                    string englishContent = Content(masterPage1.NewsAndLabs, content, "more");
+
+                    masterPage1.HtmlContent = masterPage1.HtmlContent.Replace(heading, englishContent);
+
+                    break;
+                case "fr-CA":
+                    string content1 = "";
+
+                    content1 = "<div class=\"col-lg-12 col-md-12 col-sm-12 col-sx-12\"><p id=\"ContentPlaceHolder1_P1\">Fil LABO &amp; Infos</p></div>";
+                    string frenchContent = Content(masterPage1.NewsAndLabs, content1, "Plus");
+
+                    masterPage1.HtmlContent = masterPage1.HtmlContent.Replace(heading, frenchContent);
+
+                    break;
+                case "ko":
+                    string content2 = "";
+
+                    content2 = "<div class=\"col-lg-12 col-md-12 col-sm-12 col-sx-12\"><p id=\"ContentPlaceHolder1_P1\">소식 및 LAB 피드</p></div>";
+                    string koreanContent = Content(masterPage1.NewsAndLabs, content2, "더 보기");
+
+                    masterPage1.HtmlContent = masterPage1.HtmlContent.Replace(heading, koreanContent);
+
+                    break;
+                case "ja":
+                    string content3 = "";
+
+                    content3 = "<div class=\"col-lg-12 col-md-12 col-sm-12 col-sx-12\"><p id=\"ContentPlaceHolder1_P1\">ニュースとLABフィード</p></div>";
+                    string japaneseContent = Content(masterPage1.NewsAndLabs, content3, "詳細");
+
+                    masterPage1.HtmlContent = masterPage1.HtmlContent.Replace(heading, japaneseContent);
+
+                    break;
+                case "zh-CHS":
+                    string content4 = "";
+
+                    content4 = "<div class=\"col-lg-12 col-md-12 col-sm-12 col-sx-12\"><p id=\"ContentPlaceHolder1_P1\">新闻 &amp; 实验反馈</p></div>";
+                    string simplifiedChineseContent = Content(masterPage1.NewsAndLabs, content4, "更多");
+
+                    masterPage1.HtmlContent = masterPage1.HtmlContent.Replace(heading, simplifiedChineseContent);
+
+                    break;
+            }
+            return View(masterPage1);
         }
     }
 }
