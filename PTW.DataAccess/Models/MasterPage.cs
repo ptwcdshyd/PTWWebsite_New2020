@@ -8,9 +8,9 @@ namespace PTW.DataAccess.Models
 {
     public class MasterPage
     {
-       // public string HeaderContent { get; set; }
-      //  public string FooterContent { get; set; }
-
+        // public string HeaderContent { get; set; }
+        //  public string FooterContent { get; set; }
+        public string FileString { get; set; }
         public string HtmlContent { get; set; }
 
         //public string ModuleName { get; set; }
@@ -57,6 +57,7 @@ namespace PTW.DataAccess.Models
 
     public class NewsAndLabs
     {
+        public string Type { get; set; }
         public string Title { get; set; }
         public string ShortDescription { get; set; }
     }

@@ -348,6 +348,7 @@ namespace PTW.DataAccess.ServicesImpl
                         for (int i = 0; i < result.Tables[0].Rows.Count; i++)
                         {
                             NewsAndLabs obj = new NewsAndLabs();
+                            obj.Type = result.Tables[0].Rows[i]["Type"].ToString();
                             obj.Title= result.Tables[0].Rows[i]["Title"].ToString();
                             obj.ShortDescription= result.Tables[0].Rows[i]["ShortDescription"].ToString();
                             masterPage.NewsAndLabs.Add(obj);

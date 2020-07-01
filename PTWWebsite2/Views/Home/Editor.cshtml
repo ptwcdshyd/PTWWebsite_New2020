@@ -5,11 +5,13 @@
 }
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.min.css">
 @*<link href="~/css/Editor/Css/chosen.min.css" rel="stylesheet" />*@
+
+<link href="~/css/jquery.gritter.css" rel="stylesheet" />
 <script src="~/js/Editor/jquery-3.5.1.min.js"></script>
 <script src="~/js/Editor/popper.min.js"></script>
 <script src="~/js/Editor/1.9.1.jquery.js"></script>
 <script src="~/js/Editor/chosen.jquery.min.js"></script>
-
+<script src="~/js/jquery.gritter.min.js"></script>
 <link href="~/css/Editor/Css/4.4.1.bootstrap.min.css" rel="stylesheet" />
 <script src="~/js/Editor/4.4.1.bootstrap.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
@@ -86,10 +88,12 @@
 <div class="contentpanel report" style="border: 1px solid #00b8ff85;width: 1180px;margin-top: 45px;margin-left:50px;">
     <div class="row distribute-container">
         <div class="col-md-2" style="margin-top:45px;margin-left:100px">
+            <label style="display:flex !important">Module</label>
             @Html.DropDownList("ModuleId", new SelectList(Model.ModuleList, "ModuleId", "ModuleName"), htmlAttributes: new { @class = "dropdown-select my-3 float-label", onchange = "GetContent();", autocomplete = "off" })
 
         </div>
         <div class="col-md-2" style="margin-top:45px;margin-left:64px">
+            <label style="display:flex !important">Language</label>
             @Html.DropDownList("LanguageCode", new SelectList(Model.LanguageList, "LanguageCode", "Language"), "Languages", htmlAttributes: new { @class = "dropdown-select my-3 float-label", onchange = "GetContent();", autocomplete = "off" })
 
 
@@ -98,12 +102,15 @@
 
     <div class="row distribute-container myfile">
         <div class="col-lg-10 col-md-8" style="margin-top:45px;margin-left:98px">
-            <input id="image" type="file" class="form-control" style="display:none"/>
+            <label id="service" style="display:none">Dimentions(95*95)</label>
+            <input id="image" width="95" height="95" type="file" accept=".png" class="form-control" style="display:none" />
         </div>
+
         <div class="col-lg-10 col-md-8" style="margin-top:45px;margin-left:98px">
-            <input id="image1" type="file" class="form-control" style="display:none"/>
+            <label id="industries" style="display:none">Dimentions(95*95)</label>
+            <input id="image1" width="95" height="95" type="file" accept=".png" class="form-control" style="display:none" />
         </div>
-        
+
     </div>
 
     <div class="row distribute-container">
@@ -131,32 +138,45 @@
         if ($(this).val() == 5) {
             $("#image").show();
             $("#image1").show();
+            $("#service").show();
+            $("#industries").show();
+
             $("#UploadImage").show();
         }
         else if ($(this).val() == 6) {
             $("#image").show();
             $("#image1").show();
+            $("#service").show();
+            $("#industries").show();
             $("#UploadImage").show();
         }
         else if ($(this).val() == 7) {
             $("#image").show();
             $("#image1").show();
+            $("#service").show();
+            $("#industries").show();
             $("#UploadImage").show();
         }
         else if ($(this).val() == 8) {
             $("#image").show();
             $("#image1").show();
+            $("#service").show();
+            $("#industries").show();
             $("#UploadImage").show();
         }
         else if ($(this).val() == 9) {
             $("#image").show();
             $("#image1").show();
+            $("#service").show();
+            $("#industries").show();
             $("#UploadImage").show();
         }
         else {
             $("#image").hide();
             $("#UploadImage").hide();
             $("#image1").hide();
+            $("#service").hide();
+            $("#industries").hide();
         }
     });
 
@@ -167,7 +187,7 @@
         dialogsInBody: true
     });
 
-    
+
     $(document).ready(function () {
         $("#ModuleId").chosen();
         $("#LanguageCode").chosen();
@@ -213,129 +233,154 @@
     }
 
 
-    function UpdateContent() {
+     function UpdateContent() {
+        if (Validate()) {
+           if ($("#LanguageCode").children("option:selected").val() != "" && $("#ModuleId").children("option:selected").val() > 0) {
+                $("#PostBackMsg").show();
 
-        if ($("#LanguageCode").children("option:selected").val() != "" && $("#ModuleId").children("option:selected").val() > 0) {
-            $("#PostBackMsg").show();
-
-            var fd = new FormData();
-            if ($("#ModuleId").val() == 5) {
-                var files1 = $('#image')[0].files[0];
-                var files2 = $('#image1')[0].files[0];
-                if (files1 != undefined) {
-                    fd.append(files1.name, files1);
-                }
-                if (files2 != undefined) {
-                    fd.append(files2.name, files2);
-                }
-        
-                fd.append('ModuleId', parseInt($("#ModuleId").children("option:selected").val()));
-                fd.append('LanguageCode', $("#LanguageCode").children("option:selected").val());
-                fd.append('Content', $('#summernote').summernote('code'));
-            }
-            else if ($("#ModuleId").val() == 6) {
-                var files1 = $('#image')[0].files[0];
-                var files2 = $('#image1')[0].files[0];
-
-                if (files1 != undefined) {
-                    fd.append(files1.name, files1);
-                }
-                if (files2 != undefined) {
-                    fd.append(files2.name, files2);
-                }
-
-                fd.append('ModuleId', parseInt($("#ModuleId").children("option:selected").val()));
-                fd.append('LanguageCode', $("#LanguageCode").children("option:selected").val());
-                fd.append('Content', $('#summernote').summernote('code'));
-            }
-            else if ($("#ModuleId").val() == 7) {
-                var files1 = $('#image')[0].files[0];
-                var files2 = $('#image1')[0].files[0];
-                if (files1 != undefined) {
-                    fd.append(files1.name, files1);
-                }
-                if (files2 != undefined) {
-                    fd.append(files2.name, files2);
-                }
-                fd.append('ModuleId', parseInt($("#ModuleId").children("option:selected").val()));
-                fd.append('LanguageCode', $("#LanguageCode").children("option:selected").val());
-                fd.append('Content', $('#summernote').summernote('code'));
-            }
-            else if ($("#ModuleId").val() == 8) {
-                var files1 = $('#image')[0].files[0];
-                var files2 = $('#image1')[0].files[0];
-                if (files1 != undefined) {
-                    fd.append(files1.name, files1);
-                }
-                if (files2 != undefined) {
-                    fd.append(files2.name, files2);
-                }
-                fd.append('ModuleId', parseInt($("#ModuleId").children("option:selected").val()));
-                fd.append('LanguageCode', $("#LanguageCode").children("option:selected").val());
-                fd.append('Content', $('#summernote').summernote('code'));
-            }
-            else if ($("#ModuleId").val() == 9) {
-                var files1 = $('#image')[0].files[0];
-                var files2 = $('#image1')[0].files[0];
-                if (files1 != undefined) {
-                    fd.append(files1.name, files1);
-                }
-                if (files2 != undefined) {
-                    fd.append(files2.name, files2);
-                }
-                fd.append('ModuleId', parseInt($("#ModuleId").children("option:selected").val()));
-                fd.append('LanguageCode', $("#LanguageCode").children("option:selected").val());
-                fd.append('Content', $('#summernote').summernote('code'));
-            }
-            else {
-                fd.append('ModuleId', parseInt($("#ModuleId").children("option:selected").val()));
-                fd.append('LanguageCode', $("#LanguageCode").children("option:selected").val());
-                fd.append('Content', $('#summernote').summernote('code'));
-            }
-
-            $.ajax({
-                type: "POST",
-                url: '@Url.Action("UpdateContentByModelIdAndLanguageId", "Home")',
-                data: fd,
-                contentType: false,
-                processData: false,
-               
-                success: function (result) {
-                   
-                    if (result == 'Logout') {
-                        window.location = '../Logout';
+                var fd = new FormData();
+                if ($("#ModuleId").val() == 5) {
+                    var files1 = $('#image')[0].files[0];
+                    var files2 = $('#image1')[0].files[0];
+                    var fileString = '';
+                    if (files1 != undefined) {
+                        fd.append(files1.name, files1);
+                        fileString = fileString + 'file1,';
                     }
-                    
+                    if (files2 != undefined) {
+                        fd.append(files2.name, files2);
+                        fileString = fileString + 'file2';
+                    }
 
-                    if (result.Message == null) {
-                        if (result.ResultCode == 0) {
-                            $("#lblMessage").css({ display: 'inline' });
+                    fd.append('ModuleId', parseInt($("#ModuleId").children("option:selected").val()));
+                    fd.append('LanguageCode', $("#LanguageCode").children("option:selected").val());
+                    fd.append('Content', $('#summernote').summernote('code'));
+                    fd.append('FileString', fileString);
+                }
+                else if ($("#ModuleId").val() == 6) {
+                    var files1 = $('#image')[0].files[0];
+                    var files2 = $('#image1')[0].files[0];
+
+                    var fileString = '';
+                    if (files1 != undefined) {
+                        fd.append(files1.name, files1);
+                        fileString = fileString + 'file1,';
+                    }
+                    if (files2 != undefined) {
+                        fd.append(files2.name, files2);
+                        fileString = fileString + 'file2';
+                    }
+
+                    fd.append('ModuleId', parseInt($("#ModuleId").children("option:selected").val()));
+                    fd.append('LanguageCode', $("#LanguageCode").children("option:selected").val());
+                    fd.append('Content', $('#summernote').summernote('code'));
+                    fd.append('FileString', fileString);
+                }
+                else if ($("#ModuleId").val() == 7) {
+                    var files1 = $('#image')[0].files[0];
+                    var files2 = $('#image1')[0].files[0];
+
+                    var fileString = '';
+                    if (files1 != undefined) {
+                        fd.append(files1.name, files1);
+                        fileString = fileString + 'file1,';
+                    }
+                    if (files2 != undefined) {
+                        fd.append(files2.name, files2);
+                        fileString = fileString + 'file2';
+                    }
+
+                    fd.append('ModuleId', parseInt($("#ModuleId").children("option:selected").val()));
+                    fd.append('LanguageCode', $("#LanguageCode").children("option:selected").val());
+                    fd.append('Content', $('#summernote').summernote('code'));
+                    fd.append('FileString', fileString);
+                }
+                else if ($("#ModuleId").val() == 8) {
+                    var files1 = $('#image')[0].files[0];
+                    var files2 = $('#image1')[0].files[0];
+
+                    var fileString = '';
+                    if (files1 != undefined) {
+                        fd.append(files1.name, files1);
+                        fileString = fileString + 'file1,';
+                    }
+                    if (files2 != undefined) {
+                        fd.append(files2.name, files2);
+                        fileString = fileString + 'file2';
+                    }
+
+                    fd.append('ModuleId', parseInt($("#ModuleId").children("option:selected").val()));
+                    fd.append('LanguageCode', $("#LanguageCode").children("option:selected").val());
+                    fd.append('Content', $('#summernote').summernote('code'));
+                    fd.append('FileString', fileString);
+                }
+                else if ($("#ModuleId").val() == 9) {
+                    var files1 = $('#image')[0].files[0];
+                    var files2 = $('#image1')[0].files[0];
+
+                    var fileString = '';
+                    if (files1 != undefined) {
+                        fd.append(files1.name, files1);
+                        fileString = fileString + 'file1,';
+                    }
+                    if (files2 != undefined) {
+                        fd.append(files2.name, files2);
+                        fileString = fileString + 'file2';
+                    }
+
+                    fd.append('ModuleId', parseInt($("#ModuleId").children("option:selected").val()));
+                    fd.append('LanguageCode', $("#LanguageCode").children("option:selected").val());
+                    fd.append('Content', $('#summernote').summernote('code'));
+                    fd.append('FileString', fileString);
+                }
+                else {
+                    fd.append('ModuleId', parseInt($("#ModuleId").children("option:selected").val()));
+                    fd.append('LanguageCode', $("#LanguageCode").children("option:selected").val());
+                    fd.append('Content', $('#summernote').summernote('code'));
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("UpdateContentByModelIdAndLanguageId", "Home")',
+                    data: fd,
+                    contentType: false,
+                    processData: false,
+
+                    success: function (result) {
+
+                        if (result == 'Logout') {
+                            window.location = '../Logout';
+                        }
+                        if (result.message == null) {
+                            if (result.ResultCode == 0) {
+                                $("#lblMessage").css({ display: 'inline' });
+                            }
+
+                            else {
+                                $('#summernote').summernote('code', result.HtmlContent);
+                            }
+                            $("#image").val(null);
+                            $("#image1").val(null);
+                            var alertmsg = "Successfully updated";
+                            AlertMessage('growl-success', 'Information', alertmsg, false, 3000);
+
+                            $("#PostBackMsg").fadeOut("slow");
                         }
 
-                        //else {
-                        //    $('#summernote').summernote('code', result.HtmlContent);
-                        //}
-                        $("#PostBackMsg").fadeOut("slow");
-        
-                    }
-                    else {
-                        alert(result.Message);
-                        $("#PostBackMsg").fadeOut("slow");
-                    }
-                    
+                        else {
+                            AlertMessage('growl-danger', 'Validation', result.message, false, 3000);
+                        }
+                    },
 
-              
-                },
-
-                error: function (err) {
-                    if (err.status === 0) {
-                        window.location = '../Logout';
+                    error: function (err) {
+                        if (err.status === 0) {
+                            window.location = '../Logout';
+                        }
+                        $("#PostBackMsg").fadeOut("slow");
                     }
-                    $("#PostBackMsg").fadeOut("slow");
-                }
-            });
+                });
+            }
         }
-
     }
 
     function UpLoadImage() {
@@ -343,7 +388,7 @@
         var formData = new FormData();
         formData.append('files', $("#image")[0].files[0]);
         formData.append('files', $("#image1")[0].files[0]);
-         
+
 
         var jqxhr = $.ajax({
             url: "../Home/UploadImage",
@@ -374,7 +419,7 @@
                 else {
                     alert(data.errorMessage);
                 }
-                
+
 
             })
             .fail(function (jqXhr, textStatus, errorThrown) {
@@ -389,6 +434,52 @@
         //$("#UploadImage").hide();
     }
 
+    function Validate() {
+        if ($("#ModuleId").val() == 0) {
+            var message = "please select module";
+            AlertMessage('growl-danger', 'Validation', message, false, 3000);
+
+            return false;
+        }
+        else if ($("#LanguageCode").val() == "") {
+            var errorMeaasage = "please select language";
+            AlertMessage('growl-danger', 'Validation', errorMeaasage, false, 3000);
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+    function AlertMessage(class_name, title, alert, boolstick, timesec) {
+        jQuery.gritter.add({
+            title: title,
+            text: alert,
+            class_name: class_name,
+            image: '../images/screen.png',
+            sticky: boolstick,
+            time: timesec,
+            before_open: function () {
+                $('.gritter-item-wrapper').remove();
+            }
+        });
+        return false;
+    };
+    function Validate() {
+        if ($("#ModuleId").val() == 0) {
+            var message = "please select module";
+            AlertMessage('growl-danger', 'Validation', message, false, 3000);
+
+            return false;
+        }
+        else if ($("#LanguageCode").val() == "") {
+            var errorMeaasage = "please select language";
+            AlertMessage('growl-danger', 'Validation', errorMeaasage, false, 3000);
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
 </script>
 
 
