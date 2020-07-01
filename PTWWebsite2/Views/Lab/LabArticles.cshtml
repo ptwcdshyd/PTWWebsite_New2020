@@ -2,10 +2,6 @@
 @{
     ViewData["Title"] = "LabArticles";
 }
-
-<h2>LabArticles</h2>
-
-
 <link href="~/css/clean-blog.min.css" rel="stylesheet" />
 <link href="~/css/custom.css" rel="stylesheet" />
 <link href="~/css/sticky.css" rel="stylesheet" />
@@ -84,19 +80,27 @@
           
             @foreach (var item in Model.LabArticledetails)
             {
-                <div class="col-xl-3 col-lg-4 col-xs-12 col-md-4 col-sm-12">
-
-                    <p class="subpost-num">
-
-                       
-                    </p>
+                string i = "0" + @item.DetailedShortOrder;
+            <div class="col-xl-3 col-lg-4 col-xs-12 col-md-4 col-sm-12">
+                @if (item.DetailedName == "")
+                {                   
+                }
+                else
+                {
+                <p class="subpost-num">
+                    @*<%# String.Format("0{0}", Eval("DetailedShortOrder")) %>*@
+                    @*@item.DetailedShortOrder*@
+                    @i
+                    @*(@item.DetailedShortOrder =="" ? 0 @item.DetailedShortOrder :"")*@
+                </p>
                     <p class="subpost-title">
                         @item.DetailedName
                     </p>
-                </div>
+                }
+            </div>
 
                 <div class="col-xl-6 col-lg-8 col-xs-12 col-md-8 col-sm-12 subpost-article">
-                    <p>@Html.Raw(item.DetailedDescription)<br><br>   </p>
+                    <p>@Html.Raw(item.DetailedDescription)  </p>
                     @*<p>Jumping head-first into a localization project without a fully-fledged localization strategy is a foolhardy and risky move. Not just because a poor localization turns players off your game (though it really does), but because it actively damages your organization’s reputation. And that makes players second guess buying another game from you. In other words, a bad localization actively loses future revenue (<a href="https://legendsoflocalization.com/bad-game-translation-hall-of-fame/" target="_blank">or worse, puts you in the bad game translation hall of fame</a>).      <br><br>   And this makes a game localization strategy critical. Because with the right strategy acts as a guide to what you’re trying to achieve and how you’ll get there.    <br><br>    So here it is, a five-step guide to building a video game localization strategy.    <br><br>   </p>*@
 
                 </div>
@@ -105,12 +109,14 @@
     </div>
     <div class="lab-read-more-container">
         <div class="row">
-            <div class="col-md-12 col-sm-12">
-                <p class="read-more-header">Read more on      CAMPAIGNS</p>
+            @*@foreach (var item in Model.FutureLabArticles)
+            {*@
+                <div class="col-md-12 col-sm-12">
+                   @* <p class="read-more-header">Read more on @item.CustomerExperience@item.QualityAssurance @item.Localization@item.AudioProduction@item.Engineering@item.Campaign</p>*@
+                    <p class="read-more-header">Read more on Campaign</p>
+               </div>
+            @*}*@
             </div>
-        </div>
-
-        
         <div class="row">
             @foreach (var item in Model.FutureLabArticles)
             {
@@ -122,40 +128,7 @@
                         <p class="read-more-article-title">@item.Name</p>
 
                     </a>
-                </div>
-
-
-                @*<div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-6 ">
-                <a titlevalue="7" href="/lab/LabCampaignArticle25">
-                    <p class="read-more-article-image">
-                        <img src="@item.ReadMoreUrl" alt="Read more">
-                    </p>
-                    <p class="read-more-article-title">@item.Name</p>
-
-                </a>
-            </div>*@
-
-
-                @*<div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-6 ">
-                <a titlevalue="7" href="/lab/Article-Small-devices-big-challenges">
-                    <p class="read-more-article-image">
-                        <img src="@item.ReadMoreUrl" alt="Read more">
-                    </p>
-                    <p class="read-more-article-title">@Model.FutureLabArticles[2].Name</p>
-
-                </a>
-            </div>
-
-
-            <div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-6 ">
-                <a titlevalue="7" href="/lab/Article-Is-player-support-hurting-your-games">
-                    <p class="read-more-article-image">
-                        <img src="@Model.FutureLabArticles[3].ReadMoreUrl" alt="Read more">
-                    </p>
-                    <p class="read-more-article-title">@Model.FutureLabArticles[3].Name</p>
-
-                </a>
-            </div>*@
+                </div>               
             }
             </div>
         

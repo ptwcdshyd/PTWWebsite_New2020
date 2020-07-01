@@ -44,6 +44,7 @@ namespace PTW.DataAccess.Models
         public string TabV_ImageURL { get; set; }
         public string Mobile_ImageURL { get; set; }
        
+        public string CEandQAImageUrl { get; set; }
         public string CustomerExperienceImageUrl { get; set; }
         public string QualityAssuranceImageUrl { get; set; }
         public string LocalizationImageUrl { get; set; }
@@ -58,6 +59,13 @@ namespace PTW.DataAccess.Models
         public string DetailedName { get; set; }
         public string DetailedShortOrder { get; set; }
         public string ReadMoreUrl { get; set; }
+
+        public string FilterCustomerExperience { get; set; }
+        public string FilterQualityAssurance { get; set; }
+        public string FilterLocalization { get; set; }
+        public string FilterAudioProduction { get; set; }
+        public string FilterEngineering { get; set; }
+        public string FilterCampaign { get; set; }
         public List<Languages> Languages { get; set; }
 
         public List<Labs> LabsList { get; set; }
