@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
@@ -32,9 +33,21 @@ namespace PTWWebsite2.Controllers
             
             LabsEvents.labInsights = _LabEventService.GetAllLatestInsights(culture);
             LabsEvents.Labs = _LabEventService.GetSlider();
+            GetServicecontent(culture);
             return View(LabsEvents);
+
+
         }
 
+        public IActionResult GetServicecontent(string culture)
+        {
+            MasterPage masterPage = new MasterPage();
+            DataTable dtContent = _masterService.GetModuleContent("LAB", (culture == null ? "en-US" : culture));
+            masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("LAB")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            ViewData["Header"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Header")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            ViewData["Footer"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Footer")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            return View(masterPage);
+        }
         [Route("LAB/{LabShortDescription}")]
         [Route("{culture}/LAB/{LabShortDescription}")]
         public IActionResult LabArticles(string LabShortDescription,string culture = "en-US")
@@ -47,6 +60,7 @@ namespace PTWWebsite2.Controllers
             LabsEvents LabsEvents = new LabsEvents();
             LabsEvents.LabArticledetails = _LabEventService.GetLabsArticleDetails(strShortDescription);
             LabsEvents.FutureLabArticles = _LabEventService.GetFutureLabArticles(strShortDescription);
+            GetServicecontent(culture);
             return View(LabsEvents);
         }
         //[Route("LAB/{LabShortDescription}")]

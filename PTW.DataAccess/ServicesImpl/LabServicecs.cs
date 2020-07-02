@@ -56,7 +56,16 @@ namespace PTW.DataAccess.ServicesImpl
                             labs.AudioProductionImageUrl = Convert.ToString(dtResult.Rows[i]["AudioProductionImageUrl"]);
                             labs.EngineeringImageUrl = Convert.ToString(dtResult.Rows[i]["EngineeringImageUrl"]);
                             labs.CampaignImageUrl = Convert.ToString(dtResult.Rows[i]["CampaignImageUrl"]);
-                          
+                            labs.CEandQAImageUrl = Convert.ToString(dtResult.Rows[i]["CEandQAImageUrl"]);
+
+
+                            labs.FilterCustomerExperience = Convert.ToString(dtResult.Rows[i]["FilterCustomerExperience"]);
+                            labs.FilterQualityAssurance = Convert.ToString(dtResult.Rows[i]["FilterQualityAssurance"]);
+                            labs.FilterLocalization = Convert.ToString(dtResult.Rows[i]["FilterLocalization"]);
+                            labs.FilterAudioProduction = Convert.ToString(dtResult.Rows[i]["FilterAudioProduction"]);
+                            labs.FilterEngineering = Convert.ToString(dtResult.Rows[i]["FilterEngineering"]);
+                            labs.FilterCampaign = Convert.ToString(dtResult.Rows[i]["FilterCampaign"]);
+
                             LabsList.Add(labs);
                         }
                     }
@@ -225,14 +234,17 @@ namespace PTW.DataAccess.ServicesImpl
                             labs.IsActive = Convert.ToInt32(dtResult.Tables[2].Rows[i]["IsActive"]);
                             labs.DefaultImageUrl = Convert.ToString(dtResult.Tables[2].Rows[i]["DefaultImageUrl"]);
 
-                            labs.LabType = Convert.ToString(dtResult.Tables[2].Rows[i]["LabType"]);
+                            labs.LabType = Convert.ToString(dtResult.Tables[2].Rows[i]["LabType"]);                            
+                            labs.ReadMoreUrl = Convert.ToString(dtResult.Tables[2].Rows[i]["ReadMoreUrl"]);
+                            labs.Stopped = Convert.ToInt32(dtResult.Tables[2].Rows[i]["Stopped"]);
+
+                            //labs.CustomerExperience = Convert.ToBoolean(dtResult.Tables[2].Rows[i]["CustomerExperience"] !=DBNull.Value ? (dtResult.Tables[2].Rows[i]["CustomerExperience"]) : 0);
                             //labs.CustomerExperience = Convert.ToBoolean(dtResult.Tables[2].Rows[i]["CustomerExperience"]);
                             //labs.Engineering = Convert.ToBoolean(dtResult.Tables[2].Rows[i]["Engineering"]);
                             //labs.Localization = Convert.ToBoolean(dtResult.Tables[2].Rows[i]["Localization"]);
                             //labs.QualityAssurance = Convert.ToBoolean(dtResult.Tables[2].Rows[i]["QualityAssurance"]);
                             //labs.Campaign = Convert.ToBoolean(dtResult.Tables[2].Rows[i]["Campaign"]);
-                            labs.ReadMoreUrl = Convert.ToString(dtResult.Tables[2].Rows[i]["ReadMoreUrl"]);
-                            labs.Stopped = Convert.ToInt32(dtResult.Tables[2].Rows[i]["Stopped"]);
+                            //labs.AudioProduction = Convert.ToBoolean(dtResult.Tables[2].Rows[i]["AudioProduction"]);
 
                             LabsList.Add(labs);
                         }
@@ -297,7 +309,8 @@ namespace PTW.DataAccess.ServicesImpl
                             labs.DetailedName = Convert.ToString(dtResult.Rows[i]["DetailedName"]);
                             labs.DetailedDescription = Convert.ToString(dtResult.Rows[i]["DetailedDescription"]);
                             labs.DetailedShortOrder = Convert.ToString(dtResult.Rows[i]["DetailedShortOrder"]);
-                           
+
+                            
 
                             LabsList.Add(labs);
                         }

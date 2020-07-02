@@ -34,6 +34,7 @@ namespace PTW.DataAccess.Models
         public List<Images> Images { get; set; }
         public List<NewsAndLabs> NewsAndLabs { get; set; }
         public List<IFormFile> Files { get; set; }
+        public string Culture { get; set; }
     }
 
     public class Languages {

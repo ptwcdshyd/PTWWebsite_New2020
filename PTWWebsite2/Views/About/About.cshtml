@@ -1,0 +1,101 @@
+﻿@model PTW.DataAccess.Models.MasterPage
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "About | PTW -Pole To Win";
+}
+
+<link href="~/css/clean-blog.min.css" rel="stylesheet" />
+<link href="~/css/custom.css" rel="stylesheet" />
+<link href="~/css/sticky.css" rel="stylesheet" />
+<link href="~/css/animate.min.css" rel="stylesheet" />
+<style>
+    body {
+        background: #fff;
+    }
+
+    #mainNav {
+        background: #fff !important;
+    }
+
+    .change .bar3, .change .bar1 {
+        background-color: #000 !important;
+    }
+
+    .b2-css {
+        position: relative;
+        z-index: 1;
+        background: #fff;
+    }
+
+    .b1-css {
+        background-color: #3C3D40;
+    }
+</style>
+
+
+
+@Html.Raw(Model.HtmlContent)
+
+
+<script src="~/js/jquery-3.3.1.min.js"></script>
+<script>
+        $(document).ready(function () {
+            LoadProfile();
+
+
+        });
+        function LoadProfile() {
+            $.ajax({
+                url: "../"+"@Model.Culture"+"/AboutProfile",
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    var htmlContent = "";
+                    $.each(result.Profiles, function (result, item) {
+                        console.log("hi");
+                        htmlContent = htmlContent+
+                            '<div class="col-lg-6 col-md-12 col-sm-12 lg6-12-768">' +
+                            '<div class="row">' +
+                            '<div class="col-lg-12 col-md-12 col-sm-12 lg12-6-768">' +
+                            '<img src="' + item.ImgPath + '" class="res-img" alt="Andy Emery, Chief Operating Officer" />' +
+                            '</div>' +
+                            '<div class="col-lg-12 col-md-12 col-sm-12 lg12-6-768">' +
+                            '<h6 class="exec-name">' + item.Title + '</h6>' +
+                            '<p class="exec-para" runat="server" meta:resourcekey="about_exec_para6">' +
+                            item.Description
+                            + '</p>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>';
+                    });
+                    console.log(htmlContent);
+                    $('#profile').eq(0).append(htmlContent);
+
+                },
+                error: function (err) {
+
+                }
+            });
+
+        }
+
+
+</script>
+
+
+<script src="~/JS/count-up.min.js"></script>
+
+<script>
+    var cu = new counterUp({
+        start: 0,
+        duration: 6000,
+        intvalues: true,
+        interval: 100
+    });
+    cu.start();
+</script>
+
+
+
+
