@@ -89,6 +89,7 @@ namespace PTW.DataAccess.Models
         public string LanguageCode { get; set; }
         public List<Languages> Languages { get; set; }
 
+
     }
     public class NewsUrlList
     {

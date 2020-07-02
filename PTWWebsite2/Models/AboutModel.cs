@@ -12,6 +12,7 @@ namespace PTWWebsite2.Models
         public string Description { get; set; }
         public string ImgPath { get; set; }
         public int OrderNo { get; set; }
-
+   
     }
+ 
 }

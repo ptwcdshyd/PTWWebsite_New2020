@@ -109,6 +109,8 @@ namespace PTW.DataAccess.ServicesImpl
                     {
                        // masterPage.HeaderContent = Convert.ToString(dtResult.Tables[0].Rows[0]["ModuleName"]);
                         masterPage.HtmlContent = Convert.ToString(dtResult.Tables[0].Rows[0]["Content"]);
+                        masterPage.Metatage = Convert.ToString(dtResult.Tables[0].Rows[0]["Metatage"]);
+                        masterPage.MetaTitle = Convert.ToString(dtResult.Tables[0].Rows[0]["Title"]);
                     }
 
                 }
@@ -126,7 +128,7 @@ namespace PTW.DataAccess.ServicesImpl
             }
         }
 
-        public int UpdateContentByModelIdAndLanguageId(int moduleId, string languageCode, string contentText)
+        public int UpdateContentByModelIdAndLanguageId(int moduleId, string languageCode, string contentText,string Metatage, string Title)
         {
             int resultCode=0;
             CustomCommand command = null;
@@ -141,7 +143,9 @@ namespace PTW.DataAccess.ServicesImpl
                     command.AddParameterWithValue("@Module_Id", moduleId);
                     command.AddParameterWithValue("@Language_Code", languageCode);
                     command.AddParameterWithValue("@ContentText", contentText);
-                    
+                    command.AddParameterWithValue("@MetaDescription", Metatage);
+                    command.AddParameterWithValue("@MetaTitle", Title);
+
                     //  Execute command and get values from output parameters.
                     int result = ExecuteNonQuery(command, false);
                     if (result > 0)
@@ -410,6 +414,36 @@ namespace PTW.DataAccess.ServicesImpl
             }
         }
 
+
+        public DataTable GetLanguages()
+        {
+            CustomCommand command = null;
+            DataTable dtResult = new DataTable();
+
+            try
+            {
+                using (command = new CustomCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "RetrieveLanguages";
+                    //  Execute command and get values from output parameters.
+                    dtResult = ExecuteTable(command);
+
+
+                }
+                return dtResult;
+            }
+
+
+            catch { throw; }
+
+            finally
+            {
+                if (command != null) command.Dispose();
+                command = null;
+
+            }
+        }
 
 
 

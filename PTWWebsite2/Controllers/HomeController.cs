@@ -82,7 +82,7 @@ namespace PTWWebsite2.Controllers
             try
             {
                 MasterPage masterPage = _masterService.GetModuleContentById(ModuleId, LanguageCode);
-                return Json(masterPage.HtmlContent, new JsonSerializerSettings());
+                return Json(masterPage, new JsonSerializerSettings());
             }
             catch (Exception ex)
             {
@@ -264,7 +264,7 @@ namespace PTWWebsite2.Controllers
                 }
 
                 MasterPage masterPage = new MasterPage();
-                int resultCode = _masterService.UpdateContentByModelIdAndLanguageId(masterContent.ModuleId, masterContent.LanguageCode, masterContent.Content);
+                int resultCode = _masterService.UpdateContentByModelIdAndLanguageId(masterContent.ModuleId, masterContent.LanguageCode, masterContent.Content, masterContent.Metatage, masterContent.MetaTitle);
                 //if (resultCode > 0)
                 //{
                 //    masterPage = _masterService.GetModuleContent(masterContent.ModuleId, masterContent.LanguageCode);

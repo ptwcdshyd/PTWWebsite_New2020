@@ -137,208 +137,220 @@
             </div>
             <div class="contentpanel report" style="border: 1px solid #00b8ff85;width: 1180px;margin-top: 45px;margin-left:50px;">
                 <div class="row distribute-container">
-          
+
 
                     @*@Html.DropDownList("LanguageCode", new SelectList(Model.Languages, "LanguageCode", "Language"), htmlAttributes: new { @class = "form-control input-sm dropdown-select my-3", autocomplete = "off" })*@
 
                     @*<div asp-validation-summary="None" class="text-danger"></div>*@
                     <input type="hidden" asp-for="EditNewsId" class="form-control input-sm" />
-                    <div class="col-lg-12 col-md-12 col-sm-12">
+                    @*<div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="row">
                             <div class="form-group col-md-4 col-sm-4">
-                                <label for="name">Selection Type	</label>
-                                <select asp-for="Event" class="form-control input-sm" id="EventType">
-                                    <option value="0">News</option>
-                                    <option value="1">Events</option>
-                                </select>
-                                @*<span asp-validation-for="Event" class="text-danger"></span>*@
-                                @*<input type="text" class="form-control input-sm" id="name" placeholder="">*@
+                                <label style="display:flex !important">Meta Title</label>
+                                @Html.TextBox("MetaTitle", Model.MetaTitle, htmlAttributes: new { @class = "form-control", autocomplete = "off" })
                             </div>
                             <div class="form-group col-md-4 col-sm-4">
-                                <label asp-for="NewsTitle">News Title<span class="mandatory">*</span></label>
-                                <input type="text" asp-for="NewsTitle" class="form-control input-sm" placeholder="News Title">
-                                <span asp-validation-for="NewsTitle" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-md-4 col-sm-4">
-                                <label for="mobile">Url<span class="mandatory">*</span></label>
-                                <input type="text" asp-for="UrlTitle" class="form-control input-sm" placeholder="Url Title">
-                            </div>
-
-                            <div class="form-group col-md-4 col-sm-4">
-                                <label for="mobile">Published Date<span class="mandatory">*</span></label>
-                                <input type="text" asp-for="PublishedDate" class="form-control input-sm" placeholder="Published Date">
-                                <span asp-validation-for="PublishedDate" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-lg-12 col-md-12 col-sm-12">
-                                <label asp-for="Description">Description<span class="mandatory">*</span></label>
-                                @*<div id="summernote"></div>*@
-                                <textarea id="summernoteUpdate" class="form-control input-sm" asp-for="Description">  </textarea>
-                                <span asp-validation-for="Description" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-md-4 col-sm-4">
-                                <label for="mobile">Topic</label>
-                                <input type="text" asp-for="Topic" class="form-control input-sm" placeholder="">
-                            </div>
-                            <div class="form-group col-md-4 col-sm-4">
-                                <label for="mobile">Event StartDate</label>
-                                <input type="text" asp-for="EventStartDate" asp-format="{0:yyyy-MM-dd}" class="form-control input-sm" placeholder="Event StartDate">
-                            </div>
-                            <div class="form-group col-md-4 col-sm-4">
-                                <label for="mobile">Event EndDate</label>
-                                <input type="text" asp-for="EventEndDate" class="form-control input-sm" placeholder="Event EndDate">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-md-4 col-sm-4">
-
-                                @if (Model.OnNewWebsiteNow == null)
-                                {
-                                    Model.OnNewWebsiteNow = false;
-                                }
-                                @Html.CheckBox("OnNewWebsiteNow", Model.OnNewWebsiteNow)
-                                <label asp-for="OnNewWebsiteNow.Value">OnNewWebsiteNow </label>
-                            </div>
-                            <div class="form-group col-md-4 col-sm-4">
-                                @if (Model.SuitedForHomePage == null)
-                                {
-                                    Model.SuitedForHomePage = false;
-                                }
-                                @Html.CheckBox("SuitedForHomePage", Model.SuitedForHomePage)
-                                <label asp-for="SuitedForHomePage.Value">SuitedForHomePage</label>
+                                <label style="display:flex !important">Meta Description</label>
+                                @Html.TextArea("MetaDescription", Model.MetaDescription, htmlAttributes: new { @class = "form-control", autocomplete = "off", style = "width: 350px; height: 150px;" })
 
                             </div>
-                            <div class="form-group col-md-4 col-sm-4">
-                                @if (Model.CustomerExperience == null)
-                                {
-                                    Model.CustomerExperience = false;
-                                }
-                                @Html.CheckBox("CustomerExperience", Model.CustomerExperience)
-                                <label asp-for="CustomerExperience.Value">CustomerExperience</label>
-
-                            </div>
-                        </div>
-                        <div class="row">
-
-                            <div class="form-group col-md-4 col-sm-4">
-                                @if (Model.QualityAssurance == null)
-                                {
-                                    Model.QualityAssurance = false;
-                                }
-                                @Html.CheckBox("QualityAssurance", Model.QualityAssurance)
-                                <label asp-for="QualityAssurance.Value">QualityAssurance</label>
-                            </div>
-                            <div class="form-group col-md-4 col-sm-4">
-                                @if (Model.Localization == null)
-                                {
-                                    Model.Localization = false;
-                                }
-                                @Html.CheckBox("Localization", Model.Localization)
-                                <label asp-for="Localization.Value">Localization</label>
-                            </div>
-                            <div class="form-group col-md-4 col-sm-4">
-                                @if (Model.AudioProduction == null)
-                                {
-                                    Model.AudioProduction = false;
-                                }
-                                @Html.CheckBox("AudioProduction", Model.AudioProduction)
-                                <label asp-for="AudioProduction.Value">AudioProduction</label>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="form-group col-md-4 col-sm-4">
-                                @if (Model.Engineering == null)
-                                {
-                                    Model.Engineering = false;
-                                }
-                                @Html.CheckBox("Engineering", Model.Engineering)
-                                <label asp-for="Engineering.Value">Engineering</label>
-                            </div>
-                            <div class="form-group col-md-4 col-sm-4">
-                                @if (Model.ActiveStatus == null)
-                                {
-                                    Model.ActiveStatus = false;
-                                }
-                                @Html.CheckBox("ActiveStatus", Model.ActiveStatus)
-                                <label asp-for="ActiveStatus.Value">Active</label>
-                            </div>
-
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-md-8 col-sm-8">
-                                <label asp-for="HeaderImage" class="col-form-label">HeaderImage<span class="mandatory">*</span></label>
-                                <div class="col-sm-8">
-                                    <div class="custom-file">
-
-                                        <input asp-for="HeaderImage" class="form-control custom-file-input">
-                                        <label class="custom-file-label">Choose File...1520x445 dimensions</label>
-                                        <span asp-validation-for="HeaderImage" class="text-danger"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-
-                            <div class="form-group col-md-8 col-sm-6">
-                                <label asp-for="LongerImage" class="col-form-label">Longer Image<span class="mandatory">*</span></label>
-                                <div class="col-md-8 col-sm-6">
-                                    <div class="custom-file">
-                                        <input asp-for="LongerImage" class="form-control custom-file-input">
-                                        <label class="custom-file-label">Choose File...1012x348 dimensions</label>
-                                        <span asp-validation-for="LongerImage" class="text-danger"></span>
-                                    </div>
-                                </div>
-
-
-                            </div>
-                        </div>
-                        <div class="row">
-
-                            <div class="form-group col-md-8 col-sm-6">
-                                <label asp-for="ShorterImage" class="col-form-label">Shorter Image<span class="mandatory">*</span></label>
-                                <div class="col-md-8 col-sm-6">
-                                    <div class="custom-file">
-                                        <input asp-for="ShorterImage" class="form-control custom-file-input">
-                                        <label class="custom-file-label">Choose File...504x348 dimensions</label>
-                                        <span asp-validation-for="ShorterImage" class="text-danger"></span>
-                                    </div>
-                                </div>
-
-
-                            </div>
-                        </div>
-
-                        <div class="row">
-
-                            <div class="form-group col-md-8 col-sm-6">
+                        </div>*@
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="row">
                                 <div class="form-group col-md-4 col-sm-4">
-                                    <label for="MetaTitle">Meta Title</label>
-                                    <input type="text" asp-for="MetaTitle" class="form-control input-sm" placeholder="Meta Title">
+                                    <label for="name">Selection Type	</label>
+                                    <select asp-for="Event" class="form-control input-sm" id="EventType">
+                                        <option value="0">News</option>
+                                        <option value="1">Events</option>
+                                    </select>
+                                    @*<span asp-validation-for="Event" class="text-danger"></span>*@
+                                    @*<input type="text" class="form-control input-sm" id="name" placeholder="">*@
+                                </div>
+                                <div class="form-group col-md-4 col-sm-4">
+                                    <label asp-for="NewsTitle">News Title<span class="mandatory">*</span></label>
+                                    <input type="text" asp-for="NewsTitle" class="form-control input-sm" placeholder="News Title">
+                                    <span asp-validation-for="NewsTitle" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-4 col-sm-4">
+                                    <label for="mobile">Url<span class="mandatory">*</span></label>
+                                    <input type="text" asp-for="UrlTitle" class="form-control input-sm" placeholder="Url Title">
                                 </div>
 
-                                <div class="form-group col-lg-8  col-md-6 col-sm-4">
-                                    <label for="MetaDescription">Meta Description</label>
-                                    <textarea class="form-control input-sm" asp-for="MetaDescription">  </textarea>
+                                <div class="form-group col-md-4 col-sm-4">
+                                    <label for="mobile">Published Date<span class="mandatory">*</span></label>
+                                    <input type="text" asp-for="PublishedDate" class="form-control input-sm" placeholder="Published Date">
+                                    <span asp-validation-for="PublishedDate" class="text-danger"></span>
                                 </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                                    <label asp-for="Description">Description<span class="mandatory">*</span></label>
+                                    @*<div id="summernote"></div>*@
+                                    <textarea id="summernoteUpdate" class="form-control input-sm" asp-for="Description">  </textarea>
+                                    <span asp-validation-for="Description" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-4 col-sm-4">
+                                    <label for="mobile">Topic</label>
+                                    <input type="text" asp-for="Topic" class="form-control input-sm" placeholder="">
+                                </div>
+                                <div class="form-group col-md-4 col-sm-4">
+                                    <label for="mobile">Event StartDate</label>
+                                    <input type="text" asp-for="EventStartDate" asp-format="{0:yyyy-MM-dd}" class="form-control input-sm" placeholder="Event StartDate">
+                                </div>
+                                <div class="form-group col-md-4 col-sm-4">
+                                    <label for="mobile">Event EndDate</label>
+                                    <input type="text" asp-for="EventEndDate" class="form-control input-sm" placeholder="Event EndDate">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-4 col-sm-4">
 
+                                    @if (Model.OnNewWebsiteNow == null)
+                                    {
+                                        Model.OnNewWebsiteNow = false;
+                                    }
+                                    @Html.CheckBox("OnNewWebsiteNow", Model.OnNewWebsiteNow)
+                                    <label asp-for="OnNewWebsiteNow.Value">OnNewWebsiteNow </label>
+                                </div>
+                                <div class="form-group col-md-4 col-sm-4">
+                                    @if (Model.SuitedForHomePage == null)
+                                    {
+                                        Model.SuitedForHomePage = false;
+                                    }
+                                    @Html.CheckBox("SuitedForHomePage", Model.SuitedForHomePage)
+                                    <label asp-for="SuitedForHomePage.Value">SuitedForHomePage</label>
+
+                                </div>
+                                <div class="form-group col-md-4 col-sm-4">
+                                    @if (Model.CustomerExperience == null)
+                                    {
+                                        Model.CustomerExperience = false;
+                                    }
+                                    @Html.CheckBox("CustomerExperience", Model.CustomerExperience)
+                                    <label asp-for="CustomerExperience.Value">CustomerExperience</label>
+
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="form-group col-md-4 col-sm-4">
+                                    @if (Model.QualityAssurance == null)
+                                    {
+                                        Model.QualityAssurance = false;
+                                    }
+                                    @Html.CheckBox("QualityAssurance", Model.QualityAssurance)
+                                    <label asp-for="QualityAssurance.Value">QualityAssurance</label>
+                                </div>
+                                <div class="form-group col-md-4 col-sm-4">
+                                    @if (Model.Localization == null)
+                                    {
+                                        Model.Localization = false;
+                                    }
+                                    @Html.CheckBox("Localization", Model.Localization)
+                                    <label asp-for="Localization.Value">Localization</label>
+                                </div>
+                                <div class="form-group col-md-4 col-sm-4">
+                                    @if (Model.AudioProduction == null)
+                                    {
+                                        Model.AudioProduction = false;
+                                    }
+                                    @Html.CheckBox("AudioProduction", Model.AudioProduction)
+                                    <label asp-for="AudioProduction.Value">AudioProduction</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-md-4 col-sm-4">
+                                    @if (Model.Engineering == null)
+                                    {
+                                        Model.Engineering = false;
+                                    }
+                                    @Html.CheckBox("Engineering", Model.Engineering)
+                                    <label asp-for="Engineering.Value">Engineering</label>
+                                </div>
+                                <div class="form-group col-md-4 col-sm-4">
+                                    @if (Model.ActiveStatus == null)
+                                    {
+                                        Model.ActiveStatus = false;
+                                    }
+                                    @Html.CheckBox("ActiveStatus", Model.ActiveStatus)
+                                    <label asp-for="ActiveStatus.Value">Active</label>
+                                </div>
 
                             </div>
-                        </div>
-                    </div>
+                            <div class="row">
+                                <div class="form-group col-md-8 col-sm-8">
+                                    <label asp-for="HeaderImage" class="col-form-label">HeaderImage<span class="mandatory">*</span></label>
+                                    <div class="col-sm-8">
+                                        <div class="custom-file">
 
-                    <div class="row distribute-container">
-                        <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
-                            <input type="submit" id="submit2" class="btn btn-success" value="Update News" />
+                                            <input asp-for="HeaderImage" class="form-control custom-file-input">
+                                            <label class="custom-file-label">Choose File...1520x445 dimensions</label>
+                                            <span asp-validation-for="HeaderImage" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="form-group col-md-8 col-sm-6">
+                                    <label asp-for="LongerImage" class="col-form-label">Longer Image<span class="mandatory">*</span></label>
+                                    <div class="col-md-8 col-sm-6">
+                                        <div class="custom-file">
+                                            <input asp-for="LongerImage" class="form-control custom-file-input">
+                                            <label class="custom-file-label">Choose File...1012x348 dimensions</label>
+                                            <span asp-validation-for="LongerImage" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="form-group col-md-8 col-sm-6">
+                                    <label asp-for="ShorterImage" class="col-form-label">Shorter Image<span class="mandatory">*</span></label>
+                                    <div class="col-md-8 col-sm-6">
+                                        <div class="custom-file">
+                                            <input asp-for="ShorterImage" class="form-control custom-file-input">
+                                            <label class="custom-file-label">Choose File...504x348 dimensions</label>
+                                            <span asp-validation-for="ShorterImage" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+
+                                <div class="form-group col-md-8 col-sm-6">
+                                    <div class="form-group col-md-4 col-sm-4">
+                                        <label style="display:flex !important">Meta Title</label>
+                                        @Html.TextBox("MetaTitle", Model.MetaTitle, htmlAttributes: new { @class = "form-control", autocomplete = "off" })
+                                    </div>
+
+                                    <div class="form-group col-lg-8  col-md-6 col-sm-4">
+                                        <label style="display:flex !important">Meta Description</label>
+                                        @Html.TextArea("MetaDescription", Model.MetaDescription, htmlAttributes: new { @class = "form-control", autocomplete = "off", style = "width: 350px; height: 150px;" })
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row distribute-container">
+                            <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
+                                <input type="submit" id="submit2" class="btn btn-success" value="Update News" />
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             @*}*@
         </div>
 
@@ -433,6 +445,8 @@
 
                     if (result != null) {
                         $('#summernote').summernote('code', result);
+                        $('#MetaDescription').val(result.MetaDescription);
+                        $('#MetaTitle').val(result.Metatage);
                     }
 
 
@@ -457,7 +471,10 @@
             var objReq= {
                 ModuleId: parseInt($("#ModuleId").children("option:selected").val()),
                 LanguageCode: $("#LanguageCode").children("option:selected").val(),
-                Content: $('#summernote').summernote('code')
+                Content: $('#summernote').summernote('code'),
+                MetaDescription: $('#MetaDescription').val(result.MetaDescription),
+                MetaTitle:$('#MetaTitle').val(result.Metatage)
+
             }
 
             $.ajax({

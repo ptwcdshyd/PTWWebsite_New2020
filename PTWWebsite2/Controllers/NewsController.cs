@@ -136,6 +136,7 @@ namespace PTWWebsite2.Controllers
             news.NewsListUpdate = ddlNewsTitles.NewsListUpdate;
             news.Languages = masterPage1.LanguageList;
             news.LanguageCode = news1.LanguageCode;
+            
             return View("EditNewsEvents", news);
         }
 
@@ -188,7 +189,7 @@ namespace PTWWebsite2.Controllers
                 }
 
                 string newsXmlData = CustomNewsXml(news);
-                bool result = _NewsEventService.UpdateNews(news.EditNewsId, newsXmlData, news.Description, news.LanguageCode == "Please Select" ? "en-US" : news.LanguageCode);
+                bool result = _NewsEventService.UpdateNews(news.EditNewsId, newsXmlData, news.Description, news.LanguageCode == null ? "en-US" : news.LanguageCode);
                 //ViewBag.IsAddedSuccessfully = result;
                 newsList.Message = "<label id=\"lblMessage2\" class=\"text-danger\">Updated sucessfully</label>";
                 ModelState.Clear();
