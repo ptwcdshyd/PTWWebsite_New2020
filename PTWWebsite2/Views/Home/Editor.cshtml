@@ -5,8 +5,8 @@
 }
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.min.css">
 @*<link href="~/css/Editor/Css/chosen.min.css" rel="stylesheet" />*@
-
 <link href="~/css/jquery.gritter.css" rel="stylesheet" />
+
 <script src="~/js/Editor/jquery-3.5.1.min.js"></script>
 <script src="~/js/Editor/popper.min.js"></script>
 <script src="~/js/Editor/1.9.1.jquery.js"></script>
@@ -369,6 +369,7 @@
 
                         else {
                             AlertMessage('growl-danger', 'Validation', result.message, false, 3000);
+                            $("#PostBackMsg").fadeOut("slow");
                         }
                     },
 
