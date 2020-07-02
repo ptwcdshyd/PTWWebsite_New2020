@@ -330,6 +330,42 @@ namespace PTW.DataAccess.ServicesImpl
             }
         }
 
+        public bool AddUpdateLabs(string xmNewsData, string Description)
+        {
+            CustomCommand command = null;
+            NewsDetails newsDetails = new NewsDetails();
+            bool result = false;
+            try
+            {
+                using (command = new CustomCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "InsertLabs";
+                    command.AddParameterWithValue("@LabsData", xmNewsData);
+                    command.AddParameterWithValue("@_Description", Description);
+
+                    int i = ExecuteNonQuery(command, false);
+                    if (i > 0)
+                    {
+                        result = true;
+                    }
+
+                }
+                return result;
+            }
+
+
+            catch { throw; }
+
+            finally
+            {
+                if (command != null) command.Dispose();
+                command = null;
+
+            }
+        }
+
+
         public List<Labs> GetLabCampaignArticleDetails(string LabIdOrShortDescription)
         {
             CustomCommand command = null;
