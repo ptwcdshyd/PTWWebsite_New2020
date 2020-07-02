@@ -1,0 +1,200 @@
+﻿@model PTW.DataAccess.Models.MasterPage
+@* @{
+        Layout = "_Layout";
+        ViewData["Title"] = "About | PTW -Pole To Win";
+    }
+
+    @Html.Raw(Model.HtmlContent)
+
+ *@
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            LoadProfile();
+            
+
+        });
+        function LoadProfile() {
+            
+            $.ajax({
+                url: "../" + "en-US" + "/AboutProfile",
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    var htmlContent = "";
+                    $.each(result.Profiles, function (result, item) {
+                        console.log("hi");
+                        htmlContent = htmlContent+
+                            '<div class="col-lg-6 col-md-12 col-sm-12 lg6-12-768">' +
+                            '<div class="row">' +
+                            '<div class="col-lg-12 col-md-12 col-sm-12 lg12-6-768">' +
+                            '<img src="' + item.ImgPath + '" class="res-img" alt="Andy Emery, Chief Operating Officer" />' +
+                            '</div>' +
+                            '<div class="col-lg-12 col-md-12 col-sm-12 lg12-6-768">' +
+                            '<h6 class="exec-name">' + item.Title + '</h6>' +
+                            '<p class="exec-para" runat="server" meta:resourcekey="about_exec_para6">' +
+                            item.Description
+                            + '</p>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>';
+                        
+                        
+                    });
+                    console.log(htmlContent);
+                    $('#profile').eq(0).append(htmlContent);
+
+                },
+                error: function (err) {
+
+                }
+            });
+
+        }
+
+
+    </script>
+
+<link href="~/css/clean-blog.min.css" rel="stylesheet" />
+<link href="~/css/custom.css" rel="stylesheet" />
+<link href="~/css/sticky.css" rel="stylesheet" />
+<link href="~/css/animate.min.css" rel="stylesheet" />
+<style>
+    body {
+        background: #fff;
+    }
+
+    #mainNav {
+        background: #fff !important;
+    }
+
+    .change .bar3, .change .bar1 {
+        background-color: #000 !important;
+    }
+
+    .b2-css {
+        position: relative;
+        z-index: 1;
+        background: #fff;
+    }
+
+    .b1-css {
+        background-color: #3C3D40;
+    }
+</style>
+
+<div class="row m-l-0 c-header">
+    <div class="container-fluid p-0">
+        <div class="col-lg-12 col-md-12 col-sm-12 row-eq-height no-padding">
+            <picture class="w-100p">
+                <source srcset="~/Images/About/About-desktop.jpg" media="(min-width: 1200px)" />
+                <source srcset="~/Images/About/About-Horizontal.jpg" media="(min-width: 992px)" />
+                <source srcset="~/Images/About/About-Vertical.jpg" media="(min-width: 768px)" />
+                <source srcset="~/Images/About/About-mobile.jpg" media="(min-width: 100px)" />
+                <img class="aheader-img d-flex-imp" src="~/Images/About/About-desktop.jpg" alt="PTW's game testing employees are testing games with a smile on their faces." />
+            </picture>
+            <div class="ch-title-pad">
+                <p class="ch-title" runat="server" meta:resourcekey="about_header_title">Powering experiences across the globe</p>
+                <div class="atitle-bottom">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-5 col-sm-7 col-sx-7 order-lg-2 order-md-2 order-sm-3 order-sx-3 text-center cbox1-margin">
+                            <span class="countup" cup-end="25" cup-duration="1000" cup-append="" cup-prepend=""></span>
+                            <h6 class="countup-text" runat="server" meta:resourcekey="about_count_1">years Experience</h6>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-sm-7 col-sx-7  order-lg-1 order-md-1 order-sm-1 order-sx-1 text-center cbox2-margin">
+                            <span class="countup" cup-end="35" cup-duration="1000" cup-append="" cup-prepend=""></span>
+                            <h6 class="countup-text" runat="server" meta:resourcekey="about_count_2">Studios</h6>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-sm-7 col-sx-7  order-lg-4 order-md-4 order-sm-4 order-sx-4 text-center cbox1-margin">
+                            <span class="countup" cup-end="40" cup-duration="1000" cup-append="" cup-prepend=""></span>
+                            <h6 class="countup-text" runat="server" meta:resourcekey="about_count_3">Languages</h6>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-sm-7 col-sx-7  order-lg-3 order-md-3 order-sm-2 order-sx-2 text-center cbox2-margin">
+                            <span class="countup" cup-end="03" cup-duration="1000" cup-append="" cup-prepend=""></span>
+                            <h6 class="countup-text" runat="server" meta:resourcekey="about_count_4">Continents</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row about-b2 b2-css">
+    <div class="col-lg-4 col-md-12 col-sm-12 about-para">
+        <span class="about-values" runat="server" meta:resourcekey="about_we_title_sp1">We’re people focused </span>
+        <br />
+        <br />
+        <span runat="server" meta:resourcekey="about_we_sp1">
+            We support our people, and create strong relationships founded on mutual respect. For us, team spirit means sharing knowledge, advice, inspiration and different perspectives. It’s what makes people want to work with us, and stay with our company as they grow. Because when you love what you do, it no longer feels like a job.
+        </span>
+    </div>
+    <div class="col-lg-4 col-md-12 col-sm-12 about-para">
+        <span class="about-values" runat="server" meta:resourcekey="about_we_title_sp2">We’re client committed </span>
+        <br />
+        <br />
+        <span runat="server" meta:resourcekey="about_we_sp2">
+            For over 20 years, we have delivered great results for our clients. Our main aim is to advance their business, and enhance their customers’ satisfaction. We’re dedicated to helping every client develop the best products and consumer experiences possible. And because we believe in partnerships and collaboration, the journey is shared and the successes are too.
+        </span>
+    </div>
+    <div class="col-lg-4 col-md-12 col-sm-12 about-para">
+        <span class="about-values" runat="server" meta:resourcekey="about_we_title_sp3">We’re innovative</span>
+        <br />
+        <br />
+        <span runat="server" meta:resourcekey="about_we_sp3">
+            We create unique solutions for our clients. Solutions that are brimming with ideas, backed up by effective problem solving for even the most challenging requirements. We also deliver our services in a unique way – combining a truly global service, with the personal touch of a smaller business. Big meets small, in the best way possible.
+        </span>
+    </div>
+</div>
+<div class="row about-b1 b1-css">
+    <div class="col-lg-4 col-md-6 col-sm-12 text-white follow-para">
+        <h6 class="sun-title text-white v-d-tv" runat="server" meta:resourcekey="about_follow_title">
+            Follow<br />
+            the sun
+        </h6>
+        <h6 class="sun-title text-white v-th-mob" runat="server" meta:resourcekey="about_follow_title">Follow the sun</h6>
+        <div class="circle-blue wow zoomIn" data-wow-duration="3s" data-wow-delay="0s" style="visibility: visible; animation-duration: 3s; animation-delay: 0s; animation-name: zoomIn;"></div>
+    </div>
+    <div class="col-lg-8 col-md-6 col-sm-12">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12 text-white sun-para lg6-12-768">
+                <span runat="server" meta:resourcekey="about_follow_sp1">
+                    It's a rapidly changing world. To compete, first you need to keep up. From Quality Assurance to Customer Experience, Localization, Engineering and Audio Production, our expert, integrated solutions will keep your business, your brand and your products ahead of the game.
+                </span>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 text-white sun-para lg6-12-768 p-t-0">
+                <span runat="server" meta:resourcekey="about_follow_sp2">
+                    And because your business could be anywhere in the world, we offer a global service. Our flexibility makes it easy for us to meet your needs, and your ambitions. However modest they are. Or however big. We operate a 'follow the sun' model across the world’s time zones, so we can deliver local solutions on a truly international scale.
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row exec-pad" id="profile">
+    <div id="exec-title" class="col-lg-12 col-md-12 col-sm-12 ">
+        <span>The PTW Executive Team</span>
+    </div>
+
+   
+</div>
+<div class="row">
+    <div id="cxcontactus" class="col-lg-12 blue">
+        <h5 class="mob-disp getInTouch" runat="server" meta:resourcekey="about_git_h1">Get in touch</h5>
+        <a titlevalue="6" href="../contact" class="btn btn-default btn-sm btn-r contactus f-contact" runat="server" meta:resourcekey="about_cus_a1" title="Contact Us">Contact Us</a>
+    </div>
+</div>
+<script src="~/JS/count-up.min.js"></script>
+
+<script>
+    var cu = new counterUp({
+        start: 0,
+        duration: 6000,
+        intvalues: true,
+        interval: 100
+    });
+    cu.start();
+</script>
+
+
+
+
