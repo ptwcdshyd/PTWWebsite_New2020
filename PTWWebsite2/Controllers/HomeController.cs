@@ -96,124 +96,171 @@ namespace PTWWebsite2.Controllers
             try
             {
                 var file = Request.Form.Files.Count() == 0 ? null : Request.Form.Files[0];
-                if (file != null)
+                string[] uploadedFiles = new string[] { };
+                if (masterContent.FileString != null)
                 {
-                    if (masterContent.ModuleId == 5)
+                    uploadedFiles = masterContent.FileString.Split(',');
+                }
+
+                if (uploadedFiles.Any(z => z == "file1"))
+                {
+                    var fileExtension = file.FileName.Substring(file.FileName.LastIndexOf('.') + 1);
+                    switch (masterContent.ModuleId)
                     {
-                        var fileExtension = file.FileName.Substring(file.FileName.LastIndexOf('.') + 1);
-                        if (fileExtension == "png")
-                        {
-                            string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
-                            string path = createpath + "\\" + "HOME-ICONS-white.png";
+                        case 5:
 
-                            if (System.IO.File.Exists(path))
+                            if (fileExtension == "png")
                             {
-                                System.IO.File.Delete(path);
-                            }
-                            using (var stream = new FileStream(path, FileMode.Create))
-                            {
-                                await file.CopyToAsync(stream);
-                            }
-                        }
-                        else
-                        {
-                            return Json(new { Message = "file not suitable format" }, new JsonSerializerSettings());
-                        }
+                                string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
+                                string path = createpath + "\\" + "HOME-ICONS-white.png";
+                                FilePath(file, path);
 
+                            }
+                            else
+                            {
+                                return Json(new { message = "file should be in png format" });
+                            }
+
+                            break;
+                        case 6:
+                            if (fileExtension == "png")
+                            {
+                                string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
+                                string path = createpath + "\\" + "HOME-ICONS-white2.png";
+                                FilePath(file, path);
+
+                            }
+                            else
+                            {
+                                return Json(new { message = "file should be in png format" });
+                            }
+                            break;
+
+                        case 7:
+                            if (fileExtension == "png")
+                            {
+                                string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
+                                string path = createpath + "\\" + "HOME-ICONS-white3.png";
+                                FilePath(file, path);
+
+
+                            }
+                            else
+                            {
+                                return Json(new { message = "file should be in png format" });
+                            }
+                            break;
+                        case 8:
+                            if (fileExtension == "png")
+                            {
+                                string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
+                                string path = createpath + "\\" + "HOME-ICONS-white4.png";
+                                FilePath(file, path);
+
+
+                            }
+                            else
+                            {
+                                return Json(new { message = "file should be in png format" });
+                            }
+                            break;
+                        case 9:
+                            if (fileExtension == "png")
+                            {
+                                string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
+                                string path = createpath + "\\" + "HOME-ICONS-white5.png";
+                                FilePath(file, path);
+
+                            }
+                            else
+                            {
+                                return Json(new { message = "file should be in png format" });
+                            }
+                            break;
                     }
-                    else if (masterContent.ModuleId == 6)
+                }
+
+
+                if (uploadedFiles.Any(z => z == "file2"))
+                {
+                    var file1 = Request.Form.Files[Request.Form.Files.Count() > 1 ? 1 : 0];
+                    var fileExtension = file1.FileName.Substring(file.FileName.LastIndexOf('.') + 1);
+
+                    switch (masterContent.ModuleId)
                     {
-                        var fileExtension = file.FileName.Substring(file.FileName.LastIndexOf('.') + 1);
-                        if (fileExtension == "png")
-                        {
-                            string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
-                            string path = createpath + "\\" + "HOME-ICONS-white2.png";
+                        case 5:
 
-                            
-                            if (System.IO.File.Exists(path))
+                            if (fileExtension == "png")
                             {
-                                System.IO.File.Delete(path);
+                                string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
+                                string path = createpath + "\\" + "Serv_ind-ICONS-grey.png";
+                                FilePath1(file1, path);
+
                             }
-                            using (var stream = new FileStream(path, FileMode.Create))
+                            else
                             {
-                                await file.CopyToAsync(stream);
+                                return Json(new { message = "file should be in png format" });
+                            }
+                            break;
+                        case 6:
+                            if (fileExtension == "png")
+                            {
+                                string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
+                                string path = createpath + "\\" + "Serv_ind-ICONS-grey2.png";
+
+                                FilePath1(file1, path);
+
+
+                            }
+                            else
+                            {
+                                return Json(new { message = "file should be in png format" });
+                            }
+                            break;
+
+                        case 7:
+                            if (fileExtension == "png")
+                            {
+                                string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
+                                string path = createpath + "\\" + "Serv_ind-ICONS-grey3.png";
+                                FilePath1(file1, path);
+
+
+                            }
+                            else
+                            {
+                                return Json(new { message = "file should be in png format" });
                             }
 
-                        }
-                        else
-                        {
-                         return Json(new { Message = "file not suitable format" }, new JsonSerializerSettings());
-                        }
+                            break;
+                        case 8:
+                            if (fileExtension == "png")
+                            {
+                                string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
+                                string path = createpath + "\\" + "Serv_ind-ICONS-grey4.png";
+                                FilePath1(file1, path);
+
+                            }
+                            else
+                            {
+                                return Json(new { message = "file should be in png format" });
+                            }
+                            break;
+                        case 9:
+                            if (fileExtension == "png")
+                            {
+                                string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
+                                string path = createpath + "\\" + "Serv_ind-ICONS-grey5.png";
+                                FilePath1(file1, path);
+
+                            }
+                            else
+                            {
+                                return Json(new { message = "file should be in png format" });
+                            }
+                            break;
                     }
-                    else if (masterContent.ModuleId == 7)
-                    {
-                        var fileExtension = file.FileName.Substring(file.FileName.LastIndexOf('.') + 1);
-                        if (fileExtension == "png")
-                        {
-                            string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
-                            string path = createpath + "\\" + "HOME-ICONS-white3.png";
 
-                            if (System.IO.File.Exists(path))
-                            {
-                                System.IO.File.Delete(path);
-                            }
-                            using (var stream = new FileStream(path, FileMode.Create))
-                            {
-                                await file.CopyToAsync(stream);
-                            }
-
-                        }
-                        else
-                        {
-                            return Json(new { Message = "file not suitable format" }, new JsonSerializerSettings());
-                        }
-                         
-                    }
-                    else if (masterContent.ModuleId == 8)
-                    {
-                        var fileExtension = file.FileName.Substring(file.FileName.LastIndexOf('.') + 1);
-                        if (fileExtension == "png")
-                        {
-                            string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
-                            string path = createpath + "\\" + "HOME-ICONS-white4.png";
-
-
-                            if (System.IO.File.Exists(path))
-                            {
-                                System.IO.File.Delete(path);
-                            }
-                            using (var stream = new FileStream(path, FileMode.Create))
-                            {
-                                await file.CopyToAsync(stream);
-                            }
-                        }
-                        else
-                        {
-                            return Json(new { Message = "file not suitable format" }, new JsonSerializerSettings());
-                        }
-                    }
-                    else if (masterContent.ModuleId == 9)
-                    {
-                        var fileExtension = file.FileName.Substring(file.FileName.LastIndexOf('.') + 1);
-                        if (fileExtension == "png")
-                        {
-                            string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
-                            string path = createpath + "\\" + "HOME-ICONS-white5.png";
-
-                            if (System.IO.File.Exists(path))
-                            {
-                                System.IO.File.Delete(path);
-                            }
-                            using (var stream = new FileStream(path, FileMode.Create))
-                            {
-                                await file.CopyToAsync(stream);
-                            }
-                        }
-                        else
-                        {
-                            return Json(new { Message = "file not suitable format" }, new JsonSerializerSettings());
-                        }
-                    }
                 }
 
                 MasterPage masterPage = new MasterPage();
@@ -359,6 +406,32 @@ namespace PTWWebsite2.Controllers
 
             }
             return Json("", new JsonSerializerSettings());
+        }
+
+        public async void FilePath(IFormFile file, string path)
+        {
+            if (System.IO.File.Exists(path))
+            {
+                System.IO.File.Delete(path);
+            }
+            using (var stream = new FileStream(path, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+
+        }
+
+        public async void FilePath1(IFormFile file1, string path)
+        {
+            if (System.IO.File.Exists(path))
+            {
+                System.IO.File.Delete(path);
+            }
+            using (var stream = new FileStream(path, FileMode.Create))
+            {
+                await file1.CopyToAsync(stream);
+            }
+
         }
 
     }
