@@ -376,5 +376,41 @@ namespace PTW.DataAccess.ServicesImpl
             }
 
         }
+
+        public DataTable GetAboutProfile(string Languagecode)
+        {
+            CustomCommand command = null;
+            DataTable dtResult = new DataTable();
+
+            try
+            {
+                using (command = new CustomCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "GetAboutProfile";
+                   
+                    command.AddParameterWithValue("@Languagecode", Languagecode);
+                    //  Execute command and get values from output parameters.
+                    dtResult = ExecuteTable(command);
+                   
+
+                }
+                return dtResult;
+            }
+
+
+            catch { throw; }
+
+            finally
+            {
+                if (command != null) command.Dispose();
+                command = null;
+
+            }
+        }
+
+
+
+
     }
 }

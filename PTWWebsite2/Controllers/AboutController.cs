@@ -25,11 +25,12 @@ namespace PTWWebsite2.Controllers
         {
 
             MasterPage masterPage = new MasterPage();
+            masterPage.Culture = culture;
             DataTable dtContent = _masterService.GetModuleContent("About", (culture == null ? "en-US" : culture));
             masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("About")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
             ViewData["Header"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Header")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
             ViewData["Footer"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Footer")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
-            return View();
+            return View(masterPage);
         }
         [HttpGet]
         [Route("{culture}/AboutProfile")]
