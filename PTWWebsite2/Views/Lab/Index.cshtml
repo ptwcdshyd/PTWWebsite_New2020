@@ -171,7 +171,7 @@
                     {
                         <div class="row">
                             <div class="col-md-12">
-                                <a titlevalue="7" href="/Lab/@item.LabId,@item.LabType,@item.Stopped,@item.ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
+                                <a titlevalue="7" href="/Lab/@item.LabType-@item.ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
                                     <div class="insight-2">
                                         <p class="insight-title">
                                             @item.Name
