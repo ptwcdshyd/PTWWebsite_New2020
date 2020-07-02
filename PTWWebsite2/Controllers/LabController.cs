@@ -52,16 +52,25 @@ namespace PTWWebsite2.Controllers
         }
         [Route("LAB/{LabShortDescription}")]
         [Route("{culture}/LAB/{LabShortDescription}")]
-        public IActionResult LabArticles(string LabShortDescription,string culture = "en-US")
-        
+        public IActionResult LabArticles(string LabShortDescription,string culture = "en-US")        
         {
             List<string> ShortDescription = LabShortDescription.Split('-').ToList();
             ShortDescription.RemoveAt(0);
             string strShortDescription = string.Join(" ", ShortDescription);
-            //string culture = "en-US";
             LabsEvents LabsEvents = new LabsEvents();
-            LabsEvents.LabArticledetails = _LabEventService.GetLabsArticleDetails(strShortDescription);
-            LabsEvents.FutureLabArticles = _LabEventService.GetFutureLabArticles(strShortDescription);
+            if (ShortDescription.Count > 0)
+            {
+                //string culture = "en-US";                
+                LabsEvents.LabArticledetails = _LabEventService.GetLabsArticleDetails(strShortDescription);
+                LabsEvents.FutureLabArticles = _LabEventService.GetFutureLabArticles(strShortDescription);
+            }
+            else
+            {
+                LabsEvents.LabArticledetails = _LabEventService.GetLabsArticleDetails(LabShortDescription);
+                LabsEvents.FutureLabArticles = _LabEventService.GetFutureLabArticles(LabShortDescription);
+
+            }
+            
             GetServicecontent(culture);
             return View(LabsEvents);
         }
