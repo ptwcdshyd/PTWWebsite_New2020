@@ -154,13 +154,15 @@
 
     <script>
 
+
         $("#ModuleId").change(function () {
-            //if ($(this).val() == 1) {
-            //    $("#meta").hide();
-            //}
-            //if ($(this).val() == 2) {
-            //    $("#meta").hide();
-            //}
+            $("#meta").show();
+            if ($(this).val() == 1) {
+                $("#meta").hide();
+            }
+            if ($(this).val() == 2) {
+                $("#meta").hide();
+            }
        
 
         if ($(this).val() == 5) {
