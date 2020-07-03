@@ -399,6 +399,8 @@
                         if (result == 'Logout') {
                             window.location = '../Logout';
                         }
+                        $("#PostBackMsg").fadeOut("slow");
+
                         if (result.message == null) {
                             if (result.ResultCode == 0) {
                                 $("#lblMessage").css({ display: 'inline' });
@@ -412,7 +414,7 @@
                             var alertmsg = "Successfully updated";
                             AlertMessage('growl-success', 'Information', alertmsg, false, 3000);
 
-                            $("#PostBackMsg").fadeOut("slow");
+                            
                         }
 
                         else {
