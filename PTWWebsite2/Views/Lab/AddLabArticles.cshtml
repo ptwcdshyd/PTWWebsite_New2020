@@ -1,6 +1,461 @@
-﻿@*@model PTW.DataAccess.Models.Labs*@
+﻿@model PTW.DataAccess.Models.Labs
 
 @{
+    Layout = "";
     ViewData["Title"] = "AddLabArticles";
 }
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.min.css">
+@*<link href="~/css/Editor/Css/chosen.min.css" rel="stylesheet" />*@
+<script src="~/js/Editor/jquery-3.5.1.min.js"></script>
+<script src="~/js/Editor/popper.min.js"></script>
+<script src="~/js/Editor/1.9.1.jquery.js"></script>
+<script src="~/js/Editor/chosen.jquery.min.js"></script>
+
+<link href="~/css/Editor/Css/4.4.1.bootstrap.min.css" rel="stylesheet" />
+<script src="~/js/Editor/4.4.1.bootstrap.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+@*<link href="~/css/Editor/Css/summernote-bs4.min.css" rel="stylesheet" />*@
+<script src="~/js/Editor/summernote-bs4.min.js"></script>
+@*<script src="~/js/summernote.min.js"></script>*@
+
+<style>
+    /* Loader Start*/
+
+    #PostBackMsg, #PostBackMsg-1 {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        display: block;
+        background: rgba(255, 255, 255, 0.6509803921568628);
+        z-index: 1001;
+    }
+
+        #PostBackMsg img, #PostBackMsg-1 img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            max-width: 100%;
+            height: auto;
+        }
+
+    /* Loader End*/
+
+    #ModuleId {
+        outline: 0;
+        background-image: none;
+        width: 100%;
+        height: 100%;
+        color: black;
+        cursor: pointer;
+        border: 1px solid black;
+        border-radius: 15px;
+        padding: 6px 6px 6px 6px;
+    }
+
+    #LanguageCode {
+        outline: 0;
+        background-image: none;
+        width: 100%;
+        height: 100%;
+        color: black;
+        cursor: pointer;
+        border: 1px solid black;
+        border-radius: 15px;
+        padding: 6px 6px 6px 6px;
+    }
+
+    #lblMessage {
+        display: inline-block;
+        margin-bottom: .5rem;
+        color: red;
+        white-space: nowrap;
+        padding-left: 20px;
+        display: none;
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+        padding-right: 30px;
+        padding-left: 30px;
+        margin-top: 2rem;
+    }
+
+    .mandatory {
+        color: red;
+    }
+
+    #NewsList {
+        width: 75%;
+        margin-left: 4rem;
+    }
+</style>
+<div id="PostBackMsg" style="display:none;">
+
+    <img alt="loader" src="~/images/loader.gif" />
+
+</div>
+@*@Html.Raw(ViewBag.HomeContent)*@
+
+<form enctype="multipart/form-data" id="form1" asp-controller="LAB" asp-action="AddUpdateLabs" method="post" novalidate="novalidate" class="mt-3">
+   
+    <div class="page-header" style="text-align: center;">
+        <h3>Add Labs</h3>
+    </div>
+    <div class="contentpanel report" style="border: 1px solid #00b8ff85;width: 1180px;margin-top: 45px;margin-left:50px;">
+        <div class="row distribute-container">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="row">
+                    <div class="form-group col-md-4 col-sm-4">                       
+                        <label asp-for="LabType">Lab Type<span class="mandatory">*</span></label>
+                        <select asp-for="LabType" class="form-control input-sm" id="LabTypeId">
+                            <option value="1">Articles</option>
+                            <option value="2">CaseStudies</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-4 col-sm-4">
+                        <label for="name">ServiceType<span class="mandatory">*</span></label>
+                        <select asp-for="ServiceTypeId" class="form-control input-sm" id="ServiceType">
+                            <option value="1">Customer Experience</option>
+                            <option value="2"> Quality Assurance</option>
+                            <option value="3">Localization</option>
+                            <option value="4">Audio Production</option>
+                            <option value="5">Engineering</option>
+                            <option value="6">Campaigns</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4 col-sm-4">
+                        <label asp-for="Name">Name<span class="mandatory">*</span></label>
+                        <input type="text" asp-for="Name" class="form-control input-sm" placeholder="Name">
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-4 col-sm-4">
+                        <label for="Topic">Topic</label>
+                        <input type="text" asp-for="Topic" class="form-control input-sm" placeholder="Topic">
+                    </div>
+
+                    <div class="form-group col-md-4 col-sm-4">
+                        <label asp-for="ShortDescription">Short Description<span class="mandatory">*</span></label>
+                        <input type="text" asp-for="ShortDescription" class="form-control input-sm" placeholder="Short Description">
+                        <span asp-validation-for="ShortDescription" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                        <label asp-for="Description">Description<span class="mandatory">*</span></label>
+                        @*<div id="summernote"></div>*@
+                        <textarea id="summernote" class="form-control input-sm" asp-for="Description">  </textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-4 col-sm-4">
+                        <label for="mobile"> StartDate</label>
+                        <input type="date" asp-for="StartDate" asp-format="{0:yyyy-MM-dd}" class="form-control input-sm" placeholder="StartDate">
+                    </div>
+                    <div class="form-group col-md-4 col-sm-4">
+                        <label for="mobile">EndDate</label>
+                        <input type="date" asp-for="EndDate" class="form-control input-sm" placeholder="EndDate">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-4 col-sm-4">
+
+                        @Html.CheckBox("OnNewWebsiteNow", true)
+                        @*<input type="checkbox" asp-for="OnNewWebsiteNow" />*@
+                        <label asp-for="OnNewWebsiteNow">OnNewWebsiteNow </label>
+                        @*<input type="text" class="form-control input-sm"  placeholder="">*@
+                    </div>
+                    <div class="form-group col-md-4 col-sm-4">
+                        @Html.CheckBox("SuitedForHomePage", false)
+                        <label asp-for="SuitedForHomePage">SuitedForHomePage</label>
+
+                    </div>
+                    <div class="form-group col-md-4 col-sm-4">
+                        @Html.CheckBox("CustomerExperience", false)
+                        <label asp-for="CustomerExperience">CustomerExperience</label>
+
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="form-group col-md-4 col-sm-4">
+                        @Html.CheckBox("QualityAssurance", false)
+                        <label asp-for="QualityAssurance">QualityAssurance</label>
+                    </div>
+                    <div class="form-group col-md-4 col-sm-4">
+                        @Html.CheckBox("Localization", false)
+                        <label asp-for="Localization">Localization</label>
+                    </div>
+                    <div class="form-group col-md-4 col-sm-4">
+                        @Html.CheckBox("AudioProduction", false)
+                        <label asp-for="AudioProduction">AudioProduction</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-4 col-sm-4">
+                        @Html.CheckBox("Engineering", false)
+                        <label asp-for="Engineering">Engineering</label>
+                    </div>
+                    <div class="form-group col-md-4 col-sm-4">
+                        @Html.CheckBox("Campaign", false)
+                        <label asp-for="Campaign">Campaign</label>
+                    </div>
+                    <div class="form-group col-md-4 col-sm-4">
+                        @Html.CheckBox("ActiveStatus", true)
+                        <label asp-for="ActiveStatus">Active</label>
+                    </div>
+
+                </div>          
+                <div class="row">
+                    <div class="form-group col-md-8 col-sm-8">
+                        <label asp-for="DesktopImage" class="col-form-label">Image dimensions (1920x750) <span class="mandatory">*</span></label>
+                        <div class="col-sm-8">
+                            <div class="custom-file">
+                                <input asp-for="DesktopImage" class="form-control custom-file-input">
+                                <label class="custom-file-label">Choose File...1920x750 dimensions</label>
+                                <span asp-validation-for="DesktopImage" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="form-group col-md-8 col-sm-6">
+                        <label asp-for="TabImageHorizonal" class="col-form-label">Image dimensions (960x400)<span class="mandatory">*</span></label>
+                        <div class="col-md-8 col-sm-6">
+                            <div class="custom-file">
+                                <input asp-for="TabImageHorizonal" class="form-control custom-file-input">
+                                <label class="custom-file-label">Choose File...960x400 dimensions</label>
+                                <span asp-validation-for="TabImageHorizonal" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-8 col-sm-6">
+                        <label asp-for="TabImageNamVertical" class="col-form-label">Image dimensions (800x350)<span class="mandatory">*</span></label>
+                        <div class="col-md-8 col-sm-6">
+                            <div class="custom-file">
+                                <input asp-for="TabImageNamVertical" class="form-control custom-file-input">
+                                <label class="custom-file-label">Choose File...800x350 dimensions</label>
+                                <span asp-validation-for="TabImageNamVertical" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-8 col-sm-6">
+                        <label asp-for="MobileImage" class="col-form-label">Image dimensions (376x360)<span class="mandatory">*</span></label>
+                        <div class="col-md-8 col-sm-6">
+                            <div class="custom-file">
+                                <input asp-for="MobileImage" class="form-control custom-file-input">
+                                <label class="custom-file-label">Choose File...376x360 dimensions</label>
+                                <span asp-validation-for="MobileImage" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-8 col-sm-6">
+                        <label asp-for="ReadMore" class="col-form-label">Image dimensions (320x220)<span class="mandatory">*</span></label>
+                        <div class="col-md-8 col-sm-6">
+                            <div class="custom-file">
+                                <input asp-for="ReadMore" class="form-control custom-file-input">
+                                <label class="custom-file-label">Choose File...320x220 dimensions</label>
+                                <span asp-validation-for="ReadMore" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @*<div class="row">
+
+            <div class="form-group col-md-8 col-sm-6">
+                <label asp-for="LatestInsightImageUrl" class="col-form-label">LatestInsightImageUrl<span class="mandatory">*</span></label>
+                <div class="col-md-8 col-sm-6">
+                    <div class="custom-file">
+                        <input asp-for="LatestInsightImageUrl" class="form-control custom-file-input">
+                        <label class="custom-file-label">Choose File...960x400 dimensions</label>
+                        <span asp-validation-for="LatestInsightImageUrl" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>*@
+
+                <div class="row">
+                    <div class="form-group col-md-8 col-sm-6">
+                        <div class="form-group col-md-4 col-sm-4">
+                            <label for="MetaTitle">Meta Title</label>
+                            <input type="text" asp-for="MetaTitle" class="form-control input-sm" placeholder="Meta Title">
+                        </div>
+                        <div class="form-group col-lg-8  col-md-6 col-sm-4">
+                            <label for="MetaDescription">Meta Description</label>
+                            <textarea class="form-control input-sm" asp-for="MetaDescription">  </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                    <div class="row distribute-container">
+                        <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
+                            <input type="submit" id="submit" class="btn btn-success" value="Add Labs" />  <label id="lblMessage">No data Updated</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+  
+</form>
+
+
+<script>
+    $('#summernote').summernote({
+        placeholder: 'Labs  or Articles here',
+        tabsize: 2,
+        height: 300,
+        dialogsInBody: true
+    });
+
+    $('#summernoteUpdate').summernote({
+        placeholder: 'Labs or Articles here',
+        tabsize: 2,
+        height: 300,
+        dialogsInBody: true
+    });
+
+    $(document).ready(function () {
+       
+        //$("#ModuleId").chosen();
+        //$("#LanguageCode").chosen();
+        $('.custom-file-input').on("change", function () {
+            var fileLabel = $(this).next('.custom-file-label');
+            var files = $(this)[0].files;
+            if (files.length > 1) {
+                fileLabel.html(files.length + ' files selected');
+                
+            }
+            else if (files.length == 1) {
+                fileLabel.html(files[0].name);
+            }
+        });
+
+    });
+
+    function showFormView() {
+
+        //if ($("#EventTye").children("option:selected").val() == 1) {
+        //    $("#form2").hide();
+        //    $("#form1").show();
+        //}
+        //else if ($("#EventTye").children("option:selected").val() == 2) {
+        //    $("#form1").hide();
+        //    $("#form2").show();
+        //}
+        //else {
+        //    $("#form1").hide();
+        //    $("#form2").hide();
+        //}
+    }
+
+
+    function GetContent() {
+
+        if ($("#ModuleId").children("option:selected").val() > 0 && $("#LanguageCode").children("option:selected").val() !="") {
+            $("#PostBackMsg").show();
+            $('#summernote').summernote('code', '')
+            console.log($("#ModuleId").children("option:selected").val());
+            console.log($("#LanguageCode").children("option:selected").val());
+            $.ajax({
+                type: "GET",
+                url: '../Home/GetContent?ModuleId=' + parseInt($("#ModuleId").children("option:selected").val()) + '&LanguageCode=' + $("#LanguageCode").children("option:selected").val() + '',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+
+                    if (result == 'Logout') {
+                        window.location = '../Logout';
+                    }
+                    console.log(result);
+
+                    if (result != null) {
+                        $('#summernote').summernote('code', result);
+                    }
+
+
+                    $("#PostBackMsg").fadeOut("slow");
+                },
+
+                error: function (err) {
+                    if (err.status === 0) {
+                        window.location = '../Logout';
+                    }
+                    $("#PostBackMsg").fadeOut("slow");
+                }
+            });
+        }
+    }
+
+
+    function UpdateContent() {
+
+        if ($("#LanguageCode").children("option:selected").val() != "" && $("#ModuleId").children("option:selected").val() > 0) {
+            $("#PostBackMsg").show();
+            var objReq= {
+                ModuleId: parseInt($("#ModuleId").children("option:selected").val()),
+                LanguageCode: $("#LanguageCode").children("option:selected").val(),
+                Content: $('#summernote').summernote('code')
+            }
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("UpdateContentByModelIdAndLanguageId", "Home")',
+                data: JSON.stringify(objReq),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+
+                    if (result == 'Logout') {
+                        window.location = '../Logout';
+                    }
+                    if (result.ResultCode==0) {
+                        $("#lblMessage").css({ display: 'inline' });
+                    }
+                    //else {
+                    //    $('#summernote').summernote('code', result.HtmlContent);
+                    //}
+
+                    $("#PostBackMsg").fadeOut("slow");
+                },
+
+                error: function (err) {
+                    if (err.status === 0) {
+                        window.location = '../Logout';
+                    }
+                     $("#PostBackMsg").fadeOut("slow");
+                }
+            });
+        }
+        else {
+            return false;
+        }
+    }
+
+    
+
+</script>
+
 
