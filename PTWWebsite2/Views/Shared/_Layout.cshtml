@@ -97,7 +97,10 @@
 <script type="text/javascript">
     $(document).ready(function (){
         $("#Languages").val('@(ViewContext.RouteData.Values["culture"]!=null?ViewContext.RouteData.Values["culture"].ToString():"en-US")');
-    });
+        if ($("#Languages").val() == 'zh-CHT') {
+            $("#Languages").val('en-US');
+        }
+         });
 
 
 
@@ -128,10 +131,10 @@
 
         //});
 
-        function ApplyLocalizaiotn() {
-
+    function ApplyLocalizaiotn() {
+       
             var str = window.location.href.replace(window.location.origin, '');
-            
+          
             var values = $("#Languages").children('option').map(function (i, e) {
                 return e.value;
             }).get();
@@ -145,7 +148,8 @@
             }
             else {
                 
-                window.location = window.location.origin + '/' + $("#Languages").val()+ str;
+                    window.location = window.location.origin + '/' + $("#Languages").val()+str;
+                
             }
 
         }
