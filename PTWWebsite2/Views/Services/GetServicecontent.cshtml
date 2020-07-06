@@ -5,13 +5,21 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<link rel="stylesheet" href="/CSS/videobackground.css" />
-<link rel="stylesheet" href="/CSS/animate.min.css" />
-<link rel="stylesheet" href="/CSS/clean-blog.min.css" />
-<link rel="stylesheet" href="/CSS/custom.css" />
+        <link rel="stylesheet" href="/CSS/videobackground.css" />
+        <link rel="stylesheet" href="/CSS/animate.min.css" />
+        <link rel="stylesheet" href="/CSS/clean-blog.min.css" />
+        <link rel="stylesheet" href="/CSS/custom.css" />
 
-@Html.Raw(Model.HtmlContent)  
+        @Html.Raw(Model.HtmlContent)
 
 
-
+<script type="text/javascript">
+    function scroller(id) {
+        $('html, body').animate({
+            scrollTop: $(id).offset().top
+        }, 'slow','linear');
+        
+    }
+</script>
+  
 

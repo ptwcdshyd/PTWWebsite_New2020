@@ -10,3 +10,12 @@
 
 <h2>GetServiceQacontent</h2>
 @Html.Raw(Model.HtmlContent);
+
+<script type="text/javascript">
+        function scroller(id) {
+            $('html, body').animate({
+                scrollTop: $(id).offset().top
+            }, 'slow', 'linear');
+
+    }
+</script>

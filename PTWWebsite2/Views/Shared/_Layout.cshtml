@@ -94,8 +94,19 @@
         gtag('config', 'UA-47490486-4');
         gtag('config', 'AW-738489994');
     </script>*@
-    <script type="text/javascript">
+<script type="text/javascript">
+    $(document).ready(function (){
+        $("#Languages").val('@(ViewContext.RouteData.Values["culture"]!=null?ViewContext.RouteData.Values["culture"].ToString():"en-US")');
+        if ($("#Languages").val() == 'zh-CHT') {
+            $("#Languages").val('en-US');
+        }
+         });
 
+
+
+
+
+        //
         //$("#Languages").change(function () {
         //    alert();
         //    var str = window.location.href.replace(window.location.origin, '');
@@ -120,9 +131,10 @@
 
         //});
 
-        function ApplyLocalizaiotn() {
-
+    function ApplyLocalizaiotn() {
+       
             var str = window.location.href.replace(window.location.origin, '');
+          
             var values = $("#Languages").children('option').map(function (i, e) {
                 return e.value;
             }).get();
@@ -135,14 +147,16 @@
                 window.location = window.location.origin + str;
             }
             else {
-                window.location = window.location.origin + '/' + $("#Languages").val() + str;
+                
+                    window.location = window.location.origin + '/' + $("#Languages").val()+str;
+                
             }
 
         }
 
     @RenderSection("Scripts", required: false)
 
-    </script>
+</script>
 
 </body>
 </html>
