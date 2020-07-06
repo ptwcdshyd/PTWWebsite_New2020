@@ -19,9 +19,7 @@ namespace PTW.DataAccess.Services
         DataTable GetModuleContent(string ModuleName, string Languagecode);
         MasterPage GetModuleContentById(int ModuleId, string Languagecode);
         MasterPage GetNewsAndLabDetails(string serviceType,int languageId);
-        DataTable GetAboutProfile(string Languagecode);
-
-        DataTable GetLanguages();
+           
 
     }
 }

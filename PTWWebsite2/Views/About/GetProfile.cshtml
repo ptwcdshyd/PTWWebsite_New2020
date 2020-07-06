@@ -1,0 +1,139 @@
+﻿@model PTW.DataAccess.Models.AboutModel;
+
+@{
+    Layout = "";
+
+}
+<div id="PostBackMsg" style="display:none;">
+    <img alt="loader" src="~/images/loader.gif" />
+</div>
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+    <link href="~/css/datatables.css" rel="stylesheet">
+</head>
+<body>
+
+    <a href="~/AddProfile"><button> <i class="fas fa-plus"></i> Add Profile </button></a>
+    <table id="tblAboutProfile"></table>
+
+    <script type="text/javascript" src="~/js/datatables.js"></script>
+    <script>
+
+        $(document).ready(function () {
+
+            $('#tblAboutProfile').DataTable({
+                autoWidth: false,
+                fixedColumns: false,
+                "aoColumnDefs": [
+                    {
+                        "bSortable": false,
+                        "aTargets": [-1] // <-- gets last column and turns off sorting
+                    }
+                ],
+
+                columns: [
+
+                    { title: 'Id', data: "ProfileId" },
+                    { title: 'Title', data: "ProfileTitle" },
+                    { title: 'Description', data: "Description" },
+                    {
+                        title: 'Image', data: "ImgPath",
+                        render: function (data, type, row, meta) {
+                            console.log(data);
+                            var a = '<img src=' + data + ' alt="Img" width="150" height="100">'
+                            return a;
+                        }
+                    },
+                    { title: 'ImgagePath', data: "ImgPath" },
+                    { title: 'OrderNo', data: "OrderNo" },
+                    {
+                        title: 'User Status', data: "IsActive",
+                        render: function (data, type, row, meta) {
+                            return (data == 1 ? 'Active' : 'Inactive');
+                        }
+                    },
+                    {
+                        title: '', data: "ProfileId",
+                        render: function (data, type, row, meta) {
+                            var a = '  <div class="btn-group manageIcons">';
+                            a = a + ' <a href="#" style="padding-right:20px;" title="Edit" onclick="EditAboutProfile(' + row.ProfileId + ')">  <img src="../images/edit.svg" alt=""> </a>';
+                            a = a + '</div>';
+                            return a;
+                        }
+                    }
+                ],
+                "bLengthChange": false,
+                info: true,
+                responsive: false,
+                scrollX: true,
+                drawCallback: function (settings) {
+                    var pagination = $(this).closest('.dataTables_wrapper').find('.dataTables_paginate');
+                    pagination.toggle(this.api().page.info().pages > 1);
+                },
+                "fnInitComplete": function () {
+                    oTable = $('#tblUsers').DataTable();
+                    $('#datatableSearch').keyup(function () {
+                        oTable.search($(this).val()).draw();
+                    })
+                }
+
+            });
+
+            LoadDatatable();
+        });
+
+
+        function LoadDatatable() {
+            $("#PostBackMsg").show();
+
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("Profile", "About")',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    console.log(result);
+                    if (result == 'Logout') {
+                        window.location = '../Logout';
+                    }
+                    $('#tblAboutProfile').DataTable().clear().draw();
+                    $('#tblAboutProfile').DataTable().rows.add(result.Profiles);
+                    $('#tblAboutProfile').DataTable().columns.adjust().draw();
+                    setTimeout(
+                        function () {
+                            $('#tblAboutProfile').DataTable().columns.adjust().draw();
+                        }, 500);
+                    $("#PostBackMsg").fadeOut("slow");
+                },
+
+                error: function (err) {
+                    if (err.status === 0) {
+                        window.location = '../Logout';
+                    }
+                    $("#PostBackMsg").fadeOut("slow");
+                }
+            });
+        }
+
+
+        function EditAboutProfile(ProfileId) {
+            window.location = "../" + ProfileId + "-Profile";
+        }
+
+ 
+
+    </script>
+
+
+</body>
+</html>
