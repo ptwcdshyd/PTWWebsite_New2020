@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Design.Internal;
 using PTW.DataAccess.Models;
@@ -91,10 +92,8 @@ namespace PTWWebsite2.Controllers
         [HttpPost]
         public IActionResult AddUpdateLabs(Labs labs)
         {
-
-            //if (ModelState.IsValid)
-            //{
-
+            try
+            {
                 string uniqueFileName = string.Empty;
                 string MobileImage = string.Empty;
                 string DesktopImage = string.Empty;
@@ -103,63 +102,134 @@ namespace PTWWebsite2.Controllers
                 string Readmore = string.Empty;
                 string Labtypeimg = string.Empty;
                 string Mobileurl = string.Empty;
-                if (labs.DesktopImage != null)
+                MobileImage = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/" + Labtypeimg + "/376");
+                DesktopImage = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/" + Labtypeimg + "/1920");
+                TabImageHorizental = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/" + Labtypeimg + "/1112");
+                TabImageVertical = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/" + Labtypeimg + "/834");
+                Readmore = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/" + Labtypeimg + "/320");
+                if (labs.LabTypeId == 0)
                 {
-                    if (labs.LabTypeId == 1)
-                    {
-                        Labtypeimg = "Articles";
+                    Labtypeimg = "Articles";
 
-                    }
-                    else
-                    {
-                        Labtypeimg = "CaseStudies";
-
-                    }
-
-                    MobileImage = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/" + Labtypeimg + "/376");
-                    DesktopImage = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/" + Labtypeimg + "/1920");
-                    TabImageHorizental = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/" + Labtypeimg + "/1112");
-                    TabImageVertical = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/" + Labtypeimg + "/834");
-                    Readmore = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/" + Labtypeimg + "/320");
-                
-                    labs.ImageUrl = "/Images/Lab/" + Labtypeimg + "/376/";
-                    labs.ImageName = labs.MobileImage.FileName;
-
-                    labs.MobileImageNameUrl = "/Images/Lab/" + Labtypeimg + "/376/"+ labs.MobileImage.FileName + "";
-                    labs.MobileName = labs.MobileImage.FileName;                 
-
-                    string filePath = Path.Combine(MobileImage, labs.MobileImage.FileName);
-                    labs.MobileImage.CopyTo(new FileStream(filePath, FileMode.Create));
-
-
-                    labs.DesktopImageUrl = "/Images/Lab/" + Labtypeimg + "/1920/" + labs.DesktopImage.FileName + "";
-                    labs.DesktopName = labs.DesktopImage.FileName;
-                    string filePath2 = Path.Combine(DesktopImage, labs.DesktopImage.FileName);
-                    labs.DesktopImage.CopyTo(new FileStream(filePath2, FileMode.Create));
-
-                    labs.TabImageNameHorizondaUrl = "/Images/Lab/" + Labtypeimg + "/1112/" + labs.TabImageHorizonal.FileName + "";
-                    labs.TabImgHorizonalname = labs.TabImageHorizonal.FileName;
-                    string filePath3 = Path.Combine(TabImageHorizental, labs.TabImageHorizonal.FileName);
-                    labs.TabImageHorizonal.CopyTo(new FileStream(filePath3, FileMode.Create));
-
-                    labs.TabImageNamVerticalUrl = "/Images/Lab/" + Labtypeimg + "/834/" + labs.TabImageNamVertical.FileName + "";
-                    labs.TabImgVerticalname = labs.TabImageNamVertical.FileName;
-                    string filePath4 = Path.Combine(TabImageVertical, labs.TabImageNamVertical.FileName);
-                    labs.TabImageNamVertical.CopyTo(new FileStream(filePath4, FileMode.Create));
-
-                    labs.ReadMoreUrl = "/Images/Lab/" + Labtypeimg + "/320/" + labs.ReadMore.FileName + "";
-                    labs.ReadMorename = labs.ReadMore.FileName;
-                    string filePath5 = Path.Combine(Readmore, labs.ReadMore.FileName);
-                    labs.ReadMore.CopyTo(new FileStream(filePath5, FileMode.Create));
                 }
+                else
+                {
+                    Labtypeimg = "CaseStudies";
+
+                }
+                var file = Request.Form.Files.Count() == 0 ? null : Request.Form.Files[0];
+                if (Request.Form.Files.Count() > 0)
+                {
+                    string[] uploadedFiles = new string[] { };
+                    if (labs.FileString != null)
+                    {
+                        uploadedFiles = labs.FileString.Split(',');
+                    }
+                    if (uploadedFiles.Any(z => z == "file1"))
+                    {
+                        var fileExtension = file.FileName.Substring(file.FileName.LastIndexOf('.') + 1);
+                        if (fileExtension == "png")
+                        {
+                            DesktopImage = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/" + Labtypeimg + "/1920");
+
+                            labs.DesktopImageUrl = "/Images/Lab/" + Labtypeimg + "/1920/" + file.FileName + "";
+                            labs.DesktopName = file.FileName;
+                            string filePath2 = Path.Combine(DesktopImage, labs.DesktopName);
+                        }
+                        else
+                        {
+                            return Json(new { message = "file should be in png format" });
+                        }
+                    }
+                    if (uploadedFiles.Any(z => z == "file2"))
+                    {
+                        var file1 = Request.Form.Files.Count() == 0 ? null : Request.Form.Files[1];
+
+                        var fileExtension = file1.FileName.Substring(file1.FileName.LastIndexOf('.') + 1);
+                        if (fileExtension == "png")
+                        {
+                            TabImageHorizental = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/" + Labtypeimg + "/1112");
+                            labs.TabImageNameHorizondaUrl = "/Images/Lab/" + Labtypeimg + "/1112/" + file1.FileName + "";
+                            labs.TabImgHorizonalname = file1.FileName;
+                            string filePath3 = Path.Combine(TabImageHorizental, labs.TabImgHorizonalname);
+                        }
+                        else
+                        {
+                            return Json(new { message = "file should be in png format" });
+                        }
+                    }
+                    if (uploadedFiles.Any(z => z == "file3"))
+                    {
+                        var file2 = Request.Form.Files.Count() == 0 ? null : Request.Form.Files[2];
+
+                        var fileExtension = file2.FileName.Substring(file2.FileName.LastIndexOf('.') + 1);
+                        if (fileExtension == "png")
+                        {
+                            TabImageVertical = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/" + Labtypeimg + "/834");
+                            labs.TabImageNamVerticalUrl = "/Images/Lab/" + Labtypeimg + "/834/" + file2.FileName + "";
+                            labs.TabImgVerticalname = file2.FileName;
+                            string filePath4 = Path.Combine(TabImageVertical, labs.TabImgVerticalname);
+                        }
+                        else
+                        {
+                            return Json(new { message = "file should be in png format" });
+                        }
+                    }
+                    if (uploadedFiles.Any(z => z == "file4"))
+                    {
+                        var file3 = Request.Form.Files.Count() == 0 ? null : Request.Form.Files[3];
+
+                        var fileExtension = file3.FileName.Substring(file3.FileName.LastIndexOf('.') + 1);
+                        if (fileExtension == "png")
+                        {
+                            MobileImage = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/" + Labtypeimg + "/376");
+
+                            labs.ImageUrl = "/Images/Lab/" + Labtypeimg + "/376/";
+                            labs.ImageName = file3.FileName;
+
+                            labs.MobileImageNameUrl = "/Images/Lab/" + Labtypeimg + "/376/" + file3.FileName + "";
+                            labs.MobileName = file3.FileName;
+                            string filePath = Path.Combine(MobileImage, labs.MobileName);
+                        }
+                        else
+                        {
+                            return Json(new { message = "file should be in png format" });
+                        }
+
+                    }
+                    if (uploadedFiles.Any(z => z == "file5"))
+                    {
+                        var file4 = Request.Form.Files.Count() == 0 ? null : Request.Form.Files[4];
+
+                        var fileExtension = file4.FileName.Substring(file4.FileName.LastIndexOf('.') + 1);
+                        if (fileExtension == "png")
+                        {
+                            Readmore = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/" + Labtypeimg + "/320");
+
+                            labs.ReadMoreUrl = "/Images/Lab/" + Labtypeimg + "/320/" + file4.FileName + "";
+                            labs.ReadMorename = file4.FileName;
+                            string filePath5 = Path.Combine(Readmore, labs.ReadMorename);
+                        }
+                        else
+                        {
+                            return Json(new { message = "file should be in png format" });
+                        }
+
+                    }
+                }
+
 
                 string labsXmlData = CustomNewsXml(labs);
                 bool result = _LabEventService.AddUpdateLabs(labsXmlData, labs.Description);
                 ViewBag.IsAddedSuccessfully = result;
                 ModelState.Clear();
-            //}
 
-            return View("AddLabArticles",labs);
+                return View("AddLabArticles", labs);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         [NonAction]
@@ -215,6 +285,18 @@ namespace PTWWebsite2.Controllers
             LabsEvents.LabArticledetails = _LabEventService.GetLabCampaignArticleDetails("game localizatio strategy");
            
             return View(LabsEvents);
+        }
+        public async void FilePath(IFormFile file, string path)
+        {
+            if (System.IO.File.Exists(path))
+            {
+                System.IO.File.Delete(path);
+            }
+            using (var stream = new FileStream(path, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+
         }
     }
 }

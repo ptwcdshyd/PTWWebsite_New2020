@@ -13,13 +13,13 @@ namespace PTW.DataAccess.Models
         public int LabId { get; set; }
         public int ServiceTypeId { get; set; }
 
-        [Required(ErrorMessage = "Name is required")]
+       // [Required(ErrorMessage = "Name is required")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Short Description is required")]
+       // [Required(ErrorMessage = "Short Description is required")]
         public string ShortDescription { get; set; }
 
-        [Required(ErrorMessage = "Description is required")]
+        //[Required(ErrorMessage = "Description is required")]
         public string Description { get; set; }
         public string ImageName { get; set; }
         public string ImageUrl { get; set; }
@@ -43,7 +43,7 @@ namespace PTW.DataAccess.Models
         public int ShortOrder { get; set; }
         public int IsActive { get; set; }
 
-        [Required(ErrorMessage = "Lab Type is required")]
+       // [Required(ErrorMessage = "Lab Type is required")]
         public string LabType { get; set; }
         public int LabTypeId { get; set; }
         public string ImageAlternateText { get; set; }
@@ -74,7 +74,7 @@ namespace PTW.DataAccess.Models
         public string FilterAudioProduction { get; set; }
         public string FilterEngineering { get; set; }
         public string FilterCampaign { get; set; }
-        [Required(ErrorMessage = "Service Type is required")]
+        //[Required(ErrorMessage = "Service Type is required")]
         public string ServiceType { get; set; }
         public string StartDate { get; set; }//current date
         public string EndDate { get; set; }//sleected
@@ -92,22 +92,22 @@ namespace PTW.DataAccess.Models
 
         public string MetaDescription { get; set; }
 
-        [Required(ErrorMessage = "Please upload image and size should be 376x360 dimensions")]
+        //[Required(ErrorMessage = "Please upload image and size should be 376x360 dimensions")]
         public IFormFile MobileImage { get; set; }
 
-        [Required(ErrorMessage = "Please upload image and size should be 1920x750 dimensions")]
+       // [Required(ErrorMessage = "Please upload image and size should be 1920x750 dimensions")]
         public IFormFile DesktopImage { get; set; }
 
-        [Required(ErrorMessage = "Please upload image and size should be 1960x400 dimensions")]
+       /// [Required(ErrorMessage = "Please upload image and size should be 1960x400 dimensions")]
         public IFormFile TabImageHorizonal { get; set; }
 
-        [Required(ErrorMessage = "Please upload image and size should be 800x350 dimensions")]
+       // [Required(ErrorMessage = "Please upload image and size should be 800x350 dimensions")]
         public IFormFile TabImageNamVertical { get; set; }
 
-        [Required(ErrorMessage = "Please upload image and size should be 320x220 dimensions")]
+       // [Required(ErrorMessage = "Please upload image and size should be 320x220 dimensions")]
         public IFormFile ReadMore { get; set; }
 
-       
+       public string FileString { get; set; }
 
         public bool? ActiveStatus { get; set; }
 

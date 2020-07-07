@@ -151,9 +151,10 @@
                 <div class="row">
                     <div class="form-group col-lg-12 col-md-12 col-sm-12">
                         <label asp-for="Description">Description<span class="mandatory">*</span></label>
-                        @*<div id="summernote"></div>*@
-                        <textarea id="summernote" class="form-control input-sm" asp-for="Description">  </textarea>
-                        <span asp-validation-for="Description" class="text-danger"></span>
+                        @Html.TextArea("summernote", Model.Description, htmlAttributes: new { @class = "form-control input-sm", autocomplete = "off", style = "width: 350px; height: 150px;" })
+                        <label class="text-danger" for="summernote" id="lblsummernote"></label>                        
+         @*<textarea id="summernote" class="form-control input-sm" asp-for="Description">  </textarea>
+             <span asp-validation-for="Description" class="text-danger"></span>*@
                     </div>
                 </div>
                 <div class="row">
@@ -217,68 +218,99 @@
 
                 </div>          
                 <div class="row">
-                    <div class="form-group col-md-8 col-sm-8">
-                        <label asp-for="DesktopImage" class="col-form-label">Image dimensions (1920x750) <span class="mandatory">*</span></label>
-                        <div class="col-sm-8">
-                            <div class="custom-file">
-                                <input asp-for="DesktopImage" class="form-control custom-file-input">
-                                <label class="custom-file-label">Choose File...1920x750 dimensions</label>
-                                <span asp-validation-for="DesktopImage" class="text-danger"></span>
-                            </div>
+                    @*<div class="form-group col-md-8 col-sm-8">
+            <label asp-for="DesktopImage" class="col-form-label">Image dimensions (1920x750) <span class="mandatory">*</span></label>
+            <div class="col-sm-8">
+                <div class="custom-file">
+                    <input id="DesktopImage" asp-for="DesktopImage" class="form-control custom-file-input">
+                    <label class="custom-file-label">Choose File...1920x750 dimensions</label>
+                    <span asp-validation-for="DesktopImage" class="text-danger"></span>
+
+                </div>
+            </div>
+        </div>*@
+                    <div class="row distribute-container myfile">
+                        <div class="col-lg-10 col-md-8" style="margin-top:45px;margin-left:98px">
+                            <label id="DesktpImage">Image...1920x750 dimensions</label>
+                            <input id="DesktopImage" width="95" height="95" type="file" accept=".png" class="form-control" style="display:inline" />
                         </div>
                     </div>
                 </div>
                 <div class="row">
 
-                    <div class="form-group col-md-8 col-sm-6">
-                        <label asp-for="TabImageHorizonal" class="col-form-label">Image dimensions (960x400)<span class="mandatory">*</span></label>
-                        <div class="col-md-8 col-sm-6">
-                            <div class="custom-file">
-                                <input asp-for="TabImageHorizonal" class="form-control custom-file-input">
-                                <label class="custom-file-label">Choose File...960x400 dimensions</label>
-                                <span asp-validation-for="TabImageHorizonal" class="text-danger"></span>
-                            </div>
+                    @*<div class="form-group col-md-8 col-sm-6">
+            <label asp-for="TabImageHorizonal" class="col-form-label">Image dimensions (960x400)<span class="mandatory">*</span></label>
+            <div class="col-md-8 col-sm-6">
+                <div class="custom-file">
+                    <input id="" asp-for="TabImageHorizonal" class="form-control custom-file-input">
+                    <label class="custom-file-label">Choose File...960x400 dimensions</label>
+                    <span asp-validation-for="TabImageHorizonal" class="text-danger"></span>
+                </div>
+            </div>
+        </div>*@
+                    <div class="row distribute-container myfile">
+                        <div class="col-lg-10 col-md-8" style="margin-top:45px;margin-left:98px">
+                            <label id="TabHorizonalImage">Image...960x400 dimensions</label>
+                            <input id="TabImageHorizonal" width="95" height="95" type="file" accept=".png" class="form-control" style="display:inline" />
                         </div>
                     </div>
 
                 </div>
                 <div class="row">
-                    <div class="form-group col-md-8 col-sm-6">
-                        <label asp-for="TabImageNamVertical" class="col-form-label">Image dimensions (800x350)<span class="mandatory">*</span></label>
-                        <div class="col-md-8 col-sm-6">
-                            <div class="custom-file">
-                                <input asp-for="TabImageNamVertical" class="form-control custom-file-input">
-                                <label class="custom-file-label">Choose File...800x350 dimensions</label>
-                                <span asp-validation-for="TabImageNamVertical" class="text-danger"></span>
-                            </div>
+                    @*<div class="form-group col-md-8 col-sm-6">
+            <label asp-for="TabImageNamVertical" class="col-form-label">Image dimensions (800x350)<span class="mandatory">*</span></label>
+            <div class="col-md-8 col-sm-6">
+                <div class="custom-file">
+                    <input id="TabImageNamVertical" asp-for="TabImageNamVertical" class="form-control custom-file-input">
+                    <label class="custom-file-label">Choose File...800x350 dimensions</label>
+                    <span asp-validation-for="TabImageNamVertical" class="text-danger"></span>
+                </div>
+            </div>
+        </div>*@
+                    <div class="row distribute-container myfile">
+                        <div class="col-lg-10 col-md-8" style="margin-top:45px;margin-left:98px">
+                            <label id="TabNamVerticalImage">Image...800x350 dimensions</label>
+                            <input id="TabImageNamVertical" width="95" height="95" type="file" accept=".png" class="form-control" style="display:inline" />
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="form-group col-md-8 col-sm-6">
-                        <label asp-for="MobileImage" class="col-form-label">Image dimensions (376x360)<span class="mandatory">*</span></label>
-                        <div class="col-md-8 col-sm-6">
-                            <div class="custom-file">
-                                <input asp-for="MobileImage" class="form-control custom-file-input">
-                                <label class="custom-file-label">Choose File...376x360 dimensions</label>
-                                <span asp-validation-for="MobileImage" class="text-danger"></span>
-                            </div>
+                    @*<div class="form-group col-md-8 col-sm-6">
+            <label asp-for="MobileImage" class="col-form-label">Image dimensions (376x360)<span class="mandatory">*</span></label>
+            <div class="col-md-8 col-sm-6">
+                <div class="custom-file">
+                    <input id="MobileImage" asp-for="MobileImage" class="form-control custom-file-input">
+                    <label class="custom-file-label">Choose File...376x360 dimensions</label>
+                    <span asp-validation-for="MobileImage" class="text-danger"></span>
+                </div>
+            </div>
+        </div>*@
+                    <div class="row distribute-container myfile">
+                        <div class="col-lg-10 col-md-8" style="margin-top:45px;margin-left:98px">
+                            <label id="MobImage">Image...376x360 dimensions</label>
+                            <input id="MobileImage" width="95" height="95" type="file" accept=".png" class="form-control" style="display:inline" />
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="form-group col-md-8 col-sm-6">
-                        <label asp-for="ReadMore" class="col-form-label">Image dimensions (320x220)<span class="mandatory">*</span></label>
-                        <div class="col-md-8 col-sm-6">
-                            <div class="custom-file">
-                                <input asp-for="ReadMore" class="form-control custom-file-input">
-                                <label class="custom-file-label">Choose File...320x220 dimensions</label>
-                                <span asp-validation-for="ReadMore" class="text-danger"></span>
-                            </div>
-                        </div>
+                    @*<div class="form-group col-md-8 col-sm-6">
+            <label asp-for="ReadMore" class="col-form-label">Image dimensions (320x220)<span class="mandatory">*</span></label>
+            <div class="col-md-8 col-sm-6">
+                <div class="custom-file">
+                    <input id="ReadMore" asp-for="ReadMore" class="form-control custom-file-input">
+                    <label class="custom-file-label">Choose File...320x220 dimensions</label>
+                    <span asp-validation-for="ReadMore" class="text-danger"></span>
+                </div>
+            </div>
+        </div>*@
+                   <div class="row distribute-container myfile">
+                    <div class="col-lg-10 col-md-8" style="margin-top:45px;margin-left:98px">
+                        <label id="ReadMoreImage">Image...320x220 dimensions</label>
+                        <input id="ReadMore" width="95" height="95" type="file" accept=".png" class="form-control" style="display:inline" />
                     </div>
+                </div>
                 </div>
 
                 @*<div class="row">
@@ -312,16 +344,17 @@
             </div>
 
                     <div class="row distribute-container">
-                        <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
-                            <input type="submit" id="submit" class="btn btn-success" value="Add Labs" />  <label id="lblMessage">No data Updated</label>
+                        <div class="col-md-2" style="margin-top:4px;margin-left:98px;margin-bottom:15px;display:flex">                           
+                            <button type="button" id="submit" class="btn btn-success" value="Add Labs" onclick="AddLabs()">Add Labs</button>
+                            <label id="lblMessage">No data Updated</label>
                         </div>
                     </div>
                 </div>
             </div>
   
 </form>
-
-
+<link href="~/css/jquery.gritter.css" rel="stylesheet" />
+<script src="~/js/jquery.gritter.min.js"></script>
 <script>
     $('#summernote').summernote({
         placeholder: 'Labs  or Articles here',
@@ -338,7 +371,7 @@
     });
 
     $(document).ready(function () {
-       
+
         //$("#ModuleId").chosen();
         //$("#LanguageCode").chosen();
         $('.custom-file-input').on("change", function () {
@@ -346,7 +379,7 @@
             var files = $(this)[0].files;
             if (files.length > 1) {
                 fileLabel.html(files.length + ' files selected');
-                
+
             }
             else if (files.length == 1) {
                 fileLabel.html(files[0].name);
@@ -354,6 +387,118 @@
         });
 
     });
+
+    function AddLabs() {
+        debugger;
+        if (Validate()) {
+            if ($("#LabTypeId").children("option:selected").val() > 0) {
+            $("#PostBackMsg").show();
+            var fd = new FormData();
+            if ($("#LabTypeId").val() == 1) {
+                var files1 = $('#DesktopImage')[0].files[0];
+                if (files1 =="") {
+                    var errorMeaasage = "please Uplaod file";
+                    AlertMessage('growl-danger', 'Validation', errorMeaasage, false, 3000);
+                    return false;
+                }
+                var files2 = $('#TabImageHorizonal')[0].files[0];
+                var files3 = $('#TabImageNamVertical')[0].files[0];
+                var files4 = $('#MobileImage')[0].files[0];
+                var files5 = $('#ReadMore')[0].files[0];
+                var fileString = '';
+                if (files1 != undefined) {
+                    fd.append(files1.name, files1);
+                    fileString = fileString + 'file1,';
+                }
+                if (files2 != undefined) {
+                    fd.append(files2.name, files2);
+                    fileString = fileString + 'file2,';
+                }
+                if (files3 != undefined) {
+                    fd.append(files3.name, files3);
+                    fileString = fileString + 'file3,';
+                }
+                if (files4 != undefined) {
+                    fd.append(files4.name, files4);
+                    fileString = fileString + 'file4,';
+                }
+                if (files5 != undefined) {
+                    fd.append(files5.name, files5);
+                    fileString = fileString + 'file5,';
+                }
+                console.log(fd);
+                fd.append('LabType', parseInt($("#LabTypeId").children("option:selected").val()));
+                fd.append('ServiceType', $("#ServiceTypeId").children("option:selected").val());
+                fd.append('Name', $("#Name").val());
+                fd.append('Topic', $("#Topic").val());
+                fd.append('ShortDescription', $("#ShortDescription").val());
+
+                fd.append('Description', $("#Description").val());
+                fd.append('StartDate', $("#StartDate").val());
+                fd.append('EndDate', $("#EndDate").val());
+                fd.append('OnNewWebsiteNow', $("#OnNewWebsiteNow").val());
+                fd.append('SuitedForHomePage', $("#SuitedForHomePage").val());
+                fd.append('CustomerExperience', $("#CustomerExperience").val());
+                fd.append('QualityAssurance', $("#QualityAssurance").val());
+                fd.append('Localization', $("#Localization").val());
+                fd.append('AudioProduction', $("#AudioProduction").val());
+                fd.append('Engineering', $("#Engineering").val());
+                fd.append('Campaign', $("#Campaign").val());
+                fd.append('ActiveStatus', $("#ActiveStatus").val());
+                fd.append('MetaTitle', $("#MetaTitle").val());
+                fd.append('MetaDescription', $("#MetaDescription").val());
+                fd.append('FileString', fileString);
+            }
+                console.log(fd);
+              
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("AddUpdateLabs", "Lab")',
+                data: fd,
+                contentType: false,
+                processData: false,
+
+                success: function (result) {
+                    
+                    if (result == 'Logout') {
+                        window.location = '../Logout';
+                    }
+                    $("#PostBackMsg").fadeOut("slow");
+
+                    if (result.message == null) {
+                        if (result.ResultCode == 0) {
+                            $("#lblMessage").css({ display: 'inline' });
+                        }
+
+                        else {
+                            $('#summernote').summernote('code', result.HtmlContent);
+                        }
+                        $("#files1").val(null);
+                        $("#files2").val(null);
+                        $("#files3").val(null);
+                        $("#files4").val(null);
+                        $("#files5").val(null);
+                        var alertmsg = "Successfully updated";
+                        AlertMessage('growl-success', 'Information', alertmsg, false, 3000);
+                    }
+
+                    else {
+                        AlertMessage('growl-danger', 'Validation', result.message, false, 3000);
+                        $("#PostBackMsg").fadeOut("slow");
+                    }
+                },
+
+                error: function (err) {
+                    if (err.status === 0) {
+                        window.location = '../Logout';
+                    }
+                    $("#PostBackMsg").fadeOut("slow");
+                }
+            });
+        }
+        }
+
+    }
 
     function showFormView() {
 
@@ -454,7 +599,70 @@
         }
     }
 
-    
+    function Validate() {
+        debugger;
+               var flag = 0;
+        var errorMeaasage ="";     
+        if ($("#Name").val() == "") {
+            errorMeaasage = errorMeaasage+ "please Enter Name </br>";            
+        }
+        if ($("#ShortDescription").val() == "") {
+            errorMeaasage = errorMeaasage + "please Enter Short Description </br>";
+           
+        }
+        if ($('#summernote').summernote('code') == "" || $('#summernote').summernote('code') == "<p><br></p>") {
+            errorMeaasage = errorMeaasage + "please enter Description </br>";
+           // $("#lblsummernote").text("please enter Description");
+            flag = flag + 1;
+        }
+        if (($("#DesktopImage").val() == "" || $("#DesktopImage").val() == undefined) &&
+            ($("#TabImageHorizonal").val() == "" || $("#TabImageHorizonal").val() == undefined) &&
+            ($("#TabImageNamVertical").val() == "" || $("#TabImageNamVertical").val() == undefined) &&
+            ($("#MobileImage").val() == "" || $("#MobileImage").val() == undefined) &&
+            ($("#ReadMore").val() == "" || $("#ReadMore").val() == undefined))
+        {
+            errorMeaasage = errorMeaasage + "please Upload Image </br>";           
+            flag = flag + 1;
+        }
+        //if ($("#TabImageHorizonal").val() == "" || $("#TabImageHorizonal").val() == undefined) {
+        //    errorMeaasage = errorMeaasage + "please Upload Image </br>";
+        //    flag = flag + 1;
+        //}
+        //if ($("#TabImageNamVertical").val() == "" || $("#TabImageNamVertical").val() == undefined) {
+        //    errorMeaasage = errorMeaasage + "please Upload Image </br>";
+        //    flag = flag + 1;
+        //}
+        //if ($("#MobileImage").val() == "" || $("#MobileImage").val() == undefined) {
+        //    errorMeaasage = errorMeaasage + "please Upload Image </br>";
+        //    flag = flag + 1;
+        //}
+        //if ($("#ReadMore").val() == "" || $("#ReadMore").val() == undefined) {
+        //    errorMeaasage = errorMeaasage + "please Upload Image </br>";
+        //   // flag = flag + 1;
+        //}
+        if (flag > 0) {
+            var errmsg = errorMeaasage;
+            AlertMessage('growl-danger', 'Validation', errmsg, false, 3000);
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+    function AlertMessage(class_name, title, alert, boolstick, timesec) {
+        jQuery.gritter.add({
+            title: title,
+            text: alert,
+            class_name: class_name,
+            image: '',
+            sticky: boolstick,
+            time: timesec,
+            before_open: function () {
+                $('.gritter-item-wrapper').remove();
+            }
+        });
+        return false;
+    };
 
 </script>
 
