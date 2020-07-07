@@ -104,12 +104,12 @@ namespace PTWWebsite2.Controllers
 
                 if (uploadedFiles.Any(z => z == "file1"))
                 {
-                    var fileExtension = file.FileName.Substring(file.FileName.LastIndexOf('.') + 1);
+                    var fileExtension = Path.GetExtension(file.FileName);
                     switch (masterContent.ModuleId)
                     {
                         case 5:
 
-                            if (fileExtension == "png")
+                            if (fileExtension == ".png")
                             {
                                 string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
                                 string path = createpath + "\\" + "HOME-ICONS-white.png";
@@ -165,7 +165,7 @@ namespace PTWWebsite2.Controllers
                             }
                             break;
                         case 9:
-                            if (fileExtension == "png")
+                            if (fileExtension == ".png")
                             {
                                 string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
                                 string path = createpath + "\\" + "HOME-ICONS-white5.png";
@@ -184,13 +184,13 @@ namespace PTWWebsite2.Controllers
                 if (uploadedFiles.Any(z => z == "file2"))
                 {
                     var file1 = Request.Form.Files[Request.Form.Files.Count() > 1 ? 1 : 0];
-                    var fileExtension = file1.FileName.Substring(file.FileName.LastIndexOf('.') + 1);
+                    var fileExtension = Path.GetExtension(file1.FileName);
 
                     switch (masterContent.ModuleId)
                     {
                         case 5:
 
-                            if (fileExtension == "png")
+                            if (fileExtension == ".png")
                             {
                                 string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
                                 string path = createpath + "\\" + "Serv_ind-ICONS-grey.png";
