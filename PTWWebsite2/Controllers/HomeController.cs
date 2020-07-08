@@ -123,7 +123,7 @@ namespace PTWWebsite2.Controllers
 
                             break;
                         case 6:
-                            if (fileExtension == "png")
+                            if (fileExtension == ".png")
                             {
                                 string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
                                 string path = createpath + "\\" + "HOME-ICONS-white2.png";
@@ -137,7 +137,7 @@ namespace PTWWebsite2.Controllers
                             break;
 
                         case 7:
-                            if (fileExtension == "png")
+                            if (fileExtension == ".png")
                             {
                                 string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
                                 string path = createpath + "\\" + "HOME-ICONS-white3.png";
@@ -151,7 +151,7 @@ namespace PTWWebsite2.Controllers
                             }
                             break;
                         case 8:
-                            if (fileExtension == "png")
+                            if (fileExtension == ".png")
                             {
                                 string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
                                 string path = createpath + "\\" + "HOME-ICONS-white4.png";
@@ -203,7 +203,7 @@ namespace PTWWebsite2.Controllers
                             }
                             break;
                         case 6:
-                            if (fileExtension == "png")
+                            if (fileExtension == ".png")
                             {
                                 string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
                                 string path = createpath + "\\" + "Serv_ind-ICONS-grey2.png";
@@ -219,7 +219,7 @@ namespace PTWWebsite2.Controllers
                             break;
 
                         case 7:
-                            if (fileExtension == "png")
+                            if (fileExtension == ".png")
                             {
                                 string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
                                 string path = createpath + "\\" + "Serv_ind-ICONS-grey3.png";
@@ -234,7 +234,7 @@ namespace PTWWebsite2.Controllers
 
                             break;
                         case 8:
-                            if (fileExtension == "png")
+                            if (fileExtension == ".png")
                             {
                                 string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
                                 string path = createpath + "\\" + "Serv_ind-ICONS-grey4.png";
@@ -247,7 +247,7 @@ namespace PTWWebsite2.Controllers
                             }
                             break;
                         case 9:
-                            if (fileExtension == "png")
+                            if (fileExtension == ".png")
                             {
                                 string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
                                 string path = createpath + "\\" + "Serv_ind-ICONS-grey5.png";
