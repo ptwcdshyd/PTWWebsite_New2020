@@ -272,8 +272,8 @@ namespace PTW.DataAccess.ServicesImpl
         {
             CustomCommand command = null;
             List<Labs> LabsList = new List<Labs>();
-            try
-            {
+            //try
+            //{
                 using (command = new CustomCommand())
                 {
                     command.CommandType = CommandType.StoredProcedure;
@@ -318,16 +318,16 @@ namespace PTW.DataAccess.ServicesImpl
 
                 }
                 return LabsList;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                if (command != null) command.Dispose();
-                command = null;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw ex;
+            //}
+            //finally
+            //{
+            //    if (command != null) command.Dispose();
+            //    command = null;
+            //}
         }
 
         public bool AddUpdateLabs(string xmNewsData, string Description)
@@ -426,5 +426,140 @@ namespace PTW.DataAccess.ServicesImpl
             }
         }
 
+        public Labs GetAllLabsForUpdate()
+        {
+            CustomCommand command = null;
+            Labs LabsList = new Labs();
+
+            try
+            {
+                using (command = new CustomCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "GetAllLabsForUpdate";
+                    //  Execute command and get values from output parameters.
+                    DataTable dtResult = ExecuteTable(command);
+                    if (dtResult != null && dtResult.Rows.Count > 0)
+                    {
+                        LabsList.LabListUpdate = new List<LabUrlList>();
+                        for (int i = 0; i < dtResult.Rows.Count; i++)
+                        {
+                            LabUrlList labsUrlList = new LabUrlList();
+                            labsUrlList.LabId = Convert.ToInt32(dtResult.Rows[i]["LabId"]);
+                            labsUrlList.LabUrlTitle = Convert.ToString(dtResult.Rows[i]["ShortDescription"]);
+                            labsUrlList.IsActive = Convert.ToInt32(dtResult.Rows[i]["IsActive"]);
+                            LabsList.LabListUpdate.Add(labsUrlList);
+                        }
+                    }
+                }
+                return LabsList;
+            }
+            catch (Exception ex) { throw; }
+
+            finally
+            {
+                if (command != null) command.Dispose();
+                command = null;
+
+            }
+        }
+
+        public bool UpdateLabs(int LabId, string xmNewsData, string Description, string LanguageCode)
+        {
+            CustomCommand command = null;
+            NewsDetails newsDetails = new NewsDetails();
+            bool result = false;
+            try
+            {
+                using (command = new CustomCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "UpdateLabs";
+                    command.AddParameterWithValue("@Lab_Id", LabId);
+                    command.AddParameterWithValue("@LabsData", xmNewsData);
+                    command.AddParameterWithValue("@_Description", Description);
+                    command.AddParameterWithValue("@LanguageCode", LanguageCode);
+
+                    int i = ExecuteNonQuery(command, false);
+                    if (i > 0)
+                    {
+                        result = true;
+                    }
+
+                }
+                return result;
+            }
+
+
+            catch { throw; }
+
+            finally
+            {
+                if (command != null) command.Dispose();
+                command = null;
+
+            }
+        }
+        public Labs GetLabsDetailsByLabId(int LabId, string LanguageCode = "en-US")
+        {
+            CustomCommand command = null;
+            Labs labs = new Labs();
+
+            try
+            {
+                using (command = new CustomCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "GetLabsDetailsByLabId";
+                    command.AddParameterWithValue("@Labs_Id", LabId);
+                    command.AddParameterWithValue("@LanguageCode", LanguageCode);
+
+                    //  Execute command and get values from output parameters.
+                    DataSet dtResult = ExecuteDataSet(command);
+                    if (dtResult != null && dtResult.Tables[dtResult.Tables.Count - 1].Rows.Count > 0)
+                    {
+                        labs.LabId = Convert.ToInt32(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["LabId"]);
+                        labs.EditLabId = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["LabId"]);
+                        labs.ServiceTypeId = Convert.ToInt32(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["ServiceTypeId"]);
+                        labs.Name = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["LabTitle"]);                     
+                       
+                        labs.ShortDescription = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["ShortDescription"]);                       
+                        labs.Description = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["Description"]);
+                        labs.Topic = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["Topic"]);
+                        labs.StartDate = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["StartDate"]);
+                        labs.EndDate = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["EndDate"]);
+                        labs.OnNewWebsiteNow = Convert.ToBoolean(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["OnNewWebsiteNow"]);
+                       // labs.SuitedForHomePage = Convert.ToBoolean(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["SuitedForHomePage"]);
+                        labs.CustomerExperience = Convert.ToBoolean(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["CustomerExperience"]);
+                        labs.QualityAssurance = Convert.ToBoolean(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["QualityAssurance"]);
+                        labs.Localization = Convert.ToBoolean(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["Localization"]);
+                        labs.AudioProduction = Convert.ToBoolean(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["AudioProduction"]);
+                        labs.Engineering = Convert.ToBoolean(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["Engineering"]);
+                        labs.ActiveStatus = Convert.ToBoolean(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["IsActive"]);
+                        labs.DesktopImageUrl = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["DesktopImageUrl"]);
+                        labs.TabImageNameHorizondaUrl = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["TabImageNameHorizondaUrl"]);
+                        labs.TabImageNamVerticalUrl = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["TabImageNamVerticalUrl"]);
+                       // labs.DefaultImageUrl = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["DefaultImageUrl"]);
+                        labs.MobileImageNameUrl = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["MobileImageNameUrl"]);
+                        labs.MetaTitle = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["MetaTitle"]);
+                        //labs.MetaDescription = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["MetaDescription"]);
+                        //labs.ShortOrder = Convert.ToInt32(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["ShortOrder"]);
+
+                    }
+
+                }
+                return labs;
+            }
+
+
+            catch (Exception ex) { throw; }
+
+            finally
+            {
+                if (command != null) command.Dispose();
+                command = null;
+
+            }
+        }
     }
 }

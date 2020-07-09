@@ -18,8 +18,11 @@ namespace PTW.DataAccess.Services
         List<Labs> GetLabsArticleDetails(string LabIdOrShortDescription);
 
         bool AddUpdateLabs(string xmNewsData, string Description);
-
-      
         List<Labs> GetLabCampaignArticleDetails(string LabIdOrShortDescription);
+
+        Labs GetAllLabsForUpdate();
+
+        bool UpdateLabs(int LabId, string xmNewsData, string Description, string LanguageCode);
+        Labs GetLabsDetailsByLabId(int LabId, string LanguageCode);
     }
 }

@@ -12,8 +12,8 @@ namespace PTW.DataAccess.Models
     {
         public int LabId { get; set; }
         public int ServiceTypeId { get; set; }
-
-       // [Required(ErrorMessage = "Name is required")]
+        public string EditLabId { get; set; }
+        // [Required(ErrorMessage = "Name is required")]
         public string Name { get; set; }
 
        // [Required(ErrorMessage = "Short Description is required")]
@@ -111,11 +111,12 @@ namespace PTW.DataAccess.Models
 
         public bool? ActiveStatus { get; set; }
 
+        public string Message { get; set; }
         public List<Languages> Languages { get; set; }
         public List<Labs> LabsList { get; set; }
+
+        public List<LabUrlList> LabListUpdate { get; set; }
     }
-
-
     public class LabsArticles
     {
 
@@ -228,4 +229,10 @@ namespace PTW.DataAccess.Models
         //public int LabTypeId { get; set; }
     }
 
+    public class LabUrlList
+    {
+        public int LabId { get; set; }
+        public string LabUrlTitle { get; set; }
+        public int IsActive { get; set; }
     }
+}
