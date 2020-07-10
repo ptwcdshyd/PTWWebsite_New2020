@@ -308,14 +308,10 @@ namespace PTW.DataAccess.ServicesImpl
                             // labs.MetaTags = Convert.ToString(dtResult.Rows[i]["MetaTags"]);
                             labs.DetailedName = Convert.ToString(dtResult.Rows[i]["DetailedName"]);
                             labs.DetailedDescription = Convert.ToString(dtResult.Rows[i]["DetailedDescription"]);
-                            labs.DetailedShortOrder = Convert.ToString(dtResult.Rows[i]["DetailedShortOrder"]);
-
-                            
-
+                            labs.DetailedShortOrder = Convert.ToString(dtResult.Rows[i]["DetailedShortOrder"]); 
                             LabsList.Add(labs);
                         }
                     }
-
                 }
                 return LabsList;
             //}

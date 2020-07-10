@@ -79,7 +79,6 @@ namespace PTWWebsite2.Controllers
             return View(LabsEvents);
         }
 
-
         [Route("AddLabs")]
         public IActionResult AddLabArticles()
         {
@@ -132,6 +131,7 @@ namespace PTWWebsite2.Controllers
                         {
                             uploadedFiles = labs.FileString.Split(',');
                         }
+                        #region FileUpload
                         if (uploadedFiles.Any(z => z == "file1"))
                         {
 
@@ -140,9 +140,10 @@ namespace PTWWebsite2.Controllers
                             {
                                 DesktopImage = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/" + Labtypeimg + "/1920");
 
-                                labs.DesktopImageUrl = "/Images/Lab/" + labs.LabType + "/1920/" + file.FileName + "";
+                                labs.DesktopImageUrl = "/Images/Lab/" + Labtypeimg + "/1920/" + file.FileName + "";
                                 labs.DesktopName = file.FileName;
                                 string filePath2 = Path.Combine(DesktopImage, labs.DesktopName);
+                                FilePath1(file, filePath2);
                             }
                             else
                             {
@@ -157,9 +158,10 @@ namespace PTWWebsite2.Controllers
                             if (fileExtension == "png")
                             {
                                 TabImageHorizental = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/" + Labtypeimg + "/1112");
-                                labs.TabImageNameHorizondaUrl = "/Images/Lab/" + labs.LabType + "/1112/" + file1.FileName + "";
+                                labs.TabImageNameHorizondaUrl = "/Images/Lab/" + Labtypeimg + "/1112/" + file1.FileName + "";
                                 labs.TabImgHorizonalname = file1.FileName;
                                 string filePath3 = Path.Combine(TabImageHorizental, labs.TabImgHorizonalname);
+                                FilePath1(file, filePath3);
                             }
                             else
                             {
@@ -174,9 +176,10 @@ namespace PTWWebsite2.Controllers
                             if (fileExtension == "png")
                             {
                                 TabImageVertical = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/" + Labtypeimg + "/834");
-                                labs.TabImageNamVerticalUrl = "/Images/Lab/" + labs.LabType + "/834/" + file2.FileName + "";
+                                labs.TabImageNamVerticalUrl = "/Images/Lab/" + Labtypeimg + "/834/" + file2.FileName + "";
                                 labs.TabImgVerticalname = file2.FileName;
                                 string filePath4 = Path.Combine(TabImageVertical, labs.TabImgVerticalname);
+                                FilePath1(file, filePath4);
                             }
                             else
                             {
@@ -195,9 +198,10 @@ namespace PTWWebsite2.Controllers
                                 labs.ImageUrl = "/Images/Lab/" + Labtypeimg + "/376/";
                                 labs.ImageName = file3.FileName;
 
-                                labs.MobileImageNameUrl = "/Images/Lab/" + labs.LabType + "/376/" + file3.FileName + "";
+                                labs.MobileImageNameUrl = "/Images/Lab/" + Labtypeimg + "/376/" + file3.FileName + "";
                                 labs.MobileName = file3.FileName;
                                 string filePath = Path.Combine(MobileImage, labs.MobileName);
+                                FilePath1(file, filePath);
                             }
                             else
                             {
@@ -214,9 +218,10 @@ namespace PTWWebsite2.Controllers
                             {
                                 Readmore = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/" + Labtypeimg + "/320");
 
-                                labs.ReadMoreUrl = "/Images/Lab/" + labs.LabType + "/320/" + file4.FileName + "";
+                                labs.ReadMoreUrl = "/Images/Lab/" + Labtypeimg + "/320/" + file4.FileName + "";
                                 labs.ReadMorename = file4.FileName;
                                 string filePath5 = Path.Combine(Readmore, labs.ReadMorename);
+                                FilePath1(file, filePath5);
                             }
                             else
                             {
@@ -224,12 +229,44 @@ namespace PTWWebsite2.Controllers
                             }
 
                         }
+                        #endregion
+                        #region FileUpload Existing
+
+                        //labs.ImageUrl = "/Images/Lab/" + Labtypeimg + "/376/";
+                        //labs.ImageName = labs.MobileImage.FileName;
+
+                        //labs.MobileImageNameUrl = "/Images/Lab/" + Labtypeimg + "/376/" + labs.MobileImage.FileName + "";
+                        //labs.MobileName = labs.MobileImage.FileName;
+
+                        //string filePath = Path.Combine(MobileImage, labs.MobileImage.FileName);
+                        //labs.MobileImage.CopyTo(new FileStream(filePath, FileMode.Create));
+
+
+                        //labs.DesktopImageUrl = "/Images/Lab/" + Labtypeimg + "/1920/" + labs.DesktopImage.FileName + "";
+                        //labs.DesktopName = labs.DesktopImage.FileName;
+                        //string filePath2 = Path.Combine(DesktopImage, labs.DesktopImage.FileName);
+                        //labs.DesktopImage.CopyTo(new FileStream(filePath2, FileMode.Create));
+
+                        //labs.TabImageNameHorizondaUrl = "/Images/Lab/" + Labtypeimg + "/1112/" + labs.TabImageHorizonal.FileName + "";
+                        //labs.TabImgHorizonalname = labs.TabImageHorizonal.FileName;
+                        //string filePath3 = Path.Combine(TabImageHorizental, labs.TabImageHorizonal.FileName);
+                        //labs.TabImageHorizonal.CopyTo(new FileStream(filePath3, FileMode.Create));
+
+                        //labs.TabImageNamVerticalUrl = "/Images/Lab/" + Labtypeimg + "/834/" + labs.TabImageNamVertical.FileName + "";
+                        //labs.TabImgVerticalname = labs.TabImageNamVertical.FileName;
+                        //string filePath4 = Path.Combine(TabImageVertical, labs.TabImageNamVertical.FileName);
+                        //labs.TabImageNamVertical.CopyTo(new FileStream(filePath4, FileMode.Create));
+
+                        //labs.ReadMoreUrl = "/Images/Lab/" + Labtypeimg + "/320/" + labs.ReadMore.FileName + "";
+                        //labs.ReadMorename = labs.ReadMore.FileName;
+                        //string filePath5 = Path.Combine(Readmore, labs.ReadMore.FileName);
+                        //labs.ReadMore.CopyTo(new FileStream(filePath5, FileMode.Create));
+                        #endregion
                     }
 
                     string labsXmlData = CustomNewsXml(labs);
                     bool result = _LabEventService.AddUpdateLabs(labsXmlData, labs.Description);
-                    ViewBag.IsAddedSuccessfully = result;
-                    ModelState.Clear();
+                   ViewBag.IsAddedSuccessfully = result;                   
                 }
                 else
                 {
@@ -309,6 +346,19 @@ namespace PTWWebsite2.Controllers
             using (var stream = new FileStream(path, FileMode.Create))
             {
                 await file.CopyToAsync(stream);
+            }
+
+        }
+
+        public async void FilePath1(IFormFile file1, string path)
+        {
+            if (System.IO.File.Exists(path))
+            {
+                System.IO.File.Delete(path);
+            }
+            using (var stream = new FileStream(path, FileMode.Create))
+            {
+                await file1.CopyToAsync(stream);
             }
 
         }
@@ -484,6 +534,7 @@ namespace PTWWebsite2.Controllers
                 //MasterPage masterPage1 = _masterService.GetLanguageandModules();               
                // Labs ddlLabsTitles = _LabEventService.GetAllLabsForUpdate();
                  labs = _LabEventService.GetLabsDetailsByLabId(LabId, LanguageCode );
+              
                 labs.EditLabId = LabId.ToString();
 
                 return Json(labs);

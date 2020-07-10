@@ -136,7 +136,7 @@
                         <div class="form-group col-md-4 col-sm-4">
                             <label asp-for="LabType">Lab Type<span class="mandatory">*</span></label>
                             <select asp-for="LabType" class="form-control input-sm" id="LabTypeId">
-                                <option value="1">Articles</option>
+                                <option value="1">Article</option>
                                 <option value="2">CaseStudies</option>
                             </select>
                         </div>
@@ -144,7 +144,8 @@
                     <div class="row">
                         <div class="form-group col-md-4 col-sm-4">
                             <label for="name">ServiceType<span class="mandatory">*</span></label>
-                            <select asp-for="ServiceType" class="form-control input-sm" id="ServiceTypeId">
+                            <select asp-for="ServiceType" class="form-control input-sm" id="ServiceTypeId" onchange="getval(this);">
+                                <option value="0">Please Select</option>
                                 <option value="1">Customer Experience</option>
                                 <option value="2"> Quality Assurance</option>
                                 <option value="3">Localization</option>
@@ -424,6 +425,7 @@
         //    document.form1.action = "/EditNewss/GetNews";
         document.form1.submit();
     }
+
     function showFormView() {
 
         if ($("#LabId").children("option:selected").val() > 0) {
@@ -434,6 +436,7 @@
             $("#form2").hide();
         }
     }
+
     function AddLabs() {
         debugger;
         if (Validate()) {
@@ -475,7 +478,7 @@
                 console.log(fd);
                 fd.append('LabId', $("#LabId").children("option:selected").val());
                 fd.append('LabType', $("#LabTypeId").children("option:selected").text());
-                fd.append('LabTypeId', $("#LabTypeId").children("option:selected").text());
+                fd.append('LabTypeId', $("#LabTypeId").children("option:selected").val());
                 fd.append('ServiceTypeId', $("#ServiceTypeId").children("option:selected").val());
                 fd.append('Name', $("#Name").val());
                 fd.append('Topic', $("#Topic").val());
@@ -485,14 +488,14 @@
                 fd.append('Description', $("#summernote").val());
                 fd.append('StartDate', $("#StartDate").val());
                 fd.append('EndDate', $("#EndDate").val());
-                fd.append('OnNewWebsiteNow', $("#OnNewWebsiteNow").val());
-                fd.append('SuitedForHomePage', $("#SuitedForHomePage").val());
-                fd.append('CustomerExperience', $("#CustomerExperience").val());
-                fd.append('QualityAssurance', $("#QualityAssurance").val());
-                fd.append('Localization', $("#Localization").val());
-                fd.append('AudioProduction', $("#AudioProduction").val());
-                fd.append('Engineering', $("#Engineering").val());
-                fd.append('Campaign', $("#Campaign").val());
+                fd.append('OnNewWebsiteNow', $("#OnNewWebsiteNow").prop("checked"));
+                fd.append('SuitedForHomePage', $("#SuitedForHomePage").prop("checked"));
+                fd.append('CustomerExperience', $("#CustomerExperience").prop("checked"));
+                fd.append('QualityAssurance', $("#QualityAssurance").prop("checked"));
+                fd.append('Localization', $("#Localization").prop("checked"));
+                fd.append('AudioProduction', $("#AudioProduction").prop("checked"));
+                fd.append('Engineering', $("#Engineering").prop("checked"));
+                fd.append('Campaign', $("#Campaign").prop("checked"));
                 fd.append('ActiveStatus', $("#ActiveStatus").val());
                 fd.append('MetaTitle', $("#MetaTitle").val());
                 fd.append('MetaDescription', $("#MetaDescription").val());
@@ -506,6 +509,7 @@
                 contentType: false,
                 processData: false,
                 success: function (result) {
+                    console.log(result);
                     if (result == 'Logout') {
                         window.location = '../Logout';
                     }
@@ -513,7 +517,10 @@
 
                     if (result.message == null) {
                         if (result.ResultCode == 0) {
+                           
                             $("#lblMessage").css({ display: 'inline' });
+                            var alertmsg = "Successfully updated";
+                            AlertMessage('growl-success', 'Information', alertmsg, false, 3000);
                         }
 
                         else {
@@ -524,12 +531,11 @@
                         $("#files3").val(null);
                         $("#files4").val(null);
                         $("#files5").val(null);
+                        
                         var alertmsg = "Successfully updated";
                         AlertMessage('growl-success', 'Information', alertmsg, false, 3000);
-                        window.location.reload();
                     }
-
-                    else {
+                    else {                       
                         AlertMessage('growl-danger', 'Validation', result.message, false, 3000);
                         $("#PostBackMsg").fadeOut("slow");
                     }
@@ -563,6 +569,29 @@
         //}
     }
 
+    function getval(sel) {
+       
+        if ($("#ServiceTypeId").children("option:selected").val() ==1) {
+            $("#CustomerExperience").prop("checked", true);
+        }
+        if ($("#ServiceTypeId").children("option:selected").val() == 2) {
+            $("#QualityAssurance").prop("checked", true);
+        }
+        if ($("#ServiceTypeId").children("option:selected").val() == 3) {
+            $("#Localization").prop("checked", true);
+        }
+        if ($("#ServiceTypeId").children("option:selected").val() == 4) {
+            $("#AudioProduction").prop("checked", true);
+        }
+        if ($("#ServiceTypeId").children("option:selected").val() == 5) {
+            $("#Engineering").prop("checked", true);
+        }
+        if ($("#ServiceTypeId").children("option:selected").val() == 6) {
+            $("#Campaign").prop("checked", true);
+        }
+        //alert(sel.value);
+        
+    }
 
     function GetContent() {
         debugger;
@@ -683,6 +712,10 @@
                var flag = 0;
         var errorMeaasage = "";
         if ($("#LabId").val() == "Please select") {
+            
+            if ($("#ServiceTypeId").val() == "0") {
+                errorMeaasage = errorMeaasage + "please select Service Type </br>";
+            }
             if ($("#Name").val() == "") {
                 errorMeaasage = errorMeaasage + "please Enter Name </br>";
             }
@@ -734,9 +767,7 @@
     $(document).on("click", "#submit", function () {
 
         if ($("#submit").val() == "Update Lab") {
-
             AddLabs();
-            //UpdateContent();
         }
         else {
             AddLabs();

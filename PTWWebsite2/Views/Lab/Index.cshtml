@@ -97,8 +97,6 @@
 
     </div>
     <div class="d-none d-lg-block">
-
-
         <a id="A2" href="#" data-filter="*" class="active" runat="server" meta:resourcekey="lab_latest_insights">
             Latest Insights
         </a>
@@ -127,24 +125,24 @@
         <div class="col-xl-9 col-md-12">
             <div class="row">
                 @*@foreach (var item in Model.labInsights)
-                {*@
-                    <div class="col-xl-8 col-md-12">
-                        <a titlevalue="7" href="/lab/Article-game-localization-strategy">
+                    {*@
+                <div class="col-xl-8 col-md-12">
+                    <a titlevalue="7" href="/lab/Article-game-localization-strategy">
 
-                            @*<div class="insight-category latest-insight">
-                                    <img src=@Model.labInsights[0].CampaignImageUrl alt="alt-text" class="qa-diamond">
-                                </div>*@
-                            <picture>
-                                <source srcset="" media="(min-width: 1367px)">
-                                <source srcset="@Model.labInsights[6].MobileImageNameUrl" media="(max-width: 400px)">
-                                <img class="b-lazy" src="@Model.labInsights[6].DesktopImageUrl" data-src="@Model.labInsights[6].DesktopImageUrl" alt="">
-                            </picture>
-                        </a>
-                    </div>
+                        @*<div class="insight-category latest-insight">
+                                <img src=@Model.labInsights[0].CampaignImageUrl alt="alt-text" class="qa-diamond">
+                            </div>*@
+                        <picture>
+                            <source srcset="" media="(min-width: 1367px)">
+                            <source srcset="@Model.labInsights[6].MobileImageNameUrl" media="(max-width: 400px)">
+                            <img class="b-lazy" src="@Model.labInsights[6].DesktopImageUrl" data-src="@Model.labInsights[6].DesktopImageUrl" alt="">
+                        </picture>
+                    </a>
+                </div>
                 <div class="col-xl-4 col-md-12 article-info">
                     <div class="row">
                         <div class="col-md-12">
-                            <a titlevalue="7" href="@Model.labInsights[6].ShortDescription.Replace(" ", " -").Replace("&", "@").ToLower()">
+                            <a titlevalue="7" href="@Model.labInsights[6].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
                                 <p class="insight-title">
                                     @*How to build a video game localization strategy in 5 steps*@
                                     @Model.labInsights[6].Name
@@ -187,12 +185,41 @@
         </div>
     </div>
 
-    <div class="row isotope-filter-grid" style="position: relative; height: 2358.2px;">
-       
-        @*<div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  camp1" style="position: absolute; left: 0px; top: 0px;">
-            @foreach (var item in Model.allLabs)
-            {
+    <div class="row isotope-filter-grid">
+        @foreach (var item in Model.allLabs)
+        {
+            <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights">
+                <a titlevalue="7" href="/Lab/@item.LabType-@item.ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
+                    <div class="row single-insight-container">
+                        <img class="b-lazy" src="@item.MobileImageNameUrl" data-src="@item.MobileImageNameUrl" alt="">
+                        @*<img class="b-lazy" src="@string.Concat(Convert.ToString(item.ImageUrl),Convert.ToString(item.ImageName))" data-src="@string.Concat(Convert.ToString(item.ImageUrl),Convert.ToString(item.ImageName))" 
+                             alt="@item.ImageAlternateText" />*@
+                        <div class="col-md-12">
+                            <div class="insight-category">
+                                <img src="@string.Concat(Convert.ToString(item.CustomerExperienceImageUrl),Convert.ToString(item.QualityAssuranceImageUrl),Convert.ToString(item.LocalizationImageUrl),Convert.ToString(item.AudioProductionImageUrl),Convert.ToString(item.EngineeringImageUrl),Convert.ToString(item.CEandQAImageUrl),Convert.ToString(item.CampaignImageUrl))" alt="alt-text" class="qa-diamond">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row single-insight-details-container">
+                        <div class="col-md-12">
+                            <div class="insight-details">
+                                <p class="insight-title">
+                                    @item.Name
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+        </div>
 
+</div>
+    @*<div class="row isotope-filter-grid" style="position: relative; height: 2358.2px;">
+
+        @foreach (var item in Model.allLabs)
+        {
+            <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights" style="position: absolute; left: 0px; top: 0px;">
                 <a titlevalue="7" href="/Lab/@item.LabType-@item.ShortDescription.Replace(" ", " -").Replace("&", "@").ToLower()">
                     <div class="row single-insight-container">
                         <img class="b-lazy" src="@item.MobileImageNameUrl" data-src="@item.MobileImageNameUrl" alt="">
@@ -222,7 +249,7 @@
                                 {
                                     <img src="@item.LocalizationImageUrl" alt="alt-text" class="qa-diamond">
                                 }
-                                
+
                             </div>
                         </div>
                     </div>
@@ -236,26 +263,27 @@
                         </div>
                     </div>
                 </a>
-            }
-            </div>*@    
-    <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  camp1" style="position: absolute; left: 0px; top: 0px;">
-                <a titlevalue="7" href="/Lab/@Model.allLabs[0].LabType-@Model.allLabs[0].ShortDescription.Replace(" ", " -").Replace("&", "@").ToLower()">
-                    <div class="row single-insight-container">
-                        <img class="b-lazy" src="@Model.allLabs[0].MobileImageNameUrl" data-src="@Model.allLabs[0].MobileImageNameUrl" alt="">
-                        <div class="col-md-12">
-                            <div class="insight-category">
-                                <img src="@Model.allLabs[0].CampaignImageUrl" alt="alt-text" class="qa-diamond">
-                            </div>
-                        </div>
+
+            </div>
+        }
+        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  camp1" style="position: absolute; left: 0px; top: 0px;">
+        <a titlevalue="7" href="/Lab/@Model.allLabs[0].LabType-@Model.allLabs[0].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
+            <div class="row single-insight-container">
+                <img class="b-lazy" src="@Model.allLabs[0].MobileImageNameUrl" data-src="@Model.allLabs[0].MobileImageNameUrl" alt="">
+                <div class="col-md-12">
+                    <div class="insight-category">
+                        <img src="@Model.allLabs[0].CampaignImageUrl" alt="alt-text" class="qa-diamond">
                     </div>
-                    <div class="row single-insight-details-container">
-                        <div class="col-md-12">
-                            <div class="insight-details">
-                                <p class="insight-title">
-                                    @Model.allLabs[0].Name
-                                </p>
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <div class="row single-insight-details-container">
+                <div class="col-md-12">
+                    <div class="insight-details">
+                        <p class="insight-title">
+                            @Model.allLabs[0].Name
+                        </p>
+                    </div>
+    </div>
                     </div>
                 </a>
         </div>
@@ -657,12 +685,12 @@
         </div>
 
         <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  cx1" style="position: absolute; left: 283.333px; top: 2015.98px;">
-            <a titlevalue="7" href="/Lab/@Model.allLabs[18].LabType-@Model.allLabs[18].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
+            <a titlevalue="7" href="/Lab/@Model.allLabs[19].LabType-@Model.allLabs[19].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
                 <div class="row single-insight-container">
-                    <img class="b-lazy" src="@Model.allLabs[18].MobileImageNameUrl" data-src="@Model.allLabs[18].MobileImageNameUrl" alt="">
+                    <img class="b-lazy" src="@Model.allLabs[19].MobileImageNameUrl" data-src="@Model.allLabs[19].MobileImageNameUrl" alt="">
                     <div class="col-md-12">
                         <div class="insight-category">
-                            <img src="@Model.allLabs[18].CustomerExperienceImageUrl" alt="alt-text" class="qa-diamond">
+                            <img src="@Model.allLabs[19].CustomerExperienceImageUrl" alt="alt-text" class="qa-diamond">
                         </div>
                     </div>
                 </div>
@@ -670,7 +698,7 @@
                     <div class="col-md-12">
                         <div class="insight-details">
                             <p class="insight-title">
-                                @Model.allLabs[18].Name
+                                @Model.allLabs[19].Name
                             </p>
                         </div>
                     </div>
@@ -680,7 +708,7 @@
 
     </div>
 
-</div>
+</div>*@
 <div class="row">
     <div id="cxcontactus" class="col-lg-12 blue">
         <h5 id="H1" class="mob-disp getInTouch" runat="server" meta:resourcekey="lab_get_in_touch">Get in touch</h5>
