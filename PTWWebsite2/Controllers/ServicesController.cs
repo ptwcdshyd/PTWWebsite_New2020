@@ -92,6 +92,15 @@ namespace PTWWebsite2.Controllers
                     masterPage1.HtmlContent = masterPage1.HtmlContent.Replace(heading, simplifiedChineseContent);
 
                     break;
+                case "zh-CHT":
+                    string content5 = "";
+
+                    content5 = "<div class=\"col-lg-12 col-md-12 col-sm-12 col-sx-12\"><p id=\"ContentPlaceHolder1_P1\">News &amp; LAB Feed</p></div>";
+                    string traditionalChinese = Content(masterPage1.NewsAndLabs, content5, "more");
+
+                    masterPage1.HtmlContent = masterPage1.HtmlContent.Replace(heading, traditionalChinese);
+
+                    break;
             }
 
             return View(masterPage1);
@@ -107,7 +116,7 @@ namespace PTWWebsite2.Controllers
                 }
                 if (item.Type == "Labs")
                 {
-                    content = content + "<div class=\"col-lg-12 col-md-4 col-sm-12 col-sx-12\"><div class=\"g-underline\"></div><h6>" + item.Title + " </h6> <a href=\"/Labs/" + item.ShortDescription.Replace(" ", "-").Replace("&", "@") + "\" titlevalue=\"4\" class=\"btn btn-default btn-sm btn-r text-lowercase  more pull-down float-left\">" + language + "</a></div>";
+                    content = content + "<div class=\"col-lg-12 col-md-4 col-sm-12 col-sx-12\"><div class=\"g-underline\"></div><h6>" + item.Title + " </h6> <a href=\"/Lab/" + item.ShortDescription.Replace(" ", "-").Replace("&", "@") + "\" titlevalue=\"4\" class=\"btn btn-default btn-sm btn-r text-lowercase  more pull-down float-left\">" + language + "</a></div>";
                 }
             }
             return content;
@@ -173,6 +182,15 @@ namespace PTWWebsite2.Controllers
                     masterPage1.HtmlContent = masterPage1.HtmlContent.Replace(heading, simplifiedChineseContent);
 
                     break;
+                case "zh-CHT":
+                    string content5 = "";
+
+                    content5 = "<div class=\"col-lg-12 col-md-12 col-sm-12 col-sx-12\"><p id=\"ContentPlaceHolder1_P1\">News &amp; LAB Feed</p></div>";
+                    string traditionalChinese = Content(masterPage1.NewsAndLabs, content5, "more");
+
+                    masterPage1.HtmlContent = masterPage1.HtmlContent.Replace(heading, traditionalChinese);
+
+                    break;
             }
             return View(masterPage1);
         }
@@ -235,6 +253,15 @@ namespace PTWWebsite2.Controllers
                     string simplifiedChineseContent = Content(masterPage1.NewsAndLabs, content4, "更多");
 
                     masterPage1.HtmlContent = masterPage1.HtmlContent.Replace(heading, simplifiedChineseContent);
+
+                    break;
+                case "zh-CHT":
+                    string content5 = "";
+
+                    content5 = "<div class=\"col-lg-12 col-md-12 col-sm-12 col-sx-12\"><p id=\"ContentPlaceHolder1_P1\">News &amp; LAB Feed</p></div>";
+                    string traditionalChinese = Content(masterPage1.NewsAndLabs, content5, "more");
+
+                    masterPage1.HtmlContent = masterPage1.HtmlContent.Replace(heading, traditionalChinese);
 
                     break;
             }
@@ -302,19 +329,28 @@ namespace PTWWebsite2.Controllers
                     masterPage1.HtmlContent = masterPage1.HtmlContent.Replace(heading, simplifiedChineseContent);
 
                     break;
+                case "zh-CHT":
+                    string content5 = "";
+
+                    content5 = "<div class=\"col-lg-12 col-md-12 col-sm-12 col-sx-12\"><p id=\"ContentPlaceHolder1_P1\">News &amp; LAB Feed</p></div>";
+                    string traditionalChinese = Content(masterPage1.NewsAndLabs, content5, "more");
+
+                    masterPage1.HtmlContent = masterPage1.HtmlContent.Replace(heading, traditionalChinese);
+
+                    break;
             }
             return View(masterPage1);
         }
 
-        [Route("Engineering")]
+        [Route("ProductDevelopment")]
 
-        [Route("{culture}/Engineering")]
+        [Route("{culture}/ProductDevelopment")]
         //[Route("{culture}/")]
         public IActionResult GetServiceEngineeringcontent(string culture)
         {
             MasterPage masterPage = new MasterPage();
-            DataTable dtContent = _masterService.GetModuleContent("Engineering", (culture == null ? "en-US" : culture));
-            masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Engineering")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            DataTable dtContent = _masterService.GetModuleContent("ProductDevelopment", (culture == null ? "en-US" : culture));
+            masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("ProductDevelopment")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
             ViewData["Header"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Header")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
             ViewData["Footer"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Footer")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
             MasterPage masterPage1 = _masterService.GetNewsAndLabDetails("ENGINEERING", 1);
@@ -365,6 +401,15 @@ namespace PTWWebsite2.Controllers
                     string simplifiedChineseContent = Content(masterPage1.NewsAndLabs, content4, "更多");
 
                     masterPage1.HtmlContent = masterPage1.HtmlContent.Replace(heading, simplifiedChineseContent);
+
+                    break;
+                case "zh-CHT":
+                    string content5 = "";
+
+                    content5 = "<div class=\"col-lg-12 col-md-12 col-sm-12 col-sx-12\"><p id=\"ContentPlaceHolder1_P1\">News &amp; LAB Feed</p></div>";
+                    string traditionalChinese = Content(masterPage1.NewsAndLabs, content5, "more");
+
+                    masterPage1.HtmlContent = masterPage1.HtmlContent.Replace(heading, traditionalChinese);
 
                     break;
             }

@@ -154,6 +154,36 @@
 
     <script>
 
+        $('#image').change(function () {
+
+            var files1 = $("#image")[0].files[0];
+            console.log(files1.name.split('.')[1]);
+
+            var ext = files1.name.split('.')[1];
+            if (ext != "png") {
+                var errorMessage = "Please select png format";
+                AlertMessage('growl-danger', 'Information', errorMessage, false, 3000);
+                $("#image").val(null);
+
+            }
+
+        });
+
+        $('#image1').change(function () {
+
+            var files2 = $("#image1")[0].files[0];
+            console.log(files2.name.split('.')[1]);
+
+            var ext = files2.name.split('.')[1];
+            if (ext != "png") {
+                var errorMessage = "Please select png format";
+                AlertMessage('growl-danger', 'Information', errorMessage, false, 3000);
+                $("#image1").val(null);
+
+            }
+
+        });
+
 
         $("#ModuleId").change(function () {
             $("#meta").show();
@@ -410,11 +440,12 @@
 
                             else {
                                 $('#summernote').summernote('code', result.HtmlContent);
+                                $("#image").val(null);
+                                $("#image1").val(null);
+                                var alertmsg = "Successfully updated";
+                                AlertMessage('growl-success', 'Information', alertmsg, false, 3000);
                             }
-                            $("#image").val(null);
-                            $("#image1").val(null);
-                            var alertmsg = "Successfully updated";
-                            AlertMessage('growl-success', 'Information', alertmsg, false, 3000);
+
 
                             
                         }
