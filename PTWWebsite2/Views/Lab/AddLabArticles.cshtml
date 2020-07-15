@@ -509,17 +509,16 @@
                     data: fd,
                     contentType: false,
                     processData: false,
-                    success: function (result) {
-                        console.log(result);
+                    success: function (result) {                        
                         if (result == 'Logout') {
                             window.location = '../Logout';
                         }
                         $("#PostBackMsg").fadeOut("slow");
 
                         if (result.message == null) {
-                            if (result.ResultCode == 0) {
+                            if (result == 1) {
 
-                                $("#lblMessage").css({ display: 'inline' });
+                               // $("#lblMessage").css({ display: 'inline' });
                                 var alertmsg = "Successfully updated";
                                 AlertMessage('growl-success', 'Information', alertmsg, false, 3000);
                             }
@@ -757,6 +756,7 @@
         }
     }
     function AlertMessage(class_name, title, alert, boolstick, timesec) {
+        debugger;
         jQuery.gritter.add({
             title: title,
             text: alert,
@@ -769,7 +769,7 @@
             }
         });
         return false;
-    };
+    }
 
     $(document).on("click", "#submit", function () {
 

@@ -238,13 +238,15 @@ namespace PTW.DataAccess.ServicesImpl
                             labs.ReadMoreUrl = Convert.ToString(dtResult.Tables[2].Rows[i]["ReadMoreUrl"]);
                             labs.Stopped = Convert.ToInt32(dtResult.Tables[2].Rows[i]["Stopped"]);
 
-                            //labs.CustomerExperience = Convert.ToBoolean(dtResult.Tables[2].Rows[i]["CustomerExperience"] !=DBNull.Value ? (dtResult.Tables[2].Rows[i]["CustomerExperience"]) : 0);
-                            //labs.CustomerExperience = Convert.ToBoolean(dtResult.Tables[2].Rows[i]["CustomerExperience"]);
-                            //labs.Engineering = Convert.ToBoolean(dtResult.Tables[2].Rows[i]["Engineering"]);
-                            //labs.Localization = Convert.ToBoolean(dtResult.Tables[2].Rows[i]["Localization"]);
-                            //labs.QualityAssurance = Convert.ToBoolean(dtResult.Tables[2].Rows[i]["QualityAssurance"]);
-                            //labs.Campaign = Convert.ToBoolean(dtResult.Tables[2].Rows[i]["Campaign"]);
-                            //labs.AudioProduction = Convert.ToBoolean(dtResult.Tables[2].Rows[i]["AudioProduction"]);
+                            //labs.CustomerExperience = Convert.ToBoolean(dtResult.Tables[2].Rows[i]["CustomerExperience"] != DBNull.Value ? (dtResult.Tables[2].Rows[i]["CustomerExperience"]) : 0);
+
+                            
+                            labs.Customer_Experience = Convert.ToString(dtResult.Tables[2].Rows[i]["CustomerExperience"]);
+                            labs._Engineering = Convert.ToString(dtResult.Tables[2].Rows[i]["Engineering"]);
+                            labs._Localization = Convert.ToString(dtResult.Tables[2].Rows[i]["Localization"]);
+                            labs.Quality_Assurance = Convert.ToString(dtResult.Tables[2].Rows[i]["QualityAssurance"]);
+                            labs._Campaign = Convert.ToString(dtResult.Tables[2].Rows[i]["Campaign"]);
+                            labs._AudioProduction = Convert.ToString(dtResult.Tables[2].Rows[i]["AudioProduction"]);
 
                             LabsList.Add(labs);
                         }

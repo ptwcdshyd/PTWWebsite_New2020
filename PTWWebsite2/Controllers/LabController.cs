@@ -92,6 +92,7 @@ namespace PTWWebsite2.Controllers
         [HttpPost]
         public IActionResult AddUpdateLabs(Labs labs)
         {
+            bool result = false;
             try
             {
                 string uniqueFileName = string.Empty;
@@ -265,17 +266,17 @@ namespace PTWWebsite2.Controllers
                     }
 
                     string labsXmlData = CustomNewsXml(labs);
-                    bool result = _LabEventService.AddUpdateLabs(labsXmlData, labs.Description);
-                   ViewBag.IsAddedSuccessfully = result;                   
+                    result = _LabEventService.AddUpdateLabs(labsXmlData, labs.Description);
+                  // ViewBag.IsAddedSuccessfully = result;                   
                 }
                 else
                 {
                     string labsXmlData = CustomNewsXml(labs);
-                    bool result = _LabEventService.UpdateLabs(labs.LabId, labsXmlData, labs.Description, labs.LanguageCode="en-US");
-                    ViewBag.IsAddedSuccessfully = result;
+                    result = _LabEventService.UpdateLabs(labs.LabId, labsXmlData, labs.Description, labs.LanguageCode="en-US");
+                   // ViewBag.IsAddedSuccessfully = result;
                 }
 
-                return View("AddLabArticles", labs);
+                return Json(Convert.ToInt32(result), new JsonSerializerSettings());
             }
             catch (Exception ex)
             {

@@ -104,7 +104,15 @@ namespace PTW.DataAccess.Models
        // [Required(ErrorMessage = "Please upload image and size should be 800x350 dimensions")]
         public IFormFile TabImageNamVertical { get; set; }
 
-       // [Required(ErrorMessage = "Please upload image and size should be 320x220 dimensions")]
+        // [Required(ErrorMessage = "Please upload image and size should be 320x220 dimensions")]
+
+        public string Customer_Experience { get; set; }
+        public string Quality_Assurance { get; set; }
+        public string _Localization { get; set; }
+        public string _AudioProduction { get; set; }
+        public string _Engineering { get; set; }
+        public string _Campaign { get; set; }
+
         public IFormFile ReadMore { get; set; }
 
        public string FileString { get; set; }
