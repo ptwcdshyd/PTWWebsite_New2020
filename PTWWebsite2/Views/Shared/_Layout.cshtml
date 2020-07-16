@@ -16,6 +16,11 @@
     <link href="~/CSS/Poppins-Bold.css" rel="stylesheet" type="text/css" />
     <link href="~/CSS/Poppins-SemiBold.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
     <link rel="icon" type="image/png" href="~/Images/icon-ms.png" />
     <link href="~/CSS/bootstrap.min.css" rel="stylesheet" />
 
@@ -63,21 +68,7 @@
             text-transform: uppercase;
         }
 
-            button span {
-                width: 0;
-                height: 0;
-                margin: -5px 0.455em 0 0;
-                content: "";
-                border: solid black;
-                border-width: 0 2px 2px 0;
-                display: inline-block;
-                padding: 2.5px;
-                vertical-align: middle;
-                transform: rotate(45deg);
-                -webkit-transform: rotate(45deg);
-            }
-
-        .dropdown-item {
+          .dropdown-item {
             display: block;
             width: 100%;
             padding: .25rem 1.5rem;
@@ -150,31 +141,29 @@
         </script>*@
     <script type="text/javascript">
 
-    
-        $(document).ready(function () {
-            debugger;
-        var lang = '@(ViewContext.RouteData.Values["culture"]!=null?ViewContext.RouteData.Values["culture"].ToString():"en-US")';
-            $("#Languages").val(lang);
+        var languages = ["en-US", "zh-CHS", "zh-CHT", "ja", "ko", "fr-CA"];
+        function languageChange(Langauge) {
+            
+            var currentpageurl = window.location.href;
+            currentpageurl = currentpageurl.replace(window.location.origin, '');
 
-            var values = $("#Languages").children('option').map(function (i, e) {
-                return e.value;
-            }).get();
-            $.each(values, function (i, val) {
 
-                if (values[i]== lang.trim()) {
-                  
-                    var langtext = $("#Languages option:selected").text().split(" ")[1].trim();
+            $.each(languages, function (i, val) {
 
-                    $("#Languages option:selected").html(langtext);
-                   
-                   
-                }
+                currentpageurl = currentpageurl.replace(val, '');
+
             });
-       
-        
+            currentpageurl = currentpageurl.replace('//', '/');
+            if (currentpageurl == '/') {
+                currentpageurl = '';
+            }
 
+            var redirectURL = origin + (Langauge != "en-US" ? '/' + Langauge : '') + currentpageurl;
 
-
+            window.location.assign(redirectURL);
+        }
+        $(document).ready(function () {
+          
     });
 
 
@@ -182,30 +171,7 @@
 
 
 
-        //
-        //$("#Languages").change(function () {
-        //    alert();
-        //    var str = window.location.href.replace(window.location.origin, '');
-        //    console.log(str);
 
-        //    var values = $(this).children('option').map(function (i, e) {
-        //        return e.value;
-        //    }).get();
-        //    $.each(values, function (i, val) {
-
-        //        str = str.replace(values[i], '');
-        //    });
-        //    str = str.replace('//', '/');
-        //    console.log(str);
-
-        //    if ($("#Languages").val() == 'en-US') {
-        //        window.location = window.location.origin + str;
-        //    }
-        //    else {
-        //        window.location = window.location.origin + '/' + $("#Languages").val() + str;
-        //    }
-
-        //});
 
         function ApplyLocalizaiotn() {
            
