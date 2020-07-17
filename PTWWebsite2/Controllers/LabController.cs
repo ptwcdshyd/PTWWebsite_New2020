@@ -59,22 +59,35 @@ namespace PTWWebsite2.Controllers
         [Route("{culture}/LAB/{LabShortDescription}")]
         public IActionResult LabArticles(string LabShortDescription, string culture = "en-US")
         {
-            List<string> ShortDescription = LabShortDescription.Split('-').ToList();
-            ShortDescription.RemoveAt(0);
-            string strShortDescription = string.Join(" ", ShortDescription);
             LabsEvents LabsEvents = new LabsEvents();
-            if (ShortDescription.Count > 0)
+            List<string> ShortDescription = LabShortDescription.Split('-').ToList();
+            if (ShortDescription.Contains("Article"))
             {
-                //string culture = "en-US";                
-                LabsEvents.LabArticledetails = _LabEventService.GetLabsArticleDetails(strShortDescription);
-                LabsEvents.FutureLabArticles = _LabEventService.GetFutureLabArticles(strShortDescription);
+                ShortDescription.RemoveAt(0);
+                string strShortDescription = string.Join(" ", ShortDescription);
+                if (ShortDescription.Count > 0)
+                {
+                    //string culture = "en-US";                
+                    LabsEvents.LabArticledetails = _LabEventService.GetLabsArticleDetails(strShortDescription);
+                    LabsEvents.FutureLabArticles = _LabEventService.GetFutureLabArticles(strShortDescription);
+                }
+                else
+                {
+                    LabsEvents.LabArticledetails = _LabEventService.GetLabsArticleDetails(LabShortDescription);
+                    LabsEvents.FutureLabArticles = _LabEventService.GetFutureLabArticles(LabShortDescription);
+
+                }
             }
             else
             {
-                LabsEvents.LabArticledetails = _LabEventService.GetLabsArticleDetails(LabShortDescription);
-                LabsEvents.FutureLabArticles = _LabEventService.GetFutureLabArticles(LabShortDescription);
+                string strShortDescription = string.Join(" ", ShortDescription);
+                LabsEvents.LabArticledetails = _LabEventService.GetLabsArticleDetails(strShortDescription);
+                LabsEvents.FutureLabArticles = _LabEventService.GetFutureLabArticles(strShortDescription);
 
             }
+
+
+
             GetServicecontent(culture);
             return View(LabsEvents);
         }

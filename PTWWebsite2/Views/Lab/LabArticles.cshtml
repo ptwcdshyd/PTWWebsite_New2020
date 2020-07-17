@@ -112,28 +112,39 @@
         </div>
         <div class="lab-read-more-container">
             <div class="row">
-                @*@foreach (var item in Model.FutureLabArticles)
-                    {*@
-                <div class="col-md-12 col-sm-12">
-                    <p class="read-more-header">Read more on @Model.FutureLabArticles[0].Customer_Experience@Model.FutureLabArticles[0].Quality_Assurance @Model.FutureLabArticles[0]._Localization@Model.FutureLabArticles[0]._AudioProduction@Model.FutureLabArticles[0]._Engineering@Model.FutureLabArticles[0]._Campaign</p>
-                    @*<p class="read-more-header">Read more on Campaign</p>*@
-                    
-                </div>
-                @*}*@
+                @if (Model.FutureLabArticles.Count() > 0)
+                {
+                    @foreach (var item in Model.FutureLabArticles)
+                    {
+
+                        <div class="col-md-12 col-sm-12">
+                            <p class="read-more-header">Read more on @Model.FutureLabArticles[0].Customer_Experience@Model.FutureLabArticles[0].Quality_Assurance @Model.FutureLabArticles[0]._Localization@Model.FutureLabArticles[0]._AudioProduction@Model.FutureLabArticles[0]._Engineering@Model.FutureLabArticles[0]._Campaign</p>
+
+
+                        </div>
+                    }
+                }
+
+
             </div>
             <div class="row">
-                @foreach (var item in Model.FutureLabArticles)
+                @if (Model.FutureLabArticles.Count() > 0)
                 {
-                    <div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-6 ">
-                        <a titlevalue="7" href="/lab/@item.ShortDescription">
-                            <p class="read-more-article-image">
-                                <img src="@item.ReadMoreUrl" alt="Read more">
-                            </p>
-                            <p class="read-more-article-title">@item.Name</p>
+                    @foreach (var item in Model.FutureLabArticles)
+                    {
+                        <div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-6 ">
+                            <a titlevalue="7" href="/lab/@item.ShortDescription">
+                                <p class="read-more-article-image">
+                                    <img src="@item.ReadMoreUrl" alt="Read more">
+                                </p>
+                                <p class="read-more-article-title">@item.Name</p>
 
-                        </a>
-                    </div>
+                            </a>
+                        </div>
+                    }
                 }
+               
+
             </div>
 
         </div>
