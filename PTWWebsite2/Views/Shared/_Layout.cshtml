@@ -97,6 +97,8 @@
         .navbar-toggle {
             z-index: 3;
         }
+        
+        
     </style>
 
 
@@ -163,7 +165,34 @@
             window.location.assign(redirectURL);
         }
         $(document).ready(function () {
-          
+            
+            debugger;
+            var reqUrl = window.location.href.replace(window.location.origin, '');
+            var urlElements = reqUrl.split('/');
+            if (urlElements.indexOf('Service_Cx') > -1) {
+                $('#dropdown_Services').show();
+                $('#Header1_A2').hide();
+            }
+            else if (urlElements.indexOf('Service_QA') > -1) {
+                $('#dropdown_Services').show();
+                $('#Header1_A2').hide();
+            }
+            else if (urlElements.indexOf('Localization') > -1) {
+                $('#dropdown_Services').show();
+                $('#Header1_A2').hide();
+            }
+            else if (urlElements.indexOf('AudioProduction') > -1) {
+                $('#dropdown_Services').show();
+                $('#Header1_A2').hide();
+            }
+            else if (urlElements.indexOf('ProductDevelopment') > -1) {
+                $('#dropdown_Services').show();
+                $('#Header1_A2').hide();
+            }
+            else {
+                $('#Header1_A2').show();
+            }
+
     });
 
 
