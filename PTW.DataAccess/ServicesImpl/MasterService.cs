@@ -107,7 +107,7 @@ namespace PTW.DataAccess.ServicesImpl
                     DataSet dtResult = ExecuteDataSet(command);
                     if (dtResult != null && dtResult.Tables[0].Rows.Count > 0)
                     {
-                       // masterPage.HeaderContent = Convert.ToString(dtResult.Tables[0].Rows[0]["ModuleName"]);
+                        // masterPage.HeaderContent = Convert.ToString(dtResult.Tables[0].Rows[0]["ModuleName"]);
                         masterPage.HtmlContent = Convert.ToString(dtResult.Tables[0].Rows[0]["Content"]);
                         masterPage.Metatage = Convert.ToString(dtResult.Tables[0].Rows[0]["Metatage"]);
                         masterPage.MetaTitle = Convert.ToString(dtResult.Tables[0].Rows[0]["Title"]);
@@ -128,9 +128,9 @@ namespace PTW.DataAccess.ServicesImpl
             }
         }
 
-        public int UpdateContentByModelIdAndLanguageId(int moduleId, string languageCode, string contentText,string Metatage, string Title)
+        public int UpdateContentByModelIdAndLanguageId(int moduleId, string languageCode, string contentText, string Metatage, string Title)
         {
-            int resultCode=0;
+            int resultCode = 0;
             CustomCommand command = null;
             // MasterPage masterPage = new MasterPage();
 
@@ -327,7 +327,7 @@ namespace PTW.DataAccess.ServicesImpl
             }
 
         }
-      public  MasterPage GetNewsAndLabDetails(string serviceType, int languageId) 
+        public MasterPage GetNewsAndLabDetails(string serviceType, int languageId)
         {
 
             MasterPage masterPage = new MasterPage();
@@ -353,8 +353,8 @@ namespace PTW.DataAccess.ServicesImpl
                         {
                             NewsAndLabs obj = new NewsAndLabs();
                             obj.Type = result.Tables[0].Rows[i]["Type"].ToString();
-                            obj.Title= result.Tables[0].Rows[i]["Title"].ToString();
-                            obj.ShortDescription= result.Tables[0].Rows[i]["ShortDescription"].ToString();
+                            obj.Title = result.Tables[0].Rows[i]["Title"].ToString();
+                            obj.ShortDescription = result.Tables[0].Rows[i]["ShortDescription"].ToString();
                             masterPage.NewsAndLabs.Add(obj);
                         }
                     }
@@ -382,9 +382,140 @@ namespace PTW.DataAccess.ServicesImpl
 
         }
 
-       
+        public int UsersContact(NewUsers users)
+        {
+            CustomCommand command = null;
+
+            int result=0;
+            try
+            {
+                using (command = new CustomCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "UsersContactInformation";
+                    command.AddParameterWithValue("@FirstName", users.FirstName);
+                    command.AddParameterWithValue("@LastName", users.LastName);
+                    command.AddParameterWithValue("@Email", users.Email);
+                    command.AddParameterWithValue("@ContactNumber", users.ContactNumber);
+                    command.AddParameterWithValue("@CompanyName", users.CompanyName);
+                    command.AddParameterWithValue("@AreaOfInterest", users.AreaOfInterest);
+                    command.AddParameterWithValue("@HearAbout", users.HearAbout);
+                    command.AddParameterWithValue("@ContactMessage", users.ContactMessage);
+                    result = ExecuteNonQuery(command, false);
+
+
+                }
+                return result;
+            }
+
+
+            catch { throw; }
+
+            finally
+            {
+                if (command != null) command.Dispose();
+                command = null;
+
+            }
+
+        }
+        public List<LocationDetails> RetrieveLocations(string lang)
+        {
+            CustomCommand command = null;
+            try
+            {
+                using (command = new CustomCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "RetrieveLocations";
+                    command.AddParameterWithValue("@languagecode", lang);
+                    //
+                    DataTable result=ExecuteTable(command);
+
+                    List<LocationDetails> locationslist = new List<LocationDetails>();
+
+                    if (result != null && result.Rows.Count > 0)
+                    {
+                        for (int i = 0; i < result.Rows.Count; i++)
+                        {
+                            LocationDetails obj = new LocationDetails();
+                            obj.Region = result.Rows[i]["Region"].ToString();
+                            obj.Country = result.Rows[i]["Country"].ToString();
+                            obj.Location = result.Rows[i]["Location"].ToString();
+                            obj.Address =result.Rows[i]["Address"].ToString();
+                            obj.Website = result.Rows[i]["Website"].ToString();
+                            obj.Title = result.Rows[i]["Title"].ToString();
+                            obj.GoogleMapHeading = result.Rows[i]["GoogleMapHeading"].ToString();
+                            obj.GoogleMap = result.Rows[i]["GoogleMap"].ToString();
+                            obj.Target = result.Rows[i]["Target"].ToString();
+                            obj.TargetLocation = result.Rows[i]["TargetLocation"].ToString();
+                           
+                            locationslist.Add(obj);
+
+                        }
+                    }
+
+                    return locationslist;
+                }
 
        
+            }
 
+
+
+
+            catch { throw; }
+
+
+
+            finally
+            {
+                if (command != null) command.Dispose();
+                command = null;
+
+
+
+            }
+
+
+
+        }
+       public int AddLocation(LocationDetails obj)
+        {
+            CustomCommand command = null;
+            int result = 0;
+            try
+            {
+                using (command = new CustomCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "AddLocation";
+                    command.AddParameterWithValue("@Region", obj.Region);
+                    command.AddParameterWithValue("@Country", obj.Country);
+                    command.AddParameterWithValue("@Location", obj.Location);
+                    command.AddParameterWithValue("@Address", obj.Address);
+                    command.AddParameterWithValue("@Title", obj.Title);
+                    command.AddParameterWithValue("@GoogleMapHeading", obj.GoogleMapHeading);
+                    command.AddParameterWithValue("@GoogleMap", obj.GoogleMap);
+                    command.AddParameterWithValue("@languagecode", obj.Language);
+                    command.AddParameterWithValue("@Target", obj.Target);
+                    command.AddParameterWithValue("@TargetLocation", obj.TargetLocation);
+                    result = ExecuteNonQuery(command, false);
+
+
+                }
+                return result;
+            }
+
+
+            catch { throw; }
+
+            finally
+            {
+                if (command != null) command.Dispose();
+                command = null;
+
+            }
+        }
     }
 }

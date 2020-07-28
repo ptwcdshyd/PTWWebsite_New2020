@@ -14,6 +14,7 @@ using PTWWebsite2.Models;
 using System.IO;
 using System.Data;
 
+
 namespace PTWWebsite2.Controllers
 {
     public class HomeController : Controller
@@ -58,11 +59,45 @@ namespace PTWWebsite2.Controllers
             return View();
         }
 
-        public IActionResult Contact()
+        [Route("Contact")]
+        [Route("{culture}/Contact")]
+        public IActionResult Contact(string culture)
         {
-            ViewData["Message"] = "Your contact page.";
+            MasterPage masterPage = new MasterPage();
+            DataTable dtContent = _masterService.GetModuleContent("Contact", (culture == null ? "en-US" : culture));
+            masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Contact")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            ViewData["Header"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Header")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            ViewData["Footer"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Footer")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
 
-            return View();
+            List<LocationDetails> list = _masterService.RetrieveLocations((culture == null ? "en-US" : culture));
+            string asiaContent = "";
+            string northAmerica = "";
+            string europeContent = "";
+            foreach (LocationDetails item in list)
+            {
+                if (item.Region == "Asia" || item.Region== "Asie" || item.Region== "アジア" || item.Region== "아시아" || item.Region== "亚洲")
+                {
+                    asiaContent = asiaContent + "<div class=\"col-xl-4 col-lg-4 col-md-6 ofc-details\"><p class=\"ofc-country\">" + item.Country + " </p>  <p class=\"ofc-city\">" + item.Location + "</p><address>" + item.Address + " </address><a class=\"btn btn-info btn-lg btn-map\" data-toggle=\"modal\" data-target=\""+item.Target+"\" data-backdrop=\"static\" data-keyboard=\"false\"><p class=\"ofc-map\"><i class=\"fa fa-map-marker\" aria-hidden=\"true\">" + item.Title + "</i></p></a><div id =\""+item.TargetLocation+"\" class=\"modal fade\" role=\"dialog\" tabindex=\"-1\"><div class=\"modal-dialog modal-lg\"><div class=\"modal-content\"><div class=\"modal-header\"><p>" + item.GoogleMapHeading + " </p><button type =\"button\" class=\"close\" data-dismiss=\"modal\">×</button></div> <div class=\"modal-body\"><div class=\"w100\"><iframe width =\"100%\" height=\"600\" src=\" " + item.GoogleMap + "\"></iframe></div><br></div></div></div></div></div>";
+                }
+
+
+                if (item.Region == "North America" || item.Region== "Amérique du Nord" || item.Region== "北米" || item.Region== "북미" || item.Region== "北美")
+                {
+                    northAmerica = northAmerica + "<div class=\"col-xl-4 col-lg-4 col-md-6 ofc-details\"><p class=\"ofc-country\">" + item.Country + " </p>  <p class=\"ofc-city\">" + item.Location + "</p><address>" + item.Address + " </address><a class=\"btn btn-info btn-lg btn-map\" data-toggle=\"modal\" data-target=\""+item.Target+"\" data-backdrop=\"static\" data-keyboard=\"false\"><p class=\"ofc-map\"><i class=\"fa fa-map-marker\" aria-hidden=\"true\">" + item.Title + "</i></p></a><div id =\""+item.TargetLocation+"\" class=\"modal fade\" role=\"dialog\" tabindex=\"-1\"><div class=\"modal-dialog modal-lg\"><div class=\"modal-content\"><div class=\"modal-header\"><p>" + item.GoogleMapHeading + " </p><button type =\"button\" class=\"close\" data-dismiss=\"modal\">×</button></div> <div class=\"modal-body\"><div class=\"w100\"><iframe width =\"100%\" height=\"600\" src=\" " + item.GoogleMap + "\"></iframe></div><br></div></div></div></div></div>";
+                }
+
+                if (item.Region == "Europe" || item.Region== "Europe" || item.Region== "欧州" || item.Region== "유럽" || item.Region== "欧洲")
+                {
+                    europeContent = europeContent + "<div class=\"col-xl-4 col-lg-4 col-md-6 ofc-details\"><p class=\"ofc-country\">" + item.Country + " </p>  <p class=\"ofc-city\">" + item.Location + "</p><address>" + item.Address + " </address><a class=\"btn btn-info btn-lg btn-map\" data-toggle=\"modal\" data-target=\""+item.Target+"\" data-backdrop=\"static\" data-keyboard=\"false\"><p class=\"ofc-map\"><i class=\"fa fa-map-marker\" aria-hidden=\"true\">" + item.Title + "</i></p></a><div id =\""+item.TargetLocation+"\" class=\"modal fade\" role=\"dialog\" tabindex=\"-1\"><div class=\"modal-dialog modal-lg\"><div class=\"modal-content\"><div class=\"modal-header\"><p>" + item.GoogleMapHeading + " </p><button type =\"button\" class=\"close\" data-dismiss=\"modal\">×</button></div> <div class=\"modal-body\"><div class=\"w100\"><iframe width =\"100%\" height=\"600\" src=\" " + item.GoogleMap + "\"></iframe></div><br></div></div></div></div></div>";
+                }
+
+            
+
+
+            }
+            masterPage.HtmlContent = masterPage.HtmlContent.Replace("<div> Data</div>", asiaContent).Replace("<div> Data1</div>", northAmerica).Replace("<div> Data2</div>", europeContent);
+
+            return View(masterPage);
         }
 
         public IActionResult Privacy()
@@ -433,6 +468,79 @@ namespace PTWWebsite2.Controllers
             }
 
         }
+        [HttpPost]
+        public IActionResult ContactPost(NewUsers users)
+        {
+            try
+            {
+                if (Mails.ValidateEmailID(users.Email))
+                {
+                    string path = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "Views", "Email.html");
+                    System.Net.WebRequest objRequest = System.Net.HttpWebRequest.Create(path);
 
+                    System.IO.StreamReader sr = new System.IO.StreamReader(objRequest.GetResponse().GetResponseStream());
+
+                    string htmlBody = sr.ReadToEnd();
+                    sr.Close();
+
+                    System.Net.Mail.Attachment inlineLogo = new System.Net.Mail.Attachment(System.IO.Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images/Logo", "PTW.png"));
+
+                    System.Threading.Thread emailThread = new System.Threading.Thread(delegate ()
+                    {
+                        Mails.funSendEnquiryMail(users, htmlBody, inlineLogo);
+                    });
+                    emailThread.IsBackground = true;
+                    emailThread.Start();
+
+                    _masterService.UsersContact(users);
+
+
+                    return Json(new { message = "Request has been sent successfully." }, new JsonSerializerSettings());
+                }
+
+                else
+                {
+                    return Json(new { message = "Invalid EmailId." }, new JsonSerializerSettings());
+                }
+
+            }
+
+            catch(Exception ex)
+            {
+                throw;
+            }
+
+
+           
+        }
+
+        [HttpGet]
+        [Route("AddLocation")]
+        public IActionResult AddLocations()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddLocationsPost([FromBody] LocationDetails location)
+        {
+            try
+            {
+                int result = _masterService.AddLocation(location);
+                if (result > 0)
+                {
+                    return Json(new { Message = result }, new JsonSerializerSettings());
+                }
+                else
+                {
+                    return Json(new { Message = result }, new JsonSerializerSettings());
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
     }
 }

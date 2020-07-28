@@ -19,7 +19,10 @@ namespace PTW.DataAccess.Services
         DataTable GetModuleContent(string ModuleName, string Languagecode);
         MasterPage GetModuleContentById(int ModuleId, string Languagecode);
         MasterPage GetNewsAndLabDetails(string serviceType,int languageId);
-           
 
+        int UsersContact(NewUsers users);
+        List<LocationDetails> RetrieveLocations(string lang);
+
+        int AddLocation(LocationDetails obj);
     }
 }

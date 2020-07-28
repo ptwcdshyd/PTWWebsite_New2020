@@ -1,0 +1,192 @@
+﻿@model PTW.DataAccess.Models.MasterPage
+@{
+    ViewData["Title"] = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link href="~/css/jquery.gritter.css" rel="stylesheet" />
+<script src="~/js/jquery.gritter.min.js"></script>
+
+<link rel="stylesheet" href="/CSS/videobackground.css" />
+<link rel="stylesheet" href="/CSS/animate.min.css" />
+<link rel="stylesheet" href="/CSS/clean-blog.min.css" />
+<link rel="stylesheet" href="/CSS/custom.css" />
+
+
+
+
+
+<style>
+    input:focus {
+        outline: none !important;
+        border-top: 0px !important;
+        border-left: 0px !important;
+        border-right: 0px !important;
+    }
+
+    #ContentPlaceHolder1_contactmessage:focus {
+        outline: none !important;
+        border-top: 0px !important;
+        border-left: 0px !important;
+        border-right: 0px !important;
+    }
+</style>
+@Html.Raw(Model.HtmlContent)
+
+
+<script type="text/javascript">
+
+
+    function ddlHearAbout(valHearAbout, ddlThis) {
+
+        debugger;
+        console.log(ddlThis);
+        $("#ContentPlaceHolder1_hearAbout").html(ddlThis);
+        $("#ContentPlaceHolder1_ddlHearAbout").val(ddlThis);
+    }
+
+    function ValidateMobile(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode != 40 && charCode != 41 && charCode != 43 && charCode != 45 && charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    }
+
+    function fnValidate() {
+        var emailReg = /^([\w-\.]+@@([\w-]+\.)+[\w-]{2,4})?$/;
+
+        if (!emailReg.test($('#ContentPlaceHolder1_tbemail').val())) {
+            $('#ContentPlaceHolder1_tbemail').focus();
+
+        }
+    }
+
+    function UserData() {
+
+        if (Vadidate()) {
+
+            var fd = new FormData();
+            fd.append('FirstName', $("#ContentPlaceHolder1_fname").val());
+            fd.append('LastName', $("#ContentPlaceHolder1_lname").val());
+            fd.append('Email', $('#ContentPlaceHolder1_tbemail').val());
+            fd.append('ContactNumber', $("#ContentPlaceHolder1_tbphone").val());
+            fd.append('CompanyName', $("#ContentPlaceHolder1_company").val());
+            fd.append('AreaOfInterest', $("#ContentPlaceHolder1_tbAreaOfInterest").val());
+            fd.append('HearAbout', $("#ContentPlaceHolder1_ddlHearAbout").val());
+            fd.append('ContactMessage', $("#ContentPlaceHolder1_contactmessage").val());
+
+
+            $.ajax({
+                type: "Post",
+                url: '@Url.Action("ContactPost", "Home")',
+                data: fd,
+                contentType: false,
+                processData: false,
+                success: function (result) {
+
+                    debugger;
+                    if (result != null) {
+                        $("#divMsgPanel").html('');
+                        $("#divMsgPanel").append(result.message);
+                        $("#divMsgPanel").show();
+                        $("#divMsgPanel").fadeOut(10000);
+                    }
+                    $("#ContentPlaceHolder1_fname").val("");
+                    $("#ContentPlaceHolder1_lname").val("");
+                    $('#ContentPlaceHolder1_tbemail').val("");
+                    $("#ContentPlaceHolder1_tbphone").val("");
+                    $("#ContentPlaceHolder1_company").val("");
+                    $("#ContentPlaceHolder1_tbAreaOfInterest").val("");
+
+                    $("#ContentPlaceHolder1_ddlHearAbout").val("Client introduction");
+                    $("#ContentPlaceHolder1_contactmessage").val("");
+                    //console.log(result);
+
+                    //if (result == 'Logout') {
+                    //    window.location = '../Logout';
+                    //}
+                    //console.log(result);
+
+                    //if (result != null) {
+                    //    $('#summernote').summernote('code', result.HtmlContent);
+                    //    $('#Metatage').val(result.Metatage);
+                    //    $('#MetaTitle').val(result.Metatage);
+                    //}
+
+
+                    //$("#PostBackMsg").fadeOut("slow");
+                },
+
+                error: function (err) {
+                    if (err.status === 0) {
+                        window.location = '../Logout';
+                    }
+
+                }
+            });
+
+        }
+    }
+
+    function Vadidate() {
+        debugger;
+        var errorMessage="";
+        if ($("#ContentPlaceHolder1_fname").val() == "") {
+            $("#divMsgPanel").html('');
+            errorMessage = "First name should not be empty";
+            $("#divMsgPanel").append(errorMessage);
+            $("#divMsgPanel").show();
+            $("#divMsgPanel").fadeOut(5000);
+            
+            return false;
+        }
+
+        else if ($("#ContentPlaceHolder1_lname").val() == "") {
+            $("#divMsgPanel").html('');
+            errorMessage = "Last name should not be empty";
+            $("#divMsgPanel").append(errorMessage);
+            $("#divMsgPanel").show();
+            $("#divMsgPanel").fadeOut(5000);
+            
+            return false;
+        }
+        else if ($("#ContentPlaceHolder1_tbemail").val() == "") {
+            $("#divMsgPanel").html('');
+            errorMessage = "Email should not be empty";
+            $("#divMsgPanel").append(errorMessage);
+            $("#divMsgPanel").show();
+            $("#divMsgPanel").fadeOut(5000);
+           
+            return false;
+        }
+        else if ($("#ContentPlaceHolder1_tbphone").val() == "") {
+            $("#divMsgPanel").html('');
+            errorMessage = "Contact number should not be empty";
+            $("#divMsgPanel").append(errorMessage);
+            $("#divMsgPanel").show();
+            $("#divMsgPanel").fadeOut(5000);
+            
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+    function AlertMessage(class_name, title, alert, boolstick, timesec) {
+        jQuery.gritter.add({
+            title: title,
+            text: alert,
+            class_name: class_name,
+            image: '../images/screen.png',
+            sticky: boolstick,
+            time: timesec,
+            before_open: function () {
+                $('.gritter-item-wrapper').remove();
+            }
+        });
+        return false;
+    };
+
+</script>
+
