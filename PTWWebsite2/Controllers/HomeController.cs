@@ -13,16 +13,20 @@ using PTW.DataAccess.Services;
 using PTWWebsite2.Models;
 using System.IO;
 using System.Data;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace PTWWebsite2.Controllers
 {
+    //[Authorize]
+    //[ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
     public class HomeController : Controller
     {
         private readonly IMasterService _masterService;
-        public HomeController(IMasterService masterService)
+        private readonly IUserService _userService;
+        public HomeController(IMasterService masterService, IUserService userService)
         {
             _masterService = masterService;
+            _userService = userService;
         }
 
         public IActionResult Index()
@@ -34,6 +38,7 @@ namespace PTWWebsite2.Controllers
         [Route("Home")]
         [Route("{culture}/Home")]
         [Route("{culture}/")]
+        [AllowAnonymous]
         public IActionResult Home(string culture)
         {
             MasterPage masterPage = new MasterPage();
@@ -45,6 +50,7 @@ namespace PTWWebsite2.Controllers
         }
 
         [Route("Editor")]
+        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Editor()
         {
             MasterPage masterPage1 = _masterService.GetLanguageandModules();
@@ -61,6 +67,7 @@ namespace PTWWebsite2.Controllers
 
         [Route("Contact")]
         [Route("{culture}/Contact")]
+        [AllowAnonymous]
         public IActionResult Contact(string culture)
         {
             MasterPage masterPage = new MasterPage();
@@ -104,7 +111,7 @@ namespace PTWWebsite2.Controllers
         {
             return View();
         }
-
+        [AllowAnonymous]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
@@ -112,6 +119,7 @@ namespace PTWWebsite2.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult GetContent(int ModuleId, string LanguageCode)
         {
             try
@@ -469,6 +477,7 @@ namespace PTWWebsite2.Controllers
 
         }
         [HttpPost]
+        [AllowAnonymous]
         public IActionResult ContactPost(NewUsers users)
         {
             try
@@ -513,12 +522,14 @@ namespace PTWWebsite2.Controllers
 
            
         }
-
-        [HttpGet]
-        [Route("AddLocation")]
+        
+        [Route("AddLocations")]
         public IActionResult AddLocations()
         {
-            return View();
+            Main obj = new Main();
+            List<Region> regionlists=_userService.RetrieveRegionData();
+            obj.regions = regionlists;
+            return View(obj);
         }
 
         [HttpPost]
@@ -541,6 +552,20 @@ namespace PTWWebsite2.Controllers
             {
                 throw;
             }
+        }
+
+        [HttpPost]
+        public JsonResult Country([FromBody] Region region)
+        {            
+            List<Country> countries=_userService.RetrieveCountryData(region.RegionCode);
+            return Json(new {result= countries},new JsonSerializerSettings());
+        }
+
+        [HttpPost]
+        public JsonResult City([FromBody] Country country)
+        {
+            List<Citys> cities = _userService.RetrieveCityData(country.CountryCode);
+            return Json(new { result = cities }, new JsonSerializerSettings());
         }
     }
 }

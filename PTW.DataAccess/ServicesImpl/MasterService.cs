@@ -498,8 +498,6 @@ namespace PTW.DataAccess.ServicesImpl
                     command.AddParameterWithValue("@GoogleMapHeading", obj.GoogleMapHeading);
                     command.AddParameterWithValue("@GoogleMap", obj.GoogleMap);
                     command.AddParameterWithValue("@languagecode", obj.Language);
-                    command.AddParameterWithValue("@Target", obj.Target);
-                    command.AddParameterWithValue("@TargetLocation", obj.TargetLocation);
                     result = ExecuteNonQuery(command, false);
 
 

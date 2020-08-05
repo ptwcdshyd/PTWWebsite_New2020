@@ -1,32 +1,41 @@
-﻿
+﻿@model PTW.DataAccess.Models.Main
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutForPtwCms.cshtml";
 }
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.min.css">
 @*<link href="~/css/Editor/Css/chosen.min.css" rel="stylesheet" />*@
 <link href="~/css/jquery.gritter.css" rel="stylesheet" />
+<link href="~/css/select2.css" rel="stylesheet" />
 
 <script src="~/js/Editor/jquery-3.5.1.min.js"></script>
 <script src="~/js/Editor/popper.min.js"></script>
 <script src="~/js/Editor/1.9.1.jquery.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
 <script src="~/js/Editor/chosen.jquery.min.js"></script>
 <script src="~/js/jquery.gritter.min.js"></script>
+
+
 
 <link href="~/css/Editor/Css/4.4.1.bootstrap.min.css" rel="stylesheet" />
 <script src="~/js/Editor/4.4.1.bootstrap.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
 @*<link href="~/css/Editor/Css/summernote-bs4.min.css" rel="stylesheet" />*@
 <script src="~/js/Editor/summernote-bs4.min.js"></script>
+
+
 @*<script src="~/js/summernote.min.js"></script>*@
 <style>
 
 
-    #region {
+    #region1 {
         outline: 0;
         background-image: none;
         width: 100%;
-        height: 100%;
+        /*height: 100%;*/
         color: black;
         cursor: pointer;
         border: 1px solid black;
@@ -34,11 +43,11 @@
         padding: 6px 6px 6px 6px;
     }
 
-    #language {
+    #language1 {
         outline: 0;
         background-image: none;
         width: 100%;
-        height: 100%;
+        /*height: 100%;*/
         color: black;
         cursor: pointer;
         border: 1px solid black;
@@ -46,11 +55,11 @@
         padding: 6px 6px 6px 6px;
     }
 
-    #country {
+    #ddlcountry1 {
         outline: 0;
         background-image: none;
         width: 100%;
-        height: 100%;
+        /*height: 100%;*/
         color: black;
         cursor: pointer;
         border: 1px solid black;
@@ -77,117 +86,175 @@
     <div class="row distribute-container">
         <div class="col-md-2" style="margin-top:45px;margin-left:100px">
             <label style="display:flex !important">Region</label>
-            <select id="region" class="dropdown-select my-3 float-label">
-                <option value="0">Select Region</option>
-                <option value="Asia">Asia</option>
-                <option value="Europe">Europe</option>
-                <option value="North America">North America</option>
-                <option value="Africa">Africa</option>
-                <option value="Antarctica">Antarctica</option>
-                <option value="South America">South America</option>
-                <option value="Australia">Australia</option>
-            </select>
+            @Html.DropDownList("region", new SelectList(Model.regions, "RegionCode", "Name"), htmlAttributes: new { @class = "dropdown-select my-3 float-label form-control", autocomplete = "off" })
 
         </div>
         <div class="col-md-2" style="margin-top:45px;margin-left:64px">
             <label style="display:flex !important">Country</label>
-            <select id="country" class="dropdown-select my-3 float-label">
-                <option value="0">Select Country</option>
-                <option value="INDIA">INDIA</option>
-                <option value="Japan">Japan</option>
-                <option value="CHINA">CHINA</option>
-                <option value="KOREA">KOREA</option>
-                <option value="MALAYSIA">MALAYSIA</option>
-                <option value="SINGAPORE">SINGAPORE</option>
-                <option value="JAPAN">JAPAN</option>
-                <option value="USA">USA</option>
-                <option value="CANADA">CANADA</option>
-                <option value="UK">UK</option>
-            </select>
+            <select id="ddlcountry" class="dropdown-select my-3 float-label form-control">
+                <option value="0">Please select Country</option>
 
+            </select>
+            @*<input type="hidden" id="ddlcountry" class="dropdown-select my-3 float-label" />*@
 
         </div>
         <div class="col-md-2" style="margin-top:45px;margin-left:64px">
-            <label style="display:flex !important">Location</label>
-            <input type="text" id="location" autocomplete="off" />
+            <label style="display:flex !important">City</label>
 
+            <select id="location" class="dropdown-select my-3 float-label form-control">
+                <option value="0">Please select City</option>s
+
+            </select>
 
         </div>
 
     </div>
-
-
-
 
     <div class="row distribute-container myfile">
         <div class="col-md-2" style="margin-top:45px;margin-left:98px">
-            <label style="display:flex !important">Address</label>
-            <input id="address" type="text" class="form-control" />
+            <label style="display:flex !important">Address1</label>
+            <input id="address1" type="text" class="form-control" />
+        </div>
+        <div class="col-md-2" style="margin-top:45px;margin-left:98px">
+            <label style="display:flex !important">Address2</label>
+            <input id="address2" type="text" class="form-control" />
+        </div>
+        <div class="col-md-2" style="margin-top:45px;margin-left:98px">
+            <label style="display:flex !important">Address3</label>
+            <input id="address3" type="text" class="form-control" />
         </div>
 
+
+    </div>
+
+    <div class="row distribute-container myfile">
         <div class="col-md-2" style="margin-top:45px;margin-left:98px">
             <label style="display:flex !important">Title</label>
-            <input id="title" value="Map" type="text" />
+            <input id="title" value="Map" type="text" class="form-control" />
         </div>
         <div class="col-md-2" style="margin-top:45px;margin-left:98px">
             <label style="display:flex !important">GoogleMapHeading</label>
-            <input id="googleMapHeading" type="text" />
+            <input id="googleMapHeading" type="text" class="form-control" />
+        </div>
+        </div>
+
+        <div class="row distribute-container">
+            <div class="col-lg-10 col-md-8" style="margin-top:45px;margin-left:98px">
+                <label style="display:flex !important">GoogleMap</label>
+                <textarea style="display:flex !important" id="googleMap" class="form-control"></textarea>
+            </div>
+            <div class="col-md-2" style="margin-top:45px;margin-left:98px">
+                <label style="display:flex !important">Language</label>
+                <select id="language" class="dropdown-select my-3 float-label form-control">
+                    <option value="0">Select Language</option>
+                    <option value="en-US">English</option>
+                    <option value="ja">Japan</option>
+                    <option value="ko">Korea</option>
+                    <option value="fr-CA">French</option>
+                    <option value="zh-CHS">Simplified Chinese</option>
+                    <option value="zh-CHT">Traditional Chinese</option>
+
+                </select>
+            </div>
+          
+        </div>
+        
+        <div class="row distribute-container">
+            <div class="col-md-2" style="margin-top:45px;margin-left:98px">
+
+                <button type="button" id="AddLocation" class="btn btn-success" onclick="AddLocation()">AddLocation</button>
+            </div>
         </div>
     </div>
 
-    <div class="row distribute-container">
-        <div class="col-lg-10 col-md-8" style="margin-top:45px;margin-left:98px">
-            <label style="display:flex !important">GoogleMap</label>
-            <textarea style="display:flex !important" id="googleMap" class="form-control"></textarea>
-        </div>
-        <div class="col-md-2" style="margin-top:45px;margin-left:98px">
-            <label style="display:flex !important">Language</label>
-            <select id="language" class="dropdown-select my-3 float-label">
-                <option value="0">Select Language</option>
-                <option value="en-US">English</option>
-                <option value="ja">Japan</option>
-                <option value="ko">Korea</option>
-                <option value="fr-CA">French</option>
-                <option value="zh-CHT">Simplified Chinese</option>
-                <option value="zh-CHS">Traditional Chinese</option>
+    <script type="text/javascript">
 
-            </select>
-        </div>
-        <div class="col-md-2" style="margin-top:45px;margin-left:98px">
-            <label style="display:flex !important">Target</label>
-            <input id="target" type="text" />
-        </div>
-    </div>
-    <div class="row distribute-container">
-        <div class="col-md-2" style="margin-top:45px;margin-left:98px">
-            <label style="display:flex !important">TargetLocation</label>
-            <input id="targetLocation" type="text" />
-        </div>
-    </div>
-    <div class="row distribute-container">
-        <div class="col-md-2" style="margin-top:45px;margin-left:98px">
 
-            <button type="button" id="AddLocation" class="btn btn-success" onclick="AddLocation()">AddLocation</button>
-        </div>
-    </div>
-</div>
 
-<script type="text/javascript">
+    $("#region").change(function () {
+
+        debugger;
+        var region = $("#region").val();
+
+        $.ajax({
+            url: '@Url.Action("Country", "Home")',
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+           data: JSON.stringify({RegionCode:region}),
+            dataType: "json",
+            success: function (res) {
+                debugger;
+                //console.log(res.result);
+
+                //var listCountry = [];
+                //$.each(res.result, function (data, value) {
+                //    listCountry.push({ id: value.CountryCode, text: value.Name })
+                //});
+                //$("#ddlcountry").select2({
+                //    data: listCountry,
+                //    multiple: false
+                //});
+                //var output = [];
+                $("#ddlcountry").empty();
+                $.each(res.result, function (key, value) {
+                    $("#ddlcountry").append('<option value="' + value.CountryCode + '">' + value.Name + '</option>');
+                });
+
+             },
+            error: function (err) {
+                if (err.status === 0) {
+                    window.location = '../Logout';
+                }
+            }
+        });
+    });
+
+
+    $("#ddlcountry").change(function () {
+                debugger;
+        var country = $("#ddlcountry").val();
+
+        $.ajax({
+            url: '@Url.Action("City", "Home")',
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ CountryCode: country}),
+            dataType: "json",
+            success: function (res) {
+
+                $("#location").empty();
+                $.each(res.result, function (key, value) {
+                    $("#location").append('<option value="' + value.Citycode + '">' + value.Name + '</option>');
+                });
+
+
+            },
+            error: function (err) {
+                if (err.status === 0) {
+                    window.location = '../Logout';
+                }
+            }
+        });
+    });
+
     $(document).ready(function () {
-        $("#region").chosen();
-        $("#language").chosen();
-        $("#country").chosen();
+        //$("#region").chosen();
+        //$("#language").chosen();
+        //$("#ddlcountry").chosen();
 
     });
 
     function AddLocation() {
-        
+
         debugger;
         if (Validate()) {
-            var r = $("#region").val();
-            var c = $("#country").val();
+            var region = $("#region").val();
+            var country = $("#ddlcountry").val();
             var l = $("#location").val();
-            var a = $("#address").val();
+            var a1 = $("#address1").val();
+            var a2 = $("#address2").val();
+            var a3 = $("#address3").val();
+            var address = a1 + "<br>" + a2 + "<br>" + a3
             var tt = $("#title").val();
             var gh = $("#googleMapHeading").val();
             var g = $("#googleMap").val();
@@ -202,22 +269,23 @@
             type: "POST",
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify({
-                    Region: r, Country: c, Location: l, Address: a, Title: tt,
-                    GoogleMapHeading: gh, GoogleMap: g, Target: t, TargetLocation: tl, Language:lang}),
+                Region: region, Country: country, Location: l, Address: address, Title: tt,
+                    GoogleMapHeading: gh, GoogleMap: g,Language:lang}),
             dataType: "json",
             success: function (result) {
                     if (result.Message > 0) {
                         var alertmsg = "Added successfully";
                         AlertMessage('growl-success', 'Information', alertmsg, false, 3000);
                         $("#region").val('');
-                        $("#country").val('');
-                        $("#location").val('');
-                        $("#address").val('');
+                        $("#ddlcountry").val('');
+                        $("#location").html('');
+                        $("#address1").val('');
+                        $("#address2").val('');
+                        $("#address3").val('');
                         $("#title").val('');
                         $("#googleMapHeading").val('');
                         $("#googleMap").val('');
-                        $("#target").val('');
-                        $("#targetLocation").val('');
+
                         $("#language").val('');
                     }
                     else {
@@ -243,19 +311,31 @@
 
             return false;
         }
-        else if ($("#country").val() == "0") {
+        else if ($("#ddlcountry").val() == "0") {
             var message = "please select Country";
             AlertMessage('growl-danger', 'Validation', message, false, 3000);
 
             return false;
         }
-        else if ($("#location").val() == "") {
-            var message = "Location should not be empty";
+        else if ($("#location").val() == "0") {
+            var message = "Please select City";
             AlertMessage('growl-danger', 'Validation', message, false, 3000);
 
             return false;
         }
-        else if ($("#address").val() == "") {
+        else if ($("#address1").val() == "") {
+            var message = "Address should not be empty";
+            AlertMessage('growl-danger', 'Validation', message, false, 3000);
+
+            return false;
+        }
+        else if ($("#address2").val() == "") {
+            var message = "Address should not be empty";
+            AlertMessage('growl-danger', 'Validation', message, false, 3000);
+
+            return false;
+        }
+        else if ($("#address3").val() == "") {
             var message = "Address should not be empty";
             AlertMessage('growl-danger', 'Validation', message, false, 3000);
 
@@ -285,18 +365,7 @@
 
             return false;
         }
-        else if ($("#target").val() == "") {
-            var message = "Target should not be empty";
-            AlertMessage('growl-danger', 'Validation', message, false, 3000);
 
-            return false;
-        }
-        else if ($("#targetLocation").val() == "") {
-            var message = "TargetLocation should not be empty";
-            AlertMessage('growl-danger', 'Validation', message, false, 3000);
-
-            return false;
-        }
         else {
             return true;
         }
@@ -315,7 +384,7 @@
         });
         return false;
     };
-</script>
+    </script>
 
 
 
