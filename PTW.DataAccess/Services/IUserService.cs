@@ -13,5 +13,6 @@ namespace PTW.DataAccess.Services
         List<Region> RetrieveRegionData();
         List<Country> RetrieveCountryData(string regioncode);
         List<Citys> RetrieveCityData(string countrycode);
+        void InsertUserlog(string username, string sessionid);
     }
 }

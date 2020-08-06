@@ -191,7 +191,7 @@ namespace PTW.DataAccess.ServicesImpl
             }
         }
 
-      public List<Citys> RetrieveCityData(string countrycode)
+        public List<Citys> RetrieveCityData(string countrycode)
         {
             CustomCommand command = null;
             Main main = new Main();
@@ -246,7 +246,35 @@ namespace PTW.DataAccess.ServicesImpl
 
             }
         }
+        public void InsertUserlog(string username, string sessionid)
+        {
+            CustomCommand command = null;
 
+            try
+            {
+                using (command = new CustomCommand())
+                {
+
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "InsertUserlog";
+                    command.AddParameterWithValue("@username", username);
+                    command.AddParameterWithValue("@sessionid", sessionid);
+                    //  Execute command and get values from output parameters.
+                    DBDataAccess.ExecuteNonQuery(command, false);
+
+                }
+
+            }
+
+            catch { throw; }
+
+            finally
+            {
+                if (command != null) command.Dispose();
+                command = null;
+
+            }
+        }
     }
 
 }

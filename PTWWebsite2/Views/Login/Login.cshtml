@@ -1,0 +1,195 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.min.css">
+@*<link href="~/css/Editor/Css/chosen.min.css" rel="stylesheet" />*@
+<link href="~/css/jquery.gritter.css" rel="stylesheet" />
+
+<script src="~/js/Editor/jquery-3.5.1.min.js"></script>
+<script src="~/js/Editor/popper.min.js"></script>
+<script src="~/js/Editor/1.9.1.jquery.js"></script>
+<script src="~/js/Editor/chosen.jquery.min.js"></script>
+<script src="~/js/jquery.gritter.min.js"></script>
+<link href="~/css/Editor/Css/4.4.1.bootstrap.min.css" rel="stylesheet" />
+<script src="~/js/Editor/4.4.1.bootstrap.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+@*<link href="~/css/Editor/Css/summernote-bs4.min.css" rel="stylesheet" />*@
+<script src="~/js/Editor/summernote-bs4.min.js"></script>
+@*<script src="~/js/summernote.min.js"></script>*@
+
+<style type="text/css">
+    .container {
+        height: 100%;
+        /* display: flex;
+        align-items: center; */
+    }
+
+    .login-page {
+        width: 40%;
+        max-width: 100%;
+        margin: 0 auto;
+        padding-top:20px;
+    }
+
+    .log-part {
+        border: 1px solid #dfdfdf;
+        /* margin-top: 200px; */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px 0px #ccc;
+        /* height: 57%;*/
+    }
+
+    .distribute-container label {
+        display: block;
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .distribute-container input {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        background: #fff;
+        width: 100%;
+    }
+
+        .distribute-container input:focus {
+            outline: none;
+        }
+
+    .credentials {
+        margin-bottom: 15px;
+    }
+
+    .page-header {
+        margin-bottom: 50px;
+    }
+
+    #btnLogin {
+        width: 40%;
+        background: #009cbd;
+        color: #fff;
+        margin-bottom: 10px;
+    }
+</style>
+
+
+
+<div class="container">
+
+    <div class="login-page">
+        <div class="page-header" style="text-align: center;">
+            <h3>Login</h3>
+        </div>
+        <div class="log-part">
+            <div class="distribute-container">
+                <div class="credentials">
+                    <label>Username</label>
+                    <input type="text" id="UserName" placeholder="please enter user name" autocomplete="off" />
+                </div>
+                <div class="">
+                    <label>Password</label>
+                    <input type="password" id="Password" placeholder="please enter password" autocomplete="off" />
+                </div>
+            </div>
+            <div class="d-flex justify-content-between mt-2">
+                <div>
+                    <input type="checkbox" name="name" id="remember" value="" /> Remember me
+                </div>
+                @*<a href="#"><p>Forgot password ?</p></a>*@
+            </div>
+            <div class="text-center mt-5">
+                <button type="button" id="btnLogin" class="btn" onclick="Login();">Login</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<script type="text/javascript">
+
+    function Login()
+    {
+        if (Validate()) {
+                    var Username = $("#UserName").val().trim();
+            var PassWord = $("#Password").val().trim();
+            var remember = $("#remember").prop('checked');
+            
+        $.ajax({
+
+            url: '@Url.Action("Login_Post", "Login")',
+            type: "Post",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({
+                UserName: Username,
+                Password: PassWord,
+                RememberMe: remember
+            }),
+
+            dataType: "json",
+            success: function (result) {
+                debugger;
+                if (result.Message!= null && result.Message!="") {
+                    var alertmsg = "User Successfully LogIn ";
+                    window.location = "../DashBoard";
+                    AlertMessage('growl-success', 'Information', alertmsg, false, 3000);
+
+                }
+                else {
+                    var error = "Invalid Username/Password";
+                    AlertMessage('growl-danger', 'Validation', error, false, 3000);
+                }
+             },
+
+                error: function (err) {s
+                    if (err.status === 0) {
+                        window.location = '../Logout';
+                    }
+
+                }
+            });
+        }
+
+    }
+    function Validate() {
+        if ($("#UserName").val().trim() == "") {
+            var errorMessage = " Username should not be empty";
+            AlertMessage('growl-danger', 'Validation', errorMessage, false, 3000);
+            return false;
+        }
+        else if ($("#Password").val().trim() == "") {
+            var errorMessage = "Password should not be empty";
+            AlertMessage('growl-danger', 'Validation', errorMessage, false, 3000);
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+    function AlertMessage(class_name, title, alert, boolstick, timesec) {
+        jQuery.gritter.add({
+            title: title,
+            text: alert,
+            class_name: class_name,
+            image: '../images/screen.png',
+            sticky: boolstick,
+            time: timesec,
+            before_open: function () {
+                $('.gritter-item-wrapper').remove();
+            }
+        });
+        return false;
+    };
+</script>
+
+
+
+
+

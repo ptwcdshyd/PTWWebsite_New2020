@@ -28,7 +28,7 @@ namespace PTWWebsite
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-           
+
             services.AddAuthentication("PTWSecurityScheme")
                    .AddCookie("PTWSecurityScheme", options =>
                    {
@@ -46,6 +46,8 @@ namespace PTWWebsite
             services.AddTransient<INewsEventService, NewsEventService>();
             services.AddTransient<ILabService, LabServicecs>();
             services.AddTransient<IAboutServices, AboutServices>();
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromMinutes(20);
@@ -60,6 +62,9 @@ namespace PTWWebsite
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -86,7 +91,6 @@ namespace PTWWebsite
             app.UseCookiePolicy();
 
             app.UseAuthentication();
-
             app.UseSession();
 
             //app.UseApplicationInsightsRequestTelemetry();
@@ -99,7 +103,7 @@ namespace PTWWebsite
                     template: "{controller=Home}/{action=Home}/{id?}");
             });
 
-           
+
         }
     }
 }

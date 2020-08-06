@@ -17,8 +17,8 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace PTWWebsite2.Controllers
 {
-    //[Authorize]
-    //[ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
+    [Authorize]
+    [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
     public class HomeController : Controller
     {
         private readonly IMasterService _masterService;

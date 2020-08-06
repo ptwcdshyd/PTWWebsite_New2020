@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pole To Win</title>
+    <meta charset="utf-8">
+    <!--   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">-->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
+    <!--<meta name="description" content="Pole To Win (PTW) is the premier global provider of outsourced quality assurance, engineering, customer experience, translation, localization, interactive voice production and audio recording services to leading video games, e-learning, software and technology clients worldwide.">-->
+    <meta name="author" content="Pole To Win">
+
+    @*<environment include="Development">*@
+    <link href="~/CSS/Poppins.css" rel="stylesheet" type="text/css" />
+    <link href="~/CSS/Poppins-Bold.css" rel="stylesheet" type="text/css" />
+    <link href="~/CSS/Poppins-SemiBold.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <link rel="icon" type="image/png" href="~/Images/icon-ms.png" />
+    <link href="~/CSS/bootstrap.min.css" rel="stylesheet" />
+
+
+    <!-- Custom fonts for this template -->
+    <link href="~/Fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" type="text/css" href="~/CSS/cookieconsent.min.css" />
+
+    <style>
+        .left-nav {
+            background-color: black;
+            margin: 0px;
+            height: 100vh;
+            width: 126px;
+            position: fixed;
+        }
+
+        .main-container {
+            width: calc(100% - 126px);
+            margin-left: 126px;
+        }
+    </style>
+
+
+</head>
+<body>
+    @*<div style="background-color:black;height:45px;position:fixed;width:1280px"><a style="margin-left:1172px" href="#" class="full-right">LogOut</a></div>*@
+    <div class="container-fluid p-0">
+        <div class="d-flex">
+            <div class="div left-nav">
+                <div class="nav-link p-2" style="margin-top:27px;">
+
+                    <a href="../DashBoard">
+                        <span>DashBoard</span>
+                    </a>
+                </div>
+                <div class="nav-link p-2" style="">
+
+                    <a href="../AddLocations">
+                        <span>AddLocation</span>
+                    </a>
+                </div>
+                <div class="nav-link p-2" style="">
+                    <a href="/Editor">
+                        <span>Services</span>
+                    </a>
+                </div>
+                <div class="nav-link p-2" style="">
+                    <a href="/AddLabs">
+                        <span>AddLabs</span>
+                    </a>
+                </div>
+                <div class="nav-link p-2" style="">
+                    <a href="/addnews">
+                        <span>AddNews</span>
+                    </a>
+                </div>
+                <div class="nav-link p-2" style="">
+                    <a href="/EditNews">
+                        <span>EditNews</span>
+                    </a>
+                </div>
+                <div class="nav-link p-2" style="">
+                    <a href="/GetProfiles">
+                        <span>Profiles</span>
+                    </a>
+                </div>
+                <div class="nav-link p-2" style="">
+                    <a href="/Logout">
+                        <span>LogOut</span>
+                    </a>
+                </div>
+
+            </div>
+            <div class="main-container" style="margin-top:25px">
+                @RenderBody()
+            </div>
+        </div>
+        @*<div class="row">
+                <div class="col-md-4" style="margin-top: 25px;">
+                    <a href="/AddLocation">
+                        <span>AddLocation</span>
+                    </a>
+                </div>
+            </div>*@
+
+    </div>
+    <div>
+
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewData["Title"] = "DashBoardDetails";
+    Layout = "~/Views/Shared/_LayoutForPtwCms.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <h1>Hello Welcome To PTW</h1>
+
+        @if(User.FindFirst("Username") !=null)
+        {
+            <h6>@User.FindFirst("Username").Value</h6>
+        }
+    </div>
+        
+    
+</div>
+
