@@ -14,5 +14,8 @@ namespace PTW.DataAccess.Services
         List<Country> RetrieveCountryData(string regioncode);
         List<Citys> RetrieveCityData(string countrycode);
         void InsertUserlog(string username, string sessionid);
+        List<LocationDetails> RetrieveAllLocations();
+        LocationDetails GetLocationById(int locationId);
+        int UpdateLocation(LocationDetails loc);
     }
 }

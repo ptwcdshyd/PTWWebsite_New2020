@@ -138,26 +138,26 @@
         </div>
         </div>
 
-        <div class="row distribute-container">
-            <div class="col-lg-10 col-md-8" style="margin-top:45px;margin-left:98px">
-                <label style="display:flex !important">GoogleMap</label>
-                <textarea style="display:flex !important" id="googleMap" class="form-control"></textarea>
-            </div>
-            <div class="col-md-2" style="margin-top:45px;margin-left:98px">
-                <label style="display:flex !important">Language</label>
-                <select id="language" class="dropdown-select my-3 float-label form-control">
-                    <option value="0">Select Language</option>
-                    <option value="en-US">English</option>
-                    <option value="ja">Japan</option>
-                    <option value="ko">Korea</option>
-                    <option value="fr-CA">French</option>
-                    <option value="zh-CHS">Simplified Chinese</option>
-                    <option value="zh-CHT">Traditional Chinese</option>
-
-                </select>
-            </div>
-          
+    <div class="row distribute-container">
+        <div class="col-lg-10 col-md-8" style="margin-top:45px;margin-left:98px">
+            <label style="display:flex !important">GoogleMap</label>
+            <textarea style="display:flex !important" id="googleMap" class="form-control"></textarea>
         </div>
+        <div class="col-md-2" style="margin-top:45px;margin-left:98px">
+            <label style="display:flex !important">Language</label>
+            <select id="language" class="dropdown-select my-3 float-label form-control">
+                <option value="0">Select Language</option>
+                <option value="en-US">English</option>
+                <option value="ja">Japan</option>
+                <option value="ko">Korea</option>
+                <option value="fr-CA">French</option>
+                <option value="zh-CHS">Simplified Chinese</option>
+                <option value="zh-CHT">Traditional Chinese</option>
+
+            </select>
+        </div>
+                
+    </div>
         
         <div class="row distribute-container">
             <div class="col-md-2" style="margin-top:45px;margin-left:98px">
@@ -262,8 +262,6 @@
             var tl = $("#targetLocation").val();
             var lang = $("#language").val();
 
-
-
             $.ajax({
             url: '@Url.Action("AddLocationsPost", "Home")',
             type: "POST",
@@ -276,17 +274,13 @@
                     if (result.Message > 0) {
                         var alertmsg = "Added successfully";
                         AlertMessage('growl-success', 'Information', alertmsg, false, 3000);
-                        $("#region").val('');
-                        $("#ddlcountry").val('');
-                        $("#location").html('');
                         $("#address1").val('');
                         $("#address2").val('');
                         $("#address3").val('');
                         $("#title").val('');
                         $("#googleMapHeading").val('');
                         $("#googleMap").val('');
-
-                        $("#language").val('');
+                      
                     }
                     else {
                         var error = "failed";

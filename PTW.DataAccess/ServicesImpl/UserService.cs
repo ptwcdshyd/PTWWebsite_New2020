@@ -275,6 +275,150 @@ namespace PTW.DataAccess.ServicesImpl
 
             }
         }
+        public List<LocationDetails> RetrieveAllLocations()
+        {
+            CustomCommand command = null;
+            try
+            {
+                using (command = new CustomCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "RetrieveAllLocations";
+
+                    DataTable result = DBDataAccess.ExecuteTable(command);
+
+                    List<LocationDetails> locationslist = new List<LocationDetails>();
+
+                    if (result != null && result.Rows.Count > 0)
+                    {
+                        for (int i = 0; i < result.Rows.Count; i++)
+                        {
+                            LocationDetails obj = new LocationDetails();
+                            obj.ID = Convert.ToInt32(result.Rows[i]["ID"]);
+                            obj.Region = result.Rows[i]["Region"].ToString();
+                            obj.Country = result.Rows[i]["Country"].ToString();
+                            obj.Location = result.Rows[i]["Location"].ToString();
+                            obj.Address = result.Rows[i]["Address"].ToString();
+                            //obj.GoogleMapHeading = result.Rows[i]["GoogleMapHeading"].ToString();
+                            //obj.GoogleMap = result.Rows[i]["GoogleMap"].ToString();
+                            obj.Language = result.Rows[i]["LanguageCode"].ToString();
+                            locationslist.Add(obj);
+
+                        }
+                    }
+
+                    return locationslist;
+                }
+
+
+            }
+
+
+
+
+            catch { throw; }
+
+
+
+            finally
+            {
+                if (command != null) command.Dispose();
+                command = null;
+
+
+
+            }
+        }
+        public LocationDetails GetLocationById(int locationId)
+        {
+            CustomCommand command = null;
+            try
+            {
+                using (command = new CustomCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "RetrieveLocationById";
+                    command.AddParameterWithValue("@LocationId", locationId);
+                    DataTable result = DBDataAccess.ExecuteTable(command);
+
+                    LocationDetails obj = new LocationDetails();
+
+                    if (result != null && result.Rows.Count > 0)
+                    {                        
+                        obj.ID = Convert.ToInt32(result.Rows[0]["ID"]);
+                        obj.Region = result.Rows[0]["Region"].ToString();
+                        obj.Country = result.Rows[0]["Country"].ToString();
+                        obj.Location = result.Rows[0]["Location"].ToString();
+                        obj.Address = result.Rows[0]["Address"].ToString();
+                        //obj.GoogleMapHeading = result.Rows[0]["GoogleMapHeading"].ToString();
+                        obj.GoogleMap = result.Rows[0]["GoogleMap"].ToString();
+                        obj.IsActive = Convert.ToBoolean(result.Rows[0]["IsActive"]);
+
+                    }
+
+                    return obj;
+                }
+
+
+            }
+
+
+
+
+            catch { throw; }
+
+
+
+            finally
+            {
+                if (command != null) command.Dispose();
+                command = null;
+
+
+
+            }
+        }
+
+       public int UpdateLocation(LocationDetails loc)
+        {
+            CustomCommand command = null;
+            try
+            {
+                using (command = new CustomCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "UpdateLocation";
+                    command.AddParameterWithValue("@region", loc.Region);
+                    command.AddParameterWithValue("@country", loc.Country);
+                    command.AddParameterWithValue("@location", loc.Location);
+                    command.AddParameterWithValue("@address", loc.Address);
+                    command.AddParameterWithValue("@googleMap", loc.GoogleMap);
+                    command.AddParameterWithValue("@id", loc.ID);
+                    command.AddParameterWithValue("@isactive", loc.IsActive);
+                    int resultcode=DBDataAccess.ExecuteNonQuery(command,false);
+                    return resultcode;
+                }
+
+                
+            }
+
+
+
+
+            catch { throw; }
+
+
+
+            finally
+            {
+                if (command != null) command.Dispose();
+                command = null;
+
+
+
+            }
+        }
+            
     }
 
 }
