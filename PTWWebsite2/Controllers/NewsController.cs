@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -32,6 +33,13 @@ namespace PTWWebsite2.Controllers
         [Route("{culture}/News")]
         public IActionResult News(string culture)
         {
+            MasterPage masterPage = new MasterPage();
+            DataTable dtContent = _masterService.GetModuleContent("Home", (culture == null ? "en-US" : culture));
+            masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Home")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            ViewData["Header"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Header")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            ViewData["Footer"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Footer")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+
+
             NewsEvents newsEvents = new NewsEvents();
             newsEvents.News = _NewsEventService.GetAllNewsDetails();
             newsEvents.Events = _NewsEventService.GetAllEventDetails();
@@ -42,6 +50,12 @@ namespace PTWWebsite2.Controllers
         [Route("{cultures}/News/{NewsTitleUrl}")]
         public IActionResult NewsArticles(string cultures, string NewsTitleUrl)
         {
+            MasterPage masterPage = new MasterPage();
+            DataTable dtContent = _masterService.GetModuleContent("Home", (cultures == null ? "en-US" : cultures));
+            masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Home")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            ViewData["Header"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Header")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            ViewData["Footer"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Footer")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+
             if (!string.IsNullOrEmpty(NewsTitleUrl))
             {
                 NewsTitleUrl = NewsTitleUrl.Replace("-", " ");
@@ -103,12 +117,12 @@ namespace PTWWebsite2.Controllers
                     news.LongImageUrl = "/Images/News/2020/Large/";
                     news.LongImageName = news.LongerImage.FileName;
                     string filePath2 = Path.Combine(LorgeImageFolder, news.LongerImage.FileName);
-                    news.HeaderImage.CopyTo(new FileStream(filePath2, FileMode.Create));
+                    news.LongerImage.CopyTo(new FileStream(filePath2, FileMode.Create));
 
                     news.ShortImageUrl = "/Images/News/2020/Small/";
                     news.ShortImageName = news.ShorterImage.FileName;
                     string filePath3 = Path.Combine(smallImageFolder, news.ShorterImage.FileName);
-                    news.HeaderImage.CopyTo(new FileStream(filePath3, FileMode.Create));
+                    news.ShorterImage.CopyTo(new FileStream(filePath3, FileMode.Create));
 
                 }
 
@@ -175,7 +189,7 @@ namespace PTWWebsite2.Controllers
                     news.LongImageUrl = "/Images/News/2020/Large/";
                     news.LongImageName = news.LongerImage.FileName;
                     string filePath2 = Path.Combine(LorgeImageFolder, news.LongerImage.FileName);
-                    news.HeaderImage.CopyTo(new FileStream(filePath2, FileMode.Create));
+                    news.LongerImage.CopyTo(new FileStream(filePath2, FileMode.Create));
 
                 }
                 if (news.ShorterImage != null)
@@ -185,7 +199,7 @@ namespace PTWWebsite2.Controllers
                     news.ShortImageUrl = "/Images/News/2020/Small/";
                     news.ShortImageName = news.ShorterImage.FileName;
                     string filePath3 = Path.Combine(smallImageFolder, news.ShorterImage.FileName);
-                    news.HeaderImage.CopyTo(new FileStream(filePath3, FileMode.Create));
+                    news.ShorterImage.CopyTo(new FileStream(filePath3, FileMode.Create));
                 }
 
                 string newsXmlData = CustomNewsXml(news);

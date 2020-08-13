@@ -136,11 +136,9 @@
             dataType: "json",
             success: function (result) {
                 debugger;
-                if (result.Message!= null && result.Message!="") {
-                    var alertmsg = "User Successfully LogIn ";
+                if (result.Message != null && result.Message != "")
+                {                   
                     window.location = "../DashBoard";
-                    AlertMessage('growl-success', 'Information', alertmsg, false, 3000);
-
                 }
                 else {
                     var error = "Invalid Username/Password";
