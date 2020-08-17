@@ -36,6 +36,10 @@
     @*</environment>*@
 
     <style>
+        body{
+              scroll-behavior: smooth;
+        }
+        
         .wow {
             visibility: hidden;
         }
@@ -164,43 +168,64 @@
 
             window.location.assign(redirectURL);
         }
-        $(document).ready(function () {
+        
+
+        $(document).ready(function ()
+        {
+            Services();
+        });
+
+        window.onload = function () {
+            var pageValue = getParameterByName('pageValue');
+            if (pageValue == null) {
+                pageValue = '1';
+             }
+            $('#navbarResponsive ul').each(function () {
+                var phrase = '';
+                $(this).find('a').each(function () {
+                    var current = $(this);
+                    var titleValue = current.attr("titleValue");
+                    if (pageValue === titleValue) {
+                        current.append(' <div class="underline"></div>');
+                    }
+                });
+            });
+                        
+        };
+
+        function getParameterByName(name, url) {
             
-            debugger;
-            var reqUrl = window.location.href.replace(window.location.origin, '');
-            var urlElements = reqUrl.split('/');
-            if (urlElements.indexOf('Service_Cx') > -1) {
-                $('#dropdown_Services').show();
-                $('#Header1_A2').hide();
+            if (!url) url = window.location.href;
+            var pageValue = null;
+            if (url.indexOf("home") !== -1 && (url.indexOf("home") !== 0)) {
+                pageValue = 1;
             }
-            else if (urlElements.indexOf('Service_QA') > -1) {
-                $('#dropdown_Services').show();
-                $('#Header1_A2').hide();
-            }
-            else if (urlElements.indexOf('Localization') > -1) {
-                $('#dropdown_Services').show();
-                $('#Header1_A2').hide();
-            }
-            else if (urlElements.indexOf('AudioProduction') > -1) {
-                $('#dropdown_Services').show();
-                $('#Header1_A2').hide();
-            }
-            else if (urlElements.indexOf('ProductDevelopment') > -1) {
-                $('#dropdown_Services').show();
-                $('#Header1_A2').hide();
-            }
-            else {
-                $('#Header1_A2').show();
+            if (url.indexOf("Service") !== -1 && (url.indexOf("Service") !== 0)) {
+                pageValue = 2;
+                
             }
 
-    });
+            if (url.indexOf("about") !== -1 && (url.indexOf("about") !== 0)) {
+                pageValue = 3;
+            }
 
+            if (url.indexOf("News") !== -1 && (url.indexOf("News") !== 0)) {
+                pageValue = 4;
+            }
 
+            if (url.indexOf("careers") !== -1 && (url.indexOf("careers") !== 0)) {
+                pageValue = 5;
+            }
 
+            if (url.indexOf("Contact") !== -1 && (url.indexOf("Contact") !== 0)) {
+                pageValue = 6;
+            }
 
-
-
-
+            if (url.indexOf("LAB") !== -1 && (url.indexOf("LAB") !== 0)) {
+                pageValue = 7;
+            }
+            return decodeURIComponent(pageValue);
+        }
 
         function ApplyLocalizaiotn() {
            
@@ -227,10 +252,52 @@
 
             }
 
-    }
+        }
+                
+        function Services() {
+            var reqUrl = window.location.href.replace(window.location.origin, '');
+            var urlElements = reqUrl.split('/');
+            if (urlElements.indexOf('Service_Cx') > -1) {
+                $('#dropdown_Services').show();
+                $('#Header1_A2').hide();
+            }
+            else if (urlElements.indexOf('Service_QA') > -1) {
+                $('#dropdown_Services').show();
+                $('#Header1_A2').hide();
+            }
+            else if (urlElements.indexOf('Localization') > -1) {
+                $('#dropdown_Services').show();
+                $('#Header1_A2').hide();
+            }
+            else if (urlElements.indexOf('AudioProduction') > -1) {
+                $('#dropdown_Services').show();
+                $('#Header1_A2').hide();
+            }
+            else if (urlElements.indexOf('ProductDevelopment') > -1) {
+                $('#dropdown_Services').show();
+                $('#Header1_A2').hide();
+            }
+            else {
+                $('#Header1_A2').show();
+            }
+        }
 
     @RenderSection("Scripts", required: false)
 
+    </script>
+
+    <script>
+        jQuery(document).ready(function (e) {
+            "use strict";
+            e(".backtop").hide(), e(window).on("scroll", function () {
+                e(this).scrollTop() > 400 ? e(".backtop").fadeIn() : e(".backtop").fadeOut()
+            }), e(".backtop").on("click", function () {
+                return e("html, body").animate({
+                    scrollTop: 0
+                }, 800), !1
+            }), (new WOW).init();
+
+        });
     </script>
 
 </body>

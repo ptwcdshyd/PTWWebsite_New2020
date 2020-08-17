@@ -51,7 +51,7 @@
             <div class="col-md-8 full-width no-padding">
                 <div class="row no-margin ">
                     <div class="col-md-12 no-padding himage">
-                        <a href="/news/@Model.News[0].ShortDescription.Replace(" ","-")" id="ContentPlaceHolder1_News1Href" titlevalue="4">
+                        <a href="/News/@Model.News[0].ShortDescription.Replace(" ","-")" id="ContentPlaceHolder1_News1Href" titlevalue="4">
                             <div class="news1 news-4x dark-text portfolio-image h-100p">
                                 <img src="@string.Concat(Model.News[0].ShortImageUrl.Replace("~",""),Model.News[0].ShortImageName)" id="ContentPlaceHolder1_News1Img" class="h-100p" alt="@Model.News[0].ShortDescription">
                                 <div onmouseover="hover(this,'../Images/news/arrowhover.png');" onmouseout="unhover(this,'../Images/news/arrow.png');" style="cursor: pointer !important;">
@@ -69,7 +69,7 @@
                     <div class="col-md-12 no-padding himage">
                         <div class="row no-margin w-100p h-100p">
                             <div class="col-md-6 pad-tb4 no-hide">
-                                <a href="/news/@Model.News[1].ShortDescription.Replace(" ","-")" id="ContentPlaceHolder1_News2Href" titlevalue="4">
+                                <a href="/News/@Model.News[1].ShortDescription.Replace(" ","-")" id="ContentPlaceHolder1_News2Href" titlevalue="4">
                                     <div class="news3 news-4x news-4x-1 x2 dark-text portfolio-image h-100p">
                                         <img src="@string.Concat(Model.News[1].ShortImageUrl.Replace("~",""),Model.News[1].ShortImageName)" id="ContentPlaceHolder1_News2Img" class="h-100p" alt="@Model.News[1].NewsTitle">
                                         <div onmouseover="hover(this,'../Images/news/arrowhover.png');" onmouseout="unhover(this,'../Images/news/arrow.png');" style="cursor: pointer !important;">
@@ -85,7 +85,7 @@
                                 </a>
                             </div>
                             <div class="col-md-6 pad-tb4 no-hide">
-                                <a href="/news/@Model.News[2].ShortDescription.Replace(" ","-")" id="ContentPlaceHolder1_News3Href" titlevalue="4">
+                                <a href="/News/@Model.News[2].ShortDescription.Replace(" ","-")" id="ContentPlaceHolder1_News3Href" titlevalue="4">
                                     <div class="news3 news-4x news-4x-1 dark-text portfolio-image h-100p">
                                         <img src="@string.Concat(Model.News[2].ShortImageUrl.Replace("~",""),Model.News[2].ShortImageName)" id="ContentPlaceHolder1_News3Img" class="h-100p" alt="@Model.News[2].NewsTitle">
                                         <div onmouseover="hover(this,'../Images/news/arrowhover.png');" onmouseout="unhover(this,'../Images/news/arrow.png');" style="cursor: pointer !important;">
@@ -151,7 +151,7 @@
         <div class="row no-margin no-display m-t-5-imp">
             <div class="col-md-6 no-padding">
                 <div class="col-md-12 pad-tb4 h-50p">
-                    <a href="/news/@Model.News[0].ShortDescription.Replace(" ","-")" id="ContentPlaceHolder1_News2Href_Mobile" titlevalue="4">
+                    <a href="/News/@Model.News[0].ShortDescription.Replace(" ","-")" id="ContentPlaceHolder1_News2Href_Mobile" titlevalue="4">
                         <div class="news3 news-4x x2 dark-text portfolio-image h-100p">
                             <img src="@string.Concat(Model.News[0].ShortImageUrl.Replace("~",""),Model.News[0].ShortImageName)" class="h100" alt="@Model.News[0].ShortDescription">
                             <div onmouseover="hover(this,'../Images/news/arrowhover.png');" onmouseout="unhover(this,'../Images/news/arrow.png');">
@@ -167,7 +167,7 @@
                     </a>
                 </div>
                 <div class="col-md-12 pad-b4 h-50p">
-                    <a href="/news/@Model.News[1].ShortDescription.Replace(" ","-")" id="ContentPlaceHolder1_News3Href_Mobile" titlevalue="4">
+                    <a href="/News/@Model.News[1].ShortDescription.Replace(" ","-")" id="ContentPlaceHolder1_News3Href_Mobile" titlevalue="4">
                         <div class="news3 news-4x dark-text portfolio-image h-100p">
                             <img src="@string.Concat(Model.News[1].ShortImageUrl.Replace("~",""),Model.News[1].ShortImageName)" class="h100" alt="@Model.News[1].ShortDescription">
                             <div onmouseover="hover(this,'../Images/news/arrowhover.png');" onmouseout="unhover(this,'../Images/news/arrow.png');">
@@ -926,4 +926,18 @@
 
         $('.scrollnews').makeScroll();
     });
+
+    $(document).ready(function () {
+        RemoveLastSlashInUrl();
+    });
+
+    function RemoveLastSlashInUrl() {
+        var str = window.location.href.replace(window.location.origin, "");
+        var lastchar = str.charAt(str.length - 1);
+        if (lastchar == '/') {
+            str = str.slice(0, -1);
+            window.location = window.location.origin + str;
+        }
+    }
+
 </script>

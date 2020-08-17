@@ -765,4 +765,18 @@
     $("#myDropdown a").on("click", function () {
 
         $("#myDropdown").toggleClass('show');
-    });</script>
+    });
+
+    $(document).ready(function () {
+        RemoveLastSlashInUrl();
+    });
+
+    function RemoveLastSlashInUrl() {
+        var str = window.location.href.replace(window.location.origin, "");
+        var lastchar = str.charAt(str.length - 1);
+        if (lastchar == '/') {
+            str = str.slice(0, -1);
+            window.location = window.location.origin + str;
+        }
+    }
+</script>
