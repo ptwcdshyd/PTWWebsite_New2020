@@ -177,7 +177,30 @@
             }
         });
         return false;
-    };
+        };
+
+
+        $("#GoogleMap").change(function () {
+            var url = $("#GoogleMap").val();
+            if (url !== "") {
+                var url = $("#GoogleMap").val();
+                is_url(url);
+
+            }
+        });
+
+        function is_url(str) {
+            regexp = /^https?\:\/\/(www\.)?google\.(com|fr|de)\/maps\b/;
+            if (regexp.test(str)) {
+                return true;
+            }
+            else {
+                AlertMessage('growl-danger', 'Validation', "Please enter proper google map url", false, 5000);
+                $("#GoogleMap").val("");
+                return false;
+            }
+        }
+
 
     </script>
 

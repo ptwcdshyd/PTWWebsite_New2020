@@ -100,11 +100,11 @@
         </div>
         <div class="col-md-2" style="margin-top:45px;margin-left:64px">
             <label style="display:flex !important">City</label>
+            <input id="location" type="text" class="form-control" maxlength="50" placeholder="Please enter city"/>
+            @*<select id="location" class="dropdown-select my-3 float-label form-control">
+            <option value="0">Please select City</option>
 
-            <select id="location" class="dropdown-select my-3 float-label form-control">
-                <option value="0">Please select City</option>s
-
-            </select>
+        </select>*@
 
         </div>
 
@@ -113,15 +113,15 @@
     <div class="row distribute-container myfile">
         <div class="col-md-2" style="margin-top:45px;margin-left:98px">
             <label style="display:flex !important">Address1</label>
-            <input id="address1" type="text" class="form-control" />
+            <input id="address1" type="text" class="form-control" maxlength="50" placeholder="Please enter address"/>
         </div>
         <div class="col-md-2" style="margin-top:45px;margin-left:98px">
             <label style="display:flex !important">Address2</label>
-            <input id="address2" type="text" class="form-control" />
+            <input id="address2" type="text" class="form-control" maxlength="50" placeholder="Please enter address"/>
         </div>
         <div class="col-md-2" style="margin-top:45px;margin-left:98px">
             <label style="display:flex !important">Address3</label>
-            <input id="address3" type="text" class="form-control" />
+            <input id="address3" type="text" class="form-control" maxlength="50" placeholder="Please enter address"/>
         </div>
 
 
@@ -133,15 +133,15 @@
             <input id="title" value="Map" type="text" class="form-control" />
         </div>
         <div class="col-md-2" style="margin-top:45px;margin-left:98px">
-            <label style="display:flex !important">GoogleMapHeading</label>
-            <input id="googleMapHeading" type="text" class="form-control" />
+            <label style="display:flex !important">Google Map Heading</label>
+            <input id="googleMapHeading" type="text" class="form-control" placeholder="Please enter Google Map Heading"/>
         </div>
         </div>
 
     <div class="row distribute-container">
         <div class="col-lg-10 col-md-8" style="margin-top:45px;margin-left:98px">
-            <label style="display:flex !important">GoogleMap</label>
-            <textarea style="display:flex !important" id="googleMap" class="form-control"></textarea>
+            <label style="display:flex !important">Google Map</label>
+            <textarea style="display:flex !important" id="googleMap" class="form-control" placeholder="Please enter Google map url"></textarea>
         </div>
         <div class="col-md-2" style="margin-top:45px;margin-left:98px">
             <label style="display:flex !important">Language</label>
@@ -168,9 +168,8 @@
     </div>
 
     <script type="text/javascript">
-
-
-
+              
+                
     $("#region").change(function () {
 
         debugger;
@@ -210,7 +209,7 @@
     });
 
 
-    $("#ddlcountry").change(function () {
+    @*$("#ddlcountry").change(function () {
                 debugger;
         var country = $("#ddlcountry").val();
 
@@ -235,15 +234,8 @@
                 }
             }
         });
-    });
-
-    $(document).ready(function () {
-        //$("#region").chosen();
-        //$("#language").chosen();
-        //$("#ddlcountry").chosen();
-
-    });
-
+    });*@
+            
     function AddLocation() {
 
         debugger;
@@ -274,6 +266,7 @@
                     if (result.Message > 0) {
                         var alertmsg = "Added successfully";
                         AlertMessage('growl-success', 'Information', alertmsg, false, 3000);
+                        $("#location").val('');
                         $("#address1").val('');
                         $("#address2").val('');
                         $("#address3").val('');
@@ -298,72 +291,62 @@
         }
     }
 
-    function Validate() {
-        if ($("#region").val() == 0) {
-            var message = "please select Region";
-            AlertMessage('growl-danger', 'Validation', message, false, 3000);
+        function Validate() {
 
-            return false;
-        }
-        else if ($("#ddlcountry").val() == "0") {
-            var message = "please select Country";
-            AlertMessage('growl-danger', 'Validation', message, false, 3000);
+            var validations = "";
+            var bool = true;
+            if ($("#region").val() == "0") {
+                validations = validations + "please select Region" + "<br>";
+                bool = false;
+            }
+             if ($("#ddlcountry").val() == "0") {
+                validations = validations + "please select Country" + "<br>";
+                bool = false;
+            }
+             if ($("#location").val() == "") {
+                validations = validations + "City should not be empty" + "<br>";
+                bool = false;
+            }
+             if ($("#address1").val() == "") {
+                validations = validations + "Address should not be empty" + "<br>";
+                bool = false;
+            }
+             if ($("#address2").val() == "") {
+                validations = validations + "Address should not be empty" + "<br>";
+                bool = false;
+            }
+             if ($("#address3").val() == "") {
+                validations = validations + "Address should not be empty" + "<br>";
+                bool = false;
+            }
+             if ($("#title").val() == "") {
+                validations = validations + "Title should not be empty" + "<br>";
+                bool = false;
+            }
+             if ($("#googleMapHeading").val() == "") {
+                validations = validations + "GoogleMapHeading should not be empty" + "<br>";
+                bool = false;
+            }
+             if ($("#googleMap").val() == "") {
+                 validations = validations + "GoogleMap should not be empty" + "<br>";
+                 bool = false;
+            }
+                        
+             if ($("#language").val() == "0") {
+                validations = validations + "please select Language" + "<br>";
+                bool = false;
+            }
+            
 
-            return false;
-        }
-        else if ($("#location").val() == "0") {
-            var message = "Please select City";
-            AlertMessage('growl-danger', 'Validation', message, false, 3000);
-
-            return false;
-        }
-        else if ($("#address1").val() == "") {
-            var message = "Address should not be empty";
-            AlertMessage('growl-danger', 'Validation', message, false, 3000);
-
-            return false;
-        }
-        else if ($("#address2").val() == "") {
-            var message = "Address should not be empty";
-            AlertMessage('growl-danger', 'Validation', message, false, 3000);
-
-            return false;
-        }
-        else if ($("#address3").val() == "") {
-            var message = "Address should not be empty";
-            AlertMessage('growl-danger', 'Validation', message, false, 3000);
-
-            return false;
-        }
-        else if ($("#title").val() == "") {
-            var message = "Title should not be empty";
-            AlertMessage('growl-danger', 'Validation', message, false, 3000);
-
-            return false;
-        }
-        else if ($("#googleMapHeading").val() == "") {
-            var message = "GoogleMapHeading should not be empty";
-            AlertMessage('growl-danger', 'Validation', message, false, 3000);
-
-            return false;
-        }
-        else if ($("#googleMap").val() == "") {
-            var message = "GoogleMap should not be empty";
-            AlertMessage('growl-danger', 'Validation', message, false, 3000);
-
-            return false;
-        }
-        else if ($("#language").val() == "0") {
-            var message = "please select Language";
-            AlertMessage('growl-danger', 'Validation', message, false, 3000);
-
-            return false;
+            if (bool == false) {
+                AlertMessage('growl-danger', 'Validation', validations, false, 3000);
+            }
+            else {
+                return true;
+            }
+        
         }
 
-        else {
-            return true;
-        }
-    }
     function AlertMessage(class_name, title, alert, boolstick, timesec) {
         jQuery.gritter.add({
             title: title,
@@ -377,7 +360,50 @@
             }
         });
         return false;
-    };
+        };
+        function doGeocode() {
+            alert("hi");
+            console.log("hello");
+            var addr = document.getElementById("googleMap");
+            // Get geocoder instance
+            var geocoder = new google.maps.Geocoder();
+
+            // Geocode the address
+            geocoder.geocode({
+                'address': addr.value
+            }, function (results, status) {
+                if (status === google.maps.GeocoderStatus.OK && results.length > 0) {
+
+                    // set it to the correct, formatted address if it's valid
+                    addr.value = results[0].formatted_address;;
+
+                    // show an error if it's not
+                } else alert("Invalid address");
+            });
+        };
+
+        $("#googleMap").change(function () {
+            var url = $("#googleMap").val();
+            if (url !== "") {
+                var url = $("#googleMap").val();
+                is_url(url);
+                
+            }
+        });
+
+        function is_url(str)
+        {
+            regexp = /^https?\:\/\/(www\.)?google\.(com|fr|de)\/maps\b/;
+            if (regexp.test(str))
+            {
+                 return true;
+            }
+            else {
+                AlertMessage('growl-danger', 'Validation', "Please enter proper google map url", false, 5000);
+                $("#googleMap").val("");
+                return false;
+            }
+        }
     </script>
 
 

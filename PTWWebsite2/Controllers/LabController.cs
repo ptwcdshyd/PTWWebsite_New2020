@@ -62,7 +62,7 @@ namespace PTWWebsite2.Controllers
         {
             LabsEvents LabsEvents = new LabsEvents();
             List<string> ShortDescription = LabShortDescription.Split('-').ToList();
-            if (ShortDescription.Contains("Article"))
+            if (ShortDescription.Contains("Article") || ShortDescription.Contains("Case Study") || ShortDescription.Contains("Campaign Article"))
             {
                 ShortDescription.RemoveAt(0);
                 string strShortDescription = string.Join(" ", ShortDescription);
@@ -107,7 +107,7 @@ namespace PTWWebsite2.Controllers
 
         [Route("LAB/{LabShortDescription}")]
         [HttpPost]
-        public IActionResult AddUpdateLabs(Labs labs)
+        public IActionResult AddLabs(Labs labs)
         {
             bool result = false;
             try
@@ -122,12 +122,15 @@ namespace PTWWebsite2.Controllers
                 string Mobileurl = string.Empty;
 
                 //var data = (Labs)ViewData["Uplabdetails"];
-              
-                MobileImage = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/" + Labtypeimg + "/376");
-                DesktopImage = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/" + Labtypeimg + "/1920");
-                TabImageHorizental = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/" + Labtypeimg + "/1112");
-                TabImageVertical = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/" + Labtypeimg + "/834");
-                Readmore = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/" + Labtypeimg + "/320");
+                
+
+
+                //MobileImage = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/" + Labtypeimg + "/376");
+                //DesktopImage = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/" + Labtypeimg + "/1920");
+                //TabImageHorizental = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/" + Labtypeimg + "/1112");
+                //TabImageVertical = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/" + Labtypeimg + "/834");
+                //Readmore = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/" + Labtypeimg + "/320");
+
                 if (labs.LabTypeId == 1)
                 {
                     Labtypeimg = "Articles";
@@ -138,9 +141,9 @@ namespace PTWWebsite2.Controllers
                     Labtypeimg = "CaseStudies";
 
                 }
+
                 if (labs.LabId == 0)
-                {
-                    var file = Request.Form.Files.Count() == 0 ? null : Request.Form.Files[0];
+                {                  
 
                     if (Request.Form.Files.Count() > 0)
                     {
@@ -152,16 +155,16 @@ namespace PTWWebsite2.Controllers
                         #region FileUpload
                         if (uploadedFiles.Any(z => z == "file1"))
                         {
-
-                            var fileExtension = file.FileName.Substring(file.FileName.LastIndexOf('.') + 1);
+                            var file1 = Request.Form.Files.Count() == 0 ? null : Request.Form.Files[0];
+                            var fileExtension = file1.FileName.Substring(file1.FileName.LastIndexOf('.') + 1);
                             if (fileExtension == "png")
                             {
                                 DesktopImage = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/" + Labtypeimg + "/1920");
 
-                                labs.DesktopImageUrl = "/Images/Lab/" + Labtypeimg + "/1920/" + file.FileName + "";
-                                labs.DesktopName = file.FileName;
-                                string filePath2 = Path.Combine(DesktopImage, labs.DesktopName);
-                                FilePath1(file, filePath2);
+                                labs.DesktopImageUrl = "/Images/Lab/" + Labtypeimg + "/1920/" + file1.FileName + "";
+                                labs.DesktopName = file1.FileName;
+                                string filePath1 = Path.Combine(DesktopImage, labs.DesktopName);
+                                FilePath1(file1, filePath1);
                             }
                             else
                             {
@@ -170,16 +173,16 @@ namespace PTWWebsite2.Controllers
                         }
                         if (uploadedFiles.Any(z => z == "file2"))
                         {
-                            var file1 = Request.Form.Files.Count() == 0 ? null : Request.Form.Files[1];
+                            var file2 = Request.Form.Files.Count() == 0 ? null : Request.Form.Files[1];
 
-                            var fileExtension = file1.FileName.Substring(file1.FileName.LastIndexOf('.') + 1);
+                            var fileExtension = file2.FileName.Substring(file2.FileName.LastIndexOf('.') + 1);
                             if (fileExtension == "png")
                             {
                                 TabImageHorizental = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/" + Labtypeimg + "/1112");
-                                labs.TabImageNameHorizondaUrl = "/Images/Lab/" + Labtypeimg + "/1112/" + file1.FileName + "";
-                                labs.TabImgHorizonalname = file1.FileName;
-                                string filePath3 = Path.Combine(TabImageHorizental, labs.TabImgHorizonalname);
-                                FilePath1(file, filePath3);
+                                labs.TabImageNameHorizondaUrl = "/Images/Lab/" + Labtypeimg + "/1112/" + file2.FileName + "";
+                                labs.TabImgHorizonalname = file2.FileName;
+                                string filePath2 = Path.Combine(TabImageHorizental, labs.TabImgHorizonalname);
+                                FilePath1(file2, filePath2);
                             }
                             else
                             {
@@ -188,16 +191,16 @@ namespace PTWWebsite2.Controllers
                         }
                         if (uploadedFiles.Any(z => z == "file3"))
                         {
-                            var file2 = Request.Form.Files.Count() == 0 ? null : Request.Form.Files[2];
+                            var file3 = Request.Form.Files.Count() == 0 ? null : Request.Form.Files[2];
 
-                            var fileExtension = file2.FileName.Substring(file2.FileName.LastIndexOf('.') + 1);
+                            var fileExtension = file3.FileName.Substring(file3.FileName.LastIndexOf('.') + 1);
                             if (fileExtension == "png")
                             {
                                 TabImageVertical = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/" + Labtypeimg + "/834");
-                                labs.TabImageNamVerticalUrl = "/Images/Lab/" + Labtypeimg + "/834/" + file2.FileName + "";
-                                labs.TabImgVerticalname = file2.FileName;
-                                string filePath4 = Path.Combine(TabImageVertical, labs.TabImgVerticalname);
-                                FilePath1(file, filePath4);
+                                labs.TabImageNamVerticalUrl = "/Images/Lab/" + Labtypeimg + "/834/" + file3.FileName + "";
+                                labs.TabImgVerticalname = file3.FileName;
+                                string filePath3 = Path.Combine(TabImageVertical, labs.TabImgVerticalname);
+                                FilePath1(file3, filePath3);
                             }
                             else
                             {
@@ -206,20 +209,20 @@ namespace PTWWebsite2.Controllers
                         }
                         if (uploadedFiles.Any(z => z == "file4"))
                         {
-                            var file3 = Request.Form.Files.Count() == 0 ? null : Request.Form.Files[3];
+                            var file4 = Request.Form.Files.Count() == 0 ? null : Request.Form.Files[3];
 
-                            var fileExtension = file3.FileName.Substring(file3.FileName.LastIndexOf('.') + 1);
+                            var fileExtension = file4.FileName.Substring(file4.FileName.LastIndexOf('.') + 1);
                             if (fileExtension == "png")
                             {
                                 MobileImage = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/" + Labtypeimg + "/376");
 
                                 labs.ImageUrl = "/Images/Lab/" + Labtypeimg + "/376/";
-                                labs.ImageName = file3.FileName;
+                                labs.ImageName = file4.FileName;
 
-                                labs.MobileImageNameUrl = "/Images/Lab/" + Labtypeimg + "/376/" + file3.FileName + "";
-                                labs.MobileName = file3.FileName;
-                                string filePath = Path.Combine(MobileImage, labs.MobileName);
-                                FilePath1(file, filePath);
+                                labs.MobileImageNameUrl = "/Images/Lab/" + Labtypeimg + "/376/" + file4.FileName + "";
+                                labs.MobileName = file4.FileName;
+                                string filePath4 = Path.Combine(MobileImage, labs.MobileName);
+                                FilePath1(file4, filePath4);
                             }
                             else
                             {
@@ -229,17 +232,17 @@ namespace PTWWebsite2.Controllers
                         }
                         if (uploadedFiles.Any(z => z == "file5"))
                         {
-                            var file4 = Request.Form.Files.Count() == 0 ? null : Request.Form.Files[4];
+                            var file5 = Request.Form.Files.Count() == 0 ? null : Request.Form.Files[4];
 
-                            var fileExtension = file4.FileName.Substring(file4.FileName.LastIndexOf('.') + 1);
+                            var fileExtension = file5.FileName.Substring(file5.FileName.LastIndexOf('.') + 1);
                             if (fileExtension == "png")
                             {
                                 Readmore = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/" + Labtypeimg + "/320");
 
-                                labs.ReadMoreUrl = "/Images/Lab/" + Labtypeimg + "/320/" + file4.FileName + "";
-                                labs.ReadMorename = file4.FileName;
+                                labs.ReadMoreUrl = "/Images/Lab/" + Labtypeimg + "/320/" + file5.FileName + "";
+                                labs.ReadMorename = file5.FileName;
                                 string filePath5 = Path.Combine(Readmore, labs.ReadMorename);
-                                FilePath1(file, filePath5);
+                                FilePath1(file5, filePath5);
                             }
                             else
                             {
@@ -562,6 +565,8 @@ namespace PTWWebsite2.Controllers
                 throw ex;
             }
         }
+
+        
         
     }
 }
