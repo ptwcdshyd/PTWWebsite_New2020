@@ -107,7 +107,7 @@ namespace PTWWebsite2.Controllers
 
         [Route("LAB/{LabShortDescription}")]
         [HttpPost]
-        public IActionResult AddLabs(Labs labs)
+        public IActionResult AddUpdateLabs(Labs labs)
         {
             bool result = false;
             try
@@ -293,7 +293,7 @@ namespace PTWWebsite2.Controllers
                 {
                     string labsXmlData = CustomNewsXml(labs);
                     result = _LabEventService.UpdateLabs(labs.LabId, labsXmlData, labs.Description, labs.LanguageCode="en-US");
-                   // ViewBag.IsAddedSuccessfully = result;
+                   
                 }
 
                 return Json(Convert.ToInt32(result), new JsonSerializerSettings());
@@ -314,7 +314,7 @@ namespace PTWWebsite2.Controllers
 
                 xml.Append(string.Format("<ServiceTypeId>{0}</ServiceTypeId>", labs.ServiceTypeId));
                 xml.Append(string.Format("<Name>{0}</Name>", labs.Name));
-                xml.Append(string.Format("<Description>{0}</Description>", labs.Description));
+                //xml.Append(string.Format("<Description>{0}</Description>", labs.Description));
                 xml.Append(string.Format("<ShortDescription>{0}</ShortDescription>", labs.ShortDescription.Replace("-", " ")));
                 xml.Append(string.Format("<ImageName>{0}</ImageName>", labs.ImageName));
                 xml.Append(string.Format("<ImageUrl>{0}</ImageUrl>", labs.ImageUrl));
@@ -338,7 +338,7 @@ namespace PTWWebsite2.Controllers
                 //xml.Append(string.Format("<ShortOrder>{0}</ShortOrder>", labs.ShortOrder));
                 xml.Append(string.Format("<LabType>{0}</LabType>", labs.LabType));
                 xml.Append(string.Format("<StartDate>{0}</StartDate>", labs.StartDate != "" ? Convert.ToDateTime(labs.StartDate) : DateTime.Now));
-                xml.Append(string.Format("<EndDate>{0}</EndDate>", labs.EndDate != "" ? Convert.ToDateTime(labs.StartDate) : DateTime.Now));
+                xml.Append(string.Format("<EndDate>{0}</EndDate>", labs.EndDate != "" ? Convert.ToDateTime(labs.StartDate) :DateTime.Now));
 
                 xml.Append(string.Format("<MetaTitle>{0}</MetaTitle>", labs.MetaTitle));
                 xml.Append(string.Format("<MetaDescription>{0}</MetaDescription>", labs.MetaDescription));
@@ -566,6 +566,19 @@ namespace PTWWebsite2.Controllers
             }
         }
 
+
+        [Authorize]
+        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
+        [Route("EditLab")]
+        public IActionResult EditLab()
+        {
+            Labs labs = new Labs();
+            MasterPage masterPage1 = _masterService.GetLanguageandModules();
+            Labs ddlLabsTitles = _LabEventService.GetAllLabsForUpdate();
+            labs.LabListUpdate = ddlLabsTitles.LabListUpdate;
+            labs.Languages = masterPage1.LanguageList;
+            return View(labs);
+        }
         
         
     }
