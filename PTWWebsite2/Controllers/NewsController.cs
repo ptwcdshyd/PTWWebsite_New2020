@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using PTW.DataAccess.Models;
 using PTW.DataAccess.Services;
 using PTW.DBAccess;
@@ -21,7 +22,7 @@ namespace PTWWebsite2.Controllers
         private readonly IHostingEnvironment _hostingEnvironment;
         private readonly IMasterService _masterService;
 
-        public NewsController(INewsEventService newsEventService,IHostingEnvironment hostingEnvironment, IMasterService masterService)
+        public NewsController(INewsEventService newsEventService, IHostingEnvironment hostingEnvironment, IMasterService masterService)
         {
             _NewsEventService = newsEventService;
             _hostingEnvironment = hostingEnvironment;
@@ -62,7 +63,7 @@ namespace PTWWebsite2.Controllers
                 NewsTitleUrl = NewsTitleUrl.Replace("-", " ");
             }
             NewsDetails newsDetails = _NewsEventService.GetNewsDetailsByTitle(NewsTitleUrl, cultures == "" ? "en-US" : cultures);
-           
+
             return View(newsDetails);
         }
 
@@ -71,13 +72,10 @@ namespace PTWWebsite2.Controllers
         [Authorize]
         [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
         [Route("AddNews")]
+        [HttpGet]
         public IActionResult AddNewsEvents()
         {
-            News news = new News();
-
-            //news = _NewsEventService.GetAllNewsAndEventDetailsForUpdate();
-
-            return View(news);
+            return View();
         }
 
         [Authorize]
@@ -95,48 +93,52 @@ namespace PTWWebsite2.Controllers
         }
 
         [Route("Newss/{NewsTitleUrl}")]
+        [Authorize]
+        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
         [HttpPost]
-        public IActionResult AddUpdateNews(News news)
+        public IActionResult AddNews(News news)
         {
-            //News newsList = _NewsEventService.GetAllNewsAndEventDetailsForUpdate();
-            if (ModelState.IsValid)
+            string headerImageFolder = string.Empty;
+            string LorgeImageFolder = string.Empty;
+            string smallImageFolder = string.Empty;
+
+            headerImageFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images/News/2020/Header");
+            LorgeImageFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images/News/2020/Large");
+            smallImageFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images/News/2020/Small");
+
+            var file1 = Request.Form.Files.Count() == 0 ? null : Request.Form.Files[0];
+            news.HeaderImageUrl = "/Images/News/2020/Header/";
+            news.HeaderImageName = file1.FileName;
+            string filePath1 = Path.Combine(headerImageFolder, file1.FileName);
+            if (System.IO.File.Exists(filePath1))
             {
-
-                string uniqueFileName = string.Empty;
-                string headerImageFolder = string.Empty;
-                string LorgeImageFolder = string.Empty;
-                string smallImageFolder = string.Empty;
-
-                if (news.HeaderImage != null)
-                {
-                    headerImageFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images/News/2020/Header");
-                    LorgeImageFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images/News/2020/Large");
-                    smallImageFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images/News/2020/Small");
-                    
-                    news.HeaderImageUrl = "/Images/News/2020/Header/";
-                    news.HeaderImageName = news.HeaderImage.FileName;
-                    string filePath = Path.Combine(headerImageFolder, news.HeaderImage.FileName);
-                    news.HeaderImage.CopyTo(new FileStream(filePath, FileMode.Create));
-
-                    news.LongImageUrl = "/Images/News/2020/Large/";
-                    news.LongImageName = news.LongerImage.FileName;
-                    string filePath2 = Path.Combine(LorgeImageFolder, news.LongerImage.FileName);
-                    news.LongerImage.CopyTo(new FileStream(filePath2, FileMode.Create));
-
-                    news.ShortImageUrl = "/Images/News/2020/Small/";
-                    news.ShortImageName = news.ShorterImage.FileName;
-                    string filePath3 = Path.Combine(smallImageFolder, news.ShorterImage.FileName);
-                    news.ShorterImage.CopyTo(new FileStream(filePath3, FileMode.Create));
-
-                }
-
-                string newsXmlData = CustomNewsXml(news);
-                bool result = _NewsEventService.AddUpdateNews(newsXmlData, news.Description);
-                ViewBag.IsAddedSuccessfully = result;
-                ModelState.Clear();
+                System.IO.File.Delete(filePath1);
             }
+            file1.CopyToAsync(new FileStream(filePath1, FileMode.Create));
 
-            return View("AddNewsEvents");
+            var file2 = Request.Form.Files[1];
+            news.LongImageUrl = "/Images/News/2020/Large/";
+            news.LongImageName = file2.FileName;
+            string filePath2 = Path.Combine(LorgeImageFolder, file2.FileName);
+            if (System.IO.File.Exists(filePath2))
+            {
+                System.IO.File.Delete(filePath2);
+            }
+            file2.CopyToAsync(new FileStream(filePath2, FileMode.Create));
+
+            var file3 = Request.Form.Files[2];
+            news.ShortImageUrl = "/Images/News/2020/Small/";
+            news.ShortImageName = file3.FileName;
+            string filePath3 = Path.Combine(smallImageFolder, file3.FileName);
+            if (System.IO.File.Exists(filePath3))
+            {
+                System.IO.File.Delete(filePath3);
+            }
+            file3.CopyToAsync(new FileStream(filePath3, FileMode.Create));
+
+            string newsXmlData = CustomNewsXml(news);
+            bool result = _NewsEventService.AddUpdateNews(newsXmlData, news.Description);
+            return Json(result, new JsonSerializerSettings());
         }
 
 
@@ -145,16 +147,16 @@ namespace PTWWebsite2.Controllers
         public IActionResult GetNews(News news1)
         {
             MasterPage masterPage1 = _masterService.GetLanguageandModules();
-            
+
             //News news = new News();
             ModelState.Clear();
             News ddlNewsTitles = _NewsEventService.GetAllNewsAndEventDetailsForUpdate();
-            News news = _NewsEventService.GetNewsAndEventDetailsByNewsId(news1.NewsId, news1.LanguageCode=="Please Select"?"en-US": news1.LanguageCode);
+            News news = _NewsEventService.GetNewsAndEventDetailsByNewsId(news1.NewsId, news1.LanguageCode == "Please Select" ? "en-US" : news1.LanguageCode);
             news.NewsId = news1.NewsId;//ddl selected value
             news.NewsListUpdate = ddlNewsTitles.NewsListUpdate;
             news.Languages = masterPage1.LanguageList;
             news.LanguageCode = news1.LanguageCode;
-            
+
             return View("EditNewsEvents", news);
         }
 
@@ -189,7 +191,7 @@ namespace PTWWebsite2.Controllers
                 if (news.LongerImage != null)
                 {
                     LorgeImageFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images/News/2020/Large");
-                   
+
                     news.LongImageUrl = "/Images/News/2020/Large/";
                     news.LongImageName = news.LongerImage.FileName;
                     string filePath2 = Path.Combine(LorgeImageFolder, news.LongerImage.FileName);
@@ -255,7 +257,7 @@ namespace PTWWebsite2.Controllers
             }
             xml.Append("</News>");
             return xml.ToString();
-        }
+        }       
 
     }
 }

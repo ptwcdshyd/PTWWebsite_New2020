@@ -13,10 +13,10 @@ namespace PTW.DataAccess.Models
         public int EditNewsId { get; set; }
         public string ShortDescription { get; set; }
 
-        [Required(ErrorMessage = "Description is required")]
+        //[Required(ErrorMessage = "Description is required")]
         public string Description { get; set; }
 
-        [Required(ErrorMessage = "Selection type is required")]
+        //[Required(ErrorMessage = "Selection type is required")]
         public int Event { get; set; }
         public string ShortImageName { get; set; }
         public string ShortImageUrl { get; set; }
@@ -27,13 +27,13 @@ namespace PTW.DataAccess.Models
         public string UrlTitle { get; set; }
 
      
-        [Required(ErrorMessage = "News Title is required")]
+        //[Required(ErrorMessage = "News Title is required")]
         public string NewsTitle { get; set; }
 
-        [Required(ErrorMessage = "Published Date is required")]
+        //[Required(ErrorMessage = "Published Date is required")]
         public string PublishedDate { get; set; }
 
-        [DisplayFormat(DataFormatString = @"{0:dd\/MM\/yyyy}", ApplyFormatInEditMode = true)]
+        //[DisplayFormat(DataFormatString = @"{0:dd\/MM\/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime PublishedDate2 { get; set; }
         public string EventStartDate { get; set; }
         public string EventEndDate { get; set; }
@@ -74,13 +74,13 @@ namespace PTW.DataAccess.Models
         public string EventDate { get; set; }
         public string Location { get; set; }
 
-        [Required(ErrorMessage = "Please upload image and size should be 1520x445 dimensions")]
+        //[Required(ErrorMessage = "Please upload image and size should be 1520x445 dimensions")]
         public IFormFile HeaderImage { get; set; }
 
-        [Required(ErrorMessage = "Please upload image and size should be 1012x348 dimensions")]
+        //[Required(ErrorMessage = "Please upload image and size should be 1012x348 dimensions")]
         public IFormFile LongerImage { get; set; }
 
-        [Required(ErrorMessage = "Please upload image and size should be 504x348 dimensions")]
+        //[Required(ErrorMessage = "Please upload image and size should be 504x348 dimensions")]
         public IFormFile ShorterImage { get; set; }
 
         public int ddlSelectValue { get; set; }
