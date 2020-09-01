@@ -9,7 +9,7 @@ namespace PTW.DataAccess.Models
     public class News
     {
         public int NewsId { get; set; }
-
+        public string FileString { get; set; }
         public int EditNewsId { get; set; }
         public string ShortDescription { get; set; }
 

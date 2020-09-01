@@ -164,60 +164,59 @@ namespace PTWWebsite2.Controllers
         [HttpPost]
         public IActionResult UpdateNews(News news)
         {
-            MasterPage masterPage1 = _masterService.GetLanguageandModules();
-            News newsList = _NewsEventService.GetAllNewsAndEventDetailsForUpdate();
-            //ModelState.ClearValidationState(news.HeaderImage);
-            ModelState.Remove("HeaderImage");
-            ModelState.Remove("LongerImage");
-            ModelState.Remove("ShorterImage");
-            if (ModelState.IsValid)
+            string headerImageFolder = string.Empty;
+            string LorgeImageFolder = string.Empty;
+            string smallImageFolder = string.Empty;
+
+
+            string[] uploadedFiles = new string[] { };
+            if (news.FileString != null)
             {
-
-                string uniqueFileName = string.Empty;
-                string headerImageFolder = string.Empty;
-                string LorgeImageFolder = string.Empty;
-                string smallImageFolder = string.Empty;
-
-                if (news.HeaderImage != null)
-                {
-                    headerImageFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images/News/2020/Header");
-
-                    news.HeaderImageUrl = "/Images/News/2020/Header/";
-                    news.HeaderImageName = news.HeaderImage.FileName;
-                    string filePath = Path.Combine(headerImageFolder, news.HeaderImage.FileName);
-                    news.HeaderImage.CopyTo(new FileStream(filePath, FileMode.Create));
-
-                }
-                if (news.LongerImage != null)
-                {
-                    LorgeImageFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images/News/2020/Large");
-
-                    news.LongImageUrl = "/Images/News/2020/Large/";
-                    news.LongImageName = news.LongerImage.FileName;
-                    string filePath2 = Path.Combine(LorgeImageFolder, news.LongerImage.FileName);
-                    news.LongerImage.CopyTo(new FileStream(filePath2, FileMode.Create));
-
-                }
-                if (news.ShorterImage != null)
-                {
-                    smallImageFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images/News/2020/Small");
-
-                    news.ShortImageUrl = "/Images/News/2020/Small/";
-                    news.ShortImageName = news.ShorterImage.FileName;
-                    string filePath3 = Path.Combine(smallImageFolder, news.ShorterImage.FileName);
-                    news.ShorterImage.CopyTo(new FileStream(filePath3, FileMode.Create));
-                }
-
-                string newsXmlData = CustomNewsXml(news);
-                bool result = _NewsEventService.UpdateNews(news.EditNewsId, newsXmlData, news.Description, news.LanguageCode == null ? "en-US" : news.LanguageCode);
-                //ViewBag.IsAddedSuccessfully = result;
-                newsList.Message = "<label id=\"lblMessage2\" class=\"text-danger\">Updated sucessfully</label>";
-                ModelState.Clear();
+                uploadedFiles = news.FileString.Split(',');
             }
-            newsList.Languages = masterPage1.LanguageList;
-            newsList.NewsId = news.NewsId;//ddl selected value
-            newsList.LanguageCode = news.LanguageCode;
-            return View("EditNewsEvents", newsList);
+
+            if (uploadedFiles.Any(z => z == "file1"))
+            {
+                var HeaderImage = Request.Form.Files.Count() == 0 ? null : Request.Form.Files[0];
+                headerImageFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images/News/2020/Header");
+                news.HeaderImageUrl = "/Images/News/2020/Header/";
+                news.HeaderImageName = HeaderImage.FileName;
+                string filePath1 = Path.Combine(headerImageFolder, HeaderImage.FileName);
+                if (System.IO.File.Exists(filePath1))
+                {
+                    System.IO.File.Delete(filePath1);
+                }
+                HeaderImage.CopyTo(new FileStream(filePath1, FileMode.Create));
+            }
+            if (uploadedFiles.Any(z => z == "file2"))
+            {
+                var LongerImage = Request.Form.Files[Request.Form.Files.Count() > 1 ? 1 : 0];
+                LorgeImageFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images/News/2020/Large");
+                news.LongImageUrl = "/Images/News/2020/Large/";
+                news.LongImageName = LongerImage.FileName;
+                string filePath2 = Path.Combine(LorgeImageFolder, LongerImage.FileName);
+                if (System.IO.File.Exists(filePath2))
+                {
+                    System.IO.File.Delete(filePath2);
+                }
+                LongerImage.CopyTo(new FileStream(filePath2, FileMode.Create));
+            }
+            if (uploadedFiles.Any(z => z == "file3"))
+            {
+                var ShorterImage = Request.Form.Files[Request.Form.Files.Count() > 2 ? 2 : 1];
+                smallImageFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images/News/2020/Small");
+                news.ShortImageUrl = "/Images/News/2020/Small/";
+                news.ShortImageName = ShorterImage.FileName;
+                string filePath3 = Path.Combine(smallImageFolder, ShorterImage.FileName);
+                if (System.IO.File.Exists(filePath3))
+                {
+                    System.IO.File.Delete(filePath3);
+                }
+                ShorterImage.CopyTo(new FileStream(filePath3, FileMode.Create));
+            }
+            string newsXmlData = CustomNewsXml(news);
+            bool result = _NewsEventService.UpdateNews(news.EditNewsId, newsXmlData, news.Description, news.LanguageCode == null ? "en-US" : news.LanguageCode);
+            return Json(result, new JsonSerializerSettings());
         }
 
         [NonAction]
@@ -257,7 +256,7 @@ namespace PTWWebsite2.Controllers
             }
             xml.Append("</News>");
             return xml.ToString();
-        }       
+        }
 
     }
 }
