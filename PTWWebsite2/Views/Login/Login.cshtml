@@ -32,7 +32,7 @@
         width: 40%;
         max-width: 100%;
         margin: 0 auto;
-        padding-top:20px;
+        padding-top: 20px;
     }
 
     .log-part {
@@ -114,14 +114,18 @@
 
 
 <script type="text/javascript">
-
+    $("#Password").keypress(function (event) {
+    if (event.keyCode === 13) {
+        $("#btnLogin").click();
+    }
+    });
     function Login()
     {
         if (Validate()) {
             var Username = $("#UserName").val().trim();
             var PassWord = $("#Password").val().trim();
             var remember = $("#remember").prop('checked');
-            
+
         $.ajax({
 
             url: '@Url.Action("Login_Post", "Login")',
@@ -137,8 +141,8 @@
             success: function (result) {
                 debugger;
                 if (result.Message != null && result.Message != "")
-                {                   
-                    window.location = "../DashBoard";
+                {
+                    window.location = "../EditHome";
                 }
                 else {
                     var error = "Invalid Username/Password";

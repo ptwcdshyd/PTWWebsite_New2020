@@ -10,7 +10,7 @@ namespace PTW.DataAccess.Services
     public interface IMasterService
     {
         //MasterPage GetDashboardDetails(int LoginUserId, int LanguageID, int ModuleId,string Languagecode);
-        int UpdateContentByModelIdAndLanguageId(int moduleId, string languageCode, string contentText, string Metatage, string Title);
+        int UpdateContentByModelIdAndLanguageId(int moduleId, string languageCode, string contentText, string MetaDescription, string Title);
 
         MasterPage GetLanguageandModules();
         string SaveImages(string imagePath, int moduleId, List<IFormFile> files);
@@ -24,5 +24,10 @@ namespace PTW.DataAccess.Services
         List<LocationDetails> RetrieveLocations(string lang);
 
         int AddLocation(LocationDetails obj);
+
+        int UpdateHomePageByLanguageId(int moduleId, string languageCode, string contentText, string MetaDescription, string Title, string MetUrl);
+        List<HomeLabs> RetrieveHomeLabs(string language);
+        int UpdatePreviewPageByLanguageModuleId(int moduleId, string languageCode, string HtmlContent, string MetaDescription, string MetaTitle, string MetUrl);
+        Preview ShowPreivew(int ModuleId, string LanguageCode);
     }
 }

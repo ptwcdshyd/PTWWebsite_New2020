@@ -1,0 +1,715 @@
+﻿@model PTW.DataAccess.Models.ProductDevelopment
+@{
+    Layout = "~/Views/Shared/_LayoutForPtwCms.cshtml";
+    ViewData["Title"] = "NewsEventsEditor";
+}
+
+<link href="~/css/Editor/Css/4.4.1.bootstrap.min.css" rel="stylesheet" />
+<link href="~/css/jquery.gritter.css" rel="stylesheet" />
+<script src="~/js/Editor/jquery-3.5.1.min.js"></script>
+<script src="~/js/Editor/popper.min.js"></script>
+<script src="~/js/Editor/1.9.1.jquery.js"></script>
+<script src="~/js/Editor/4.4.1.bootstrap.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+<script src="~/js/Editor/summernote-bs4.min.js"></script>
+<script src="~/js/jquery.gritter.min.js"></script>
+
+<style>
+    /* Loader Start*/
+
+    #PostBackMsg, #PostBackMsg-1 {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        display: block;
+        background: rgba(255, 255, 255, 0.6509803921568628);
+        z-index: 1001;
+    }
+
+        #PostBackMsg img, #PostBackMsg-1 img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            max-width: 100%;
+            height: auto;
+        }
+
+    /* Loader End*/
+
+    #ModuleId {
+        outline: 0;
+        background-image: none;
+        width: 100%;
+        height: 100%;
+        color: black;
+        cursor: pointer;
+        border: 1px solid black;
+        border-radius: 15px;
+        padding: 6px 6px 6px 6px;
+    }
+
+    #LanguageCode {
+        outline: 0;
+        background-image: none;
+        width: 100%;
+        height: 100%;
+        color: black;
+        cursor: pointer;
+        border: 1px solid black;
+        border-radius: 15px;
+        padding: 6px 6px 6px 6px;
+    }
+
+    #lblMessage {
+        display: inline-block;
+        margin-bottom: .5rem;
+        color: red;
+        white-space: nowrap;
+        padding-left: 20px;
+        display: none;
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+        padding-right: 30px;
+        padding-left: 30px;
+        margin-top: 2rem;
+    }
+
+    .mandatory {
+        color: red;
+    }
+
+    #NewsList {
+        width: 75%;
+        margin-left: 4rem;
+    }
+
+    .serviceSection {
+        border: 2px solid;
+        margin-left: 12px;
+        width: 98%;
+    }
+
+    .serviceLabel {
+        padding-left: 40px;
+        font-weight: 600;
+    }
+    .col-md-2 {
+        padding: 5px;
+    }
+</style>
+<div id="PostBackMsg" style="display:none;">
+    <img alt="loader" src="~/images/loader.gif" />
+</div>
+
+<div class="page-header" style="text-align: center;">
+    <h3>Edit Product Development Service</h3>
+</div>
+
+<div class="contentpanel report" style="border: 1px solid #00b8ff85;width: 1180px;margin-top: 45px;margin-left:50px;">
+    <div class="row distribute-container">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="row">
+                <div class="form-group col-md-6 col-sm-4">
+                    <label class="col-form-label">Language</label>
+                    <select id="Languages" asp-for="LanguageCode"
+                            asp-items="@(new SelectList(Model.Languages,"LanguageCode","Language"))" onchange="GetContent();" class="form-control input-sm dropdown-select my-3">
+                        <option>Please select</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-8 col-sm-8">
+                    <label class="col-form-label">Product Development Hearder (1936x1152 dimensions)</label>
+                    <div class="col-sm-8">
+                        <div class="custom-file">
+                            <input id="ProductDevelopmentHearder" onchange="UploadImage(this);" type="file" class="form-control custom-file-input">
+                            <label class="custom-file-label">Choose File...1936x1152 dimensions</label>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-2">
+                    <img id="ProductDevelopmentHearderImg" src="../images/ProductDevelopment/PD/ProductDevelopmentHearder.png" height="200px" width="200px" />
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-form-label serviceLabel">PlatForms & Technologies Icons</label>
+            </div>
+            <div class="row serviceSection">
+                <div class="form-group col-md-6 col-sm-6">
+                    <label class="col-form-label">Android (85x58 dimensions)</label>
+                    <div class="col-sm-8">
+                        <div class="custom-file">
+                            <input id="Android" onchange="UploadImage(this);" type="file" class="form-control custom-file-input">
+                            <label class="custom-file-label">Choose File...85x58 dimensions</label>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-2">
+                    <img id="AndroidImg" src="../images/ProductDevelopment/PD/Android.png" height="200px" width="200px" />
+                </div>
+                <div class="form-group col-md-6 col-sm-6">
+                    <label class="col-form-label">
+                        IOS (81x74 dimensions)
+                    </label>
+                    <div class="col-md-8 col-sm-6">
+                        <div class="custom-file">
+                            <input id="IOS" onchange="UploadImage(this);" type="file" class="form-control custom-file-input">
+                            <label class="custom-file-label">Choose File...81x74 dimensions</label>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <img id="IOSImg" src="../images/ProductDevelopment/PD/IOS.svg" height="200px" width="200px" />
+                </div>
+                <div class="form-group col-md-6 col-sm-6">
+                    <label class="col-form-label">
+                        PC (73x66 dimensions)
+                    </label>
+                    <div class="col-md-8 col-sm-6">
+                        <div class="custom-file">
+                            <input id="PC" type="file" class="form-control custom-file-input">
+                            <label class="custom-file-label">Choose File...73x66 dimensions</label>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <img id="PCImg" src="../images/ProductDevelopment/PD/PC.svg" height="200px" width="200px" />
+                </div>
+                <div class="form-group col-md-6 col-sm-6">
+                    <label class="col-form-label">
+                        Cloud (67 dimensions)
+                    </label>
+                    <div class="col-md-8 col-sm-6">
+                        <div class="custom-file">
+                            <input id="Cloud" type="file" class="form-control custom-file-input">
+                            <label class="custom-file-label">Choose File...73x66 dimensions</label>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <img id="CloudImg" src="../images/ProductDevelopment/PD/Cloud.svg" height="200px" width="200px" />
+                </div>
+                <div class="form-group  col-md-6 col-sm-6">
+                    <label class="col-form-label">Unity (79x79 dimensions)</label>
+                    <div class="col-md-8 col-sm-6">
+                        <div class="custom-file">
+                            <input id="Unity" type="file" class="form-control custom-file-input">
+                            <label class="custom-file-label">Choose File...79x79 dimensions</label>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <img id="UnityImg" src="../images/ProductDevelopment/PD/Unity.png" height="200px" width="200px" />
+                </div>
+                <div class="form-group  col-md-6 col-sm-6">
+                    <label class="col-form-label">Unreal (83x83 dimensions)</label>
+                    <div class="col-md-8 col-sm-6">
+                        <div class="custom-file">
+                            <input id="Unreal" type="file" class="form-control custom-file-input">
+                            <label class="custom-file-label">Choose File...83x83 dimensions</label>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <img id="UnrealImg" src="../images/ProductDevelopment/PD/Unreal.png" height="200px" width="200px" />
+                </div>
+                <div class="form-group col-md-6 col-sm-6">
+                    <label class="col-form-label">Game Maker Studio (394x394 dimensions)</label>
+                    <div class="col-md-8 col-sm-6">
+                        <div class="custom-file">
+                            <input id="GameMakerStudio" type="file" class="form-control custom-file-input">
+                            <label class="custom-file-label">Choose File...394x394 dimensions</label>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <img id="GameMakerStudioImg" src="../images/ProductDevelopment/PD/GameMakerStudio.png" height="200px" width="200px" />
+                </div>
+                <div class="form-group col-md-6 col-sm-6">
+                    <label class="col-form-label">HTML 5 (500x500 dimensions)</label>
+                    <div class="col-md-8 col-sm-6">
+                        <div class="custom-file">
+                            <input id="HTML5" type="file" class="form-control custom-file-input">
+                            <label class="custom-file-label">Choose File...500x500 dimensions</label>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <img id="HTML5Img" src="../images/ProductDevelopment/PD/HTML5.png" height="200px" width="200px" />
+                </div>
+            </div>
+           
+            <div class="row">
+                <div class="form-group col-md-8 col-sm-8">
+                    <label class="col-form-label">Porting (787x829 dimensions)</label>
+                    <div class="col-sm-8">
+                        <div class="custom-file">
+                            <input id="Porting" type="file" class="form-control custom-file-input">
+                            <label class="custom-file-label">Choose File...787x829 dimensions</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <img id="PortingImg" src="../images/ProductDevelopment/PD/Porting.png" height="200px" width="200px" />
+                </div>
+                <div class="form-group col-md-8 col-sm-8">
+                    <label class="col-form-label">Live Ops (490x163 dimensions)</label>
+                    <div class="col-sm-8">
+                        <div class="custom-file">
+                            <input id="LiveOps" type="file" class="form-control custom-file-input">
+                            <label class="custom-file-label">Choose File...490x163 dimensions</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <img id="LiveOpsImg" src="../images/ProductDevelopment/PD/LiveOps.png" height="200px" width="200px" />
+                </div>
+                <div class="form-group col-md-8 col-sm-8">
+                    <label class="col-form-label">Game Development (490x163 dimensions)</label>
+                    <div class="col-sm-8">
+                        <div class="custom-file">
+                            <input id="GameDevelopment" type="file" class="form-control custom-file-input">
+                            <label class="custom-file-label">Choose File...490x163 dimensions</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <img id="GameDevelopmentImg" src="../images/ProductDevelopment/PD/GameDevelopment.png" height="200px" width="200px" />
+                </div>
+                <div class="form-group col-md-8 col-sm-8">
+                    <label class="col-form-label">Frame (490x163 dimensions)</label>
+                    <div class="col-sm-8">
+                        <div class="custom-file">
+                            <input id="Frame" type="file" class="form-control custom-file-input">
+                            <label class="custom-file-label">Choose File...490x163 dimensions</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <img id="FrameImg" src="../images/ProductDevelopment/PD/Frame.svg" height="200px" width="200px" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                    <label>Description</label>
+                    <textarea id="Description" class="form-control input-sm">  </textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group  col-md-6 col-sm-6">
+                    <label>Meta Title</label>
+                    <div class="col-md-8 col-sm-6">
+
+                        <input type="text" id="MetaTitle" class="form-control input-sm" placeholder="Meta Title">
+                    </div>
+                </div>
+                <div class="form-group  col-md-6 col-sm-6">
+                    <label>Meta Description</label>
+                    <div class="col-md-8 col-sm-6">
+                        <div class="custom-file">
+                            <textarea id="MetaDescription" class="form-control input-sm"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="form-group  col-md-6 col-sm-6">
+                    <label>Meta Url</label>
+                    <div class="col-md-8 col-sm-6">
+
+                        <input type="text" id="MetaUrl" class="form-control input-sm" placeholder="Meta Url">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row distribute-container">
+            <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
+                <button onclick="UpdateProductDevelopment();" class="btn btn-success">Update</button>
+            </div>
+            <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
+                <button onclick="PreviewProductDevelopment();" class="btn btn-success">Preview</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script>
+    $('#Description').summernote({
+        placeholder: 'Home page here',
+        tabsize: 2,
+        height: 300,
+        dialogsInBody: true
+    });
+
+    $('#summernoteUpdate').summernote({
+        placeholder: 'Home page here',
+        tabsize: 2,
+        height: 300,
+        dialogsInBody: true
+    });
+
+    $(document).ready(function () {
+
+        $('.custom-file-input').on("change", function () {
+            debugger;
+            var fileLabel = $(this).next('.custom-file-label');
+            var files = $(this)[0].files;
+
+            readURL($(this)[0], $(this)[0].id);
+
+            const fileType = files[0]['type'];
+            const validImageTypes = ['image/png', 'image/svg+xml']//['image/gif', 'image/jpeg', 'image/png'];
+            console.log("fileType "+fileType);
+            if (validImageTypes.includes(fileType)) {
+
+                if (files.length > 1) {
+                    fileLabel.html(files.length + ' files selected');
+                }
+                else if (files.length == 1) {
+                    fileLabel.html(files[0].name);
+                }
+
+                var fd = new FormData();
+                var files1 = $(this)[0].files[0];
+                fd.append($(this)[0].id, files1);
+                fd.append('Filename', $(this)[0].id);
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("UpdateProductDevelopmentImagesToPreview", "Services")',
+                    data: fd,
+                    contentType: false,
+                    processData: false,
+                    success: function (result) {
+                        console.log(result);
+                        if (result == 'Logout') {
+                            window.location = '../Logout';
+                        }
+                        if (result == 1) {
+                            //var alertmsg = "Successfully Added";
+                            //AlertMessage('growl-success', 'Information', alertmsg, false, 3000);
+                            //$("#PostBackMsg").fadeOut("slow");
+                        }
+                        else {
+                            //var alertmsgs = "Added failed";
+                            //AlertMessage('growl-danger', 'Validation', alertmsgs, false, 3000);
+                            //$("#PostBackMsg").fadeOut("slow");
+                        }
+                    },
+                    error: function (err) {
+                        if (err.status === 0) {
+                            window.location = '../Logout';
+                        }
+                        // $("#PostBackMsg").fadeOut("slow");
+                    }
+                });
+
+            }
+            else {
+                AlertMessage('growl-danger', 'Validation', "Please upload only image with .png extention", false, 3000);
+                fileLabel.html('');
+
+                return false;
+            }
+        });
+
+    });
+
+
+    function UpdateProductDevelopment() {
+       // if (Validate()) {
+        if ($("#Languages").children("option:selected").val() != "Please select") {
+            debugger;
+            var fd = new FormData();
+            var files1 = $('#ProductDevelopmentHearder')[0].files[0];
+            var files2 = $('#Android')[0].files[0];
+            var files3 = $('#IOS')[0].files[0];
+            var files4 = $('#PC')[0].files[0];
+            var files5 = $('#Unity')[0].files[0];
+            var files6 = $('#Unreal')[0].files[0];
+            var files7 = $('#GameMakerStudio')[0].files[0];
+            var files8 = $('#HTML5')[0].files[0];
+            var files9 = $('#Porting')[0].files[0];
+            var files10 = $('#LiveOps')[0].files[0];
+            var files11 = $('#GameDevelopment')[0].files[0];
+            var files12 = $('#Frame')[0].files[0];
+            var files13 = $('#Cloud')[0].files[0];
+            
+            fd.append('ProductDevelopmentHearder', files1);
+            fd.append('Android', files2);
+            fd.append('IOS', files3);
+            fd.append('PC', files4);
+            fd.append('Unity', files5);
+            fd.append('Unreal', files6);
+            fd.append('GameMakerStudio', files7);
+            fd.append('HTML5', files8);
+            fd.append('Porting', files9);
+            fd.append('LiveOps', files10);
+            fd.append('GameDevelopment', files11);
+            fd.append('Frame', files12);
+            fd.append('Cloud', files13);
+
+            fd.append('Description', $("#Description").val());
+            fd.append('MetaUrl', $("#MetaUrl").val());
+            fd.append('MetaTitle', $("#MetaTitle").val());
+            fd.append('MetaDescription', $("#MetaDescription").val());
+            fd.append('ModuleId', 9);
+            fd.append('LanguageCode', $("#Languages").children("option:selected").val());
+            console.log(fd);
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("UpdateProductDevelopmentPageByLanguageId", "Services")',
+                data: fd,
+                contentType: false,
+                processData: false,
+                success: function (result) {
+                    console.log(result);
+                    if (result == 'Logout') {
+                        window.location = '../Logout';
+                    }
+                    if (result == 1) {
+                        var alertmsg = "Successfully Added";
+                        AlertMessage('growl-success', 'Information', alertmsg, false, 3000);
+                        $("#PostBackMsg").fadeOut("slow");
+                    }
+                    else {
+                        var alertmsgs = "Added failed";
+                        AlertMessage('growl-danger', 'Validation', alertmsgs, false, 3000);
+                        $("#PostBackMsg").fadeOut("slow");
+                    }
+                },
+                error: function (err) {
+                    if (err.status === 0) {
+                        window.location = '../Logout';
+                    }
+                    $("#PostBackMsg").fadeOut("slow");
+                }
+            });
+        }
+        else {
+            AlertMessage('growl-danger', 'Validation', "Please select any Language", false, 3000);
+        }
+       // }
+    }
+
+    function PreviewProductDevelopment() {
+        // if (Validate()) {
+        if ($("#Languages").children("option:selected").val() != "Please select") {
+
+            debugger;
+            var fd = new FormData();
+            var files1 = $('#ProductDevelopmentHearder')[0].files[0];
+            var files2 = $('#Android')[0].files[0];
+            var files3 = $('#IOS')[0].files[0];
+            var files4 = $('#PC')[0].files[0];
+            var files5 = $('#Unity')[0].files[0];
+            var files6 = $('#Unreal')[0].files[0];
+            var files7 = $('#GameMakerStudio')[0].files[0];
+            var files8 = $('#HTML5')[0].files[0];
+            var files9 = $('#Porting')[0].files[0];
+            var files10 = $('#LiveOps')[0].files[0];
+            var files11 = $('#GameDevelopment')[0].files[0];
+            var files12 = $('#Frame')[0].files[0];
+            var files13 = $('#Cloud')[0].files[0];
+            
+
+
+            fd.append('ProductDevelopmentHearder', files1);
+            fd.append('Android', files2);
+            fd.append('IOS', files3);
+            fd.append('PC', files4);
+            fd.append('Unity', files5);
+            fd.append('Unreal', files6);
+            fd.append('GameMakerStudio', files7);
+            fd.append('HTML5', files8);
+            fd.append('Porting', files9);
+            fd.append('LiveOps', files10);
+            fd.append('GameDevelopment', files11);
+            fd.append('Frame', files12);
+            fd.append('Cloud', files13);
+            fd.append('Description', $("#Description").val());
+            fd.append('MetaUrl', $("#MetaUrl").val());
+            fd.append('MetaTitle', $("#MetaTitle").val());
+            fd.append('MetaDescription', $("#MetaDescription").val());
+            fd.append('ModuleId', 9);
+            fd.append('LanguageCode', $("#Languages").children("option:selected").val());
+            console.log(fd);
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("PreviewProductDevelopment", "Services")',
+                data: fd,
+                contentType: false,
+                processData: false,
+                success: function (result) {
+                    if (result == 'Logout') {
+                        window.location = '../Logout';
+                    }
+                    var Url = "../Preview/PagePreview?ModuleId=" + 9 + "&LanguageCode=" + $("#Languages").children("option:selected").val() + "";
+                    window.open(Url, "_blank");
+                },
+                error: function (err) {
+                    if (err.status === 0) {
+                        window.location = '../Logout';
+                    }
+                    $("#PostBackMsg").fadeOut("slow");
+                }
+            });
+
+        }
+        else {
+            AlertMessage('growl-danger', 'Validation', "Please select any Language", false, 3000);
+        }
+       // }
+    }
+
+    function Validate() {
+
+        var flag = 0;
+        var errorMeaasage = "";
+
+        if ($("#NewsTitle").val() == "") {
+            errorMeaasage = errorMeaasage + "please Enter NewsTitle </br>";
+            flag = 1
+        }
+
+        if ($("#UrlTitle").val() == "") {
+            errorMeaasage = errorMeaasage + "please Enter UrlTitle </br>";
+            flag = 1
+        }
+        if ($("#PublishedDate").val() == "") {
+            errorMeaasage = errorMeaasage + "please select PublishedDate </br>";
+            flag = 1
+        }
+
+        if ($('#Description').summernote('code') == "" || $('#Description').summernote('code') == "<p><br></p>") {
+            errorMeaasage = errorMeaasage + "please enter Description </br>";
+            // $("#lblsummernote").text("please enter Description");
+            flag = 1
+        }
+
+        if ($("#Topic").val() == "") {
+            errorMeaasage = errorMeaasage + "please Enter Topic </br>";
+            flag = 1
+        }
+
+        if ($("#EventStartDate").val() == "") {
+            errorMeaasage = errorMeaasage + "please select EventStartDate </br>";
+            flag = 1
+        }
+        if ($("#EventEndDate").val() == "") {
+            errorMeaasage = errorMeaasage + "please select EventEndDate </br>";
+            flag = 1
+        }
+
+        if (($("#HeaderImage").val() == "" || $("#HeaderImage").val() == undefined) ||
+            ($("#LongerImage").val() == "" || $("#LongerImage").val() == undefined) ||
+            ($("#ShorterImage").val() == "" || $("#ShorterImage").val() == undefined)) {
+            errorMeaasage = errorMeaasage + "please Upload Image </br>";
+            flag = 1;
+        }
+
+
+        if (flag > 0) {
+            var errmsg = errorMeaasage;
+            AlertMessage('growl-danger', 'Validation', errmsg, false, 3000);
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+
+    function GetContent() {
+        debugger;
+        if ($("#Languages").children("option:selected").val() != "" && $("#Languages").children("option:selected").val() != undefined) {
+            $("#PostBackMsg").show();
+            $('#Description').summernote('code', '')
+
+            $.ajax({
+                type: "GET",
+                url: '../Services/GetContent?ModuleId=' + 9 + '&LanguageCode=' + $("#Languages").children("option:selected").val() + '',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+
+                    console.log(result);
+
+                    if (result == 'Logout') {
+                        window.location = '../Logout';
+                    }
+                    console.log(result);
+
+                    if (result != null) {
+                        $('#Description').summernote('code', result.HtmlContent);
+                        $('#MetaDescription').val(result.MetaDescription);
+                        $('#MetaTitle').val(result.MetaTitle);
+                        $('#MetaUrl').val(result.MetaUrl);
+                    }
+
+
+                    $("#PostBackMsg").fadeOut("slow");
+                },
+
+                error: function (err) {
+                    if (err.status === 0) {
+                        window.location = '../Logout';
+                    }
+                    $("#PostBackMsg").fadeOut("slow");
+                }
+            });
+
+        }
+    }
+
+
+    function AlertMessage(class_name, title, alert, boolstick, timesec) {
+        jQuery.gritter.add({
+            title: title,
+            text: alert,
+            class_name: class_name,
+            image: '',
+            sticky: boolstick,
+            time: timesec,
+            before_open: function () {
+                $('.gritter-item-wrapper').remove();
+            }
+        });
+        return false;
+    }
+
+    function readURL(input, imgId) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#' + imgId+'Img').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+    }
+
+</script>
+
+
+

@@ -61,7 +61,7 @@
         outline: 0;
         background-image: none;
         width: 100%;
-        height: 100%;
+        /*height: 100%;*/
         color: black;
         cursor: pointer;
         border: 1px solid black;
@@ -109,10 +109,10 @@
     @if (Model.ProfileId > 0)
     {
         <div class="row distribute-container">
-            <div class="col-md-2" style="margin-top:45px;margin-left:100px">
+            <div class="col-md-2" style="margin-top:30px;margin-left:100px">
                 <label style="display:flex !important">Language</label>
             </div>
-            <div class="col-md-2" style="margin-top:45px;margin-left:64px">
+            <div class="form-group col-md-2" style="margin-top:45px;margin-left:64px">
                 @*@Html.DropDownList("LanguageCode", new SelectList(Model.Languagelist, "LanguageCode", "LanguageName"), "Languages", htmlAttributes: new { @class = "dropdown-select my-3 float-label", autocomplete = "off", onchange = "GetContent();" })*@
                 <select id="LanguageCode" asp-for="LanguageCode"
                         asp-items="@(new SelectList(Model.Languagelist,"LanguageCode","LanguageName"))" class="form-control input-sm dropdown-select my-3" onchange="GetContent();">

@@ -11,9 +11,11 @@ using Newtonsoft.Json;
 using PTW.DataAccess.Models;
 using PTW.DataAccess.Services;
 using PTWWebsite2.Models;
-using System.IO;
 using System.Data;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using System.Security.Claims;
+using LoggerService;
 
 namespace PTWWebsite2.Controllers
 {
@@ -23,10 +25,14 @@ namespace PTWWebsite2.Controllers
     {
         private readonly IMasterService _masterService;
         private readonly IUserService _userService;
-        public HomeController(IMasterService masterService, IUserService userService)
+        private readonly IHostingEnvironment _hostingEnvironment;
+        private readonly ILoggerManager _loggerManager;
+        public HomeController(IMasterService masterService, IUserService userService, IHostingEnvironment hostingEnvironment, ILoggerManager loggerManager)
         {
             _masterService = masterService;
             _userService = userService;
+            _hostingEnvironment = hostingEnvironment;
+            _loggerManager = loggerManager;
         }
 
         public IActionResult Index()
@@ -36,16 +42,41 @@ namespace PTWWebsite2.Controllers
 
         [Route("")]
         [Route("Home")]
-        [Route("{culture}/Home")]
-        [Route("{culture}/")]
+        //[Route("{culture}/Home")]
+        //[Route("{culture}/")]
         [AllowAnonymous]
         public IActionResult Home(string culture)
         {
+            string appendLabs = string.Empty;
             MasterPage masterPage = new MasterPage();
-            DataTable dtContent = _masterService.GetModuleContent("Home", (culture == null ? "en-US" : culture));
+            DataTable dtContent = _masterService.GetModuleContent("Home", (culture == null ? "en-US" : culture == "undefined" ? "en-US" : culture));
             masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Home")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+
+            List<HomeLabs> homeLabs = _masterService.RetrieveHomeLabs(culture == null ? "en-US" : culture == "undefined" ? "en-US" : culture);
             ViewData["Header"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Header")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
             ViewData["Footer"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Footer")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            masterPage.MetaDescription = Convert.ToString(dtContent.Rows[0]["MetaDescription"]);
+            masterPage.MetaTitle = Convert.ToString(dtContent.Rows[0]["MetaTitle"]);
+            masterPage.MetaUrl = Convert.ToString(dtContent.Rows[0]["MetaDescription"]);
+            appendLabs = "<div class=\"row helpfulDivs\" style=\"Background-color:#fff;\">";
+            for (int i = 0; i < homeLabs.Count; i++)
+            {
+                appendLabs += "<div class=\"col-md-4\"><div class=\"animationDiv\">" +
+                        "<img class=\"btnImage\" src=\"" + homeLabs[i].ImagePath + "\">" +
+                        "<div class=\"squaredDiv\" style=\"background-image: url(../Images/Homepage/HomeImages/Frame.svg);\">" +
+                         "<div class=\"squaredText\">" +
+                             "<p>" + homeLabs[i].Title + "</p>" +
+                         "</div>" +
+                         "<div class=\"MoreDiv\">" +
+                             "<p>More..</p>" +
+                         "</div>" +
+                   "  </div>" +
+                 "</div>" +
+            " </div>";
+            }
+            appendLabs += "</div>";
+            masterPage.HtmlContent = masterPage.HtmlContent.Replace("<div class=\"row helpfulDivs\"></div>", appendLabs);
+
             return View(masterPage);
         }
 
@@ -156,7 +187,7 @@ namespace PTWWebsite2.Controllers
                             {
                                 string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
                                 string path = createpath + "\\" + "HOME-ICONS-white.png";
-                                FilePath(file, path);
+                                FilePath(file, path, "");
 
                             }
                             else
@@ -170,7 +201,7 @@ namespace PTWWebsite2.Controllers
                             {
                                 string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
                                 string path = createpath + "\\" + "HOME-ICONS-white2.png";
-                                FilePath(file, path);
+                                FilePath(file, path, "");
 
                             }
                             else
@@ -184,7 +215,7 @@ namespace PTWWebsite2.Controllers
                             {
                                 string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
                                 string path = createpath + "\\" + "HOME-ICONS-white3.png";
-                                FilePath(file, path);
+                                FilePath(file, path, "");
 
 
                             }
@@ -198,7 +229,7 @@ namespace PTWWebsite2.Controllers
                             {
                                 string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
                                 string path = createpath + "\\" + "HOME-ICONS-white4.png";
-                                FilePath(file, path);
+                                FilePath(file, path, "");
 
 
                             }
@@ -212,7 +243,7 @@ namespace PTWWebsite2.Controllers
                             {
                                 string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
                                 string path = createpath + "\\" + "HOME-ICONS-white5.png";
-                                FilePath(file, path);
+                                FilePath(file, path, "");
 
                             }
                             else
@@ -451,17 +482,33 @@ namespace PTWWebsite2.Controllers
             return Json("", new JsonSerializerSettings());
         }
 
-        public async void FilePath(IFormFile file, string path)
+        public async void FilePath(IFormFile file, string path, string deletePath)
         {
-            if (System.IO.File.Exists(path))
+            try
             {
-                System.IO.File.Delete(path);
-            }
-            using (var stream = new FileStream(path, FileMode.Create))
-            {
-                await file.CopyToAsync(stream);
-            }
+                _loggerManager.LogInfo(string.Format("Method :FilePath Data: file: {0}, path: {1}, deltepath:{2} ", file.Name, path, deletePath));
+                if (System.IO.File.Exists(path))
+                {
+                    System.IO.File.Delete(path);
+                }
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
 
+                if (deletePath != null && deletePath != "")
+                {
+                    if (System.IO.File.Exists(deletePath))
+                    {
+                        System.IO.File.Delete(deletePath);
+                    }
+                }
+            }
+            catch (Exception exception) 
+            {
+                _loggerManager.LogError("Method :FilePath error:"+ exception.Message);
+
+            }
         }
 
         public async void FilePath1(IFormFile file1, string path)
@@ -584,14 +631,316 @@ namespace PTWWebsite2.Controllers
         [Route("{LocationId}-Location")]
         public IActionResult EditLocationById(int LocationId)
         {
-           LocationDetails location= _userService.GetLocationById(LocationId);
+            LocationDetails location = _userService.GetLocationById(LocationId);
             return View(location);
         }
         [HttpPost]
         public IActionResult UpdateLocation([FromBody] LocationDetails loc)
         {
-            int resultcode= _userService.UpdateLocation(loc);
-            return Json(new { result= resultcode},new JsonSerializerSettings());
+            int resultcode = _userService.UpdateLocation(loc);
+            return Json(new { result = resultcode }, new JsonSerializerSettings());
         }
+
+        //[ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
+
+        [Route("EditHome")]
+        [HttpGet]
+        public IActionResult Home_New()
+        {
+            MasterPage masterPage1 = _masterService.GetLanguageandModules();
+            Home home = new Home();
+            home.Languages = masterPage1.LanguageList;
+            return View(home);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateHomePageByLanguageId(Home HomeContent)
+        {
+            try
+            {
+                _loggerManager.LogInfo("Method :UpdateHomePageByLanguageId Data: " + JsonConvert.SerializeObject(HomeContent));
+                string path = Path.Combine(_hostingEnvironment.WebRootPath, "images/Homepage/HomeImages/");
+                string deletePath = Path.Combine(_hostingEnvironment.WebRootPath, "images/Homepage/PreviewImages/");
+
+                if (HomeContent.PageBackgroundImage != null)
+                {
+                    FilePath(HomeContent.PageBackgroundImage, path + "PageBackgroundImage.png", deletePath + "PageBackgroundImage.png");
+                }
+                if (HomeContent.CustomerExperience != null)
+                {
+                    FilePath(HomeContent.CustomerExperience, path + "CustomerExperience.png", deletePath + "CustomerExperience.png");
+                }
+                //if (HomeContent.CustomerExperienceOnMouseHover != null)
+                //{
+                //    FilePath(HomeContent.CustomerExperienceOnMouseHover, path + "CustomerExperienceOnMouseHover.png", deletePath + "CustomerExperienceOnMouseHover.png");
+                //}
+                if (HomeContent.QualityAssurance != null)
+                {
+                    FilePath(HomeContent.QualityAssurance, path + "QualityAssurance.png", deletePath + "QualityAssurance.png");
+                }
+                //if (HomeContent.QualityAssuranceOnMouseHover != null)
+                //{
+                //    FilePath(HomeContent.QualityAssuranceOnMouseHover, path + "QualityAssuranceOnMouseHover.png", deletePath + "QualityAssuranceOnMouseHover.png");
+                //}
+                if (HomeContent.Localization != null)
+                {
+                    FilePath(HomeContent.Localization, path + "Localization.png", deletePath + "Localization.png");
+                }
+                //if (HomeContent.LocalizationOnMouseHover != null)
+                //{
+                //    FilePath(HomeContent.LocalizationOnMouseHover, path + "LocalizationOnMouseHover.png", deletePath + "LocalizationOnMouseHover.png");
+                //}
+                if (HomeContent.AudioProduction != null)
+                {
+                    FilePath(HomeContent.AudioProduction, path + "AudioProduction.png", deletePath + "AudioProduction.png");
+                }
+                //if (HomeContent.AudioProductionOnMouseHover != null)
+                //{
+                //    FilePath(HomeContent.AudioProductionOnMouseHover, path + "AudioProductionOnMouseHover.png", deletePath + "AudioProductionOnMouseHover.png");
+                //}
+                if (HomeContent.ProductDevelopment != null)
+                {
+                    FilePath(HomeContent.ProductDevelopment, path + "ProductDevelopment.png", deletePath + "ProductDevelopment.png");
+                }
+                if (HomeContent.LocationMap != null)
+                {
+                    FilePath(HomeContent.LocationMap, path + "LocationMap.svg", deletePath + "LocationMap.svg");
+                }
+                if (HomeContent.KickStartImage != null)
+                {
+                    FilePath(HomeContent.KickStartImage, path + "KickStartImage.png", deletePath + "KickStartImage.png");
+                }
+                if (HomeContent.CareersImage != null)
+                {
+                    FilePath(HomeContent.CareersImage, path + "CareersImage.svg", deletePath + "CareersImage.svg");
+                }
+                if (HomeContent.Frame != null)
+                {
+                    FilePath(HomeContent.Frame, path + "Frame.svg", deletePath + "Frame.svg");
+                }
+
+                int resultCode = _masterService.UpdateHomePageByLanguageId(HomeContent.ModuleId, HomeContent.LanguageCode, HomeContent.Description, HomeContent.MetaDescription, HomeContent.MetaTitle, HomeContent.MetaUrl);
+
+                return Json(resultCode, new JsonSerializerSettings());
+            }
+            catch (Exception ex)
+            {
+                _loggerManager.LogError("Method:  UpdateHomePageByLanguageId: " + ex.Message);
+
+                throw ex;
+            }
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> PreviewHome(Home HomeContent)
+        {
+            string path = Path.Combine(_hostingEnvironment.WebRootPath, "images/Homepage/PreviewImages/");
+
+            if (HomeContent.PageBackgroundImage != null)
+            {
+                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/PageBackgroundImage.png", "/PreviewImages/PageBackgroundImage.png");
+            }
+            if (HomeContent.CustomerExperience != null)
+            {
+                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/CustomerExperience.png", "/PreviewImages/CustomerExperience.png");
+            }
+            //if (HomeContent.CustomerExperienceOnMouseHover != null)
+            //{
+            //    HomeContent.Description = HomeContent.Description.Replace("/HomeImages/CustomerExperienceOnMouseHover.png", "/PreviewImages/CustomerExperienceOnMouseHover.png");
+            //}
+            if (HomeContent.QualityAssurance != null)
+            {
+                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/QualityAssurance.png", "/PreviewImages/QualityAssurance.png");
+            }
+            //if (HomeContent.QualityAssuranceOnMouseHover != null)
+            //{
+            //    HomeContent.Description = HomeContent.Description.Replace("/HomeImages/QualityAssuranceOnMouseHover.png", "/PreviewImages/QualityAssuranceOnMouseHover.png");
+            //}
+            if (HomeContent.Localization != null)
+            {
+                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/Localization.png", "/PreviewImages/Localization.png");
+            }
+            //if (HomeContent.LocalizationOnMouseHover != null)
+            //{
+            //    HomeContent.Description = HomeContent.Description.Replace("/HomeImages/LocalizationOnMouseHover.png", "/PreviewImages/LocalizationOnMouseHover.png");
+            //}
+            if (HomeContent.AudioProduction != null)
+            {
+                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/AudioProduction.png", "/PreviewImages/AudioProduction.png");
+            }
+            //if (HomeContent.AudioProductionOnMouseHover != null)
+            //{
+            //    HomeContent.Description = HomeContent.Description.Replace("/HomeImages/AudioProductionOnMouseHover.png", "/PreviewImages/AudioProductionOnMouseHover.png");
+            //}
+            if (HomeContent.LocationMap != null)
+            {
+                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/LocationMap.svg", "/PreviewImages/LocationMap.svg");
+            }
+            if (HomeContent.ProductDevelopment != null)
+            {
+                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/ProductDevelopment.png", "/PreviewImages/ProductDevelopment.png");
+            }
+            if (HomeContent.ProductDevelopmentOnMouseHover != null)
+            {
+                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/ProductDevelopmentOnMouseHover.png", "/PreviewImages/ProductDevelopmentOnMouseHover.png");
+            }
+            if (HomeContent.KickStartImage != null)
+            {
+                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/KickStartImage.png", "/PreviewImages/KickStartImage.png");
+            }
+            if (HomeContent.CareersImage != null)
+            {
+                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/CareersImage.svg", "/PreviewImages/CareersImage.svg");
+            }
+            if (HomeContent.Frame != null)
+            {
+                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/Frame.svg", "/PreviewImages/Frame.svg");
+            }
+
+            int resultCode = _masterService.UpdatePreviewPageByLanguageModuleId(HomeContent.ModuleId, HomeContent.LanguageCode, HomeContent.Description, HomeContent.MetaDescription, HomeContent.MetaTitle, HomeContent.MetaUrl);
+
+            return Json(resultCode, new JsonSerializerSettings());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateImagesToPreview(Home HomeContent)
+        {
+            _loggerManager.LogInfo("Method :UpdateImagesToPreview Data: " + JsonConvert.SerializeObject(HomeContent));
+            string path = Path.Combine(_hostingEnvironment.WebRootPath, "images/Homepage/PreviewImages/");
+
+            try
+            {
+                if (HomeContent.PageBackgroundImage != null && HomeContent.Filename == "PageBackgroundImage")
+                {
+                    FilePath(HomeContent.PageBackgroundImage, path + "PageBackgroundImage.png", "");
+                }
+                if (HomeContent.CustomerExperience != null && HomeContent.Filename == "CustomerExperience")
+                {
+                    FilePath(HomeContent.CustomerExperience, path + "CustomerExperience.png", "");
+                }
+                //if (HomeContent.CustomerExperienceOnMouseHover != null && HomeContent.Filename == "CustomerExperienceOnMouseHover")
+                //{
+                //    FilePath(HomeContent.CustomerExperienceOnMouseHover, path + "CustomerExperienceOnMouseHover.png", "");
+                //}
+                if (HomeContent.QualityAssurance != null && HomeContent.Filename == "QualityAssurance")
+                {
+                    FilePath(HomeContent.QualityAssurance, path + "QualityAssurance.png", "");
+                }
+                //if (HomeContent.QualityAssuranceOnMouseHover != null && HomeContent.Filename == "QualityAssuranceOnMouseHover")
+                //{
+                //    FilePath(HomeContent.QualityAssuranceOnMouseHover, path + "QualityAssuranceOnMouseHover.png", "");
+                //}
+                if (HomeContent.Localization != null && HomeContent.Filename == "Localization")
+                {
+                    FilePath(HomeContent.Localization, path + "Localization.png", "");
+                }
+                //if (HomeContent.LocalizationOnMouseHover != null && HomeContent.Filename == "LocalizationOnMouseHover")
+                //{
+                //    FilePath(HomeContent.LocalizationOnMouseHover, path + "LocalizationOnMouseHover.png", "");
+                //}
+                if (HomeContent.AudioProduction != null && HomeContent.Filename == "AudioProduction")
+                {
+                    FilePath(HomeContent.AudioProduction, path + "AudioProduction.png", "");
+                }
+                //if (HomeContent.AudioProductionOnMouseHover != null && HomeContent.Filename == "AudioProductionOnMouseHover")
+                //{
+                //    FilePath(HomeContent.AudioProductionOnMouseHover, path + "AudioProductionOnMouseHover.png", "");
+                //}
+                if (HomeContent.ProductDevelopment != null && HomeContent.Filename == "ProductDevelopment")
+                {
+                    FilePath(HomeContent.ProductDevelopment, path + "ProductDevelopment.png", "");
+                }
+                //if (HomeContent.ProductDevelopmentOnMouseHover != null && HomeContent.Filename == "ProductDevelopmentOnMouseHover")
+                //{
+                //    FilePath(HomeContent.ProductDevelopmentOnMouseHover, path + "ProductDevelopmentOnMouseHover.png", "");
+                //}
+                if (HomeContent.LocationMap != null && HomeContent.Filename == "LocationMap")
+                {
+                    FilePath(HomeContent.LocationMap, path + "LocationMap.svg", "");
+                }
+                if (HomeContent.KickStartImage != null && HomeContent.Filename == "KickStartImage")
+                {
+                    FilePath(HomeContent.KickStartImage, path + "KickStartImage.png", "");
+                }
+                if (HomeContent.CareersImage != null && HomeContent.Filename == "CareersImage")
+                {
+                    FilePath(HomeContent.CareersImage, path + "CareersImage.svg", "");
+                }
+                if (HomeContent.Frame != null && HomeContent.Filename == "Frame")
+                {
+                    FilePath(HomeContent.Frame, path + "Frame.svg", "");
+                }
+            }
+            catch (Exception exception)
+            {
+                _loggerManager.LogError("Method:  UpdateImagesToPreview: " + exception.Message);
+
+                throw;
+            }
+
+            return Json(1, new JsonSerializerSettings());
+        }
+
+
+        //News CMS updation
+        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
+        [HttpPost]
+        public async Task<IActionResult> UpdateNewsPageByLanguageId(News News)
+        {
+            try
+            {
+                _loggerManager.LogInfo("Method :UpdateNewsPageByLanguageId Data: " + JsonConvert.SerializeObject(News));
+                string path = Path.Combine(_hostingEnvironment.WebRootPath, "images/News/NewsImages/");
+                string deletePath = Path.Combine(_hostingEnvironment.WebRootPath, "images/News/PreviewImages/");
+
+
+                if (News.ImageNewsKasturiRangan != null)
+                {
+                    FilePath(News.ImageNewsKasturiRangan, path + "ImageNewsKasturiRangan.png", deletePath + "ImageNewsKasturiRangan.png");
+                }
+
+                int resultCode = _masterService.UpdateHomePageByLanguageId(News.ModuleId, News.LanguageCode, News.Description, News.MetaDescription, News.MetaTitle, News.MetaUrl);
+
+                return Json(resultCode, new JsonSerializerSettings());
+            }
+            catch (Exception ex)
+            {
+                _loggerManager.LogError("Method:  UpdateNewsPageByLanguageId: " + ex.Message);
+
+                throw ex;
+            }
+        }
+
+        //Labs CMS updation
+        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
+        [HttpPost]
+        public async Task<IActionResult> UpdateLabsPageByLanguageId(Labs Labs)
+        {
+            try
+            {
+                _loggerManager.LogInfo("Method :UpdateLabsPageByLanguageId Data: " + JsonConvert.SerializeObject(Labs));
+                string path = Path.Combine(_hostingEnvironment.WebRootPath, "images/Labs/LabImages/");
+                string deletePath = Path.Combine(_hostingEnvironment.WebRootPath, "images/Labs/PreviewImages/");
+
+
+                if (Labs.LabImage != null)
+                {
+                    FilePath(Labs.LabImage, path + "LabImage.png", deletePath + "LabImage.png");
+                }
+
+                int resultCode = _masterService.UpdateHomePageByLanguageId(Labs.ModuleId, Labs.LanguageCode, Labs.Description, Labs.MetaDescription, Labs.MetaTitle, Labs.MetaUrl);
+
+                return Json(resultCode, new JsonSerializerSettings());
+            }
+            catch (Exception ex)
+            {
+                _loggerManager.LogError("Method:  UpdateLabsPageByLanguageId: " + ex.Message);
+
+                throw ex;
+            }
+        }
+
+
     }
 }

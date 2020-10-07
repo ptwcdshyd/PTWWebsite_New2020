@@ -19,4 +19,24 @@
     <ProjectReference Include="..\PTW.DBAccess\PTW.DBAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\About\AboutImages\" />
+    <Folder Include="wwwroot\images\About\PreviewImages\" />
+    <Folder Include="wwwroot\images\AudioProduction\AP\" />
+    <Folder Include="wwwroot\images\AudioProduction\PreviewImages\" />
+    <Folder Include="wwwroot\images\Homepage\HomeImages\" />
+    <Folder Include="wwwroot\images\Homepage\PreviewImages\" />
+    <Folder Include="wwwroot\images\LocalizationQA\PreviewImages\" />
+    <Folder Include="wwwroot\images\LocalizationQA\Local\" />
+    <Folder Include="wwwroot\images\SpeechTech\PreviewImages\" />
+    <Folder Include="wwwroot\images\PlayerSupport\PS\" />
+    <Folder Include="wwwroot\images\PlayerSupport\PreviewImages\" />
+    <Folder Include="wwwroot\images\Localization\Local\" />
+    <Folder Include="wwwroot\images\Localization\PreviewImages\" />
+    <Folder Include="wwwroot\images\ProductDevelopment\PreviewImages\" />
+    <Folder Include="wwwroot\images\ProductDevelopment\PD\" />
+    <Folder Include="wwwroot\images\QualityAssurance\PreviewImages\" />
+    <Folder Include="wwwroot\images\SpeechTech\ST\" />
+  </ItemGroup>
+
 </Project>

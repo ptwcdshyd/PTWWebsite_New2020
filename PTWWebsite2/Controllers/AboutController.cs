@@ -5,11 +5,14 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Org.BouncyCastle.Crypto.Tls;
 using PTW.DataAccess.Models;
 using PTW.DataAccess.Services;
+using System.Security.Claims;
 
 
 namespace PTWWebsite2.Controllers
@@ -18,10 +21,12 @@ namespace PTWWebsite2.Controllers
     {
         private readonly IMasterService _masterService;
         private readonly IAboutServices _aboutService;
-        public AboutController(IMasterService masterService,IAboutServices aboutServices)
+        private readonly IHostingEnvironment _hostingEnvironment;
+        public AboutController(IMasterService masterService,IAboutServices aboutServices, IHostingEnvironment hostingEnvironment)
         {
             _masterService = masterService;
             _aboutService = aboutServices;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         [Route("about")]
@@ -102,56 +107,40 @@ namespace PTWWebsite2.Controllers
         [HttpPost]
         public IActionResult UpdateProfile(AboutModel objprofile)
         {
-            AboutModel objabout = new AboutModel();
-            bool i;
-            
+            bool result;
 
-            objabout.ImageUpload = objprofile.ImageUpload;
-            objabout.IsActive = objprofile.IsActive;
-            objabout.ImgPath = objprofile.ImgPath;
-            objabout.OrderNo = objprofile.OrderNo;
-            objabout.ProfileId = objprofile.ProfileId;
-            objabout.ProfileTitle = objprofile.ProfileTitle;
-            objabout.Description = objprofile.Description;
-            objabout.Culture = objprofile.Culture == null ? "en-US": objprofile.Culture;
+            objprofile.Culture = objprofile.Culture == null ? "en-US": objprofile.Culture;
             
             if (objprofile.ImageUpload != null)
             {
-
+                string createpath = Path.Combine(_hostingEnvironment.WebRootPath, "images/About/Profiles/");
                 string CustomerfileName = objprofile.ImageUpload.FileName;
-                string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", "Execs");
-                string path = createpath + "\\" + CustomerfileName;
-                objabout.ImgPath = "/Images/Execs/" + objprofile.ImageUpload.FileName;
 
-                using (var bits = new FileStream(path, FileMode.Create))
-                {
-                    objprofile.ImageUpload.CopyToAsync(bits);
-                }
-               
+                objprofile.ImgPath = "/Images/About/Profiles/" + objprofile.ImageUpload.FileName;
+
+                //Image file uploading
+                FilePath(objprofile.ImageUpload, createpath + objprofile.ImageUpload.FileName, "");
+
             }
 
-            if (objabout.ProfileId > 0)
+            if (objprofile.ProfileId > 0)
             {
-                i = _aboutService.UpdateProfileByProfileId(objabout);
+                result = _aboutService.UpdateProfileByProfileId(objprofile);
             }
             else
             {
                 if(objprofile.ImageUpload != null)
                 {
-                    i = _aboutService.AddProfileByProfileId(objabout);
-
-                    
+                    result = _aboutService.AddProfileByProfileId(objprofile);
                 }
                 else
                 {
-                    
-                    i = false;
-                   
+                    result = false;
                 }
                
             }
 
-            if (i == true )
+            if (result == true )
             {
                 return Json(new { ResultCode = 0, Message = "Success" }, new JsonSerializerSettings());
             }
@@ -162,6 +151,92 @@ namespace PTWWebsite2.Controllers
             }
         }
 
+        [Route("AboutEdit")]
+        [HttpGet]
+        public IActionResult AboutEdit()
+        {
+            MasterPage masterPage1 = _masterService.GetLanguageandModules();
+            AboutModel about = new AboutModel();
+            about.Languages = masterPage1.LanguageList;
+            return View(about);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult GetAboutContent(int ModuleId, string LanguageCode)
+        {
+            try
+            {
+                MasterPage masterPage = _masterService.GetModuleContentById(ModuleId, LanguageCode);
+                return Json(masterPage, new JsonSerializerSettings());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateAboutPageByLanguageId(AboutModel About)
+        {
+            try
+            {
+                string path = Path.Combine(_hostingEnvironment.WebRootPath, "images/About/AboutImages/");
+                string deletePath = Path.Combine(_hostingEnvironment.WebRootPath, "images/About/PreviewImages/");
+
+                if (About.AboutPageHeader != null)
+                {
+                    FilePath(About.AboutPageHeader, path + "AboutPageHeader.png", deletePath + "AboutPageHeader.png");
+                }
+                
+
+                int resultCode = _masterService.UpdateHomePageByLanguageId(About.ModuleId, About.LanguageCode, About.Description, About.MetaDescription, About.MetaTitle, About.MetaUrl);
+
+                return Json(resultCode, new JsonSerializerSettings());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateAboutImagesToPreview(AboutModel About)
+        {
+            string path = Path.Combine(_hostingEnvironment.WebRootPath, "images/About/PreviewImages/");
+
+            if (About.AboutPageHeader != null && About.Filename == "AboutPageHeader")
+            {
+                FilePath(About.AboutPageHeader, path + "AboutPageHeader.png", "");
+            }
+            
+            //if (About.Frame != null && About.Filename == "Frame")
+            //{
+            //    FilePath(About.Frame, path + "Frame.svg", "");
+            //}
+
+            return Json(1, new JsonSerializerSettings());
+        }
+
+        public async void FilePath(IFormFile file, string path, string deletePath)
+        {
+            if (System.IO.File.Exists(path))
+            {
+                System.IO.File.Delete(path);
+            }
+            using (var stream = new FileStream(path, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+
+            if (deletePath != null && deletePath != "")
+            {
+                if (System.IO.File.Exists(deletePath))
+                {
+                    System.IO.File.Delete(deletePath);
+                }
+            }
+        }
 
     }
 }

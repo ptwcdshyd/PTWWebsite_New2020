@@ -10,6 +10,7 @@ namespace PTW.DataAccess.Models
 {
     public class Labs
     {
+        public int ModuleId { get; set; }
         public int LabId { get; set; }
         public int ServiceTypeId { get; set; }
         public string EditLabId { get; set; }
@@ -34,6 +35,7 @@ namespace PTW.DataAccess.Models
         public bool? Campaign { get; set; }
         public int Event { get; set; }
         public string MetaTags { get; set; }
+        public string MetaUrl { get; set; }
         public string DesktopImageUrl { get; set; }
         public string TabImageNameHorizondaUrl { get; set; }
         public string TabImageNamVerticalUrl { get; set; }
@@ -115,7 +117,8 @@ namespace PTW.DataAccess.Models
 
         public IFormFile ReadMore { get; set; }
 
-       public string FileString { get; set; }
+        public IFormFile LabImage { get; set; }
+        public string FileString { get; set; }
 
         public bool? ActiveStatus { get; set; }
 

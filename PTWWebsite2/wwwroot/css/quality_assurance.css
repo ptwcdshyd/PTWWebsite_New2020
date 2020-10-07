@@ -1,0 +1,279 @@
+
+@font-face {
+    font-family: 'nunito';
+    src: url('../Fonts/fonts/nunito-sans.semibold.ttf'); /* IE9 Compat Modes */
+   
+  }
+@font-face {
+    font-family: 'Poppins';
+    src: url('../Fonts/fonts/Poppins-Black.ttf');
+}
+@font-face {
+    font-family: 'Nunito-sans';
+    src: url('../Fonts/fonts/NunitoSans-Black.ttf');
+}
+@font-face {
+    font-family: 'Poppons-Bold';
+    src: url('../Fonts/fonts/Poppins-Bold.ttf');
+}
+@font-face {
+    font-family: 'Nunito-Bold';
+    src: url('../Fonts/fonts/NunitoSans-Bold.ttf');
+}
+@font-face {
+    font-family: 'Nunito-regular';
+    src: url('../Fonts/fonts/NunitoSans-Regular.ttf');
+}
+@font-face {
+    font-family: 'Proxima';
+    src: url('../Fonts/fonts/proxima bold/Proxima Nova Bold.otf') format('opentype');
+  
+}
+
+.qa-wraptxt {
+    text-align: center;
+    color: black;
+    padding: 70px;
+}
+
+.sub-bg{
+    background-image: url("/images/New_UI/qa_page/sub_bg.png");
+    width:100%;
+    height:500px;
+}
+
+.qa .squaredDiv {
+    background: url("../Images/New_UI/qa_page/frame.svg");
+    position: absolute;
+    top: 0;
+    left: -7px;
+    background-size: 100%;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+}
+
+
+.qa .squaredDiv::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 4px;
+    background: url("../Images/New_UI/qa_page/beforeImg.svg");
+    background-size: 100%;
+    width: 20%;
+    height: 100%;
+    background-repeat: no-repeat;
+}
+
+    .qa .squaredDiv::after {
+        background: url("../Images/New_UI/qa_page/beforeImg.svg");
+    }
+
+.qafooter {
+    background-image: url(../images/New_UI/qa_page/Footer.png) !important;
+}
+.qa .MoreDiv p {
+    color: #E23748;
+}
+
+.text-wrap-qa {
+    padding: 107px 30%;
+    text-align: center;
+    font-size: 22px;
+    font-family: Nunito-regular;
+}
+
+.rect-frame {
+    position: relative !important;
+    width: 100%;
+}
+
+.image2 {
+    margin: 40px 5px 0px 72px;
+}
+
+.list-qa {
+    font-family: Proxima;
+    font-size: 25px;
+    opacity: .6;
+}
+
+.qa .ReadMeBtn {
+    border: 3px solid #E23748;
+    margin: 20px;
+    position: relative;
+    color: #E23748;
+}
+    .qa .ReadMeBtn:before {
+        content: '';
+        width: 21px;
+        height: 20px;
+        background: #fff;
+        border: 3px solid #E23748;
+        transform: rotate(136deg);
+        position: absolute;
+        border-top: 0;
+        border-left: 0;
+        border-bottom: 0;
+        top: -11px;
+        right: -13px;
+       
+    }
+
+    .qa .ReadMeBtn:hover {
+        background: #E23748;
+        color: white;
+        text-decoration: none;
+    }
+
+.qa-title {
+    color: #E23748;
+    font-size: 21px;
+    padding: 10px;
+}
+.qa .home-text .bg-title {
+    display: flex;
+    align-items: center;
+    background: #CF2D3D99;
+    clip-path: polygon( 0% 100%, /* top left */
+    0% 0%, /* top left */
+    100% 0%, /* top right */
+    100% 0, /* top right */
+    100% 75%, /* bottom right */
+    94% 100%, /* bottom right */
+    0% 100%, /* bottom left */
+    0% 100% /* bottom left */
+    );
+    overflow: hidden;
+    border-top-left-radius: 75px;
+    border-bottom-left-radius: 75px;
+    height: 130px;
+    padding: 10px 40px;
+}
+
+.qa .home-text p{
+    margin:0px;
+    
+}
+.setheight {
+   /* height: 28rem;*/
+}
+        @media only screen and (min-width: 768px) and (max-width: 800px) {
+            .qa .home-text .bg-title {
+                height: 90px;
+            }
+
+                .qa .home-text .bg-title img {
+                    width: 95px !important;
+                }
+            .qa .home-text p {
+                line-height: 30px;
+                
+            }
+
+            .qa .sub-txt {
+                font-size: 18px;
+            }
+
+            .setheight {
+                height: 10rem;
+            }
+
+            .ReadMeSection {
+                display: flex;
+                justify-content: center;
+            }
+            .text-wrap-qa {
+                padding: 15px;
+                font-family: Nunito-regular;
+                font-size: 15px !important;
+            }
+
+            .fnt-style {
+                font-size: 28px;
+                line-height: 13px;
+                margin-top: 40px;
+            }
+            .qa-wraptxt {
+                text-align: center;
+                color: black;
+                padding: 20px;
+                font-size: 8px;
+            }
+            .qa-title {
+                color: #E23748;
+                font-size: 15px;
+                padding: 10px;
+            }
+        }
+
+
+        @media only screen and (min-width: 320px) and (max-width: 577px) {
+
+        
+            .ReadMeSection {
+                display: flex;
+                justify-content: center;
+            }
+
+            .text-wrap-qa {
+                padding: 15px;
+                font-size: 15px !important;
+                font-family: Nunito-regular;
+            }
+            .fnt-style {
+                font-size: 28px;
+                line-height: 13px;
+                margin-top: 40px;
+            }
+            .qa-wraptxt {
+                text-align: center;
+                color: black;
+                padding: 20px;
+                font-size: 8px;
+             
+            }
+            .qa-title {
+                color: #E23748;
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .bg2 {
+                /* The image used */
+                background-image: url("../Images/New_UI/qa_page/mob_bg.png");
+                /* Half height */
+                height: 100%;
+                /* Center and scale the image nicely */
+                background-repeat: no-repeat;
+                background-size: contain;
+            }
+
+            .mob .home-text {
+                margin-top: 15px;
+                font-family: Nunito-regular;
+                white-space:normal;
+            }
+
+                .mob .home-text p {
+                    line-height: 26px;
+                }
+
+                .mob {
+                    margin-top: 17%;
+                }
+
+            .sub-desc {
+                font-size: 10px;
+                line-height: 15px !important;
+            }
+            .sub-bg {
+                height: 420px;
+            }
+
+            .setheight{
+               height: 40rem;
+            }
+        }

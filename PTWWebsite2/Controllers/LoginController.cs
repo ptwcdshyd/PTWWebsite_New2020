@@ -52,9 +52,10 @@ namespace PTWWebsite2.Controllers
                          new Claim(ClaimTypes.NameIdentifier,Username),
 
                          new Claim("RoleName", Convert.ToString(result.Rows[0]["RoleName"])),
-                         new Claim("SessionId",sessionId)
+                         new Claim("SessionId",sessionId),
+                          new Claim(ClaimTypes.Webpage,"")
 
-                            };
+                    };
                     ClaimsIdentity userIdentity = new ClaimsIdentity(claims, "login");
                     ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
 
@@ -64,7 +65,7 @@ namespace PTWWebsite2.Controllers
 
                     });
                 }
-
+         
                 return Json(new { Message = result }, new JsonSerializerSettings());
             }
             catch (Exception ex)
@@ -81,7 +82,7 @@ namespace PTWWebsite2.Controllers
             {
                 string sessionId = User.FindFirst("SessionId").Value;
 
-                _UserService.InsertUserlog(User.FindFirst(ClaimTypes.NameIdentifier).Value.ToString(),sessionId);
+                _UserService.InsertUserlog(User.FindFirst(ClaimTypes.NameIdentifier).Value.ToString(), sessionId);
             }
 
             await HttpContext.SignOutAsync(

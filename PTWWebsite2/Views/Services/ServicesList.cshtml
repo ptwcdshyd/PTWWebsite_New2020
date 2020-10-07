@@ -1,0 +1,161 @@
+﻿@model PTW.DataAccess.Models.Home
+@{
+    Layout = "~/Views/Shared/_LayoutForPtwCms.cshtml";
+    ViewData["Title"] = "NewsEventsEditor";
+}
+
+<style>
+    /* Loader Start*/
+
+    #PostBackMsg, #PostBackMsg-1 {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        display: block;
+        background: rgba(255, 255, 255, 0.6509803921568628);
+        z-index: 1001;
+    }
+
+        #PostBackMsg img, #PostBackMsg-1 img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            max-width: 100%;
+            height: auto;
+        }
+
+    /* Loader End*/
+
+    .table {
+        width: 98%;
+        margin-bottom: 1rem;
+        color: #212529;
+        margin-left: 12px;
+        /*text-align: center;*/
+    }
+
+    table.table th {
+        background-color: #0e1a1cf5;
+        color: white;
+        text-align: center;
+    }
+</style>
+<div id="PostBackMsg" style="display:none;">
+    <img alt="loader" src="~/images/loader.gif" />
+</div>
+
+<div class="page-header" style="text-align: center;">
+    <h3>Services</h3>
+    <br />
+</div>
+
+
+
+<div>
+    <table class="table" border="1">
+        <tr>
+            <th>
+                Service Name
+            </th>
+
+            <th>
+                Action
+            </th>
+
+        </tr>
+        <tr>
+            <td>
+                Quality Assurance
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "GetService", new { serviceName = "Services_QA" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Product Development
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "GetService", new { serviceName = "ProductDevelopment" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Audio Production
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "GetService", new { serviceName = "Audio Production" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Localization
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "GetService", new { serviceName = "Localization" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Player Support
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "GetService", new { serviceName = "PlayerSupport" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Speech Tech
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "GetService", new { serviceName = "SpeechTech" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Localization QA
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "GetService", new { serviceName = "LocalizationQA" })
+            </td>
+        </tr>
+        @*@foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EnrollmentDate)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    </td>
+                </tr>
+
+            }*@
+
+    </table>
+</div>  
+
+
+
+
+
+
+
+
+

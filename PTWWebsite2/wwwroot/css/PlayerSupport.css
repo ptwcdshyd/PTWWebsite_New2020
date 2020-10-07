@@ -1,0 +1,84 @@
+
+@font-face {
+    font-family: 'nunito';
+    src: url('../Fonts/fonts/nunito-sans.semibold.ttf'); /* IE9 Compat Modes */
+   
+  }
+@font-face {
+    font-family: 'Poppins';
+    src: url('../Fonts/fonts/Poppins-Black.ttf');
+}
+@font-face {
+    font-family: 'Nunito-sans';
+    src: url('../Fonts/fonts/NunitoSans-Black.ttf');
+}
+@font-face {
+    font-family: 'Poppons-Bold';
+    src: url('../Fonts/fonts/Poppins-Bold.ttf');
+}
+@font-face {
+    font-family: 'Nunito-Bold';
+    src: url('../Fonts/fonts/NunitoSans-Bold.ttf');
+}
+@font-face {
+    font-family: 'Nunito-regular';
+    src: url('../Fonts/fonts/NunitoSans-Regular.ttf');
+}
+@font-face {
+    font-family: 'Proxima';
+    src: url('../Fonts/fonts/proxima bold/Proxima Nova Bold.otf') format('opentype');
+  
+}
+
+.player-support-bg {
+    /* The image used */
+   /* background-image: url("../Images/New_UI/PlayerSupport/bg.png");*/
+    /* Half height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.player-txt {
+    color: #8455CE;
+    font-size: 30px;
+}
+
+.txt-wrap {
+    color: black;
+    font-family: Nunito-sans;
+    width: 70%;
+    margin-left: 17%;
+}
+
+.ps-bg {
+    background-image: url("/images/New_UI/PlayerSupport/Brush.png");
+    width: 100%;
+    height: 500px;
+}
+
+.ps .ReadMeBtn {
+    border: 3px solid #7041B9;
+    color: #7041B9;
+}
+
+.ps .localiconQA .squaredBorder {
+    border: 2px solid #5B7CDB;
+    height: 238px;
+    width: 80%;
+    margin: 0% 0px 0% 15%;
+}
+
+.bar {
+    text-align: center;
+    background: transparent linear-gradient(270deg, #8455CE 0%, #44168D 100%) 0% 0% no-repeat padding-box;
+    font-family: Nunito-Bold;
+    font-size: 30px;
+    text-transform: uppercase;
+    padding: 20px;
+}
+
+.psfooter{
+    background-image: url("../images/New_UI/PlayerSupport/Footer.png")
+}

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6izs+mhqTl+RC4SCLae+ZvOj1GKoBgaV0R+Qh+Wpklk+TkbH4/AudxzTdlRdrNXMULSiqX67D9bqQ4YJwzopiQ==",
+  "dgSpecHash": "4kKlXsnaw8P0GBACCWsATdC604Lf/U6MlVLAKN9sV9pvSwfFieVboZesHyTyFG8lF9PdPM4SKpmVhIUYaYLxLQ==",
   "success": true,
-  "projectFilePath": "C:\\GitHub\\PTWWebsite_New2020\\PTWWebsite2\\PTWWebsite2.csproj",
+  "projectFilePath": "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\PTWWebsite2\\PTWWebsite2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Test\\.nuget\\packages\\bouncycastle.netcore\\1.8.3\\bouncycastle.netcore.1.8.3.nupkg.sha512",
     "C:\\Users\\Test\\.nuget\\packages\\google.protobuf\\3.6.1\\google.protobuf.3.6.1.nupkg.sha512",

@@ -12,100 +12,54 @@
     <meta name="author" content="Pole To Win">
 
     @*<environment include="Development">*@
-    <link href="~/CSS/Poppins.css" rel="stylesheet" type="text/css" />
-    <link href="~/CSS/Poppins-Bold.css" rel="stylesheet" type="text/css" />
-    <link href="~/CSS/Poppins-SemiBold.css" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" />
+    @*<link href="~/CSS/Poppins.css" rel="stylesheet" type="text/css" />
+        <link href="~/CSS/Poppins-Bold.css" rel="stylesheet" type="text/css" />
+        <link href="~/CSS/Poppins-SemiBold.css" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" />
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
-    <link rel="icon" type="image/png" href="~/Images/icon-ms.png" />
-    <link href="~/CSS/bootstrap.min.css" rel="stylesheet" />
+        <link rel="icon" type="image/png" href="~/Images/icon-ms.png" />
+        <link href="~/CSS/bootstrap.min.css" rel="stylesheet" />
 
-    <link href="~/css/videobackground.css" rel="stylesheet" />
-    <link href="~/css/animate.min.css" rel="stylesheet" />
-    <link href="~/css/clean-blog.min.css" rel="stylesheet" />
-    <link href="~/css/elba.css" rel="stylesheet" />
+        <link href="~/css/videobackground.css" rel="stylesheet" />
+        <link href="~/css/animate.min.css" rel="stylesheet" />
+        <link href="~/css/clean-blog.min.css" rel="stylesheet" />
+        <link href="~/css/elba.css" rel="stylesheet" />
 
-    <!-- Custom fonts for this template -->
-    <link href="~/Fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="~/Fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
-    <link rel="stylesheet" type="text/css" href="~/CSS/cookieconsent.min.css" />
+        <link rel="stylesheet" type="text/css" href="~/CSS/cookieconsent.min.css" />*@
     @*</environment>*@
 
-    <style>
-        body{
-              scroll-behavior: smooth;
-              overflow-x:hidden;
-        }
-        
-        .wow {
-            visibility: hidden;
-        }
 
-        .dropdown-toggle::before {
-            width: 0;
-            height: 0;
-            margin: -5px 0.455em 0 0;
-            content: "";
-            border: solid black;
-            border-width: 0 2px 2px 0;
-            display: inline-block;
-            padding: 2.5px;
-            vertical-align: middle;
-            transform: rotate(45deg);
-            -webkit-transform: rotate(45deg);
-        }
+    <!-- Custom fonts for this template -->
+    <link href="~/css/clean-blog.min.css" rel="stylesheet" />
+    <link href="~/CSS/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
-        .dropdown-toggle::after {
-            display: none;
-        }
 
-        button {
-            background: none;
-            border: none;
-            line-height: 23px;
-            font-weight: 600;
-            font-family: Poppins,sans-serif;
-            letter-spacing: .5px;
-            text-transform: uppercase;
-        }
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-          .dropdown-item {
-            display: block;
-            width: 100%;
-            padding: .25rem 1.5rem;
-        }
-
-        .dropdown-divider {
-            height: 0;
-            margin: .5rem 0;
-            overflow: hidden;
-            border-top: 1px solid #e9ecef;
-        }
-
-        .dropdown-menu {
-            top: 50px;
-            padding-top: 8px;
-        }
-
-        .languageMenu {
-            list-style: none;
-        }
-
-        P:hover {
-            cursor: pointer;
-        }
-
-        .navbar-toggle {
-            z-index: 3;
-        }
-        
-        
-    </style>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/CSS/cookieconsent.min.css" />
+    @*</----------------------respective Individual stylesheet----------------------->*@
+    <link href="~/css/index.css" rel="stylesheet" />
+    <link href="~/css/quality_assurance.css" rel="stylesheet" />
+    <link href="~/css/audio_production.css" rel="stylesheet" />
+    <link href="~/css/Localization.css" rel="stylesheet" />
+    <link href="~/css/Localization_QA.css" rel="stylesheet" />
+    <link href="~/css/speechTech.css" rel="stylesheet" />
+    <link href="~/css/ProdDev.css" rel="stylesheet" />
+    <link href="~/css/PlayerSupport.css" rel="stylesheet" />
+    <link href="~/css/about_us.css" rel="stylesheet" />
+    <link href="~/css/newsEvents.css" rel="stylesheet" />
+    <link href="~/css/lab.css" rel="stylesheet" />
+    <link href="~/css/carrer.css" rel="stylesheet" />
+    <link href="~/css/talent.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -115,42 +69,16 @@
     @RenderBody()
 
 
-    @Html.Raw(ViewData["Footer"])
+    @*@Html.Raw(ViewData["Footer"])*@
 
-    @*<environment include="Development">*@
+  
 
-    <script src=" ~/JS/jquery.sticky.js"></script>
-    <script src="~/wwwroot/js/wow.min.js"></script>
-    <script src="~/js/jquery-3.3.1.min.js"></script>
-    @*</environment>*@
 
-    <!-- Google Tag Manager -->
-    @*<script>
-
-        (function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-P23N6P9');</script>*@
-    <!-- End Google Tag Manager -->
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    @*<script async src="https://www.googletagmanager.com/gtag/js?id=UA-47490486-4"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() { dataLayer.push(arguments); }
-            gtag('js', new Date());
-
-            gtag('config', 'UA-47490486-4');
-            gtag('config', 'AW-738489994');
-        </script>*@
     <script type="text/javascript">
 
         var languages = ["en-US", "zh-CHS", "zh-CHT", "ja", "ko", "fr-CA"];
         function languageChange(Langauge) {
-            
+
             var currentpageurl = window.location.href;
             currentpageurl = currentpageurl.replace(window.location.origin, '');
 
@@ -169,7 +97,7 @@
 
             window.location.assign(redirectURL);
         }
-        
+
 
         $(document).ready(function ()
         {
@@ -191,11 +119,11 @@
                     }
                 });
             });
-                        
+
         };
 
         function getParameterByName(name, url) {
-            
+
             if (!url) url = window.location.href;
             var pageValue = null;
             if (url.indexOf("home") !== -1 && (url.indexOf("home") !== 0)) {
@@ -203,7 +131,7 @@
             }
             if (url.indexOf("Service") !== -1 && (url.indexOf("Service") !== 0)) {
                 pageValue = 2;
-                
+
             }
 
             if (url.indexOf("about") !== -1 && (url.indexOf("about") !== 0)) {
@@ -229,7 +157,7 @@
         }
 
         function ApplyLocalizaiotn() {
-           
+
             var str = window.location.href.replace(window.location.origin, '');
             if (str == '/') {
                 str = '';
@@ -242,7 +170,7 @@
                 str = str.replace(values[i], '');
             });
         str = str.replace('//', '/');
- 
+
             if ($("#Languages").val() == 'en-US') {
                 window.location = window.location.origin + str;
             }
@@ -254,7 +182,7 @@
             }
 
         }
-                
+
         function Services() {
             var reqUrl = window.location.href.replace(window.location.origin, '');
             var urlElements = reqUrl.split('/');

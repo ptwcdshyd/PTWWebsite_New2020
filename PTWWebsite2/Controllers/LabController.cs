@@ -15,6 +15,8 @@ using Newtonsoft.Json;
 using PTW.DataAccess.Models;
 using PTW.DataAccess.Services;
 using Renci.SshNet;
+using System.Security.Claims;
+using LoggerService;
 
 namespace PTWWebsite2.Controllers
 {
@@ -24,12 +26,14 @@ namespace PTWWebsite2.Controllers
         private readonly ILabService _LabEventService;
         private readonly IHostingEnvironment _hostingEnvironment;
         private readonly IMasterService _masterService;
+        private readonly ILoggerManager _loggerManager;
 
-        public LabController(ILabService LabEventService, IHostingEnvironment hostingEnvironment, IMasterService masterService)
+        public LabController(ILabService LabEventService, IHostingEnvironment hostingEnvironment, IMasterService masterService, ILoggerManager loggerManager)
         {
             _LabEventService = LabEventService;
             _hostingEnvironment = hostingEnvironment;
             _masterService = masterService;
+            _loggerManager = loggerManager;
         }
 
         [Route("LAB")]
@@ -579,7 +583,54 @@ namespace PTWWebsite2.Controllers
             labs.Languages = masterPage1.LanguageList;
             return View(labs);
         }
-        
-        
+
+
+
+        //[Authorize]
+        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
+        [Route("LabsDashboard")]
+        [HttpGet]
+        public IActionResult LabDashboard()
+        {
+            MasterPage masterPage1 = _masterService.GetLanguageandModules();
+            Labs labs = new Labs();
+
+            //labs = _LabEventService.GetAllLabsDetails("en-US");
+
+            labs.Languages = masterPage1.LanguageList;
+            return View(labs);
+        }
+
+
+        public async void FilePath(IFormFile file, string path, string deletePath)
+        {
+            try
+            {
+                _loggerManager.LogInfo(string.Format("Method :FilePath Data: file: {0}, path: {1}, deltepath:{2} ", file.Name, path, deletePath));
+                if (System.IO.File.Exists(path))
+                {
+                    System.IO.File.Delete(path);
+                }
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+
+                if (deletePath != null && deletePath != "")
+                {
+                    if (System.IO.File.Exists(deletePath))
+                    {
+                        System.IO.File.Delete(deletePath);
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                _loggerManager.LogError("Method :FilePath error:" + exception.Message);
+
+            }
+        }
+
+
     }
 }

@@ -13,6 +13,8 @@ using Newtonsoft.Json;
 using PTW.DataAccess.Models;
 using PTW.DataAccess.Services;
 using PTW.DBAccess;
+using System.Security.Claims;
+using LoggerService;
 
 namespace PTWWebsite2.Controllers
 {
@@ -21,12 +23,14 @@ namespace PTWWebsite2.Controllers
         private readonly INewsEventService _NewsEventService;
         private readonly IHostingEnvironment _hostingEnvironment;
         private readonly IMasterService _masterService;
+        private readonly ILoggerManager _loggerManager;
 
-        public NewsController(INewsEventService newsEventService, IHostingEnvironment hostingEnvironment, IMasterService masterService)
+        public NewsController(INewsEventService newsEventService, IHostingEnvironment hostingEnvironment, IMasterService masterService, ILoggerManager loggerManager)
         {
             _NewsEventService = newsEventService;
             _hostingEnvironment = hostingEnvironment;
             _masterService = masterService;
+            _loggerManager = loggerManager;
         }
 
 
@@ -256,6 +260,137 @@ namespace PTWWebsite2.Controllers
             }
             xml.Append("</News>");
             return xml.ToString();
+        }
+
+        //[Authorize]
+        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
+        [Route("NewsDashboard")]
+        [HttpGet]
+        public IActionResult NewsDashboard()
+        {
+            MasterPage masterPage1 = _masterService.GetLanguageandModules();
+            News news = new News();
+
+            news = _NewsEventService.GetAllNewsAndEventDetailsForUpdate();
+
+            news.Languages = masterPage1.LanguageList;
+            return View(news);
+        }
+
+
+        [Authorize]
+        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
+        [HttpPost]
+        public IActionResult UpdateNewsDashboard(News news)
+        {
+            string headerImageFolder = string.Empty;
+            string LorgeImageFolder = string.Empty;
+            string smallImageFolder = string.Empty;
+
+            headerImageFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images/News/2020/Header");
+            LorgeImageFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images/News/2020/Large");
+            smallImageFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images/News/2020/Small");
+
+            var file1 = Request.Form.Files.Count() == 0 ? null : Request.Form.Files[0];
+            news.HeaderImageUrl = "/Images/News/2020/Header/";
+            news.HeaderImageName = file1.FileName;
+            string filePath1 = Path.Combine(headerImageFolder, file1.FileName);
+            if (System.IO.File.Exists(filePath1))
+            {
+                System.IO.File.Delete(filePath1);
+            }
+            file1.CopyToAsync(new FileStream(filePath1, FileMode.Create));
+
+            string newsXmlData = CustomNewsXml(news);
+            bool result = _NewsEventService.AddUpdateNews(newsXmlData, news.Description);
+            return Json(result, new JsonSerializerSettings());
+        }
+
+        
+        //[ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
+        //[HttpPost]
+        //public async Task<IActionResult> UpdateNewsPageByLanguageId(News News)
+        //{
+        //    try
+        //    {
+        //        _loggerManager.LogInfo("Method :UpdateHomePageByLanguageId Data: " + JsonConvert.SerializeObject(News));
+        //        string path = Path.Combine(_hostingEnvironment.WebRootPath, "images/News/NewsImages/");
+        //        string deletePath = Path.Combine(_hostingEnvironment.WebRootPath, "images/News/PreviewImages/");
+
+                
+        //        if (News.ImageNewsKasturiRangan != null)
+        //        {
+        //            FilePath(News.ImageNewsKasturiRangan, path + "ImageNewsKasturiRangan.png", deletePath + "ImageNewsKasturiRangan.png");
+        //        }
+
+        //        int resultCode = _masterService.UpdateHomePageByLanguageId(News.ModuleId, News.LanguageCode, News.Description, News.MetaDescription, News.MetaTitle, News.MetaUrl);
+
+        //        return Json(resultCode, new JsonSerializerSettings());
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _loggerManager.LogError("Method:  UpdateHomePageByLanguageId: " + ex.Message);
+
+        //        throw ex;
+        //    }
+        //}
+
+        [HttpGet]
+        public IActionResult GetContent(int ModuleId, string LanguageCode)
+        {
+            try
+            {
+                MasterPage masterPage = _masterService.GetModuleContentById(ModuleId, LanguageCode);
+                return Json(masterPage, new JsonSerializerSettings());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async void FilePath(IFormFile file, string path, string deletePath)
+        {
+            try
+            {
+                _loggerManager.LogInfo(string.Format("Method :FilePath Data: file: {0}, path: {1}, deltepath:{2} ", file.Name, path, deletePath));
+                if (System.IO.File.Exists(path))
+                {
+                    System.IO.File.Delete(path);
+                }
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+
+                if (deletePath != null && deletePath != "")
+                {
+                    if (System.IO.File.Exists(deletePath))
+                    {
+                        System.IO.File.Delete(deletePath);
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                _loggerManager.LogError("Method :FilePath error:" + exception.Message);
+
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Preview(News News)
+        {
+
+            if (News.ImageNewsKasturiRangan != null)
+            {
+                News.Description = News.Description.Replace("/News/ImageNewsKasturiRangan.png", "/PreviewImages/ImageNewsKasturiRangan.png");
+            }
+           
+
+            int resultCode = _masterService.UpdatePreviewPageByLanguageModuleId(News.ModuleId, News.LanguageCode, News.Description, News.MetaDescription, News.MetaTitle, News.MetaUrl);
+
+            return Json(resultCode, new JsonSerializerSettings());
         }
 
     }

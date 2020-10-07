@@ -37,8 +37,15 @@ namespace PTW.DataAccess.Models
         public string Culture { get; set; }
 
         public string Metatage { get; set; }
+        public string MetaDescription { get; set; }
         public string MetaTitle { get; set; }
+
+        public string MetaUrl { get; set; }
+
+        public List<HomeLabs> HomeLabs { get; set; }
     }
+
+   
 
     public class Languages {
         public int LanguageId { get; set; }
@@ -65,4 +72,13 @@ namespace PTW.DataAccess.Models
         public string Title { get; set; }
         public string ShortDescription { get; set; }
     }
+
+    public class HomeLabs
+    {
+        public int ShortOrder { get; set; }
+        public string Title { get; set; }
+        public string ImagePath { get; set; }
+        public string NavigateUrl { get; set; }
+    }
+
 }

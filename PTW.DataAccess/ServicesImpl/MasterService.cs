@@ -109,8 +109,9 @@ namespace PTW.DataAccess.ServicesImpl
                     {
                         // masterPage.HeaderContent = Convert.ToString(dtResult.Tables[0].Rows[0]["ModuleName"]);
                         masterPage.HtmlContent = Convert.ToString(dtResult.Tables[0].Rows[0]["Content"]);
-                        masterPage.Metatage = Convert.ToString(dtResult.Tables[0].Rows[0]["Metatage"]);
-                        masterPage.MetaTitle = Convert.ToString(dtResult.Tables[0].Rows[0]["Title"]);
+                        masterPage.MetaDescription = Convert.ToString(dtResult.Tables[0].Rows[0]["MetaDescription"]);
+                        masterPage.MetaTitle = Convert.ToString(dtResult.Tables[0].Rows[0]["MetaTitle"]);
+                        masterPage.MetaUrl = Convert.ToString(dtResult.Tables[0].Rows[0]["MetaUrl"]);
                     }
 
                 }
@@ -515,5 +516,194 @@ namespace PTW.DataAccess.ServicesImpl
 
             }
         }
+
+
+        public int UpdateHomePageByLanguageId(int moduleId, string languageCode, string contentText, string Metatage, string Title, string MetUrl)
+        {
+            int resultCode = 0;
+            CustomCommand command = null;
+            // MasterPage masterPage = new MasterPage();
+
+            try
+            {
+                using (command = new CustomCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "UpdateNewContentByModuleIdAndLanguageId";
+                    command.AddParameterWithValue("@Module_Id", moduleId);
+                    command.AddParameterWithValue("@Language_Code", languageCode);
+                    command.AddParameterWithValue("@ContentText", contentText);
+                    command.AddParameterWithValue("@MetaDescription", Metatage);
+                    command.AddParameterWithValue("@MetaTitle", Title);
+                    command.AddParameterWithValue("@MetaUrl", MetUrl);
+
+                    //  Execute command and get values from output parameters.
+                    int result = ExecuteNonQuery(command, false);
+                    if (result > 0)
+                    {
+                        resultCode = 1;
+                    }
+
+                }
+
+                return resultCode;
+            }
+
+
+            catch(Exception exception) { throw exception; }
+
+            finally
+            {
+                if (command != null) command.Dispose();
+                command = null;
+            }
+        }
+
+        public List<HomeLabs> RetrieveHomeLabs(string language)
+        {
+            CustomCommand command = null;
+            try
+            {
+                using (command = new CustomCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "GetHomeLabs";
+                    command.AddParameterWithValue("@languageCode", language);
+                    //
+                    DataTable result = ExecuteTable(command);
+
+                    List<HomeLabs> homeLabs = new List<HomeLabs>();
+
+                    if (result != null && result.Rows.Count > 0)
+                    {
+                        for (int i = 0; i < result.Rows.Count; i++)
+                        {
+                            HomeLabs obj = new HomeLabs();
+                            obj.Title = Convert.ToString(result.Rows[i]["Title"]);
+                            obj.ImagePath = Convert.ToString(result.Rows[i]["ImagePath"]);
+                            obj.ShortOrder = Convert.ToInt32(result.Rows[i]["ShortOrder"]);
+                            obj.NavigateUrl = Convert.ToString(result.Rows[i]["NavigateUrl"]);
+
+                            homeLabs.Add(obj);
+
+                        }
+                    }
+
+                    return homeLabs;
+                }
+
+
+            }
+
+
+
+
+            catch { throw; }
+
+
+
+            finally
+            {
+                if (command != null) command.Dispose();
+                command = null;
+
+
+
+            }
+
+
+
+        }
+
+        public int UpdatePreviewPageByLanguageModuleId(int moduleId, string languageCode, string HtmlContent, string MetaDescription, string MetaTitle, string MetUrl)
+        {
+            int resultCode = 0;
+            CustomCommand command = null;
+            // MasterPage masterPage = new MasterPage();
+
+            try
+            {
+                using (command = new CustomCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "UpdatePreviewPageByLanguageModuleId";
+                    command.AddParameterWithValue("@_moduleId", moduleId);
+                    command.AddParameterWithValue("@_languageCode", languageCode);
+                    command.AddParameterWithValue("@htmlContent", HtmlContent);
+                    command.AddParameterWithValue("@metaTitle", MetaTitle);
+                    command.AddParameterWithValue("@metaDescription", MetaDescription);
+                    command.AddParameterWithValue("@metaUrl", MetUrl);
+
+                    //  Execute command and get values from output parameters.
+                    int result = ExecuteNonQuery(command, false);
+                    if (result > 0)
+                    {
+                        resultCode = 1;
+                    }
+
+                }
+
+                return resultCode;
+            }
+
+
+            catch (Exception exception) { throw exception; }
+
+            finally
+            {
+                if (command != null) command.Dispose();
+                command = null;
+            }
+        }
+
+        public Preview ShowPreivew(int ModuleId,string LanguageCode)
+        {
+            CustomCommand command = null;
+            Preview preview = new Preview();
+            try
+            {
+                using (command = new CustomCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "GetPreviewPageByLanguageAndModuleId";
+                    command.AddParameterWithValue("@_moduleId", ModuleId);
+                    command.AddParameterWithValue("@_languageCode", LanguageCode);
+                    //
+                    DataTable result = ExecuteTable(command);
+
+                    if (result != null && result.Rows.Count > 0)
+                    {
+                            preview.MetaTitle = Convert.ToString(result.Rows[0]["MetaTitle"]);
+                            preview.MetaDescription = Convert.ToString(result.Rows[0]["MetaDescription"]);
+                            preview.MetaUrl = Convert.ToString(result.Rows[0]["MetaUrl"]);
+                            preview.HtmlContent = Convert.ToString(result.Rows[0]["HtmlContent"]);
+                    }
+
+                    return preview;
+                }
+
+
+            }
+
+
+
+
+            catch { throw; }
+
+
+
+            finally
+            {
+                if (command != null) command.Dispose();
+                command = null;
+
+
+
+            }
+
+
+
+        }
+
     }
 }

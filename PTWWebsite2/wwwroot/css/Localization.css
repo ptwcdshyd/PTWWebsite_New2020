@@ -1,0 +1,204 @@
+
+@font-face {
+    font-family: 'nunito';
+    src: url('../Fonts/fonts/nunito-sans.semibold.ttf'); /* IE9 Compat Modes */
+   
+  }
+@font-face {
+    font-family: 'Poppins';
+    src: url('../Fonts/fonts/Poppins-Black.ttf');
+}
+@font-face {
+    font-family: 'Nunito-sans';
+    src: url('../Fonts/fonts/NunitoSans-Black.ttf');
+}
+@font-face {
+    font-family: 'Poppons-Bold';
+    src: url('../Fonts/fonts/Poppins-Bold.ttf');
+}
+@font-face {
+    font-family: 'Nunito-Bold';
+    src: url('../Fonts/fonts/NunitoSans-Bold.ttf');
+}
+@font-face {
+    font-family: 'Nunito-regular';
+    src: url('../Fonts/fonts/NunitoSans-Regular.ttf');
+}
+@font-face {
+    font-family: 'Proxima';
+    src: url('../Fonts/fonts/proxima bold/Proxima Nova Bold.otf') format('opentype');
+  
+}
+
+
+.bg_LocalozationQA {
+    /* The image used */
+    background-image: url("../Images/New_UI/Localization/localization_bg.png" );
+    /* Half height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.list_num {
+    color: #4B4B4B;
+    font-size: 20px;
+    font-family: NunitoSans-Regular;
+    list-style: none;
+    margin: 0% 26%;
+}
+
+.list_num_1 {
+    list-style-image: url(../images/New_UI/Localization_QA/li_1.png);
+  
+    padding: 6px;
+}
+
+li.list_num::marker{
+    margin-top:2px;
+}
+.list_num_2 {
+    list-style-image: url(../images/New_UI/Localization_QA/li_2.png);
+    padding: 6px;
+}
+.list_num_3 {
+    list-style-image: url(../images/New_UI/Localization_QA/li_3.png);
+    padding: 6px;
+}
+.list_num_4 {
+    list-style-image: url(../images/New_UI/Localization_QA/li_4.png);
+    padding: 6px;
+}
+
+.videoSection {
+    position: relative;
+}
+
+.localicon .squaredBorder {
+    border: 2px solid #3BA1E1;
+    height: 350px;
+}
+
+.localization .squaredDiv::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 4px;
+    background: url(../Images/New_UI/Localization/beforeImg.svg);
+    background-size: 100%;
+    width: 20%;
+    height: 100%;
+    background-repeat: no-repeat;
+}
+
+.localization .squaredDiv::after {
+    content: '';
+    position: absolute;
+    top: 90%;
+    right: 4px;
+    background: url(../Images/New_UI/Localization/beforeImg.svg);
+    background-size: 100%;
+    width: 20%;
+    height: 6px;
+    background-repeat: no-repeat;
+}
+
+.squaredBorder::before {
+    content: '';
+    position: absolute;
+    background: url("../Images/New_UI/Localization/beforeImg.svg") !important;
+    background-size: 100%;
+    width: 20%;
+    height: 100%;
+    background-repeat: no-repeat !important;
+    top: -9px;
+}
+
+
+.localization.localiz_sub-bg {
+    background-image: url("/images/New_UI/Localization/sub_bg.png") !important;
+    display: flex;
+    height: unset;
+    align-items: center;
+    justify-content: space-around;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    padding: 100px 0;
+    color: #fff;
+}
+
+    .localization.localiz_sub-bg .text-wrap-qa {
+        padding: 78px 30%;
+    }
+
+.mSec-part {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.localization.localiz_sub-bg .mSec .num {
+    font-size: 50px;
+    font-family: 'Nunito-sans';
+    margin-bottom: 5px;
+}
+
+.localization.localiz_sub-bg .mSec {
+    text-align: center;
+}
+.localization .ReadMeBtn {
+    border-color: #3BA1E1;
+    color: #3BA1E1;
+}
+
+    .localization .ReadMeBtn:hover {
+        background-color: #3BA1E1;
+        color:#ffffff;
+    }
+
+    .localization .ReadMeBtn:before {
+        /*border: 3px solid #3BA1E1;*/
+    }
+.localization .squaredDiv {
+    background: url("../Images/New_UI/Localization/frame.svg");
+
+    position: absolute;
+    top: 0;
+    left: -7px;
+    background-size: 100%;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+}
+
+.footer-LocalizationQA {
+    background: url("../Images/New_UI/Localization/Footer.png");
+    background-size: 100% 100%;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 576px) {
+
+    .mSec-part {
+        display: block;
+    }
+    .localization.localiz_sub-bg .mSec .num {
+        font-size: 30px !important;
+        margin: 0;
+    }
+
+    .localization.localiz_sub-bg .mSec .desc {
+        font-size: 16px;
+    }
+    .videoSection.localicon {
+        margin-bottom: 20px;
+    }
+    .ReadMeSection {
+        padding: 0;
+    }
+}

@@ -1,0 +1,416 @@
+﻿@model PTW.DataAccess.Models.Labs
+@{
+    Layout = "~/Views/Shared/_LayoutForPtwCms.cshtml";
+    ViewData["Title"] = "NewsEventsEditor";
+}
+
+<link href="~/css/Editor/Css/4.4.1.bootstrap.min.css" rel="stylesheet" />
+<link href="~/css/jquery.gritter.css" rel="stylesheet" />
+<script src="~/js/Editor/jquery-3.5.1.min.js"></script>
+<script src="~/js/Editor/popper.min.js"></script>
+<script src="~/js/Editor/1.9.1.jquery.js"></script>
+<script src="~/js/Editor/4.4.1.bootstrap.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+<script src="~/js/Editor/summernote-bs4.min.js"></script>
+<script src="~/js/jquery.gritter.min.js"></script>
+
+<style>
+    /* Loader Start*/
+
+    #PostBackMsg, #PostBackMsg-1 {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        display: block;
+        background: rgba(255, 255, 255, 0.6509803921568628);
+        z-index: 1001;
+    }
+
+        #PostBackMsg img, #PostBackMsg-1 img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            max-width: 100%;
+            height: auto;
+        }
+
+    /* Loader End*/
+
+    #ModuleId {
+        outline: 0;
+        background-image: none;
+        width: 100%;
+        height: 100%;
+        color: black;
+        cursor: pointer;
+        border: 1px solid black;
+        border-radius: 15px;
+        padding: 6px 6px 6px 6px;
+    }
+
+    #LanguageCode {
+        outline: 0;
+        background-image: none;
+        width: 100%;
+        height: 100%;
+        color: black;
+        cursor: pointer;
+        border: 1px solid black;
+        border-radius: 15px;
+        padding: 6px 6px 6px 6px;
+    }
+
+    #lblMessage {
+        display: inline-block;
+        margin-bottom: .5rem;
+        color: red;
+        white-space: nowrap;
+        padding-left: 20px;
+        display: none;
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+        padding-right: 30px;
+        padding-left: 30px;
+        margin-top: 2rem;
+    }
+
+    .mandatory {
+        color: red;
+    }
+
+    #NewsList {
+        width: 75%;
+        margin-left: 4rem;
+    }
+</style>
+<div id="PostBackMsg" style="display:none;">
+    <img alt="loader" src="~/images/loader.gif" />
+</div>
+
+<div class="page-header" style="text-align: center;">
+    <h3>Labs</h3>
+</div>
+
+
+<div class="contentpanel report" style="border: 1px solid #00b8ff85;width: 1180px;margin-top: 45px;margin-left:50px;">
+    <div class="row distribute-container">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            @*<div class="row">
+            <div class="form-group col-md-4 col-sm-4">
+                <label for="name">Selection Language</label>
+                <select class="form-control input-sm" id="Language">
+                    <option value="en-US">English</option>
+                    <option value="fr-CA">French</option>
+                    <option value="ja">Japan</option>
+                    <option value="ko">Korean</option>
+                    <option value="zh-CHS">Simplified Chinese</option>
+                    <option value="zh-CHT">Traditional Chinese</option>
+                </select>
+            </div>
+        </div>*@
+
+            <div class="row">
+                <div class="form-group col-md-6 col-sm-4">
+                    <select id="Languages" asp-for="LanguageCode" asp-items="@(new SelectList(Model.Languages,"LanguageCode","Language"))" class="form-control input-sm dropdown-select my-3" onchange="GetContent()">
+                        <option>Please select</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                    <label>Description<span class="mandatory">*</span></label>
+                    <textarea id="Description" class="form-control input-sm">  </textarea>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="form-group col-md-4 col-sm-4">
+                    @Html.CheckBox("ActiveStatus", true)
+                    <label>Active</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-8 col-sm-6">
+                    <label class="col-form-label">Labs Image</label>
+                    <div class="col-md-8 col-sm-6">
+                        <div class="custom-file">
+                            <input id="LabImage" type="file" class="form-control custom-file-input">
+                            <label class="custom-file-label">Choose File...1012x348 dimensions</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group  col-md-6 col-sm-6">
+                    <label>Meta Title</label>
+                    <div class="col-md-8 col-sm-6">
+
+                        <input type="text" id="MetaTitle" class="form-control input-sm" placeholder="Meta Title">
+                    </div>
+                </div>
+                <div class="form-group  col-md-6 col-sm-6">
+                    <label>Meta Description</label>
+                    <div class="col-md-8 col-sm-6">
+                        <div class="custom-file">
+                            <textarea id="MetaDescription" class="form-control input-sm"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="form-group  col-md-6 col-sm-6">
+                    <label>Meta Url</label>
+                    <div class="col-md-8 col-sm-6">
+
+                        <input type="text" id="MetaUrl" class="form-control input-sm" placeholder="Meta Url">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row distribute-container">
+            <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
+                <button onclick="Update();" class="btn btn-success">Update Lab Dashboard</button>
+            </div>
+            <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
+                <button onclick="Preview();" class="btn btn-success">Preview</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script>
+    $('#Description').summernote({
+        placeholder: 'News or Events here',
+        tabsize: 2,
+        height: 300,
+        dialogsInBody: true
+    });
+
+    $('#summernoteUpdate').summernote({
+        placeholder: 'News or Events here',
+        tabsize: 2,
+        height: 300,
+        dialogsInBody: true
+    });
+
+    $(document).ready(function () {
+        $('.custom-file-input').on("change", function () {
+            var fileLabel = $(this).next('.custom-file-label');
+            var files = $(this)[0].files;
+            if (files.length > 1) {
+                fileLabel.html(files.length + ' files selected');
+            }
+            else if (files.length == 1) {
+                fileLabel.html(files[0].name);
+            }
+        });
+
+    });
+
+    function Update() {
+        if (Validate()) {
+
+            var fd = new FormData();
+            var files1 = $('#LabImage')[0].files[0];
+            if ($('#LabImage')[0].files[0] != undefined) {
+                fd.append('LabImage', files1);
+            }
+            fd.append('Event', parseInt($("#Language").val()));
+            fd.append('Description', $("#Description").val());
+            fd.append('ActiveStatus', $("#ActiveStatus").prop("checked"));
+            fd.append('MetaTitle', $("#MetaTitle").val());
+            fd.append('MetaDescription', $("#MetaDescription").val());
+            fd.append('MetaUrl', $("#MetaUrl").val());
+            fd.append('ModuleId', 19);
+            fd.append('LanguageCode', $("#Languages").children("option:selected").val());
+
+            console.log(fd);
+
+            $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("UpdateLabsPageByLanguageId", "Home")',
+                    data: fd,
+                    contentType: false,
+                    processData: false,
+                    success: function (result) {
+                        console.log(result);
+                        if (result == 'Logout') {
+                        window.location = '../Logout';
+                    }
+                        if (result == 1) {
+                        var alertmsg = "Successfully Added";
+                        AlertMessage('growl-success', 'Information', alertmsg, false, 3000);
+                        $("#PostBackMsg").fadeOut("slow");
+                    }
+                    else {
+                        var alertmsgs = "Added failed";
+                        AlertMessage('growl-danger', 'Validation', alertmsgs, false, 3000);
+                        $("#PostBackMsg").fadeOut("slow");
+                    }
+                }//,
+                //error: function (err) {
+                //    if (err.status === 0) {
+                //        window.location = '../Logout';
+                //    }
+                  //  $("#PostBackMsg").fadeOut("slow");
+               // }
+            });
+
+
+        }
+    }
+
+    function Validate() {
+
+        var flag = 0;
+        var errorMeaasage = "";
+
+
+        if ($('#Description').summernote('code') == "" || $('#Description').summernote('code') == "<p><br></p>") {
+            errorMeaasage = errorMeaasage + "please enter Description </br>";
+            // $("#lblsummernote").text("please enter Description");
+            flag = 1
+        }
+
+        //if (($("#LabsImage").val() == "" || $("#LabsImage").val() == undefined)) {
+        //    errorMeaasage = errorMeaasage + "please Upload Image </br>";
+        //    flag = 1;
+        //}
+
+
+        if (flag > 0) {
+            var errmsg = errorMeaasage;
+            AlertMessage('growl-danger', 'Validation', errmsg, false, 3000);
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    function GetContent() {
+
+        if ($("#Languages").children("option:selected").val() != "" && $("#Languages").children("option:selected").val() != undefined && $("#Languages").children("option:selected").val() != "Please select") {
+            $("#PostBackMsg").show();
+            $('#Description').summernote('code', '');
+            $('.imageShow').css("display", "block");
+            console.log($("#LanguageCode").children("option:selected").val());
+            $.ajax({
+                type: "GET",
+                url: '../Home/GetContent?ModuleId=' + 19 + '&LanguageCode=' + $("#Languages").children("option:selected").val() + '',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+
+                    console.log(result);
+
+                    if (result == 'Logout') {
+                        window.location = '../Logout';
+                    }
+                    console.log(result);
+
+                    if (result != null) {
+                        $('#Description').summernote('code', result.HtmlContent);
+                        $('#MetaDescription').val(result.MetaDescription);
+                        $('#MetaTitle').val(result.MetaTitle);
+                        $('#MetaUrl').val(result.MetaUrl);
+                    }
+
+
+                    $("#PostBackMsg").fadeOut("slow");
+                },
+
+                error: function (err) {
+                    if (err.status === 0) {
+                        window.location = '../Logout';
+                    }
+                    $("#PostBackMsg").fadeOut("slow");
+                }
+            });
+        }
+        else {
+            $('.imageShow').css("display", "none");
+        }
+    }
+
+    function Preview() {
+        if ($("#Languages").children("option:selected").val() != "Please select") {
+            var fd = new FormData();
+            var files1 = $('#LabImage')[0].files[0];
+            if ($('#LabImage')[0].files[0] != undefined) {
+                fd.append('ImageNewsKasturiRangan', files1);
+            }
+            fd.append('Event', parseInt($("#Language").val()));
+            fd.append('Description', $("#Description").val());
+            fd.append('ActiveStatus', $("#ActiveStatus").prop("checked"));
+            fd.append('MetaTitle', $("#MetaTitle").val());
+            fd.append('MetaDescription', $("#MetaDescription").val());
+            fd.append('MetaUrl', "");
+            fd.append('ModuleId', 19);
+            fd.append('LanguageCode', $("#Languages").children("option:selected").val());
+
+            console.log(fd);
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("UpdateNewsPageByLanguageId", "Home")',
+                data: fd,
+                contentType: false,
+                processData: false,
+                success: function (result) {
+
+                    if (result == 'Logout') {
+                        window.location = '../Logout';
+                    }
+
+                    var Url = "../Preview/PagePreview?ModuleId=" + 19 + "&LanguageCode=" + $("#Languages").children("option:selected").val() + "";
+
+                    if (result === 1) {
+                        window.open(Url, "_blank");
+                    }
+                },
+                error: function (err) {
+                    if (err.status === 0) {
+                        window.location = '../Logout';
+                    }
+                    $("#PostBackMsg").fadeOut("slow");
+                }
+            });
+        }
+        else {
+            AlertMessage('growl-danger', 'Validation', "Please select any Language", false, 3000);
+        }
+    }
+
+    function AlertMessage(class_name, title, alert, boolstick, timesec) {
+      
+        jQuery.gritter.add({
+            title: title,
+            text: alert,
+            class_name: class_name,
+            image: '',
+            sticky: boolstick,
+            time: timesec,
+            before_open: function () {
+                $('.gritter-item-wrapper').remove();
+            }
+        });
+        return false;
+    }
+
+</script>
+
+
+

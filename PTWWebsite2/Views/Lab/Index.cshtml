@@ -1,782 +1,524 @@
 ﻿@model PTW.DataAccess.Models.LabsEvents
 @{
+    Layout = "_Layout";
     ViewData["Title"] = "Index";
 }
-<link href="~/css/clean-blog.min.css" rel="stylesheet" />
-<link href="~/css/custom.css" rel="stylesheet" />
-<link href="~/css/sticky.css" rel="stylesheet" />
-<link href="~/css/lab.css" rel="stylesheet" />
-<link href="~/css/rslides.css" rel="stylesheet" />
-<style>
-
-    body {
-        background: #fff;
-    }
-
-    #mainNav {
-        background: #fff !important;
-    }
-
-    .change .bar3,
-    .change .bar1 {
-        background-color: #000 !important;
-    }
-</style>
-
-<div class="slides1 row">
-    <ul class="rslides" style="display:-webkit-inline-box;">
-        @if (Model != null)
-        {
-            int count = 0;
-
-            @foreach (var item in Model.Labs)
-            {
-
-                <!-- slides -->
-                <li id="@("rslides1_s" + count)" class="rslides1_on" style="display: block; float: left; position: relative; opacity: 1; z-index: 2; transition: opacity 500ms ease-in-out 0s;">
-                    <picture>
-
-                        <source srcset="@item.DeskL_ImageURL" media="(min-width: 1367px)">
-                        <source srcset="@item.Desk_ImageURL" media="(min-width: 1113px)">
-                        <source srcset="@item.TabH_ImageURL" media="(min-width: 835px)">
-                        <source srcset="@item.TabV_ImageURL" media="(min-width: 400px)">
-                        <source srcset="@item.Mobile_ImageURL" media="(min-width: 100px)">
-                        <img src="@item.DeskL_ImageURL" alt="A woman with short and curly hair testing a game on mobile at PTW.">
-                    </picture>
-                </li>
-                count = count + 1;
-            }
-        }
-
-    </ul>
-
-    <ul class="rslides_tabs rslides1_tabs">
-        <li class="rslides1_s1 rslides_here">
-            <a href="#" class="rslides1_s1">1</a>
-        </li>
-        <li class="rslides1_s2">
-            <a href="#" class="rslides1_s2">2</a>
-        </li>
-        <li class="rslides1_s3">
-            <a href="#" class="rslides1_s3">3</a>
-        </li>
-    </ul>
-</div>
 
 
+<div class="container_div lab-bg">
+    <div class="row">
+        <div class="col-md-2">
 
-<div class="col-md-12 filter-row iso-filter-drop">
-
-    <div class="d-lg-none lab-aticles-filter ">
-        <div class="dropdown drp-services">
-            <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span id="drop-span">Latest Insights</span>
-                <i class="fa fa-filter"></i>
-            </button>
-            <div id="myDropdown" class="dropdown-menu dropdown-content iso-filter-drop" aria-labelledby="dropdownMenuButton">
-                <a href="#" data-filter="*" style="padding-left: 88px;">Latest Insights</a>
-                <a href="#" data-filter=".cx1">
-                    <img src="../Images/hover-over/HOME-ICONS-white.png" alt="" class="myDDicons">Customer Experience
-                </a>
-                <a href="#" data-filter=".qa1">
-                    <img src="../Images/hover-over/HOME-ICONS-white2.png" alt="" class="myDDicons">Quality Assurance
-                </a>
-                <a href="#" data-filter=".loc1">
-                    <img src="../Images/hover-over/HOME-ICONS-white3.png" alt="" class="myDDicons">Localization
-                </a>
-                <a href="#" data-filter=".ap1">
-                    <img src="../Images/hover-over/HOME-ICONS-white4.png" alt="" class="myDDicons">Audio Production
-                </a>
-                <a href="#" data-filter=".eng1">
-                    <img src="../Images/hover-over/HOME-ICONS-white5.png" alt="" class="myDDicons">Engineering
-                </a>
-                <a href="#" data-filter=".camp1">
-                    <img src="../Images/hover-over/Campaign.png" alt="" class="myDDicons"><span id="ContentPlaceHolder1_Span7">Campaigns</span>
-                </a>
+            <div class="wrapper">
+                <div class="line"></div>
+                <div class="wordwrapper">
+                    <p class="vericaltext">
+                        LAB
+                    </p>
+                </div>
             </div>
+        </div>
+        <div class="col-md-6">
+            <div class="home-text">
+                <p>PTW LAB</p>
+            </div>
+
+        </div>
+    </div>
+    <div class="row " style="margin-top:20%">
+        <div class="icons-holder d-flex">
+            <p class="txt-color">Latest Insigths</p>
+            <img src="~/images/New_UI/Lab/img1.png" /><h6>Quality Assurance </h6>
+            <img src="~/images/New_UI/Lab/img2.png" /><h6>Product Development </h6>
+            <img src="~/images/New_UI/Lab/img3.png" /><h6>Audio Production</h6>
+            <img src="~/images/New_UI/Lab/img4.png" /><h6>Localization </h6>
+            <img src="~/images/New_UI/Lab/img5.png" /><h6>Player Support </h6>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+
+            <div class="nEAnim">
+                <div class="borders">
+                    <img src="/Images/New_UI/news/border.svg">
+                </div>
+                <div class="imageContent">
+                    <!-- <img class="btnImage" src="/Images/New_UI/news/news.png"> -->
+                </div>
+                <div class="textContent">
+                    <p>Non-Technical Guide for Player Support</p>
+
+                    <div class="ReadMe">
+                        <a href="#" class="ReadMeBtn">Read More</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="col-md-4">
+            <div class="eventHeading">
+                <p class="upText">Upcoming Events</p>
+                <p class="calText">Calendar 2020</p>
+            </div>
+
+            <div class="col-md-12">
+                <div class="d-flex upComingSection">
+                    <div class="eventsImage event1">
+                        <img src="/Images/New_UI/news/event.svg">
+                    </div>
+
+                    <div class="content" style="width:50%">
+                        <p class="title">Middle East - Games Con</p>
+                        <p class="date">20th - 23rd Sept 2020</p>
+                        <p class="date">Abu Dhabi</p>
+                        <div class="shareSec colorPurple">
+                            <div class="d-flex">
+                                <p class="share marginRight">Share Now</p>
+                                <p class="bookNow purple">Book Now</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-12">
+                <div class="d-flex upComingSection">
+                    <div class="eventsImage event2">
+                        <img src="/Images/New_UI/news/event.svg">
+                    </div>
+
+                    <div class="content" style="width:50%">
+                        <p class="title">MIGS - 15th Edition</p>
+                        <p class="date">20th - 23rd Sept 2020</p>
+                        <p class="date">Abu Dhabi</p>
+                        <div class="shareSec">
+                            <div class="d-flex">
+                                <p class="share marginRight">Share Now</p>
+                                <p class="bookNow orange ">Book Now</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
         </div>
 
     </div>
-    <div class="d-none d-lg-block">
-        <a id="A2" href="#" data-filter="*" class="active" runat="server" meta:resourcekey="lab_latest_insights">
-            Latest Insights
-        </a>
-        <a href="#" data-filter=".camp1">
-            <span id="Span7" runat="server" meta:resourcekey="lab_filter_Camp">Campaigns</span>
-        </a>
-        <a href="#" data-filter=".cx1">
-            <span id="Span2" runat="server" meta:resourcekey="lab_filter_CX">Customer Experience</span>
-        </a>
-        <a href="#" data-filter=".qa1">
-            <span id="Span3" runat="server" meta:resourcekey="lab_filter_QA">Quality Assurance</span>
-        </a>
-        <a href="#" data-filter=".loc1">
-            <span id="Span4" runat="server" meta:resourcekey="lab_filter_Loc">Localization</span>
-        </a>
-        <a href="#" data-filter=".ap1">
-            <span id="Span5" runat="server" meta:resourcekey="lab_filter_Audio">Audio Production</span>
-        </a>
-        <a href="#" data-filter=".eng1">
-            <span id="Span6" runat="server" meta:resourcekey="lab_filter_Eng">Engineering</span>
-        </a>
+
+    <!-- helps -->
+
+    <div class="row mt-10 mb-5">
+        <div class="col-md-4">
+            <div class="animationDiv">
+                <img class="btnImage" src="/Images/New_UI/news/allEvents1.png">
+
+                <div class="squaredDiv">
+                    <div class="squaredText">
+                        <p class="">Demystifying Great Character Performances</p>
+                    </div>
+                    <div class="MoreDiv">
+                        <p>More..</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="animationDiv">
+                <img class="btnImage" src="/Images/New_UI/news/allEvents2.png">
+
+                <div class="squaredDiv">
+                    <div class="squaredText">
+                        <p>Localization Questions Answered</p>
+                    </div>
+                    <div class="MoreDiv">
+                        <p>More..</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="animationDiv">
+                <img class="btnImage" src="/Images/New_UI/news/allEvents3.png">
+
+                <div class="squaredDiv">
+                    <div class="squaredText">
+                        <p>Developers take a lesson from Netflix</p>
+                    </div>
+                    <div class="MoreDiv">
+                        <p>More..</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
     </div>
-</div>
-<div class="container-fluid lab-container">
+
+    <div class="row mt-10 mb-10">
+        <div class="col-md-4">
+            <div class="animationDiv">
+                <img class="btnImage" src="/Images/New_UI/news/allEvents4.png">
+
+                <div class="squaredDiv">
+                    <div class="squaredText">
+                        <p>Localization Questions Answered</p>
+                    </div>
+                    <div class="MoreDiv">
+                        <p>More..</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="animationDiv">
+                <img class="btnImage" src="/Images/New_UI/news/allEvents5.png">
+
+                <div class="squaredDiv">
+                    <div class="squaredText">
+                        <p>Lessons From a Games Audio Pro</p>
+                    </div>
+                    <div class="MoreDiv">
+                        <p>More..</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="animationDiv">
+                <img class="btnImage" src="/Images/New_UI/news/allEvents6.png">
+
+                <div class="squaredDiv">
+                    <div class="squaredText">
+                        <p>Non-Technical Guide for Player Support</p>
+                    </div>
+                    <div class="MoreDiv">
+                        <p>More..</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div class="row mt-10 mb-10">
+        <div class="col-md-4">
+            <div class="animationDiv">
+                <img class="btnImage" src="/Images/New_UI/news/allEvents4.png">
+
+                <div class="squaredDiv">
+                    <div class="squaredText">
+                        <p>Localization Questions Answered</p>
+                    </div>
+                    <div class="MoreDiv">
+                        <p>More..</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="animationDiv">
+                <img class="btnImage" src="/Images/New_UI/news/allEvents5.png">
+
+                <div class="squaredDiv">
+                    <div class="squaredText">
+                        <p>Lessons From a Games Audio Pro</p>
+                    </div>
+                    <div class="MoreDiv">
+                        <p>More..</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="animationDiv">
+                <img class="btnImage" src="/Images/New_UI/news/allEvents6.png">
+
+                <div class="squaredDiv">
+                    <div class="squaredText">
+                        <p>Non-Technical Guide for Player Support</p>
+                    </div>
+                    <div class="MoreDiv">
+                        <p>More..</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div class="row mt-10 mb-10">
+        <div class="col-md-4">
+            <div class="animationDiv">
+                <img class="btnImage" src="/Images/New_UI/news/allEvents4.png">
+
+                <div class="squaredDiv">
+                    <div class="squaredText">
+                        <p>Localization Questions Answered</p>
+                    </div>
+                    <div class="MoreDiv">
+                        <p>More..</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="animationDiv">
+                <img class="btnImage" src="/Images/New_UI/news/allEvents5.png">
+
+                <div class="squaredDiv">
+                    <div class="squaredText">
+                        <p>Lessons From a Games Audio Pro</p>
+                    </div>
+                    <div class="MoreDiv">
+                        <p>More..</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="animationDiv">
+                <img class="btnImage" src="/Images/New_UI/news/allEvents6.png">
+
+                <div class="squaredDiv">
+                    <div class="squaredText">
+                        <p>Non-Technical Guide for Player Support</p>
+                    </div>
+                    <div class="MoreDiv">
+                        <p>More..</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- end helps -->
+
+    <div class="row mb-10">
+        <div class="col-md-12">
+            <div class="middleSection">
+                <div class="mSec">
+                    <p class="num">35</p>
+                    <p class="desc">Studios</p>
+                </div>
+
+                <div class="mSec">
+                    <p class="num">25 Yrs</p>
+                    <p class="desc">Experience</p>
+                </div>
+
+                <div class="mSec">
+                    <p class="num">1000+</p>
+                    <p class="desc">Products</p>
+                </div>
+
+                <div class="mSec">
+                    <p class="num">40+</p>
+                    <p class="desc">Languages</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="row">
-        <div class="col-xl-9 col-md-12">
-            <div class="row">
-                @*@foreach (var item in Model.labInsights)
-                    {*@
-                <div class="col-xl-8 col-md-12">
-                    <a titlevalue="7" href="/lab/Article-game-localization-strategy">
-
-                        @*<div class="insight-category latest-insight">
-                                <img src=@Model.labInsights[0].CampaignImageUrl alt="alt-text" class="qa-diamond">
-                            </div>*@
-                        <picture>
-                            <source srcset="" media="(min-width: 1367px)">
-                            <source srcset="@Model.labInsights[6].MobileImageNameUrl" media="(max-width: 400px)">
-                            <img class="b-lazy" src="@Model.labInsights[6].DesktopImageUrl" data-src="@Model.labInsights[6].DesktopImageUrl" alt="">
-                        </picture>
-                    </a>
-                </div>
-                <div class="col-xl-4 col-md-12 article-info">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <a titlevalue="7" href="@Model.labInsights[6].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
-                                <p class="insight-title">
-                                    @*How to build a video game localization strategy in 5 steps*@
-                                    @Model.labInsights[6].Name
-                                </p>
-                            </a>
-                        </div>
-                        <div class="col-md-12 d-none d-xl-block insight-description">
-
-                            @*How to build a video game localization strategy in 5 steps*@
-                            @Model.labInsights[6].Name
-
-                        </div>
-                    </div>
+        <div class="col-lg-5 col-md-5">
+            <div class="nameContainer">
+                <div class="imgName">
+                    <img src="/Images/New_UI/Lab/Mikey_23-July.png">
                 </div>
             </div>
-        </div>
-        <div class="col-xl-3 d-none d-xl-block related-lab">
-            @{
-                int labInsights_Count = 0;
-                @foreach (var item in Model.labInsights)
-                {
 
-                    @if (labInsights_Count > 0)
-                    {
-                        <div class="row">
-                            <div class="col-md-12">
-                                <a titlevalue="7" href="/Lab/@item.LabType-@item.ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
-                                    <div class="insight-2">
-                                        <p class="insight-title">
-                                            @item.Name
-                                        </p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    }
-                    labInsights_Count++;
-                }
-            }
+
+        </div>
+        <div class="col-lg-7  col-md-7 mt-10 paddingLeft">
+            <div class="description">
+                <p><span class="quoteText">"</span> <span class="onceText">ONCE A GAMER<br></span> <span class="alwaysText">DO OR DO NOT<br></span></p>
+                <p class="gamerText">THERE IS  <span class="" style="color:black">"</span></p>
+
+            </div>
+
         </div>
     </div>
 
-    <div class="row isotope-filter-grid">
 
-        @foreach (var item in Model.allLabs)
-        {
-            <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights @string.Concat(Convert.ToString(item.FilterCustomerExperience),Convert.ToString(item.FilterQualityAssurance),Convert.ToString(item.FilterLocalization),Convert.ToString(item.FilterAudioProduction),Convert.ToString(item.FilterEngineering),Convert.ToString(item.FilterCampaign)) ">
-                <a titlevalue="7" href="/Lab/@item.LabType-@item.ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
-                    <div class="row single-insight-container">
-                        <img class="b-lazy" src="@item.MobileImageNameUrl" data-src="@item.MobileImageNameUrl" alt="">
-
-                        @*<img class="b-lazy" src="@string.Concat(Convert.ToString(item.ImageUrl),Convert.ToString(item.ImageName))"
-                             data-src="@string.Concat(Convert.ToString(item.ImageUrl),Convert.ToString(item.ImageName))" 
-                             alt="@item.ImageAlternateText" />*@
-
-                        <div class="col-md-12">
-                            <div class="insight-category">
-                                <img src="@string.Concat(Convert.ToString(item.CustomerExperienceImageUrl),Convert.ToString(item.QualityAssuranceImageUrl),Convert.ToString(item.LocalizationImageUrl),Convert.ToString(item.AudioProductionImageUrl),Convert.ToString(item.EngineeringImageUrl),Convert.ToString(item.CEandQAImageUrl),Convert.ToString(item.CampaignImageUrl))" alt="alt-text" class="qa-diamond">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row single-insight-details-container">
-                        <div class="col-md-12">
-                            <div class="insight-details">
-                                <p class="insight-title">
-                                    @item.Name
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        }
-        </div>
-
-</div>
-    @*<div class="row isotope-filter-grid" style="position: relative; height: 2358.2px;">
-
-        @foreach (var item in Model.allLabs)
-        {
-            <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights" style="position: absolute; left: 0px; top: 0px;">
-                <a titlevalue="7" href="/Lab/@item.LabType-@item.ShortDescription.Replace(" ", " -").Replace("&", "@").ToLower()">
-                    <div class="row single-insight-container">
-                        <img class="b-lazy" src="@item.MobileImageNameUrl" data-src="@item.MobileImageNameUrl" alt="">
-                        <div class="col-md-12">
-                            <div class="insight-category">
-                                @if (item.CampaignImageUrl != null)
-                                {
-                                    <img src="@item.CampaignImageUrl" alt="alt-text" class="qa-diamond">
-                                }
-                                @if (item.QualityAssuranceImageUrl != null)
-                                {
-                                    <img src="@item.QualityAssuranceImageUrl" alt="alt-text" class="qa-diamond">
-                                }
-                                @if (item.CustomerExperienceImageUrl != null)
-                                {
-                                    <img src="@item.CustomerExperienceImageUrl" alt="alt-text" class="qa-diamond">
-                                }
-                                @if (item.EngineeringImageUrl != null)
-                                {
-                                    <img src="@item.EngineeringImageUrl" alt="alt-text" class="qa-diamond">
-                                }
-                                @if (item.AudioProductionImageUrl != null)
-                                {
-                                    <img src="@item.AudioProductionImageUrl" alt="alt-text" class="qa-diamond">
-                                }
-                                @if (item.LocalizationImageUrl != null)
-                                {
-                                    <img src="@item.LocalizationImageUrl" alt="alt-text" class="qa-diamond">
-                                }
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row single-insight-details-container">
-                        <div class="col-md-12">
-                            <div class="insight-details">
-                                <p class="insight-title">
-                                    @item.Name
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-
-            </div>
-        }
-        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  camp1" style="position: absolute; left: 0px; top: 0px;">
-        <a titlevalue="7" href="/Lab/@Model.allLabs[0].LabType-@Model.allLabs[0].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
-            <div class="row single-insight-container">
-                <img class="b-lazy" src="@Model.allLabs[0].MobileImageNameUrl" data-src="@Model.allLabs[0].MobileImageNameUrl" alt="">
-                <div class="col-md-12">
-                    <div class="insight-category">
-                        <img src="@Model.allLabs[0].CampaignImageUrl" alt="alt-text" class="qa-diamond">
-                    </div>
-                </div>
-            </div>
-            <div class="row single-insight-details-container">
-                <div class="col-md-12">
-                    <div class="insight-details">
-                        <p class="insight-title">
-                            @Model.allLabs[0].Name
-                        </p>
-                    </div>
-    </div>
-                    </div>
-                </a>
-        </div>
-
-        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  camp1" style="position: absolute; left: 283.333px; top: 0px;">
-            <a titlevalue="7" href="/Lab/@Model.allLabs[1].LabType-@Model.allLabs[1].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
-                <div class="row single-insight-container">
-                    <img class="b-lazy" src="@Model.allLabs[1].MobileImageNameUrl" data-src="@Model.allLabs[1].MobileImageNameUrl" alt="">
-                    <div class="col-md-12">
-                        <div class="insight-category">
-                            <img src="@Model.allLabs[1].CampaignImageUrl" alt="alt-text" class="qa-diamond">
-                        </div>
-                    </div>
-                </div>
-                <div class="row single-insight-details-container">
-                    <div class="col-md-12">
-                        <div class="insight-details">
-                            <p class="insight-title">
-                                @Model.allLabs[1].Name
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  camp1" style="position: absolute; left: 566.666px; top: 0px;">
-            <a titlevalue="7" href="/Lab/@Model.allLabs[2].LabType-@Model.allLabs[2].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
-                <div class="row single-insight-container">
-                    <img class="b-lazy" src="@Model.allLabs[2].MobileImageNameUrl" data-src="@Model.allLabs[2].MobileImageNameUrl" alt="">
-                    <div class="col-md-12">
-                        <div class="insight-category">
-                            <img src="@Model.allLabs[2].CampaignImageUrl" alt="alt-text" class="qa-diamond">
-                        </div>
-                    </div>
-                </div>
-                <div class="row single-insight-details-container">
-                    <div class="col-md-12">
-                        <div class="insight-details">
-                            <p class="insight-title">
-                                @Model.allLabs[2].Name
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  camp1" style="position: absolute; left: 0px; top: 304.885px;">
-            <a titlevalue="7" href="/Lab/@Model.allLabs[3].LabType-@Model.allLabs[3].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
-                <div class="row single-insight-container">
-                    <img class="b-lazy" src="@Model.allLabs[3].MobileImageNameUrl" data-src="@Model.allLabs[3].MobileImageNameUrl" alt="">
-                    <div class="col-md-12">
-                        <div class="insight-category">
-                            <img src="@Model.allLabs[3].CampaignImageUrl" alt="alt-text" class="qa-diamond">
-                        </div>
-                    </div>
-                </div>
-                <div class="row single-insight-details-container">
-                    <div class="col-md-12">
-                        <div class="insight-details">
-                            <p class="insight-title">
-                                @Model.allLabs[3].Name
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  camp1" style="position: absolute; left: 283.333px; top: 304.885px;">
-            <a titlevalue="7" href="/Lab/@Model.allLabs[4].LabType-@Model.allLabs[4].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
-                <div class="row single-insight-container">
-                    <img class="b-lazy" src="@Model.allLabs[4].MobileImageNameUrl" data-src="@Model.allLabs[4].MobileImageNameUrl" alt="">
-                    <div class="col-md-12">
-                        <div class="insight-category">
-                            <img src="@Model.allLabs[4].CampaignImageUrl" alt="alt-text" class="qa-diamond">
-                        </div>
-                    </div>
-                </div>
-                <div class="row single-insight-details-container">
-                    <div class="col-md-12">
-                        <div class="insight-details">
-                            <p class="insight-title">
-                                @Model.allLabs[4].Name
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  camp1" style="position: absolute; left: 566.666px; top: 304.885px;">
-            <a titlevalue="7" href="/Lab/@Model.allLabs[5].LabType-@Model.allLabs[5].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
-                <div class="row single-insight-container">
-                    <img class="b-lazy" src="@Model.allLabs[5].MobileImageNameUrl" data-src="@Model.allLabs[5].MobileImageNameUrl" alt="">
-                    <div class="col-md-12">
-                        <div class="insight-category">
-                            <img src="@Model.allLabs[5].CampaignImageUrl" alt="alt-text" class="qa-diamond">
-                        </div>
-                    </div>
-                </div>
-                <div class="row single-insight-details-container">
-                    <div class="col-md-12">
-                        <div class="insight-details">
-                            <p class="insight-title">
-                                @Model.allLabs[5].Name
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  qa1" style="position: absolute; left: 0px; top: 628.437px;">
-            <a titlevalue="7" href="/Lab/@Model.allLabs[6].LabType-@Model.allLabs[6].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
-                <div class="row single-insight-container">
-                    <img class="b-lazy" src="@Model.allLabs[6].MobileImageNameUrl" data-src="@Model.allLabs[6].MobileImageNameUrl" alt="">
-                    <div class="col-md-12">
-                        <div class="insight-category">
-                            <img src="@Model.allLabs[6].QualityAssuranceImageUrl" alt="alt-text" class="qa-diamond">
-                        </div>
-                    </div>
-                </div>
-                <div class="row single-insight-details-container">
-                    <div class="col-md-12">
-                        <div class="insight-details">
-                            <p class="insight-title">
-                                @Model.allLabs[6].Name
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  cx1" style="position: absolute; left: 283.333px; top: 628.437px;">
-            <a titlevalue="7" href="/Lab/@Model.allLabs[7].LabType-@Model.allLabs[7].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
-                <div class="row single-insight-container">
-                    <img class="b-lazy" src="@Model.allLabs[7].MobileImageNameUrl" data-src="@Model.allLabs[7].MobileImageNameUrl" alt="">
-                    <div class="col-md-12">
-                        <div class="insight-category">
-                            <img src="@Model.allLabs[7].CustomerExperienceImageUrl" alt="alt-text" class="qa-diamond">
-                        </div>
-                    </div>
-                </div>
-                <div class="row single-insight-details-container">
-                    <div class="col-md-12">
-                        <div class="insight-details">
-                            <p class="insight-title">
-                                @Model.allLabs[7].Name
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  eng1" style="position: absolute; left: 566.666px; top: 628.437px;">
-            <a titlevalue="7" href="/Lab/@Model.allLabs[8].LabType-@Model.allLabs[8].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
-                <div class="row single-insight-container">
-                    <img class="b-lazy" src="@Model.allLabs[8].MobileImageNameUrl" data-src="@Model.allLabs[8].MobileImageNameUrl" alt="">
-                    <div class="col-md-12">
-                        <div class="insight-category">
-                            <img src="@Model.allLabs[8].EngineeringImageUrl" alt="alt-text" class="qa-diamond">
-                        </div>
-                    </div>
-                </div>
-                <div class="row single-insight-details-container">
-                    <div class="col-md-12">
-                        <div class="insight-details">
-                            <p class="insight-title">
-                                @Model.allLabs[8].Name
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  eng1" style="position: absolute; left: 0px; top: 1007.99px;">
-            <a titlevalue="7" href="/Lab/@Model.allLabs[9].LabType-@Model.allLabs[9].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
-                <div class="row single-insight-container">
-                    <img class="b-lazy" src="@Model.allLabs[9].MobileImageNameUrl" data-src="@Model.allLabs[9].MobileImageNameUrl" alt="">
-                    <div class="col-md-12">
-                        <div class="insight-category">
-                            <img src="@Model.allLabs[9].EngineeringImageUrl" alt="alt-text" class="qa-diamond">
-                        </div>
-                    </div>
-                </div>
-                <div class="row single-insight-details-container">
-                    <div class="col-md-12">
-                        <div class="insight-details">
-                            <p class="insight-title">
-                                @Model.allLabs[9].Name
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  eng1" style="position: absolute; left: 283.333px; top: 1007.99px;">
-            <a titlevalue="7" href="/Lab/@Model.allLabs[10].LabType-@Model.allLabs[10].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
-                <div class="row single-insight-container">
-                    <img class="b-lazy" src="@Model.allLabs[10].MobileImageNameUrl" data-src="@Model.allLabs[10].MobileImageNameUrl" alt="">
-                    <div class="col-md-12">
-                        <div class="insight-category">
-                            <img src="@Model.allLabs[10].EngineeringImageUrl" alt="alt-text" class="qa-diamond">
-                        </div>
-                    </div>
-                </div>
-                <div class="row single-insight-details-container">
-                    <div class="col-md-12">
-                        <div class="insight-details">
-                            <p class="insight-title">
-                                @Model.allLabs[10].Name
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  ap1" style="position: absolute; left: 566.666px; top: 1007.99px;">
-            <a titlevalue="7" href="/Lab/@Model.allLabs[11].LabType-@Model.allLabs[11].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
-                <div class="row single-insight-container">
-                    <img class="b-lazy" src="@Model.allLabs[11].MobileImageNameUrl" data-src="@Model.allLabs[11].MobileImageNameUrl" alt="">
-                    <div class="col-md-12">
-                        <div class="insight-category">
-                            <img src="@Model.allLabs[11].AudioProductionImageUrl" alt="alt-text" class="qa-diamond">
-                        </div>
-                    </div>
-                </div>
-                <div class="row single-insight-details-container">
-                    <div class="col-md-12">
-                        <div class="insight-details">
-                            <p class="insight-title">
-                                @Model.allLabs[11].Name
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  loc1" style="position: absolute; left: 0px; top: 1368.87px;">
-            <a titlevalue="7" href="/Lab/@Model.allLabs[12].LabType-@Model.allLabs[12].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
-                <div class="row single-insight-container">
-                    <img class="b-lazy" src="@Model.allLabs[12].MobileImageNameUrl" data-src="@Model.allLabs[12].MobileImageNameUrl" alt="">
-                    <div class="col-md-12">
-                        <div class="insight-category">
-                            <img src="@Model.allLabs[12].LocalizationImageUrl" alt="alt-text" class="qa-diamond">
-                        </div>
-                    </div>
-                </div>
-                <div class="row single-insight-details-container">
-                    <div class="col-md-12">
-                        <div class="insight-details">
-                            <p class="insight-title">
-                                @Model.allLabs[12].Name
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  qa1" style="position: absolute; left: 283.333px; top: 1368.87px;">
-            <a titlevalue="7" href="/Lab/@Model.allLabs[13].LabType-@Model.allLabs[13].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
-                <div class="row single-insight-container">
-                    <img class="b-lazy" src="@Model.allLabs[13].MobileImageNameUrl" data-src="@Model.allLabs[13].MobileImageNameUrl" alt="">
-                    <div class="col-md-12">
-                        <div class="insight-category">
-                            <img src="@Model.allLabs[13].QualityAssuranceImageUrl" alt="alt-text" class="qa-diamond">
-                        </div>
-                    </div>
-                </div>
-                <div class="row single-insight-details-container">
-                    <div class="col-md-12">
-                        <div class="insight-details">
-                            <p class="insight-title">
-                                @Model.allLabs[13].Name
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  qa1" style="position: absolute; left: 566.666px; top: 1368.87px;">
-            <a titlevalue="7" href="/Lab/@Model.allLabs[14].LabType-@Model.allLabs[14].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
-                <div class="row single-insight-container">
-                    <img class="b-lazy" src="@Model.allLabs[14].MobileImageNameUrl" data-src="@Model.allLabs[14].MobileImageNameUrl" alt="">
-                    <div class="col-md-12">
-                        <div class="insight-category">
-                            <img src="@Model.allLabs[14].QualityAssuranceImageUrl" alt="alt-text" class="qa-diamond">
-                        </div>
-                    </div>
-                </div>
-                <div class="row single-insight-details-container">
-                    <div class="col-md-12">
-                        <div class="insight-details">
-                            <p class="insight-title">
-                                @Model.allLabs[14].Name
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  qa1" style="position: absolute; left: 0px; top: 1692.43px;">
-            <a titlevalue="7" href="/Lab/@Model.allLabs[15].LabType-@Model.allLabs[15].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
-                <div class="row single-insight-container">
-                    <img class="b-lazy" src="@Model.allLabs[15].MobileImageNameUrl" data-src="@Model.allLabs[15].MobileImageNameUrl" alt="">
-                    <div class="col-md-12">
-                        <div class="insight-category">
-                            <img src="@Model.allLabs[15].QualityAssuranceImageUrl" alt="alt-text" class="qa-diamond">
-                        </div>
-                    </div>
-                </div>
-                <div class="row single-insight-details-container">
-                    <div class="col-md-12">
-                        <div class="insight-details">
-                            <p class="insight-title">
-                                @Model.allLabs[15].Name
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  cx1" style="position: absolute; left: 283.333px; top: 1692.43px;">
-            <a titlevalue="7" href="/Lab/@Model.allLabs[16].LabType-@Model.allLabs[17].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
-                <div class="row single-insight-container">
-                    <img class="b-lazy" src="@Model.allLabs[16].MobileImageNameUrl" data-src="@Model.allLabs[16].MobileImageNameUrl" alt="">
-                    <div class="col-md-12">
-                        <div class="insight-category">
-                            <img src="@Model.allLabs[16].CustomerExperienceImageUrl" alt="alt-text" class="qa-diamond">
-                        </div>
-                    </div>
-                </div>
-                <div class="row single-insight-details-container">
-                    <div class="col-md-12">
-                        <div class="insight-details">
-                            <p class="insight-title">
-                                @Model.allLabs[16].Name
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  cx1" style="position: absolute; left: 566.666px; top: 1692.43px;">
-            <a titlevalue="7" href="/Lab/@Model.allLabs[17].LabType-@Model.allLabs[17].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
-                <div class="row single-insight-container">
-                    <img class="b-lazy" src="@Model.allLabs[17].MobileImageNameUrl" data-src="@Model.allLabs[17].MobileImageNameUrl" alt="">
-                    <div class="col-md-12">
-                        <div class="insight-category">
-                            <img src="@Model.allLabs[17].CustomerExperienceImageUrl" alt="alt-text" class="qa-diamond">
-                        </div>
-                    </div>
-                </div>
-                <div class="row single-insight-details-container">
-                    <div class="col-md-12">
-                        <div class="insight-details">
-                            <p class="insight-title">
-                                @Model.allLabs[17].Name
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  cx1" style="position: absolute; left: 0px; top: 2015.98px;">
-            <a titlevalue="7" href="/Lab/@Model.allLabs[18].LabType-@Model.allLabs[18].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
-                <div class="row single-insight-container">
-                    <img class="b-lazy" src="@Model.allLabs[18].MobileImageNameUrl" data-src="@Model.allLabs[18].MobileImageNameUrl" alt="">
-                    <div class="col-md-12">
-                        <div class="insight-category">
-                            <img src="@Model.allLabs[18].CustomerExperienceImageUrl" alt="alt-text" class="qa-diamond">
-                        </div>
-                    </div>
-                </div>
-                <div class="row single-insight-details-container">
-                    <div class="col-md-12">
-                        <div class="insight-details">
-                            <p class="insight-title">
-                                @Model.allLabs[18].Name
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-lg-3 col-md-6 col-sm-6 filtered-insights  cx1" style="position: absolute; left: 283.333px; top: 2015.98px;">
-            <a titlevalue="7" href="/Lab/@Model.allLabs[19].LabType-@Model.allLabs[19].ShortDescription.Replace(" ", "-").Replace("&", "@").ToLower()">
-                <div class="row single-insight-container">
-                    <img class="b-lazy" src="@Model.allLabs[19].MobileImageNameUrl" data-src="@Model.allLabs[19].MobileImageNameUrl" alt="">
-                    <div class="col-md-12">
-                        <div class="insight-category">
-                            <img src="@Model.allLabs[19].CustomerExperienceImageUrl" alt="alt-text" class="qa-diamond">
-                        </div>
-                    </div>
-                </div>
-                <div class="row single-insight-details-container">
-                    <div class="col-md-12">
-                        <div class="insight-details">
-                            <p class="insight-title">
-                                @Model.allLabs[19].Name
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-    </div>
-
-</div>*@
-<div class="row">
-    <div id="cxcontactus" class="col-lg-12 blue">
-        <h5 id="H1" class="mob-disp getInTouch" runat="server" meta:resourcekey="lab_get_in_touch">Get in touch</h5>
-        <a id="A3" titlevalue="6" href="../Common/Contact" class="btn btn-default btn-sm btn-r contactus f-contact" runat="server" meta:resourcekey="lab_contact_us" title="Contact Us">Contact Us</a>
-    </div>
 </div>
 
 
-<script src="../JS/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-<script src="../JS/isotope.pkgd.min.js"></script>
-<script src="../JS/responsiveslider.js"></script>
-<script>
-    $(window).load(function () {
-        $(".rslides").responsiveSlides({
-            auto: true,             // Boolean: Animate automatically, true or false
-            speed: 500,            // Integer: Speed of the transition, in milliseconds
-            timeout: 4000,          // Integer: Time between slide transitions, in milliseconds
-            pager: true,           // Boolean: Show pager, true or false
-            nav: false,             // Boolean: Show navigation, true or false
+<!-- Footer -->
+<section class=" position-relative  footer-parent">
 
-            pause: true,           // Boolean: Pause on hover, true or false
-            pauseControls: true,    // Boolean: Pause when hovering controls, true or false
+    <footer class="text-white">
+        <div class="row no-padding">
+            <div class="col-md-4 order-lg-1 order-md-1  order-sm-1 v-excmob footer-info footer-font f1">
+                <div class="mb-3 p-3 pl-5"> <img style="width: 45%;" src="~/images/Logo/PTW.svg" /></div>
+                <div style="opacity: .4; margin-left:25px">Follow us</div>
+                <div class="pull-xs-right d-flex nav navbar-nav navbar-toggleable-sm pl-4" style=" flex-direction: row;">
+                    <div class="nav-item"><a href="https://twitter.com/PTW" target="_blank" rel="noopener noreferrer" class="twitter nav-link" title="Twitter" style="color: rgb(255, 255, 255);"><i class="fa fa-twitter"></i><span class="m-l-20"></span></a></div>
+                    <div class="nav-item"><a href="https://www.facebook.com/PTWintl/" target="_blank" rel="noopener noreferrer" class="facebook nav-link" title="Facebook" style="color: rgb(255, 255, 255);"><i class="fa fa-facebook"></i><span class="m-l-20"></span></a></div>
+                    <div class="nav-item"><a href="https://www.linkedin.com/company/ptwintl/" target="_blank" rel="noopener noreferrer" class="linkedin nav-link" title="LinkedIn" style="color: rgb(255, 255, 255);"><i class="fa fa-linkedin-square"></i><span class="m-l-20"></span></a></div>
+                    <div class="nav-item"><a href="https://www.linkedin.com/company/ptwintl/" target="_blank" rel="noopener noreferrer" class="linkedin nav-link" title="LinkedIn" style="color: rgb(255, 255, 255);"><i class="fa fa-instagram"></i><span class="m-l-20"></span></a></div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-12 order-lg-1 order-md-1  order-sm-1 v-excmob footer-info footer-font f1">
 
-            namespace: "rslides",   // String: Change the default namespace used
-            // Function: After callback
-        });
-        var $container = $('.isotope-filter-grid');
-        $container.isotope({
-            filter: '*',
-            transitionDuration: '0.6s',
-            layoutMode: 'fitRows',
-        });
-        $('.iso-filter-drop a').click(function () {
-            var tx1 = $(this).text();
-            document.getElementById('drop-span').innerHTML = tx1;
+                <ul class="pull-xs-right nav navbar-nav navbar-toggleable-sm">
+                    <li class="nav-item">
+                        <a href="/home" id="Footer1_A1" class="nav-link" titlevalue="1" style="color: rgb(255, 255, 255);font-size: 15px;">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Service" id="Footer1_A2" class="nav-link" titlevalue="2" style="color: rgb(255, 255, 255);font-size: 15px;">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about" id="Footer1_A3" class="nav-link" titlevalue="3" style="color: rgb(255, 255, 255);font-size: 15px;">About</a>
+                    </li>
 
-            // $(this).toggleClass("insight-header");
-            $('.iso-filter-drop .active').removeClass('active');
-            $(this).addClass('active');
-            var selector = $(this).attr('data-filter');
-            $container.isotope({
-                filter: selector
-            });
-            return false;
-        });
-    });</script>
-<script>
-    $("#myDropdown a").on("click", function () {
+                    <li class="nav-item">
+                        <a href="careers" id="Footer1_A5" class="nav-link" titlevalue="5" style="color: rgb(255, 255, 255);font-size: 15px;">Careers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Contact" id="Footer1_A6" class="nav-link contact" titlevalue="6" style="color: rgb(255, 255, 255);font-size: 15px;">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="lab" id="Footer1_A7" class="nav-link" titlevalue="7" style="color: rgb(255, 255, 255);font-size: 15px;">Lab</a>
+                    </li>
+                </ul>
+            </div>
 
-        $("#myDropdown").toggleClass('show');
-    });
 
-    $(document).ready(function () {
-        RemoveLastSlashInUrl();
-    });
 
-    function RemoveLastSlashInUrl() {
-        var str = window.location.href.replace(window.location.origin, "");
-        var lastchar = str.charAt(str.length - 1);
-        if (lastchar == '/') {
-            str = str.slice(0, -1);
-            window.location = window.location.origin + str;
-        }
-    }
-</script>
+            <div class="col-lg-2 col-md-4 col-sm-12  order-lg-3 order-md-5 order-sm-3 order-sx-2 footer-social footer-font  mob-hidden f3">
+                <ul class="pull-xs-right nav navbar-nav navbar-toggleable-sm footer-font">
+                    <li class="nav-item">
+                        <a href="PDF/PTW_New_Website_Terms_of_Usage_2018.pdf" id="Footer1_A8" class="nav-link" target="_blank" rel="noopener noreferrer" style="color: rgb(255, 255, 255); font-size: 15px;">Website Terms of Usage</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="PDF/PTW_Privacy_Policy.pdf" id="Footer1_A9" class="nav-link" target="_blank" rel="noopener noreferrer" style="color: rgb(255, 255, 255);font-size: 15px;">Privacy Policy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="PDF/PTW_Modern_Slavery_Statement_2018.pdf" id="Footer1_A18" class="nav-link" target="_blank" rel="noopener noreferrer" style="color: rgb(255, 255, 255);font-size: 15px;">Modern Slavery Statement</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="PDF/Corporate_Social_Responsibility_V2.pdf" id="Footer1_A21" class="nav-link" target="_blank" rel="noopener noreferrer" style="color: rgb(255, 255, 255);font-size: 15px;">CSR Policy (India)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="PDF/2019_Gender_Pay_Gap_Report.pdf" id="Footer1_A23" class="nav-link" target="_blank" rel="noopener noreferrer" style="color: rgb(255, 255, 255);font-size: 15px;">Gender Pay Gap Report</a>
+                    </li>
+                </ul>
+            </div>
+
+
+
+            <div class="backtop pull-right" style="">
+                <a href="#top"><img src="/Images/up-arrow.png" class="a-to-top"></a>
+            </div>
+            <div class="iso pull-right">
+                <img src="/Images/Logo/ISO.png" title="ISO 27001" class="no-margin-bottom text-white text-center iso-logo">
+            </div>
+
+
+            <div class="col-lg-12 col-md-4 col-sm-12 order-lg-6 order-md-6 order-sm-6 order-sx-6 footer-copyright">
+                <p id="Footer1_P2" class="poppins-copyright v-tab">Copyright © 2020.</p>
+                <p id="Footer1_P3" class="poppins-copyright v-tab">All Rights Reserved. Pole To Win International is a group of subsidiaries of <a class="Pitcrew" href="http://www.poletowin-pitcrew-holdings.co.jp/en/" target="_blank" rel="noopener noreferrer">Poletowin Pitcrew Holdings Inc.</a></p>
+                <p id="Footer1_P4" class="poppins-copyright v-mob">Copyright © 2020. All Rights Reserved. Pole To Win International is a group of subsidiaries of <a class="Pitcrew" href="http://www.poletowin-pitcrew-holdings.co.jp/en/" target="_blank" rel="noopener noreferrer">Poletowin Pitcrew Holdings Inc.</a></p>
+            </div>
+        </div>
+    </footer>
+    <!--<div class="col-lg-12 col-md-4 col-sm-4 order-lg-6 order-md-6 order-sm-6 order-sx-6 footer-copyright">
+                <p id="Footer1_P5" class="poppins-copyright v-d">Copyright © 2020. All Rights Reserved. Pole To Win International is a group of subsidiaries of <a class="Pitcrew" href="http://www.poletowin-pitcrew-holdings.co.jp/en/" target="_blank" rel="noopener noreferrer">Poletowin Pitcrew Holdings Inc.</a></p>
+            </div> -->
+    <div id="mobile-footer" class="p-40px v-mob">
+        <ul class="navbar-nav">
+            <li class="nav-item-t dropdown">
+                <a class="dropdown-toggle color-black" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <span id="Footer1_fLanguage">English</span>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right " aria-labelledby="bd-versions">
+                    <p onclick="languageChange('en-US')" class="dropdown-item" meta:resourcekey="EnglishListItem">English</p>
+                    <div class="dropdown-divider"></div>
+                    <p onclick="languageChange('fr-CA')" class="dropdown-item" meta:resourcekey="CAFrenchListItem">Canadian French</p>
+                    <div class="dropdown-divider"></div>
+                    <p onclick="languageChange('ja')" class="dropdown-item" meta:resourcekey="JapaneseListItem">Japanese 日本語</p>
+                    <div class="dropdown-divider"></div>
+                    <p onclick="languageChange('ko')" class="dropdown-item" meta:resourcekey="KoreanListItem">Korean 한국어</p>
+                    <div class="dropdown-divider"></div>
+
+                    <p onclick="languageChange('zh-CHS')" class="dropdown-item" meta:resourcekey="CHSListItem">Simplified Chinese 简体中文</p>
+
+                </div>
+            </li>
+            <li class="nav-item-t">
+                <a href="home" id="Footer1_A10" class="nav-link" titlevalue="1">Home</a>
+            </li>
+            <li class="nav-item-t">
+                <a href="services-industries" id="Footer1_A11" class="nav-link" titlevalue="2">Services &amp; Industries</a>
+            </li>
+            <li class="nav-item-t">
+                <a href="about" id="Footer1_A12" class="nav-link" titlevalue="3">About</a>
+            </li>
+            <li class="nav-item-t">
+                <a href="news-events" id="Footer1_A13" class="nav-link" titlevalue="4">News &amp; Events</a>
+            </li>
+            <li class="nav-item-t">
+                <a href="careers" id="Footer1_A14" class="nav-link" titlevalue="5">Careers</a>
+            </li>
+            <li class="nav-item-t">
+                <a href="contact" id="Footer1_A15" class="nav-link" titlevalue="6">Contact &amp; Locations</a>
+            </li>
+            <li class="nav-item-t navitem1">
+                <a href="lab" id="Footer1_A20" class="nav-link" titlevalue="7">Lab</a>
+            </li>
+            <li class="nav-item-t navitem2">
+                <a href="PDF/PTW_New_Website_Terms_of_Usage_2018.pdf" id="Footer1_A16" titlevalue="8" target="_blank" rel="noopener noreferrer">Website Terms of Usage</a>
+            </li>
+            <li class="nav-item-t">
+                <a href="PDF/PTW_Privacy_Policy.pdf" id="Footer1_A17" titlevalue="9" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+            </li>
+            <li class="nav-item-t">
+                <a href="PDF/PTW_Modern_Slavery_Statement_2018.pdf" id="Footer1_A19" target="_blank" rel="noopener noreferrer">Modern Slavery Statement</a>
+            </li>
+            <li class="nav-item-t">
+                <a id="A22" href="../PDF/Corporate_Social_Responsibility_V2.pdf" target="_blank" rel="noopener noreferrer">CSR Policy (India)</a>
+            </li>
+            <li class="nav-item">
+                <a id="A24" href="../PDF/2019_Gender_Pay_Gap_Report.pdf" target="_blank" rel="noopener noreferrer">Gender Pay Gap Report</a>
+            </li>
+        </ul>
+    </div>
+</section>

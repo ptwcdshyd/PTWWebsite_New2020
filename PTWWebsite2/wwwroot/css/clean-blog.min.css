@@ -240,9 +240,9 @@ img::-moz-selection {
     background: 0 0;
 }
 
-#mainNav {
+/*#mainNav {
     position: absolute;
-}
+}*/
 
     #mainNav .navbar-brand {
         font-weight: 800;
@@ -546,7 +546,7 @@ footer .copyright {
 }
 
 p {
-    font-family: Poppins;
+    /*font-family: Poppins;*/
     font-weight: 600;
 }
 
@@ -1243,10 +1243,10 @@ transp-input {
         left: -25vw;
     }
 
-    body {
+    /*body {
         background: linear-gradient(to top,#fff,#009b0b,#00aacb);
     }
-
+*/
     .desk-hidden {
         display: block;
     }
@@ -1471,11 +1471,11 @@ transp-input {
         right: 10px;
     }
 
-    .iso {
+    /*.iso {
         position: absolute;
         right: 10px;
         margin: 93px 10px 0 0;
-    }
+    }*/
 
     .dgreen-mwhite {
         background-color: #fff;
@@ -1715,9 +1715,9 @@ transp-input {
         zoom: .9;
     }
 
-    body {
+    /*body {
         background: linear-gradient(91deg,#009cbd,#0ac,#fff);
-    }
+    }*/
 
     .half-circle {
         top: 20vh;
@@ -1923,9 +1923,9 @@ transp-input {
         background-color: #64ccc9;
     }
 
-    .iso {
+   /* .iso {
         margin: 107px 10px 0 0;
-    }
+    }*/
 }
 
 @media (min-width:992px) {
@@ -2046,10 +2046,10 @@ transp-input {
         right: 100px;
     }
 
-    .iso {
+   /* .iso {
         right: 100px;
         margin: 107px -70px 0 0;
-    }
+    }*/
 
     #cxcontactus {
         text-align: right;
@@ -2360,10 +2360,10 @@ transp-input {
         right: 7vw;
     }
 
-    .iso {
+    /*.iso {
         right: 7vw;
         margin: 55px 0 0 0;
-    }
+    }*/
 
     #cxcontactus {
         text-align: right;
@@ -2410,9 +2410,9 @@ transp-input {
         right: 10vw;
     }
 
-    .iso {
+    /*.iso {
         right: 10vw;
-    }
+    }*/
 
     #mainNav .navbar-nav > li.nav-item > a {
         font-size: 14px;
@@ -3063,9 +3063,10 @@ input:invalid, textarea:invalid {
 }
 
 .iso-logo {
-    width: 110px;
-    height: 60px;
-    display: block;
+    width: 30%;
+    /* height: 60px; */
+    /* display: block; */
+    margin-top: 25px;
 }
 
 .a-to-top {
@@ -3074,5 +3075,6 @@ input:invalid, textarea:invalid {
 }
 
 .footer-parent {
-    background-color: #3A3B3E;
+    background-image: url("../images/New_UI/Footer.png");
 }
+

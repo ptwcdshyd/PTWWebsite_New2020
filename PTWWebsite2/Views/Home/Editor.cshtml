@@ -113,7 +113,7 @@
             <div class="col-md-2" style="margin-top:45px;margin-left:64px">
 
                 <label style="display:flex !important">Meta Description</label>
-                @Html.TextArea("Metatage", Model.Metatage, htmlAttributes: new { @class = "form-control", autocomplete = "off", style = "width: 350px; height: 150px;display: inline;" })
+                @Html.TextArea("MetaDescription", Model.MetaDescription, htmlAttributes: new { @class = "form-control", autocomplete = "off", style = "width: 350px; height: 150px;display: inline;" })
 
             </div>
 
@@ -282,8 +282,8 @@
 
                     if (result != null) {
                         $('#summernote').summernote('code', result.HtmlContent);
-                        $('#Metatage').val(result.Metatage);
-                        $('#MetaTitle').val(result.Metatage);
+                        $('#MetaDescription').val(result.MetaDescription);
+                        $('#MetaTitle').val(result.MetaDescription);
                     }
 
 
@@ -322,7 +322,7 @@
 
                     fd.append('ModuleId', parseInt($("#ModuleId").children("option:selected").val()));
                     fd.append('LanguageCode', $("#LanguageCode").children("option:selected").val());
-                    fd.append('Metatage', $("#Metatage").val());
+                    fd.append('MetaDescription', $("#MetaDescription").val());
                     fd.append('MetaTitle', $("#MetaTitle").val());
                     fd.append('Content', $('#summernote').summernote('code'));
                     fd.append('FileString', fileString);
@@ -343,7 +343,7 @@
 
                     fd.append('ModuleId', parseInt($("#ModuleId").children("option:selected").val()));
                     fd.append('LanguageCode', $("#LanguageCode").children("option:selected").val());
-                    fd.append('Metatage', $("#Metatage").val());
+                    fd.append('MetaDescription', $("#MetaDescription").val());
                     fd.append('MetaTitle', $("#MetaTitle").val());
                     fd.append('Content', $('#summernote').summernote('code'));
                     fd.append('FileString', fileString);
@@ -364,7 +364,7 @@
 
                     fd.append('ModuleId', parseInt($("#ModuleId").children("option:selected").val()));
                     fd.append('LanguageCode', $("#LanguageCode").children("option:selected").val());
-                    fd.append('Metatage', $("#Metatage").val());
+                    fd.append('MetaDescription', $("#MetaDescription").val());
                     fd.append('MetaTitle', $("#MetaTitle").val());
                     fd.append('Content', $('#summernote').summernote('code'));
                     fd.append('FileString', fileString);
@@ -385,7 +385,7 @@
 
                     fd.append('ModuleId', parseInt($("#ModuleId").children("option:selected").val()));
                     fd.append('LanguageCode', $("#LanguageCode").children("option:selected").val());
-                    fd.append('Metatage', $("#Metatage").val());
+                    fd.append('MetaDescription', $("#MetaDescription").val());
                     fd.append('MetaTitle', $("#MetaTitle").val());
                     fd.append('Content', $('#summernote').summernote('code'));
                     fd.append('FileString', fileString);
@@ -406,7 +406,7 @@
 
                     fd.append('ModuleId', parseInt($("#ModuleId").children("option:selected").val()));
                     fd.append('LanguageCode', $("#LanguageCode").children("option:selected").val());
-                    fd.append('Metatage', $("#Metatage").val());
+                    fd.append('MetaDescription', $("#MetaDescription").val());
                     fd.append('MetaTitle', $("#MetaTitle").val());
                     fd.append('Content', $('#summernote').summernote('code'));
                     fd.append('FileString', fileString);
@@ -415,7 +415,7 @@
                     fd.append('ModuleId', parseInt($("#ModuleId").children("option:selected").val()));
                     fd.append('LanguageCode', $("#LanguageCode").children("option:selected").val());
                     fd.append('Content', $('#summernote').summernote('code'));
-                    fd.append('Metatage', $("#Metatage").val());
+                    fd.append('MetaDescription', $("#MetaDescription").val());
                     fd.append('MetaTitle', $("#MetaTitle").val());
                }
                console.log(fd);

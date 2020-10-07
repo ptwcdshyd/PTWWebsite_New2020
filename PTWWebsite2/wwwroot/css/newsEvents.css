@@ -1,0 +1,669 @@
+
+@font-face {
+    font-family: 'BebasNeue';
+    src: url('../Fonts/fonts/Bebas_Neue/BebasNeue-Regular.ttf');
+}
+.newEventsContainer {
+    padding: 100px 60px;
+}
+
+
+.d-flex{
+    display:flex;
+}
+
+.animBtn{
+    border:2px solid #F47F2C;
+    position:relative;
+}
+
+.animBtn img{
+    height:120px;
+}
+
+.newsEventAnimDiv{
+    height: 500px;
+}
+
+.animBtn p{
+    max-width: 50%;
+margin-bottom: 0;
+padding: 10px;
+}
+
+.newsEventAnimDiv .btnImage{
+    height: 80%;
+    width: 50%;
+    position: absolute;
+    top: 0;
+    left: 30px;
+}
+
+.newsEventAnimDiv .squaredDiv{
+    background:url("../Images/New_UI/news/border.svg");
+    position: absolute;
+    top: 0;
+    left: -7px;
+    background-size: 100%;
+    background-position: center;
+    width: 100%;
+    height: 80%;
+    background-repeat: no-repeat;
+}
+
+.newsEventAnimDiv .squaredDiv .squaredText {
+    width: 100%;
+    height:100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.newsEventAnimDiv .squaredDiv .squaredText p{
+    width: 50%;
+    padding: 25px;
+    font-size: 40px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color:black;
+
+}
+
+.newsEventAnimDiv .squaredDiv::before{
+    content:'';
+    position:absolute;
+    top: 22px;
+    left: 4px;
+    background:url("../Images/New_UI/ProductDev/beforeImg.png");
+    background-size:100%;
+    width:20%;
+    height:100%;
+    background-repeat:no-repeat;
+}
+
+.newsEventAnimDiv .squaredDiv::after{
+    content: '';
+position: absolute;
+ top: 91%; 
+right: 4px;
+background: url("../Images/New_UI/ProductDev/beforeImg.png");
+background-size: 100%;
+width: 20%;
+height: 20px;
+background-repeat: no-repeat;
+
+}
+
+
+ .newsEventAnimDiv .squaredDiv:hover:before{
+    -webkit-transition: left 0.5s ease-in-out;
+      left:72%; 
+     
+ } 
+
+ .newsEventAnimDiv .squaredDiv:hover:after{
+ -webkit-transition: right 0.5s ease-in-out;
+     right:75%; 
+ }
+
+ .nEAnim:hover .borders:before{
+    -webkit-transition: left 0.5s ease-in-out;
+      left:65%; 
+     
+ } 
+
+ .nEAnim:hover .borders:after{
+ -webkit-transition: right 0.5s ease-in-out;
+     right:75%; 
+ }
+
+ .SquareAnimDiv{
+    background:url("../Images/New_UI/ProductDev/pathSvg.svg");
+    background-size: 100%;
+    background-position: center;
+    width: 100%;
+    height: 500px;
+    background-repeat: no-repeat;
+    z-index: 999;
+ }
+
+ .SquareAnimDiv ./Images/New_UIec{
+     position: absolute;
+     left: 5px;
+     top: 0;
+     z-index: -1;
+ }
+
+ .squaredContent{
+    width: 45%;
+    float: right;
+    position: absolute;
+    right: 0;
+    top: 50px;
+ }
+
+ .squaredContent p{
+    padding: 25px 25px 0 25px;
+    font-size: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: black;
+ }
+
+ .upcomingDiv{
+     margin-top: 2rem;
+ }
+
+ .upcomingDiv.event1{
+    
+    background: url('../Images/New_UI/news/upcoming1.png');
+    background-size: 47%;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: 16px 3px;
+}
+
+.upcomingDiv.event1 img{ 
+    filter: invert(18%) sepia(95%) saturate(5243%) hue-rotate(318deg) brightness(89%) contrast(99%);
+}
+
+
+
+.upcomingDiv.event2{
+    
+    background: url('../Images/New_UI/news/upcoming2.png');
+    background-size: 47%;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: 15px 24px;
+}
+
+ .upcomingDiv .content p{
+     color:black;
+ }
+
+ .upcomingDiv .SImage{
+    position: relative;
+    background: url(../Images/New_UI/news/event.svg);
+    background-size: 90%;
+    background-position: center;
+    width: 50%;
+    background-repeat: no-repeat;
+    z-index: 999;
+    height: 145px;
+ }
+
+ .upcomingDiv .SImage img{
+    max-height: 90%;
+    object-fit: cover;
+    max-width: 100%;
+    z-index: -1;
+    height: 75%;
+    width: 82%;
+    position: absolute;
+    top: 18px;
+    left: 18px;
+ }
+
+ .upcomingDiv p{
+     margin-bottom: 0;
+ }
+
+ .upcomingDiv .SImage::before{
+    content:'';
+    position:absolute;
+    top: 3px;
+    left: 15px;
+    background:url("../Images/New_UI/ProductDev/beforeImg.png");
+    background-size:100%;
+    width:20%;
+    height:100%;
+    background-repeat:no-repeat;
+}
+
+.upcomingDiv .SImage::after{
+    content: '';
+position: absolute;
+top: 95%;
+right: 18px;
+background: url("../Images/New_UI/ProductDev/beforeImg.png");
+background-size: 100%;
+width: 20%;
+height: 6px;
+background-repeat: no-repeat;
+}
+
+ .upcomingDiv .content{
+     margin-top: 2rem;
+ }
+
+ .upcomingDiv .content .shareSec{
+     position: absolute;
+     bottom:12px;
+ }
+
+ .upcomingDiv .content .title{
+     color:'#404040';
+     font-family:'Nunito-sans';
+     font-weight: 600;
+     font-size: 15px;
+ }
+
+ .upcomingDiv .content .date{
+    color:'#404040';
+    font-family:'Nunito-sans';
+    font-size: 13px;
+    opacity: 0.5;
+    margin: 5px 0;
+}
+
+.marginRight{
+    margin-right: 6rem;
+}
+
+.upcomingDiv .content .share{
+    color:'#404040';
+    font-family:'Nunito-sans';
+    font-size: 10px;
+}
+
+.nameContainer{
+    background-image: url("../Images/New_UI/news/ranganBg.png");
+    width:100%;
+    height:100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.nameContainer .imgName img{
+    height: 700px;
+    object-fit: contain;
+}
+
+.description p{
+    color: black;
+    line-height: 1;
+    padding: 0 15px 0 40px;
+}
+
+.description .onceText {
+    font-family: "BebasNeue";
+    font-size: 100px;
+    color: #9B9B9B;
+    margin-bottom: 0;
+}
+
+.description .alwaysText {
+    font-family: "BebasNeue";
+    font-size: 185px;
+    color: #EE6E03;
+    margin-bottom: 0;
+    margin-left: 32px;
+}
+
+.description .gamerText {
+    font-family: "BebasNeue";
+    font-size: 180px;
+    color: #EE6E03;
+    margin-bottom: 0;
+    margin-left: 28px;
+}
+
+.paddingLeft{
+    padding-left:50px;
+}
+
+.description .quoteText{
+    font-family:'Nunito-sans';
+    font-size:100px;
+    color:black;
+}
+
+.nEAnim{
+      background: url("../Images/New_UI/news/news.png");
+    background-size: 50%;
+    width: 100%;
+    height: 400px;
+    background-repeat: no-repeat;
+}
+
+.nEAnim .borders{
+    position: relative;
+    position: absolute;
+    top: 20px;
+    left: -15px;
+    margin-right: 20px;
+
+}
+
+.nEAnim .borders::before{
+    content: '';
+    position: absolute;
+    top: -13px;
+    left: 15px;
+    background: url("../Images/New_UI/news/beforeBorder.svg");
+    background-size: 100%;
+    width: 20%;
+    height: 15px;
+    background-repeat: no-repeat;
+}
+
+.nEAnim .borders::after{
+    content: '';
+    position: absolute;
+    bottom: -13px;
+    right: 120px;
+    background: url("../Images/New_UI/news/beforeBorder.svg");
+    background-size: 100%;
+    width: 20%;
+    height: 15px;
+    background-repeat: no-repeat;
+}
+
+.nEAnim .textContent {
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    top: 15%;
+}
+
+.nEAnim .textContent p{
+    padding: 25px 135px 0 25px;
+    font-size: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: black;
+}
+
+.nE .ReadMeBtn:hover {
+    background: #EE6E03;
+}
+.upcomingDiv .upBorder {
+    margin-right: 15px;
+}
+
+.upcomingDiv .upBorder{
+    position: relative;
+
+}
+
+.upcomingDiv .upBorder::before{
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 15px;
+    background: url("../Images/New_UI/news/beforeBorder.svg");
+    background-size: 100%;
+    width: 20%;
+    height: 15px;
+    background-repeat: no-repeat;
+}
+
+.upcomingDiv .upBorder::after{
+    content: '';
+    position: absolute;
+    bottom: -13px;
+    right: 15px;
+    background: url("../Images/New_UI/news/beforeBorder.svg");
+    background-size: 100%;
+    width: 20%;
+    height: 15px;
+    background-repeat: no-repeat;
+}
+
+.eventsImage{
+    width: 50%;
+    height: fit-content;
+    position: relative;
+    margin: 1rem 0;
+    margin-right: 15px;
+
+    
+}
+
+.eventsImage.event1{
+    background: url('../Images/New_UI/news/upcoming1.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.eventsImage.event2{
+    background: url('../Images/New_UI/news/upcoming2.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.eventsImage::before{
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 15px;
+    background: url("../Images/New_UI/news/beforeBorder.svg");
+    background-size: 100%;
+    width: 20%;
+    height: 15px;
+    background-repeat: no-repeat;
+}
+
+.eventsImage::after{
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    right: 15px;
+    background: url("../Images/New_UI/news/beforeBorder.svg");
+    background-size: 100%;
+    width: 20%;
+    height: 15px;
+    background-repeat: no-repeat;
+}
+
+.content p{
+    color: black;
+}
+
+.upComingSection{
+    margin: 1rem 0;
+}
+
+.upComingSection .eventsImage.event1 img,
+.upComingSection .eventsImage.event1::after,
+    .upComingSection .eventsImage.event1::before{
+    filter: invert(18%) sepia(95%) saturate(5243%) hue-rotate(318deg) brightness(89%) contrast(99%);
+}
+
+.colorPurple .bookNow{
+    
+    opacity: 1;
+    font-family:'Nunito-sans';
+    font-size: 10px;
+}
+
+.shareSec .bookNow{
+    opacity: 1;
+    font-family:'Nunito-sans';
+    font-size: 10px;
+}
+
+.colorPurple .bookNow.purple{
+    color: #E10B7D;
+}
+
+.shareSec .bookNow.orange{
+    color: #F47F2C;
+}
+
+
+
+.upComingSection .content p{
+    margin-bottom:0;
+}
+
+.upComingSection .content .title {
+    color: '#404040';
+    font-family: 'Nunito-sans';
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.upComingSection .content .date {
+    color: '#404040';
+    font-family: 'Nunito-sans';
+    font-size: 13px;
+    opacity: 0.5;
+    margin: 5px 0;
+}
+
+.upComingSection .content .shareSec {
+    position: absolute;
+    bottom: 23px;
+}
+
+.upComingSection .content .share {
+    color: '##2B2C3A';
+    font-family: 'Nunito-sans';
+    font-size: 10px;
+    opacity: 0.5;
+}
+
+.upComingSection .content {
+    margin-top: 2rem;
+}
+
+.eventHeading{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 15px;
+    align-items:center;
+}
+
+.eventHeading p{
+    color: black;
+}
+
+.eventHeading .upText{
+    color: #F47F2C;
+    font-family: 'Nunito-sans';
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.eventHeading .calText{
+    color: #2B2C3A;
+    opacity: 0.5;
+    font-size: 12px;
+    font-family: 'Nunito-sans';
+
+    margin-bottom: 5px;
+}
+
+
+.eventsImage:hover:before{
+    -webkit-transition: left 0.5s ease-in-out;
+      left:60%; 
+     
+ } 
+
+ .eventsImage:hover:after{
+ -webkit-transition: right 0.5s ease-in-out;
+     right:60%; 
+ }
+
+ .enableFilter{
+    filter: invert(53%) sepia(84%) saturate(528%) hue-rotate(68deg) brightness(97%) contrast(86%);
+ }
+
+ .disableFilter{
+    filter: invert(14%) sepia(9%) saturate(1467%) hue-rotate(198deg) brightness(95%) contrast(89%);
+ }
+
+.middleSection {
+    background: url("../Images/New_UI/news/Brushorange.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    display: flex;
+    height: 369px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+ .middleSection .mSec{
+     text-align: center;
+ }
+
+ .middleSection .mSec .num{
+     font-size: 50px;
+     font-family: 'Nunito-sans';
+     margin-bottom: 5px;
+     color:#fff;
+ }
+
+    .middleSection .mSec .desc {
+        font-size: 20px;
+        color: #fff;
+    }
+
+.mb-10{
+    margin-bottom: 10rem;
+}
+
+.mt-10{
+    margin-top: 10rem;
+}
+
+.gamerDesc{
+    
+}
+
+
+
+@media (max-width:1400px){
+    .newsEventAnimDiv {
+        height: 440px;
+    }
+
+    .upComingSection .content {
+        margin-top: 1rem;
+    }
+
+    .upComingSection .content .title{
+        font-size: 14px;
+    }
+
+    .upComingSection .content .date{
+        font-size: 12px;
+    }
+
+    .eventsImage {
+        width: 40%;
+        height: fit-content;
+        position: relative;
+        margin: 1rem 0;
+        margin-right: 10px;
+    }
+}
+
+@media (max-width:1350px){
+    .newEventsContainer{
+        padding-right:  30px;
+    }
+}
+
+@media (max-width:1300px){
+    .newEventsContainer{
+        padding-right:  10px;
+    }
+    .upComingSection .content .date{
+        font-size: 10px;
+    }
+
+    .upComingSection .content .title{
+        font-size: 12px;
+    }
+
+    .paddingLeft{
+        padding-left:0px;
+    }
+}
+

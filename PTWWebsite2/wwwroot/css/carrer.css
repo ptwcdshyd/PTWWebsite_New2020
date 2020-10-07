@@ -1,0 +1,337 @@
+
+@font-face {
+    font-family: 'nunito';
+    src: url('../Fonts/fonts/nunito-sans.semibold.ttf'); /* IE9 Compat Modes */
+   
+  }
+@font-face {
+    font-family: 'Poppins';
+    src: url('../Fonts/fonts/Poppins-Black.ttf');
+}
+@font-face {
+    font-family: 'Nunito-sans';
+    src: url('../Fonts/fonts/NunitoSans-Black.ttf');
+}
+@font-face {
+    font-family: 'Poppons-Bold';
+    src: url('../Fonts/fonts/Poppins-Bold.ttf');
+}
+@font-face {
+    font-family: 'Nunito-Bold';
+    src: url('../Fonts/fonts/NunitoSans-Bold.ttf');
+}
+@font-face {
+    font-family: 'Nunito-regular';
+    src: url('../Fonts/fonts/NunitoSans-Regular.ttf');
+}
+@font-face {
+    font-family: 'Popins-regular';
+    src: url('../Fonts/fonts/Poppins-Regular.ttf');
+}
+@font-face {
+    font-family: 'Proxima';
+    src: url('../Fonts/fonts/proxima bold/Proxima Nova Bold.ott');
+}
+
+@font-face {
+    font-family: 'Montserrat-Regular';
+    src: url('../Fonts/fonts/Montserrat/Montserrat-Regular.ttf');
+}
+@font-face {
+    font-family: 'Montserrat-Black';
+    src: url('../Fonts/fonts/Montserrat/Montserrat-Black.ttf');
+}
+
+.about_bg {
+    /* The image used */
+    background-image: url("../Images/New_UI/ABOUT/bg.png");
+    /* Half height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding-bottom: 100px;
+}
+
+.about .coloredBg {
+    background: url("../Images/New_UI/ABOUT/Union_prod.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 500px;
+    background-color: #fff;
+}
+
+
+.desc-p{
+    color: #000000;
+    font-family: Montserrat-Regular;
+    padding: 34px;
+    margin-top: 58px;
+    font-size: 18px;
+}
+.name {
+    color: #000000;
+    font-family: Montserrat-Black;
+    padding: 34px;
+    font-size: 25px;
+}
+
+.table {
+    font-family: Nunito-sans;
+}
+
+    .table > thead > tr > th {
+        font-size: 20px;
+        padding: 35px !important;
+    }
+
+    .table > tbody > tr > td {
+        padding: 35px !important;
+    }
+
+.table-responsive {
+    padding: 0px 16%;
+}
+
+
+.text-careers{
+    margin-top: 20%;
+}
+    .text-careers p {
+        font-family: Nunito-sans;
+        font-size: 30px;
+        text-shadow: 0px 0px 10px #000000B0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 30px;
+    }
+
+    .text-careers .squad-car {
+        color: #2B2C3A;
+        font-size: 8rem;
+    }
+
+
+    /* Contact and Location CSS*/
+.contact_bg {
+    /* The image used */
+    background-image: url("../Images/New_UI/Contact&Location/bg.png");
+    /* Half height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.cont-header {
+    color: #EE6E03;
+    font-size: 25px;
+    font-family: Nunito-sans;
+    padding: 0px 10px 10px;
+    border-bottom: 1px solid #707070;
+    margin-bottom: 20px;
+    margin-top: 50px;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+#triangle-up {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 19px solid #EE6E03;
+    margin-top: 20px;
+}
+
+.location-details {
+  
+    width: 90%;
+    margin: 0px 10%;
+}
+.fa-map-marker {
+    color: #EE6E03;
+    font-size: 30px;
+    margin: 15px 10px;
+}
+
+h4 {
+    font-family: Nunito-Bold;
+    color: #1F1F24;
+}
+
+.loc p {
+    font-family: Nunito-Bold;
+    color: #1F1F24;
+    width: 55%;
+    opacity: 0.7;
+}
+
+.contact-details .col-md-6,
+.contact-details .col-md-12{
+    margin-bottom: 20px;
+}
+.contact-details input {
+    background: #fff;
+    padding: 10px;
+    width: 100%;
+    display: block;
+    border: unset;
+    color: #000;
+}
+.contact-details input:focus{
+    outline: none !important;
+}
+.contact-details textarea {
+    background: #fff;
+    padding: 10px;
+    width: 100%;
+    border: unset;
+    color: #000;
+}
+.contact-details textarea:focus{
+    outline: none !important;
+}
+
+.contact-details label {
+    all: unset;
+    color: #fff;
+    display: block;
+}
+    .contact-details label::before,
+    .contact-details label::after {
+        all: unset;
+    }
+.get-quote-btn {
+    font-family: 'Nunito-regular';
+    background: transparent linear-gradient(180deg, #FF7A17 0%, #D85E02 100%);
+    padding: 7px 15px;
+    border: unset;
+    border-radius: 3px;
+    color: #fff;
+}
+.get-quote-btn:focus{
+    outline: none !important;
+}
+
+.contact.localiz_sub-bg {
+    background-image: url("/images/New_UI/Contact&Location/sub_bg.png") !important;
+    display: flex;
+    height: unset;
+    align-items: center;
+    justify-content: space-around;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    padding: 100px 0;
+    color: #fff;
+}
+
+.mSec-part {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.contact.localiz_sub-bg .mSec .num {
+    font-size: 50px;
+    font-family: 'Nunito-sans';
+    margin-bottom: 5px;
+}
+
+.contact.localiz_sub-bg .mSec {
+    text-align: center;
+}
+    .contact.localiz_sub-bg .mSec .desc {
+        font-size: 20px;
+    }
+
+
+/*CUSTOM CHECKBOX*/
+.contact-form-group {
+    display: block;
+    margin-bottom: 15px;
+}
+
+    .contact-form-group input {
+        padding: 0;
+        height: initial;
+        width: initial;
+        margin-bottom: 0;
+        display: none;
+        cursor: pointer;
+    }
+
+    .contact-form-group label {
+        position: relative;
+        cursor: pointer;
+    }
+
+        .contact-form-group label:before {
+            content: '';
+            -webkit-appearance: none;
+            background-color: transparent;
+            border: 2px solid #FF7A17;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+            padding: 6px;
+            display: inline-block;
+            position: relative;
+            vertical-align: middle;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+    .contact-form-group input:checked + label:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 5px;
+        left: 6px;
+        width: 3px;
+        height: 8px;
+        border: solid #FF7A17;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+    }
+.custom-control-input:checked ~ .custom-control-label::before {
+    color: #fff;
+    background-color: #fff;
+}
+.sm-border-contact {
+    width: 32px;
+    border-bottom: 3px solid #1F1F24;
+    margin: 0 auto;
+}
+.contact .ReadMeBtn:hover {
+    background: #EE6E03;
+    color: white;
+    text-decoration: none;
+}
+
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .loc p {
+        width: 100%;
+    }
+}
+
+    @media only screen and (min-width: 320px) and (max-width: 576px) {
+        .mSec-part {
+            display: block;
+        }
+
+        .contact.localiz_sub-bg .mSec .num {
+            font-size: 30px !important;
+            margin: 0;
+        }
+
+        .contact.localiz_sub-bg .mSec .desc {
+            font-size: 16px;
+        }
+
+        .loc p {
+            width: 100%;
+        }
+    }

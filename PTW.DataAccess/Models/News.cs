@@ -25,8 +25,8 @@ namespace PTW.DataAccess.Models
         public string LongImageName { get; set; }
         public string LongImageUrl { get; set; }
         public string UrlTitle { get; set; }
+        public string MetaUrl { get; set; }
 
-     
         //[Required(ErrorMessage = "News Title is required")]
         public string NewsTitle { get; set; }
 
@@ -82,7 +82,7 @@ namespace PTW.DataAccess.Models
 
         //[Required(ErrorMessage = "Please upload image and size should be 504x348 dimensions")]
         public IFormFile ShorterImage { get; set; }
-
+        public IFormFile ImageNewsKasturiRangan { get; set; }
         public int ddlSelectValue { get; set; }
         public List<NewsUrlList> NewsListUpdate { get; set; }
 

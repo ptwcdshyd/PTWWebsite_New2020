@@ -1,0 +1,299 @@
+
+@font-face {
+    font-family: 'nunito';
+    src: url('../Fonts/fonts/nunito-sans.semibold.ttf'); /* IE9 Compat Modes */
+   
+  }
+@font-face {
+    font-family: 'Poppins';
+    src: url('../Fonts/fonts/Poppins-Black.ttf');
+}
+@font-face {
+    font-family: 'Nunito-sans';
+    src: url('../Fonts/fonts/NunitoSans-Black.ttf');
+}
+@font-face {
+    font-family: 'Poppons-Bold';
+    src: url('../Fonts/fonts/Poppins-Bold.ttf');
+}
+@font-face {
+    font-family: 'Nunito-Bold';
+    src: url('../Fonts/fonts/NunitoSans-Bold.ttf');
+}
+@font-face {
+    font-family: 'Nunito-regular';
+    src: url('../Fonts/fonts/NunitoSans-Regular.ttf');
+}
+@font-face {
+    font-family: 'Proxima';
+    src: url('../Fonts/fonts/proxima bold/Proxima Nova Bold.otf') format('opentype');
+  
+}
+
+
+.bg_LocalozationQA {
+    /* The image used */
+    background-image: url("../Images/New_UI/Localization_QA/Localisation-QA-new.png" );
+    /* Half height */
+    /*height: 100%;*/
+    /* Center and scale the image nicely */
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding-bottom: 100px;
+}
+    .bg_LocalozationQA .home-text > div {
+        display: flex;
+        align-items: center;
+        background: red;
+        clip-path: polygon( 0% 100%, /* top left */
+        0% 0%, /* top left */
+        100% 0%, /* top right */
+        100% 0, /* top right */
+        100% 70%, /* bottom right */
+        97% 100%, /* bottom right */
+        0% 100%, /* bottom left */
+        0% 100% /* bottom left */
+        );
+        overflow: hidden;
+        border-top-left-radius: 75px;
+        border-bottom-left-radius: 75px;
+        height: 90px;
+    }
+    .bg_LocalozationQA .home-text > div img {
+        width: 100px;
+        position: relative;
+        z-index: 999;
+        margin-left: -4px;
+        overflow: visible;
+        }
+
+        .list_num {
+        color: #4B4B4B;
+        font-size: 20px;
+        font-family: NunitoSans-Regular;
+        list-style: none;
+        margin: 0% 26%;
+    }
+
+    .list_num-local p {
+        color: #4B4B4B;
+        font-size: 16px;
+        font-weight: 400;
+        margin-left: 10px !IMPORTANT;
+    }
+    .list_num-local {
+        margin-bottom: 20px;
+    }
+    .list_num-local img {
+        width: 30px;
+        /*margin-top: -20px;*/
+    }
+
+.list_num_1 {
+    list-style-image: url(../images/New_UI/Localization_QA/li_1.png);
+    padding: 6px;
+}
+
+li.list_num::marker{
+    margin-top:2px;
+}
+.list_num_2 {
+    list-style-image: url(../images/New_UI/Localization_QA/li_2.png);
+    padding: 6px;
+}
+.list_num_3 {
+    list-style-image: url(../images/New_UI/Localization_QA/li_3.png);
+    padding: 6px;
+}
+.list_num_4 {
+    list-style-image: url(../images/New_UI/Localization_QA/li_4.png);
+    padding: 6px;
+}
+
+.videoSection {
+    position: relative;
+}
+
+.localiconQA .squaredBorder {
+    border: 2px solid #5B7CDB;
+    height: 350px;
+}
+
+.localiconQA .squaredBorder::before {
+    content: '';
+    position: absolute;
+    background: url(../Images/New_UI/Localization_QA/beforeImg.svg) !important;
+    background-size: 100%;
+    width: 20%;
+    height: 100%;
+    background-repeat: no-repeat !important;
+    top: -9px !important;
+}
+
+
+
+.localization_QA.localiz_sub-bg {
+    background-image: url("/images/New_UI/Localization_QA/sub_bg.png") !important;
+    display: flex;
+    height: unset;
+    align-items: center;
+    justify-content: space-around;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    padding: 100px 0;
+    color: #fff;
+}
+.mSec-part {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.localization_QA.localiz_sub-bg .mSec .num {
+    font-size: 50px;
+    font-family: 'Nunito-sans';
+    margin-bottom: 5px;
+}
+
+.localization_QA.localiz_sub-bg .mSec {
+    text-align: center;
+}
+
+.localization_QA.localiz_sub-bg .coloredTitle {
+    font-size: 25px;
+    color: #FFFFFF;
+    font-family: 'Nunito-sans';
+    font-weight: bold;
+    position: relative;
+    top: 15%;
+    max-width: 50%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.localization_QA.localiz_sub-bg .mSec .desc {
+    font-size: 20px;
+}
+
+.localization_QA.localiz_sub-bg .text-wrap-qa {
+    padding: 78px 30%;
+}
+
+.localization .ReadMeBtn {
+    border-color: #5B7CDB;
+    color: #5B7CDB;
+}
+
+    .localization .ReadMeBtn:hover {
+        background-color: #5B7CDB;
+        color:#ffffff;
+    }
+
+    .localization .ReadMeBtn:before {
+        /*border: 3px solid #5B7CDB;*/
+    }
+
+.localization_qa .squaredDiv {
+    background: url("../Images/New_UI/Localization_QA/frame.svg");
+    position: absolute;
+    top: 0;
+    left: -7px;
+    background-size: 100%;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+}
+    .localization_qa .squaredDiv::before {
+        content: '';
+        position: absolute;
+        top: 8px;
+        left: 4px;
+        background: url(../Images/New_UI/Localization_QA/beforeImg.svg);
+        background-size: 100%;
+        width: 20%;
+        height: 100%;
+        background-repeat: no-repeat;
+    }
+.qa-wraptxt {
+    text-align: center;
+    color: black;
+    padding: 20px;
+}
+.localization_qa .squaredDiv::after {
+    content: '';
+    position: absolute;
+    top: 90%;
+    right: 4px;
+    background: url(../Images/New_UI/Localization_QA/beforeImg.svg);
+    background-size: 100%;
+    width: 20%;
+    height: 6px;
+    background-repeat: no-repeat;
+}
+.localizationQA .prod5txt {
+    color: #5B7CDB !important;
+}
+.localizationQA .ReadMeBtn {
+    display: inline-block;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 3px solid #5B7CDB;
+    margin: 20px;
+    position: relative;
+    color: #5B7CDB;
+    letter-spacing: 1px;
+    font-size: 13px;
+    font-family: 'Nunito-sans';
+}
+    .localizationQA .ReadMeBtn:before {
+        content: '';
+        width: 21px;
+        height: 20px;
+        background: #fff;
+        border: 3px solid #5B7CDB;
+        transform: rotate(136deg);
+        position: absolute;
+        border-top: 0;
+        border-left: 0;
+        border-bottom: 0;
+        top: -11px;
+        right: -13px;
+    }
+    .localizationQA .ReadMeBtn:hover {
+        background: #5B7CDB;
+        color: white;
+        text-decoration: none;
+    }
+
+.footer-LocalizationQA {
+    background: url("../Images/New_UI/Localization_QA/Footer.png");
+    /*background-size: 100%;*/
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 576px) {
+    .mSec-part {
+        display: block;
+    }
+    .localization_QA.localiz_sub-bg .mSec .num {
+        font-size: 30px !important;
+        margin: 0;
+    }
+    .localization_QA.localiz_sub-bg .mSec .desc {
+        font-size: 16px;
+    }
+    .qa-wraptxt.Linguistic{
+        padding-top: 0;
+    }
+    .videoSection.localiconQA {
+        margin-bottom: 20px;
+    }
+    .ReadMeSection {
+        padding: 0;
+    }
+}
