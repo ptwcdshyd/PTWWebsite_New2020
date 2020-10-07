@@ -441,7 +441,7 @@ namespace PTWWebsite2.Controllers
             PlayerSupport playerSupport = new PlayerSupport();
             SpeechTech speechTech = new SpeechTech();
             LocalizationQA localizationQA = new LocalizationQA();
-
+            TalentSolution talentSolution = new TalentSolution();
             DataTable dtContent = _masterService.GetModuleContent(serviceName, "en-US");
             masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Services_QA")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
             // ViewData["Header"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Header")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
@@ -488,6 +488,12 @@ namespace PTWWebsite2.Controllers
                 localizationQA.Languages = masterPage.LanguageList;
                 localizationQA.Description = masterPage.HtmlContent;
                 return View("LocalizationQAEdit", localizationQA);
+            }
+            else if (serviceName == "TalentSolution")
+            {
+                talentSolution.Languages = masterPage.LanguageList;
+                talentSolution.Description = masterPage.HtmlContent;
+                return View("TalentSolutionEdit", talentSolution);
             }
             else
             {
@@ -1690,31 +1696,77 @@ namespace PTWWebsite2.Controllers
         #region TalentSolution
 
         [HttpPost]
-        public async Task<IActionResult> UpdateTalentSolutionPageByLanguageId(LocalizationQA LocalizationQA)
+        public async Task<IActionResult> UpdateTalentSolutionPageByLanguageId(TalentSolution TalentSolution)
         {
             try
             {
-                string path = Path.Combine(_hostingEnvironment.WebRootPath, "images/LocalizationQA/Local/");
-                string deletePath = Path.Combine(_hostingEnvironment.WebRootPath, "images/LocalizationQA/PreviewImages/");
+                string path = Path.Combine(_hostingEnvironment.WebRootPath, "images/TalentSolution/TS/");
+                string deletePath = Path.Combine(_hostingEnvironment.WebRootPath, "images/TalentSolution/PreviewImages/");
 
-                if (LocalizationQA.LocalizatonQAHearder != null)
+                if (TalentSolution.TalentSolutionHearder != null)
                 {
-                    FilePath(LocalizationQA.LocalizatonQAHearder, path + "LocalizatonQAHearder.png", deletePath + "LocalizatonQAHearder.png");
-                }
-                if (LocalizationQA.LinguisticTesting != null)
-                {
-                    FilePath(LocalizationQA.LinguisticTesting, path + "LinguisticTesting.svg", deletePath + "LinguisticTesting.svg");
-                }
-                if (LocalizationQA.LinguisticCertification != null)
-                {
-                    FilePath(LocalizationQA.LinguisticCertification, path + "LinguisticCertification.svg", deletePath + "LinguisticCertification.svg");
-                }
-                if (LocalizationQA.Frame != null)
-                {
-                    FilePath(LocalizationQA.Frame, path + "Frame.svg", deletePath + "Frame.svg");
+                    FilePath(TalentSolution.TalentSolutionHearder, path + "TalentSolutionHearder.png", deletePath + "TalentSolutionHearder.png");
                 }
 
-                int resultCode = _masterService.UpdateHomePageByLanguageId(LocalizationQA.ModuleId, LocalizationQA.LanguageCode, LocalizationQA.Description, LocalizationQA.MetaDescription, LocalizationQA.MetaTitle, LocalizationQA.MetaUrl);
+                if (TalentSolution.VettedAndVerified != null)
+                {
+                    FilePath(TalentSolution.VettedAndVerified, path + "VettedAndVerified.png", deletePath + "VettedAndVerified.png");
+                }
+                if (TalentSolution.FasterDevlivery != null)
+                {
+                    FilePath(TalentSolution.FasterDevlivery, path + "FasterDevlivery.png", deletePath + "FasterDevlivery.png");
+                }
+                if (TalentSolution.FlexibleSolutions != null)
+                {
+                    FilePath(TalentSolution.FlexibleSolutions, path + "FlexibleSolutions.png", deletePath + "FlexibleSolutions.png");
+                }
+                if (TalentSolution.Unity != null)
+                {
+                    FilePath(TalentSolution.Unity, path + "Unity.png", deletePath + "Unity.png");
+                }
+                if (TalentSolution.Unreal != null)
+                {
+                    FilePath(TalentSolution.Unreal, path + "Unreal.png", deletePath + "Unreal.png");
+                }
+                if (TalentSolution.GameMakerStudio != null)
+                {
+                    FilePath(TalentSolution.GameMakerStudio, path + "GameMakerStudio.png", deletePath + "GameMakerStudio.png");
+                }
+                if (TalentSolution.HTML != null)
+                {
+                    FilePath(TalentSolution.TalentSolutionHearder, path + "HTML.png", deletePath + "HTML.png");
+                }
+                if (TalentSolution.GameDevelopment != null)
+                {
+                    FilePath(TalentSolution.GameDevelopment, path + "GameDevelopment.png", deletePath + "GameDevelopment.png");
+                }
+                if (TalentSolution.CreativeandDesign != null)
+                {
+                    FilePath(TalentSolution.CreativeandDesign, path + "CreativeandDesign.png", deletePath + "CreativeandDesign.png");
+                }
+                if (TalentSolution.Infrastructure != null)
+                {
+                    FilePath(TalentSolution.Infrastructure, path + "Infrastructure.png", deletePath + "Infrastructure.png");
+                }
+                if (TalentSolution.RiskAndSecurity != null)
+                {
+                    FilePath(TalentSolution.RiskAndSecurity, path + "RiskAndSecurity.png", deletePath + "RiskAndSecurity.png");
+                }
+                if (TalentSolution.DataManagement != null)
+                {
+                    FilePath(TalentSolution.DataManagement, path + "DataManagement.png", deletePath + "DataManagement.png");
+                }
+                if (TalentSolution.ProjectManagement != null)
+                {
+                    FilePath(TalentSolution.ProjectManagement, path + "ProjectManagement.png", deletePath + "ProjectManagement.png");
+                }
+
+                if (TalentSolution.Frame != null)
+                {
+                    FilePath(TalentSolution.Frame, path + "Frame.svg", deletePath + "Frame.svg");
+                }
+
+                int resultCode = _masterService.UpdateHomePageByLanguageId(TalentSolution.ModuleId, TalentSolution.LanguageCode, TalentSolution.Description, TalentSolution.MetaDescription, TalentSolution.MetaTitle, TalentSolution.MetaUrl);
 
                 return Json(resultCode, new JsonSerializerSettings());
             }
@@ -1725,28 +1777,71 @@ namespace PTWWebsite2.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateTalentSolutionImagesToPreview(LocalizationQA LocalizationQA)
+        public async Task<IActionResult> UpdateTalentSolutionImagesToPreview(TalentSolution TalentSolution)
         {
-            string path = Path.Combine(_hostingEnvironment.WebRootPath, "images/LocalizationQA/PreviewImages/");
+            string path = Path.Combine(_hostingEnvironment.WebRootPath, "images/TalentSolution/PreviewImages/");
 
-            if (LocalizationQA.LocalizatonQAHearder != null && LocalizationQA.Filename == "LocalizatonQAHearder")
+            if (TalentSolution.TalentSolutionHearder != null && TalentSolution.Filename == "TalentSolutionHearder")
             {
-                FilePath(LocalizationQA.LocalizatonQAHearder, path + "LocalizatonQAHearder.png", "");
+                FilePath(TalentSolution.TalentSolutionHearder, path + "TalentSolutionHearder.png", "");
             }
 
-            if (LocalizationQA.LinguisticTesting != null && LocalizationQA.Filename == "LinguisticTesting")
+            if (TalentSolution.VettedAndVerified != null && TalentSolution.Filename == "VettedAndVerified")
             {
-                FilePath(LocalizationQA.LinguisticTesting, path + "LinguisticTesting.svg", "");
+                FilePath(TalentSolution.VettedAndVerified, path + "VettedAndVerified.png", "");
+            }
+            if (TalentSolution.FasterDevlivery != null && TalentSolution.Filename == "FasterDevlivery")
+            {
+                FilePath(TalentSolution.FasterDevlivery, path + "FasterDevlivery.png", "");
+            }
+            if (TalentSolution.FlexibleSolutions != null && TalentSolution.Filename == "FlexibleSolutions")
+            {
+                FilePath(TalentSolution.FlexibleSolutions, path + "FlexibleSolutions.png", "");
+            }
+            if (TalentSolution.Unity != null && TalentSolution.Filename == "Unity")
+            {
+                FilePath(TalentSolution.Unity, path + "Unity.png", "");
+            }
+            if (TalentSolution.Unreal != null && TalentSolution.Filename == "Unreal")
+            {
+                FilePath(TalentSolution.Unreal, path + "Unreal.png", "");
+            }
+            if (TalentSolution.GameMakerStudio != null && TalentSolution.Filename == "GameMakerStudio")
+            {
+                FilePath(TalentSolution.GameMakerStudio, path + "GameMakerStudio.png", "");
+            }
+            if (TalentSolution.HTML != null && TalentSolution.Filename == "HTML")
+            {
+                FilePath(TalentSolution.TalentSolutionHearder, path + "HTML.png", "");
+            }
+            if (TalentSolution.GameDevelopment != null && TalentSolution.Filename == "GameDevelopment")
+            {
+                FilePath(TalentSolution.GameDevelopment, path + "GameDevelopment.png", "");
+            }
+            if (TalentSolution.CreativeandDesign != null && TalentSolution.Filename == "CreativeandDesign")
+            {
+                FilePath(TalentSolution.CreativeandDesign, path + "CreativeandDesign.png", "");
+            }
+            if (TalentSolution.Infrastructure != null && TalentSolution.Filename == "Infrastructure")
+            {
+                FilePath(TalentSolution.Infrastructure, path + "Infrastructure.png", "");
+            }
+            if (TalentSolution.RiskAndSecurity != null && TalentSolution.Filename == "RiskAndSecurity")
+            {
+                FilePath(TalentSolution.RiskAndSecurity, path + "RiskAndSecurity.png", "");
+            }
+            if (TalentSolution.DataManagement != null && TalentSolution.Filename == "DataManagement")
+            {
+                FilePath(TalentSolution.DataManagement, path + "DataManagement.png", "");
+            }
+            if (TalentSolution.ProjectManagement != null && TalentSolution.Filename == "ProjectManagement")
+            {
+                FilePath(TalentSolution.ProjectManagement, path + "ProjectManagement.png", "");
             }
 
-            if (LocalizationQA.LinguisticCertification != null && LocalizationQA.Filename == "LinguisticCertification")
+            if (TalentSolution.Frame != null && TalentSolution.Filename== "Frame")
             {
-                FilePath(LocalizationQA.LinguisticCertification, path + "LinguisticCertification.svg", "");
-            }
-
-            if (LocalizationQA.Frame != null && LocalizationQA.Filename == "Frame")
-            {
-                FilePath(LocalizationQA.Frame, path + "Frame.svg", "");
+                FilePath(TalentSolution.Frame, path + "Frame.svg", "");
             }
 
             return Json(1, new JsonSerializerSettings());
@@ -1754,30 +1849,78 @@ namespace PTWWebsite2.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> PreviewTalentSolution(LocalizationQA LocalizationQA)
+        public async Task<IActionResult> PreviewTalentSolution(TalentSolution TalentSolution)
         {
-            string savedPath = Path.Combine(_hostingEnvironment.WebRootPath, "images/LocalizationQA/Local/");
-            string previewPath = Path.Combine(_hostingEnvironment.WebRootPath, "images/LocalizationQA/PreviewImages/");
+            string savedPath = Path.Combine(_hostingEnvironment.WebRootPath, "images/TalentSolution/TS/");
+            string previewPath = Path.Combine(_hostingEnvironment.WebRootPath, "images/TalentSolution/PreviewImages/");
 
-            if (LocalizationQA.LocalizatonQAHearder != null)
+
+            if (TalentSolution.TalentSolutionHearder != null)
             {
-                LocalizationQA.Description = LocalizationQA.Description.Replace(savedPath + "LocalizatonQAHearder.png", previewPath + "LocalizatonQAHearder.png");
-            }
-            if (LocalizationQA.LinguisticTesting != null)
-            {
-                LocalizationQA.Description = LocalizationQA.Description.Replace(savedPath + "LinguisticTesting.svg", previewPath + "LinguisticTesting.svg");
-            }
-            if (LocalizationQA.LinguisticCertification != null)
-            {
-                LocalizationQA.Description = LocalizationQA.Description.Replace(savedPath + "LinguisticCertification.svg", previewPath + "LinguisticCertification.svg");
+                TalentSolution.Description = TalentSolution.Description.Replace(savedPath + "TalentSolutionHearder.png", previewPath + "TalentSolutionHearder.png");
+
+                TalentSolution.Description = TalentSolution.Description.Replace(savedPath + "TalentSolutionHearder.png", previewPath + "TalentSolutionHearder.png");
             }
 
-            if (LocalizationQA.Frame != null)
+            if (TalentSolution.VettedAndVerified != null)
             {
-                LocalizationQA.Description = LocalizationQA.Description.Replace(savedPath + "Frame.svg", previewPath + "Frame.svg");
+                TalentSolution.Description = TalentSolution.Description.Replace(savedPath + "VettedAndVerified.png", previewPath + "VettedAndVerified.png");
+            }
+            if (TalentSolution.FasterDevlivery != null)
+            {
+                TalentSolution.Description = TalentSolution.Description.Replace(savedPath + "FasterDevlivery.png", previewPath + "FasterDevlivery.png");
+            }
+            if (TalentSolution.FlexibleSolutions != null)
+            {
+                TalentSolution.Description = TalentSolution.Description.Replace(savedPath + "FlexibleSolutions.png", previewPath + "FlexibleSolutions.png");
+            }
+            if (TalentSolution.Unity != null)
+            {
+                TalentSolution.Description = TalentSolution.Description.Replace(savedPath + "Unity.png", previewPath + "Unity.png");
+            }
+            if (TalentSolution.Unreal != null)
+            {
+                TalentSolution.Description = TalentSolution.Description.Replace(savedPath + "Unreal.png", previewPath + "Unreal.png");
+            }
+            if (TalentSolution.GameMakerStudio != null)
+            {
+                TalentSolution.Description = TalentSolution.Description.Replace(savedPath + "GameMakerStudio.png", previewPath + "GameMakerStudio.png");
+            }
+            if (TalentSolution.HTML != null)
+            {
+                TalentSolution.Description = TalentSolution.Description.Replace(savedPath + "HTML.png", previewPath + "HTML.png");
+            }
+            if (TalentSolution.GameDevelopment != null)
+            {
+                TalentSolution.Description = TalentSolution.Description.Replace(savedPath + "GameDevelopment.png", previewPath + "GameDevelopment.png");
+            }
+            if (TalentSolution.CreativeandDesign != null)
+            {
+                TalentSolution.Description = TalentSolution.Description.Replace(savedPath + "CreativeandDesign.png", previewPath + "CreativeandDesign.png");
+            }
+            if (TalentSolution.Infrastructure != null)
+            {
+                TalentSolution.Description = TalentSolution.Description.Replace(savedPath + "Infrastructure.png", previewPath + "Infrastructure.png");
+            }
+            if (TalentSolution.RiskAndSecurity != null)
+            {
+                TalentSolution.Description = TalentSolution.Description.Replace(savedPath + "RiskAndSecurity.png", previewPath + "RiskAndSecurity.png");
+            }
+            if (TalentSolution.DataManagement != null)
+            {
+                TalentSolution.Description = TalentSolution.Description.Replace(savedPath + "DataManagement.png", previewPath + "DataManagement.png");
+            }
+            if (TalentSolution.ProjectManagement != null)
+            {
+                TalentSolution.Description = TalentSolution.Description.Replace(savedPath + "ProjectManagement.png", previewPath + "ProjectManagement.png");
             }
 
-            int resultCode = _masterService.UpdatePreviewPageByLanguageModuleId(LocalizationQA.ModuleId, LocalizationQA.LanguageCode, LocalizationQA.Description, LocalizationQA.MetaDescription, LocalizationQA.MetaTitle, LocalizationQA.MetaUrl);
+            if (TalentSolution.Frame != null)
+            {
+                TalentSolution.Description = TalentSolution.Description.Replace(savedPath + "Frame.svg", previewPath + "Frame.svg");
+            }
+
+            int resultCode = _masterService.UpdatePreviewPageByLanguageModuleId(TalentSolution.ModuleId, TalentSolution.LanguageCode, TalentSolution.Description, TalentSolution.MetaDescription, TalentSolution.MetaTitle, TalentSolution.MetaUrl);
 
             return Json(resultCode, new JsonSerializerSettings());
         }
@@ -1900,7 +2043,7 @@ namespace PTWWebsite2.Controllers
         {
             MasterPage masterPage = new MasterPage();
             DataTable dtContent = _masterService.GetModuleContent("TalentSolution", "en-US");
-            masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("PlayerSupport")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("TalentSolution")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
             ViewData["Header"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Header")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
             ViewData["Footer"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Footer")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
 

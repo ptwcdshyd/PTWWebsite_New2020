@@ -37,6 +37,8 @@
     <Folder Include="wwwroot\images\ProductDevelopment\PD\" />
     <Folder Include="wwwroot\images\QualityAssurance\PreviewImages\" />
     <Folder Include="wwwroot\images\SpeechTech\ST\" />
+    <Folder Include="wwwroot\images\TalentSolution\PreviewImages\" />
+    <Folder Include="wwwroot\images\TalentSolution\TS\" />
   </ItemGroup>
 
 </Project>

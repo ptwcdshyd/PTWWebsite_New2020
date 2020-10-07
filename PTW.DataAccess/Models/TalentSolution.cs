@@ -23,18 +23,22 @@ namespace PTW.DataAccess.Models
         public string Filename { get; set; }
 
         public List<Languages> Languages { get; set; }
-        public IFormFile ProductDevelopmentHearder { get; set; }
-        public IFormFile Android { get; set; }
-        public IFormFile IOS { get; set; }
-        public IFormFile PC { get; set; }
-        public IFormFile Cloud { get; set; }
+        public IFormFile TalentSolutionHearder { get; set; }
+        public IFormFile VettedAndVerified { get; set; }
+        public IFormFile FasterDevlivery { get; set; }
+        public IFormFile FlexibleSolutions { get; set; }
+       
         public IFormFile Unity { get; set; }
         public IFormFile Unreal { get; set; }
         public IFormFile GameMakerStudio { get; set; }
-        public IFormFile HTML5 { get; set; }
-        public IFormFile Porting { get; set; }
-        public IFormFile LiveOps { get; set; }
+        public IFormFile HTML { get; set; }
+
         public IFormFile GameDevelopment { get; set; }
+        public IFormFile CreativeandDesign { get; set; }
+        public IFormFile Infrastructure { get; set; }
+        public IFormFile RiskAndSecurity { get; set; }
+        public IFormFile DataManagement { get; set; }
+        public IFormFile ProjectManagement { get; set; }
         public IFormFile Frame { get; set; }
     }
 }

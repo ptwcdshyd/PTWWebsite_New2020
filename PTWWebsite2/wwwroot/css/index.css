@@ -232,7 +232,7 @@ footer {
 
 
 .home-text {
-    margin-top: 62%;
+    margin-top:40% /*62%*/;
     font-family: Nunito-sans;
     font-size: 4rem;
     white-space: nowrap;
