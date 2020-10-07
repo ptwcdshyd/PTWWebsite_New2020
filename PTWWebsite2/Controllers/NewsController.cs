@@ -52,6 +52,20 @@ namespace PTWWebsite2.Controllers
             return View(newsEvents);
         }
 
+
+
+        [Route("AllNews")]
+        [Route("{culture}/AllNews")]
+        public IActionResult AllNews()
+        {
+
+
+            NewsEvents newsEvents = new NewsEvents();
+            newsEvents.News = _NewsEventService.GetAllNewsDetails();
+
+            return Json(newsEvents.News, new JsonSerializerSettings());
+        }
+
         [Route("News/{NewsTitleUrl}")]
         [Route("{cultures}/News/{NewsTitleUrl}")]
         public IActionResult NewsArticles(string cultures, string NewsTitleUrl)
