@@ -62,8 +62,8 @@ namespace PTWWebsite2.Controllers
 
             NewsEvents newsEvents = new NewsEvents();
             newsEvents.News = _NewsEventService.GetAllNewsDetails();
-
-            return Json(newsEvents.News, new JsonSerializerSettings());
+            newsEvents.Events = _NewsEventService.GetAllEventDetails();
+            return Json(newsEvents, new JsonSerializerSettings());
         }
 
         [Route("News/{NewsTitleUrl}")]
