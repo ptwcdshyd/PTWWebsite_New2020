@@ -509,11 +509,12 @@
                         '<div class="d-flex upComingSection">' +
                         '<div class="eventsImage event2">' +
                         '<img src="Images/news/News&amp;events/event.svg">' +
+                        //'<img src="~/Images/news/2020/small/' + 61.png+'">' +
                         '</div>' +
                         '<div class="content" style="width:50%">' +
-                        '<p class="title">MIGS - 15th Edition</p>' +
-                        '<p class="date">20th - 23rd Sept 2020</p>' +
-                        '<p class="date">Abu Dhabi</p>' +
+                        '<p class="title">' + result.Events[j].NewsTitle+'</p>' +
+                        '<p class="date">' + result.Events[j].EventDate+'</p>' +
+                        '<p class="date">' + result.Events[j].Location+'</p>' +
                         '<div class="shareSec">' +
                         '<div class="d-flex">' +
                         '<p class="share marginRight">Share Now</p>' +
@@ -551,7 +552,7 @@
                         htmlContent = htmlContent + '</div >'
                     }
                 }
-                if (result.length % 3 != 0) {
+                if (result.News.length % 3 != 0) {
                     htmlContent = htmlContent + '</div>'
                 }
 

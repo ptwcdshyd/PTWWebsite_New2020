@@ -115,14 +115,14 @@
 </div>
 
 <div class="row ">
-    <div class="location-details ">
+    <div class="location-details " id="asiacontentgrid">
 
         <div class="cont-header ">
             ASIA
             <div id="triangle-up" class="float-right"></div>
         </div>
 
-        <div class="row mx-0">
+        @*<div class="row mx-0">
             <div class="col-md-4 d-flex loc">
                 <i class="fa fa-map-marker" aria-hidden="true"></i>
 
@@ -227,21 +227,21 @@
                     </p>
                 </div>
             </div>
-        </div>
+        </div>*@
     </div>
 
 </div>
 
 
 <div class="row ">
-    <div class="location-details ">
+    <div class="location-details " id="northamericacontentgrid">
 
         <div class="cont-header ">
             North America
             <div id="triangle-up" class="float-right"></div>
         </div>
 
-        <div class="row mx-0">
+        @*<div class="row mx-0">
             <div class="col-md-4 d-flex loc">
                 <i class="fa fa-map-marker" aria-hidden="true"></i>
 
@@ -289,20 +289,20 @@
                 </div>
             </div>
 
-        </div>
+        </div>*@
 
     </div>
 </div>
 
 <div class="row ">
-    <div class="location-details ">
+    <div class="location-details " id="europecontentgrid">
 
         <div class="cont-header ">
             EUROPE
             <div id="triangle-up" class="float-right"></div>
         </div>
 
-        <div class="row mx-0">
+        @*<div class="row mx-0">
             <div class="col-md-4 d-flex loc">
                 <i class="fa fa-map-marker" aria-hidden="true"></i>
 
@@ -350,7 +350,7 @@
                 </div>
             </div>
 
-        </div>
+        </div>*@
 
     </div>
 </div>
@@ -592,3 +592,97 @@
     </footer>
 
 </section>
+<script>
+
+    $(document).ready(function () {
+        LoadLocation();
+    });
+    function LoadLocation() {
+        $.ajax({
+            url: "../Location",
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                debugger;
+                var htmlAsiaContent = '';
+                var htmlNorthAmericaContent = '';
+                var htmlEuropeContent = '';
+                for (var i = 1; i < result.asiaContent.length; i++) {
+
+                    if (i == 1 || (i - 1) % 3 == 0) {
+                        htmlAsiaContent = htmlAsiaContent + '<div class="row mx-0">'
+                    }
+
+                    htmlAsiaContent = htmlAsiaContent + '<div class="col-md-4 d-flex loc" >' +
+                        '<i class="fa fa-map-marker" aria-hidden="true"></i>' +
+                        '<div style=" margin: 8px" ;="" >' +
+                        '<h4>' + result.asiaContent[i].Country+'</h4>' +
+                        '<p>'+ result.asiaContent[i].Address+'</p > ' +
+                        '</div >' +
+                        '</div >'
+
+                    if (i % 3 == 0) {
+                        htmlAsiaContent = htmlAsiaContent + '</div >'
+                    }
+                }
+                if (result.asiaContent.length % 3 != 0) {
+                    htmlAsiaContent = htmlAsiaContent + '</div>'
+                }
+
+                for (var i = 1; i < result.northAmericaContent.length; i++) {
+
+                    if (i == 1 || (i - 1) % 3 == 0) {
+                        htmlNorthAmericaContent = htmlNorthAmericaContent + '<div class="row mx-0">'
+                    }
+
+                    htmlNorthAmericaContent = htmlNorthAmericaContent + '<div class="col-md-4 d-flex loc" >' +
+                        '<i class="fa fa-map-marker" aria-hidden="true"></i>' +
+                        '<div style=" margin: 8px" ;="" >' +
+                        '<h4>' + result.northAmericaContent[i].Country + '</h4>' +
+                        '<p>' + result.northAmericaContent[i].Address + '</p > ' +
+                        '</div >' +
+                        '</div >'
+
+                    if (i % 3 == 0) {
+                        htmlNorthAmericaContent = htmlNorthAmericaContent + '</div >'
+                    }
+                }
+                if (result.northAmericaContent.length % 3 != 0) {
+                    htmlNorthAmericaContent = htmlNorthAmericaContent + '</div>'
+                }
+
+                for (var i = 1; i < result.europeContent.length; i++) {
+
+                    if (i == 1 || (i - 1) % 3 == 0) {
+                        htmlEuropeContent = htmlEuropeContent + '<div class="row mx-0">'
+                    }
+
+                    htmlEuropeContent = htmlEuropeContent + '<div class="col-md-4 d-flex loc" >' +
+                        '<i class="fa fa-map-marker" aria-hidden="true"></i>' +
+                        '<div style=" margin: 8px" ;="" >' +
+                        '<h4>' + result.europeContent[i].Country + '</h4>' +
+                        '<p>' + result.europeContent[i].Address + '</p > ' +
+                        '</div >' +
+                        '</div >'
+
+                    if (i % 3 == 0) {
+                        htmlEuropeContent = htmlEuropeContent + '</div >'
+                    }
+                }
+                if (result.europeContent.length % 3 != 0) {
+                    htmlEuropeContent = htmlEuropeContent + '</div>'
+                }
+                $('#asiacontentgrid').append(htmlAsiaContent);
+                $('#northamericacontentgrid').append(htmlNorthAmericaContent);
+                $('#europecontentgrid').append(htmlEuropeContent);
+
+
+            },
+            error: function (err) {
+                // window.location = '../Logout';
+            }
+        });
+
+    }
+</script>>
