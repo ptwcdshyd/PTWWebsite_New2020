@@ -51,6 +51,17 @@ namespace PTWWebsite2.Controllers
 
         }
 
+        [Route("Labs")]
+        [Route("{culture}/Labs")]
+        public IActionResult Labs(string culture = "en-US")
+        {
+            LabsEvents LabsEvents = new LabsEvents();
+            LabsEvents.allLabs = _LabEventService.GetAllLabsDetails(culture);
+            LabsEvents.labInsights = _LabEventService.GetAllLatestInsights(culture);
+
+            return Json(LabsEvents, new JsonSerializerSettings());
+        }
+
         public IActionResult GetServicecontent(string culture)
         {
             MasterPage masterPage = new MasterPage();
