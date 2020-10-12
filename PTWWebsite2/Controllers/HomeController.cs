@@ -51,33 +51,40 @@ namespace PTWWebsite2.Controllers
             MasterPage masterPage = new MasterPage();
             DataTable dtContent = _masterService.GetModuleContent("Home", (culture == null ? "en-US" : culture == "undefined" ? "en-US" : culture));
             masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Home")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
-
+            masterPage.LanguageCode = culture == null ? "en-US" : culture == "undefined" ? "en-US" : culture;
             List<HomeLabs> homeLabs = _masterService.RetrieveHomeLabs(culture == null ? "en-US" : culture == "undefined" ? "en-US" : culture);
             ViewData["Header"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Header")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
             ViewData["Footer"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Footer")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
             masterPage.MetaDescription = Convert.ToString(dtContent.Rows[0]["MetaDescription"]);
             masterPage.MetaTitle = Convert.ToString(dtContent.Rows[0]["MetaTitle"]);
             masterPage.MetaUrl = Convert.ToString(dtContent.Rows[0]["MetaDescription"]);
-            appendLabs = "<div class=\"row helpfulDivs\" style=\"Background-color:#fff;\">";
-            for (int i = 0; i < homeLabs.Count; i++)
-            {
-                appendLabs += "<div class=\"col-md-4\"><div class=\"animationDiv\">" +
-                        "<img class=\"btnImage\" src=\"" + homeLabs[i].ImagePath + "\">" +
-                        "<div class=\"squaredDiv\" style=\"background-image: url(../Images/Homepage/HomeImages/Frame.svg);\">" +
-                         "<div class=\"squaredText\">" +
-                             "<p>" + homeLabs[i].Title + "</p>" +
-                         "</div>" +
-                         "<div class=\"MoreDiv\">" +
-                             "<p>More..</p>" +
-                         "</div>" +
-                   "  </div>" +
-                 "</div>" +
-            " </div>";
-            }
-            appendLabs += "</div>";
-            masterPage.HtmlContent = masterPage.HtmlContent.Replace("<div class=\"row helpfulDivs\"></div>", appendLabs);
+            //appendLabs = "<div class=\"row helpfulDivs\" style=\"Background-color:#fff;\">";
+            //for (int i = 0; i < homeLabs.Count; i++)
+            //{
+            //    appendLabs += "<div class=\"col-md-4\"><div class=\"animationDiv\">" +
+            //            "<img class=\"btnImage\" src=\"" + homeLabs[i].ImagePath + "\">" +
+            //            "<div class=\"squaredDiv\" style=\"background-image: url(../Images/Homepage/HomeImages/Frame.svg);\">" +
+            //             "<div class=\"squaredText\">" +
+            //                 "<p>" + homeLabs[i].Title + "</p>" +
+            //             "</div>" +
+            //             "<div class=\"MoreDiv\">" +
+            //                 "<p>More..</p>" +
+            //             "</div>" +
+            //       "  </div>" +
+            //     "</div>" +
+            //" </div>";
+            //}
+            //appendLabs += "</div>";
+            //masterPage.HtmlContent = masterPage.HtmlContent.Replace("<div class=\"row helpfulDivs\"></div>", appendLabs);
 
             return View(masterPage);
+        }
+
+        [AllowAnonymous]
+        public IActionResult GetHompageLabOrNewsArticles(string LanguageCode)
+        {
+            List<HomeLabs> homeLabs = _masterService.RetrieveHomeLabs(LanguageCode);
+           return Json(homeLabs, new JsonSerializerSettings());
         }
 
         [Route("Editor")]
@@ -96,82 +103,7 @@ namespace PTWWebsite2.Controllers
             return View();
         }
 
-        [Route("Contact")]
-        [Route("{culture}/Contact")]
-        [AllowAnonymous]
-        public IActionResult Contact(string culture)
-        {
-            MasterPage masterPage = new MasterPage();
-            DataTable dtContent = _masterService.GetModuleContent("Contact", (culture == null ? "en-US" : culture));
-            masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Contact")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
-            ViewData["Header"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Header")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
-            ViewData["Footer"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Footer")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
 
-            List<LocationDetails> list = _masterService.RetrieveLocations((culture == null ? "en-US" : culture));
-            string asiaContent = "";
-            string northAmerica = "";
-            string europeContent = "";
-            foreach (LocationDetails item in list)
-            {
-                if (item.Region == "Asia" || item.Region == "Asie" || item.Region == "アジア" || item.Region == "아시아" || item.Region == "亚洲")
-                {
-                    asiaContent = asiaContent + "<div class=\"col-xl-4 col-lg-4 col-md-6 ofc-details\"><p class=\"ofc-country\">" + item.Country + " </p>  <p class=\"ofc-city\">" + item.Location + "</p><address>" + item.Address + " </address><a class=\"btn btn-info btn-lg btn-map\" data-toggle=\"modal\" data-target=\"" + item.Target + "\" data-backdrop=\"static\" data-keyboard=\"false\"><p class=\"ofc-map\"><i class=\"fa fa-map-marker\" aria-hidden=\"true\">" + item.Title + "</i></p></a><div id =\"" + item.TargetLocation + "\" class=\"modal fade\" role=\"dialog\" tabindex=\"-1\"><div class=\"modal-dialog modal-lg\"><div class=\"modal-content\"><div class=\"modal-header\"><p>" + item.GoogleMapHeading + " </p><button type =\"button\" class=\"close\" data-dismiss=\"modal\">×</button></div> <div class=\"modal-body\"><div class=\"w100\"><iframe width =\"100%\" height=\"600\" src=\" " + item.GoogleMap + "\"></iframe></div><br></div></div></div></div></div>";
-                }
-
-
-                if (item.Region == "North America" || item.Region == "Amérique du Nord" || item.Region == "北米" || item.Region == "북미" || item.Region == "北美")
-                {
-                    northAmerica = northAmerica + "<div class=\"col-xl-4 col-lg-4 col-md-6 ofc-details\"><p class=\"ofc-country\">" + item.Country + " </p>  <p class=\"ofc-city\">" + item.Location + "</p><address>" + item.Address + " </address><a class=\"btn btn-info btn-lg btn-map\" data-toggle=\"modal\" data-target=\"" + item.Target + "\" data-backdrop=\"static\" data-keyboard=\"false\"><p class=\"ofc-map\"><i class=\"fa fa-map-marker\" aria-hidden=\"true\">" + item.Title + "</i></p></a><div id =\"" + item.TargetLocation + "\" class=\"modal fade\" role=\"dialog\" tabindex=\"-1\"><div class=\"modal-dialog modal-lg\"><div class=\"modal-content\"><div class=\"modal-header\"><p>" + item.GoogleMapHeading + " </p><button type =\"button\" class=\"close\" data-dismiss=\"modal\">×</button></div> <div class=\"modal-body\"><div class=\"w100\"><iframe width =\"100%\" height=\"600\" src=\" " + item.GoogleMap + "\"></iframe></div><br></div></div></div></div></div>";
-                }
-
-                if (item.Region == "Europe" || item.Region == "Europe" || item.Region == "欧州" || item.Region == "유럽" || item.Region == "欧洲")
-                {
-                    europeContent = europeContent + "<div class=\"col-xl-4 col-lg-4 col-md-6 ofc-details\"><p class=\"ofc-country\">" + item.Country + " </p>  <p class=\"ofc-city\">" + item.Location + "</p><address>" + item.Address + " </address><a class=\"btn btn-info btn-lg btn-map\" data-toggle=\"modal\" data-target=\"" + item.Target + "\" data-backdrop=\"static\" data-keyboard=\"false\"><p class=\"ofc-map\"><i class=\"fa fa-map-marker\" aria-hidden=\"true\">" + item.Title + "</i></p></a><div id =\"" + item.TargetLocation + "\" class=\"modal fade\" role=\"dialog\" tabindex=\"-1\"><div class=\"modal-dialog modal-lg\"><div class=\"modal-content\"><div class=\"modal-header\"><p>" + item.GoogleMapHeading + " </p><button type =\"button\" class=\"close\" data-dismiss=\"modal\">×</button></div> <div class=\"modal-body\"><div class=\"w100\"><iframe width =\"100%\" height=\"600\" src=\" " + item.GoogleMap + "\"></iframe></div><br></div></div></div></div></div>";
-                }
-
-            }
-            masterPage.HtmlContent = masterPage.HtmlContent.Replace("<div> Data</div>", asiaContent).Replace("<div> Data1</div>", northAmerica).Replace("<div> Data2</div>", europeContent);
-
-            return View(masterPage);
-        }
-
-        [Route("Location")]
-        [Route("{culture}/Location")]
-        [AllowAnonymous]
-        public IActionResult Location(string culture)
-        {
-
-            List<LocationDetails> list = _masterService.RetrieveLocations((culture == null ? "en-US" : culture));
-
-            List<LocationDetails> asia = new List<LocationDetails>();
-            List<LocationDetails> northAmerica = new List<LocationDetails>();
-            List<LocationDetails> europe = new List<LocationDetails>();
-
-        
-            foreach (LocationDetails item in list)
-            {
-                if (item.Region == "Asia" || item.Region == "Asie" || item.Region == "アジア" || item.Region == "아시아" || item.Region == "亚洲")
-                {
-                    asia.Add(item);
-                    //asiaContent = asiaContent + "<div class=\"col-xl-4 col-lg-4 col-md-6 ofc-details\"><p class=\"ofc-country\">" + item.Country + " </p>  <p class=\"ofc-city\">" + item.Location + "</p><address>" + item.Address + " </address><a class=\"btn btn-info btn-lg btn-map\" data-toggle=\"modal\" data-target=\"" + item.Target + "\" data-backdrop=\"static\" data-keyboard=\"false\"><p class=\"ofc-map\"><i class=\"fa fa-map-marker\" aria-hidden=\"true\">" + item.Title + "</i></p></a><div id =\"" + item.TargetLocation + "\" class=\"modal fade\" role=\"dialog\" tabindex=\"-1\"><div class=\"modal-dialog modal-lg\"><div class=\"modal-content\"><div class=\"modal-header\"><p>" + item.GoogleMapHeading + " </p><button type =\"button\" class=\"close\" data-dismiss=\"modal\">×</button></div> <div class=\"modal-body\"><div class=\"w100\"><iframe width =\"100%\" height=\"600\" src=\" " + item.GoogleMap + "\"></iframe></div><br></div></div></div></div></div>";
-                }
-
-
-                if (item.Region == "North America" || item.Region == "Amérique du Nord" || item.Region == "北米" || item.Region == "북미" || item.Region == "北美")
-                {
-                    northAmerica.Add(item);
-                    //northAmerica = northAmerica + "<div class=\"col-xl-4 col-lg-4 col-md-6 ofc-details\"><p class=\"ofc-country\">" + item.Country + " </p>  <p class=\"ofc-city\">" + item.Location + "</p><address>" + item.Address + " </address><a class=\"btn btn-info btn-lg btn-map\" data-toggle=\"modal\" data-target=\"" + item.Target + "\" data-backdrop=\"static\" data-keyboard=\"false\"><p class=\"ofc-map\"><i class=\"fa fa-map-marker\" aria-hidden=\"true\">" + item.Title + "</i></p></a><div id =\"" + item.TargetLocation + "\" class=\"modal fade\" role=\"dialog\" tabindex=\"-1\"><div class=\"modal-dialog modal-lg\"><div class=\"modal-content\"><div class=\"modal-header\"><p>" + item.GoogleMapHeading + " </p><button type =\"button\" class=\"close\" data-dismiss=\"modal\">×</button></div> <div class=\"modal-body\"><div class=\"w100\"><iframe width =\"100%\" height=\"600\" src=\" " + item.GoogleMap + "\"></iframe></div><br></div></div></div></div></div>";
-                }
-
-                if (item.Region == "Europe" || item.Region == "Europe" || item.Region == "欧州" || item.Region == "유럽" || item.Region == "欧洲")
-                {
-                    europe.Add(item);
-                    //europeContent = europeContent + "<div class=\"col-xl-4 col-lg-4 col-md-6 ofc-details\"><p class=\"ofc-country\">" + item.Country + " </p>  <p class=\"ofc-city\">" + item.Location + "</p><address>" + item.Address + " </address><a class=\"btn btn-info btn-lg btn-map\" data-toggle=\"modal\" data-target=\"" + item.Target + "\" data-backdrop=\"static\" data-keyboard=\"false\"><p class=\"ofc-map\"><i class=\"fa fa-map-marker\" aria-hidden=\"true\">" + item.Title + "</i></p></a><div id =\"" + item.TargetLocation + "\" class=\"modal fade\" role=\"dialog\" tabindex=\"-1\"><div class=\"modal-dialog modal-lg\"><div class=\"modal-content\"><div class=\"modal-header\"><p>" + item.GoogleMapHeading + " </p><button type =\"button\" class=\"close\" data-dismiss=\"modal\">×</button></div> <div class=\"modal-body\"><div class=\"w100\"><iframe width =\"100%\" height=\"600\" src=\" " + item.GoogleMap + "\"></iframe></div><br></div></div></div></div></div>";
-                }
-
-            }
-            return Json(new {  asiaContent = asia, northAmericaContent = northAmerica, europeContent= europe }, new JsonSerializerSettings());
-        }
 
         public IActionResult Privacy()
         {
@@ -605,76 +537,7 @@ namespace PTWWebsite2.Controllers
 
         }
 
-        [Route("AddLocations")]
-        public IActionResult AddLocations()
-        {
-            Main obj = new Main();
-            List<Region> regionlists = _userService.RetrieveRegionData();
-            obj.regions = regionlists;
-            return View(obj);
-        }
-
-        [HttpPost]
-        public IActionResult AddLocationsPost([FromBody] LocationDetails location)
-        {
-            try
-            {
-                int result = _masterService.AddLocation(location);
-                if (result > 0)
-                {
-                    return Json(new { Message = result }, new JsonSerializerSettings());
-                }
-                else
-                {
-                    return Json(new { Message = result }, new JsonSerializerSettings());
-                }
-
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-        }
-
-        [HttpPost]
-        public JsonResult Country([FromBody] Region region)
-        {
-            List<Country> countries = _userService.RetrieveCountryData(region.RegionCode);
-            return Json(new { result = countries }, new JsonSerializerSettings());
-        }
-
-        [HttpPost]
-        public JsonResult City([FromBody] Country country)
-        {
-            List<Citys> cities = _userService.RetrieveCityData(country.CountryCode);
-            return Json(new { result = cities }, new JsonSerializerSettings());
-        }
-
-
-        [Route("AllLocations")]
-
-        public IActionResult GetLocations()
-        {
-            return View();
-        }
-        public IActionResult LIstLocations()
-        {
-            List<LocationDetails> listLocations = _userService.RetrieveAllLocations();
-            return Json(new { Locations = listLocations }, new JsonSerializerSettings());
-        }
-
-        [Route("{LocationId}-Location")]
-        public IActionResult EditLocationById(int LocationId)
-        {
-            LocationDetails location = _userService.GetLocationById(LocationId);
-            return View(location);
-        }
-        [HttpPost]
-        public IActionResult UpdateLocation([FromBody] LocationDetails loc)
-        {
-            int resultcode = _userService.UpdateLocation(loc);
-            return Json(new { result = resultcode }, new JsonSerializerSettings());
-        }
+       
 
         //[ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
 
@@ -705,34 +568,25 @@ namespace PTWWebsite2.Controllers
                 {
                     FilePath(HomeContent.CustomerExperience, path + "CustomerExperience.png", deletePath + "CustomerExperience.png");
                 }
-                //if (HomeContent.CustomerExperienceOnMouseHover != null)
-                //{
-                //    FilePath(HomeContent.CustomerExperienceOnMouseHover, path + "CustomerExperienceOnMouseHover.png", deletePath + "CustomerExperienceOnMouseHover.png");
-                //}
+                if (HomeContent.Squad != null)
+                {
+                    FilePath(HomeContent.Squad, path + "Squad.png", deletePath + "Squad.png");
+                }
                 if (HomeContent.QualityAssurance != null)
                 {
                     FilePath(HomeContent.QualityAssurance, path + "QualityAssurance.png", deletePath + "QualityAssurance.png");
                 }
-                //if (HomeContent.QualityAssuranceOnMouseHover != null)
-                //{
-                //    FilePath(HomeContent.QualityAssuranceOnMouseHover, path + "QualityAssuranceOnMouseHover.png", deletePath + "QualityAssuranceOnMouseHover.png");
-                //}
+               
                 if (HomeContent.Localization != null)
                 {
                     FilePath(HomeContent.Localization, path + "Localization.png", deletePath + "Localization.png");
                 }
-                //if (HomeContent.LocalizationOnMouseHover != null)
-                //{
-                //    FilePath(HomeContent.LocalizationOnMouseHover, path + "LocalizationOnMouseHover.png", deletePath + "LocalizationOnMouseHover.png");
-                //}
+
                 if (HomeContent.AudioProduction != null)
                 {
                     FilePath(HomeContent.AudioProduction, path + "AudioProduction.png", deletePath + "AudioProduction.png");
                 }
-                //if (HomeContent.AudioProductionOnMouseHover != null)
-                //{
-                //    FilePath(HomeContent.AudioProductionOnMouseHover, path + "AudioProductionOnMouseHover.png", deletePath + "AudioProductionOnMouseHover.png");
-                //}
+
                 if (HomeContent.ProductDevelopment != null)
                 {
                     FilePath(HomeContent.ProductDevelopment, path + "ProductDevelopment.png", deletePath + "ProductDevelopment.png");
@@ -780,34 +634,22 @@ namespace PTWWebsite2.Controllers
             {
                 HomeContent.Description = HomeContent.Description.Replace("/HomeImages/CustomerExperience.png", "/PreviewImages/CustomerExperience.png");
             }
-            //if (HomeContent.CustomerExperienceOnMouseHover != null)
-            //{
-            //    HomeContent.Description = HomeContent.Description.Replace("/HomeImages/CustomerExperienceOnMouseHover.png", "/PreviewImages/CustomerExperienceOnMouseHover.png");
-            //}
+            if (HomeContent.Squad != null)
+            {
+                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/Squad.png", "/PreviewImages/Squad.png");
+            }
             if (HomeContent.QualityAssurance != null)
             {
                 HomeContent.Description = HomeContent.Description.Replace("/HomeImages/QualityAssurance.png", "/PreviewImages/QualityAssurance.png");
             }
-            //if (HomeContent.QualityAssuranceOnMouseHover != null)
-            //{
-            //    HomeContent.Description = HomeContent.Description.Replace("/HomeImages/QualityAssuranceOnMouseHover.png", "/PreviewImages/QualityAssuranceOnMouseHover.png");
-            //}
             if (HomeContent.Localization != null)
             {
                 HomeContent.Description = HomeContent.Description.Replace("/HomeImages/Localization.png", "/PreviewImages/Localization.png");
             }
-            //if (HomeContent.LocalizationOnMouseHover != null)
-            //{
-            //    HomeContent.Description = HomeContent.Description.Replace("/HomeImages/LocalizationOnMouseHover.png", "/PreviewImages/LocalizationOnMouseHover.png");
-            //}
             if (HomeContent.AudioProduction != null)
             {
                 HomeContent.Description = HomeContent.Description.Replace("/HomeImages/AudioProduction.png", "/PreviewImages/AudioProduction.png");
             }
-            //if (HomeContent.AudioProductionOnMouseHover != null)
-            //{
-            //    HomeContent.Description = HomeContent.Description.Replace("/HomeImages/AudioProductionOnMouseHover.png", "/PreviewImages/AudioProductionOnMouseHover.png");
-            //}
             if (HomeContent.LocationMap != null)
             {
                 HomeContent.Description = HomeContent.Description.Replace("/HomeImages/LocationMap.svg", "/PreviewImages/LocationMap.svg");
@@ -854,42 +696,30 @@ namespace PTWWebsite2.Controllers
                 {
                     FilePath(HomeContent.CustomerExperience, path + "CustomerExperience.png", "");
                 }
-                //if (HomeContent.CustomerExperienceOnMouseHover != null && HomeContent.Filename == "CustomerExperienceOnMouseHover")
-                //{
-                //    FilePath(HomeContent.CustomerExperienceOnMouseHover, path + "CustomerExperienceOnMouseHover.png", "");
-                //}
+                if (HomeContent.Squad != null && HomeContent.Filename == "Squad")
+                {
+                    FilePath(HomeContent.Squad, path + "Squad.png", "");
+                }
                 if (HomeContent.QualityAssurance != null && HomeContent.Filename == "QualityAssurance")
                 {
                     FilePath(HomeContent.QualityAssurance, path + "QualityAssurance.png", "");
                 }
-                //if (HomeContent.QualityAssuranceOnMouseHover != null && HomeContent.Filename == "QualityAssuranceOnMouseHover")
-                //{
-                //    FilePath(HomeContent.QualityAssuranceOnMouseHover, path + "QualityAssuranceOnMouseHover.png", "");
-                //}
+                
                 if (HomeContent.Localization != null && HomeContent.Filename == "Localization")
                 {
                     FilePath(HomeContent.Localization, path + "Localization.png", "");
                 }
-                //if (HomeContent.LocalizationOnMouseHover != null && HomeContent.Filename == "LocalizationOnMouseHover")
-                //{
-                //    FilePath(HomeContent.LocalizationOnMouseHover, path + "LocalizationOnMouseHover.png", "");
-                //}
+              
                 if (HomeContent.AudioProduction != null && HomeContent.Filename == "AudioProduction")
                 {
                     FilePath(HomeContent.AudioProduction, path + "AudioProduction.png", "");
                 }
-                //if (HomeContent.AudioProductionOnMouseHover != null && HomeContent.Filename == "AudioProductionOnMouseHover")
-                //{
-                //    FilePath(HomeContent.AudioProductionOnMouseHover, path + "AudioProductionOnMouseHover.png", "");
-                //}
+               
                 if (HomeContent.ProductDevelopment != null && HomeContent.Filename == "ProductDevelopment")
                 {
                     FilePath(HomeContent.ProductDevelopment, path + "ProductDevelopment.png", "");
                 }
-                //if (HomeContent.ProductDevelopmentOnMouseHover != null && HomeContent.Filename == "ProductDevelopmentOnMouseHover")
-                //{
-                //    FilePath(HomeContent.ProductDevelopmentOnMouseHover, path + "ProductDevelopmentOnMouseHover.png", "");
-                //}
+               
                 if (HomeContent.LocationMap != null && HomeContent.Filename == "LocationMap")
                 {
                     FilePath(HomeContent.LocationMap, path + "LocationMap.svg", "");

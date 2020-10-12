@@ -6,8 +6,7 @@
 
 
 @*@Html.Raw(Model.HtmlContent)*@
-
-<div class="container_div about_bg">
+<div class="container_div about_bg" style="background-image: url(../images/About/AboutImages/AboutPageHeader.png);">
     <div class="row mb-5">
         <div class="col-md-2">
 
@@ -130,91 +129,8 @@
             <p class="sm-border"></p>
         </div>
     </div>
+    <div id="Profiles"></div>
 
-    <div class="row">
-
-        <div class="grid">
-            <figure class="effect-sadie">
-                <img src="~/images/New_UI/ABOUT/G1.png" alt="img02" />
-                <figcaption>
-
-                    <p>
-                        Teppei Tachibana
-                        As Chairman of PTW, Teppei Tachibana is recognized as a diplomatic and trustworthy leader who has unwavering loyalty to our heritage, culture, and values. Teppei became President and CEO of Pole To Win America, Inc. in 2009 when Pole To Win opened its first overseas studio. Now in the role of Chairman of PTW, and President & CEO of PTW’s parent company, Poletowin Pitcrew Holdings Inc., Teppei oversees a successful global enterprise that has grown from a single studio in one country to 35 studios across 11 countries, with all overseas studios under a single holding company since January 2016.
-                    </p>
-                    <a href="#">View more</a>
-                </figcaption>
-
-            </figure>
-            <figure class="effect-sadie">
-                <img src="~/images/New_UI/ABOUT/G2.png" alt="img14" />
-                <figcaption>
-                    @*<h2>Holy <span>Sadie</span></h2>*@
-                    <p>
-                        Deborah Kirkham
-                        As CEO of PTW and a board member of PPHD, Deborah Kirkham is committed to leading transformative change while achieving demanding financial and operational goals. Deborah has been with PTW nearly a decade. Under her leadership, PTW has grown to over 1,800 employees across 16 studios in 10 countries around the world. In her role as President and COO, the company celebrated double digit growth year-on-year. Deborah’s infectious love of her company has built a company culture centered around loyalty, speed, and growth, and has allowed her to lead a high-performing team that is laser-focused on accelerating innovation worldwide.
-                    </p>
-                    <a href="#">View more</a>
-                </figcaption>
-            </figure>
-            <figure class="effect-sadie">
-                <img src="~/images/New_UI/ABOUT/G3.png" alt="img14" />
-                <figcaption>
-                    @*<h2>Holy <span>Sadie</span></h2>*@
-                    <p>
-                        Steve Moseley
-                        With extensive cross-functional and multinational experience, Steve Moseley brings a unique perspective to the CFO role at Pole to Win International. Steve is a highly effective hands-on leader with over 20 years’ experience in Finance, M&A, Legal, Operations, Sales, Technology and Administration. Steve has proven ability to conceptualize and implement vision through collaboration and alignment of all stakeholders to drive profitable results.
-                    </p>
-                    <a href="#">View more</a>
-                </figcaption>
-            </figure>
-
-        </div>
-
-    </div>
-
-    <div class="row">
-
-        <div class="grid">
-            <figure class="effect-sadie">
-                <img src="~/images/New_UI/ABOUT/G4.png" alt="img02" />
-                <figcaption>
-                    @*<h2>Holy <span>Sadie</span></h2>*@
-                    <p>
-                        Masaru ‘Mikey’ Harada
-                        Mikey Harada joined Pole To Win in 2009 as Head of the Global Business Division and was responsible for the company’s global expansion. He played a key role in setting up subsidiaries and acquisitions as part of the development of Pole To Win International. As Chief Liaison Officer, Mikey develops strategies to utilize synergies across all PTW group companies, creating added value for clients. He is a valued knowledge resource on culture, business, law and finance, with over 30 years’ experience in marketing, management and international business development.
-                    </p>
-                    <a href="#">View more</a>
-                </figcaption>
-
-            </figure>
-            <figure class="effect-sadie">
-                <img src="~/images/New_UI/ABOUT/G5.png" alt="img14" />
-                <figcaption>
-                    <h2>Holy <span>Sadie</span></h2>
-                    <p>
-
-                        Kasturi Rangan
-                        Our Chief Product Officer, Kasturi Rangan is our visionary of the future and our evangelist for great product. Rangan is an industry veteran and has been with PTW for nearly a decade, significantly growing and leading operations across the Quality Assurance, Innovation, and the Customer Experience line of business. In his most recent role at PTW, Rangan was the Regional President, over North American and India operations. He was also recently appointed as the CEO of PTW’s new game and product development brand, Orange Rock Studios. In his role as CPO of PTW, Rangan oversees the product innovation and transformation arm for PTW globally.
-                    </p>
-                    <a href="#">View more</a>
-                </figcaption>
-            </figure>
-            <figure class="effect-sadie">
-                <img src="~/images/New_UI/ABOUT/G6.png" alt="img14" />
-                <figcaption>
-                    <h2>Holy <span>Sadie</span></h2>
-                    <p>
-                        Andy Emery
-                        As COO, Andy brings a proven track record of driving operational success within complex international organizations, building strong cross-cultural teams, and helping companies achieve their full potential through strategic focus and operational improvement. Prior to joining PTW in 2015, he gained considerable experience in the interactive entertainment sector, co-founding and building SIDE into Europe’s leading provider of videogame audio services and winning multiple Industry Excellence Awards along the way. Post-acquisition, Andy played a key role in SIDE’s integration into the PTW group, launching SIDE Shanghai in 2016 and SIDE LA in 2017.
-                    </p>
-                    <a href="#">View more</a>
-                </figcaption>
-            </figure>
-
-        </div>
-
-    </div>
 
     <div class="mt-5 row justify-content-center">
         <h5 class="prod5txt">HELPFUL LINKS</h5>
@@ -431,3 +347,89 @@
         </ul>
     </div>
 </section>
+
+
+
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script>
+            $(document).ready(function () {
+                LoadProfile();
+
+
+            });
+        function LoadProfile() {
+            debugger;
+                $.ajax({
+                    url: "../"+"@Model.Culture"+"/AboutProfile",
+                    type: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (result) {
+                        var htmlContent = "";
+                        var count = 1;
+                        $.each(result.Profiles, function (result, item) {
+                            if (count == 1 || (count-1) % 3 == 0) {
+                                htmlContent = htmlContent + '<div class="grid">'
+                            }
+                            htmlContent = htmlContent +
+                                '<figure class="effect-sadie">' +
+                                '<img src="' + item.ImgPath + '" alt="img02" />' +
+                                '<figcaption>' +
+                                '<p>' + item.Title + '<br/>' + item.Description + '</p>' +
+                                '<a href="#">View more</a>' +
+                                '</figcaption>' +
+                                '</figure>';
+
+                            if (count % 3 == 0) {
+                                htmlContent = htmlContent + '</div>'
+                            }
+
+                            count++;
+                        });
+                        if (result.Profiles.length % 3 != 0) {
+                            htmlContent = htmlContent + '</div>'
+                        }
+                        $('#Profiles').append(htmlContent);
+
+                    },
+                    error: function (err) {
+
+                    }
+                });
+
+            }
+
+
+</script>
+
+
+<script src="../JS/count-up.min.js"></script>
+
+<script>
+    var cu = new counterUp({
+        start: 0,
+        duration: 6000,
+        intvalues: true,
+        interval: 100
+    });
+    cu.start();
+</script>
+
+<script>
+    $(document).ready(function () {
+        RemoveLastSlashInUrl();
+    });
+
+    function RemoveLastSlashInUrl() {
+        var str = window.location.href.replace(window.location.origin, "");
+        var lastchar = str.charAt(str.length - 1);
+        if (lastchar == '/') {
+            str = str.slice(0, -1);
+            window.location = window.location.origin + str;
+        }
+    }
+</script>
+
+
+
+

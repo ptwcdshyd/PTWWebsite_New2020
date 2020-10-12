@@ -1734,7 +1734,7 @@ namespace PTWWebsite2.Controllers
                 }
                 if (TalentSolution.HTML != null)
                 {
-                    FilePath(TalentSolution.TalentSolutionHearder, path + "HTML.png", deletePath + "HTML.png");
+                    FilePath(TalentSolution.HTML, path + "HTML.png", deletePath + "HTML.png");
                 }
                 if (TalentSolution.GameDevelopment != null)
                 {
@@ -1812,7 +1812,7 @@ namespace PTWWebsite2.Controllers
             }
             if (TalentSolution.HTML != null && TalentSolution.Filename == "HTML")
             {
-                FilePath(TalentSolution.TalentSolutionHearder, path + "HTML.png", "");
+                FilePath(TalentSolution.HTML, path + "HTML.png", "");
             }
             if (TalentSolution.GameDevelopment != null && TalentSolution.Filename == "GameDevelopment")
             {
@@ -1857,8 +1857,6 @@ namespace PTWWebsite2.Controllers
 
             if (TalentSolution.TalentSolutionHearder != null)
             {
-                TalentSolution.Description = TalentSolution.Description.Replace(savedPath + "TalentSolutionHearder.png", previewPath + "TalentSolutionHearder.png");
-
                 TalentSolution.Description = TalentSolution.Description.Replace(savedPath + "TalentSolutionHearder.png", previewPath + "TalentSolutionHearder.png");
             }
 

@@ -24,6 +24,10 @@
     <Folder Include="wwwroot\images\About\PreviewImages\" />
     <Folder Include="wwwroot\images\AudioProduction\AP\" />
     <Folder Include="wwwroot\images\AudioProduction\PreviewImages\" />
+    <Folder Include="wwwroot\images\Careers\CareerImages\" />
+    <Folder Include="wwwroot\images\Careers\PreviewImages\" />
+    <Folder Include="wwwroot\images\Contact\ContactImages\" />
+    <Folder Include="wwwroot\images\Contact\PreviewImages\" />
     <Folder Include="wwwroot\images\Homepage\HomeImages\" />
     <Folder Include="wwwroot\images\Homepage\PreviewImages\" />
     <Folder Include="wwwroot\images\LocalizationQA\PreviewImages\" />

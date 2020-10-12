@@ -1,0 +1,125 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutForPtwCms.cshtml";
+}
+
+    <div id="PostBackMsg" style="display:none;">
+        <img alt="loader" src="~/images/loader.gif" />
+    </div>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+    <link href="~/css/datatables.css" rel="stylesheet">
+    
+</head>
+<body>
+
+    <table id="tblLocations"></table>
+    <script type="text/javascript" src="~/js/datatables.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            $('#tblLocations').DataTable({
+                autoWidth: false,
+                fixedColumns: false,
+                "aoColumnDefs": [
+                    {
+                        "bSortable": false,
+                        "aTargets": [-1] // <-- gets last column and turns off sorting
+                    }
+                ],
+
+                columns: [
+
+                    { title: 'ID', data: "ID" },
+                    { title: 'Region', data: "Region" },
+                    { title: 'Country', data: "Country" },
+                    { title: 'Location', data: "Location" },        
+                    
+                    { title: 'Address', data: "Address" },
+                    //{ title: 'GoogleMapHeading', data: "GoogleMapHeading" },
+                    //{ title: 'GoogleMap', data: "GoogleMap" },                      
+                    { title: 'LanguageCode', data: "Language" },
+                    {
+                        title: 'Action', data: "ID",
+                        render: function (data, type, row, meta) {
+                            var a = '  <div class="btn-group manageIcons">';
+                            a = a + ' <a href="#" style="padding-right:20px;" title="Edit" onclick="EditLocation(' + row.ID + ')">  <img src="../images/edit.svg" alt=""> </a>';
+                            a = a + '</div>';
+                            return a;
+                        }
+                    }
+                ],
+                "bLengthChange": false,
+                info: true,
+                responsive: false,
+                scrollX: true,
+                drawCallback: function (settings) {
+                    var pagination = $(this).closest('.dataTables_wrapper').find('.dataTables_paginate');
+                    pagination.toggle(this.api().page.info().pages > 1);
+                },
+                "fnInitComplete": function () {
+                    oTable = $('#tblUsers').DataTable();
+                    $('#datatableSearch').keyup(function () {
+                        oTable.search($(this).val()).draw();
+                    })
+                }
+
+            });
+
+            LoadDatatable();
+        });
+
+
+        function LoadDatatable() {
+            $("#PostBackMsg").show();
+
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("LIstLocations", "Contact")',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    console.log(result);
+                    if (result == 'Logout') {
+                        window.location = '../Logout';
+                    }
+                    $('#tblLocations').DataTable().clear().draw();
+                    $('#tblLocations').DataTable().rows.add(result.Locations);
+                    $('#tblLocations').DataTable().columns.adjust().draw();
+                    setTimeout(
+                        function () {
+                            $('#tblLocations').DataTable().columns.adjust().draw();
+                        }, 500);
+                    $("#PostBackMsg").fadeOut("slow");
+                },
+
+                error: function (err) {
+                    if (err.status === 0) {
+                        window.location = '../Logout';
+                    }
+                    $("#PostBackMsg").fadeOut("slow");
+                }
+            });
+        }
+
+
+        function EditLocation(LocationId) {
+            window.location = "../" + LocationId + "-Location";
+        }
+
+
+
+    </script>
+
+</body>
+</html>

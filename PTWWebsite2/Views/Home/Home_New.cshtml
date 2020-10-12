@@ -137,7 +137,7 @@
 
                 </div>
                 <div class="col-md-2">
-                    <img id="PageBackgroundImageImg" class="imageShow" src="../images/Homepage/HomeImages/PageBackgroundImage.png" height="150px" width="150px"  />
+                    <img id="PageBackgroundImageImg" class="imageShow" src="../images/Homepage/HomeImages/PageBackgroundImage.png" height="150px" width="150px" />
                 </div>
             </div>
             <div class="row">
@@ -158,7 +158,7 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <img id="CustomerExperienceImg" class="imageShow" src="../images/Homepage/HomeImages/CustomerExperience.png" height="150px" width="150px"  />
+                    <img id="CustomerExperienceImg" class="imageShow" src="../images/Homepage/HomeImages/CustomerExperience.png" height="150px" width="150px" />
                 </div>
 
                 @*<div class="form-group col-md-6 col-sm-6">
@@ -185,7 +185,7 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <img id="QualityAssuranceImg" class="imageShow" src="../images/Homepage/HomeImages/QualityAssurance.png" height="150px" width="150px"  />
+                    <img id="QualityAssuranceImg" class="imageShow" src="../images/Homepage/HomeImages/QualityAssurance.png" height="150px" width="150px" />
                 </div>
                 @*<div class="form-group  col-md-6 col-sm-6">
                 <label class="col-form-label">Quality Assurance On Mouse Hover (400x400 dimensions)</label>
@@ -209,7 +209,7 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <img id="LocalizationImg" class="imageShow" src="../images/Homepage/HomeImages/Localization.png" height="150px" width="150px"  />
+                    <img id="LocalizationImg" class="imageShow" src="../images/Homepage/HomeImages/Localization.png" height="150px" width="150px" />
                 </div>
                 @*<div class="form-group col-md-6 col-sm-6">
                 <label class="col-form-label">Localization On Mouse Hover (300x300 dimensions)</label>
@@ -233,7 +233,7 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <img id="AudioProductionImg" class="imageShow" src="../images/Homepage/HomeImages/AudioProduction.png" height="150px" width="150px"  />
+                    <img id="AudioProductionImg" class="imageShow" src="../images/Homepage/HomeImages/AudioProduction.png" height="150px" width="150px" />
                 </div>
                 @*<div class="form-group col-md-6 col-sm-6">
                 <label class="col-form-label">Audio Production On Mouse Hover (300x300 dimensions)</label>
@@ -257,7 +257,7 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <img id="ProductDevelopmentImg" class="imageShow" src="../images/Homepage/HomeImages/ProductDevelopment.png" height="150px" width="150px"  />
+                    <img id="ProductDevelopmentImg" class="imageShow" src="../images/Homepage/HomeImages/ProductDevelopment.png" height="150px" width="150px" />
                 </div>
                 @*<div class="form-group col-md-6 col-sm-6">
                 <label class="col-form-label">Product Development On Mouse Hover (300x300 dimensions)</label>
@@ -284,7 +284,7 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <img id="LocationMapImg" class="imageShow" src="../images/Homepage/HomeImages/LocationMap.svg" height="150px" width="150px"  />
+                    <img id="LocationMapImg" class="imageShow" src="../images/Homepage/HomeImages/LocationMap.svg" height="150px" width="150px" />
                 </div>
             </div>
 
@@ -299,7 +299,21 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <img id="KickStartImageImg" class="imageShow" src="../images/Homepage/HomeImages/KickStartImage.png" height="150px" width="150px"  />
+                    <img id="KickStartImageImg" class="imageShow" src="../images/Homepage/HomeImages/KickStartImage.png" height="150px" width="150px" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-8 col-sm-8">
+                    <label class="col-form-label">Squad BackgroundImage (490x163 dimensions)</label>
+                    <div class="col-sm-8">
+                        <div class="custom-file">
+                            <input id="Squad" type="file" class="form-control custom-file-input">
+                            <label class="custom-file-label">Choose File...490x163 dimensions</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <img id="SquadImg" class="imageShow" src="../images/Homepage/HomeImages/Squad.png" height="150px" width="150px" />
                 </div>
             </div>
             <div class="row">
@@ -313,7 +327,7 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <img id="FrameImg" class="imageShow" src="../images/Homepage/HomeImages/Frame.svg" height="150px" width="150px"  />
+                    <img id="FrameImg" class="imageShow" src="../images/Homepage/HomeImages/Frame.svg" height="150px" width="150px" />
                 </div>
             </div>
             <div class="row">
@@ -516,7 +530,9 @@
             var files13 = $('#PageBackgroundImage')[0].files[0];
             var files14 = $('#Frame')[0].files[0];
             var files15 = $('#LocationMap')[0].files[0];
+            var files16 = $('#Squad')[0].files[0];
 
+            fd.append('Squad', files16);
             fd.append('LocationMap', files15);
             fd.append('Frame', files14);
             fd.append('CareersImage', files1);
@@ -597,7 +613,12 @@
             var files13 = $('#PageBackgroundImage')[0].files[0];
             var files14 = $('#Frame')[0].files[0];
             var files15 = $('#LocationMap')[0].files[0];
+            var files16 = $('#Squad')[0].files[0];
 
+           
+            if ($('#Squad')[0].files[0] != undefined) {
+                fd.append('Squad', files16);
+            }
             
             if ($('#LocationMap')[0].files[0] != undefined) {
                 fd.append('LocationMap', files15);

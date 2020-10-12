@@ -36,7 +36,7 @@
 
 .about_bg {
     /* The image used */
-  /*  background-image: url("../Images/New_UI/ABOUT/bg.png");*/
+    /* background-image: url("../Images/New_UI/ABOUT/bg.png"); */
     /* Half height */
     height: 100%;
     /* Center and scale the image nicely */
@@ -45,7 +45,7 @@
 }
 
 .about .coloredBg {
-    background: url("../Images/New_UI/ABOUT/Union_prod.png");
+    /* background: url("../Images/New_UI/ABOUT/Union_prod.png"); */
     background-size: 100%;
     background-repeat: no-repeat;
     width: 100%;
@@ -78,6 +78,7 @@
         text-align: center;
         cursor: pointer;
         border: 3px solid #F47F2C;
+        box-shadow: 3px 3px 20px #00000091;
     }
 
         .grid figure img {
@@ -203,3 +204,85 @@ figure.effect-sadie:hover p {
 .about .coloredTitle {
     top: 35%;
 }
+
+.about_box {
+    padding: 58px;
+}
+@media (max-width:1300px) {
+
+
+    .navbar-nav li {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+}
+
+@media (max-width:1250px) {
+    .navbar-nav li {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+}
+
+
+@media (max-width:1200px) {
+}
+
+
+@media (max-width:1100px) {
+    .navbar-nav li {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+}
+
+@media only screen and (min-width: 320px) and (max-width: 576px) {
+    .about_bg {
+        /* The image used */
+        background-image: url("../Images/New_UI/ABOUT/mob_bg.png") !important;
+        /* Half height */
+        height: 100%;
+        /* Center and scale the image nicely */
+        background-repeat: no-repeat;
+        background-size: 100% !important;
+    }
+
+    .mob_about .home-text {
+        font-size: 3rem;
+    padding: 0 80px;
+        text-align: center;
+        white-space: normal;
+        margin-top: 100%;
+        margin-bottom: 70px;
+        /* line-height: 58px; */
+    }
+
+    .mob_about .home-text p{
+        line-height: 34px;
+
+    }
+
+    .about_box {
+        padding: 0px;
+    }
+
+    .abt_txt {
+        text-align: center;
+    }
+
+    .grid {
+
+        display:block;
+        padding:0px;
+    }
+        .grid figure{
+            width:100%;
+        }
+    .coloredBg .coloredTitle {
+        font-size: 19px;
+        max-width: 100%;
+    }
+    }

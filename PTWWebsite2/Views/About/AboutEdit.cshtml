@@ -64,7 +64,7 @@
 </div>
 
 <div class="page-header" style="text-align: center;">
-    <h3>Edit Localization Service</h3>
+    <h3>About</h3>
 </div>
 
 <div class="contentpanel report" style="border: 1px solid #00b8ff85;width: 1180px;margin-top: 45px;margin-left:50px;">
@@ -290,15 +290,18 @@
        // }
     }
 
-    function PreviewSpeechTech() {
+    function PreviewAbout() {
         // if (Validate()) {
         if ($("#Languages").children("option:selected").val() != "Please select") {
 
             debugger;
+            var fd = new FormData();
             var files1 = $('#AboutPageHeader')[0].files[0];
             //var files2 = $('#Frame')[0].files[0];
-
-            fd.append('AboutPageHeader', files1);
+            if ($('#AboutPageHeader')[0].files[0] != undefined) {
+                fd.append('AboutPageHeader', files1);
+            }
+           
             // fd.append('Frame', files2);
 
             fd.append('Description', $("#Description").val());
@@ -311,30 +314,16 @@
 
             $.ajax({
                 type: "POST",
-                url: '@Url.Action("PreviewSpeechTech", "Services")',
+                url: '@Url.Action("PreviewAbout", "About")',
                 data: fd,
                 contentType: false,
                 processData: false,
                 success: function (result) {
-                    debugger;
-                    let win = window.open('', 'My New Window');
-
-                    // write some HTML to that window
-                    win.document.write(result.Preview);
-                    //    console.log(result);
-                    //    if (result == 'Logout') {
-                    //    window.location = '../Logout';
-                    //}
-                    //    if (result == 1) {
-                    //    var alertmsg = "Successfully Added";
-                    //    AlertMessage('growl-success', 'Information', alertmsg, false, 3000);
-                    //    $("#PostBackMsg").fadeOut("slow");
-                    //}
-                    //else {
-                    //    var alertmsgs = "Added failed";
-                    //    AlertMessage('growl-danger', 'Validation', alertmsgs, false, 3000);
-                    //    $("#PostBackMsg").fadeOut("slow");
-                    //}
+                    if (result == 'Logout') {
+                        window.location = '../Logout';
+                    }
+                    var Url = "../Preview/PagePreview?ModuleId=" + 13 + "&LanguageCode=" + $("#Languages").children("option:selected").val() + "";
+                    window.open(Url, "_blank");
                 },
                 error: function (err) {
                     if (err.status === 0) {

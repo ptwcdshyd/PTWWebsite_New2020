@@ -490,7 +490,7 @@
                 var htmlEventsContent = '';
                 var mainhtmlContent = '<div class="nEAnim">' +
                     '<div class="borders">' +
-                    '<img style="width: 90%;" src="Images/news/News&amp;events/border.svg">' +
+                    '<img style="width: 90%;" src="' + result.News[0].LongImageUrl + result.News[0].LongImageName +'">' +
                     //'<img style="width: 90%;" src="~/Images/news/2018/large/'+result.News[0].LongImageName+'">' +
                     '</div>' +
                     '<div class="imageContent">' +
@@ -508,7 +508,7 @@
                     htmlEventsContent = htmlEventsContent+'<div class="col-md-12">' +
                         '<div class="d-flex upComingSection">' +
                         '<div class="eventsImage event2">' +
-                        '<img src="Images/news/News&amp;events/event.svg">' +
+                        '<img src="' + result.Events[j].ShortImageUrl.replace('~', '..') + result.Events[j].ShortImageName +'">' +
                         //'<img src="~/Images/news/2020/small/' + 61.png+'">' +
                         '</div>' +
                         '<div class="content" style="width:50%">' +
@@ -535,7 +535,7 @@
 
                     htmlContent = htmlContent +  '<div class="col-md-4">'+
                         '<div class="animationDiv">' +
-                        '<img class="btnImage" src="Images/news/News&amp;events/allEvents3.png">' +
+                        '<img class="btnImage" src="' + result.News[i].ShortImageUrl.replace('~', '..') + result.News[i].ShortImageName +'">' +
                         //'<img class="btnImage" src="~/Images/news/2018/small/'+result.News[i].ShortImageName+'">' +
                         '<div class="squaredDiv">' +
                         '<div class="squaredText">' +

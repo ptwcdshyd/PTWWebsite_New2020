@@ -39,5 +39,7 @@ namespace PTW.DataAccess.Models
         public IFormFile PageBackgroundImage { get; set; }
         public IFormFile Frame { get; set; }
         public IFormFile LocationMap { get; set; }
+
+        public IFormFile Squad { get; set; }
     }
 }

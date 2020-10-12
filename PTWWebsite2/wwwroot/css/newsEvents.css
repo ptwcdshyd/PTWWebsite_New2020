@@ -107,7 +107,7 @@ background-repeat: no-repeat;
 
  .nEAnim:hover .borders:before{
     -webkit-transition: left 0.5s ease-in-out;
-      left:65%; 
+      left:70%; 
      
  } 
 
@@ -341,7 +341,7 @@ background-repeat: no-repeat;
 .nEAnim .borders::before{
     content: '';
     position: absolute;
-    top: -13px;
+    top: -12px;
     left: 15px;
     background: url("../Images/New_UI/news/beforeBorder.svg");
     background-size: 100%;
@@ -615,10 +615,15 @@ background-repeat: no-repeat;
 .gamerDesc{
     
 }
+.nEAnim .borders img{
+    width:85rem;
+}
 
+.animediv{
+    margin-top:10rem;
+}
 
-
-@media (max-width:1400px){
+@media (max-width:1400px) {
     .newsEventAnimDiv {
         height: 440px;
     }
@@ -662,8 +667,197 @@ background-repeat: no-repeat;
         font-size: 12px;
     }
 
-    .paddingLeft{
-        padding-left:0px;
+
+}
+
+@media only screen and (min-width: 425px) and (max-width: 635px) {
+
+
+    .nEAnim .textContent p {
+        font-size: 15px;
+        padding: 36px 48px 0 173px;
+        margin-bottom: 0px;
+    }
+    
+    .mob-news {
+         padding: 62px 0px 0px 60px;
+    }
+
+    .nEAnim .borders img {
+        width: 108%;
+    }
+
+    .nEAnim .borders {
+        left: 0px;
+    }
+
+    .nEAnim .textContent {
+        height: 100%;
+        position: absolute;
+        left: 23px;
+        top: 0;
+    }
+
+    
+
+    .nE {
+        text-align: right;
+    }
+
+    .nEAnim {
+        height: 200px;
+    }
+
+    .newEventsContainer {
+        padding: 60px 35px;
+    }
+
+    .ReadMeBtn {
+        display: inline-block;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 3px solid #EE6E03;
+        margin: 3px 116px;
+        position: relative;
+        color: #EE6E03;
+        letter-spacing: 1px;
+        font-size: 3px;
+        font-family: 'Nunito-sans';
+    }
+
+    .nEAnim .borders::before {
+        top: -8px;
+    }
+
+    .nEAnim .borders::after {
+        right: -8px;
+    }
+
+    .animediv {
+        padding: 0;
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        margin-top: .5rem;
+        /* margin: 0 50px;*/
+    }
+
+    .newEventsContainer {
+        padding: 10px;
+    }
+
+
+    .nameContainer .imgName img {
+        height: 471px;
+    }
+
+    .description .quoteText {
+        font-size: 63px;
+    }
+
+    .description .onceText {
+        font-size: 40px;
+    }
+
+    .description .alwaysText {
+        font-size: 77px;
+    }
+
+    .description .gamerText {
+        font-size: 72px;
     }
 }
 
+@media only screen and (min-width: 320px) and (max-width: 425px) {
+
+    .mob-news {
+        padding: 60px 30px 0px 30px;
+    }
+
+    .nEAnim .borders img {
+        width: 108%;
+    }
+
+    .nEAnim .borders {
+        left: 0px;
+    }
+
+    .nEAnim .textContent {
+        height: 100%;
+        position: absolute;
+        left: 23px;
+        top: 0;
+    }
+
+        .nEAnim .textContent p {
+            font-size: 15px;
+            padding: 23px 16px 0 122px;
+            margin-bottom: 0px;
+        }
+
+    .nE {
+        text-align: right;
+    }
+
+    .nEAnim {
+        height: 200px;
+    }
+
+    .newEventsContainer {
+        padding: 60px 35px;
+    }
+
+    .ReadMeBtn {
+        display: inline-block;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 3px solid #EE6E03;
+        margin: 0px 61px;
+        position: relative;
+        color: #EE6E03;
+        letter-spacing: 1px;
+        font-size: 3px;
+        font-family: 'Nunito-sans';
+    }
+
+    .nEAnim .borders::before {
+        top: -8px;
+    }
+
+    .nEAnim .borders::after {
+        right: -8px;
+    }
+
+    .animediv {
+        padding: 0;
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        margin-top: .5rem;
+        /* margin: 0 50px;*/
+    }
+
+    .newEventsContainer {
+        padding: 10px;
+    }
+
+
+    .nameContainer .imgName img {
+        height: 471px;
+    }
+
+    .description .quoteText {
+        font-size: 63px;
+    }
+    .description .onceText {
+        font-size: 40px;
+    }
+    .description .alwaysText {
+        font-size: 77px;
+    }
+    .description .gamerText {
+        font-size: 72px;
+    }
+    }

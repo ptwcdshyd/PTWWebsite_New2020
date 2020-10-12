@@ -48,7 +48,7 @@
 
 .bg {
     /* The image used */
-    background-image: url("../Images/Page_1BG.png");
+/*    background-image: url("../Images/Page_1BG.png");*/
     /* Half height */
     height: 100%;
     /* Center and scale the image nicely */
@@ -58,7 +58,7 @@
 }
 .bg2 {
     /* The image used */
-    background-image: url("../Images/New_UI/qa_page/qa_bg.png");
+/*    background-image: url("../Images/New_UI/qa_page/qa_bg.png");*/
     /* Half height */
     height: 100%;
     /* Center and scale the image nicely */

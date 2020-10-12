@@ -209,13 +209,29 @@ namespace PTWWebsite2.Controllers
             {
                 FilePath(About.AboutPageHeader, path + "AboutPageHeader.png", "");
             }
-            
+
             //if (About.Frame != null && About.Filename == "Frame")
             //{
             //    FilePath(About.Frame, path + "Frame.svg", "");
             //}
 
             return Json(1, new JsonSerializerSettings());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> PreviewAbout(AboutModel About)
+        {
+            string savedPath = Path.Combine(_hostingEnvironment.WebRootPath, "images/About/AboutImages/");
+            string previewPath = Path.Combine(_hostingEnvironment.WebRootPath, "images/About/PreviewImages/");
+          
+
+            if (About.AboutPageHeader != null && About.Filename == "AboutPageHeader")
+            {
+                About.Description = About.Description.Replace(savedPath + "AboutPageHeader.png", previewPath + "AboutPageHeader.png");
+            }
+            int resultCode = _masterService.UpdatePreviewPageByLanguageModuleId(About.ModuleId, About.LanguageCode, About.Description, About.MetaDescription, About.MetaTitle, About.MetaUrl);
+
+            return Json(resultCode, new JsonSerializerSettings());
         }
 
         public async void FilePath(IFormFile file, string path, string deletePath)

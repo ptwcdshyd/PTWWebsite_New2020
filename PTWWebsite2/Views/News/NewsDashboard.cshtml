@@ -98,20 +98,6 @@
 <div class="contentpanel report" style="border: 1px solid #00b8ff85;width: 1180px;margin-top: 45px;margin-left:50px;">
     <div class="row distribute-container">
         <div class="col-lg-12 col-md-12 col-sm-12">
-            @*<div class="row">
-            <div class="form-group col-md-4 col-sm-4">
-                <label for="name">Selection Language</label>
-                <select class="form-control input-sm" id="Language">
-                    <option value="en-US">English</option>
-                    <option value="fr-CA">French</option>
-                    <option value="ja">Japan</option>
-                    <option value="ko">Korean</option>
-                    <option value="zh-CHS">Simplified Chinese</option>
-                    <option value="zh-CHT">Traditional Chinese</option>
-                </select>
-            </div>
-        </div>*@
-
             <div class="row">
                 <div class="form-group col-md-6 col-sm-4">
                     <select id="Languages" asp-for="LanguageCode" asp-items="@(new SelectList(Model.Languages,"LanguageCode","Language"))" class="form-control input-sm dropdown-select my-3" onchange="GetContent()">
@@ -179,15 +165,12 @@
             <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
                 <button onclick="Update();" class="btn btn-success">Update News Dashboard</button>
             </div>
-            <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
-                <button onclick="Preview();" class="btn btn-success">Preview</button>
+            <div class="col-md-2" style="margin-top:40px;margin-left:150px;margin-bottom:15px;display:flex;">
+                <button onclick="Preview();" disabled  class="btn btn-success">Preview</button>
             </div>
         </div>
     </div>
 </div>
-
-
-
 
 
 <script>

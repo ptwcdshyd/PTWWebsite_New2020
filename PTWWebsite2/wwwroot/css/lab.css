@@ -31,6 +31,339 @@ h6 {
 }
 
     .icons-holder img {
-        width: 70% ;
-       
+        width: 7%;
+        margin: 25px 5px 20px 48px;
     }
+
+.lab .animationDiv {
+    margin: 0px 63px;
+}
+
+@media only screen and (min-width:425px) and (max-width:635px) {
+    .lab .home-text {
+        margin-top: 29%;
+        text-align: center;
+    }
+
+    .lab-bg {
+        /* The image used */
+        background-image: url("../Images/Lab/Assets/mob_bg.png");
+        /* Half height */
+        height: 100%;
+        /* Center and scale the image nicely */
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    .mob-news {
+        padding: 0px 30px 0px 30px;
+    }
+
+    .nEAnim .borders img {
+        width: 108%;
+    }
+
+    .nEAnim .borders {
+        left: 0px;
+    }
+
+    .nEAnim .textContent {
+        height: 100%;
+        position: absolute;
+        left: 23px;
+        top: 0;
+    }
+
+        .nEAnim .textContent p {
+            font-size: 15px;
+            padding: 23px 16px 0 122px;
+            margin-bottom: 0px;
+        }
+
+    .nE {
+        text-align: right;
+    }
+
+    .nEAnim {
+        height: 200px;
+    }
+
+    .newEventsContainer {
+        padding: 60px 35px;
+    }
+
+    .lab .ReadMeBtn {
+        display: inline-block;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 3px solid #EE6E03;
+        margin: 0px 61px;
+        position: relative;
+        color: #EE6E03;
+        letter-spacing: 1px;
+        font-size: 3px;
+        font-family: 'Nunito-sans';
+    }
+
+    .nEAnim .borders::before {
+        top: -8px;
+    }
+
+    .nEAnim .borders::after {
+        right: -8px;
+    }
+
+    .animediv {
+        padding: 0;
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        margin-top: .5rem;
+        /* margin: 0 50px;*/
+    }
+
+    .newEventsContainer {
+        padding: 10px;
+    }
+
+
+    .nameContainer .imgName img {
+        height: 471px;
+    }
+
+    .description .quoteText {
+        font-size: 63px;
+    }
+
+    .description .onceText {
+        font-size: 40px;
+    }
+
+    .description .alwaysText {
+        font-size: 77px;
+    }
+
+    .description .gamerText {
+        font-size: 72px;
+    }
+
+    .circle-container {
+        position: relative;
+        width: 24em;
+        height: 35em;
+        padding: 2.8em;
+        /*2.8em = 2em*1.4 (2em = half the width of a link with img, 1.4 = sqrt(2))*/
+        /* border: dashed 1px;*/
+        border-radius: 50%;
+        margin: 1.75em auto 0;
+    }
+
+        .circle-container a {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 7em;
+            height: 4em;
+            margin: -2em;
+        }
+
+        .circle-container img {
+            display: block;
+            width: 100%;
+        }
+
+    .deg0 {
+        transform: translate(12em);
+    }
+    /* 12em = half the width of the wrapper */
+    .deg45 {
+        transform: rotate(34deg) translate(8em) rotate(-45deg);
+    }
+
+    .deg135 {
+        transform: rotate(116deg) translate(9em) rotate(-135deg);
+    }
+
+    .deg180 {
+        transform: translate(-10em);
+    }
+
+    .deg225 {
+        transform: rotate(243deg) translate(10em) rotate(-225deg);
+    }
+
+    .deg315 {
+        transform: rotate(315deg) translate(9em) rotate(-315deg);
+    }
+
+
+                .lab .animationDiv {
+                    margin: 0px ;
+                }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 425px) {
+
+    .lab .home-text {
+        margin-top: 29%;
+        text-align: center;
+    }
+
+    .lab .animationDiv {
+        margin: 5px 28PX;
+    }
+
+        .lab-bg {
+        /* The image used */
+        background-image: url("../Images/Lab/Assets/mob_bg.png");
+        /* Half height */
+        height: 100%;
+        /* Center and scale the image nicely */
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    .mob-news {
+        padding: 60px 30px 0px 30px;
+    }
+
+    .nEAnim .borders img {
+        width: 108%;
+    }
+
+    .nEAnim .borders {
+        left: 0px;
+    }
+
+    .nEAnim .textContent {
+        height: 100%;
+        position: absolute;
+        left: 23px;
+        top: 0;
+    }
+
+        .nEAnim .textContent p {
+            font-size: 15px;
+            padding: 23px 16px 0 122px;
+            margin-bottom: 0px;
+        }
+
+    .nE {
+        text-align: right;
+    }
+
+    .nEAnim {
+        height: 200px;
+    }
+
+    .newEventsContainer {
+        padding: 60px 35px;
+    }
+
+   .lab .ReadMeBtn {
+        display: inline-block;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 5px solid #EE6E03;
+        margin: 0px 61px;
+        position: relative;
+        color: #EE6E03;
+        letter-spacing: 1px;
+        font-size: 6px;
+        font-family: 'Nunito-sans';
+    }
+
+    .nEAnim .borders::before {
+        top: -8px;
+    }
+
+    .nEAnim .borders::after {
+        right: -8px;
+    }
+
+    .animediv {
+        padding: 0;
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        margin-top: .5rem;
+        /* margin: 0 50px;*/
+    }
+
+    .newEventsContainer {
+        padding: 10px;
+    }
+
+
+    .nameContainer .imgName img {
+        height: 471px;
+    }
+
+    .description .quoteText {
+        font-size: 63px;
+    }
+
+    .description .onceText {
+        font-size: 40px;
+    }
+
+    .description .alwaysText {
+        font-size: 77px;
+    }
+
+    .description .gamerText {
+        font-size: 72px;
+    }
+
+    .circle-container {
+        position: relative;
+        width: 24em;
+        height: 24em;
+        padding: 2.8em;
+        /*2.8em = 2em*1.4 (2em = half the width of a link with img, 1.4 = sqrt(2))*/
+       /* border: dashed 1px;*/
+        border-radius: 50%;
+        margin: 1.75em auto 0;
+    }
+
+        .circle-container a {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 7em;
+            height: 4em;
+            margin: -2em;
+        }
+
+        .circle-container img {
+            display: block;
+            width: 100%;
+        }
+
+    .deg0 {
+        transform: translate(12em);
+    }
+    /* 12em = half the width of the wrapper */
+    .deg45 {
+        transform: rotate(34deg) translate(8em) rotate(-45deg);
+    }
+
+    .deg135 {
+        transform: rotate(116deg) translate(9em) rotate(-135deg);
+    }
+
+    .deg180 {
+        transform: translate(-10em);
+    }
+
+    .deg225 {
+        transform: rotate(243deg) translate(10em) rotate(-225deg);
+    }
+
+    .deg315 {
+        transform: rotate(315deg) translate(9em) rotate(-315deg);
+    }
+}

@@ -33,7 +33,7 @@
 
 .bg_audio {
     /* The image used */
-    background-image: url("../Images/New_UI/audio_prod/audio_prodbg.png");
+   /* background-image: url("../Images/New_UI/audio_prod/audio_prodbg.png");*/
     /* Half height */
     height: 100%;
     /* Center and scale the image nicely */
@@ -42,7 +42,7 @@
 }
 
 .audio-prod.sub-bg {
-    background-image: url("/images/New_UI/audio_prod/sub_bg.png") !important;
+/*    background-image: url("/images/New_UI/audio_prod/sub_bg.png") !important;*/
     display: flex;
     height: unset;
     align-items: center;

@@ -9,5 +9,6 @@ namespace PTW.DataAccess.Models
         public List<News> News { get; set; }
 
         public List<News> Events { get; set; }
+        public string HtmlContent { get; set; }
     }
 }
