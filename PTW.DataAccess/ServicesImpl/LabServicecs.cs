@@ -533,6 +533,13 @@ namespace PTW.DataAccess.ServicesImpl
                         labs.Localization = Convert.ToBoolean(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["Localization"]);
                         labs.AudioProduction = Convert.ToBoolean(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["AudioProduction"]);
                         labs.Engineering = Convert.ToBoolean(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["Engineering"]);
+
+                        labs.ProductDevelopment = Convert.ToBoolean(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["ProductDevelopment"]);
+                        labs.TalentSolution = Convert.ToBoolean(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["TalentSolution"]);
+                        labs.PlayerSupport = Convert.ToBoolean(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["PlayerSupport"]);
+                        labs.SpeechTech = Convert.ToBoolean(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["SpeechTech"]);
+                        labs.LocalizationQA = Convert.ToBoolean(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["LocalizationQA"]);
+
                         labs.ActiveStatus = Convert.ToBoolean(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["IsActive"]);
                         labs.DesktopImageUrl = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["DesktopImageUrl"]);
                         labs.TabImageNameHorizondaUrl = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["TabImageNameHorizondaUrl"]);

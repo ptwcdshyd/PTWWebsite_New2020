@@ -355,7 +355,13 @@ namespace PTW.DataAccess.ServicesImpl
                         news.MetaTitle = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["MetaTitle"]);
                         news.MetaDescription = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["MetaDescription"]);
                         news.ShortOrder = Convert.ToInt32(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["ShortOrder"]);
-                       
+                        news.ProductDevelopment = Convert.ToBoolean(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["ProductDevelopment"]);
+                        news.TalentSolution = Convert.ToBoolean(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["TalentSolution"]);
+                        news.PlayerSupport = Convert.ToBoolean(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["PlayerSupport"]);
+                        news.SpeechTech = Convert.ToBoolean(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["SpeechTech"]);
+                        news.LocalizationQA = Convert.ToBoolean(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["LocalizationQA"]);
+                        news.Topic = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["Topic"]);
+
                     }
 
                 }

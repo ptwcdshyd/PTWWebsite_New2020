@@ -40,11 +40,14 @@ namespace PTWWebsite2.Controllers
         [Route("{culture}/LAB")]
         public IActionResult Index(string culture = "en-US")
         {
+            MasterPage masterPage = new MasterPage();
             LabsEvents LabsEvents = new LabsEvents();
             LabsEvents.allLabs = _LabEventService.GetAllLabsDetails(culture);
+            DataTable dtContent = _masterService.GetModuleContent("Labs", (culture == null ? "en-US" : culture));
 
             LabsEvents.labInsights = _LabEventService.GetAllLatestInsights(culture);
             LabsEvents.Labs = _LabEventService.GetSlider();
+            LabsEvents.HtmlContent= dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Labs")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
             GetServicecontent(culture);
             return View(LabsEvents);
 
@@ -344,6 +347,12 @@ namespace PTWWebsite2.Controllers
                 xml.Append(string.Format("<Engineering>{0}</Engineering>", Convert.ToInt32(labs.Engineering)));
                 xml.Append(string.Format("<Campaign>{0}</Campaign>", Convert.ToInt32(labs.Campaign)));
 
+                xml.Append(string.Format("<ProductDevelopment>{0}</ProductDevelopment>", Convert.ToInt32(labs.ProductDevelopment)));
+                xml.Append(string.Format("<TalentSolution>{0}</TalentSolution>", Convert.ToInt32(labs.TalentSolution)));
+                xml.Append(string.Format("<PlayerSupport>{0}</PlayerSupport>", Convert.ToInt32(labs.PlayerSupport)));
+                xml.Append(string.Format("<SpeechTech>{0}</SpeechTech>", Convert.ToInt32(labs.SpeechTech)));
+                xml.Append(string.Format("<LocalizationQA>{0}</LocalizationQA>", Convert.ToInt32(labs.LocalizationQA)));
+
                 xml.Append(string.Format("<DesktopImageUrl>{0}</DesktopImageUrl>", labs.DesktopImageUrl));
                 xml.Append(string.Format("<TabImageNameHorizondaUrl>{0}</TabImageNameHorizondaUrl>", labs.TabImageNameHorizondaUrl));
                 xml.Append(string.Format("<TabImageNamVerticalUrl>{0}</TabImageNamVerticalUrl>", labs.TabImageNamVerticalUrl));
@@ -612,6 +621,24 @@ namespace PTWWebsite2.Controllers
             return View(labs);
         }
 
+        [Route("UpdateLabsImagesToPreview")]
+        [HttpPost]
+        public async Task<IActionResult> UpdateLabsImagesToPreview(Labs Labs)
+        {
+            string path = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/PreviewImages/");
+
+            if (Labs.LabHeader != null && Labs.Filename == "LabHeader")
+            {
+                FilePath(Labs.LabHeader, path + "LabHeader.png", "");
+            }
+
+            if (Labs.LabImage != null && Labs.Filename == "LabImage")
+            {
+                FilePath(Labs.LabImage, path + "LabImage.png", "");
+            }
+
+            return Json(1, new JsonSerializerSettings());
+        }
 
         public async void FilePath(IFormFile file, string path, string deletePath)
         {

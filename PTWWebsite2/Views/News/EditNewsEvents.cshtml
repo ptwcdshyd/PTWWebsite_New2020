@@ -99,21 +99,21 @@
 
 </div>
 
-<form enctype="multipart/form-data" id="form1" asp-controller="EditNewss" asp-action="GetNews" novalidate="novalidate" class="mt-3" method="post">
-    <div class="row">
-        <select id="NewsList" asp-for="NewsId"
-                asp-items="@(new SelectList(Model.NewsListUpdate,"NewsId","NewsUrlTitle"))" class="form-control input-sm dropdown-select my-3" onchange="this.form.submit()">
-            <option>Please select</option>
-        </select>
+@*<form enctype="multipart/form-data" id="form1" asp-controller="EditNewss" asp-action="GetNews" novalidate="novalidate" class="mt-3" method="post">*@
+<div class="row">
+    <select id="NewsList" asp-for="NewsId"
+            asp-items="@(new SelectList(Model.NewsListUpdate,"NewsId","NewsUrlTitle"))" class="form-control input-sm dropdown-select my-3" onchange="GetContent();">
+        <option>Please select</option>
+    </select>
 
-        <select id="Languages" asp-for="LanguageCode"
-                asp-items="@(new SelectList(Model.Languages,"LanguageCode","Language"))" class="form-control input-sm dropdown-select my-3" onchange="this.form.submit()">
-            <option>Please select</option>
-        </select>
-        @*@Html.DropDownListFor(m => m.ddlSelectValue,Model.NewsListUpdate, "Please select", htmlAttributes: new { @class = "form-control input-sm dropdown-select my-3", onchange = "showFormView();", autocomplete = "off" })
-            @Html.DropDownList("NewsList", new SelectList(Model.NewsListUpdate, "NewsId", "NewsUrlTitle"), "Please select", htmlAttributes: new { @class = "form-control input-sm dropdown-select my-3", onchange = "showFormView();", autocomplete = "off" })*@
-    </div>
-</form>
+    <select id="Languages" asp-for="LanguageCode"
+            asp-items="@(new SelectList(Model.Languages,"LanguageCode","Language"))" class="form-control input-sm dropdown-select my-3" onchange="GetContent();">
+        <option>Please select</option>
+    </select>
+    @*@Html.DropDownListFor(m => m.ddlSelectValue,Model.NewsListUpdate, "Please select", htmlAttributes: new { @class = "form-control input-sm dropdown-select my-3", onchange = "showFormView();", autocomplete = "off" })
+        @Html.DropDownList("NewsList", new SelectList(Model.NewsListUpdate, "NewsId", "NewsUrlTitle"), "Please select", htmlAttributes: new { @class = "form-control input-sm dropdown-select my-3", onchange = "showFormView();", autocomplete = "off" })*@
+</div>
+@*</form>*@
 
 
 <div id="form2">
@@ -186,7 +186,7 @@
                             Model.OnNewWebsiteNow = false;
                         }
                         @Html.CheckBox("OnNewWebsiteNow", Model.OnNewWebsiteNow)
-                        <label asp-for="OnNewWebsiteNow.Value">OnNewWebsiteNow </label>
+                        <label asp-for="OnNewWebsiteNow">OnNewWebsiteNow </label>
                     </div>
                     <div class="form-group col-md-4 col-sm-4">
                         @if (Model.SuitedForHomePage == null)
@@ -194,7 +194,7 @@
                             Model.SuitedForHomePage = false;
                         }
                         @Html.CheckBox("SuitedForHomePage", Model.SuitedForHomePage)
-                        <label asp-for="SuitedForHomePage.Value">SuitedForHomePage</label>
+                        <label asp-for="SuitedForHomePage">SuitedForHomePage</label>
 
                     </div>
                     <div class="form-group col-md-4 col-sm-4">
@@ -203,7 +203,7 @@
                             Model.CustomerExperience = false;
                         }
                         @Html.CheckBox("CustomerExperience", Model.CustomerExperience)
-                        <label asp-for="CustomerExperience.Value">CustomerExperience</label>
+                        <label asp-for="CustomerExperience">CustomerExperience</label>
 
                     </div>
                 </div>
@@ -215,7 +215,7 @@
                             Model.QualityAssurance = false;
                         }
                         @Html.CheckBox("QualityAssurance", Model.QualityAssurance)
-                        <label asp-for="QualityAssurance.Value">QualityAssurance</label>
+                        <label asp-for="QualityAssurance">QualityAssurance</label>
                     </div>
                     <div class="form-group col-md-4 col-sm-4">
                         @if (Model.Localization == null)
@@ -231,7 +231,29 @@
                             Model.AudioProduction = false;
                         }
                         @Html.CheckBox("AudioProduction", Model.AudioProduction)
-                        <label asp-for="AudioProduction.Value">AudioProduction</label>
+                        <label asp-for="AudioProduction">AudioProduction</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-4 col-sm-4">
+                        @Html.CheckBox("ProductDevelopment", Model.ProductDevelopment)
+                        <label asp-for="ProductDevelopment">Product Development</label>
+                    </div>
+                    <div class="form-group col-md-4 col-sm-4">
+                        @Html.CheckBox("TalentSolution", Model.TalentSolution)
+                        <label asp-for="TalentSolution">Talent Solution</label>
+                    </div>
+                    <div class="form-group col-md-4 col-sm-4">
+                        @Html.CheckBox("PlayerSupport", Model.PlayerSupport)
+                        <label asp-for="PlayerSupport">Player Support</label>
+                    </div>
+                    <div class="form-group col-md-4 col-sm-4">
+                        @Html.CheckBox("SpeechTech", Model.SpeechTech)
+                        <label asp-for="SpeechTech">SpeechTech</label>
+                    </div>
+                    <div class="form-group col-md-4 col-sm-4">
+                        @Html.CheckBox("LocalizationQA", Model.LocalizationQA)
+                        <label asp-for="LocalizationQA">LocalizationQA</label>
                     </div>
                 </div>
 
@@ -242,7 +264,7 @@
                             Model.Engineering = false;
                         }
                         @Html.CheckBox("Engineering", Model.Engineering)
-                        <label asp-for="Engineering.Value">Engineering</label>
+                        <label asp-for="Engineering">Engineering</label>
                     </div>
                     <div class="form-group col-md-4 col-sm-4">
                         @if (Model.ActiveStatus == null)
@@ -330,7 +352,7 @@
         tabsize: 2,
         height: 300,
         dialogsInBody: true
-    });  
+    });
 
 
     $(document).ready(function () {
@@ -348,7 +370,7 @@
 
     function UpdateNews() {
         if (Validate()) {
-            
+
              debugger;
             var fd = new FormData();
             var files1 = $('#HeaderImage')[0].files[0];
@@ -367,9 +389,10 @@
             if (files3 != undefined) {
                         fd.append(files3.name, files3);
                         FileString = FileString + 'file3';
-                    }
-            
-            fd.append('EditNewsId', $("#EditNewsId").val());
+            }
+
+            fd.append('NewsId', parseInt($("#NewsList").children("option:selected").val()));
+            fd.append('EditNewsId', parseInt($("#NewsList").children("option:selected").val()));
             fd.append('NewsTitle', $("#NewsTitle").val());
             fd.append('UrlTitle', $("#UrlTitle").val());
             fd.append('PublishedDate', $("#PublishedDate").val());
@@ -384,19 +407,24 @@
             fd.append('QualityAssurance', $("#QualityAssurance").prop("checked"));
             fd.append('Localization', $("#Localization").prop("checked"));
             fd.append('AudioProduction', $("#AudioProduction").prop("checked"));
+            fd.append('ProductDevelopment', $("#ProductDevelopment").prop("checked"));
+            fd.append('TalentSolution', $("#TalentSolution").prop("checked"));
+            fd.append('PlayerSupport', $("#PlayerSupport").prop("checked"));
+            fd.append('SpeechTech', $("#SpeechTech").prop("checked"));
+            fd.append('LocalizationQA', $("#LocalizationQA").prop("checked"));
             fd.append('Engineering', $("#Engineering").prop("checked"));
             fd.append('ActiveStatus', $("#ActiveStatus").prop("checked"));
             fd.append('MetaTitle', $("#MetaTitle").val());
             fd.append('MetaDescription', $("#MetaDescription").val());
-            console.log(fd);           
-            
+            console.log(fd);
+
             $.ajax({
                     type: "POST",
                     url: '@Url.Action("UpdateNews", "EditNews")',
-                    data: fd,                    
+                    data: fd,
                     contentType: false,
-                    processData: false,                    
-                    success: function (result) {                        
+                    processData: false,
+                    success: function (result) {
                         console.log(result);
                         if (result == 'Logout') {
                         window.location = '../Logout';
@@ -441,7 +469,7 @@
         }
 
         if ($('#summernoteUpdate').summernote('code') == "" || $('#summernoteUpdate').summernote('code') == "<p><br></p>") {
-            errorMeaasage = errorMeaasage + "please enter Description </br>";            
+            errorMeaasage = errorMeaasage + "please enter Description </br>";
             flag = 1
         }
 
@@ -457,7 +485,7 @@
         if ($("#EventEndDate").val() == "") {
             errorMeaasage = errorMeaasage + "please select EventEndDate </br>";
             flag = 1
-        }      
+        }
 
 
         if (flag > 0) {
@@ -467,6 +495,66 @@
         }
         else {
             return true;
+        }
+    }
+
+
+    function GetContent() {
+        debugger;
+        if ($("#NewsList").children("option:selected").val() > 0 && $("#Languages").children("option:selected").val() != "Please select") {
+            $("#PostBackMsg").show();
+            $('#summernoteUpdate').summernote('code', '');
+
+            $.ajax({
+                type: "GET",
+                url: '../GetNewsByLanguageAndNewsId?NewsId=' + parseInt($("#NewsList").children("option:selected").val()) + '&LanguageCode=' + $("#Languages").children("option:selected").val() + '',
+                // data: { NewsId: parseInt($("#NewsList").children("option:selected").val()), LanguageCode:$("#Languages").children("option:selected").val()},
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    if (response == 'Logout') {
+                        window.location = '../Logout';
+                    }
+                    else {
+
+                        $("#PostBackMsg").fadeOut("slow");
+                        $('#summernoteUpdate').summernote('code', response.Description)
+                        
+                        $("#PublishedDate").val(response.PublishedDate);
+                        $("#Topic").val(response.Topic);
+
+                        $("#EventStartDate").val(response.EventStartDate);
+                        $("#EventEndDate").val(response.EventEndDate);
+
+                        $("#UrlTitle").val(response.UrlTitle);
+                        $("#NewsTitle").val(response.NewsTitle);
+                        $("#MetaTitle").val(response.MetaTitle);
+                        $("#MetaDescription").val(response.MetaDescription);
+
+                        $("#ProductDevelopment").prop("checked", response.ProductDevelopment);
+                        $("#TalentSolution").prop("checked", response.TalentSolution);
+                        $("#PlayerSupport").prop("checked", response.PlayerSupport);
+                        $("#SpeechTech").prop("checked", response.SpeechTech);
+                        $("#LocalizationQA").prop("checked", response.LocalizationQA);
+
+                        $("#SuitedForHomePage").prop("checked", response.SuitedForHomePage);
+                        $("#CustomerExperience").prop("checked", response.CustomerExperience);
+                        $("#AudioProduction").prop("checked", response.AudioProduction);
+                        $("#Localization").prop("checked", response.Localization);
+                        $("#QualityAssurance").prop("checked", response.QualityAssurance);
+                        $("#OnNewWebsiteNow").prop("checked", response.OnNewWebsiteNow);
+                        $("#ActiveStatus").prop("checked", response.ActiveStatus);
+                    }
+                }
+                , error: function (err) {
+                    if (err.status === 0) {
+                        window.location = '../Logout';
+                    }
+                    $("#PostBackMsg").fadeOut("slow");
+                }
+            });
+
+
         }
     }
 

@@ -144,6 +144,23 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-2">
+                    <img id="LabImageImg" class="imageShow" src="../images/Lab/LabImages/LabImage.png" height="150px" width="150px" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-8 col-sm-6">
+                    <label class="col-form-label">Lab Header Image</label>
+                    <div class="col-md-8 col-sm-6">
+                        <div class="custom-file">
+                            <input id="LabHeader" type="file" class="form-control custom-file-input">
+                            <label class="custom-file-label">Choose File...1012x348 dimensions</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <img id="LabHeaderImg" class="imageShow" src="../images/Lab/LabImages/LabHeader.png" height="150px" width="150px" />
+                </div>
             </div>
             <div class="row">
                 <div class="form-group  col-md-6 col-sm-6">
@@ -179,8 +196,8 @@
             <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
                 <button onclick="Update();" class="btn btn-success">Update Lab Dashboard</button>
             </div>
-            <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
-                <button onclick="Preview();" class="btn btn-success">Preview</button>
+            <div class="col-md-2" style="margin-top:40px;margin-left:150px;margin-bottom:15px;display:flex">
+                <button onclick="Preview();" disabled class="btn btn-success">Preview</button>
             </div>
         </div>
     </div>
@@ -207,13 +224,65 @@
 
     $(document).ready(function () {
         $('.custom-file-input').on("change", function () {
+            debugger;
             var fileLabel = $(this).next('.custom-file-label');
             var files = $(this)[0].files;
-            if (files.length > 1) {
-                fileLabel.html(files.length + ' files selected');
+
+            readURL($(this)[0], $(this)[0].id);
+
+            const fileType = files[0]['type'];
+            const validImageTypes = ['image/png', 'image/svg+xml'];
+            console.log("fileType "+fileType);
+            if (validImageTypes.includes(fileType)) {
+
+                if (files.length > 1) {
+                    fileLabel.html(files.length + ' files selected');
+                }
+                else if (files.length == 1) {
+                    fileLabel.html(files[0].name);
+                }
+
+                var fd = new FormData();
+                var files1 = $(this)[0].files[0];
+                fd.append($(this)[0].id, files1);
+                fd.append('Filename', $(this)[0].id);
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("UpdateLabsImagesToPreview")',
+                    data: fd,
+                    contentType: false,
+                    processData: false,
+                    success: function (result) {
+                        console.log(result);
+                        if (result == 'Logout') {
+                            window.location = '../Logout';
+                        }
+                        if (result == 1) {
+                            //var alertmsg = "Successfully Added";
+                            //AlertMessage('growl-success', 'Information', alertmsg, false, 3000);
+                            //$("#PostBackMsg").fadeOut("slow");
+                        }
+                        else {
+                            //var alertmsgs = "Added failed";
+                            //AlertMessage('growl-danger', 'Validation', alertmsgs, false, 3000);
+                            //$("#PostBackMsg").fadeOut("slow");
+                        }
+                    },
+                    error: function (err) {
+                        if (err.status === 0) {
+                            window.location = '../Logout';
+                        }
+                        // $("#PostBackMsg").fadeOut("slow");
+                    }
+                });
+
             }
-            else if (files.length == 1) {
-                fileLabel.html(files[0].name);
+            else {
+                AlertMessage('growl-danger', 'Validation', "Please upload only image with .svg extention", false, 3000);
+                fileLabel.html('');
+
+                return false;
             }
         });
 
@@ -224,8 +293,12 @@
 
             var fd = new FormData();
             var files1 = $('#LabImage')[0].files[0];
+            var files2 = $('#LabHeader')[0].files[0];
             if ($('#LabImage')[0].files[0] != undefined) {
                 fd.append('LabImage', files1);
+            }
+            if ($('#LabHeader')[0].files[0] != undefined) {
+                fd.append('LabHeader', files2);
             }
             fd.append('Event', parseInt($("#Language").val()));
             fd.append('Description', $("#Description").val());
@@ -395,7 +468,7 @@
     }
 
     function AlertMessage(class_name, title, alert, boolstick, timesec) {
-      
+
         jQuery.gritter.add({
             title: title,
             text: alert,
@@ -409,7 +482,15 @@
         });
         return false;
     }
-
+    function readURL(input, imgId) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#' + imgId + 'Img').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+    }
 </script>
 
 

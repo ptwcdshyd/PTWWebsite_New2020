@@ -36,7 +36,7 @@
 
 .about_bg {
     /* The image used */
-    /* background-image: url("../Images/New_UI/ABOUT/bg.png"); */
+    background-image: url("../Images/New_UI/ABOUT/bg.png");
     /* Half height */
     height: 100%;
     /* Center and scale the image nicely */
@@ -45,7 +45,7 @@
 }
 
 .about .coloredBg {
-    /* background: url("../Images/New_UI/ABOUT/Union_prod.png"); */
+    background: url("../Images/New_UI/ABOUT/Union_prod.png");
     background-size: 100%;
     background-repeat: no-repeat;
     width: 100%;

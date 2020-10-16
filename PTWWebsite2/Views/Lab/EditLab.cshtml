@@ -232,6 +232,29 @@
 
                     <div class="row">
                         <div class="form-group col-md-4 col-sm-4">
+                            @Html.CheckBox("ProductDevelopment", false)
+                            <label asp-for="ProductDevelopment">Product Development</label>
+                        </div>
+                        <div class="form-group col-md-4 col-sm-4">
+                            @Html.CheckBox("TalentSolution", false)
+                            <label asp-for="TalentSolution">Talent Solution</label>
+                        </div>
+                        <div class="form-group col-md-4 col-sm-4">
+                            @Html.CheckBox("PlayerSupport", false)
+                            <label asp-for="PlayerSupport">Player Support</label>
+                        </div>
+                        <div class="form-group col-md-4 col-sm-4">
+                            @Html.CheckBox("SpeechTech", false)
+                            <label asp-for="SpeechTech">SpeechTech</label>
+                        </div>
+                        <div class="form-group col-md-4 col-sm-4">
+                            @Html.CheckBox("LocalizationQA", false)
+                            <label asp-for="LocalizationQA">LocalizationQA</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-4 col-sm-4">
                             @Html.CheckBox("Engineering", false)
                             <label asp-for="Engineering">Engineering</label>
                         </div>
@@ -240,7 +263,7 @@
                             <label asp-for="Campaign">Campaign</label>
                         </div>
                         <div class="form-group col-md-4 col-sm-4">
-                            @Html.CheckBox("ActiveStatus", true)
+                            @Html.CheckBox("ActiveStatus", Model.ActiveStatus)
                             <label asp-for="ActiveStatus">Active</label>
                         </div>
 
@@ -406,7 +429,14 @@
                     fd.append('AudioProduction', $("#AudioProduction").prop("checked"));
                     fd.append('Engineering', $("#Engineering").prop("checked"));
                     fd.append('Campaign', $("#Campaign").prop("checked"));
-                    fd.append('ActiveStatus', $("#ActiveStatus").val());
+
+                    fd.append('ProductDevelopment', $("#ProductDevelopment").prop("checked"));
+                    fd.append('TalentSolution', $("#TalentSolution").prop("checked"));
+                    fd.append('PlayerSupport', $("#PlayerSupport").prop("checked"));
+                    fd.append('SpeechTech', $("#SpeechTech").prop("checked"));
+                    fd.append('LocalizationQA', $("#LocalizationQA").prop("checked"));
+
+                    fd.append('ActiveStatus', $("#ActiveStatus").prop("checked"));
                     fd.append('MetaTitle', $("#MetaTitle").val());
                     fd.append('MetaDescription', $("#MetaDescription").val());
                     fd.append('FileString', fileString);
@@ -545,6 +575,20 @@
                     $("#LabType").val(response.labType);
                     $("#MetaTitle").val(response.metaTitle);
                     $("#MetaDescription").val(response.metaDescription);
+
+                    $("#ProductDevelopment").prop("checked", response.productDevelopment);
+                    $("#TalentSolution").prop("checked", response.talentSolution);
+                    $("#PlayerSupport").prop("checked", response.playerSupport);
+                    $("#SpeechTech").prop("checked", response.speechTech);
+                    $("#LocalizationQA").prop("checked", response.localizationQA);
+
+                    $("#SuitedForHomePage").prop("checked", response.suitedForHomePage);
+                    $("#CustomerExperience").prop("checked", response.sustomerExperience);
+                    $("#AudioProduction").prop("checked", response.audioProduction);
+                    $("#Localization").prop("checked", response.localization);
+                    $("#QualityAssurance").prop("checked", response.qualityAssurance);
+                    $("#OnNewWebsiteNow").prop("checked", response.onNewWebsiteNow);
+                    $("#ActiveStatus").prop("checked", response.activeStatus);
 
                 }
             }, function (err) {

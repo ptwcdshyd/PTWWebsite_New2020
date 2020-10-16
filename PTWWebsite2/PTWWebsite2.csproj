@@ -30,6 +30,8 @@
     <Folder Include="wwwroot\images\Contact\PreviewImages\" />
     <Folder Include="wwwroot\images\Homepage\HomeImages\" />
     <Folder Include="wwwroot\images\Homepage\PreviewImages\" />
+    <Folder Include="wwwroot\images\Lab\LabImages\" />
+    <Folder Include="wwwroot\images\Lab\PreviewImages\" />
     <Folder Include="wwwroot\images\LocalizationQA\PreviewImages\" />
     <Folder Include="wwwroot\images\LocalizationQA\Local\" />
     <Folder Include="wwwroot\images\SpeechTech\PreviewImages\" />

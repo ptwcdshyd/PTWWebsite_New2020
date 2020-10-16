@@ -4,7 +4,9 @@
     ViewData["Title"] = "Index";
 }
 
+@Html.Raw(Model.HtmlContent)
 
+@*
 <div class="container_div lab-bg">
 
     <div class="row">
@@ -50,8 +52,8 @@
     <div class="row mob-news p-5 m-5 mt-0">
         <div class="col-md-8 mt-5">
 
-            <div  id="mainlab">
-                
+            <div id="mainlab">
+
             </div>
 
 
@@ -60,41 +62,41 @@
         <div id="eventsgrid" class="col-md-4 d-none d-md-block">
 
             <!--
-                <div class="col-md-12 mt-5">
-                    <div class="animationDiv">
-                        <img class="btnImage" src="../Images/news/News&events/allEvents6.png">
+                    <div class="col-md-12 mt-5">
+                        <div class="animationDiv">
+                            <img class="btnImage" src="../Images/news/News&events/allEvents6.png">
 
-                        <div class="squaredDiv">
-                            <div class="squaredText">
-                                <p>Non-Technical Guide for Player Support</p>
+                            <div class="squaredDiv">
+                                <div class="squaredText">
+                                    <p>Non-Technical Guide for Player Support</p>
+                                </div>
+                                <div class="MoreDiv">
+                                    <p>More..</p>
+                                </div>
                             </div>
-                            <div class="MoreDiv">
-                                <p>More..</p>
-                            </div>
+
                         </div>
 
                     </div>
 
-                </div>
+                    <div class="col-md-12 mt-5">
+                        <div class="animationDiv">
+                            <img class="btnImage" src="../Images/news/News&events/allEvents6.png">
 
-                <div class="col-md-12 mt-5">
-                    <div class="animationDiv">
-                        <img class="btnImage" src="../Images/news/News&events/allEvents6.png">
+                            <div class="squaredDiv">
+                                <div class="squaredText">
+                                    <p>Non-Technical Guide for Player Support</p>
+                                </div>
+                                <div class="MoreDiv">
+                                    <p>More..</p>
+                                </div>
+                            </div>
 
-                        <div class="squaredDiv">
-                            <div class="squaredText">
-                                <p>Non-Technical Guide for Player Support</p>
-                            </div>
-                            <div class="MoreDiv">
-                                <p>More..</p>
-                            </div>
                         </div>
 
                     </div>
 
-                </div>
-
-        -->
+            -->
         </div>
 
     </div>
@@ -550,7 +552,7 @@
         </div>
     </footer>
 
-</section>
+</section>*@
 
 <script>
     $(document).ready(function () {
@@ -567,7 +569,7 @@
                 debugger;
                 var htmlContent = '';
                 var htmlEventsContent = '';
-                var mainhtmlContent = '<div class="nEAnim">' +
+                var mainhtmlContent = '<div class="nEAnim" style="background-image: url(' + result.allLabs[0].ImageUrl + result.allLabs[0].ImageName + ');">' +
                     '<div class="borders">' +
                     '<img src="/Images/New_UI/news/border.svg">' +
                     '</div>' +
@@ -586,16 +588,16 @@
                     htmlEventsContent = htmlEventsContent +
                         '<div class="col-md-12 mt-5">' +
                         '<div class="animationDiv">' +
-                        
-                        '<img src="' + result.labInsights[j].ImageUrl + result.allLabs[j].ImageName + '">' +
+
+                        '<img class="btnImage" src="' + result.labInsights[j].ImageUrl + result.allLabs[j].ImageName + '">' +
                         '<div class="squaredDiv">' +
-                        '<div class="squaredText">'+
+                        '<div class="squaredText">' +
                         '<p class="title">' + result.labInsights[j].ShortDescription + '</p>' +
                         '</div>' +
                         '<div class="MoreDiv">' +
                         '<p>More..</p>' +
                         '</div>' +
-                        '</div></div></div>' 
+                        '</div></div></div>'
                 }
                 for (var i = 1; i < result.allLabs.length; i++) {
 

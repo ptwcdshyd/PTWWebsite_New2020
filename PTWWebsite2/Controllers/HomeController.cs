@@ -785,13 +785,17 @@ namespace PTWWebsite2.Controllers
             try
             {
                 _loggerManager.LogInfo("Method :UpdateLabsPageByLanguageId Data: " + JsonConvert.SerializeObject(Labs));
-                string path = Path.Combine(_hostingEnvironment.WebRootPath, "images/Labs/LabImages/");
-                string deletePath = Path.Combine(_hostingEnvironment.WebRootPath, "images/Labs/PreviewImages/");
+                string path = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/LabImages/");
+                string deletePath = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/PreviewImages/");
 
 
                 if (Labs.LabImage != null)
                 {
                     FilePath(Labs.LabImage, path + "LabImage.png", deletePath + "LabImage.png");
+                }
+                if (Labs.LabHeader != null)
+                {
+                    FilePath(Labs.LabHeader, path + "LabHeader.png", deletePath + "LabHeader.png");
                 }
 
                 int resultCode = _masterService.UpdateHomePageByLanguageId(Labs.ModuleId, Labs.LanguageCode, Labs.Description, Labs.MetaDescription, Labs.MetaTitle, Labs.MetaUrl);

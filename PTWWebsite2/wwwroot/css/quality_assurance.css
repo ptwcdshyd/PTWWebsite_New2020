@@ -133,39 +133,85 @@
     font-size: 21px;
     padding: 10px;
 }
-.qa .home-text .bg-title {
-    display: flex;
+ .servicebg-title {
+    /* display: flex; */
     align-items: center;
     background: #CF2D3D99;
-    clip-path: polygon( 0% 100%, /* top left */
-    0% 0%, /* top left */
-    100% 0%, /* top right */
-    100% 0, /* top right */
-    100% 75%, /* bottom right */
-    94% 100%, /* bottom right */
-    0% 100%, /* bottom left */
-    0% 100% /* bottom left */
-    );
+    clip-path: polygon( 0% 100%, /* top left */ 0% 0%, /* top left */ 100% 0%, /* top right */ 100% 0, /* top right */ 100% 75%, /* bottom right */ 94% 100%, /* bottom right */ 0% 100%, /* bottom left */ 0% 100% /* bottom left */ );
     overflow: hidden;
-    border-top-left-radius: 75px;
-    border-bottom-left-radius: 75px;
-    height: 130px;
+    border: none;
+    /* border-top-left-radius: 75px; */
+    /* border-bottom-left-radius: 75px; */
+    height: 108px;
     padding: 10px 40px;
+    opacity: 1;
+    margin: 10px -46px;
+    width: 100%;
 }
 
-.qa .home-text p{
-    margin:0px;
-    
+    .servicebg-title p {
+        line-height: 45px;
+        white-space: normal;
+        /* font-size: 5.5rem; */
+    }
+
+.qa .home-text p {
+    margin: 0px;
+}
+
+.qa .stripe {
+    padding: 44px 0px 75px 0px;
+    margin-bottom: -47px;
+}
+.Qa .left-num {
+    padding: 10% 0px 0px 1%;
+}
+.qa-bg {
+    background-image: url(/images/New_UI/qa_page/sub_bg.png) !important;
+}
+
+.qa-sub-txt {
+    font-family: Nunito-regular;
+    font-size: 30px;
+    text-shadow: 0px 0px 6px #000000AB;
 }
 .setheight {
-   /* height: 28rem;*/
+  /* height: 28rem;*/
+}
+
+
+@media only screen and (min-width: 576px) and (max-width: 768px) {
+    .blockmob {
+        display: block;
+    }
+
+}
+@media only screen and (min-width: 768px) and (max-width: 1100px) {
+    .servicebg-title p {
+        font-size: 3rem;
+    }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+    .servicebg-title p {
+        font-size: 2.5rem;
+    }
+    .qa-sub-txt {
+        font-size: 25px;
+    }
+    .qa .home-text p {
+        margin: 0px;
+        font-size: 2rem;
+    }
+ 
 }
         @media only screen and (min-width: 768px) and (max-width: 800px) {
-            .qa .home-text .bg-title {
+            .qa .home-text .servicebg-title {
                 height: 90px;
+                margin: 19px -46px;
             }
 
-                .qa .home-text .bg-title img {
+                .qa .home-text .servicebg-title img {
                     width: 95px !important;
                 }
             .qa .home-text p {
@@ -211,7 +257,25 @@
 
 
         @media only screen and (min-width: 320px) and (max-width: 577px) {
-
+            .servicebg-title {
+                /* display: flex; */
+                align-items: center;
+                background: #CF2D3D99;
+                clip-path: polygon( 0% 100%, /* top left */ 0% 0%, /* top left */ 100% 0%, /* top right */ 100% 0, /* top right */ 100% 75%, /* bottom right */ 94% 100%, /* bottom right */ 0% 100%, /* bottom left */ 0% 100% /* bottom left */ );
+                overflow: hidden;
+                border: none;
+                /* border-top-left-radius: 75px; */
+                /* border-bottom-left-radius: 75px; */
+                height: 97px;
+                padding: 13px 40px;
+                opacity: 1;
+                margin: 16px -46px;
+                width: 75%;
+            }
+            .mob .home-text p {
+                line-height: 35px;
+                font-size: 3.5rem;
+            }
         
             .ReadMeSection {
                 display: flex;
@@ -232,8 +296,7 @@
                 text-align: center;
                 color: black;
                 padding: 20px;
-                font-size: 8px;
-             
+                font-size: 15px;
             }
             .qa-title {
                 color: #E23748;
@@ -243,7 +306,7 @@
 
             .bg2 {
                 /* The image used */
-                background-image: url("../Images/New_UI/qa_page/mob_bg.png");
+                background-image: url("../Images/New_UI/qa_page/mob_bg.png") !important;
                 /* Half height */
                 height: 100%;
                 /* Center and scale the image nicely */
@@ -258,7 +321,7 @@
             }
 
                 .mob .home-text p {
-                    line-height: 26px;
+                    line-height: 34px;
                 }
 
                 .mob {
@@ -275,5 +338,14 @@
 
             .setheight{
                height: 40rem;
+            }
+
+            .qa .stripe {
+                background-size: 100% 100%;
+                width: 100%;
+                padding: 6px 0px 18px 0px;
+                margin-bottom: -18px;
+                z-index: 999;
+                text-align: center;
             }
         }

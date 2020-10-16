@@ -33,6 +33,12 @@ namespace PTW.DataAccess.Models
         public bool? AudioProduction { get; set; }
         public bool? Engineering { get; set; }
         public bool? Campaign { get; set; }
+
+        public bool? ProductDevelopment { get; set; }
+        public bool? TalentSolution { get; set; }
+        public bool? PlayerSupport { get; set; }
+        public bool? SpeechTech { get; set; }
+        public bool? LocalizationQA { get; set; }
         public int Event { get; set; }
         public string MetaTags { get; set; }
         public string MetaUrl { get; set; }
@@ -106,6 +112,10 @@ namespace PTW.DataAccess.Models
        // [Required(ErrorMessage = "Please upload image and size should be 800x350 dimensions")]
         public IFormFile TabImageNamVertical { get; set; }
 
+        public IFormFile LabHeader { get; set; }
+        public IFormFile LabImage { get; set; }
+        public string Filename { get; set; }
+
         // [Required(ErrorMessage = "Please upload image and size should be 320x220 dimensions")]
 
         public string Customer_Experience { get; set; }
@@ -117,7 +127,7 @@ namespace PTW.DataAccess.Models
 
         public IFormFile ReadMore { get; set; }
 
-        public IFormFile LabImage { get; set; }
+
         public string FileString { get; set; }
 
         public bool? ActiveStatus { get; set; }

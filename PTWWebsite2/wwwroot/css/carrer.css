@@ -42,14 +42,14 @@
     src: url('../Fonts/fonts/Montserrat/Montserrat-Black.ttf');
 }
 
-.about_bg {
+.contact_bg {
     /* The image used */
-    /*background-image: url("../Images/New_UI/ABOUT/bg.png");*/
+    background-image: url("../Images/New_UI/ABOUT/bg.png");
     /* Half height */
     height: 100%;
     /* Center and scale the image nicely */
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: 100% 100%;
     padding-bottom: 100px;
 }
 
@@ -96,7 +96,7 @@
 
 
 .text-careers{
-    margin-top: 20%;
+    margin-top: 25%;
 }
     .text-careers p {
         font-family: Nunito-sans;

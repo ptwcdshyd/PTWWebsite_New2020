@@ -58,6 +58,11 @@ namespace PTW.DataAccess.Models
         public bool? Localization { get; set; }
         public bool? AudioProduction { get; set; }
         public bool? Engineering { get; set; }
+        public bool? ProductDevelopment { get; set; }
+        public bool? TalentSolution { get; set; }
+        public bool? PlayerSupport { get; set; }
+        public bool? SpeechTech { get; set; }
+        public bool? LocalizationQA { get; set; }
         public string ImageName { get; set; }
 
         public string MetaTags { get; set; }

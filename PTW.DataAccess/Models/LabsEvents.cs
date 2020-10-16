@@ -15,5 +15,6 @@ namespace PTW.DataAccess.Models
         public List<Labs> FutureLabArticles { get; set; }
 
         public List<Labs> LabArticledetails { get; set; }
+        public string HtmlContent { get; set; }
     }
 }

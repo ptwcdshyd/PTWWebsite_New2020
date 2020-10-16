@@ -107,7 +107,7 @@ li.list_num::marker{
 .squaredBorder::before {
     content: '';
     position: absolute;
-    background: url("../Images/New_UI/Localization/beforeImg.svg") !important;
+    background: url("../Images/New_UI/Localization/beforeImg.svg") ;
     background-size: 100%;
     width: 20%;
     height: 100%;
@@ -180,6 +180,18 @@ li.list_num::marker{
     width: 100%;
     height: 100%;
     background-repeat: no-repeat;
+}
+
+.circle-number {
+    background: transparent linear-gradient(180deg, #3BA1E1 0%, #166B9F 100%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Nunito-sans';
 }
 
 @media only screen and (min-width: 320px) and (max-width: 576px) {

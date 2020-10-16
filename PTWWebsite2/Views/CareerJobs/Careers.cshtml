@@ -152,7 +152,7 @@
                   </div>
               </div>-->
 
-            <div class="row" style="display:none;">
+            <div class="row" style="display:block;">
 
                 <div class="col-md-12">
 
@@ -569,6 +569,27 @@
 
 
     $("#ddldepts").change(function () {
+        //var department = $(this).val();
+        //var tbody = '';
+        //$('#allJobs').html('');
+        //$('.whr-item').each(function () {
+        //    debugger;
+        //    tbody += '<tr>' +
+
+        //        '<td>' + $(this).closest('li').children('h3').html() + '</td>' +
+        //        '<td>' + $(this).find("ul .whr-dept").clone().children().remove().end().html() + '</td>' +
+        //        '<td>' + $(this).find("ul .whr-location").clone().children().remove().end().html() + '</td>' +
+        //        '</tr>';
+
+        //    //console.log($(this).closest('li').children('h3').html());
+        //    //console.log($(this).find("ul .whr-dept").clone().children().remove().end().html());
+        //    //console.log($(this).find("ul .whr-location").clone().children().remove().end().html());
+        //    //console.log($(this).find("ul .whr-date").clone().children().remove().end().html());
+
+        //});
+
+        //$('#allJobs').append(tbody);
+
         var department = $(this).val();
         $("#whr_embed_hook").find("li .whr-dept").each(function (index, currentElement) {
             if (($(this).text().split(':')[1]).trim().toLowerCase() == department.toLowerCase() || department == "") {

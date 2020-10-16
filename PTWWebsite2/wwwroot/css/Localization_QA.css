@@ -33,7 +33,7 @@
 
 .bg_LocalozationQA {
     /* The image used */
-    /*background-image: url("../Images/New_UI/Localization_QA/Localisation-QA-new.png" );*/
+    background-image: url("../Images/New_UI/Localization_QA/Localisation-QA-new.png" );
     /* Half height */
     /*height: 100%;*/
     /* Center and scale the image nicely */
@@ -217,7 +217,7 @@ li.list_num::marker{
     }
 .qa-wraptxt {
     text-align: center;
-    color: black;
+    color: #6D6D6D;
     padding: 20px;
 }
 .localization_qa .squaredDiv::after {
@@ -274,6 +274,18 @@ li.list_num::marker{
     width: 100%;
     height: 100%;
     background-repeat: no-repeat;
+}
+
+.circle-number {
+    background: transparent linear-gradient(180deg, #3BA1E1 0%, #166B9F 100%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Nunito-sans';
 }
 
 @media only screen and (min-width: 320px) and (max-width: 576px) {

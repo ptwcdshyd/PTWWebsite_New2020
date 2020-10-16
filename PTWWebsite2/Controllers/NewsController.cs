@@ -40,8 +40,8 @@ namespace PTWWebsite2.Controllers
         public IActionResult News(string culture)
         {
             MasterPage masterPage = new MasterPage();
-            DataTable dtContent = _masterService.GetModuleContent("Home", (culture == null ? "en-US" : culture));
-            masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Home")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            DataTable dtContent = _masterService.GetModuleContent("News", (culture == null ? "en-US" : culture));
+            masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("News")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
             ViewData["Header"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Header")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
             ViewData["Footer"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Footer")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
 
@@ -49,6 +49,7 @@ namespace PTWWebsite2.Controllers
             NewsEvents newsEvents = new NewsEvents();
             newsEvents.News = _NewsEventService.GetAllNewsDetails();
             newsEvents.Events = _NewsEventService.GetAllEventDetails();
+            newsEvents.HtmlContent= dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("News")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
             return View(newsEvents);
         }
 
@@ -270,6 +271,11 @@ namespace PTWWebsite2.Controllers
                 xml.Append(string.Format("<CreatedBy>{0}</CreatedBy>", 1));
                 xml.Append(string.Format("<MetaTitle>{0}</MetaTitle>", news.MetaTitle));
                 xml.Append(string.Format("<MetaDescription>{0}</MetaDescription>", news.MetaDescription));
+                xml.Append(string.Format("<ProductDevelopment>{0}</ProductDevelopment>", Convert.ToInt32(news.ProductDevelopment)));
+                xml.Append(string.Format("<TalentSolution>{0}</TalentSolution>", Convert.ToInt32(news.TalentSolution)));
+                xml.Append(string.Format("<PlayerSupport>{0}</PlayerSupport>", Convert.ToInt32(news.PlayerSupport)));
+                xml.Append(string.Format("<SpeechTech>{0}</SpeechTech>", Convert.ToInt32(news.SpeechTech)));
+                xml.Append(string.Format("<LocalizationQA>{0}</LocalizationQA>", Convert.ToInt32(news.LocalizationQA)));
 
             }
             xml.Append("</News>");
@@ -361,6 +367,25 @@ namespace PTWWebsite2.Controllers
             {
                 throw ex;
             }
+        }
+
+        [Route("GetNewsByLanguageAndNewsId")]
+        [HttpGet]
+        public IActionResult GetNewsByLanguageAndNewsId(int NewsId, string LanguageCode)
+        {
+            MasterPage masterPage1 = _masterService.GetLanguageandModules();
+
+            News news = new News();
+            ModelState.Clear();
+            News ddlNewsTitles = _NewsEventService.GetAllNewsAndEventDetailsForUpdate();
+            news = _NewsEventService.GetNewsAndEventDetailsByNewsId(Convert.ToInt32(NewsId), LanguageCode);
+            news.NewsId = Convert.ToInt32(NewsId);//ddl selected value
+            news.NewsListUpdate = ddlNewsTitles.NewsListUpdate;
+            news.Languages = masterPage1.LanguageList;
+            news.LanguageCode = LanguageCode;
+
+            return Json(news, new JsonSerializerSettings());
+            
         }
 
         public async void FilePath(IFormFile file, string path, string deletePath)

@@ -35,7 +35,10 @@
 
 
 
-
+body {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
 
 
 #mainNav {
@@ -48,7 +51,7 @@
 
 .bg {
     /* The image used */
-/*    background-image: url("../Images/Page_1BG.png");*/
+    background-image: url("../Images/Page_1BG.png");
     /* Half height */
     height: 100%;
     /* Center and scale the image nicely */
@@ -58,7 +61,7 @@
 }
 .bg2 {
     /* The image used */
-/*    background-image: url("../Images/New_UI/qa_page/qa_bg.png");*/
+    background-image: url("../Images/New_UI/qa_page/qa_bg.png");
     /* Half height */
     height: 100%;
     /* Center and scale the image nicely */
@@ -99,8 +102,32 @@
 }
 
 footer {
-    padding: 35px 35px 0px 35px;
+    padding: 48px 58px 0px 58px;
     font-family: 'Popins-regular';
+}
+
+.clip-footer {
+    clip-path: polygon( 0% 0%, /* top left */
+    20px 0%, /* top left */
+    calc(100% - 50px) 0%, /* top right */
+    100% 58px, /* top right */
+    100% calc(100% - 20px), /* bottom right */
+    calc(100% - 0px) 100%, /* bottom right */
+    20px 100%, /* bottom left */
+    0 calc(100% - 0px) /* bottom left */
+    );
+   
+    
+}
+
+.footerbg {
+    background-color: #000;
+}
+.iso-logo {
+    width: 41%;
+    /* height: 60px; */
+    /* display: block; */
+    margin-top: 0px;
 }
 
 .navbar-nav{
@@ -129,9 +156,12 @@ footer {
 .navbar-toggle {
     z-index:3;
 }
+.navbar-left li{
+    padding: 0 14px;
+}
 
 
-.nav-lispace{
+.nav-lispace {
     margin-left: 65px;
 }
 .dropdown-lang{
@@ -230,9 +260,12 @@ footer {
     left: 23%;
 }
 
+.row{
+    margin:0;
+}
 
 .home-text {
-    margin-top:40% /*62%*/;
+    margin-top: 62%;
     font-family: Nunito-sans;
     font-size: 4rem;
     white-space: nowrap;
@@ -276,16 +309,16 @@ footer {
         color:lightslategrey;
     }
 
-    .left-num {
-        font-family: Poppons-Bold;
-        text-align: center;
-        text-shadow: 0px 3px 6px #0000008C;
-        padding: 10% 0px 0px 0px;
-        font-size: 25px;
-    }
+.left-num {
+    font-family: Poppons-Bold;
+    text-align: center;
+    text-shadow: 0px 3px 6px #0000008C;
+    padding: 10% 0px 0px 13%;
+    font-size: 25px;
+}
 
     .left-num p {
-        font-size: 20px;
+        font-size: 10px;
     }
 .wrapper {
     position: fixed;
@@ -296,7 +329,7 @@ footer {
 
 .line {
     position: absolute;
-    left: 24%;
+    left: 14%;
     top: 0;
     bottom: 0;
     width: 1px;
@@ -308,7 +341,7 @@ footer {
     text-align: center;
     height: 12px;
     position: absolute;
-    left: -127px;
+    left: -177px;
     right: 0;
     top: 21%;
     margin-top: 0px;
@@ -333,19 +366,29 @@ footer {
 }
 
 .sub_label {
-    font-size: 43px;
+    font-size: 40px;
     font-family: Nunito-sans;
     text-shadow: 0px 0px 10px #4055BEC2;
     padding: 15px;
-    background: none !important;
+ 
 }
-
-.bg-txt .sub_label {
-    background-image: url("../images/New_UI/red_bg.svg") !important;
-    z-index: -1;
-    margin-top: 8px;
-    clip-path: polygon(0 1%, 100% 0, 100% 76%, 92% 100%, 0 98%, 0% 50%);
+.bg-txt {
+    position: absolute;
+    left: 108px;
 }
+    .bg-txt .sub_label {
+        display: flex;
+        align-items: center;
+        background: #CF2D3D99;
+        /* background-size: auto; */
+        clip-path: polygon( 0% 100%, /* top left */ 0% 0%, /* top left */ 100% 0%, /* top right */ 100% 0, /* top right */ 100% 68%, /* bottom right */ 96% 100%, /* bottom right */ 0% 100%, /* bottom left */ 0% 100% /* bottom left */ );
+        overflow: hidden;
+        height: 60px;
+        padding: 6px 45px;
+        margin-left: -44px;
+        margin-top: 13px;
+        width: 94%;
+    }
 
 .wrap-txt p {
     width: 100%;
@@ -360,7 +403,7 @@ footer {
 
 .btn-red {
     border-color: red;
-    background: transparent;
+    background-color: #2B2C3A66;
 }
 
 .btn-red:hover {
@@ -380,7 +423,7 @@ footer {
     font-family: Nunito-sans;
     font-size: 35px;
     text-align: left;
-    padding-top: 107px;
+    padding: 40px 43px 0px;
 }
 .sub-debo {
     text-align: left;
@@ -429,6 +472,26 @@ footer {
     /* Center and scale the image nicely */
 
 }
+
+.bg-title {
+    display: flex;
+    align-items: center;
+    background: #000000B0;
+    clip-path: polygon( 0% 100%, /* top left */ 0% 0%, /* top left */ 100% 0%, /* top right */ 100% 0, /* top right */ 100% 75%, /* bottom right */ 94% 100%, /* bottom right */ 0% 100%, /* bottom left */ 0% 100% /* bottom left */ );
+    overflow: hidden;
+    /* border-top-left-radius: 75px; */
+    /* border-bottom-left-radius: 75px; */
+    height: 130px;
+    /* padding: 11px 93px; */
+    width: 75%;
+    border: 3px solid white;
+}
+
+    .bg-title p {
+        line-height: 57px;
+        white-space: normal;
+      /*  font-size: 5.5rem;*/
+    }
 
 .read-morebtn {
     color: #EE6E03;
@@ -487,22 +550,29 @@ footer {
     text-shadow: 0px 0px 6px #000000AB;
 }
 
-.stripe {
-    background-color: #1F1F24;
-    /* height: 18%; */
-    width: 100%;
-    padding: 16px;
-    margin: 0px;
+
+.footerStripe {
+    position: relative;
+  /*  background-image: url(../images/New_UI/footer_top.svg);*/
+  background:#000;
+  /*  background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right;*/
     text-align: center;
+    height: auto;
 }
 
- .stripe p {
-        color: #EE6E03;
-        font-size: 40px;
-        margin: 0px;
-        line-height: 44px;
-        font-family:Poppons-Bold;
-    }
+
+.stripe {
+    padding: 25px;
+}
+.stripe p {
+    color: #EE6E03;
+    font-size: 40px;
+    margin: 0px;
+    line-height: 44px;
+    font-family: Poppons-Bold;
+}
 
 .stripe_subtxt {
      font-family: Popins-regular !important; 
@@ -672,6 +742,7 @@ footer {
 
 .helpfulDivs {
     padding: 0 0px 0 80px;
+    justify-content:space-between;
     /*overflow-y: hidden;
     overflow: scroll;
     flex-wrap: nowrap;*/
@@ -695,11 +766,14 @@ footer {
     display: block;
 }
 
-
+.footer-nav-text {
+    padding: 6px 18px !important;
+}
 /* End Animation Section */
 .home-btns {
-    /*height: 21%;
-    width: 120px;*/
+    width: 8%;
+    height: 13%;
+    z-index: 999;
 }
 .home-btns-text {
     font-size: 12px;
@@ -710,6 +784,16 @@ footer {
     transform: scale(1.2);
 }
 
+.sub-content {
+    background-image: url(../Images/Homepage/HomeImages/blackbg.svg);
+    background-repeat: no-repeat;
+    font-family: 'Nunito-regular';
+    line-height: 45px;
+    padding: 20px;
+    width: 88%;
+    font-size: 18px;
+   /* background-size: 100%;*/
+}
 .green-btn {
     height: 90%;
     width: 70%;
@@ -731,7 +815,10 @@ footer {
         background-color: #EE6E03;
     }
 
-
+.man-desk {
+    width: 90%;
+    margin: 80px -64px;
+}
 .prod5txt {
     text-align: center;
     color: #F47F2C;
@@ -757,10 +844,58 @@ footer {
     margin: 10px 49%;
 }
 
-@media only screen and (min-width: 1200px) and (max-width: 1360px) {
+@media screen and (min-width: 1200px) and (max-width: 1400px) {
+    .bg-title p {
+        line-height: 57px;
+        white-space: normal;
+        font-size: 4rem;
+    }
+
+    .sub_label {
+        font-size: 34px;
+    }
+
+    .sub-content {
+        font-size: 16px;
+        line-height: 41px;
+    }
+    .footer-logoImg{
+        width:100%;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .bg-title p {
+        line-height: 57px;
+        white-space: normal;
+        font-size: 4.5rem;
+    }
+}
+
+@media screen and (min-width: 1900px) {
+    .bg-title p {
+        line-height: 57px;
+        white-space: normal;
+        font-size: 5.5rem;
+    }
+}
+@media only screen and  (max-width: 1360px) {
+    .bg-title p {
+        line-height: 57px;
+        white-space: normal;
+        font-size: 3.5rem;
+    }
+    .sub_label {
+        font-size: 25px;
+    }
+
+    .sub-content {
+        font-size: 12px;
+        line-height: 34px;
+    }
     .bg {
         /* The image used */
-        background-image: url("../images/Homepage/HomeImages/PageBackgroudImageMob.png");
+        background-image: url("../images/Homepage/HomeImages/PageBackgroudImage.png");
         /* Half height */
         height: 100%;
         /* Center and scale the image nicely */
@@ -800,8 +935,65 @@ footer {
 
  }
 
+@media only screen and (max-width: 1200px){
+    .bg-title p {
+        line-height: 36px;
+        white-space: normal;
+        font-size: 3.5rem;
+    }
+
+    .footer-logoImg {
+        width: 100%;
+    }
+
+    .sub_label {
+        font-size: 22px;
+    }
+
+    .bg-txt .sub_label {
+        height: 46px;
+        padding: 6px 45px;
+        margin-left: -71px;
+        margin-top: 4px;
+        width: 107%;
+    }
+
+}
+
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
 
+
+    .bg-txt .sub_label {
+        display: flex;
+        align-items: center;
+        background: #CF2D3D99;
+        /* background-size: auto; */
+        clip-path: polygon( 0% 100%, /* top left */ 0% 0%, /* top left */ 100% 0%, /* top right */ 100% 0, /* top right */ 100% 68%, /* bottom right */ 96% 100%, /* bottom right */ 0% 100%, /* bottom left */ 0% 100% /* bottom left */ );
+        overflow: hidden;
+        height: 38px;
+        padding: 6px 45px;
+        margin-left: -77px;
+        margin-top: 5px;
+        width: 114%;
+    }
+
+    .sub_label {
+        font-size: 17px;
+    }
+
+    .bg-title p {
+        line-height: 36px;
+        white-space: normal;
+        font-size: 3rem;
+    }
+
+    .sub-content {
+        font-size: 12px;
+        line-height: 18px;
+    }
+    .btn-red {
+        margin: 0px !important;
+    }
     .logo {
         left: 42%;
         height: 55px;
@@ -819,14 +1011,14 @@ footer {
         .wrapper {
         width: 180px;
     }
-        .wordwrapper {
-        left: -50%;
+    .wordwrapper {
+        left: -71%;
     }
     .home-text {
         font-size: 46px;
     }
     .home-text p {
-        line-height: 54px;
+        line-height: 34px;
     }
     .join-developers {
         padding: 40px;
@@ -920,7 +1112,7 @@ footer {
     }
     .btn-carrer {
         position: absolute;
-        top: 66%;
+        top: 61%;
         left: 34%;
         background: transparent;
         width: 20%;
@@ -934,7 +1126,7 @@ footer {
     @media only screen and (min-width: 576px) and (max-width: 768px) {
         .bg {
             /* The image used */
-            background-image: url("../images/Homepage/HomeImages/PageBackgroudImageMob.png");
+            background-image: url("../images/Homepage/HomeImages/PageBackgroudImageMob.png") !important;
             /* Half height */
             /*   height: 100%;*/
             /* Center and scale the image nicely */
@@ -1055,14 +1247,56 @@ footer {
             background: transparent;
             width: 20%;
         }
+
+        .stripe {
+            width: 100%;
+        }
     }
 
     @media only screen and (min-width: 320px) and (max-width: 576px) {
+        .home-btns-text {
+            font-size: 12px;
+            font-family: 'Nunito-regular';
+            color: #fff; 
+        }
+
+        .home-btns {
+            width: 100%;
+            height: 65%;
+            z-index: 999;
+        }
+  
+        .lbl{
+            font-size:25px;
+        }
+        .left-num {
+            font-size: 40px;
+            padding: 10% 0px 0px 0%;
+        }
+
+        .mob-num2 {
+            margin: 10px 45px !important;
+        }
+        .mob-num {
+            margin: 10px 40px !important;
+        }
+
+        .bg-title {
+            background: none;
+            width: 100%;
+            border: none;
+        }
+
+            .bg-title p {
+                line-height: 36px;
+                white-space: normal;
+                font-size: 2.8rem;
+            }
         .bg {
             /* The image used */
-            background-image: url("../images/Homepage/HomeImages/PageBackgroudImageMob.png");
+            background-image: url("../images/Homepage/HomeImages/PageBackgroudImageMob.png") !important;
             /* Half height */
-         /*   height: 100%;*/
+            /*   height: 100%;*/
             /* Center and scale the image nicely */
             background-repeat: no-repeat;
             /*background-size: contain;*/
@@ -1110,7 +1344,7 @@ footer {
         }
 
         .join-developers {
-            padding: 75px;
+            padding: 20px;
         }
 
         .btn-outline {
@@ -1123,7 +1357,7 @@ footer {
         }
 
         .deb img {
-            width: 250px;
+            width: 200px;
             object-fit: contain;
         }
 
@@ -1223,18 +1457,27 @@ footer {
         }
 
         .stripe {
-            text-align: left;
-            padding-left: 50px;
+            background-size: 100% 100%;
+            width: 100%;
+            padding: 6px 0px 18px 0px;
+            margin-bottom: -18px;
+            z-index: 999;
+            text-align: center;
         }
 
             .stripe p {
-                font-size: 25px;
-                line-height: 25px;
+                font-size: 13px;
+                line-height: 11px;
             }
 
         .stripe_subtxt {
             font-family: Popins-regular !important;
             font-size: 15px !important;
+        }
+
+        .stripe_subtxt {
+            font-family: Popins-regular !important;
+            font-size: 6px !important;
         }
 
         .footer-info .navbar-nav {
