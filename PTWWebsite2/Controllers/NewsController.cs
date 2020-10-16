@@ -245,7 +245,7 @@ namespace PTWWebsite2.Controllers
             xml.Append("<News>");
             if (news != null)
             {
-                xml.Append(string.Format("<PublishedDate>{0}</PublishedDate>", Convert.ToDateTime(news.PublishedDate)));
+                xml.Append(string.Format("<PublishedDate>{0}</PublishedDate>", Convert.ToDateTime(news.PublishedDate).ToString("yyyy-MM-dd H:mm:ss")));
                 //xml.Append(string.Format("<Description>{0}</Description>", news.Description));
                 xml.Append(string.Format("<Title>{0}</Title>", news.NewsTitle));
                 xml.Append(string.Format("<ShortDescription>{0}</ShortDescription>", news.UrlTitle.Replace("-", " ")));
@@ -264,9 +264,9 @@ namespace PTWWebsite2.Controllers
                 xml.Append(string.Format("<LongImageUrl>{0}</LongImageUrl>", news.LongImageUrl));
                 xml.Append(string.Format("<ShortImageName>{0}</ShortImageName>", news.ShortImageName));
                 xml.Append(string.Format("<ShortImageUrl>{0}</ShortImageUrl>", news.ShortImageUrl));
-                xml.Append(string.Format("<ShortOrder>{0}</ShortOrder>", news.ShortOrder));
-                xml.Append(string.Format("<EventStartDate>{0}</EventStartDate>", news.EventStartDate != "" ? Convert.ToDateTime(news.EventStartDate) : DateTime.Now));
-                xml.Append(string.Format("<EventEndDate>{0}</EventEndDate>", news.EventEndDate != "" ? Convert.ToDateTime(news.EventStartDate) : DateTime.Now));
+                xml.Append(string.Format("<Location>{0}</Location>", news.Location));
+                xml.Append(string.Format("<EventStartDate>{0}</EventStartDate>", news.EventStartDate != "" ? Convert.ToDateTime(news.EventStartDate).ToString("yyyy-MM-dd H:mm:ss") : DateTime.Now.ToString("yyyy-MM-dd H:mm:ss")));
+                xml.Append(string.Format("<EventEndDate>{0}</EventEndDate>", news.EventEndDate != "" ? Convert.ToDateTime(news.EventStartDate).ToString("yyyy-MM-dd H:mm:ss") : DateTime.Now.ToString("yyyy-MM-dd H:mm:ss")));
                 xml.Append(string.Format("<IsActive>{0}</IsActive>", Convert.ToInt32(news.ActiveStatus)));
                 xml.Append(string.Format("<CreatedBy>{0}</CreatedBy>", 1));
                 xml.Append(string.Format("<MetaTitle>{0}</MetaTitle>", news.MetaTitle));
