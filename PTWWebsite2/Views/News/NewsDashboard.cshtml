@@ -130,6 +130,9 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-2">
+                    <img id="NewsImageImg" class="imageShow" src="../images/News/NewsImages/NewsImage.png" height="150px" width="150px" />
+                </div>
             </div>
             <div class="row">
                 <div class="form-group  col-md-6 col-sm-6">
@@ -190,13 +193,65 @@
 
     $(document).ready(function () {
         $('.custom-file-input').on("change", function () {
+            debugger;
             var fileLabel = $(this).next('.custom-file-label');
             var files = $(this)[0].files;
-            if (files.length > 1) {
-                fileLabel.html(files.length + ' files selected');
+
+            readURL($(this)[0], $(this)[0].id);
+
+            const fileType = files[0]['type'];
+            const validImageTypes = ['image/png', 'image/svg+xml'];
+            console.log("fileType "+fileType);
+            if (validImageTypes.includes(fileType)) {
+
+                if (files.length > 1) {
+                    fileLabel.html(files.length + ' files selected');
+                }
+                else if (files.length == 1) {
+                    fileLabel.html(files[0].name);
+                }
+
+                var fd = new FormData();
+                var files1 = $(this)[0].files[0];
+                fd.append($(this)[0].id, files1);
+                fd.append('Filename', $(this)[0].id);
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("UpdateNewsImagesToPreview")',
+                    data: fd,
+                    contentType: false,
+                    processData: false,
+                    success: function (result) {
+                        console.log(result);
+                        if (result == 'Logout') {
+                            window.location = '../Logout';
+                        }
+                        if (result == 1) {
+                            //var alertmsg = "Successfully Added";
+                            //AlertMessage('growl-success', 'Information', alertmsg, false, 3000);
+                            //$("#PostBackMsg").fadeOut("slow");
+                        }
+                        else {
+                            //var alertmsgs = "Added failed";
+                            //AlertMessage('growl-danger', 'Validation', alertmsgs, false, 3000);
+                            //$("#PostBackMsg").fadeOut("slow");
+                        }
+                    },
+                    error: function (err) {
+                        if (err.status === 0) {
+                            window.location = '../Logout';
+                        }
+                        // $("#PostBackMsg").fadeOut("slow");
+                    }
+                });
+
             }
-            else if (files.length == 1) {
-                fileLabel.html(files[0].name);
+            else {
+                AlertMessage('growl-danger', 'Validation', "Please upload only image with .svg extention", false, 3000);
+                fileLabel.html('');
+
+                return false;
             }
         });
 
@@ -210,7 +265,7 @@
             var fd = new FormData();
             var files1 = $('#NewsImage')[0].files[0];
             if ($('#NewsImage')[0].files[0] != undefined) {
-                fd.append('ImageNewsKasturiRangan', files1);
+                fd.append('NewsImage', files1);
             }
             fd.append('Event', parseInt($("#Language").val()));
             fd.append('Description', $("#Description").val());
@@ -376,6 +431,16 @@
         }
         else {
             AlertMessage('growl-danger', 'Validation', "Please select any Language", false, 3000);
+        }
+    }
+
+    function readURL(input, imgId) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#' + imgId + 'Img').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
         }
     }
 

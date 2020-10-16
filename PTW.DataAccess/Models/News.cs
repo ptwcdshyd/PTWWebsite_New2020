@@ -88,6 +88,9 @@ namespace PTW.DataAccess.Models
         //[Required(ErrorMessage = "Please upload image and size should be 504x348 dimensions")]
         public IFormFile ShorterImage { get; set; }
         public IFormFile ImageNewsKasturiRangan { get; set; }
+
+        public IFormFile NewsImage { get; set; }
+        public string Filename { get; set; }
         public int ddlSelectValue { get; set; }
         public List<NewsUrlList> NewsListUpdate { get; set; }
 

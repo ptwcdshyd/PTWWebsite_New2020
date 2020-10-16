@@ -760,9 +760,9 @@ namespace PTWWebsite2.Controllers
                 string deletePath = Path.Combine(_hostingEnvironment.WebRootPath, "images/News/PreviewImages/");
 
 
-                if (News.ImageNewsKasturiRangan != null)
+                if (News.NewsImage != null)
                 {
-                    FilePath(News.ImageNewsKasturiRangan, path + "ImageNewsKasturiRangan.png", deletePath + "ImageNewsKasturiRangan.png");
+                    FilePath(News.NewsImage, path + "NewsImage.png", deletePath + "NewsImage.png");
                 }
 
                 int resultCode = _masterService.UpdateHomePageByLanguageId(News.ModuleId, News.LanguageCode, News.Description, News.MetaDescription, News.MetaTitle, News.MetaUrl);

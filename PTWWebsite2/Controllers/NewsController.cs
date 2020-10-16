@@ -432,5 +432,20 @@ namespace PTWWebsite2.Controllers
             return Json(resultCode, new JsonSerializerSettings());
         }
 
+        [Route("UpdateNewsImagesToPreview")]
+        [HttpPost]
+        public async Task<IActionResult> UpdateNewsImagesToPreview(News News)
+        {
+            string path = Path.Combine(_hostingEnvironment.WebRootPath, "images/News/PreviewImages/");
+
+
+            if (News.NewsImage != null && News.Filename == "NewsImage")
+            {
+                FilePath(News.NewsImage, path + "NewsImage.png", "");
+            }
+
+            return Json(1, new JsonSerializerSettings());
+        }
+
     }
 }
