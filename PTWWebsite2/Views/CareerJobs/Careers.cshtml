@@ -11,9 +11,9 @@
 </style>
 
 
-@Html.Raw(Model.HtmlContent)
+@*@Html.Raw(Model.HtmlContent)*@
 
-@*
+
 <div class="container_div about_bg" style="background-image: url(../images/Careers/CareerImages/CareerHeader.png);">
     <div class="row mb-5">
         <div class="col-md-2">
@@ -405,7 +405,7 @@
     </div>
 </section>
 
-*@
+
 <script src="../js/jquery-3.3.1.min.js"></script>
 
 <script src='https://www.workable.com/assets/embed.js' type='text/javascript'></script>
@@ -424,7 +424,7 @@
 
         handle = setInterval(function () { Countrys() }, 500);
         handle1 = setInterval(function () { Departments() }, 500);
-        handle2 = setInterval(function () { BindAllJobstoTable() }, 500);
+        handle2 = setInterval(function () { BindAllJobstoTable() }, 5000);
     });
 
     // getting countries
@@ -529,143 +529,295 @@
     $("#ddlcountries").change(function () {
         deptarray = [];
         var country = $("#ddlcountries").val();
-        $("#whr_embed_hook").find("li.whr-location").each(function (index, currentElement) {
-            if (($(this).text().split(',')[0].split(':')[1]).trim().toLowerCase() == country.toLowerCase() || country == "") {
+        var department = $("#ddldepts").val();
+        var global = $("#search").val().toLowerCase();
+       
 
+        var tbody = '';
+        $('#allJobs').html('');
+        $('.whr-item').each(function () {
 
-                if ($(this).prev(".whr-dept").length > 0 && deptarray.indexOf($(this).prev(".whr-dept").text().split(":")[1].trim()) == -1) {
-                    deptarray.push($(this).prev(".whr-dept").text().split(":")[1].trim());
-                }
+            if (department != "" && country != "") {
+                if ($.trim($(this).find("ul .whr-dept").clone().children().remove().end().html()) == department && $.trim($(this).find("ul .whr-location").clone().children().remove().end().html().split(',')[0]) == country) {
 
-                //Binddepts();
+                    if ($(this).find("ul .whr-dept").clone().children().remove().end().html() == undefined) {
+                        tbody += '<tr>' +
 
-                if ($("#ddldepts").val() == "")
-                    $(this).parent().parent().show();
-                else {
-                    var department = $("#ddldepts").val();
-
-
-                    if ($(this).prev(".whr-dept").length == 0 || (($(this).prev(".whr-dept").text().split(':')[1]).trim().toLowerCase() == department.toLowerCase())) {
-                        $(this).parent().parent().show();
-                        $("#search").val("");
+                            '<td>' + $(this).closest('li').children('h3').html() + '</td>' +
+                            '<td></td>' +
+                            '<td>' + $(this).find("ul .whr-location").clone().children().remove().end().html() + '</td>' +
+                            '</tr>';
                     }
                     else {
-                        $(this).parent().parent().hide();
+                        tbody += '<tr>' +
+
+                            '<td>' + $(this).closest('li').children('h3').html() + '</td>' +
+                            '<td>' + $(this).find("ul .whr-dept").clone().children().remove().end().html() + '</td>' +
+                            '<td>' + $(this).find("ul .whr-location").clone().children().remove().end().html() + '</td>' +
+                            '</tr>';
                     }
-
-
                 }
             }
-            else {
-                $(this).parent().parent().hide();
+            else if ($.trim($(this).find("ul .whr-dept").clone().children().remove().end().html()) == department && department!="") {
+                console.log("department" + department);
+                if ($(this).find("ul .whr-dept").clone().children().remove().end().html() == undefined) {
+                    tbody += '<tr>' +
+
+                        '<td>' + $(this).closest('li').children('h3').html() + '</td>' +
+                        '<td></td>' +
+                        '<td>' + $(this).find("ul .whr-location").clone().children().remove().end().html() + '</td>' +
+                        '</tr>';
+                }
+                else {
+                    tbody += '<tr>' +
+
+                        '<td>' + $(this).closest('li').children('h3').html() + '</td>' +
+                        '<td>' + $(this).find("ul .whr-dept").clone().children().remove().end().html() + '</td>' +
+                        '<td>' + $(this).find("ul .whr-location").clone().children().remove().end().html() + '</td>' +
+                        '</tr>';
+                }
+            }
+            else if ($.trim($(this).find("ul .whr-location").clone().children().remove().end().html().split(',')[0]) == country) {
+
+                if ($(this).find("ul .whr-dept").clone().children().remove().end().html() == undefined) {
+                    tbody += '<tr>' +
+
+                        '<td>' + $(this).closest('li').children('h3').html() + '</td>' +
+                        '<td></td>' +
+                        '<td>' + $(this).find("ul .whr-location").clone().children().remove().end().html() + '</td>' +
+                        '</tr>';
+                }
+                else {
+                    tbody += '<tr>' +
+
+                        '<td>' + $(this).closest('li').children('h3').html() + '</td>' +
+                        '<td>' + $(this).find("ul .whr-dept").clone().children().remove().end().html() + '</td>' +
+                        '<td>' + $(this).find("ul .whr-location").clone().children().remove().end().html() + '</td>' +
+                        '</tr>';
+                }
             }
         });
 
+        $('#allJobs').append(tbody);
+
+
+        clearInterval(handle2);
         Binddepts();
-        if ($("#ddldepts").val() != "")
-            $(".whr-item ul.whr-info:not(:has(li.whr-dept))").parent().hide();
+        if (global == "" && department == "" && country == "") {
+            BindAllJobstoTable();
+        }
 
     });
 
 
 
     $("#ddldepts").change(function () {
-        //var department = $(this).val();
-        //var tbody = '';
-        //$('#allJobs').html('');
-        //$('.whr-item').each(function () {
-        //    debugger;
-        //    tbody += '<tr>' +
-
-        //        '<td>' + $(this).closest('li').children('h3').html() + '</td>' +
-        //        '<td>' + $(this).find("ul .whr-dept").clone().children().remove().end().html() + '</td>' +
-        //        '<td>' + $(this).find("ul .whr-location").clone().children().remove().end().html() + '</td>' +
-        //        '</tr>';
-
-        //    //console.log($(this).closest('li').children('h3').html());
-        //    //console.log($(this).find("ul .whr-dept").clone().children().remove().end().html());
-        //    //console.log($(this).find("ul .whr-location").clone().children().remove().end().html());
-        //    //console.log($(this).find("ul .whr-date").clone().children().remove().end().html());
-
-        //});
-
-        //$('#allJobs').append(tbody);
 
         var department = $(this).val();
-        $("#whr_embed_hook").find("li .whr-dept").each(function (index, currentElement) {
-            if (($(this).text().split(':')[1]).trim().toLowerCase() == department.toLowerCase() || department == "") {
-                if ($("#ddlcountries").val() == "")
-                    $(this).parent().parent().show();
-                else {
-                    var country = $("#ddlcountries").val();
-                    if (($(this).next(".whr-location").text().split(',')[0].split(':')[1]).trim().toLowerCase() == country.toLowerCase()) {
-                        $(this).parent().parent().show();
-                        $("#search").val("");
+        var country = $("#ddlcountries").val();
+        var global = $("#search").val().toLowerCase();
+
+        var tbody = '';
+        $('#allJobs').html('');
+        $('.whr-item').each(function () {
+
+            if (department != "" && country != "") {
+                if ($.trim($(this).find("ul .whr-dept").clone().children().remove().end().html()) == department && $.trim($(this).find("ul .whr-location").clone().children().remove().end().html().split(',')[0]) == country) {
+
+                    if ($(this).find("ul .whr-dept").clone().children().remove().end().html() == undefined) {
+                        tbody += '<tr>' +
+
+                            '<td>' + $(this).closest('li').children('h3').html() + '</td>' +
+                            '<td></td>' +
+                            '<td>' + $(this).find("ul .whr-location").clone().children().remove().end().html() + '</td>' +
+                            '</tr>';
                     }
                     else {
-                        $(this).parent().parent().hide();
+                        tbody += '<tr>' +
+
+                            '<td>' + $(this).closest('li').children('h3').html() + '</td>' +
+                            '<td>' + $(this).find("ul .whr-dept").clone().children().remove().end().html() + '</td>' +
+                            '<td>' + $(this).find("ul .whr-location").clone().children().remove().end().html() + '</td>' +
+                            '</tr>';
                     }
                 }
             }
-            else {
-                $(this).parent().parent().hide();
+            else if ($.trim($(this).find("ul .whr-dept").clone().children().remove().end().html()) == department) {
+                console.log("department case");
+                if ($(this).find("ul .whr-dept").clone().children().remove().end().html() == undefined) {
+                    tbody += '<tr>' +
+
+                        '<td>' + $(this).closest('li').children('h3').html() + '</td>' +
+                        '<td></td>' +
+                        '<td>' + $(this).find("ul .whr-location").clone().children().remove().end().html() + '</td>' +
+                        '</tr>';
+                }
+                else {
+                    tbody += '<tr>' +
+
+                        '<td>' + $(this).closest('li').children('h3').html() + '</td>' +
+                        '<td>' + $(this).find("ul .whr-dept").clone().children().remove().end().html() + '</td>' +
+                        '<td>' + $(this).find("ul .whr-location").clone().children().remove().end().html() + '</td>' +
+                        '</tr>';
+                }
             }
+            else if ($.trim($(this).find("ul .whr-location").clone().children().remove().end().html().split(',')[0]) == country && country!="") {
+                console.log("contry case");
+                if ($(this).find("ul .whr-dept").clone().children().remove().end().html() == undefined) {
+                    tbody += '<tr>' +
+
+                        '<td>' + $(this).closest('li').children('h3').html() + '</td>' +
+                        '<td></td>' +
+                        '<td>' + $(this).find("ul .whr-location").clone().children().remove().end().html() + '</td>' +
+                        '</tr>';
+                }
+                else {
+                    tbody += '<tr>' +
+
+                        '<td>' + $(this).closest('li').children('h3').html() + '</td>' +
+                        '<td>' + $(this).find("ul .whr-dept").clone().children().remove().end().html() + '</td>' +
+                        '<td>' + $(this).find("ul .whr-location").clone().children().remove().end().html() + '</td>' +
+                        '</tr>';
+                }
+            }
+
         });
-        if ($("#ddldepts").val() != "")
-            $(".whr-item ul.whr-info:not(:has(li.whr-dept))").parent().hide();
+
+        $('#allJobs').append(tbody);
+
+
+        clearInterval(handle2);
+        if (global == "" && department == "" && country == "") {
+            BindAllJobstoTable();
+        }
+       
     });
 
 
 
     $("#search").on("keyup", function () {
-
+        debugger;
         var global = $(this).val().toLowerCase();
 
-        var country = $("#ddlcountries").val();
         var department = $("#ddldepts").val();
-        $("#whr_embed_hook").find(".whr-item").each(function (index, currentElement) {
-            if ($(this).text().toLowerCase().indexOf(global) != -1) {
-                if (country == "" && department == "")
-                    $(this).show();
-                else {
-                    console.log($(this).text().toLowerCase());
-                    console.log($(this).find(".whr-location").text());
-                    console.log(country);
-                    console.log(department);
-                    if ($(this).find(".whr-dept").length > 0) {
-                        console.log($(this).find(".whr-dept").text());
-                    }
-                    if (country != "") {
-                        if (($(this).find(".whr-location").text().split(',')[0].split(':')[1]).trim().toLowerCase() == country.toLowerCase()) {
-                            if (department == "")
-                                $(this).show();
-                            else {
-                                if ($(this).find(".whr-dept").length == 0 || (($(this).find(".whr-dept").text().split(':')[1]).trim().toLowerCase() == department.toLowerCase())) {
-                                    $(this).show();
-                                }
-                                else {
-                                    $(this).hide();
-                                }
-                            }
+        var country = $("#ddlcountries").val();
+
+        var tbody = '';
+        $('#allJobs').html('');
+        $('.whr-item').each(function () {
+            var departmentVlaue = $.trim($(this).find("ul .whr-dept").clone().children().remove().end().html());
+            var location = $.trim($(this).find("ul .whr-location").clone().children().remove().end().html().split(',')[0]);
+            var alllocation = $.trim($(this).find("ul .whr-location").clone().children().remove().end().html());
+            var jobTitle = $(this).closest('li').children('h3').children().html();//$(this).closest('li').children('h3').html();
+
+            if (department != "" && country != "") {
+                debugger;
+                if (departmentVlaue == department && location == country) {
+                    if (jobTitle.toLowerCase().toString().includes(global.toString()) || departmentVlaue.toLowerCase().toString().includes(global) || alllocation.toLowerCase().toString().includes(global)) {
+                        if (departmentVlaue == undefined) {
+                            tbody += '<tr>' +
+
+                                '<td>' + $(this).closest('li').children('h3').html() + '</td>' +
+                                '<td></td>' +
+                                '<td>' + $(this).find("ul .whr-location").clone().children().remove().end().html() + '</td>' +
+                                '</tr>';
                         }
                         else {
-                            $(this).hide();
+                            tbody += '<tr>' +
+
+                                '<td>' + $(this).closest('li').children('h3').html() + '</td>' +
+                                '<td>' + $(this).find("ul .whr-dept").clone().children().remove().end().html() + '</td>' +
+                                '<td>' + $(this).find("ul .whr-location").clone().children().remove().end().html() + '</td>' +
+                                '</tr>';
                         }
+                    }
+                   
+                    
+                }
+            }
+            else if (departmentVlaue == department) {
+                if (jobTitle.toLowerCase().toString().includes(global) || departmentVlaue.toLowerCase().toString().includes(global) || alllocation.toLowerCase().toString().includes(global)) {
+                    if (departmentVlaue == undefined) {
+                        tbody += '<tr>' +
+
+                            '<td>' + $(this).closest('li').children('h3').html() + '</td>' +
+                            '<td></td>' +
+                            '<td>' + $(this).find("ul .whr-location").clone().children().remove().end().html() + '</td>' +
+                            '</tr>';
+                    }
+                    else {
+                        tbody += '<tr>' +
+
+                            '<td>' + $(this).closest('li').children('h3').html() + '</td>' +
+                            '<td>' + $(this).find("ul .whr-dept").clone().children().remove().end().html() + '</td>' +
+                            '<td>' + $(this).find("ul .whr-location").clone().children().remove().end().html() + '</td>' +
+                            '</tr>';
+                    }
+                }
+              
+            }
+            else if (location == country && country != "") {
+                if (jobTitle.toLowerCase().toString().includes(global) || departmentVlaue.toLowerCase().toString().includes(global) || alllocation.toLowerCase().toString().includes(global)) {
+                    if (departmentVlaue == undefined) {
+                        tbody += '<tr>' +
+
+                            '<td>' + $(this).closest('li').children('h3').html() + '</td>' +
+                            '<td></td>' +
+                            '<td>' + $(this).find("ul .whr-location").clone().children().remove().end().html() + '</td>' +
+                            '</tr>';
+                    }
+                    else {
+                        tbody += '<tr>' +
+
+                            '<td>' + $(this).closest('li').children('h3').html() + '</td>' +
+                            '<td>' + $(this).find("ul .whr-dept").clone().children().remove().end().html() + '</td>' +
+                            '<td>' + $(this).find("ul .whr-location").clone().children().remove().end().html() + '</td>' +
+                            '</tr>';
+                    }
+                }
+               
+            }
+            else {
+                if (jobTitle.toLowerCase().toString().includes(global) || departmentVlaue.toLowerCase().toString().includes(global) || alllocation.toLowerCase().toString().includes(global)) {
+                    if (departmentVlaue == undefined) {
+                        tbody += '<tr>' +
+
+                            '<td>' + $(this).closest('li').children('h3').html() + '</td>' +
+                            '<td></td>' +
+                            '<td>' + $(this).find("ul .whr-location").clone().children().remove().end().html() + '</td>' +
+                            '</tr>';
+                    }
+                    else {
+                        tbody += '<tr>' +
+
+                            '<td>' + $(this).closest('li').children('h3').html() + '</td>' +
+                            '<td>' + $(this).find("ul .whr-dept").clone().children().remove().end().html() + '</td>' +
+                            '<td>' + $(this).find("ul .whr-location").clone().children().remove().end().html() + '</td>' +
+                            '</tr>';
                     }
                 }
             }
-            else {
-                $(this).hide();
-            }
+
+
         });
+
+        $('#allJobs').append(tbody);
+
+
+        clearInterval(handle2);
+        if (global == "" && department == "" && country == "") {
+            BindAllJobstoTable();
+        }
+
     });
 
     function ClearValues() {
         $('#ddlcountries').val("");
         $('#ddldepts').val("");
         $("#search").val("");
-        $(".whr-item").show();
-        $('#ddlcountries').trigger("change");
+       // $(".whr-item").show();
+        //$('#ddlcountries').trigger("change");
+        BindAllJobstoTable()
     }
 
 </script>
@@ -687,18 +839,27 @@
 
 
     function BindAllJobstoTable() {
-
+        console.log("loading");
         var tbody = '';
         $('#allJobs').html('');
         $('.whr-item').each(function () {
+            if ($(this).find("ul .whr-dept").clone().children().remove().end().html() == undefined) {
+                tbody += '<tr>' +
 
-            tbody += '<tr>' +
+                    '<td>' + $(this).closest('li').children('h3').html() + '</td>' +
+                    '<td></td>' +
+                    '<td>' + $(this).find("ul .whr-location").clone().children().remove().end().html() + '</td>' +
+                    '</tr>';
+            }
+            else {
+                tbody += '<tr>' +
 
-                '<td>' + $(this).closest('li').children('h3').html() + '</td>' +
-                '<td>' + $(this).find("ul .whr-dept").clone().children().remove().end().html() + '</td>' +
-                '<td>' + $(this).find("ul .whr-location").clone().children().remove().end().html() + '</td>' +
-                '</tr>';
-
+                    '<td>' + $(this).closest('li').children('h3').html() + '</td>' +
+                    '<td>' + $(this).find("ul .whr-dept").clone().children().remove().end().html() + '</td>' +
+                    '<td>' + $(this).find("ul .whr-location").clone().children().remove().end().html() + '</td>' +
+                    '</tr>';
+            }
+            console.log("ashok" + $(this).find("ul .whr-dept").clone().children().remove().end().html());
             //console.log($(this).closest('li').children('h3').html());
             //console.log($(this).find("ul .whr-dept").clone().children().remove().end().html());
             //console.log($(this).find("ul .whr-location").clone().children().remove().end().html());
@@ -707,6 +868,7 @@
         });
 
         $('#allJobs').append(tbody);
+        clearInterval(handle2);
     }
 
 </script>
