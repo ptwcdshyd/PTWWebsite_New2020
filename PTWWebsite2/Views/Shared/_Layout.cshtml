@@ -12,26 +12,7 @@
     <meta name="author" content="Pole To Win">
 
     @*<environment include="Development">*@
-    @*<link href="~/CSS/Poppins.css" rel="stylesheet" type="text/css" />
-        <link href="~/CSS/Poppins-Bold.css" rel="stylesheet" type="text/css" />
-        <link href="~/CSS/Poppins-SemiBold.css" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" />
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-
-        <link rel="icon" type="image/png" href="~/Images/icon-ms.png" />
-        <link href="~/CSS/bootstrap.min.css" rel="stylesheet" />
-
-        <link href="~/css/videobackground.css" rel="stylesheet" />
-        <link href="~/css/animate.min.css" rel="stylesheet" />
-        <link href="~/css/clean-blog.min.css" rel="stylesheet" />
-        <link href="~/css/elba.css" rel="stylesheet" />
-
-        <link href="~/Fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-
-        <link rel="stylesheet" type="text/css" href="~/CSS/cookieconsent.min.css" />*@
     @*</environment>*@
 
 
@@ -39,15 +20,12 @@
     <link href="~/css/clean-blog.min.css" rel="stylesheet" />
     <link href="~/CSS/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/css/maxcdn.bootstrapcdn.com.3.4.css" rel="stylesheet" />
+    <script src="~/js/ajax.googleapis.com.3.5.1.js"></script>
+    <link href="~/css/cdnjs.cloudflare.com.4.7.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="~/CSS/cookieconsent.min.css" />
     @*</----------------------respective Individual stylesheet----------------------->*@
-    <link href="~/css/index.css" rel="stylesheet" />
+
     <link href="~/css/quality_assurance.css" rel="stylesheet" />
     <link href="~/css/audio_production.css" rel="stylesheet" />
     <link href="~/css/Localization.css" rel="stylesheet" />
@@ -61,6 +39,9 @@
     <link href="~/css/carrer.css" rel="stylesheet" />
     <link href="~/css/talent.css" rel="stylesheet" />
     <link href="~/css/jobs.css" rel="stylesheet" />
+    <link href="~/css/index.css" rel="stylesheet" />
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+
 </head>
 <body>
     @Html.Raw(ViewData["Header"])
@@ -216,17 +197,17 @@
     </script>
 
     <script>
-        jQuery(document).ready(function (e) {
-            "use strict";
-            e(".backtop").hide(), e(window).on("scroll", function () {
-                e(this).scrollTop() > 400 ? e(".backtop").fadeIn() : e(".backtop").fadeOut()
-            }), e(".backtop").on("click", function () {
-                return e("html, body").animate({
-                    scrollTop: 0
-                }, 800), !1
-            }), (new WOW).init();
+        //jQuery(document).ready(function (e) {
+        //    "use strict";
+        //    e(".backtop").hide(), e(window).on("scroll", function () {
+        //        e(this).scrollTop() > 400 ? e(".backtop").fadeIn() : e(".backtop").fadeOut()
+        //    }), e(".backtop").on("click", function () {
+        //        return e("html, body").animate({
+        //            scrollTop: 0
+        //        }, 800), !1
+        //    }), (new WOW).init();
 
-        });
+        //});
     </script>
 
 </body>
