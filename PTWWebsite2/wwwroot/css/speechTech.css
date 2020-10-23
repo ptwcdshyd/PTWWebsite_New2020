@@ -258,10 +258,7 @@
         align-items: center;
     }
 
-        .platformSection .Allplatforms .platform {
-            text-align: center;
-            margin: 0 45px;
-        }
+   
 
     .platformSection .platform img {
         height: 75px;
@@ -668,9 +665,7 @@
 
 
 @media (max-width:1400px) {
-    .platformSection .Allplatforms .platform {
-        margin: 0 20px;
-    }
+ 
 
     .platformSection .platform .iosPlatform {
         height: 75px;

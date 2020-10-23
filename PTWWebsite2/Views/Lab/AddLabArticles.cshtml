@@ -441,7 +441,7 @@
     }
 
     function AddLabs() {
-        debugger;
+        
         if (Validate()) {
             
             if ($("#LabTypeId").children("option:selected").val() > 0 && $("#ServiceTypeId").children("option:selected").val() > 0) {
@@ -609,7 +609,7 @@
     }
 
     function GetContent() {
-        debugger;
+        
         if ($("#LabId").children("option:selected").val() > 0 && $("#LangCode").children("option:selected").val() != "Please select") {
             $("#PostBackMsg").show();
             $('#summernote').summernote('code', '')
@@ -773,7 +773,7 @@
         }
     }
     function AlertMessage(class_name, title, alert, boolstick, timesec) {
-        debugger;
+        
         jQuery.gritter.add({
             title: title,
             text: alert,

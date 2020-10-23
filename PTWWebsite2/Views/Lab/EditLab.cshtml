@@ -371,7 +371,7 @@
         });
     });
     function AddLabs() {
-        debugger;
+        
         if (Validate()) {
             if ($("#LabTypeId").children("option:selected").val() > 0 && $("#ServiceTypeId").children("option:selected").val() > 0) {
                 $("#PostBackMsg").show();
@@ -516,10 +516,10 @@
 
     }
     function GetContent() {
-        debugger;
+        
         if ($("#LabId").children("option:selected").val() > 0 && $("#LangCode").children("option:selected").val() != "Please select") {
             $("#PostBackMsg").show();
-            $('#summernote').summernote('code', '')
+            $('#summernote').summernote('code', '');
             $.get('../Lab/' + parseInt($("#LabId").children("option:selected").val()) + '/' + $("#LangCode").children("option:selected").val() + '-GetLabdata').then(function (response) {
                 console.log(response);
                 if (response == 'Logout') {
@@ -527,7 +527,7 @@
                 }
                 else {
 
-                    $("#PostBackMsg").fadeOut("slow")
+                    $("#PostBackMsg").fadeOut("slow");
                     //$("#submit").val("Update Lab");
                     $("#EditLabId").val(response.labId);
                     if (response.labId != null) {
@@ -583,7 +583,7 @@
                     $("#LocalizationQA").prop("checked", response.localizationQA);
 
                     $("#SuitedForHomePage").prop("checked", response.suitedForHomePage);
-                    $("#CustomerExperience").prop("checked", response.sustomerExperience);
+                    $("#CustomerExperience").prop("checked", response.customerExperience);
                     $("#AudioProduction").prop("checked", response.audioProduction);
                     $("#Localization").prop("checked", response.localization);
                     $("#QualityAssurance").prop("checked", response.qualityAssurance);
@@ -657,7 +657,7 @@
         }
     }
     function AlertMessage(class_name, title, alert, boolstick, timesec) {
-        debugger;
+        
         jQuery.gritter.add({
             title: title,
             text: alert,

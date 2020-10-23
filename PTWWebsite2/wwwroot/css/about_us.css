@@ -1,4 +1,4 @@
-
+ 
 @font-face {
     font-family: 'nunito';
     src: url('../Fonts/fonts/nunito-sans.semibold.ttf'); /* IE9 Compat Modes */
@@ -53,16 +53,33 @@
     background-color: #fff;
 }
 
-
-.grid {
-    position: relative;
-    display: flex;
-    margin: 0px 14%;
-    padding: 1em 0 4em;
-    /* max-width: 100%; */
-    list-style: none;
-    text-align: center;
+.about_box .squaredBorder {
+    border: 2px solid #FF7A17;
+    height: 238px;
+    width: 80%;
+    margin: 0% 0px 0% 15%;
 }
+
+    .about_box .squaredBorder::before {
+        content: '';
+        position: absolute;
+        background: url(../Images/New_UI/beforeImg.png);
+        background-size: 100%;
+        width: 20%;
+        height: 100%;
+        background-repeat: no-repeat !important;
+        top: -9px !important;
+    }
+
+    .grid {
+        position: relative;
+        display: flex;
+        margin: 0px 14%;
+        padding: 1em 0 4em;
+        /* max-width: 100%; */
+        list-style: none;
+        text-align: center;
+    }
 
     /* Common style */
     .grid figure {
@@ -110,6 +127,7 @@
                 left: 0;
                 width: 100%;
                 height: 100%;
+                overflow:auto
             }
 
                 /* Anchor will cover the whole item by default */
@@ -139,6 +157,7 @@
         .grid figure p {
             letter-spacing: 1px;
             font-size: 68.5%;
+            height: 100%;
         }
 
 /*---------------*/

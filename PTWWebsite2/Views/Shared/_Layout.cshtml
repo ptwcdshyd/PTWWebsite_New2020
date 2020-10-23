@@ -59,10 +59,28 @@
 
         var languages = ["en-US", "zh-CHS", "zh-CHT", "ja", "ko", "fr-CA"];
         function languageChange(Langauge) {
-
             var currentpageurl = window.location.href;
             currentpageurl = currentpageurl.replace(window.location.origin, '');
 
+            
+            if (languages[0] == "en-US") {
+                $("#Languages").text('En');
+            }
+            else if (languages[1] == "zh-CHS") {
+                $("#Languages").text('繁體中文');
+            }
+            else if (languages[2] == "zh-CHT") {
+                $("#Languages").text(' 简体中文');
+            }
+            else if (languages[3] == "ja") {
+                $("#Languages").text('日本語');
+            }
+            else if (languages[4] == "ko") {
+                $("#Languages").text('한국어');
+            }
+            else if (languages[5] == "fr-CA") {
+                $("#Languages").text('French');
+            }
 
             $.each(languages, function (i, val) {
 
@@ -82,7 +100,30 @@
 
         $(document).ready(function ()
         {
-            Services();
+           // Services();
+
+            var currentpageurl = window.location.href;
+            currentpageurl = currentpageurl.replace(window.location.origin, '');
+            
+
+            if (currentpageurl.split('/')[1] == "en-US") {
+                $("#Languages").text('En');
+            }
+            else if (currentpageurl.split('/')[1] == "zh-CHS") {
+                $("#Languages").text('繁體中文');
+            }
+            else if (currentpageurl.split('/')[1] == "zh-CHT") {
+                $("#Languages").text(' 简体中文');
+            }
+            else if (currentpageurl.split('/')[1] == "ja") {
+                $("#Languages").text('日本語');
+            }
+            else if (currentpageurl.split('/')[1] == "ko") {
+                $("#Languages").text('한국어');
+            }
+            else if (currentpageurl.split('/')[1] == "fr-CA") {
+                $("#Languages").text('French');
+            }
         });
 
         window.onload = function () {

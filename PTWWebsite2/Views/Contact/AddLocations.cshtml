@@ -178,7 +178,7 @@
                 
     $("#region").change(function () {
 
-        debugger;
+        
         var region = $("#region").val();
 
         $.ajax({
@@ -188,7 +188,7 @@
            data: JSON.stringify({RegionCode:region}),
             dataType: "json",
             success: function (res) {
-                debugger;
+                
                 //console.log(res.result);
 
                 //var listCountry = [];
@@ -216,7 +216,7 @@
 
 
     @*$("#ddlcountry").change(function () {
-                debugger;
+                
         var country = $("#ddlcountry").val();
 
         $.ajax({
@@ -244,7 +244,7 @@
             
     function AddLocation() {
 
-        debugger;
+        
         if (Validate()) {
             var region = $("#region").val();
             var country = $("#ddlcountry").val();

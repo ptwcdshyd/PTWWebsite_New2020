@@ -488,10 +488,11 @@
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (result) {
-                debugger;
+                
                 var htmlContent = '';
                 var htmlEventsContent = '';
                 var mainhtmlContent = '<div class="nEAnim" style="background-image: url(' + result.News[0].LongImageUrl + result.News[0].LongImageName + ');">' +
+                    '<a href="../news/' + $.trim(result.News[0].ShortDescription.replace(/\b \b/g, '-')) + '">' +
                     '<div class="borders">' +
                     '<img style="width: 90%;" src="Images/news/News&amp;events/border.svg">' +
                     //'<img style="width: 90%;" src="Images/news/News&amp;events/border.svg">'
@@ -504,11 +505,13 @@
                     '<a href="#" class="ReadMeBtn">Read More</a>' +
                     '</div>' +
                     '</div>' +
+                    '</a>' +
                     '</div>';
 
                 for (var j = 0; j < result.Events.length; j++) {
 
                     htmlEventsContent = htmlEventsContent + '<div class="col-md-12">' +
+                        '<a href="../news/' + $.trim(result.Events[j].ShortDescription.replace(/\b \b/g, '-')) + '">' +
                         '<div class="d-flex upComingSection">' +
                         '<div class="eventsImage event2" style="background-image: url(' + result.Events[j].ShortImageUrl.replace('~', '..') + result.Events[j].ShortImageName + ');">' +
                         '<img src="Images/news/News&events/event.svg">' +
@@ -526,6 +529,7 @@
                         '</div>' +
                         '</div>' +
                         '</div>' +
+                        '</a>' +
                         '</div>'
 
                 }
@@ -535,8 +539,8 @@
                         htmlContent = htmlContent + '<div class="row mt-10 mb-5" >'
                     }
 
-
                     htmlContent = htmlContent + '<div class="col-md-4">' +
+                        '<a href="../news/' + $.trim(result.News[i].ShortDescription.replace(/\b \b/g, '-')) + '">'+
                         '<div class="animationDiv">' +
                         '<img class="btnImage" src="' + result.News[i].ShortImageUrl.replace('~', '..') + result.News[i].ShortImageName + '">' +
                         //'<img class="btnImage" src="~/Images/news/2018/small/'+result.News[i].ShortImageName+'">' +
@@ -549,6 +553,7 @@
                         '</div>' +
                         '</div>' +
                         '</div>' +
+                        '</a>'+
                         '</div>'
 
                     if (i % 3 == 0) {

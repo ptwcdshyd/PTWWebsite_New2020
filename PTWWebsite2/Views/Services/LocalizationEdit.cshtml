@@ -1,7 +1,7 @@
 ﻿@model PTW.DataAccess.Models.Localization
 @{
     Layout = "~/Views/Shared/_LayoutForPtwCms.cshtml";
-    ViewData["Title"] = "NewsEventsEditor";
+    ViewData["Title"] = "Localization";
 }
 
 <link href="~/css/Editor/Css/4.4.1.bootstrap.min.css" rel="stylesheet" />
@@ -54,6 +54,7 @@
         padding-left: 40px;
         font-weight: 600;
     }
+
     .col-md-2 {
         padding: 5px;
     }
@@ -89,8 +90,12 @@
                     </div>
 
                 </div>
-                <div class="col-md-2">
-                    <img id="LocalizatonHearderImg" src="../images/Localization/Local/LocalizatonHearder.png" height="200px" width="200px" />
+
+                <div class="col-md-2 imageShow" style="display:flex!important; border: 2px solid #999; margin: 20px;">
+                    <img id="LocalizatonHearderImg" src="../images/Localization/Local/LocalizatonHearder.png" height="170px" width="170px" />
+                    <a id="LocalizatonHearder_a" class="imageShow" href="../images/Localization/Local/LocalizatonHearder.png" title="Save Backup Image" download>
+                        <img src="~/images/downloadIcon.png" class="imageShow" width="20px" style="float:right;padding:2px;" height="20px" />
+                    </a>
                 </div>
             </div>
             <div class="row">
@@ -104,8 +109,11 @@
                     </div>
 
                 </div>
-                <div class="col-md-2">
-                    <img id="GameTranslationImg" src="../images/Localization/Local/GameTranslation.svg" height="200px" width="200px" />
+                <div class="col-md-2 imageShow" style="display:flex!important; border: 2px solid #999; margin: 20px;">
+                    <img id="GameTranslationImg" src="../images/Localization/Local/GameTranslation.svg" height="180px" width="180px" />
+                    <a  class="imageShow" href="../images/Localization/Local/GameTranslation.svg" title="Save Backup Image" download>
+                        <img src="~/images/downloadIcon.png" class="imageShow" width="20px" style="float:right;padding:2px;" height="20px" />
+                    </a>
                 </div>
 
                 <div class="form-group col-md-8 col-sm-8">
@@ -119,8 +127,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2">
-                    <img id="LocalizationAndCulturalizationImg" src="../images/Localization/Local/LocalizationAndCulturalization.svg" height="200px" width="200px" />
+                <div class="col-md-2 imageShow" style="display:flex!important; border: 2px solid #999; margin: 20px;">
+                    <img id="LocalizationAndCulturalizationImg" src="../images/Localization/Local/LocalizationAndCulturalization.svg" height="180px" width="180px" />
+                    <a  class="imageShow" href="../images/Localization/Local/LocalizationAndCulturalization.svg" title="Save Backup Image" download>
+                        <img src="~/images/downloadIcon.png" class="imageShow" width="20px" style="float:right;padding:2px;" height="20px" />
+                    </a>
                 </div>
 
                 <div class="form-group col-md-8 col-sm-8">
@@ -135,8 +146,11 @@
 
                     </div>
                 </div>
-                <div class="col-md-2">
-                    <img id="PostEditingMachineTranslationImg" src="../images/Localization/Local/PostEditingMachineTranslation.svg" height="200px" width="200px" />
+                <div class="col-md-2 imageShow" style="display:flex!important; border: 2px solid #999; margin: 20px;">
+                    <img id="PostEditingMachineTranslationImg" src="../images/Localization/Local/PostEditingMachineTranslation.svg" height="180px" width="180px" />
+                    <a id="PostEditingMachineTranslation_a" class="imageShow" href="../images/Localization/Local/PostEditingMachineTranslation.svg" title="Save Backup Image" download>
+                        <img src="~/images/downloadIcon.png" class="imageShow" width="20px" style="float:right;padding:2px;" height="20px" />
+                    </a>
                 </div>
                 <div class="form-group col-md-8 col-sm-8">
                     <label class="col-form-label">
@@ -150,8 +164,11 @@
 
                     </div>
                 </div>
-                <div class="col-md-2">
-                    <img id="MarketingAndAdvertisingTranslationImg" src="../images/Localization/Local/MarketingAndAdvertisingTranslation.svg" height="200px" width="200px" />
+                <div class="col-md-2 imageShow" style="display:flex!important; border: 2px solid #999; margin: 20px;">
+                    <img id="MarketingAndAdvertisingTranslationImg" src="../images/Localization/Local/MarketingAndAdvertisingTranslation.svg" height="180px" width="180px" />
+                    <a  class="imageShow" href="../images/AudioProduction/AP/Casting.svg" title="Save Backup Image" download>
+                        <img src="~/images/downloadIcon.png" class="imageShow" width="20px" style="float:right;padding:2px;" height="20px" />
+                    </a>
                 </div>
                 <div class="form-group col-md-8 col-sm-8">
                     <label class="col-form-label">
@@ -165,56 +182,63 @@
 
                     </div>
                 </div>
-                <div class="col-md-2">
-                    <img id="FrameImg" src="../images/Localization/Local/Frame.svg" height="200px" width="200px" />
+                <div class="col-md-2 imageShow" style="display:flex!important; border: 2px solid #999; margin: 20px;">
+                    <img id="FrameImg" src="../images/Localization/Local/Frame.svg" height="180px" width="180px" />
+                    <a id="Frame_a" class="imageShow" href="../images/Localization/Local/Frame.svg" title="Save Backup Image" download>
+                        <img src="~/images/downloadIcon.png" class="imageShow" width="20px" style="float:right;padding:2px;" height="20px" />
+                    </a>
                 </div>
             </div>
 
-                    <div class="row">
-                        <div class="form-group col-lg-12 col-md-12 col-sm-12">
-                            <label>Description</label>
-                            <textarea id="Description" class="form-control input-sm">  </textarea>
-                        </div>
+            <div class="row">
+                <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                    <label>Description</label>
+                    <textarea id="Description" class="form-control input-sm">  </textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group  col-md-6 col-sm-6">
+                    <label>Meta Title</label>
+                    <div class="col-md-8 col-sm-6">
+
+                        <input type="text" id="MetaTitle" class="form-control input-sm" placeholder="Meta Title">
                     </div>
-                    <div class="row">
-                        <div class="form-group  col-md-6 col-sm-6">
-                            <label>Meta Title</label>
-                            <div class="col-md-8 col-sm-6">
-
-                                <input type="text" id="MetaTitle" class="form-control input-sm" placeholder="Meta Title">
-                            </div>
-                        </div>
-                        <div class="form-group  col-md-6 col-sm-6">
-                            <label>Meta Description</label>
-                            <div class="col-md-8 col-sm-6">
-                                <div class="custom-file">
-                                    <textarea id="MetaDescription" class="form-control input-sm"></textarea>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="row">
-                        <div class="form-group  col-md-6 col-sm-6">
-                            <label>Meta Url</label>
-                            <div class="col-md-8 col-sm-6">
-
-                                <input type="text" id="MetaUrl" class="form-control input-sm" placeholder="Meta Url">
-                            </div>
+                </div>
+                <div class="form-group  col-md-6 col-sm-6">
+                    <label>Meta Description</label>
+                    <div class="col-md-8 col-sm-6">
+                        <div class="custom-file">
+                            <textarea id="MetaDescription" class="form-control input-sm"></textarea>
                         </div>
                     </div>
                 </div>
 
-                <div class="row distribute-container">
-                    <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
-                        <button onclick="UpdateLocalization();" class="btn btn-success">Update</button>
-                    </div>
-                    <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
-                        <button onclick="PreviewLocalization();" class="btn btn-success">Preview</button>
+            </div>
+            <div class="row">
+                <div class="form-group  col-md-6 col-sm-6">
+                    <label>Meta Url</label>
+                    <div class="col-md-8 col-sm-6">
+
+                        <input type="text" id="MetaUrl" class="form-control input-sm" placeholder="Meta Url">
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="row distribute-container">
+            <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
+                <button onclick="UpdateLocalization();" class="btn btn-success">Update</button>
+            </div>
+            <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
+                <button onclick="PreviewLocalization();" class="btn btn-success">Preview</button>
+            </div>
+            <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
+                <button onclick="BackUpCode();" class="btn btn-success">Take BackUp</button>
+            </div>
+            <a id="donwloadFile" style="display:none;" href="" download></a>
+        </div>
+    </div>
+</div>
 
 
 
@@ -236,9 +260,9 @@
     });
 
     $(document).ready(function () {
-
+        $('.imageShow').css("display", "none");
         $('.custom-file-input').on("change", function () {
-            debugger;
+            
             var fileLabel = $(this).next('.custom-file-label');
             var files = $(this)[0].files;
 
@@ -306,7 +330,7 @@
     function UpdateLocalization() {
        // if (Validate()) {
         if ($("#Languages").children("option:selected").val() != "Please select") {
-            debugger;
+            
             var fd = new FormData();
             var files1 = $('#LocalizatonHearder')[0].files[0];
             var files2 = $('#GameTranslation')[0].files[0];
@@ -315,7 +339,7 @@
             var files5 = $('#MarketingAndAdvertisingTranslation')[0].files[0];
             var files6 = $('#Frame')[0].files[0];
 
-            
+
             fd.append('LocalizatonHearder', files1);
             fd.append('GameTranslation', files2);
             fd.append('LocalizationAndCulturalization', files3);
@@ -323,7 +347,7 @@
             fd.append('MarketingAndAdvertisingTranslation', files5);
             fd.append('Frame', files6);
 
-            fd.append('Description', $("#Description").val());
+            fd.append('Description', $('#Description').summernote('code'));
             fd.append('MetaUrl', $("#MetaUrl").val());
             fd.append('MetaTitle', $("#MetaTitle").val());
             fd.append('MetaDescription', $("#MetaDescription").val());
@@ -371,7 +395,7 @@
         // if (Validate()) {
         if ($("#Languages").children("option:selected").val() != "Please select") {
 
-            debugger;
+            
             var fd = new FormData();
             var files1 = $('#LocalizatonHearder')[0].files[0];
             var files2 = $('#GameTranslation')[0].files[0];
@@ -387,7 +411,7 @@
             fd.append('PostEditingMachineTranslation', files4);
             fd.append('MarketingAndAdvertisingTranslation', files5);
             fd.append('Frame', files6);
-            fd.append('Description', $("#Description").val());
+            fd.append('Description', $('#Description').summernote('code'));
             fd.append('MetaUrl', $("#MetaUrl").val());
             fd.append('MetaTitle', $("#MetaTitle").val());
             fd.append('MetaDescription', $("#MetaDescription").val());
@@ -482,11 +506,11 @@
 
 
     function GetContent() {
-        debugger;
-        if ($("#Languages").children("option:selected").val() != "" && $("#Languages").children("option:selected").val() != undefined) {
+        
+        if ($("#Languages").children("option:selected").val() != "Please select" && $("#Languages").children("option:selected").val() != undefined) {
             $("#PostBackMsg").show();
             $('#Description').summernote('code', '')
-
+            $('.imageShow').css("display", "block");
             $.ajax({
                 type: "GET",
                 url: '../Services/GetContent?ModuleId=' + 7 + '&LanguageCode=' + $("#Languages").children("option:selected").val() + '',
@@ -521,6 +545,13 @@
             });
 
         }
+        else {
+            $('.imageShow').css("display", "none");
+            $('#Description').summernote('code', '');
+            $('#MetaDescription').val('');
+            $('#MetaTitle').val('');
+            $('#MetaUrl').val('');
+        }
     }
 
 
@@ -549,6 +580,40 @@
         }
     }
 
+    function BackUpCode() {
+
+        $.ajax({
+            type: "GET",
+            url: '../ServicesBackup?ModuleId=' + 7 + '&LanguageCode=' + $("#Languages").children("option:selected").val() + '&ServiceName=Localization',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                debugger;
+                console.log(result);
+
+                if (result == 'Logout') {
+                    window.location = '../Logout';
+                }
+                console.log(result);
+
+                if (result != null) {
+                    $('#donwloadFile').attr('href', '../images/Localization/Backup/' + result);
+
+                    $('#donwloadFile')[0].click();
+                }
+
+
+                $("#PostBackMsg").fadeOut("slow");
+            },
+
+            error: function (err) {
+                if (err.status === 0) {
+                    window.location = '../Logout';
+                }
+                $("#PostBackMsg").fadeOut("slow");
+            }
+        });
+    }
 </script>
 
 

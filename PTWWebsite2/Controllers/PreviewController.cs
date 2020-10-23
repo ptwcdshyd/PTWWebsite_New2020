@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using PTW.DataAccess.Models;
 using PTW.DataAccess.Services;
 using System.Security.Claims;
+using LoggerService;
 
 namespace PTWWebsite2.Controllers
 {
@@ -16,11 +17,13 @@ namespace PTWWebsite2.Controllers
     {
         private readonly IMasterService _masterService;
         private readonly IHostingEnvironment _hostingEnvironment;
+        private readonly ILoggerManager _loggerManager;
 
-        public PreviewController(IMasterService masterService, IHostingEnvironment hostingEnvironment)
+        public PreviewController(IMasterService masterService, IHostingEnvironment hostingEnvironment, ILoggerManager loggerManager)
         {
             _masterService = masterService;
             _hostingEnvironment = hostingEnvironment;
+            _loggerManager = loggerManager;
         }
 
         [HttpGet]

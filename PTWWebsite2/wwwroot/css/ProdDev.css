@@ -270,10 +270,10 @@
 
         .platformSection .Allplatforms .platform {
             text-align: center;
-            margin: 0 45px;
+          /*  margin: 0 45px;*/
         }
 
-    .platformSection .platform img {
+    .platformSection .platform img{
         height: 75px;
         width: 75px;
         margin-bottom: 10px;
@@ -371,7 +371,7 @@
 
 .coloredBg {
     background: url("../Images/New_UI/ProductDev/Union_prod.png");
-    display: flex;
+    display: flex !important;
     height: unset;
     align-items: center;
     justify-content: space-around;
@@ -478,8 +478,8 @@
 
 
 @media (max-width:1400px) {
-    .platformSection .Allplatforms .platform {
-        margin: 0 20px;
+    .platformSection .Allplatforms .platform{
+       /* margin: 0 20px;*/
     }
 
     .platformSection .platform .iosPlatform {
@@ -535,6 +535,14 @@
 }
 
 @media only screen and (min-width: 320px) and (max-width: 576px) {
+    .platformSection .Allplatforms .platform {
+       /* margin: 0px 9px;*/
+    }
+
+    .prod .servicebg-title p {
+        font-size: 2.5rem;
+        line-height: 34px;
+    }
     .prod .home-text {
         margin-top: 16%;
     }

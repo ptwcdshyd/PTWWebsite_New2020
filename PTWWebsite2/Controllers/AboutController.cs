@@ -13,7 +13,7 @@ using Org.BouncyCastle.Crypto.Tls;
 using PTW.DataAccess.Models;
 using PTW.DataAccess.Services;
 using System.Security.Claims;
-
+using LoggerService;
 
 namespace PTWWebsite2.Controllers
 {
@@ -22,11 +22,13 @@ namespace PTWWebsite2.Controllers
         private readonly IMasterService _masterService;
         private readonly IAboutServices _aboutService;
         private readonly IHostingEnvironment _hostingEnvironment;
-        public AboutController(IMasterService masterService,IAboutServices aboutServices, IHostingEnvironment hostingEnvironment)
+        private readonly ILoggerManager _loggerManager;
+        public AboutController(IMasterService masterService,IAboutServices aboutServices, IHostingEnvironment hostingEnvironment, ILoggerManager loggerManager)
         {
             _masterService = masterService;
             _aboutService = aboutServices;
             _hostingEnvironment = hostingEnvironment;
+            _loggerManager = loggerManager;
         }
 
         [Route("about")]
@@ -119,7 +121,7 @@ namespace PTWWebsite2.Controllers
                 objprofile.ImgPath = "/Images/About/Profiles/" + objprofile.ImageUpload.FileName;
 
                 //Image file uploading
-                FilePath(objprofile.ImageUpload, createpath + objprofile.ImageUpload.FileName, "");
+                FilePath(objprofile.ImageUpload, createpath + objprofile.ImageUpload.FileName, "","");
 
             }
 
@@ -183,10 +185,14 @@ namespace PTWWebsite2.Controllers
             {
                 string path = Path.Combine(_hostingEnvironment.WebRootPath, "images/About/AboutImages/");
                 string deletePath = Path.Combine(_hostingEnvironment.WebRootPath, "images/About/PreviewImages/");
+                string backUpPath = Path.Combine(_hostingEnvironment.WebRootPath, "images/About/Backup/");
+
+                MasterPage master = _masterService.GetModuleContentById(About.ModuleId, About.LanguageCode);
+                System.IO.File.WriteAllText(backUpPath + "About_" + Guid.NewGuid(), master.HtmlContent);
 
                 if (About.AboutPageHeader != null)
                 {
-                    FilePath(About.AboutPageHeader, path + "AboutPageHeader.png", deletePath + "AboutPageHeader.png");
+                    FilePath(About.AboutPageHeader, path + "AboutPageHeader.png", deletePath + "AboutPageHeader.png", backUpPath + Guid.NewGuid()+ "AboutPageHeader.png");
                 }
                 
 
@@ -207,7 +213,7 @@ namespace PTWWebsite2.Controllers
 
             if (About.AboutPageHeader != null && About.Filename == "AboutPageHeader")
             {
-                FilePath(About.AboutPageHeader, path + "AboutPageHeader.png", "");
+                FilePath(About.AboutPageHeader, path + "AboutPageHeader.png", "","");
             }
 
             //if (About.Frame != null && About.Filename == "Frame")
@@ -234,8 +240,18 @@ namespace PTWWebsite2.Controllers
             return Json(resultCode, new JsonSerializerSettings());
         }
 
-        public async void FilePath(IFormFile file, string path, string deletePath)
+        public async void FilePath(IFormFile file, string path, string deletePath,string backUpPath)
         {
+            _loggerManager.LogInfo(string.Format("Controller:About, Action :FilePath Data: file: {0}, path: {1}, deltepath:{2} ", file.Name, path, deletePath));
+
+            if (!path.Contains("PreviewImages"))
+            {
+                if (System.IO.File.Exists(path))
+                {
+                    System.IO.File.Move(path, backUpPath);
+                }
+            }
+
             if (System.IO.File.Exists(path))
             {
                 System.IO.File.Delete(path);

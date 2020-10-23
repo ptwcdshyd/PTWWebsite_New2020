@@ -32,48 +32,28 @@
 
 
 .bg_LocalozationQA {
-    /* The image used */
-    background-image: url("../Images/New_UI/Localization_QA/Localisation-QA-new.png" );
-    /* Half height */
-    /*height: 100%;*/
-    /* Center and scale the image nicely */
+    background-image: url(../Images/New_UI/Localization_QA/Localisation-QA-new.png);
+    height: 100%;
     background-repeat: no-repeat;
-    background-size: 100% 100%;
-    padding-bottom: 100px;
+    background-size: 100%;
+    /* padding-bottom: 100px; */
 }
-    .bg_LocalozationQA .home-text > div {
-        display: flex;
-        align-items: center;
-        background: red;
-        clip-path: polygon( 0% 100%, /* top left */
-        0% 0%, /* top left */
-        100% 0%, /* top right */
-        100% 0, /* top right */
-        100% 70%, /* bottom right */
-        97% 100%, /* bottom right */
-        0% 100%, /* bottom left */
-        0% 100% /* bottom left */
-        );
-        overflow: hidden;
-        border-top-left-radius: 75px;
-        border-bottom-left-radius: 75px;
-        height: 90px;
-    }
-    .bg_LocalozationQA .home-text > div img {
-        width: 100px;
-        position: relative;
-        z-index: 999;
-        margin-left: -4px;
-        overflow: visible;
-        }
 
-        .list_num {
-        color: #4B4B4B;
-        font-size: 20px;
-        font-family: NunitoSans-Regular;
-        list-style: none;
-        margin: 0% 26%;
-    }
+.local .servicebg-title {
+    background: #5375D699;
+    width: 68%;
+}
+
+.local .home-text {
+    margin-top: 40%;
+}
+.list_num {
+    color: #4B4B4B;
+    font-size: 20px;
+    font-family: NunitoSans-Regular;
+    list-style: none;
+    margin: 0% 26%;
+}
 
     .list_num-local p {
         color: #4B4B4B;
@@ -122,12 +102,12 @@ li.list_num::marker{
 .localiconQA .squaredBorder::before {
     content: '';
     position: absolute;
-    background: url(../Images/New_UI/Localization_QA/beforeImg.svg) !important;
+    background: url(../Images/New_UI/Localization_QA/beforeImg.svg) ;
     background-size: 100%;
     width: 20%;
     height: 100%;
     background-repeat: no-repeat !important;
-    top: -9px !important;
+    top: -12px !important;
 }
 
 
@@ -288,6 +268,15 @@ li.list_num::marker{
     font-family: 'Nunito-sans';
 }
 
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .bg_LocalozationQA .qa-sub-txt {
+        font-size: 13px;
+       
+    }
+    .bg_LocalozationQA .servicebg-title p {
+        line-height: 20px;
+    }
+}
 @media only screen and (min-width: 320px) and (max-width: 576px) {
     .mSec-part {
         display: block;

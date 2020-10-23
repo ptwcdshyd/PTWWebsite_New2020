@@ -90,8 +90,11 @@
                     </div>
 
                 </div>
-                <div class="col-md-2">
-                    <img id="AboutPageHeaderImg" src="../images/About/AboutImages/AboutPageHeader.png" height="200px" width="200px" />
+                <div class="col-md-2 imageShow" style="display:flex!important; border: 2px solid #999; margin: 20px;">
+                    <img id="AboutPageHeaderImg" src="../images/About/AboutImages/AboutPageHeader.png" height="100px" width="150px" />
+                    <a id="AboutPageHeader_a" class="imageShow" href="../images/About/AboutImages/AboutPageHeader.png" title="Save Backup Image" download>
+                        <img src="~/images/downloadIcon.png" class="imageShow" width="20px" style="float:right;padding:2px;" height="20px" />
+                    </a>
                 </div>
             </div>
 
@@ -162,9 +165,9 @@
     });
 
     $(document).ready(function () {
-
+        $('.imageShow').css("display", "none");
         $('.custom-file-input').on("change", function () {
-            debugger;
+            
             var fileLabel = $(this).next('.custom-file-label');
             var files = $(this)[0].files;
 
@@ -238,7 +241,7 @@
     function UpdateAbout() {
        // if (Validate()) {
         if ($("#Languages").children("option:selected").val() != "Please select") {
-            debugger;
+            
                     var fd = new FormData();
             var files1 = $('#AboutPageHeader')[0].files[0];
             //var files2 = $('#Frame')[0].files[0];
@@ -246,7 +249,7 @@
             fd.append('AboutPageHeader', files1);
            // fd.append('Frame', files2);
 
-            fd.append('Description', $("#Description").val());
+            fd.append('Description', $('#Description').summernote('code'));
             fd.append('MetaUrl', $("#MetaUrl").val());
             fd.append('MetaTitle', $("#MetaTitle").val());
             fd.append('MetaDescription', $("#MetaDescription").val());
@@ -294,7 +297,7 @@
         // if (Validate()) {
         if ($("#Languages").children("option:selected").val() != "Please select") {
 
-            debugger;
+            
             var fd = new FormData();
             var files1 = $('#AboutPageHeader')[0].files[0];
             //var files2 = $('#Frame')[0].files[0];
@@ -304,7 +307,7 @@
            
             // fd.append('Frame', files2);
 
-            fd.append('Description', $("#Description").val());
+            fd.append('Description', $('#Description').summernote('code'));
             fd.append('MetaUrl', $("#MetaUrl").val());
             fd.append('MetaTitle', $("#MetaTitle").val());
             fd.append('MetaDescription', $("#MetaDescription").val());
@@ -400,9 +403,10 @@
 
     function GetContent() {
 
-        if ($("#Languages").children("option:selected").val() != "") {
+        if ($("#Languages").children("option:selected").val() != "Please select") {
             $("#PostBackMsg").show();
-            $('#Description').summernote('code', '')
+            $('#Description').summernote('code', '');
+            $('.imageShow').css("display", "block");
             console.log($("#ModuleId").children("option:selected").val());
             console.log($("#LanguageCode").children("option:selected").val());
             $.ajax({
@@ -438,6 +442,13 @@
                 }
             });
 
+        }
+        else {
+            $('.imageShow').css("display", "none");
+            $('#Description').summernote('code', '');
+            $('#MetaDescription').val('');
+            $('#MetaTitle').val('');
+            $('#MetaUrl').val('');
         }
     }
 

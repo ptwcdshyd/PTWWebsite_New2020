@@ -1,7 +1,7 @@
 ﻿@model PTW.DataAccess.Models.LocalizationQA
 @{
     Layout = "~/Views/Shared/_LayoutForPtwCms.cshtml";
-    ViewData["Title"] = "NewsEventsEditor";
+    ViewData["Title"] = "LocalizationQA";
 }
 
 <link href="~/css/Editor/Css/4.4.1.bootstrap.min.css" rel="stylesheet" />
@@ -89,8 +89,11 @@
                     </div>
 
                 </div>
-                <div class="col-md-2">
-                    <img id="LocalizatonQAHearderImg" src="../images/LocalizationQA/Local/LocalizatonQAHearder.png" height="200px" width="200px" />
+                <div class="col-md-2 imageShow" style="display:flex!important; border: 2px solid #999; margin: 20px;">
+                    <img id="LocalizatonQAHearderImg" src="../images/LocalizationQA/Local/LocalizatonQAHearder.png" height="1700px" width="170px" />
+                    <a  class="imageShow" href="../images/LocalizationQA/Local/LocalizatonQAHearder.png" title="Save Backup Image" download>
+                        <img src="~/images/downloadIcon.png" class="imageShow" width="20px" style="float:right;padding:2px;" height="20px" />
+                    </a>
                 </div>
             </div>
             <div class="row">
@@ -105,8 +108,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2">
-                    <img id="LinguisticTestingImg" src="../images/LocalizationQA/Local/LinguisticTesting.svg" height="200px" width="200px" />
+                <div class="col-md-2 imageShow" style="display:flex!important; border: 2px solid #999; margin: 20px;">
+                    <img id="LinguisticTestingImg" src="../images/LocalizationQA/Local/LinguisticTesting.svg" height="180px" width="180px" />
+                    <a  class="imageShow" href="../images/LocalizationQA/Local/LinguisticTesting.svg" title="Save Backup Image" download>
+                        <img src="~/images/downloadIcon.png" class="imageShow" width="20px" style="float:right;padding:2px;" height="20px" />
+                    </a>
                 </div>
                 <div class="form-group col-md-8 col-sm-8">
                     <label class="col-form-label">
@@ -119,8 +125,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2">
-                    <img id="LinguisticCertificationImg" src="../images/LocalizationQA/Local/LinguisticCertification.svg" height="200px" width="200px" />
+                <div class="col-md-2 imageShow" style="display:flex!important; border: 2px solid #999; margin: 20px;">
+                    <img id="LinguisticCertificationImg" src="../images/LocalizationQA/Local/LinguisticCertification.svg" height="180px" width="180px" />
+                    <a  class="imageShow" href="../images/LocalizationQA/Local/LinguisticCertification.svg" title="Save Backup Image" download>
+                        <img src="~/images/downloadIcon.png" class="imageShow" width="20px" style="float:right;padding:2px;" height="20px" />
+                    </a>
                 </div>
                 <div class="form-group col-md-8 col-sm-8">
                     <label class="col-form-label">
@@ -133,8 +142,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2">
-                    <img id="FrameImg" src="../images/LocalizationQA/Local/Frame.svg" height="200px" width="200px" />
+                <div class="col-md-2 imageShow" style="display:flex!important; border: 2px solid #999; margin: 20px;">
+                    <img id="FrameImg" src="../images/LocalizationQA/Local/Frame.svg" height="180px" width="180px" />
+                    <a  class="imageShow" href="../images/LocalizationQA/Local/Frame.svg" title="Save Backup Image" download>
+                        <img src="~/images/downloadIcon.png" class="imageShow" width="20px" style="float:right;padding:2px;" height="20px" />
+                    </a>
                 </div>
             </div>
 
@@ -171,14 +183,18 @@
                     </div>
                 </div>
 
-                <div class="row distribute-container">
-                    <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
-                        <button onclick="UpdateLocalizationQA();" class="btn btn-success">Update</button>
-                    </div>
-                    <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
-                        <button onclick="PreviewLocalizationQA();" class="btn btn-success">Preview</button>
-                    </div>
-                </div>
+        <div class="row distribute-container">
+            <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
+                <button onclick="UpdateLocalizationQA();" class="btn btn-success">Update</button>
+            </div>
+            <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
+                <button onclick="PreviewLocalizationQA();" class="btn btn-success">Preview</button>
+            </div>
+            <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
+                <button onclick="BackUpCode();" class="btn btn-success">Take BackUp</button>
+            </div>
+            <a id="donwloadFile" style="display:none;" href="" download></a>
+        </div>
             </div>
         </div>
 
@@ -202,9 +218,9 @@
     });
 
     $(document).ready(function () {
-
+        $('.imageShow').css("display", "none");
         $('.custom-file-input').on("change", function () {
-            debugger;
+            
             var fileLabel = $(this).next('.custom-file-label');
             var files = $(this)[0].files;
 
@@ -272,7 +288,7 @@
     function UpdateLocalizationQA() {
        // if (Validate()) {
         if ($("#Languages").children("option:selected").val() != "Please select") {
-            debugger;
+            
             var fd = new FormData();
             var files1 = $('#LocalizatonQAHearder')[0].files[0];
             var files4 = $('#LinguisticTesting')[0].files[0];
@@ -285,7 +301,7 @@
             fd.append('LinguisticCertification', files5);
             fd.append('Frame', files6);
 
-            fd.append('Description', $("#Description").val());
+            fd.append('Description', $('#Description').summernote('code'));
             fd.append('MetaUrl', $("#MetaUrl").val());
             fd.append('MetaTitle', $("#MetaTitle").val());
             fd.append('MetaDescription', $("#MetaDescription").val());
@@ -333,7 +349,7 @@
         // if (Validate()) {
         if ($("#Languages").children("option:selected").val() != "Please select") {
             var fd = new FormData();
-            debugger;
+            
             var files1 = $('#LocalizatonQAHearder')[0].files[0];
             var files4 = $('#LinguisticTesting')[0].files[0];
             var files5 = $('#LinguisticCertification')[0].files[0];
@@ -344,7 +360,7 @@
             fd.append('LinguisticTesting', files4);
             fd.append('LinguisticCertification', files5);
             fd.append('Frame', files6);
-            fd.append('Description', $("#Description").val());
+            fd.append('Description', $('#Description').summernote('code'));
             fd.append('MetaUrl', $("#MetaUrl").val());
             fd.append('MetaTitle', $("#MetaTitle").val());
             fd.append('MetaDescription', $("#MetaDescription").val());
@@ -439,8 +455,8 @@
 
 
     function GetContent() {
-        debugger;
-        if ($("#Languages").children("option:selected").val() != "" && $("#Languages").children("option:selected").val() != undefined) {
+        
+        if ($("#Languages").children("option:selected").val() != "Please select" && $("#Languages").children("option:selected").val() != undefined) {
             $("#PostBackMsg").show();
             $('#Description').summernote('code', '')
 
@@ -504,6 +520,41 @@
             }
             reader.readAsDataURL(input.files[0]); // convert to base64 string
         }
+    }
+
+    function BackUpCode() {
+
+        $.ajax({
+            type: "GET",
+            url: '../ServicesBackup?ModuleId=' + 17 + '&LanguageCode=' + $("#Languages").children("option:selected").val() + '&ServiceName=LocalizationQA',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                debugger;
+                console.log(result);
+
+                if (result == 'Logout') {
+                    window.location = '../Logout';
+                }
+                console.log(result);
+
+                if (result != null) {
+                    $('#donwloadFile').attr('href', '../images/LocalizationQA/Backup/' + result);
+
+                    $('#donwloadFile')[0].click();
+                }
+
+
+                $("#PostBackMsg").fadeOut("slow");
+            },
+
+            error: function (err) {
+                if (err.status === 0) {
+                    window.location = '../Logout';
+                }
+                $("#PostBackMsg").fadeOut("slow");
+            }
+        });
     }
 
 </script>

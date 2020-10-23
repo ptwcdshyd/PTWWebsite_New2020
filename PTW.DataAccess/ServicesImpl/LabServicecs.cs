@@ -547,7 +547,7 @@ namespace PTW.DataAccess.ServicesImpl
                        // labs.DefaultImageUrl = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["DefaultImageUrl"]);
                         labs.MobileImageNameUrl = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["MobileImageNameUrl"]);
                         labs.MetaTitle = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["MetaTitle"]);
-                        //labs.MetaDescription = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["MetaDescription"]);
+                        labs.MetaDescription = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["MetaDescription"]);
                         //labs.ShortOrder = Convert.ToInt32(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["ShortOrder"]);
 
                     }

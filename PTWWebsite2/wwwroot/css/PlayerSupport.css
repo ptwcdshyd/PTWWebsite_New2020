@@ -32,7 +32,7 @@
 
 .player-support-bg {
     /* The image used */
-   /* background-image: url("../Images/New_UI/PlayerSupport/bg.png");*/
+    background-image: url("../Images/New_UI/PlayerSupport/bg.png");
     /* Half height */
     height: 100%;
     /* Center and scale the image nicely */
@@ -71,7 +71,7 @@
 }
 
 .ps .squaredDiv {
-/*    background: url(../Images/New_UI/PlayerSupport/frame.svg);*/
+    background: url(../Images/New_UI/PlayerSupport/frame.svg);
     position: absolute;
     top: 0;
     left: -7px;

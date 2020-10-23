@@ -42,8 +42,8 @@ namespace PTWWebsite2.Controllers
 
         [Route("")]
         [Route("Home")]
-        //[Route("{culture}/Home")]
-        //[Route("{culture}/")]
+        [Route("{culture}/Home")]
+        [Route("{culture}/")]
         [AllowAnonymous]
         public IActionResult Home(string culture)
         {
@@ -154,7 +154,7 @@ namespace PTWWebsite2.Controllers
                             {
                                 string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
                                 string path = createpath + "\\" + "HOME-ICONS-white.png";
-                                FilePath(file, path, "");
+                                FilePath(file, path, "","");
 
                             }
                             else
@@ -168,7 +168,7 @@ namespace PTWWebsite2.Controllers
                             {
                                 string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
                                 string path = createpath + "\\" + "HOME-ICONS-white2.png";
-                                FilePath(file, path, "");
+                                FilePath(file, path, "", "");
 
                             }
                             else
@@ -182,7 +182,7 @@ namespace PTWWebsite2.Controllers
                             {
                                 string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
                                 string path = createpath + "\\" + "HOME-ICONS-white3.png";
-                                FilePath(file, path, "");
+                                FilePath(file, path, "", "");
 
 
                             }
@@ -196,7 +196,7 @@ namespace PTWWebsite2.Controllers
                             {
                                 string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
                                 string path = createpath + "\\" + "HOME-ICONS-white4.png";
-                                FilePath(file, path, "");
+                                FilePath(file, path, "", "");
 
 
                             }
@@ -210,7 +210,7 @@ namespace PTWWebsite2.Controllers
                             {
                                 string createpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "hover-over");
                                 string path = createpath + "\\" + "HOME-ICONS-white5.png";
-                                FilePath(file, path, "");
+                                FilePath(file, path, "", "");
 
                             }
                             else
@@ -449,11 +449,19 @@ namespace PTWWebsite2.Controllers
             return Json("", new JsonSerializerSettings());
         }
 
-        public async void FilePath(IFormFile file, string path, string deletePath)
+        public async void FilePath(IFormFile file, string path, string deletePath, string backUpPath)
         {
             try
             {
                 _loggerManager.LogInfo(string.Format("Method :FilePath Data: file: {0}, path: {1}, deltepath:{2} ", file.Name, path, deletePath));
+                if (!path.Contains("PreviewImages"))
+                {
+                    if (System.IO.File.Exists(path))
+                    {
+                        System.IO.File.Move(path, backUpPath);
+                    }
+                }
+
                 if (System.IO.File.Exists(path))
                 {
                     System.IO.File.Delete(path);
@@ -556,56 +564,60 @@ namespace PTWWebsite2.Controllers
         {
             try
             {
+                
+
                 _loggerManager.LogInfo("Method :UpdateHomePageByLanguageId Data: " + JsonConvert.SerializeObject(HomeContent));
                 string path = Path.Combine(_hostingEnvironment.WebRootPath, "images/Homepage/HomeImages/");
                 string deletePath = Path.Combine(_hostingEnvironment.WebRootPath, "images/Homepage/PreviewImages/");
+                string backUpPath = Path.Combine(_hostingEnvironment.WebRootPath, "images/Homepage/Backup/");
+               
 
                 if (HomeContent.PageBackgroundImage != null)
                 {
-                    FilePath(HomeContent.PageBackgroundImage, path + "PageBackgroundImage.png", deletePath + "PageBackgroundImage.png");
+                    FilePath(HomeContent.PageBackgroundImage, path + "PageBackgroundImage.png", deletePath + "PageBackgroundImage.png", backUpPath + Guid.NewGuid() + "_" + "PageBackgroundImage.png");
                 }
                 if (HomeContent.CustomerExperience != null)
                 {
-                    FilePath(HomeContent.CustomerExperience, path + "CustomerExperience.png", deletePath + "CustomerExperience.png");
+                    FilePath(HomeContent.CustomerExperience, path + "CustomerExperience.png", deletePath + "CustomerExperience.png", backUpPath + Guid.NewGuid() + "_" + "CustomerExperience.png");
                 }
                 if (HomeContent.Squad != null)
                 {
-                    FilePath(HomeContent.Squad, path + "Squad.png", deletePath + "Squad.png");
+                    FilePath(HomeContent.Squad, path + "Squad.png", deletePath + "Squad.png", backUpPath + Guid.NewGuid()+"_" + "Squad.png");
                 }
                 if (HomeContent.QualityAssurance != null)
                 {
-                    FilePath(HomeContent.QualityAssurance, path + "QualityAssurance.png", deletePath + "QualityAssurance.png");
+                    FilePath(HomeContent.QualityAssurance, path + "QualityAssurance.png", deletePath + "QualityAssurance.png", backUpPath + Guid.NewGuid() + "_" + "QualityAssurance.png");
                 }
                
                 if (HomeContent.Localization != null)
                 {
-                    FilePath(HomeContent.Localization, path + "Localization.png", deletePath + "Localization.png");
+                    FilePath(HomeContent.Localization, path + "Localization.png", deletePath + "Localization.png", backUpPath + Guid.NewGuid() + "_" + "Localization.png");
                 }
 
                 if (HomeContent.AudioProduction != null)
                 {
-                    FilePath(HomeContent.AudioProduction, path + "AudioProduction.png", deletePath + "AudioProduction.png");
+                    FilePath(HomeContent.AudioProduction, path + "AudioProduction.png", deletePath + "AudioProduction.png", backUpPath + Guid.NewGuid() + "_" + "AudioProduction.png");
                 }
 
                 if (HomeContent.ProductDevelopment != null)
                 {
-                    FilePath(HomeContent.ProductDevelopment, path + "ProductDevelopment.png", deletePath + "ProductDevelopment.png");
+                    FilePath(HomeContent.ProductDevelopment, path + "ProductDevelopment.png", deletePath + "ProductDevelopment.png", backUpPath + Guid.NewGuid() + "_" + "ProductDevelopment.png");
                 }
                 if (HomeContent.LocationMap != null)
                 {
-                    FilePath(HomeContent.LocationMap, path + "LocationMap.svg", deletePath + "LocationMap.svg");
+                    FilePath(HomeContent.LocationMap, path + "LocationMap.svg", deletePath + "LocationMap.svg", backUpPath + Guid.NewGuid() + "_" + "LocationMap.svg");
                 }
                 if (HomeContent.KickStartImage != null)
                 {
-                    FilePath(HomeContent.KickStartImage, path + "KickStartImage.png", deletePath + "KickStartImage.png");
+                    FilePath(HomeContent.KickStartImage, path + "KickStartImage.png", deletePath + "KickStartImage.png", backUpPath + Guid.NewGuid() + "_" + "KickStartImage.png");
                 }
                 if (HomeContent.CareersImage != null)
                 {
-                    FilePath(HomeContent.CareersImage, path + "CareersImage.svg", deletePath + "CareersImage.svg");
+                    FilePath(HomeContent.CareersImage, path + "CareersImage.svg", deletePath + "CareersImage.svg", backUpPath + Guid.NewGuid() + "_" + "CareersImage.svg");
                 }
                 if (HomeContent.Frame != null)
                 {
-                    FilePath(HomeContent.Frame, path + "Frame.svg", deletePath + "Frame.svg");
+                    FilePath(HomeContent.Frame, path + "Frame.svg", deletePath + "Frame.svg", backUpPath + Guid.NewGuid() + "_" + "Frame.svg");
                 }
 
                 int resultCode = _masterService.UpdateHomePageByLanguageId(HomeContent.ModuleId, HomeContent.LanguageCode, HomeContent.Description, HomeContent.MetaDescription, HomeContent.MetaTitle, HomeContent.MetaUrl);
@@ -690,51 +702,51 @@ namespace PTWWebsite2.Controllers
             {
                 if (HomeContent.PageBackgroundImage != null && HomeContent.Filename == "PageBackgroundImage")
                 {
-                    FilePath(HomeContent.PageBackgroundImage, path + "PageBackgroundImage.png", "");
+                    FilePath(HomeContent.PageBackgroundImage, path + "PageBackgroundImage.png", "","");
                 }
                 if (HomeContent.CustomerExperience != null && HomeContent.Filename == "CustomerExperience")
                 {
-                    FilePath(HomeContent.CustomerExperience, path + "CustomerExperience.png", "");
+                    FilePath(HomeContent.CustomerExperience, path + "CustomerExperience.png", "","");
                 }
                 if (HomeContent.Squad != null && HomeContent.Filename == "Squad")
                 {
-                    FilePath(HomeContent.Squad, path + "Squad.png", "");
+                    FilePath(HomeContent.Squad, path + "Squad.png", "","");
                 }
                 if (HomeContent.QualityAssurance != null && HomeContent.Filename == "QualityAssurance")
                 {
-                    FilePath(HomeContent.QualityAssurance, path + "QualityAssurance.png", "");
+                    FilePath(HomeContent.QualityAssurance, path + "QualityAssurance.png", "","");
                 }
                 
                 if (HomeContent.Localization != null && HomeContent.Filename == "Localization")
                 {
-                    FilePath(HomeContent.Localization, path + "Localization.png", "");
+                    FilePath(HomeContent.Localization, path + "Localization.png", "","");
                 }
               
                 if (HomeContent.AudioProduction != null && HomeContent.Filename == "AudioProduction")
                 {
-                    FilePath(HomeContent.AudioProduction, path + "AudioProduction.png", "");
+                    FilePath(HomeContent.AudioProduction, path + "AudioProduction.png", "","");
                 }
                
                 if (HomeContent.ProductDevelopment != null && HomeContent.Filename == "ProductDevelopment")
                 {
-                    FilePath(HomeContent.ProductDevelopment, path + "ProductDevelopment.png", "");
+                    FilePath(HomeContent.ProductDevelopment, path + "ProductDevelopment.png", "","");
                 }
                
                 if (HomeContent.LocationMap != null && HomeContent.Filename == "LocationMap")
                 {
-                    FilePath(HomeContent.LocationMap, path + "LocationMap.svg", "");
+                    FilePath(HomeContent.LocationMap, path + "LocationMap.svg", "", "");
                 }
                 if (HomeContent.KickStartImage != null && HomeContent.Filename == "KickStartImage")
                 {
-                    FilePath(HomeContent.KickStartImage, path + "KickStartImage.png", "");
+                    FilePath(HomeContent.KickStartImage, path + "KickStartImage.png", "","");
                 }
                 if (HomeContent.CareersImage != null && HomeContent.Filename == "CareersImage")
                 {
-                    FilePath(HomeContent.CareersImage, path + "CareersImage.svg", "");
+                    FilePath(HomeContent.CareersImage, path + "CareersImage.svg", "", "");
                 }
                 if (HomeContent.Frame != null && HomeContent.Filename == "Frame")
                 {
-                    FilePath(HomeContent.Frame, path + "Frame.svg", "");
+                    FilePath(HomeContent.Frame, path + "Frame.svg", "", "");
                 }
             }
             catch (Exception exception)
@@ -758,11 +770,12 @@ namespace PTWWebsite2.Controllers
                 _loggerManager.LogInfo("Method :UpdateNewsPageByLanguageId Data: " + JsonConvert.SerializeObject(News));
                 string path = Path.Combine(_hostingEnvironment.WebRootPath, "images/News/NewsImages/");
                 string deletePath = Path.Combine(_hostingEnvironment.WebRootPath, "images/News/PreviewImages/");
+                string BackupPath = Path.Combine(_hostingEnvironment.WebRootPath, "images/News/BackupImages/");
 
 
                 if (News.NewsImage != null)
                 {
-                    FilePath(News.NewsImage, path + "NewsImage.png", deletePath + "NewsImage.png");
+                    FilePath(News.NewsImage, path + "NewsImage.png", deletePath + "NewsImage.png", BackupPath);
                 }
 
                 int resultCode = _masterService.UpdateHomePageByLanguageId(News.ModuleId, News.LanguageCode, News.Description, News.MetaDescription, News.MetaTitle, News.MetaUrl);
@@ -787,15 +800,16 @@ namespace PTWWebsite2.Controllers
                 _loggerManager.LogInfo("Method :UpdateLabsPageByLanguageId Data: " + JsonConvert.SerializeObject(Labs));
                 string path = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/LabImages/");
                 string deletePath = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/PreviewImages/");
+                string BackupPath = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/BackupImages/");
 
 
                 if (Labs.LabImage != null)
                 {
-                    FilePath(Labs.LabImage, path + "LabImage.png", deletePath + "LabImage.png");
+                    FilePath(Labs.LabImage, path + "LabImage.png", deletePath + "LabImage.png", BackupPath);
                 }
                 if (Labs.LabHeader != null)
                 {
-                    FilePath(Labs.LabHeader, path + "LabHeader.png", deletePath + "LabHeader.png");
+                    FilePath(Labs.LabHeader, path + "LabHeader.png", deletePath + "LabHeader.png", BackupPath);
                 }
 
                 int resultCode = _masterService.UpdateHomePageByLanguageId(Labs.ModuleId, Labs.LanguageCode, Labs.Description, Labs.MetaDescription, Labs.MetaTitle, Labs.MetaUrl);
@@ -808,6 +822,18 @@ namespace PTWWebsite2.Controllers
 
                 throw ex;
             }
+        }
+
+        [Route("DownloadBackup")]
+        [HttpGet]
+        public IActionResult DownloadBackup(int ModuleId,string LanguageCode)
+        {
+            
+            string backUpPath = Path.Combine(_hostingEnvironment.WebRootPath, "images/Homepage/Backup/");
+            string filePath = "Home_" + Guid.NewGuid() + ".html";
+            MasterPage master = _masterService.GetModuleContentById(ModuleId, LanguageCode);
+            System.IO.File.WriteAllText(backUpPath+filePath, master.HtmlContent);
+            return Json(filePath, new JsonSerializerSettings());
         }
 
 

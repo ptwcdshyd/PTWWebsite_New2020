@@ -1,9 +1,8 @@
 ﻿@model PTW.DataAccess.Models.Home
 @{
     Layout = "~/Views/Shared/_LayoutForPtwCms.cshtml";
-    ViewData["Title"] = "NewsEventsEditor";
+    ViewData["Title"] = "Home";
 }
-
 <link href="~/css/Editor/Css/4.4.1.bootstrap.min.css" rel="stylesheet" />
 <link href="~/css/jquery.gritter.css" rel="stylesheet" />
 <script class="imageShow" src="~/js/Editor/jquery-3.5.1.min.js"></script>
@@ -100,8 +99,10 @@
     .col-md-2 {
         padding: 5px;
     }
-    .imageShow{
-        display:none;
+
+    .imageShow {
+        display: none;
+        border: none;
     }
 </style>
 <div id="PostBackMsg" style="display:none;">
@@ -136,8 +137,14 @@
                     </div>
 
                 </div>
-                <div class="col-md-2">
-                    <img id="PageBackgroundImageImg" class="imageShow" src="../images/Homepage/HomeImages/PageBackgroundImage.png" height="150px" width="150px" />
+                @*<div class="col-md-2">
+                        <img id="PageBackgroundImageImg" class="imageShow" src="../images/Homepage/HomeImages/PageBackgroundImage.png" height="150px" width="150px" />
+                    </div>*@
+                <div class="col-md-2 imageShow" style="border: 2px solid #999; margin: 20px;">
+                    <img id="PageBackgroundImageImg" src="../images/Homepage/HomeImages/PageBackgroundImage.png" height="150px" width="150px" />
+                    <a id="PageBackgroundImage_a" class="imageShow" href="../images/Homepage/HomeImages/PageBackgroundImage.png" title="Save Backup Image" download>
+                        <img src="~/images/downloadIcon.png" class="imageShow" width="20px" style="float:right;margin: -149px auto;" height="20px" />
+                    </a>
                 </div>
             </div>
             <div class="row">
@@ -157,24 +164,30 @@
 
                     </div>
                 </div>
-                <div class="col-md-2">
+                @*<div class="col-md-2">
+                        <img id="CustomerExperienceImg" class="imageShow" src="../images/Homepage/HomeImages/CustomerExperience.png" height="150px" width="150px" />
+                    </div>*@
+                <div class="col-md-2 imageShow" style="display:flex; border: 2px solid #999; margin: 20px;">
                     <img id="CustomerExperienceImg" class="imageShow" src="../images/Homepage/HomeImages/CustomerExperience.png" height="150px" width="150px" />
+                    <a id="CustomerExperience_a" href="../images/Homepage/HomeImages/CustomerExperience.png" title="Save Backup Image" download>
+                        <img src="~/images/downloadIcon.png" class="imageShow" width="20px" style="float:right; margin: -149px auto;" height="20px" />
+                    </a>
                 </div>
 
                 @*<div class="form-group col-md-6 col-sm-6">
-                <label class="col-form-label">
-                    Customer Experience On Mouse Hover (300x300 dimensions)
-                </label>
-                <div class="col-md-8 col-sm-6">
-                    <div class="custom-file">
-                        <input id="CustomerExperienceOnMouseHover" type="file" class="form-control custom-file-input">
-                        <label class="custom-file-label">Choose File...300x300 dimensions</label>
+                        <label class="col-form-label">
+                            Customer Experience On Mouse Hover (300x300 dimensions)
+                        </label>
+                        <div class="col-md-8 col-sm-6">
+                            <div class="custom-file">
+                                <input id="CustomerExperienceOnMouseHover" type="file" class="form-control custom-file-input">
+                                <label class="custom-file-label">Choose File...300x300 dimensions</label>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <img id="CustomerExperienceOnMouseHoverImg" class="imageShow" src="../images/Homepage/HomeImages/CustomerExperienceOnMouseHover.png" height="150px" width="150px"  />
-            </div>*@
+                    <div class="col-md-2">
+                        <img id="CustomerExperienceOnMouseHoverImg" class="imageShow" src="../images/Homepage/HomeImages/CustomerExperienceOnMouseHover.png" height="150px" width="150px"  />
+                    </div>*@
                 <div class="form-group  col-md-6 col-sm-6">
                     <label class="col-form-label">Quality Assurance (200x200 dimensions)</label>
                     <div class="col-md-8 col-sm-6">
@@ -184,21 +197,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2">
+                @*<div class="col-md-2">
+                        <img id="QualityAssuranceImg" class="imageShow" src="../images/Homepage/HomeImages/QualityAssurance.png" height="150px" width="150px" />
+                    </div>*@
+                <div class="col-md-2 imageShow" style="display:flex; border: 2px solid #999; margin: 20px;">
                     <img id="QualityAssuranceImg" class="imageShow" src="../images/Homepage/HomeImages/QualityAssurance.png" height="150px" width="150px" />
+                    <a id="QualityAssurance_a" class="imageShow" href="../images/Homepage/HomeImages/QualityAssurance.png" title="Save Backup Image" download>
+                        <img src="~/images/downloadIcon.png" class="imageShow" width="20px" style="float:right;margin: -149px auto;" height="20px" />
+                    </a>
                 </div>
-                @*<div class="form-group  col-md-6 col-sm-6">
-                <label class="col-form-label">Quality Assurance On Mouse Hover (400x400 dimensions)</label>
-                <div class="col-md-8 col-sm-6">
-                    <div class="custom-file">
-                        <input id="QualityAssuranceOnMouseHover" type="file" class="form-control custom-file-input">
-                        <label class="custom-file-label">Choose File...400x400 dimensions</label>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <img id="QualityAssuranceOnMouseHoverImg" class="imageShow" src="../images/Homepage/HomeImages/QualityAssuranceOnMouseHover.png" height="150px" width="150px"  />
-            </div>*@
+
                 <div class="form-group col-md-6 col-sm-6">
                     <label class="col-form-label">Localization (150x150 dimensions)</label>
                     <div class="col-md-8 col-sm-6">
@@ -208,21 +216,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2">
+                @*<div class="col-md-2">
+                        <img id="LocalizationImg" class="imageShow" src="../images/Homepage/HomeImages/Localization.png" height="150px" width="150px" />
+                    </div>*@
+                <div class="col-md-2 imageShow" style="display:flex; border: 2px solid #999; margin: 20px;">
                     <img id="LocalizationImg" class="imageShow" src="../images/Homepage/HomeImages/Localization.png" height="150px" width="150px" />
+                    <a id="Localization_a" class="imageShow" href="../images/Homepage/HomeImages/Localization.png" title="Save Backup Image" download>
+                        <img src="~/images/downloadIcon.png" class="imageShow" width="20px" style="float:right;margin: -149px auto;" height="20px" />
+                    </a>
                 </div>
-                @*<div class="form-group col-md-6 col-sm-6">
-                <label class="col-form-label">Localization On Mouse Hover (300x300 dimensions)</label>
-                <div class="col-md-8 col-sm-6">
-                    <div class="custom-file">
-                        <input id="LocalizationOnMouseHover" type="file" class="form-control custom-file-input">
-                        <label class="custom-file-label">Choose File...300x300 dimensions</label>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <img id="LocalizationOnMouseHoverImg" class="imageShow" src="../images/Homepage/HomeImages/LocalizationOnMouseHover.png" height="150px" width="150px"  />
-            </div>*@
+
                 <div class="form-group col-md-6 col-sm-6">
                     <label class="col-form-label">Audio Production (150x150 dimensions)</label>
                     <div class="col-md-8 col-sm-6">
@@ -232,21 +235,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 imageShow" style="display:flex; border: 2px solid #999; margin: 20px;">
                     <img id="AudioProductionImg" class="imageShow" src="../images/Homepage/HomeImages/AudioProduction.png" height="150px" width="150px" />
+                    <a id="AudioProduction_a" class="imageShow" href="../images/Homepage/HomeImages/AudioProduction.png" title="Save Backup Image" download>
+                        <img src="~/images/downloadIcon.png" class="imageShow" width="20px" style="float:right;margin: -149px auto;" height="20px" />
+                    </a>
                 </div>
-                @*<div class="form-group col-md-6 col-sm-6">
-                <label class="col-form-label">Audio Production On Mouse Hover (300x300 dimensions)</label>
-                <div class="col-md-8 col-sm-6">
-                    <div class="custom-file">
-                        <input id="AudioProductionOnMouseHover" type="file" class="form-control custom-file-input">
-                        <label class="custom-file-label">Choose File...300x300 dimensions</label>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <img id="AudioProductionOnMouseHoverImg" class="imageShow" src="../images/Homepage/HomeImages/AudioProductionOnMouseHover.png" height="150px" width="150px"  />
-            </div>*@
+                @*<div class="col-md-2">
+                        <img id="AudioProductionImg" class="imageShow" src="../images/Homepage/HomeImages/AudioProduction.png" height="150px" width="150px" />
+                    </div>*@
+
                 <div class="form-group col-md-6 col-sm-6">
                     <label class="col-form-label">Product Development (150x150 dimensions)</label>
                     <div class="col-md-8 col-sm-6">
@@ -256,21 +254,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2">
+
+                <div id="ProductDevelopmentImg" class="col-md-2 imageShow" style="display:flex; border: 2px solid #999; margin: 20px;">
                     <img id="ProductDevelopmentImg" class="imageShow" src="../images/Homepage/HomeImages/ProductDevelopment.png" height="150px" width="150px" />
+                    <a id="ProductDevelopment_a" class="imageShow" href="../images/Homepage/HomeImages/ProductDevelopment.png" title="Save Backup Image" download>
+                        <img src="~/images/downloadIcon.png" class="imageShow" width="20px" style="float:right;margin: -149px auto;" height="20px" />
+                    </a>
                 </div>
-                @*<div class="form-group col-md-6 col-sm-6">
-                <label class="col-form-label">Product Development On Mouse Hover (300x300 dimensions)</label>
-                <div class="col-md-8 col-sm-6">
-                    <div class="custom-file">
-                        <input id="ProductDevelopmentOnMouseHover" type="file" class="form-control custom-file-input">
-                        <label class="custom-file-label">Choose File...300x300 dimensions</label>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <img id="ProductDevelopmentOnMouseHoverImg" class="imageShow" src="../images/Homepage/HomeImages/ProductDevelopmentOnMouseHover.png" height="150px" width="150px"  />
-            </div>*@
+
             </div>
 
             <div class="row">
@@ -283,9 +274,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 imageShow" style="display:flex; border: 2px solid #999; margin: 20px;">
                     <img id="LocationMapImg" class="imageShow" src="../images/Homepage/HomeImages/LocationMap.svg" height="150px" width="150px" />
+
+                    <a id="LocationMap_a" class="imageShow" href="../images/Homepage/HomeImages/LocationMap.svg" title="Save Backup Image" download>
+                        <img src="~/images/downloadIcon.png" class="imageShow" width="20px" style="float:right;margin: -149px auto;" height="20px" />
+                    </a>
                 </div>
+
             </div>
 
             <div class="row">
@@ -298,8 +294,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2">
+                @*<div class="col-md-2">
+                        <img id="KickStartImageImg" class="imageShow" src="../images/Homepage/HomeImages/KickStartImage.png" height="150px" width="150px" />
+                    </div>*@
+                <div class="col-md-2 imageShow" style="display:flex; border: 2px solid #999; margin: 20px;">
                     <img id="KickStartImageImg" class="imageShow" src="../images/Homepage/HomeImages/KickStartImage.png" height="150px" width="150px" />
+
+                    <a id="KickStartImage_a" class="imageShow" href="../images/Homepage/HomeImages/KickStartImage.png" title="Save Backup Image" download>
+                        <img src="~/images/downloadIcon.png" class="imageShow" width="20px" style="float:right;margin: -149px auto;" height="20px" />
+                    </a>
                 </div>
             </div>
             <div class="row">
@@ -312,8 +315,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2">
+                @*<div class="col-md-2">
+                        <img id="SquadImg" class="imageShow" src="../images/Homepage/HomeImages/Squad.png" height="150px" width="150px" />
+                    </div>*@
+                <div class="col-md-2 imageShow" style="display:flex; border: 2px solid #999; margin: 20px;">
                     <img id="SquadImg" class="imageShow" src="../images/Homepage/HomeImages/Squad.png" height="150px" width="150px" />
+                    <a id="Squad_a" class="imageShow" href="../images/Homepage/HomeImages/Squad.png" title="Save Backup Image" download>
+                        <img src="~/images/downloadIcon.png" class="imageShow" width="20px" style="float:right;margin: -149px auto;" height="20px" />
+                    </a>
                 </div>
             </div>
             <div class="row">
@@ -326,8 +335,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2">
+                @*<div class="col-md-2">
+                        <img id="FrameImg" class="imageShow" src="../images/Homepage/HomeImages/Frame.svg" height="150px" width="150px" />
+                    </div>*@
+                <div class="col-md-2 imageShow" style="display:flex; border: 2px solid #999; margin: 20px;">
                     <img id="FrameImg" class="imageShow" src="../images/Homepage/HomeImages/Frame.svg" height="150px" width="150px" />
+                    <a id="Frame_a" class="imageShow" href="../images/Homepage/HomeImages/Frame.svg" title="Save Backup Image" download>
+                        <img src="~/images/downloadIcon.png" class="imageShow" width="20px" style="float:right;margin: -149px auto;" height="20px" />
+                    </a>
                 </div>
             </div>
             <div class="row">
@@ -340,8 +355,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 imageShow" style="display:flex; border: 2px solid #999; margin: 20px;">
                     <img id="CareersImageImg" class="imageShow" src="../images/Homepage/HomeImages/CareersImage.png" height="150px" width="150px" />
+                    <a id="CareersImage_a" class="imageShow" href="../images/Homepage/HomeImages/CareersImage.png" title="Save Backup Image" download>
+                        <img src="~/images/downloadIcon.png" width="20px" style="float:right;margin: -149px auto;" height="20px" />
+                    </a>
                 </div>
             </div>
 
@@ -391,6 +409,10 @@
             <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
                 <button onclick="PreviewHome();" class="btn btn-success">Preview</button>
             </div>
+            <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
+                <button onclick="BackUpCode();" class="btn btn-success">Take BackUp</button>
+            </div>
+            <a id="donwloadFile" style="display:none;" href="" download></a>
         </div>
     </div>
 </div>
@@ -415,7 +437,7 @@
     });
 
     $(document).ready(function () {
-
+        $('.imageShow').css("display", "none");
         $('.custom-file-input').on("change", function () {
             var fileLabel = $(this).next('.custom-file-label');
             var files = $(this)[0].files;
@@ -485,10 +507,12 @@
 
 
     function readURL(input, imgId) {
+
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function (e) {
-                $('#' + imgId + 'Img').attr('src', e.target.result);
+               // $('#' + imgId + 'Img').attr('src', e.target.result);
+                $('#' + imgId + 'Img').css("background-image", "url("+e.target.result+")");
             }
             reader.readAsDataURL(input.files[0]); // convert to base64 string
         }
@@ -512,21 +536,16 @@
 
     function UpdateHome() {
         // if (Validate()) {
-        debugger;
+
         if ($("#Languages").children("option:selected").val() != "Please select") {
 
             var fd = new FormData();
             var files1 = $('#CareersImage')[0].files[0];
             var files2 = $('#KickStartImage')[0].files[0];
-            //var files3 = $('#ProductDevelopmentOnMouseHover')[0].files[0];
             var files4 = $('#ProductDevelopment')[0].files[0];
-            //var files5 = $('#AudioProductionOnMouseHover')[0].files[0];
             var files6 = $('#AudioProduction')[0].files[0];
-            //var files7 = $('#LocalizationOnMouseHover')[0].files[0];
             var files8 = $('#Localization')[0].files[0];
-            //var files9 = $('#QualityAssuranceOnMouseHover')[0].files[0];
             var files10 = $('#QualityAssurance')[0].files[0];
-            //var files11 = $('#CustomerExperienceOnMouseHover')[0].files[0];
             var files12 = $('#CustomerExperience')[0].files[0];
             var files13 = $('#PageBackgroundImage')[0].files[0];
             var files14 = $('#Frame')[0].files[0];
@@ -538,18 +557,13 @@
             fd.append('Frame', files14);
             fd.append('CareersImage', files1);
             fd.append('KickStartImage', files2);
-            //fd.append('ProductDevelopmentOnMouseHover', files3);
             fd.append('ProductDevelopment', files4);
-            //fd.append('AudioProductionOnMouseHover', files5);
             fd.append('AudioProduction', files6);
-            //fd.append('LocalizationOnMouseHover', files7);
             fd.append('Localization', files8);
-            //fd.append('QualityAssuranceOnMouseHover', files9);
             fd.append('QualityAssurance', files10);
-            //fd.append('CustomerExperienceOnMouseHover', files11);
             fd.append('CustomerExperience', files12);
             fd.append('PageBackgroundImage', files13);
-            fd.append('Description', $("#Description").val());
+            fd.append('Description', $('#Description').summernote('code'));
             fd.append('MetaUrl', $("#MetaUrl").val());
             fd.append('MetaTitle', $("#MetaTitle").val());
             fd.append('MetaDescription', $("#MetaDescription").val());
@@ -596,7 +610,7 @@
     function PreviewHome() {
         // if (Validate()) {
         if ($("#Languages").children("option:selected").val() != "Please select") {
-            var pagecontent = $("#Description").val();
+            var pagecontent = $('#Description').summernote('code');
 
             var fd = new FormData();
             var files1 = $('#CareersImage')[0].files[0];
@@ -616,11 +630,11 @@
             var files15 = $('#LocationMap')[0].files[0];
             var files16 = $('#Squad')[0].files[0];
 
-           
+
             if ($('#Squad')[0].files[0] != undefined) {
                 fd.append('Squad', files16);
             }
-            
+
             if ($('#LocationMap')[0].files[0] != undefined) {
                 fd.append('LocationMap', files15);
             }
@@ -633,42 +647,27 @@
                 fd.append('KickStartImage', files2);
                 // pagecontent = pagecontent.replace("/HomeImages/KickStartImage.png", "/PreviewImages/KickStartImage.png");
             }
-            //if ($('#ProductDevelopmentOnMouseHover')[0].files[0] != undefined) {
-            //    fd.append('ProductDevelopmentOnMouseHover', files3);
-            //    // pagecontent = pagecontent.replace("/HomeImages/ProductDevelopmentOnMouseHover.png", "/PreviewImages/ProductDevelopmentOnMouseHover.png");
-            //}
+
             if ($('#ProductDevelopment')[0].files[0] != undefined) {
                 fd.append('ProductDevelopment', files4);
                 // pagecontent = pagecontent.replace("/HomeImages/ProductDevelopment.png", "/PreviewImages/ProductDevelopment.png");
             }
-            //if ($('#AudioProductionOnMouseHover')[0].files[0] != undefined) {
-            //     fd.append('AudioProductionOnMouseHover', files5);
-            //    // pagecontent = pagecontent.replace("/HomeImages/AudioProductionOnMouseHover.png", "/PreviewImages/AudioProductionOnMouseHover.png");
-            //}
+
             if ($('#AudioProduction')[0].files[0] != undefined) {
                 fd.append('AudioProduction', files6);
                 // pagecontent = pagecontent.replace("/HomeImages/AudioProduction.png", "/PreviewImages/AudioProduction.png");
             }
-            //if ($('#LocalizationOnMouseHover')[0].files[0] != undefined) {
-            //    fd.append('LocalizationOnMouseHover', files7);
-            //    // pagecontent = pagecontent.replace("/HomeImages/LocalizationOnMouseHover.png", "/PreviewImages/LocalizationOnMouseHover.png");
-            //}
+
             if ($('#Localization')[0].files[0] != undefined) {
                 fd.append('Localization', files8);
                 // pagecontent = pagecontent.replace("/HomeImages/Localization.png", "/PreviewImages/Localization.png");
             }
-            //if ($('#QualityAssuranceOnMouseHover')[0].files[0] != undefined) {
-            //    fd.append('QualityAssuranceOnMouseHover', files9);
-            //    // pagecontent = pagecontent.replace("/HomeImages/QualityAssuranceOnMouseHover.png", "/PreviewImages/QualityAssuranceOnMouseHover.png");
-            //}
+
             if ($('#QualityAssurance')[0].files[0] != undefined) {
                 fd.append('QualityAssurance', files10);
                 // pagecontent = pagecontent.replace("/HomeImages/QualityAssurance.png", "/PreviewImages/QualityAssurance.png");
             }
-            //if ($('#CustomerExperienceOnMouseHover')[0].files[0] != undefined) {
-            //     fd.append('CustomerExperienceOnMouseHover', files11);
-            //    // pagecontent = pagecontent.replace("/HomeImages/CustomerExperienceOnMouseHover.png", "/PreviewImages/CustomerExperienceOnMouseHover.png");
-            //}
+
             if ($('#CustomerExperience')[0].files[0] != undefined) {
                  fd.append('CustomerExperience', files12);
                 // pagecontent = pagecontent.replace("/HomeImages/CustomerExperience.png", "/PreviewImages/CustomerExperience.png");
@@ -822,6 +821,10 @@
         }
         else {
             $('.imageShow').css("display", "none");
+            $('#Description').summernote('code', '');
+            $('#MetaDescription').val('');
+            $('#MetaTitle').val('');
+            $('#MetaUrl').val('');
         }
     }
 
@@ -842,13 +845,56 @@
     }
 
     function readURL(input, imgId) {
+
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function (e) {
                 $('#' + imgId + 'Img').attr('src', e.target.result);
+                //var path = $('#' + imgId + '_a').attr('href');
+
+               // $('#' + imgId + '_a').attr("href", path.replace("HomeImages","PreviewImages"));
             }
             reader.readAsDataURL(input.files[0]); // convert to base64 string
         }
+    }
+
+    function BackUpCode() {
+
+        $.ajax({
+            type: "GET",
+            url: '../DownloadBackup?ModuleId=' + 3 + '&LanguageCode=' + $("#Languages").children("option:selected").val() + '',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                debugger;
+                console.log(result);
+
+                if (result == 'Logout') {
+                    window.location = '../Logout';
+                }
+                console.log(result);
+
+                if (result != null) {
+                    $('#donwloadFile').attr('href', '../images/Homepage/Backup/'+result);
+
+                    $('#donwloadFile')[0].click();
+                }
+
+
+                $("#PostBackMsg").fadeOut("slow");
+            },
+
+            error: function (err) {
+                if (err.status === 0) {
+                    window.location = '../Logout';
+                }
+                $("#PostBackMsg").fadeOut("slow");
+            }
+        });
+
+
+        
+
     }
 
 </script>

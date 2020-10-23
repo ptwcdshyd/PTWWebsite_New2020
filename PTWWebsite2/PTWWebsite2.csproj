@@ -21,19 +21,38 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\images\About\AboutImages\" />
+    <Folder Include="wwwroot\images\About\BackupImages\" />
+    <Folder Include="wwwroot\images\About\Backup\" />
     <Folder Include="wwwroot\images\About\PreviewImages\" />
     <Folder Include="wwwroot\images\AudioProduction\AP\" />
     <Folder Include="wwwroot\images\AudioProduction\PreviewImages\" />
+    <Folder Include="wwwroot\images\Careers\Backup\" />
     <Folder Include="wwwroot\images\Careers\CareerImages\" />
     <Folder Include="wwwroot\images\Careers\PreviewImages\" />
+    <Folder Include="wwwroot\images\Contact\Backup\" />
     <Folder Include="wwwroot\images\Contact\ContactImages\" />
     <Folder Include="wwwroot\images\Contact\PreviewImages\" />
     <Folder Include="wwwroot\images\Homepage\HomeImages\" />
+    <Folder Include="wwwroot\images\Homepage\BackupImages\" />
+    <Folder Include="wwwroot\images\Homepage\Backup\" />
     <Folder Include="wwwroot\images\Homepage\PreviewImages\" />
+    <Folder Include="wwwroot\images\Lab\Backup\" />
     <Folder Include="wwwroot\images\Lab\LabImages\" />
+    <Folder Include="wwwroot\images\Lab\BackupImages\" />
     <Folder Include="wwwroot\images\Lab\PreviewImages\" />
+    <Folder Include="wwwroot\images\LocalizationQA\Backup\" />
     <Folder Include="wwwroot\images\LocalizationQA\PreviewImages\" />
     <Folder Include="wwwroot\images\LocalizationQA\Local\" />
+    <Folder Include="wwwroot\images\Localization\Backup\" />
+    <Folder Include="wwwroot\images\Localization_QA\Backup\" />
+    <Folder Include="wwwroot\images\News\BackupImages\" />
+    <Folder Include="wwwroot\images\News\Backup\" />
+    <Folder Include="wwwroot\images\News\PreviewImages\" />
+    <Folder Include="wwwroot\images\News\NewsImages\" />
+    <Folder Include="wwwroot\images\PlayerSupport\Backup\" />
+    <Folder Include="wwwroot\images\ProductDevelopment\Backup\" />
+    <Folder Include="wwwroot\images\QualityAssurance\Backup\" />
+    <Folder Include="wwwroot\images\SpeechTech\Backup\" />
     <Folder Include="wwwroot\images\SpeechTech\PreviewImages\" />
     <Folder Include="wwwroot\images\PlayerSupport\PS\" />
     <Folder Include="wwwroot\images\PlayerSupport\PreviewImages\" />
@@ -43,6 +62,7 @@
     <Folder Include="wwwroot\images\ProductDevelopment\PD\" />
     <Folder Include="wwwroot\images\QualityAssurance\PreviewImages\" />
     <Folder Include="wwwroot\images\SpeechTech\ST\" />
+    <Folder Include="wwwroot\images\TalentSolution\Backup\" />
     <Folder Include="wwwroot\images\TalentSolution\PreviewImages\" />
     <Folder Include="wwwroot\images\TalentSolution\TS\" />
   </ItemGroup>

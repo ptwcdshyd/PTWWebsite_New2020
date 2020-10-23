@@ -583,7 +583,7 @@ background-repeat: no-repeat;
     background-size: 100%;
     background-repeat: no-repeat;
     display: flex;
-    height: 369px;
+    height:222px;
     align-items: center;
     justify-content: space-around;
 }

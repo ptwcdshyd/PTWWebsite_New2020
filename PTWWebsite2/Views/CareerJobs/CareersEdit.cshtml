@@ -183,8 +183,12 @@
                 <button onclick="Update();" class="btn btn-success">Update Careers</button>
             </div>
             <div class="col-md-2" style="margin-top:40px;margin-left:150px;margin-bottom:15px;display:flex;">
-                <button onclick="Preview();"  class="btn btn-success">Preview</button>
+                <button onclick="Preview();" class="btn btn-success">Preview</button>
             </div>
+            <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
+                <button onclick="BackUpCode();" class="btn btn-success">Take BackUp</button>
+            </div>
+            <a id="donwloadFile" style="display:none;" href="" download></a>
         </div>
     </div>
 </div>
@@ -207,7 +211,7 @@
 
     $(document).ready(function () {
         $('.custom-file-input').on("change", function () {
-            debugger;
+            
             var fileLabel = $(this).next('.custom-file-label');
             var files = $(this)[0].files;
 
@@ -272,7 +276,7 @@
     });
 
     function Update() {
-        debugger;
+        
         if (Validate()) {
             var fd = new FormData();
             var files1 = $('#CareerHeader')[0].files[0];
@@ -284,7 +288,7 @@
                 fd.append('Deborah', files2);
             }
             fd.append('Event', parseInt($("#Language").val()));
-            fd.append('Description', $("#Description").val());
+            fd.append('Description', $('#Description').summernote('code'));
             fd.append('ActiveStatus', $("#ActiveStatus").prop("checked"));
             fd.append('MetaTitle', $("#MetaTitle").val());
             fd.append('MetaDescription', $("#MetaDescription").val());
@@ -413,7 +417,7 @@
                 fd.append('Deborah', files2);
             }
             fd.append('Event', parseInt($("#Language").val()));
-            fd.append('Description', $("#Description").val());
+            fd.append('Description', $('#Description').summernote('code'));
             fd.append('ActiveStatus', $("#ActiveStatus").prop("checked"));
             fd.append('MetaTitle', $("#MetaTitle").val());
             fd.append('MetaDescription', $("#MetaDescription").val());
@@ -455,7 +459,7 @@
     }
 
     function AlertMessage(class_name, title, alert, boolstick, timesec) {
-        debugger;
+        
         jQuery.gritter.add({
             title: title,
             text: alert,
@@ -477,6 +481,41 @@
             }
             reader.readAsDataURL(input.files[0]); // convert to base64 string
         }
+    }
+
+    function BackUpCode() {
+
+        $.ajax({
+            type: "GET",
+            url: '../ServicesBackup?ModuleId=' + 10 + '&LanguageCode=' + $("#Languages").children("option:selected").val() + '&ServiceName=Careers',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                debugger;
+                console.log(result);
+
+                if (result == 'Logout') {
+                    window.location = '../Logout';
+                }
+                console.log(result);
+
+                if (result != null) {
+                    $('#donwloadFile').attr('href', '../images/Careers/Backup/' + result);
+
+                    $('#donwloadFile')[0].click();
+                }
+
+
+                $("#PostBackMsg").fadeOut("slow");
+            },
+
+            error: function (err) {
+                if (err.status === 0) {
+                    window.location = '../Logout';
+                }
+                $("#PostBackMsg").fadeOut("slow");
+            }
+        });
     }
 
 </script>

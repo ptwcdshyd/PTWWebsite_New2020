@@ -94,7 +94,8 @@
     <h3>Labs</h3>
 </div>
 
-
+<a href="../AddLabs"><button> <i class="fas fa-plus"></i> Add Labs </button></a>
+<a href="../EditLab"><button> <i class="fas fa-plus"></i> Edit Labs </button></a>
 <div class="contentpanel report" style="border: 1px solid #00b8ff85;width: 1180px;margin-top: 45px;margin-left:50px;">
     <div class="row distribute-container">
         <div class="col-lg-12 col-md-12 col-sm-12">
@@ -199,6 +200,10 @@
             <div class="col-md-2" style="margin-top:40px;margin-left:150px;margin-bottom:15px;display:flex">
                 <button onclick="Preview();" disabled class="btn btn-success">Preview</button>
             </div>
+            <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
+                <button onclick="BackUpCode();" class="btn btn-success">Take BackUp</button>
+            </div>
+            <a id="donwloadFile" style="display:none;" href="" download></a>
         </div>
     </div>
 </div>
@@ -224,7 +229,7 @@
 
     $(document).ready(function () {
         $('.custom-file-input').on("change", function () {
-            debugger;
+            
             var fileLabel = $(this).next('.custom-file-label');
             var files = $(this)[0].files;
 
@@ -301,7 +306,7 @@
                 fd.append('LabHeader', files2);
             }
             fd.append('Event', parseInt($("#Language").val()));
-            fd.append('Description', $("#Description").val());
+            fd.append('Description', $('#Description').summernote('code'));
             fd.append('ActiveStatus', $("#ActiveStatus").prop("checked"));
             fd.append('MetaTitle', $("#MetaTitle").val());
             fd.append('MetaDescription', $("#MetaDescription").val());
@@ -426,7 +431,7 @@
                 fd.append('ImageNewsKasturiRangan', files1);
             }
             fd.append('Event', parseInt($("#Language").val()));
-            fd.append('Description', $("#Description").val());
+            fd.append('Description', $('#Description').summernote('code'));
             fd.append('ActiveStatus', $("#ActiveStatus").prop("checked"));
             fd.append('MetaTitle', $("#MetaTitle").val());
             fd.append('MetaDescription', $("#MetaDescription").val());
@@ -490,6 +495,41 @@
             }
             reader.readAsDataURL(input.files[0]); // convert to base64 string
         }
+    }
+
+    function BackUpCode() {
+
+        $.ajax({
+            type: "GET",
+            url: '../ServicesBackup?ModuleId=' + 19 + '&LanguageCode=' + $("#Languages").children("option:selected").val() + '&ServiceName=Lab',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                debugger;
+                console.log(result);
+
+                if (result == 'Logout') {
+                    window.location = '../Logout';
+                }
+                console.log(result);
+
+                if (result != null) {
+                    $('#donwloadFile').attr('href', '../images/Lab/Backup/' + result);
+
+                    $('#donwloadFile')[0].click();
+                }
+
+
+                $("#PostBackMsg").fadeOut("slow");
+            },
+
+            error: function (err) {
+                if (err.status === 0) {
+                    window.location = '../Logout';
+                }
+                $("#PostBackMsg").fadeOut("slow");
+            }
+        });
     }
 </script>
 

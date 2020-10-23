@@ -94,103 +94,109 @@
     <h3>Contact</h3>
 </div>
 
-
-<div class="contentpanel report" style="border: 1px solid #00b8ff85;width: 1180px;margin-top: 45px;margin-left:50px;">
-    <div class="row distribute-container">
-        <div class="col-lg-12 col-md-12 col-sm-12">
-            <div class="row">
-                <div class="form-group col-md-6 col-sm-4">
-                    <select id="Languages" asp-for="LanguageCode" asp-items="@(new SelectList(Model.LanguageList,"LanguageCode","Language"))" class="form-control input-sm dropdown-select my-3" onchange="GetContent()">
-                        <option>Please select</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-lg-12 col-md-12 col-sm-12">
-                    <label>Description<span class="mandatory">*</span></label>
-                    <textarea id="Description" class="form-control input-sm">  </textarea>
-                </div>
-            </div>
-
-
-            <div class="row">
-                <div class="form-group col-md-4 col-sm-4">
-                    @Html.CheckBox("ActiveStatus", true)
-                    <label>Active</label>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="form-group col-md-8 col-sm-6">
-                    <label class="col-form-label">Contact header Image</label>
-                    <div class="col-md-8 col-sm-6">
-                        <div class="custom-file">
-                            <input id="ContactHeader" type="file" class="form-control custom-file-input">
-                            <label class="custom-file-label">Choose File...1012x348 dimensions</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <img id="ContactHeaderImg" src="../images/Contact/ContactImages/ContactHeader.png" height="200px" width="200px" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-md-8 col-sm-6">
-                    <label class="col-form-label">LocationMap Image</label>
-                    <div class="col-md-8 col-sm-6">
-                        <div class="custom-file">
-                            <input id="LocationMap" type="file" class="form-control custom-file-input">
-                            <label class="custom-file-label">Choose File...1012x348 dimensions</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <img id="LocationMapImg" src="../images/Contact/ContactImages/LocationMap.svg" height="200px" width="200px" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group  col-md-6 col-sm-6">
-                    <label>Meta Title</label>
-                    <div class="col-md-8 col-sm-6">
-
-                        <input type="text" id="MetaTitle" class="form-control input-sm" placeholder="Meta Title">
-                    </div>
-                </div>
-                <div class="form-group  col-md-6 col-sm-6">
-                    <label>Meta Description</label>
-                    <div class="col-md-8 col-sm-6">
-                        <div class="custom-file">
-                            <textarea id="MetaDescription" class="form-control input-sm"></textarea>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="row">
-                <div class="form-group  col-md-6 col-sm-6">
-                    <label>Meta Url</label>
-                    <div class="col-md-8 col-sm-6">
-
-                        <input type="text" id="MetaUrl" class="form-control input-sm" placeholder="Meta Url">
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
+<div class="row">
+    <a href="../AllLocations"><button> <i class="fas fa-plus"></i> All Locations </button></a>
+</div>
+    <div class="contentpanel report" style="border: 1px solid #00b8ff85;width: 1180px;margin-top: 45px;margin-left:50px;">
         <div class="row distribute-container">
-            <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
-                <button onclick="Update();" class="btn btn-success">Update Contact</button>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="row">
+                    <div class="form-group col-md-6 col-sm-4">
+                        <select id="Languages" asp-for="LanguageCode" asp-items="@(new SelectList(Model.LanguageList,"LanguageCode","Language"))" class="form-control input-sm dropdown-select my-3" onchange="GetContent()">
+                            <option>Please select</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                        <label>Description<span class="mandatory">*</span></label>
+                        <textarea id="Description" class="form-control input-sm">  </textarea>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="form-group col-md-4 col-sm-4">
+                        @Html.CheckBox("ActiveStatus", true)
+                        <label>Active</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-8 col-sm-6">
+                        <label class="col-form-label">Contact header Image</label>
+                        <div class="col-md-8 col-sm-6">
+                            <div class="custom-file">
+                                <input id="ContactHeader" type="file" class="form-control custom-file-input">
+                                <label class="custom-file-label">Choose File...1012x348 dimensions</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <img id="ContactHeaderImg" src="../images/Contact/ContactImages/ContactHeader.png" height="200px" width="200px" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-8 col-sm-6">
+                        <label class="col-form-label">LocationMap Image</label>
+                        <div class="col-md-8 col-sm-6">
+                            <div class="custom-file">
+                                <input id="LocationMap" type="file" class="form-control custom-file-input">
+                                <label class="custom-file-label">Choose File...1012x348 dimensions</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <img id="LocationMapImg" src="../images/Contact/ContactImages/LocationMap.svg" height="200px" width="200px" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group  col-md-6 col-sm-6">
+                        <label>Meta Title</label>
+                        <div class="col-md-8 col-sm-6">
+
+                            <input type="text" id="MetaTitle" class="form-control input-sm" placeholder="Meta Title">
+                        </div>
+                    </div>
+                    <div class="form-group  col-md-6 col-sm-6">
+                        <label>Meta Description</label>
+                        <div class="col-md-8 col-sm-6">
+                            <div class="custom-file">
+                                <textarea id="MetaDescription" class="form-control input-sm"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="form-group  col-md-6 col-sm-6">
+                        <label>Meta Url</label>
+                        <div class="col-md-8 col-sm-6">
+
+                            <input type="text" id="MetaUrl" class="form-control input-sm" placeholder="Meta Url">
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div class="col-md-2" style="margin-top:40px;margin-left:150px;margin-bottom:15px;display:flex;">
-                <button onclick="Preview();"  class="btn btn-success">Preview</button>
+
+            <div class="row distribute-container">
+                <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
+                    <button onclick="Update();" class="btn btn-success">Update Contact</button>
+                </div>
+                <div class="col-md-2" style="margin-top:40px;margin-left:150px;margin-bottom:15px;display:flex;">
+                    <button onclick="Preview();" class="btn btn-success">Preview</button>
+                </div>
+                <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
+                    <button onclick="BackUpCode();" class="btn btn-success">Take BackUp</button>
+                </div>
+                <a id="donwloadFile" style="display:none;" href="" download></a>
             </div>
         </div>
     </div>
-</div>
 
 
-<script>
+    <script>
     $('#Description').summernote({
         placeholder: 'News or Events here',
         tabsize: 2,
@@ -207,7 +213,7 @@
 
     $(document).ready(function () {
         $('.custom-file-input').on("change", function () {
-            debugger;
+
             var fileLabel = $(this).next('.custom-file-label');
             var files = $(this)[0].files;
 
@@ -272,7 +278,7 @@
     });
 
     function Update() {
-        debugger;
+
         if (Validate()) {
             var fd = new FormData();
             var files1 = $('#ContactHeader')[0].files[0];
@@ -284,7 +290,7 @@
                 fd.append('LocationMap', files2);
             }
             fd.append('Event', parseInt($("#Language").val()));
-            fd.append('Description', $("#Description").val());
+            fd.append('Description', $('#Description').summernote('code'));
             fd.append('ActiveStatus', $("#ActiveStatus").prop("checked"));
             fd.append('MetaTitle', $("#MetaTitle").val());
             fd.append('MetaDescription', $("#MetaDescription").val());
@@ -413,7 +419,7 @@
                 fd.append('LocationMap', files2);
             }
             fd.append('Event', parseInt($("#Language").val()));
-            fd.append('Description', $("#Description").val());
+            fd.append('Description', $('#Description').summernote('code'));
             fd.append('ActiveStatus', $("#ActiveStatus").prop("checked"));
             fd.append('MetaTitle', $("#MetaTitle").val());
             fd.append('MetaDescription', $("#MetaDescription").val());
@@ -455,7 +461,7 @@
     }
 
     function AlertMessage(class_name, title, alert, boolstick, timesec) {
-        debugger;
+
         jQuery.gritter.add({
             title: title,
             text: alert,
@@ -478,8 +484,41 @@
             reader.readAsDataURL(input.files[0]); // convert to base64 string
         }
     }
+    function BackUpCode() {
 
-</script>
+        $.ajax({
+            type: "GET",
+            url: '../ServicesBackup?ModuleId=' + 14 + '&LanguageCode=' + $("#Languages").children("option:selected").val() + '&ServiceName=Contact',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                debugger;
+                console.log(result);
+
+                if (result == 'Logout') {
+                    window.location = '../Logout';
+                }
+                console.log(result);
+
+                if (result != null) {
+                    $('#donwloadFile').attr('href', '../images/Contact/Backup/' + result);
+
+                    $('#donwloadFile')[0].click();
+                }
+
+
+                $("#PostBackMsg").fadeOut("slow");
+            },
+
+            error: function (err) {
+                if (err.status === 0) {
+                    window.location = '../Logout';
+                }
+                $("#PostBackMsg").fadeOut("slow");
+            }
+        });
+    }
+    </script>
 
 
 
