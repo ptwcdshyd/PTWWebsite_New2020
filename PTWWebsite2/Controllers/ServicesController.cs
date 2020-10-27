@@ -2106,25 +2106,25 @@ namespace PTWWebsite2.Controllers
             return View("AudioProduction", masterPage);
         }
 
-        [Route("LocalizationQA")]
-        [Route("{culture}/LocalizationQA")]
-        public IActionResult GetService_Localization(string culture)
-        {
-            MasterPage masterPage = new MasterPage();
-            try
-            {
-                DataTable dtContent = _masterService.GetModuleContent("LocalizationQA", (culture == null ? "en-US" : culture));
-                masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("LocalizationQA")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
-                ViewData["Header"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Header")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
-                ViewData["Footer"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Footer")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+        //[Route("Localization")]
+        //[Route("{culture}/Localization")]
+        //public IActionResult GetService_Localization(string culture)
+        //{
+        //    MasterPage masterPage = new MasterPage();
+        //    try
+        //    {
+        //        DataTable dtContent = _masterService.GetModuleContent("Localization", (culture == null ? "en-US" : culture));
+        //        masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("LocalizationQA")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+        //        ViewData["Header"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Header")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+        //        ViewData["Footer"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Footer")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
 
-            }
-            catch (Exception exception)
-            {
-                _loggerManager.LogError(string.Format("Controller:Services, Action :GetService_Localization, ErrorMessage: file: {0} ", exception));
-            }
-            return View("LocalizationQA", masterPage);
-        }
+        //    }
+        //    catch (Exception exception)
+        //    {
+        //        _loggerManager.LogError(string.Format("Controller:Services, Action :GetService_Localization, ErrorMessage: file: {0} ", exception));
+        //    }
+        //    return View("Localization", masterPage);
+        //}
 
         [Route("SpeechTech")]
         [Route("{culture}/SpeechTech")]
@@ -2173,8 +2173,8 @@ namespace PTWWebsite2.Controllers
             MasterPage masterPage = new MasterPage();
             try
             {
-                DataTable dtContent = _masterService.GetModuleContent("Localization", (culture == null ? "en-US" : culture));
-                masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Localization")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+                DataTable dtContent = _masterService.GetModuleContent("LocalizationQA", (culture == null ? "en-US" : culture));
+                masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("LocalizationQA")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
                 ViewData["Header"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Header")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
                 ViewData["Footer"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Footer")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
 
@@ -2183,7 +2183,7 @@ namespace PTWWebsite2.Controllers
             {
                 _loggerManager.LogError(string.Format("Controller:Services, Action :GetService_Localization_1, ErrorMessage: file: {0} ", exception));
             }
-            return View("Localization", masterPage);
+            return View("LocalizationQA", masterPage);
         }
 
         [Route("PlayerSupport")]

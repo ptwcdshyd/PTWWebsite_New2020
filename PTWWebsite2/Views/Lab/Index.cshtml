@@ -570,6 +570,7 @@
                 var htmlContent = '';
                 var htmlEventsContent = '';
                 var mainhtmlContent = '<div class="nEAnim" style="background-image: url(' + result.allLabs[0].ImageUrl + result.allLabs[0].ImageName + ');">' +
+                    '<a href="../lab/' + $.trim(result.allLabs[0].ShortDescription.replace(/\b \b/g, '-')) + '">' +
                     '<div class="borders">' +
                     '<img src="/Images/New_UI/news/border.svg">' +
                     '</div>' +
@@ -581,12 +582,14 @@
                     '<a href="#" class="ReadMeBtn">Read More</a>' +
                     '</div>' +
                     '</div>' +
+                    '</a>'+
                     '</div>'
 
                 for (var j = 0; j < 2; j++) {
 
                     htmlEventsContent = htmlEventsContent +
                         '<div class="col-md-12 mt-5">' +
+                        '<a href="../lab/' + $.trim(result.labInsights[j].ShortDescription.replace(/\b \b/g, '-')) + '">' +
                         '<div class="animationDiv">' +
 
                         '<img class="btnImage" src="' + result.labInsights[j].ImageUrl + result.allLabs[j].ImageName + '">' +
@@ -597,6 +600,7 @@
                         '<div class="MoreDiv">' +
                         '<p>More..</p>' +
                         '</div>' +
+                        '</a>'+
                         '</div></div></div>'
                 }
                 for (var i = 1; i < result.allLabs.length; i++) {
@@ -606,6 +610,7 @@
                     }
 
                     htmlContent = htmlContent + '<div class="col-md-4">' +
+                        '<a href="../lab/' + $.trim(result.allLabs[i].ShortDescription.replace(/\b \b/g, '-')) + '">' +
                         '<div class="animationDiv">' +
                         '<img class="btnImage" src="' + result.allLabs[i].ImageUrl + result.allLabs[i].ImageName + '">' +
                         '<div class="squaredDiv">' +
@@ -617,6 +622,7 @@
                         '</div>' +
                         '</div>' +
                         '</div>' +
+                        '</a>'+
                         '</div>'
 
                     if (i % 3 == 0) {
