@@ -4,522 +4,543 @@
     ViewData["Title"] = Model.MetaTitle;
 
 }
-<script src="~/js/count-up.min.js"></script>
+
 <head>
     <meta name="description" content="@Model.MetaDescription" />
     <link rel="canonical" href="@Model.MetaUrl" />
 </head>
-@*@Html.Raw(Model.HtmlContent)*@
+@Html.Raw(Model.HtmlContent)
 
-<div class="container_div bg" style="background-image: url(../Images/Homepage/HomeImages/PageBackgroundImage.png);">
-    <div class="row m-0">
-        <div class="col-md-2">
+@*
+        <div class="sk-chase">
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+    </div>
+    <div class="container_div bg" style="background-image: url(../Images/Homepage/HomeImages/PageBackgroundImage.png);">
+        <div class="row m-0">
+            <div class="col-md-2">
 
-            <div class="wrapper">
-                <div class="line"></div>
-                <div class="wordwrapper">
-                    <p class="vericaltext">
-                        HOME
-                    </p>
+                <div class="wrapper">
+                    <div class="line"></div>
+                    <div class="wordwrapper">
+                        <p class="vericaltext">
+                            HOME
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="home-text ">
+                    <div class="bg-title pl-2">
+
+                        <div>
+                            <p>BRINGING YOUR STORY TO THE WORLD</p>
+
+                        </div>
+                    </div>
+
+                </div>
+                <button type="button" class="btn btn-outline">DISCOVER MORE <i class="fa fa-arrow-right" style="font-size:14px"></i></button>
+
+
+            </div>
+
+            <div class="col-md-4 left-num">
+                <div class="d-flex d-none d-md-block justify-content-center">
+                    <div class="mt-5 mob-num" style="margin: 30% 30px;">
+                        <span class="countup" cup-end="40" cup-duration="1000" cup-append="" cup-prepend=""></span>
+                        <p>Studios</p>
+                    </div>
+                    <div class="mt-5 mob-num" style=" margin: 30% 30px;">
+                        <span class="countup" cup-end="15" cup-duration="3000" cup-append="00+" cup-prepend=""></span>
+                        <p>Titles</p>
+                    </div>
+                </div>
+                <div class="d-flex d-md-block justify-content-center">
+                    <div class="mt-5 mob-num2" style="margin: 30% 30px;">
+                        <span class="countup" cup-end="25" cup-duration="1000" cup-append="+" cup-prepend=""></span>
+                        <p>Years of XP</p>
+                    </div>
+                    <div class="mt-5 mob-num2" style="margin: 30% 30px;">
+                        <span class="countup" cup-end="40" cup-duration="1000" cup-append="+" cup-prepend=""></span>
+                        <p>Languages</p>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="home-text ">
-                <div class="bg-title pl-2">
 
-                    <div>
-                        <p>BRINGING YOUR STORY TO THE WORLD</p>
 
+        <div class="spacer5"></div>
+
+        <div class="row">
+
+
+            <div class="col-md-12 lbl">
+                <p>SERVICES</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 d-none d-sm-block ml-5 pl-5">
+
+                <div class="d-flex  qaIcon setMargin" style="position:relative">
+                    <img class="home-btns" style="transform: scale(1.6)" id="Service_1" onmouseover="ShowContent(this , 'qaIcon');" src="../images/Lab/Assets/RUNES/red.png" />
+                    <div class="bg-txt">
+
+                        <p class="sub_label">
+                            QUALITY ASSURANCE
+                        </p>
+                        <p class="sub-content">For quality assurance that’s as wide-ranging as it is thorough, our testing includes functionality, compliance, compatibility, security, usability, focus group, and user experience across all genres and platforms.</p>
+                        <button type="button" class="btn btn-red mr-5">TELL ME MORE <i class="fa fa-arrow-right" style=" color:red"></i></button>
+                        <button type="button" class="btn btn-red ml-5">CAREERS <i class="fa fa-arrow-right" style=" color:red"></i></button>
+                    </div>
+
+                </div>
+
+
+                <div class="d-flex  localizationIcon setMargin" style="position:relative">
+                    <img class="home-btns" id="Service_2" onmouseover="ShowContent(this, 'localizationIcon');" src="../images/Lab/Assets/RUNES/purple.png">
+                    <div class="bg-txt d-none">
+
+                        <p class="sub_label">
+                            LOCALIZATION
+                        </p>
+                        <p class="sub-content">For quality assurance that’s as wide-ranging as it is thorough, our testing includes functionality, compliance, compatibility, security, usability, focus group, and user experience across all genres and platforms.</p>
+                        <button type="button" class="btn btn-red mr-5">TELL ME MORE <i class="fa fa-arrow-right" style=" color:red"></i></button>
+                        <button type="button" class="btn btn-red ml-5">CAREERS <i class="fa fa-arrow-right" style=" color:red"></i></button>
+                    </div>
+                </div>
+                <div class="d-flex  speechTechIcon setMargin" style="position:relative">
+                    <img class="home-btns" id="Service_3" onmouseover="ShowContent(this, 'speechTechIcon');" src="../images/Lab/Assets/RUNES/orange.png">
+                    <div class="bg-txt d-none">
+
+                        <p class="sub_label">
+                            SPEECH TECH
+                        </p>
+                        <p class="sub-content">For quality assurance that’s as wide-ranging as it is thorough, our testing includes functionality, compliance, compatibility, security, usability, focus group, and user experience across all genres and platforms.</p>
+                        <button type="button" class="btn btn-red mr-5">TELL ME MORE <i class="fa fa-arrow-right" style=" color:red"></i></button>
+                        <button type="button" class="btn btn-red ml-5">CAREERS <i class="fa fa-arrow-right" style=" color:red"></i></button>
+                    </div>
+                </div>
+                <div class="d-flex m-5 audioProd" style="position:relative">
+                    <img class="home-btns" id="Service_4" onmouseover="ShowContent(this, 'audioProd');" src="../images/Lab/Assets/RUNES/blue.png" />
+                    <div class="bg-txt d-none">
+
+                        <p class="sub_label">
+                            AUDIO PRODUCTION
+                        </p>
+                        <p class="sub-content">For quality assurance that’s as wide-ranging as it is thorough, our testing includes functionality, compliance, compatibility, security, usability, focus group, and user experience across all genres and platforms.</p>
+                        <button type="button" class="btn btn-red mr-5">TELL ME MORE <i class="fa fa-arrow-right" style=" color:red"></i></button>
+                        <button type="button" class="btn btn-red ml-5">CAREERS <i class="fa fa-arrow-right" style=" color:red"></i></button>
+                    </div>
+                </div>
+                <div class="d-flex m-5 player-supprt" style="position:relative">
+                    <img class="home-btns" id="Service_5" onmouseover="ShowContent(this , 'player-supprt');" src="../images/Lab/Assets/RUNES/green.png" />
+                    <div class="bg-txt d-none">
+
+                        <p class="sub_label">
+                            PLAYER SUPPORT
+                        </p>
+                        <p class="sub-content">For quality assurance that’s as wide-ranging as it is thorough, our testing includes functionality, compliance, compatibility, security, usability, focus group, and user experience across all genres and platforms.</p>
+                        <button type="button" class="btn btn-red mr-5">TELL ME MORE <i class="fa fa-arrow-right" style=" color:red"></i></button>
+                        <button type="button" class="btn btn-red ml-5">CAREERS <i class="fa fa-arrow-right" style=" color:red"></i></button>
                     </div>
                 </div>
 
-            </div>
-            <button type="button" class="btn btn-outline">DISCOVER MORE <i class="fa fa-arrow-right" style="font-size:14px"></i></button>
 
+
+
+            </div>
 
         </div>
-
-        <div class="col-md-4 left-num">
-            <div class="d-flex d-none d-md-block justify-content-center">
-                <div class="mt-5 mob-num" style="margin: 30% 30px;">
-                    @*<span class="">40</span>*@
-                    <span class="countup" cup-end="40" cup-duration="1000" cup-append="" cup-prepend=""></span>
-                    <p>Studios</p>
+        <div class="col-md-2  serviceMob d-n d-sm-none d-flex ">
+            <div>
+                <div class="d-flex">
+                    <img class="home-btns" src="../images/Homepage/HomeImages/red.png" />
+                    <p class="home-btns-text">Quality Assurance</p>
                 </div>
-                <div class="mt-5 mob-num" style=" margin: 30% 30px;">
-                    @*<span>1500+</span>*@
-                    <span class="countup" cup-end="15" cup-duration="3000" cup-append="00+" cup-prepend=""></span>
-                    <p>Titles</p>
-                </div>
-            </div>
-            <div class="d-flex d-md-block justify-content-center">
-                <div class="mt-5 mob-num2" style="margin: 30% 30px;">
-                    @*<span>25+</span>*@
-                    <span class="countup" cup-end="25" cup-duration="1000" cup-append="+" cup-prepend=""></span>
-                    <p>Years of XP</p>
-                </div>
-                <div class="mt-5 mob-num2" style="margin: 30% 30px;">
-                    @*<span>40+</span>*@
-                    <span class="countup" cup-end="40" cup-duration="1000" cup-append="+" cup-prepend=""></span>
-                    <p>Languages</p>
-                </div>
-            </div>
-        </div>
-    </div>
+                <div>
+                    <img class="mobservice" src="../Images/New_UI/qa_page/mob_bg.png" />
 
-
-    <div class="spacer5"></div>
-
-    <div class="row">
-
-
-        <div class="col-md-12 lbl">
-            <p>SERVICES</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6 d-none d-sm-block ml-5 pl-5">
-
-            <div class="d-flex m-4" style="position:relative">
-                <img class="home-btns" style="width:12%" id="Service_1" onclick="ShowContent(this);" src="../images/Lab/Assets/RUNES/red.png" />
-                <div class="bg-txt">
-
-                    <p class="sub_label">
-                        QUALITY ASSURANCE
-                    </p>
-                    <p class="sub-content">For quality assurance that’s as wide-ranging as it is thorough, our testing includes functionality, compliance, compatibility, security, usability, focus group, and user experience across all genres and platforms.</p>
-                    <button type="button" class="btn btn-red mr-5">TELL ME MORE <i class="fa fa-arrow-right" style=" color:red"></i></button>
-                    <button type="button" class="btn btn-red ml-5">CAREERS <i class="fa fa-arrow-right" style=" color:red"></i></button>
-                </div>
-
-            </div>
-
-
-            <div class="d-flex m-5" style="position:relative">
-                <img class="home-btns" id="Service_2" onclick="ShowContent(this);" src="../images/Lab/Assets/RUNES/purple.png">
-                <div class="bg-txt d-none">
-
-                    <p class="sub_label">
-                        LOCALIZATION
-                    </p>
-                    <p class="sub-content">For quality assurance that’s as wide-ranging as it is thorough, our testing includes functionality, compliance, compatibility, security, usability, focus group, and user experience across all genres and platforms.</p>
-                    <button type="button" class="btn btn-red mr-5">TELL ME MORE <i class="fa fa-arrow-right" style=" color:red"></i></button>
-                    <button type="button" class="btn btn-red ml-5">CAREERS <i class="fa fa-arrow-right" style=" color:red"></i></button>
-                </div>
-            </div>
-            <div class="d-flex m-5" style="position:relative">
-                <img class="home-btns" id="Service_3" onclick="ShowContent(this);" src="../images/Lab/Assets/RUNES/orange.png">
-                <div class="bg-txt d-none">
-
-                    <p class="sub_label">
-                        SPEECH TECH
-                    </p>
-                    <p class="sub-content">For quality assurance that’s as wide-ranging as it is thorough, our testing includes functionality, compliance, compatibility, security, usability, focus group, and user experience across all genres and platforms.</p>
-                    <button type="button" class="btn btn-red mr-5">TELL ME MORE <i class="fa fa-arrow-right" style=" color:red"></i></button>
-                    <button type="button" class="btn btn-red ml-5">CAREERS <i class="fa fa-arrow-right" style=" color:red"></i></button>
-                </div>
-            </div>
-            <div class="d-flex m-5" style="position:relative">
-                <img class="home-btns" id="Service_4" onclick="ShowContent(this);" src="../images/Lab/Assets/RUNES/blue.png" />
-                <div class="bg-txt d-none">
-
-                    <p class="sub_label">
-                        AUDIO PRODUCTION
-                    </p>
-                    <p class="sub-content">For quality assurance that’s as wide-ranging as it is thorough, our testing includes functionality, compliance, compatibility, security, usability, focus group, and user experience across all genres and platforms.</p>
-                    <button type="button" class="btn btn-red mr-5">TELL ME MORE <i class="fa fa-arrow-right" style=" color:red"></i></button>
-                    <button type="button" class="btn btn-red ml-5">CAREERS <i class="fa fa-arrow-right" style=" color:red"></i></button>
-                </div>
-            </div>
-            <div class="d-flex m-5" style="position:relative">
-                <img class="home-btns" id="Service_5" onclick="ShowContent(this);" src="../images/Lab/Assets/RUNES/green.png" />
-                <div class="bg-txt d-none">
-
-                    <p class="sub_label">
-                        PLAYER SUPPORT
-                    </p>
-                    <p class="sub-content">For quality assurance that’s as wide-ranging as it is thorough, our testing includes functionality, compliance, compatibility, security, usability, focus group, and user experience across all genres and platforms.</p>
-                    <button type="button" class="btn btn-red mr-5">TELL ME MORE <i class="fa fa-arrow-right" style=" color:red"></i></button>
-                    <button type="button" class="btn btn-red ml-5">CAREERS <i class="fa fa-arrow-right" style=" color:red"></i></button>
                 </div>
             </div>
 
 
+            <div>
+                <div class="d-flex">
+                    <img class="home-btns" src="../images/Homepage/HomeImages/blue.png" />
+                    <p class="home-btns-text">Localization</p>
+                </div>
+                <div>
+                    <img class="mobservice" src="../Images/New_UI/Localization/mobBg.png" />
 
+                </div>
+            </div>
+            <div>
+                <div class="d-flex">
+                    <img class="home-btns" src="../images/Homepage/HomeImages/orange.png" />
+                    <p class="home-btns-text">Product development</p>
+                </div>
+                <div>
+                    <img class="mobservice" src="../Images/New_UI/qa_page/mob_bg.png" />
+
+                </div>
+            </div>
+            <div>
+                <div class="d-flex">
+                    <img class="home-btns" src="../images/Homepage/HomeImages/green.png" />
+                    <p class="home-btns-text">Quality Assurance</p>
+                </div>
+                <div>
+                    <img class="mobservice" src="../Images/New_UI/qa_page/mob_bg.png" />
+
+                </div>
+            </div>
 
         </div>
 
     </div>
-    <div class="col-md-2  serviceMob d-n d-sm-none d-flex ">
-        <div>
-            <div class="d-flex">
-                <img class="home-btns" src="../images/Homepage/HomeImages/red.png" />
-                <p class="home-btns-text">Quality Assurance</p>
+
+
+
+    <div>
+        <div class="row column-reverse-sm deb-row">
+            <div class="col-md-6 mt-5 deb d-none d-sm-block text-center">
+                <img style="max-width: 60%; width: unset" src="../images/Homepage/HomeImages/KickStartImage.png" />
             </div>
-            <div>
-                <img class="mobservice" src="../Images/New_UI/qa_page/mob_bg.png" />
+            <div class="col-md-6 deb d-block d-sm-none">
+                <div class="d-flex justify-content-around">
+                    <img class="Deborah-sm-img" src="../images/Homepage/HomeImages/KickStartImage.png" />
+                    <div class="d-sm-none d-block">
+                        <div class="d-block">
+                            <div class="p-4">
+                                <p style="color: #EE6E03; font-size: 30px;margin:0px">
+                                    <span class="countup" cup-end="40" cup-duration="1000" cup-append="+" cup-prepend=""></span>
+                                </p>
+                                <p style="font-size: 10px;color: #303143;">Global Studios</p>
+                            </div>
+                            <div class="p-4">
+                                <p style="color: #EE6E03; font-size: 30px;margin:0px">6000+</p>
+                                <p style="font-size: 10px;color: #303143;">Employess</p>
+                            </div>
+                            <div class="p-4">
+                                <p style="color: #EE6E03; font-size: 30px;margin:0px ">25+</p>
+                                <p style="font-size: 10px;color: #303143;">Years of XP</p>
+                            </div>
 
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn kickstart">KICK START WITH US </button>
+                </div>
             </div>
-        </div>
+            <div class="col-md-6 join-developers">
+                <div class="deb_text">
+                    <p>JOIN 650+ DEVELOPERS AND PUBLISHERS THAT WORK WITH PTW</p>
+                    <p class="sub-debo">Our people make our company special. We’re brilliant, because our people shine. We’re passionate, because our people love what they do.</p>
+                </div>
+                <div class="d-sm-block d-none kick-start ml-5">
+                    <div class="d-flex">
 
-
-        <div>
-            <div class="d-flex">
-                <img class="home-btns" src="../images/Homepage/HomeImages/blue.png" />
-                <p class="home-btns-text">Localization</p>
-            </div>
-            <div>
-                <img class="mobservice" src="../Images/New_UI/Localization/mobBg.png" />
-
-            </div>
-        </div>
-        <div>
-            <div class="d-flex">
-                <img class="home-btns" src="../images/Homepage/HomeImages/orange.png" />
-                <p class="home-btns-text">Product development</p>
-            </div>
-            <div>
-                <img class="mobservice" src="../Images/New_UI/qa_page/mob_bg.png" />
-
-            </div>
-        </div>
-        <div>
-            <div class="d-flex">
-                <img class="home-btns" src="../images/Homepage/HomeImages/green.png" />
-                <p class="home-btns-text">Quality Assurance</p>
-            </div>
-            <div>
-                <img class="mobservice" src="../Images/New_UI/qa_page/mob_bg.png" />
-
-            </div>
-        </div>
-
-    </div>
-
-</div>
-
-
-
-<div>
-    <div class="row column-reverse-sm deb-row">
-        <div class="col-md-6 mt-5 deb d-none d-sm-block text-center">
-            <img style="max-width: 60%; width: unset" src="../images/Homepage/HomeImages/KickStartImage.png" />
-        </div>
-        <div class="col-md-6 deb d-block d-sm-none">
-            <div class="d-flex justify-content-around">
-                <img class="Deborah-sm-img" src="../images/Homepage/HomeImages/KickStartImage.png" />
-                <div class="d-sm-none d-block">
-                    <div class="d-block">
-                        <div class="p-4">
-                            <p style="color: #EE6E03; font-size: 30px;margin:0px">
+                        <div class="p-4 mr-5">
+                            <p style="color: #EE6E03; font-size: 55px;margin:0px">
                                 <span class="countup" cup-end="40" cup-duration="1000" cup-append="+" cup-prepend=""></span>
                             </p>
                             <p style="font-size: 10px;color: #303143;">Global Studios</p>
                         </div>
-                        <div class="p-4">
-                            <p style="color: #EE6E03; font-size: 30px;margin:0px">6000+</p>
+                        <div class="p-4 mr-5" style="text-align:center">
+                            <p style="color: #EE6E03; font-size: 55px;margin:0px">
+                                <span class="countup" cup-end="60" cup-duration="1000" cup-append="00+" cup-prepend=""></span>
+                            </p>
                             <p style="font-size: 10px;color: #303143;">Employess</p>
                         </div>
-                        <div class="p-4">
-                            <p style="color: #EE6E03; font-size: 30px;margin:0px ">25+</p>
+                        <div class="p-4 mr-5">
+                            <p style="color: #EE6E03; font-size: 55px;margin:0px">
+                                <span class="countup" cup-end="25" cup-duration="1000" cup-append="+" cup-prepend=""></span>
+                            </p>
                             <p style="font-size: 10px;color: #303143;">Years of XP</p>
                         </div>
 
                     </div>
+                    <button type="button" class="btn kickstart ml-4">KICK START WITH US </button>
                 </div>
             </div>
-            <div class="text-center">
-                <button type="button" class="btn kickstart">KICK START WITH US </button>
+
+
+        </div>
+
+        <div class="mt-5 row justify-content-center">
+            <h5 class="prod5txt">HELPFUL LINKS</h5>
+            <div class="row col-md-12 helpfulDivs">
+
             </div>
         </div>
-        <div class="col-md-6 join-developers">
-            <div class="deb_text">
-                <p>JOIN 650+ DEVELOPERS AND PUBLISHERS THAT WORK WITH PTW</p>
-                <p class="sub-debo">Our people make our company special. We’re brilliant, because our people shine. We’re passionate, because our people love what they do.</p>
-            </div>
-            <div class="d-sm-block d-none kick-start ml-5">
-                <div class="d-flex">
-
-                    <div class="p-4 mr-5">
-                        <p style="color: #EE6E03; font-size: 55px;margin:0px">
-                            <span class="countup" cup-end="40" cup-duration="1000" cup-append="+" cup-prepend=""></span>
-                        </p>
-                        <p style="font-size: 10px;color: #303143;">Global Studios</p>
-                    </div>
-                    <div class="p-4 mr-5" style="text-align:center">
-                        <p style="color: #EE6E03; font-size: 55px;margin:0px">
-                            <span class="countup" cup-end="60" cup-duration="1000" cup-append="00+" cup-prepend=""></span>
-                        </p>
-                        <p style="font-size: 10px;color: #303143;">Employess</p>
-                    </div>
-                    <div class="p-4 mr-5">
-                        <p style="color: #EE6E03; font-size: 55px;margin:0px">
-                            <span class="countup" cup-end="25" cup-duration="1000" cup-append="+" cup-prepend=""></span>
-                        </p>
-                        <p style="font-size: 10px;color: #303143;">Years of XP</p>
-                    </div>
-
+        <div class="row">
+            <div class="col-md-12 d-sm-block d-none">
+                <div class="ReadMeSection mt-5">
+                    <a href="#" class="btn ReadMeBtn">Read More</a>
                 </div>
-                <button type="button" class="btn kickstart ml-4">KICK START WITH US </button>
             </div>
         </div>
+
+        <div class="row d-sm-block d-none join-our-squad">
+            <div class="col-md-8">
+                <div class="tieppe ">
+                    <img class="black-bg" src="../images/New_UI/bg.png" />
+                    <p class="join">JOIN OUR</p>
+                    <p class="squad">SQUAD</p>
+                    <p class="text-tiepee">of master assassins, wizards, warriors and brethren alike!</p>
+                    <button type="button" class="btn btn-carrer btn-location" style=" color: #EE6E03; border: 1px solid #EE6E03">CAREERS </button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <img class="man-desk" src="../images/Homepage/HomeImages/CareersImage.png">
+            </div>
+        </div>
+
+        <div class="row d-sm-none d-flex flex-nowrap align-items-center">
+            <div class="position-relative">
+                <div class="tieppe">
+                    <img class="black-bg" src="../images/New_UI/bg.png" />
+                    <p class="join">JOIN OUR</p>
+                    <p class="squad">SQUAD</p>
+                    <p class="text-tiepee">of master assassins, wizards, warriors and brethren alike!</p>
+                    <button type="button" class="btn btn-carrer btn-location" style=" color: #EE6E03; border: 1px solid #EE6E03">CAREERS </button>
+                </div>
+            </div>
+            <div class="">
+                <img class="black-bg man" src="../images/Homepage/HomeImages/CareersImage.png">
+            </div>
+        </div>
+
+        <div class="row d-sm-block d-none">
+
+            <div class="map-txt">
+                <p style=" color: #EE6E03; line-height: 24px;">WE ARE THE</p>
+                <p>CHAMPIONS</p>
+                <p style="        font-size: 20px;
+            font-family: Nunito-regular;
+            padding-left: 8px;
+            letter-spacing: 2px;
+            font-weight: 500;
+    ">of the world...</p>
+            </div>
+            <div class="" style="width: 80%;margin-left: 15%;">
+                <img src="../images/Homepage/HomeImages/LocationMap.svg" style="width: 100%;" />
+
+            </div>
+            <div class="d-flex justify-content-end " style=" width: 100%;">
+                <button type="button" class="btn btn-location">Locations </button>
+
+            </div>
+        </div>
+
+
 
 
     </div>
 
-    <div class="mt-5 row justify-content-center">
-        <h5 class="prod5txt">HELPFUL LINKS</h5>
-        <div class="row col-md-12 helpfulDivs">
 
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12 d-sm-block d-none">
-            <div class="ReadMeSection mt-5">
-                <a href="#" class="btn ReadMeBtn">Read More</a>
-            </div>
-        </div>
-    </div>
+    <!-- Footer -->
+    <div class="footerbg">
+        <div class="row home  footerStripe  justify-content-center">
 
-    <div class="row d-sm-block d-none join-our-squad">
-        <div class="col-md-8">
-            <div class="tieppe">
-                <img class="black-bg" src="../images/Homepage/HomeImages/Squad.png" />
-                <p class="join">JOIN OUR</p>
-                <p class="squad">SQUAD</p>
-                <p class="text-tiepee">of master assassins, wizards, warriors and brethren alike!</p>
-                <button type="button" class="btn btn-carrer btn-location" style=" color: #EE6E03; border: 1px solid #EE6E03">CAREERS </button>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <img class="man-desk" src="../images/New_UI/Teppie.png">
-        </div>
-    </div>
+            <div class="  stripe">
 
-    <div class="row d-sm-none d-flex flex-nowrap align-items-center">
-        <div class="position-relative">
-            <div class="tieppe">
-                <img class="black-bg" src="../images/Homepage/HomeImages/Squad.png" />
-                <p class="join">JOIN OUR</p>
-                <p class="squad">SQUAD</p>
-                <p class="text-tiepee">of master assassins, wizards, warriors and brethren alike!</p>
-                <button type="button" class="btn btn-carrer btn-location" style=" color: #EE6E03; border: 1px solid #EE6E03">CAREERS </button>
-            </div>
-        </div>
-        <div class="">
-            <img class="black-bg man" src="../images/Homepage/HomeImages/CareersImage.png">
-        </div>
-    </div>
-
-    <div class="row d-sm-block d-none">
-
-        <div class="map-txt">
-            <p style=" color: #EE6E03; line-height: 24px;">WE ARE THE</p>
-            <p>CHAMPIONS</p>
-            <p style=" font-size: 20px; font-family: Nunito-regular; padding-left: 8px;">of the world...</p>
-        </div>
-        <div class="" style="width: 80%;margin-left: 15%;">
-            <img src="../images/Homepage/HomeImages/LocationMap.svg" style="width: 100%;" />
-
-        </div>
-        <div class="d-flex justify-content-end " style=" width: 100%;">
-            <button type="button" class="btn btn-location">Locations </button>
-
-        </div>
-    </div>
-
-
-
-
-</div>
-
-
-<!-- Footer -->
-<div class="footerbg">
-    <div class="row home  footerStripe  justify-content-center">
-
-        <div class="  stripe">
-
-            <p>SHOUT OUT!</p>
-            <p class="stripe_subtxt">Get in touch with us</p>
-
-        </div>
-    </div>
-
-    <section class=" position-relative clip-footer footer-parent">
-
-
-        <footer class="text-white d-sm-block d-none">
-            <div class="row no-padding">
-                <div class="col-md-3 col-sm-3  footer-info footer-font f1">
-                    <div class="mb-3 p-3 pl-5"> <img style="width: 45%;" src="../images/Logo/PTW.svg" /></div>
-                    <div style="opacity: .4; margin-left:25px">Follow us</div>
-                    <div class="pull-xs-right d-flex nav navbar-nav navbar-toggleable-sm pl-4" style=" flex-direction: row;">
-                        <div class="nav-item"><a href="https://twitter.com/PTW" target="_blank" rel="noopener noreferrer" class="twitter nav-link" title="Twitter" style="color: rgb(255, 255, 255);"><i class="fa fa-twitter"></i><span class="m-l-20"></span></a></div>
-                        <div class="nav-item"><a href="https://www.facebook.com/PTWintl/" target="_blank" rel="noopener noreferrer" class="facebook nav-link" title="Facebook" style="color: rgb(255, 255, 255);"><i class="fa fa-facebook"></i><span class="m-l-20"></span></a></div>
-                        <div class="nav-item"><a href="https://www.linkedin.com/company/ptwintl/" target="_blank" rel="noopener noreferrer" class="linkedin nav-link" title="LinkedIn" style="color: rgb(255, 255, 255);"><i class="fa fa-linkedin-square"></i><span class="m-l-20"></span></a></div>
-                        <div class="nav-item"><a href="https://www.linkedin.com/company/ptwintl/" target="_blank" rel="noopener noreferrer" class="linkedin nav-link" title="LinkedIn" style="color: rgb(255, 255, 255);"><i class="fa fa-instagram"></i><span class="m-l-20"></span></a></div>
-                    </div>
-                </div>
-                <div class="col-md-2 col-sm-2  footer-info footer-font f1">
-
-                    <ul class="pull-xs-right nav navbar-nav navbar-toggleable-sm">
-                        <li class="nav-item">
-                            <a href="/home" id="Footer1_A1" class="nav-link footer-nav-text" titlevalue="1" style="color: rgb(255, 255, 255);font-size: 15px;">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/Service" id="Footer1_A2" class="nav-link footer-nav-text" titlevalue="2" style="color: rgb(255, 255, 255);font-size: 15px;">Services</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="about" id="Footer1_A3" class="nav-link footer-nav-text" titlevalue="3" style="color: rgb(255, 255, 255);font-size: 15px;">About</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="careers" id="Footer1_A5" class="nav-link footer-nav-text" titlevalue="5" style="color: rgb(255, 255, 255);font-size: 15px;">Careers</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/Contact" id="Footer1_A6" class="nav-link contact footer-nav-text" titlevalue="6" style="color: rgb(255, 255, 255);font-size: 15px;">Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="lab" id="Footer1_A7" class="nav-link footer-nav-text" titlevalue="7" style="color: rgb(255, 255, 255);font-size: 15px;">Lab</a>
-                        </li>
-                    </ul>
-                </div>
-
-
-
-                <div class="col-md-4 col-sm-3  col-lg-3  footer-social footer-font   f1">
-                    <ul class="pull-xs-right nav navbar-nav navbar-toggleable-sm footer-font">
-                        <li class="nav-item">
-                            <a href="PDF/PTW_New_Website_Terms_of_Usage_2018.pdf" id="Footer1_A8" class="nav-link footer-nav-text" target="_blank" rel="noopener noreferrer" style="color: rgb(255, 255, 255); font-size: 15px;">Website Terms of Usage</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="PDF/PTW_Privacy_Policy.pdf" id="Footer1_A9" class="nav-link footer-nav-text" target="_blank" rel="noopener noreferrer" style="color: rgb(255, 255, 255);font-size: 15px;">Privacy Policy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="PDF/PTW_Modern_Slavery_Statement_2018.pdf" id="Footer1_A18" class="nav-link footer-nav-text" target="_blank" rel="noopener noreferrer" style="color: rgb(255, 255, 255);font-size: 15px;">Modern Slavery Statement</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="PDF/Corporate_Social_Responsibility_V2.pdf" id="Footer1_A21" class="nav-link footer-nav-text" target="_blank" rel="noopener noreferrer" style="color: rgb(255, 255, 255);font-size: 15px;">CSR Policy (India)</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="PDF/2019_Gender_Pay_Gap_Report.pdf" id="Footer1_A23" class="nav-link footer-nav-text" target="_blank" rel="noopener noreferrer" style="color: rgb(255, 255, 255);font-size: 15px;">Gender Pay Gap Report</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="col-md-3  col-lg-4  col-sm-4">
-
-                    <div class="d-flex justify-content-between">
-                        <a href="#" class="mr-4"><img src="../images/Logo/SIDE-foooter-logo.svg" class="footer-logoImg mr-2"></a>
-                        <a href="#" class="mr-4"><img src="../images/Logo/OR-footer-logo.svg" class="mr-2 footer-logoImg"></a>
-                        <a href="#" class="mr-4"><img src="../images/Logo/entalize-footer-logo.svg" class="mr-2 footer-logoImg"></a>
-                    </div>
-                    <div class="iso mt-5 text-right">
-                        <img src="../images/Logo/ISO.png" title="ISO 27001" class="no-margin-bottom ml-auto text-white text-center iso-logo">
-                    </div>
-                </div>
-
-
+                <p>SHOUT OUT!</p>
+                <p class="stripe_subtxt">Get in touch with us</p>
 
             </div>
-        </footer>
+        </div>
 
-        <footer class="text-white d-sm-none d-block">
-            <div class="row no-padding">
-                <div class="col-xs-6 footer-info footer-font f1">
-                    <div>
-                        <div class="mb-4 pl-0"> <img style="width: 45%;" src="../images/Logo/PTW.svg" /></div>
+        <section class=" position-relative clip-footer footer-parent">
+
+
+            <footer class="text-white d-sm-block d-none">
+                <div class="row no-padding">
+                    <div class="col-md-3 col-sm-3  footer-info footer-font f1">
+                        <div class="mb-3 p-3 pl-5"> <img style="width: 45%;" src="../images/Logo/PTW.svg" /></div>
+                        <div style="opacity: .4; margin-left:25px">Follow us</div>
+                        <div class="pull-xs-right d-flex nav navbar-nav navbar-toggleable-sm pl-4" style=" flex-direction: row;">
+                            <div class="nav-item"><a href="https://twitter.com/PTW" target="_blank" rel="noopener noreferrer" class="twitter nav-link" title="Twitter" style="color: rgb(255, 255, 255);"><i class="fa fa-twitter"></i><span class="m-l-20"></span></a></div>
+                            <div class="nav-item"><a href="https://www.facebook.com/PTWintl/" target="_blank" rel="noopener noreferrer" class="facebook nav-link" title="Facebook" style="color: rgb(255, 255, 255);"><i class="fa fa-facebook"></i><span class="m-l-20"></span></a></div>
+                            <div class="nav-item"><a href="https://www.linkedin.com/company/ptwintl/" target="_blank" rel="noopener noreferrer" class="linkedin nav-link" title="LinkedIn" style="color: rgb(255, 255, 255);"><i class="fa fa-instagram"></i><span class="m-l-20"></span></a></div>
+                            <div class="nav-item"><a href="https://www.linkedin.com/company/ptwintl/" target="_blank" rel="noopener noreferrer" class="linkedin nav-link" title="LinkedIn" style="color: rgb(255, 255, 255);"><i class="fa fa-linkedin-square"></i><span class="m-l-20"></span></a></div>
+
+                        </div>
                     </div>
-                    <ul class="pull-xs-right nav navbar-nav navbar-toggleable-sm m-0">
-                        <li class="nav-item">
-                            <a href="/home" id="Footer1_A1" class="nav-link p-0" titlevalue="1" style="color: rgb(255, 255, 255);font-size: 11px;">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/Service" id="Footer1_A2" class="nav-link p-0" titlevalue="2" style="color: rgb(255, 255, 255);font-size: 11px;">Services</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="about" id="Footer1_A3" class="nav-link p-0" titlevalue="3" style="color: rgb(255, 255, 255);font-size: 11px;">About</a>
-                        </li>
+                    <div class="col-md-2 col-sm-2  footer-info footer-font f1">
 
-                        <li class="nav-item">
-                            <a href="careers" id="Footer1_A5" class="nav-link p-0" titlevalue="5" style="color: rgb(255, 255, 255);font-size: 11px;">Careers</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/Contact" id="Footer1_A6" class="nav-link p-0 contact" titlevalue="6" style="color: rgb(255, 255, 255);font-size: 11px;">Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="lab" id="Footer1_A7" class="nav-link p-0" titlevalue="7" style="color: rgb(255, 255, 255);font-size: 11px;">Lab</a>
-                        </li>
-                    </ul>
+                        <ul class="pull-xs-right nav navbar-nav navbar-toggleable-sm">
+                            <li class="nav-item">
+                                <a href="/home" id="Footer1_A1" class="nav-link footer-nav-text" titlevalue="1" style="color: rgb(255, 255, 255);font-size: 15px;">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/Service" id="Footer1_A2" class="nav-link footer-nav-text" titlevalue="2" style="color: rgb(255, 255, 255);font-size: 15px;">Services</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="about" id="Footer1_A3" class="nav-link footer-nav-text" titlevalue="3" style="color: rgb(255, 255, 255);font-size: 15px;">About</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="careers" id="Footer1_A5" class="nav-link footer-nav-text" titlevalue="5" style="color: rgb(255, 255, 255);font-size: 15px;">Careers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/Contact" id="Footer1_A6" class="nav-link contact footer-nav-text" titlevalue="6" style="color: rgb(255, 255, 255);font-size: 15px;">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="lab" id="Footer1_A7" class="nav-link footer-nav-text" titlevalue="7" style="color: rgb(255, 255, 255);font-size: 15px;">Lab</a>
+                            </li>
+                        </ul>
+                    </div>
+
+
+
+                    <div class="col-md-4 col-sm-3  col-lg-3  footer-social footer-font   f1">
+                        <ul class="pull-xs-right nav navbar-nav navbar-toggleable-sm footer-font">
+                            <li class="nav-item">
+                                <a href="PDF/PTW_New_Website_Terms_of_Usage_2018.pdf" id="Footer1_A8" class="nav-link footer-nav-text" target="_blank" rel="noopener noreferrer" style="color: rgb(255, 255, 255); font-size: 15px;">Website Terms of Usage</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="PDF/PTW_Privacy_Policy.pdf" id="Footer1_A9" class="nav-link footer-nav-text" target="_blank" rel="noopener noreferrer" style="color: rgb(255, 255, 255);font-size: 15px;">Privacy Policy</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="PDF/PTW_Modern_Slavery_Statement_2018.pdf" id="Footer1_A18" class="nav-link footer-nav-text" target="_blank" rel="noopener noreferrer" style="color: rgb(255, 255, 255);font-size: 15px;">Modern Slavery Statement</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="PDF/Corporate_Social_Responsibility_V2.pdf" id="Footer1_A21" class="nav-link footer-nav-text" target="_blank" rel="noopener noreferrer" style="color: rgb(255, 255, 255);font-size: 15px;">CSR Policy (India)</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="PDF/2019_Gender_Pay_Gap_Report.pdf" id="Footer1_A23" class="nav-link footer-nav-text" target="_blank" rel="noopener noreferrer" style="color: rgb(255, 255, 255);font-size: 15px;">Gender Pay Gap Report</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-3  col-lg-4  col-sm-4">
+
+                        <div class="d-flex justify-content-between">
+                            <a href="#" class="mr-4 logo-org"><img src="../images/Logo/SIDE-foooter-logo.svg" class="footer-logoImg mr-2"></a>
+                            <a href="#" class="mr-4 logo-org1"><img src="../images/Logo/OR-footer-logo.svg" class="mr-2 footer-logoImg"></a>
+                            <a href="#" class="mr-4 logo-org2"><img src="../images/Logo/entalize-footer-logo.svg" class="mr-2 footer-logoImg"></a>
+                        </div>
+                        <div class="iso mt-5 text-right">
+                            <img src="../images/Logo/ISO.png" title="ISO 27001" class="no-margin-bottom ml-auto text-white text-center iso-logo">
+                        </div>
+                    </div>
+
+
+
                 </div>
+            </footer>
 
-                <div class="col-xs-6 footer-social footer-font f3">
-                    <div style="opacity: .4;">Follow us</div>
-                    <div class="pull-xs-right d-flex nav navbar-nav navbar-toggleable-sm pl-4 mb-4 mt-0" style=" flex-direction: row;">
-                        <div class="nav-item"><a href="https://twitter.com/PTW" target="_blank" rel="noopener noreferrer" class="twitter nav-link pl-0 pr-0" title="Twitter" style="color: rgb(255, 255, 255);"><i class="fa fa-twitter"></i><span class="m-l-20"></span></a></div>
-                        <div class="nav-item"><a href="https://www.facebook.com/PTWintl/" target="_blank" rel="noopener noreferrer" class="facebook nav-link pl-0 pr-0" title="Facebook" style="color: rgb(255, 255, 255);"><i class="fa fa-facebook"></i><span class="m-l-20"></span></a></div>
-                        <div class="nav-item"><a href="https://www.linkedin.com/company/ptwintl/" target="_blank" rel="noopener noreferrer" class="linkedin nav-link pl-0 pr-0" title="LinkedIn" style="color: rgb(255, 255, 255);"><i class="fa fa-linkedin-square"></i><span class="m-l-20"></span></a></div>
-                        <div class="nav-item"><a href="https://www.linkedin.com/company/ptwintl/" target="_blank" rel="noopener noreferrer" class="linkedin nav-link pl-0 pr-0" title="LinkedIn" style="color: rgb(255, 255, 255);"><i class="fa fa-instagram"></i><span class="m-l-20"></span></a></div>
+            <footer class="text-white d-sm-none d-block">
+                <div class="row no-padding">
+                    <div class="col-xs-6 footer-info footer-font f1">
+                        <div>
+                            <div class="mb-4 pl-0"> <img style="width: 45%;" src="../images/Logo/PTW.svg" /></div>
+                        </div>
+                        <ul class="pull-xs-right nav navbar-nav navbar-toggleable-sm m-0">
+                            <li class="nav-item">
+                                <a href="/home" id="Footer1_A1" class="nav-link p-0" titlevalue="1" style="color: rgb(255, 255, 255);font-size: 11px;">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/Service" id="Footer1_A2" class="nav-link p-0" titlevalue="2" style="color: rgb(255, 255, 255);font-size: 11px;">Services</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="about" id="Footer1_A3" class="nav-link p-0" titlevalue="3" style="color: rgb(255, 255, 255);font-size: 11px;">About</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="careers" id="Footer1_A5" class="nav-link p-0" titlevalue="5" style="color: rgb(255, 255, 255);font-size: 11px;">Careers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/Contact" id="Footer1_A6" class="nav-link p-0 contact" titlevalue="6" style="color: rgb(255, 255, 255);font-size: 11px;">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="lab" id="Footer1_A7" class="nav-link p-0" titlevalue="7" style="color: rgb(255, 255, 255);font-size: 11px;">Lab</a>
+                            </li>
+                        </ul>
                     </div>
 
-                    <ul class="pull-xs-right nav navbar-nav navbar-toggleable-sm footer-font m-0">
-                        <li class="nav-item">
-                            <a href="PDF/PTW_New_Website_Terms_of_Usage_2018.pdf" id="Footer1_A8" class="nav-link p-0" target="_blank" rel="noopener noreferrer" style="color: rgb(255, 255, 255); font-size: 11px;">Website Terms of Usage</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="PDF/PTW_Privacy_Policy.pdf" id="Footer1_A9" class="nav-link p-0" target="_blank" rel="noopener noreferrer" style="color: rgb(255, 255, 255);font-size: 11px;">Privacy Policy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="PDF/PTW_Modern_Slavery_Statement_2018.pdf" id="Footer1_A18" class="nav-link p-0" target="_blank" rel="noopener noreferrer" style="color: rgb(255, 255, 255);font-size: 11px;">Modern Slavery Statement</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="PDF/Corporate_Social_Responsibility_V2.pdf" id="Footer1_A21" class="nav-link p-0" target="_blank" rel="noopener noreferrer" style="color: rgb(255, 255, 255);font-size: 11px;">CSR Policy (India)</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="PDF/2019_Gender_Pay_Gap_Report.pdf" id="Footer1_A23" class="nav-link p-0 target="_blank" rel="noopener noreferrer" style="color: rgb(255, 255, 255);font-size: 11px;">Gender Pay Gap Report</a>
-                        </li>
-                    </ul>
+                    <div class="col-xs-6 footer-social footer-font f3">
+                        <div style="opacity: .4;">Follow us</div>
+                        <div class="pull-xs-right d-flex nav navbar-nav navbar-toggleable-sm pl-4 mb-4 mt-0" style=" flex-direction: row;">
+                            <div class="nav-item"><a href="https://twitter.com/PTW" target="_blank" rel="noopener noreferrer" class="twitter nav-link pl-0 pr-0" title="Twitter" style="color: rgb(255, 255, 255);"><i class="fa fa-twitter"></i><span class="m-l-20"></span></a></div>
+                            <div class="nav-item"><a href="https://www.facebook.com/PTWintl/" target="_blank" rel="noopener noreferrer" class="facebook nav-link pl-0 pr-0" title="Facebook" style="color: rgb(255, 255, 255);"><i class="fa fa-facebook"></i><span class="m-l-20"></span></a></div>
+                            <div class="nav-item"><a href="https://www.linkedin.com/company/ptwintl/" target="_blank" rel="noopener noreferrer" class="linkedin nav-link pl-0 pr-0" title="LinkedIn" style="color: rgb(255, 255, 255);"><i class="fa fa-linkedin-square"></i><span class="m-l-20"></span></a></div>
+                            <div class="nav-item"><a href="https://www.linkedin.com/company/ptwintl/" target="_blank" rel="noopener noreferrer" class="linkedin nav-link pl-0 pr-0" title="LinkedIn" style="color: rgb(255, 255, 255);"><i class="fa fa-instagram"></i><span class="m-l-20"></span></a></div>
+                        </div>
+
+                        <ul class="pull-xs-right nav navbar-nav navbar-toggleable-sm footer-font m-0">
+                            <li class="nav-item">
+                                <a href="PDF/PTW_New_Website_Terms_of_Usage_2018.pdf" id="Footer1_A8" class="nav-link p-0" target="_blank" rel="noopener noreferrer" style="color: rgb(255, 255, 255); font-size: 11px;">Website Terms of Usage</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="PDF/PTW_Privacy_Policy.pdf" id="Footer1_A9" class="nav-link p-0" target="_blank" rel="noopener noreferrer" style="color: rgb(255, 255, 255);font-size: 11px;">Privacy Policy</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="PDF/PTW_Modern_Slavery_Statement_2018.pdf" id="Footer1_A18" class="nav-link p-0" target="_blank" rel="noopener noreferrer" style="color: rgb(255, 255, 255);font-size: 11px;">Modern Slavery Statement</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="PDF/Corporate_Social_Responsibility_V2.pdf" id="Footer1_A21" class="nav-link p-0" target="_blank" rel="noopener noreferrer" style="color: rgb(255, 255, 255);font-size: 11px;">CSR Policy (India)</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="PDF/2019_Gender_Pay_Gap_Report.pdf" id="Footer1_A23" class="nav-link p-0 target="_blank" rel="noopener noreferrer" style="color: rgb(255, 255, 255);font-size: 11px;">Gender Pay Gap Report</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-xs-12 mt-5 align-items-center">
+                        <div class="d-flex justify-content-between">
+                            <a href="#" class="mr-4"><img src="../images/Logo/SIDE-foooter-logo.svg" class="mr-2" style="max-width: 100%"></a>
+                            <a href="#" class="mr-4"><img src="../images/Logo/OR-footer-logo.svg" class="mr-2" style="max-width: 100%"></a>
+                            <a href="#" class="mr-4"><img src="../images/Logo/entalize-footer-logo.svg" class="mr-2" style="max-width: 100%"></a>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 d-flex align-items-center">
+                        <div class="backtop pull-right" style="">
+                            <a href="#top"><img src="../images/up-arrow.png" class="a-to-top"></a>
+                        </div>
+                        <div class="iso pull-right">
+                            <img src="../images/Logo/ISO.png" title="ISO 27001" class="no-margin-bottom text-white text-center iso-logo">
+                        </div>
+                    </div>
                 </div>
+            </footer>
 
-                <div class="col-xs-12 mt-5 align-items-center">
-                    <div class="d-flex justify-content-between">
-                        <a href="#" class="mr-4"><img src="../images/Logo/SIDE-foooter-logo.svg" class="mr-2" style="max-width: 100%"></a>
-                        <a href="#" class="mr-4"><img src="../images/Logo/OR-footer-logo.svg" class="mr-2" style="max-width: 100%"></a>
-                        <a href="#" class="mr-4"><img src="../images/Logo/entalize-footer-logo.svg" class="mr-2" style="max-width: 100%"></a>
-                    </div>
-                </div>
-
-                <div class="col-xs-12 d-flex align-items-center">
-                    <div class="backtop pull-right" style="">
-                        <a href="#top"><img src="../images/up-arrow.png" class="a-to-top"></a>
-                    </div>
-                    <div class="iso pull-right">
-                        <img src="../images/Logo/ISO.png" title="ISO 27001" class="no-margin-bottom text-white text-center iso-logo">
-                    </div>
-                </div>
-            </div>
-        </footer>
-
-    </section>
-</div>
-
+        </section>
+    </div>
+*@
 <script>
 
 
     $(document).ready(function () {
         LoadLocation();
+
+        //Preloader
+        preloaderFadeOutTime = 500;
+        function hidePreloader() {
+            var preloader = $('.sk-chase');
+            preloader.fadeOut(preloaderFadeOutTime);
+        }
+        hidePreloader();
     });
-    function ShowContent(event) {
+    function ShowContent(event, clsName) {
         for (var i = 1; i < 6; i++) {
             $("#Service_" + i + "").closest("div").children("div").addClass("d-none");
             $("#Service_" + i + "").closest("div").children("div").removeClass("d-block");
             $("#Service_" + i + "").css("width", "8%");
             $("#Service_" + i + "").removeClass("d-none");
+            $("#Service_" + i + "").css("transform", "scale(1)");
         }
 
-        $("#" + event.id + "").css("width", "13%");
+        $("#" + event.id + "").css("transform", "scale(1.6)");
+        $("." + clsName + "").css("margin", "3rem");
         $("#" + event.id + "").closest("div").children("div").addClass("d-block")
     }
 
@@ -555,11 +576,6 @@
 
     }
 
-    var cu = new counterUp({
-        start: 0,
-        duration: 6000,
-        intvalues: true,
-        interval: 100
-    });
-    cu.start();
+
+
 </script>

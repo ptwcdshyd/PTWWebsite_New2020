@@ -28,6 +28,13 @@
             LoadProfile();
         }
 
+        if (ModuleId == '19') {
+            LoadLab();
+        }
+        if (ModuleId == '18') {
+            LoadNews();
+        }
+
     });
     function LoadProfile() {
         
@@ -71,7 +78,188 @@
 
     }
 
+    function LoadNews() {
+        $.ajax({
+            url: "../AllNews",
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result) {
 
+                var htmlContent = '';
+                var htmlEventsContent = '';
+                var mainhtmlContent = '<div class="nEAnim" style="background-image: url(../' + result.News[0].LongImageUrl + result.News[0].LongImageName + ');">' +
+                    '<a href="../news/' + $.trim(result.News[0].ShortDescription.replace(/\b \b/g, '-')) + '">' +
+                    '<div class="borders">' +
+                    '<img style="width: 90%;" src="../Images/news/News&amp;events/border.svg">' +
+                    //'<img style="width: 90%;" src="Images/news/News&amp;events/border.svg">'
+                    '</div>' +
+                    '<div class="imageContent">' +
+                    '</div>' +
+                    '<div class="textContent">' +
+                    '<p>' + result.News[0].ShortDescription + '</p>' +
+                    '<div class="nE ReadMe">' +
+                    '<a href="#" class="ReadMeBtn">Read More</a>' +
+                    '</div>' +
+                    '</div>' +
+                    '</a>' +
+                    '</div>';
+
+                for (var j = 0; j < result.Events.length; j++) {
+
+                    htmlEventsContent = htmlEventsContent + '<div class="col-md-12">' +
+                        '<a href="../news/' + $.trim(result.Events[j].ShortDescription.replace(/\b \b/g, '-')) + '">' +
+                        '<div class="d-flex upComingSection">' +
+                        '<div class="eventsImage event2" style="background-image: url(' + result.Events[j].ShortImageUrl.replace('~', '..') + result.Events[j].ShortImageName + ');">' +
+                        '<img src="../Images/news/News&events/event.svg">' +
+                        //'<img src="~/Images/news/2020/small/' + 61.png+'">' +
+                        '</div>' +
+                        '<div class="content" style="width:50%">' +
+                        '<p class="title">' + result.Events[j].NewsTitle + '</p>' +
+                        '<p class="date">' + result.Events[j].EventDate + '</p>' +
+                        '<p class="date">' + result.Events[j].Location + '</p>' +
+                        '<div class="shareSec">' +
+                        '<div class="d-flex">' +
+                        '<p class="share marginRight">Share Now</p>' +
+                        '<p class="bookNow orange ">Book Now</p>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '</a>' +
+                        '</div>'
+
+                }
+                for (var i = 1; i < result.News.length; i++) {
+
+                    if (i == 1 || (i - 1) % 3 == 0) {
+                        htmlContent = htmlContent + '<div class="row mt-10 mb-5" >'
+                    }
+
+                    htmlContent = htmlContent + '<div class="col-md-4">' +
+                        '<a href="../news/' + $.trim(result.News[i].ShortDescription.replace(/\b \b/g, '-')) + '">' +
+                        '<div class="animationDiv">' +
+                        '<img class="btnImage" src="' + result.News[i].ShortImageUrl.replace('~', '..') + result.News[i].ShortImageName + '">' +
+                        //'<img class="btnImage" src="~/Images/news/2018/small/'+result.News[i].ShortImageName+'">' +
+                        '<div class="squaredDiv">' +
+                        '<div class="squaredText">' +
+                        '<p>' + result.News[i].ShortDescription + '</p>' +
+                        '</div>' +
+                        '<div class="MoreDiv">' +
+                        '<p>More..</p>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '</a>' +
+                        '</div>'
+
+                    if (i % 3 == 0) {
+                        htmlContent = htmlContent + '</div >'
+                    }
+                }
+                if (result.News.length % 3 != 0) {
+                    htmlContent = htmlContent + '</div>'
+                }
+
+                $('#newsgrid').append(htmlContent);
+                $('#eventsgrid').append(htmlEventsContent);
+                $('#mainnews').append(mainhtmlContent);
+
+
+            },
+            error: function (err) {
+                // window.location = '../Logout';
+            }
+        });
+
+    }
+
+    function LoadLab() {
+        $.ajax({
+            url: "../Labs",
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+
+                var htmlContent = '';
+                var htmlEventsContent = '';
+                var mainhtmlContent = '<div class="nEAnim" style="background-image: url(' + result.allLabs[0].ImageUrl + result.allLabs[0].ImageName + ');">' +
+                    '<a href="../lab/' + $.trim(result.allLabs[0].ShortDescription.replace(/\b \b/g, '-')) + '">' +
+                    '<div class="borders">' +
+                    '<img src="/Images/New_UI/news/border.svg">' +
+                    '</div>' +
+                    '<div class="imageContent">' +
+                    '</div>' +
+                    '<div class="textContent">' +
+                    '<p>Non-Technical Guide for Player Support</p>' +
+                    '<div class="ReadMe">' +
+                    '<a href="#" class="ReadMeBtn">Read More</a>' +
+                    '</div>' +
+                    '</div>' +
+                    '</a>' +
+                    '</div>'
+
+                for (var j = 0; j < 2; j++) {
+
+                    htmlEventsContent = htmlEventsContent +
+                        '<div class="col-md-12 mt-5">' +
+                        '<a href="../lab/' + $.trim(result.labInsights[j].ShortDescription.replace(/\b \b/g, '-')) + '">' +
+                        '<div class="animationDiv">' +
+
+                        '<img class="btnImage" src="' + result.labInsights[j].ImageUrl + result.allLabs[j].ImageName + '">' +
+                        '<div class="squaredDiv">' +
+                        '<div class="squaredText">' +
+                        '<p class="title">' + result.labInsights[j].ShortDescription + '</p>' +
+                        '</div>' +
+                        '<div class="MoreDiv">' +
+                        '<p>More..</p>' +
+                        '</div>' +
+                        '</a>' +
+                        '</div></div></div>'
+                }
+                for (var i = 1; i < result.allLabs.length; i++) {
+
+                    if (i == 1 || (i - 1) % 3 == 0) {
+                        htmlContent = htmlContent + '<div class="row lab mb-5 animediv">'
+                    }
+
+                    htmlContent = htmlContent + '<div class="col-md-4">' +
+                        '<a href="../lab/' + $.trim(result.allLabs[i].ShortDescription.replace(/\b \b/g, '-')) + '">' +
+                        '<div class="animationDiv">' +
+                        '<img class="btnImage" src="' + result.allLabs[i].ImageUrl + result.allLabs[i].ImageName + '">' +
+                        '<div class="squaredDiv">' +
+                        '<div class="squaredText">' +
+                        '<p>' + result.allLabs[i].ShortDescription + '</p>' +
+                        '</div>' +
+                        '<div class="MoreDiv">' +
+                        '<p>More..</p>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '</a>' +
+                        '</div>'
+
+                    if (i % 3 == 0) {
+                        htmlContent = htmlContent + '</div >'
+                    }
+                }
+                if (result.allLabs.length % 3 != 0) {
+                    htmlContent = htmlContent + '</div>'
+                }
+
+                $('#labs').append(htmlContent);
+                $('#eventsgrid').append(htmlEventsContent);
+                $('#mainlab').append(mainhtmlContent);
+
+
+            },
+            error: function (err) {
+                // window.location = '../Logout';
+            }
+        });
+
+    }
 
 
 </script>
@@ -305,4 +493,6 @@
         $(".whr-item").show();
         $('#ddlcountries').trigger("change");
     }
+
+
 </script>

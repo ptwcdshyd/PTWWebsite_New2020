@@ -99,19 +99,7 @@
 <div class="contentpanel report" style="border: 1px solid #00b8ff85;width: 1180px;margin-top: 45px;margin-left:50px;">
     <div class="row distribute-container">
         <div class="col-lg-12 col-md-12 col-sm-12">
-            @*<div class="row">
-            <div class="form-group col-md-4 col-sm-4">
-                <label for="name">Selection Language</label>
-                <select class="form-control input-sm" id="Language">
-                    <option value="en-US">English</option>
-                    <option value="fr-CA">French</option>
-                    <option value="ja">Japan</option>
-                    <option value="ko">Korean</option>
-                    <option value="zh-CHS">Simplified Chinese</option>
-                    <option value="zh-CHT">Traditional Chinese</option>
-                </select>
-            </div>
-        </div>*@
+
 
             <div class="row">
                 <div class="form-group col-md-6 col-sm-4">
@@ -198,7 +186,7 @@
                 <button onclick="Update();" class="btn btn-success">Update Lab Dashboard</button>
             </div>
             <div class="col-md-2" style="margin-top:40px;margin-left:150px;margin-bottom:15px;display:flex">
-                <button onclick="Preview();" disabled class="btn btn-success">Preview</button>
+                <button onclick="Preview();"  class="btn btn-success">Preview</button>
             </div>
             <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
                 <button onclick="BackUpCode();" class="btn btn-success">Take BackUp</button>
@@ -427,8 +415,12 @@
         if ($("#Languages").children("option:selected").val() != "Please select") {
             var fd = new FormData();
             var files1 = $('#LabImage')[0].files[0];
+            var files2 = $('#LabHeader')[0].files[0];
             if ($('#LabImage')[0].files[0] != undefined) {
-                fd.append('ImageNewsKasturiRangan', files1);
+                fd.append('LabImage', files1);
+            }
+            if ($('#LabHeader')[0].files[0] != undefined) {
+                fd.append('LabHeader', files2);
             }
             fd.append('Event', parseInt($("#Language").val()));
             fd.append('Description', $('#Description').summernote('code'));
@@ -443,7 +435,7 @@
 
             $.ajax({
                 type: "POST",
-                url: '@Url.Action("UpdateNewsPageByLanguageId", "Home")',
+                url: '@Url.Action("PreviewLabs")',
                 data: fd,
                 contentType: false,
                 processData: false,

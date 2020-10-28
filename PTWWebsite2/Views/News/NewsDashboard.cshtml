@@ -171,7 +171,7 @@
                 <button onclick="Update();" class="btn btn-success">Update News Dashboard</button>
             </div>
             <div class="col-md-2" style="margin-top:40px;margin-left:150px;margin-bottom:15px;display:flex;">
-                <button onclick="Preview();" disabled class="btn btn-success">Preview</button>
+                <button onclick="Preview();" class="btn btn-success">Preview</button>
             </div>
             <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
                 <button onclick="BackUpCode();" class="btn btn-success">Take BackUp</button>
@@ -396,7 +396,7 @@
             var fd = new FormData();
             var files1 = $('#NewsImage')[0].files[0];
             if ($('#NewsImage')[0].files[0] != undefined) {
-                fd.append('ImageNewsKasturiRangan', files1);
+                fd.append('NewsImage', files1);
             }
             fd.append('Event', parseInt($("#Language").val()));
             fd.append('Description', $('#Description').summernote('code'));
@@ -411,7 +411,7 @@
 
             $.ajax({
                 type: "POST",
-                url: '@Url.Action("UpdateNewsPageByLanguageId", "Home")',
+                url: '@Url.Action("PreviewNews")',
                 data: fd,
                 contentType: false,
                 processData: false,

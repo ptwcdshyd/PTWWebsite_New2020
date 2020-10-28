@@ -447,5 +447,32 @@ namespace PTWWebsite2.Controllers
             return Json(1, new JsonSerializerSettings());
         }
 
+        [Route("PreviewNews")]
+        [HttpPost]
+        public async Task<IActionResult> PreviewNews(News News)
+        {
+            try
+            {
+                _loggerManager.LogInfo("Action :PreviewLabs Data: " + JsonConvert.SerializeObject(News));
+                string path = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/LabImages/");
+                string previewPath = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/PreviewImages/");
+
+                if (News.NewsImage != null)
+                {
+                    News.Description = News.Description.Replace(path + "NewsImage.png", previewPath + "NewsImage.png");
+                }
+                
+                int resultCode = _masterService.UpdatePreviewPageByLanguageModuleId(News.ModuleId, News.LanguageCode, News.Description, News.MetaDescription, News.MetaTitle, News.MetaUrl);
+
+                return Json(resultCode, new JsonSerializerSettings());
+            }
+            catch (Exception ex)
+            {
+                _loggerManager.LogError("Action:  PreviewNews: " + ex.Message);
+
+                throw ex;
+            }
+        }
+
     }
 }

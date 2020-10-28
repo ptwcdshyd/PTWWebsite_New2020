@@ -17,6 +17,7 @@
 
 
     <!-- Custom fonts for this template -->
+
     <link href="~/css/clean-blog.min.css" rel="stylesheet" />
     <link href="~/CSS/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -24,6 +25,7 @@
     <script src="~/js/ajax.googleapis.com.3.5.1.js"></script>
     <link href="~/css/cdnjs.cloudflare.com.4.7.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="~/CSS/cookieconsent.min.css" />
+    <script src="~/js/count-up.min.js"></script>
     @*</----------------------respective Individual stylesheet----------------------->*@
 
     <link href="~/css/quality_assurance.css" rel="stylesheet" />
@@ -234,6 +236,14 @@
         }
 
     @RenderSection("Scripts", required: false)
+
+        var cu = new counterUp({
+            start: 0,
+            duration: 6000,
+            intvalues: true,
+            interval: 100
+        });
+        cu.start();
 
     </script>
 

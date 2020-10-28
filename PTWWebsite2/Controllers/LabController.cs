@@ -640,6 +640,37 @@ namespace PTWWebsite2.Controllers
             return Json(1, new JsonSerializerSettings());
         }
 
+        [Route("PreviewLabs")]
+        [HttpPost]
+        public async Task<IActionResult> PreviewLabs(Labs Labs)
+        {
+            try
+            {
+                _loggerManager.LogInfo("Action :PreviewLabs Data: " + JsonConvert.SerializeObject(Labs));
+                string path = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/LabImages/");
+                string previewPath = Path.Combine(_hostingEnvironment.WebRootPath, "images/Lab/PreviewImages/");
+                
+                if (Labs.LabImage != null)
+                {
+                    Labs.Description = Labs.Description.Replace(path + "LabImage.png", previewPath + "LabImage.png");
+                }
+                if (Labs.LabHeader != null)
+                {
+                    Labs.Description = Labs.Description.Replace(path + "LabHeader.png", previewPath + "LabHeader.png");
+                }
+
+                int resultCode = _masterService.UpdatePreviewPageByLanguageModuleId(Labs.ModuleId, Labs.LanguageCode, Labs.Description, Labs.MetaDescription, Labs.MetaTitle, Labs.MetaUrl);
+
+                return Json(resultCode, new JsonSerializerSettings());
+            }
+            catch (Exception ex)
+            {
+                _loggerManager.LogError("Action:  PreviewLabs: " + ex.Message);
+
+                throw ex;
+            }
+        }
+
         public async void FilePath(IFormFile file, string path, string deletePath)
         {
             try

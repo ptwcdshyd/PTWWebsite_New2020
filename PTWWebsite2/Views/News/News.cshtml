@@ -491,10 +491,10 @@
                 
                 var htmlContent = '';
                 var htmlEventsContent = '';
-                var mainhtmlContent = '<div class="nEAnim" style="background-image: url(' + result.News[0].LongImageUrl + result.News[0].LongImageName + ');">' +
+                var mainhtmlContent = '<div class="nEAnim" style="background-image: url(../' + result.News[0].LongImageUrl + result.News[0].LongImageName + ');">' +
                     '<a href="../news/' + $.trim(result.News[0].ShortDescription.replace(/\b \b/g, '-')) + '">' +
                     '<div class="borders">' +
-                    '<img style="width: 90%;" src="Images/news/News&amp;events/border.svg">' +
+                    '<img style="width: 90%;" src="../Images/news/News&amp;events/border.svg">' +
                     //'<img style="width: 90%;" src="Images/news/News&amp;events/border.svg">'
                     '</div>' +
                     '<div class="imageContent">' +
@@ -514,7 +514,7 @@
                         '<a href="../news/' + $.trim(result.Events[j].ShortDescription.replace(/\b \b/g, '-')) + '">' +
                         '<div class="d-flex upComingSection">' +
                         '<div class="eventsImage event2" style="background-image: url(' + result.Events[j].ShortImageUrl.replace('~', '..') + result.Events[j].ShortImageName + ');">' +
-                        '<img src="Images/news/News&events/event.svg">' +
+                        '<img src="../Images/news/News&events/event.svg">' +
                         //'<img src="~/Images/news/2020/small/' + 61.png+'">' +
                         '</div>' +
                         '<div class="content" style="width:50%">' +
