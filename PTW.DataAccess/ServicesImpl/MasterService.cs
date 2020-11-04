@@ -440,16 +440,17 @@ namespace PTW.DataAccess.ServicesImpl
                         for (int i = 0; i < result.Rows.Count; i++)
                         {
                             LocationDetails obj = new LocationDetails();
-                            obj.Region = result.Rows[i]["Region"].ToString();
-                            obj.Country = result.Rows[i]["Country"].ToString();
-                            obj.Location = result.Rows[i]["Location"].ToString();
-                            obj.Address =result.Rows[i]["Address"].ToString();
-                            obj.Website = result.Rows[i]["Website"].ToString();
-                            obj.Title = result.Rows[i]["Title"].ToString();
-                            obj.GoogleMapHeading = result.Rows[i]["GoogleMapHeading"].ToString();
-                            obj.GoogleMap = result.Rows[i]["GoogleMap"].ToString();
-                            obj.Target = result.Rows[i]["Target"].ToString();
-                            obj.TargetLocation = result.Rows[i]["TargetLocation"].ToString();
+                            obj.ID = Convert.ToInt32(result.Rows[i]["ID"]);
+                            obj.Region = Convert.ToString(result.Rows[i]["Region"]);
+                            obj.Country = Convert.ToString(result.Rows[i]["Country"]);
+                            obj.Location = Convert.ToString(result.Rows[i]["Location"]);
+                            obj.Address = Convert.ToString(result.Rows[i]["Address"]);
+                            obj.Website = Convert.ToString(result.Rows[i]["Website"]);
+                            obj.Title = Convert.ToString(result.Rows[i]["Title"]);
+                            obj.GoogleMapHeading = Convert.ToString(result.Rows[i]["GoogleMapHeading"]);
+                            obj.GoogleMap = Convert.ToString(result.Rows[i]["GoogleMap"]);
+                            obj.Target = Convert.ToString(result.Rows[i]["Target"]);
+                            obj.TargetLocation = Convert.ToString(result.Rows[i]["TargetLocation"]);
                            
                             locationslist.Add(obj);
 

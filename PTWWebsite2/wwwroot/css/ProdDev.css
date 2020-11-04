@@ -34,9 +34,9 @@
     src: url('../fonts/Poppins-Regular.ttf');
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700;900&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700;900&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');*/
 
 /*img {
     width: 100%;
@@ -168,7 +168,12 @@
 }
 
 .prod .home-text {
-    margin-top: 25%;
+    margin-top: 33%;
+    font-size: 5.5rem;
+    white-space: nowrap;
+    line-height: 58px;
+    /* box-shadow: none; */
+    margin-bottom: 10px;
 }
 .map-txt {
     position: absolute;
@@ -180,9 +185,19 @@
 }
 
 .prod .home-text .servicebg-title {
-  
     background: #F1672499;
-
+    align-items: center;
+   
+    clip-path: polygon( 0% 100%, /* top left */ 0% 0%, /* top left */ 100% 0%, /* top right */ 100% 0, /* top right */ 100% 75%, /* bottom right */ 94% 100%, /* bottom right */ 0% 100%, /* bottom left */ 0% 100% /* bottom left */ );
+    overflow: hidden;
+    border: none;
+    /* border-top-left-radius: 75px; */
+    /* border-bottom-left-radius: 75px; */
+    height: 116px;
+    padding: 16px 45px;
+    opacity: 1;
+    margin: 10px -46px;
+    width: 100%;
 }
 /* Product Development */
 .bg-prodDev {

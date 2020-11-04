@@ -28,8 +28,8 @@ namespace PTWWebsite2.Controllers
         }
 
 
-        [Route("Careers")]
-        [Route("{culture}/Careers")]
+        [Route("careers")]
+        [Route("{culture}/careers")]
         public IActionResult Careers(string culture)
         {
             MasterPage masterPage = new MasterPage();
@@ -41,8 +41,8 @@ namespace PTWWebsite2.Controllers
            
         }
 
-        [Route("Jobs")]
-        [Route("{culture}/Jobs")]
+        [Route("jobs")]
+        [Route("{culture}/jobs")]
         public IActionResult Jobs(string culture)
         {
             MasterPage masterPage = new MasterPage();
@@ -56,7 +56,7 @@ namespace PTWWebsite2.Controllers
 
         //[Authorize]
         [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
-        [Route("CareersEdit")]
+        [Route("careersedit")]
         [HttpGet]
         public IActionResult CareersEdit()
         {

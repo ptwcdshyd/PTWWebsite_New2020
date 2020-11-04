@@ -172,7 +172,8 @@
 
 .qa-sub-txt {
     font-family: Nunito-regular;
-    font-size: 30px;
+    font-size: 25px !important;
+    font-weight: 500;
     text-shadow: 0px 0px 6px #000000AB;
 }
 .setheight {
@@ -181,6 +182,7 @@
 
 .servicebg-title p {
     font-size: 4.5rem;
+    text-shadow: 3px 3px 6px #0000008C;
 }
 
 @media only screen (max-width: 1400px) {
@@ -212,8 +214,9 @@
         font-size: 2.5rem;
     }
     .qa-sub-txt {
-        font-size: 25px;
+        font-size: 14px !important;
     }
+    
     .qa .home-text p {
         margin: 0px;
         font-size: 2rem;
@@ -221,11 +224,27 @@
  
 }
         @media only screen and (min-width: 768px) and (max-width: 800px) {
+
+            .stripe p{
+                font-size: 2.5rem !important;
+            }
+
+      
             .qa .home-text .servicebg-title {
                 height: 90px;
                 margin: 19px -46px;
             }
 
+
+            .bg2 {
+                /* The image used */
+                background-image: url("../Images/New_UI/qa_page/mob_bg.png") !important;
+                /* Half height */
+                height: 100%;
+                /* Center and scale the image nicely */
+                background-repeat: no-repeat;
+                background-size: contain;
+            }
                 .qa .home-text .servicebg-title img {
                     width: 95px !important;
                 }
@@ -269,6 +288,7 @@
                 padding: 10px;
             }
         }
+
 
 
         @media only screen and (min-width: 320px) and (max-width: 577px) {
@@ -351,8 +371,8 @@
                 height: 420px;
             }
 
-            .setheight{
-               height: 40rem;
+            .setheight {
+                height: 81rem;
             }
 
             .qa .stripe {
@@ -364,3 +384,11 @@
                 text-align: center;
             }
         }
+
+
+@media only screen and (max-width: 400px) {
+
+    .setheight {
+        height: 50rem;
+    }
+}

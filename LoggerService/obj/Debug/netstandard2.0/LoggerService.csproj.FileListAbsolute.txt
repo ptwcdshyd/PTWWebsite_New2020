@@ -46,9 +46,9 @@ D:\GitHub\ptwcdshyd\PTWWebsite_New2020 old26th june\LoggerService\obj\Debug\nets
 C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\LoggerService\bin\Debug\netstandard2.0\LoggerService.deps.json
 C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\LoggerService\bin\Debug\netstandard2.0\LoggerService.dll
 C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\LoggerService\bin\Debug\netstandard2.0\LoggerService.pdb
-C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\LoggerService\obj\Debug\netstandard2.0\LoggerService.csprojAssemblyReference.cache
 C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\LoggerService\obj\Debug\netstandard2.0\LoggerService.AssemblyInfoInputs.cache
 C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\LoggerService\obj\Debug\netstandard2.0\LoggerService.AssemblyInfo.cs
 C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\LoggerService\obj\Debug\netstandard2.0\LoggerService.csproj.CoreCompileInputs.cache
 C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\LoggerService\obj\Debug\netstandard2.0\LoggerService.dll
 C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\LoggerService\obj\Debug\netstandard2.0\LoggerService.pdb
+C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\LoggerService\obj\Debug\netstandard2.0\LoggerService.csprojAssemblyReference.cache

@@ -41,8 +41,8 @@ namespace PTWWebsite2.Controllers
         }
 
         [Route("")]
-        [Route("Home")]
-        [Route("{culture}/Home")]
+        [Route("home")]
+        [Route("{culture}/home")]
         [Route("{culture}/")]
         [AllowAnonymous]
         public IActionResult Home(string culture)
@@ -87,7 +87,7 @@ namespace PTWWebsite2.Controllers
            return Json(homeLabs, new JsonSerializerSettings());
         }
 
-        [Route("Editor")]
+        [Route("editor")]
         [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Editor()
         {
@@ -342,14 +342,14 @@ namespace PTWWebsite2.Controllers
         //}
 
         [HttpGet]
-        [Route("ImagesUpload")]
+        [Route("imagesupload")]
         public IActionResult ImagesUpload()
         {
             return View();
         }
         [HttpPost]
-        [Route("Image/ImagesUpload")]
-        [ActionName("ImagesUpload")]
+        [Route("image/imagesupload")]
+        [ActionName("imagesupload")]
         public IActionResult ImagesUpload_Post(Services model)
         {
             try
@@ -549,7 +549,7 @@ namespace PTWWebsite2.Controllers
 
         //[ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
 
-        [Route("EditHome")]
+        [Route("edithome")]
         [HttpGet]
         public IActionResult Home_New()
         {
@@ -824,7 +824,7 @@ namespace PTWWebsite2.Controllers
             }
         }
 
-        [Route("DownloadBackup")]
+        [Route("downloadbackup")]
         [HttpGet]
         public IActionResult DownloadBackup(int ModuleId,string LanguageCode)
         {

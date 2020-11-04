@@ -12,7 +12,7 @@
 @Html.Raw(Model.HtmlContent)
 
 @*
-        <div class="sk-chase">
+           <div class="sk-chase">
         <div class="sk-chase-dot"></div>
         <div class="sk-chase-dot"></div>
         <div class="sk-chase-dot"></div>
@@ -235,7 +235,7 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <button type="button" class="btn kickstart">KICK START WITH US </button>
+                    <button type="button" class="btn kickstart">KICKSTART WITH US </button>
                 </div>
             </div>
             <div class="col-md-6 join-developers">
@@ -246,27 +246,27 @@
                 <div class="d-sm-block d-none kick-start ml-5">
                     <div class="d-flex">
 
-                        <div class="p-4 mr-5">
+                        <div class="p-4 count mr-5">
                             <p style="color: #EE6E03; font-size: 55px;margin:0px">
                                 <span class="countup" cup-end="40" cup-duration="1000" cup-append="+" cup-prepend=""></span>
                             </p>
-                            <p style="font-size: 10px;color: #303143;">Global Studios</p>
+                            <p style="font-size: 10px;color: #303143;    line-height: 0px;">Global Studios</p>
                         </div>
-                        <div class="p-4 mr-5" style="text-align:center">
+                        <div class="p-4 count mr-5" style="text-align:center">
                             <p style="color: #EE6E03; font-size: 55px;margin:0px">
                                 <span class="countup" cup-end="60" cup-duration="1000" cup-append="00+" cup-prepend=""></span>
-                            </p>
-                            <p style="font-size: 10px;color: #303143;">Employess</p>
+                            </p>F
+                            <p style="font-size: 10px;color: #303143;    line-height: 0px;">Employess</p>
                         </div>
-                        <div class="p-4 mr-5">
+                        <div class="p-4 count mr-5">
                             <p style="color: #EE6E03; font-size: 55px;margin:0px">
                                 <span class="countup" cup-end="25" cup-duration="1000" cup-append="+" cup-prepend=""></span>
                             </p>
-                            <p style="font-size: 10px;color: #303143;">Years of XP</p>
+                            <p style="font-size: 10px;color: #303143;    line-height: 0px;">Years of XP</p>
                         </div>
 
                     </div>
-                    <button type="button" class="btn kickstart ml-4">KICK START WITH US </button>
+                    <button type="button" class="btn kickstart ml-4">KICKSTART WITH US </button>
                 </div>
             </div>
 
@@ -347,13 +347,31 @@
 
     <!-- Footer -->
     <div class="footerbg">
-        <div class="row home  footerStripe  justify-content-center">
+        <div class="row home footerStripe ">
 
-            <div class="  stripe">
 
-                <p>SHOUT OUT!</p>
-                <p class="stripe_subtxt">Get in touch with us</p>
 
+            <div class=" stripe ">
+
+                <div class="d-flex">
+                    <div  style="flex:1">
+
+                    </div>
+                    <div style="flex:1"">
+                        <p>SHOUT OUT!</p>
+                        <p class="stripe_subtxt">Get in touch with us</p>
+                    </div>
+
+                    <div class="" style="flex:1 ; text-align: right; ">
+
+                        <i class="fa fa-angle-right" style="font-size:60px ; color:white ;width: 12px;"></i>
+                        <i class="fa fa-angle-right" style="font-size:60px ; color:white;width: 12px;"></i>
+                        <i class="fa fa-angle-right" style="font-size:60px ; color:white;"></i>
+
+                    </div>
+
+
+                </div>
             </div>
         </div>
 
@@ -542,6 +560,16 @@
         $("#" + event.id + "").css("transform", "scale(1.6)");
         $("." + clsName + "").css("margin", "3rem");
         $("#" + event.id + "").closest("div").children("div").addClass("d-block")
+    }
+
+    function changevalue() {
+
+
+        $(".carrer").html("WORK WITH US");
+    }
+
+    function changevalueonout() {
+        $(".carrer").html("CARRERS");
     }
 
     function LoadLocation() {

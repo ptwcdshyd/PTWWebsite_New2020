@@ -36,8 +36,8 @@ namespace PTWWebsite2.Controllers
             _loggerManager = loggerManager;
         }
 
-        [Route("LAB")]
-        [Route("{culture}/LAB")]
+        [Route("lab")]
+        [Route("{culture}/lab")]
         public IActionResult Index(string culture = "en-US")
         {
             MasterPage masterPage = new MasterPage();
@@ -54,8 +54,8 @@ namespace PTWWebsite2.Controllers
 
         }
 
-        [Route("Labs")]
-        [Route("{culture}/Labs")]
+        [Route("labs")]
+        [Route("{culture}/labs")]
         public IActionResult Labs(string culture = "en-US")
         {
             LabsEvents LabsEvents = new LabsEvents();
@@ -74,8 +74,8 @@ namespace PTWWebsite2.Controllers
             ViewData["Footer"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Footer")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
             return View(masterPage);
         }
-        [Route("LAB/{LabShortDescription}")]
-        [Route("{culture}/LAB/{LabShortDescription}")]
+        [Route("lab/{LabShortDescription}")]
+        [Route("{culture}/lab/{LabShortDescription}")]
         public IActionResult LabArticles(string LabShortDescription, string culture = "en-US")
         {
             LabsEvents LabsEvents = new LabsEvents();
@@ -114,7 +114,7 @@ namespace PTWWebsite2.Controllers
 
         [Authorize]
         [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
-        [Route("AddLabs")]
+        [Route("addlabs")]
         public IActionResult AddLabArticles()
         {
             Labs labs = new Labs();            
@@ -123,7 +123,7 @@ namespace PTWWebsite2.Controllers
         }
 
 
-        [Route("LAB/{LabShortDescription}")]
+        [Route("lab/{LabShortDescription}")]
         [HttpPost]
         public IActionResult AddUpdateLabs(Labs labs)
         {
@@ -570,7 +570,7 @@ namespace PTWWebsite2.Controllers
             
         }
 
-        [Route("Lab/{LabId}/{LanguageCode}-GetLabdata")]
+        [Route("lab/{LabId}/{LanguageCode}-getlabdata")]
         public IActionResult GetLabdata(int LabId, string LanguageCode)
         {
             try
@@ -593,7 +593,7 @@ namespace PTWWebsite2.Controllers
 
         [Authorize]
         [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
-        [Route("EditLab")]
+        [Route("editlab")]
         public IActionResult EditLab()
         {
             Labs labs = new Labs();
@@ -608,7 +608,7 @@ namespace PTWWebsite2.Controllers
 
         //[Authorize]
         [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
-        [Route("LabsDashboard")]
+        [Route("labsdashboard")]
         [HttpGet]
         public IActionResult LabDashboard()
         {
@@ -621,7 +621,7 @@ namespace PTWWebsite2.Controllers
             return View(labs);
         }
 
-        [Route("UpdateLabsImagesToPreview")]
+        [Route("updatelabsimagestopreview")]
         [HttpPost]
         public async Task<IActionResult> UpdateLabsImagesToPreview(Labs Labs)
         {
@@ -640,7 +640,7 @@ namespace PTWWebsite2.Controllers
             return Json(1, new JsonSerializerSettings());
         }
 
-        [Route("PreviewLabs")]
+        [Route("previewlabs")]
         [HttpPost]
         public async Task<IActionResult> PreviewLabs(Labs Labs)
         {

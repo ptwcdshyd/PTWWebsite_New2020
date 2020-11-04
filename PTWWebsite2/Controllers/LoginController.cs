@@ -23,7 +23,7 @@ namespace PTWWebsite2.Controllers
             _UserService = UserService;
             _contextAccessor = contextAccessor;
         }
-        [Route("Login")]
+        [Route("login")]
         public IActionResult Login()
         {
             HttpContext.SignOutAsync(
@@ -74,7 +74,7 @@ namespace PTWWebsite2.Controllers
             }
         }
 
-        [Route("Logout")]
+        [Route("logout")]
         [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
         public async Task<IActionResult> Logout()
         {

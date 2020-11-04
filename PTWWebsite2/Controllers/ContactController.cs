@@ -30,8 +30,8 @@ namespace PTWWebsite2.Controllers
             _loggerManager = loggerManager;
         }
 
-        [Route("Contact")]
-        [Route("{culture}/Contact")]
+        [Route("contact")]
+        [Route("{culture}/contact")]
         [AllowAnonymous]
         public IActionResult Contact(string culture)
         {
@@ -41,35 +41,35 @@ namespace PTWWebsite2.Controllers
             ViewData["Header"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Header")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
             ViewData["Footer"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Footer")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
 
-            List<LocationDetails> list = _masterService.RetrieveLocations((culture == null ? "en-US" : culture));
-            string asiaContent = "";
-            string northAmerica = "";
-            string europeContent = "";
-            foreach (LocationDetails item in list)
-            {
-                if (item.Region == "Asia" || item.Region == "Asie" || item.Region == "アジア" || item.Region == "아시아" || item.Region == "亚洲")
-                {
-                    asiaContent = asiaContent + "<div class=\"col-xl-4 col-lg-4 col-md-6 ofc-details\"><p class=\"ofc-country\">" + item.Country + " </p>  <p class=\"ofc-city\">" + item.Location + "</p><address>" + item.Address + " </address><a class=\"btn btn-info btn-lg btn-map\" data-toggle=\"modal\" data-target=\"" + item.Target + "\" data-backdrop=\"static\" data-keyboard=\"false\"><p class=\"ofc-map\"><i class=\"fa fa-map-marker\" aria-hidden=\"true\">" + item.Title + "</i></p></a><div id =\"" + item.TargetLocation + "\" class=\"modal fade\" role=\"dialog\" tabindex=\"-1\"><div class=\"modal-dialog modal-lg\"><div class=\"modal-content\"><div class=\"modal-header\"><p>" + item.GoogleMapHeading + " </p><button type =\"button\" class=\"close\" data-dismiss=\"modal\">×</button></div> <div class=\"modal-body\"><div class=\"w100\"><iframe width =\"100%\" height=\"600\" src=\" " + item.GoogleMap + "\"></iframe></div><br></div></div></div></div></div>";
-                }
+            //List<LocationDetails> list = _masterService.RetrieveLocations((culture == null ? "en-US" : culture));
+            //string asiaContent = "";
+            //string northAmerica = "";
+            //string europeContent = "";
+            //foreach (LocationDetails item in list)
+            //{
+            //    if (item.Region == "Asia" || item.Region == "Asie" || item.Region == "アジア" || item.Region == "아시아" || item.Region == "亚洲")
+            //    {
+            //        asiaContent = asiaContent + "<div class=\"col-xl-4 col-lg-4 col-md-6 ofc-details\"><p class=\"ofc-country\">" + item.Country + " </p>  <p class=\"ofc-city\">" + item.Location + "</p><address>" + item.Address + " </address><a class=\"btn btn-info btn-lg btn-map\" data-toggle=\"modal\" data-target=\"" + item.Target + "\" data-backdrop=\"static\" data-keyboard=\"false\"><p class=\"ofc-map\"><i class=\"fa fa-map-marker\" aria-hidden=\"true\">" + item.Title + "</i></p></a><div id =\"" + item.TargetLocation + "\" class=\"modal fade\" role=\"dialog\" tabindex=\"-1\"><div class=\"modal-dialog modal-lg\"><div class=\"modal-content\"><div class=\"modal-header\"><p>" + item.GoogleMapHeading + " </p><button type =\"button\" class=\"close\" data-dismiss=\"modal\">×</button></div> <div class=\"modal-body\"><div class=\"w100\"><iframe width =\"100%\" height=\"600\" src=\" " + item.GoogleMap + "\"></iframe></div><br></div></div></div></div></div>";
+            //    }
 
 
-                if (item.Region == "North America" || item.Region == "Amérique du Nord" || item.Region == "北米" || item.Region == "북미" || item.Region == "北美")
-                {
-                    northAmerica = northAmerica + "<div class=\"col-xl-4 col-lg-4 col-md-6 ofc-details\"><p class=\"ofc-country\">" + item.Country + " </p>  <p class=\"ofc-city\">" + item.Location + "</p><address>" + item.Address + " </address><a class=\"btn btn-info btn-lg btn-map\" data-toggle=\"modal\" data-target=\"" + item.Target + "\" data-backdrop=\"static\" data-keyboard=\"false\"><p class=\"ofc-map\"><i class=\"fa fa-map-marker\" aria-hidden=\"true\">" + item.Title + "</i></p></a><div id =\"" + item.TargetLocation + "\" class=\"modal fade\" role=\"dialog\" tabindex=\"-1\"><div class=\"modal-dialog modal-lg\"><div class=\"modal-content\"><div class=\"modal-header\"><p>" + item.GoogleMapHeading + " </p><button type =\"button\" class=\"close\" data-dismiss=\"modal\">×</button></div> <div class=\"modal-body\"><div class=\"w100\"><iframe width =\"100%\" height=\"600\" src=\" " + item.GoogleMap + "\"></iframe></div><br></div></div></div></div></div>";
-                }
+            //    if (item.Region == "North America" || item.Region == "Amérique du Nord" || item.Region == "北米" || item.Region == "북미" || item.Region == "北美")
+            //    {
+            //        northAmerica = northAmerica + "<div class=\"col-xl-4 col-lg-4 col-md-6 ofc-details\"><p class=\"ofc-country\">" + item.Country + " </p>  <p class=\"ofc-city\">" + item.Location + "</p><address>" + item.Address + " </address><a class=\"btn btn-info btn-lg btn-map\" data-toggle=\"modal\" data-target=\"" + item.Target + "\" data-backdrop=\"static\" data-keyboard=\"false\"><p class=\"ofc-map\"><i class=\"fa fa-map-marker\" aria-hidden=\"true\">" + item.Title + "</i></p></a><div id =\"" + item.TargetLocation + "\" class=\"modal fade\" role=\"dialog\" tabindex=\"-1\"><div class=\"modal-dialog modal-lg\"><div class=\"modal-content\"><div class=\"modal-header\"><p>" + item.GoogleMapHeading + " </p><button type =\"button\" class=\"close\" data-dismiss=\"modal\">×</button></div> <div class=\"modal-body\"><div class=\"w100\"><iframe width =\"100%\" height=\"600\" src=\" " + item.GoogleMap + "\"></iframe></div><br></div></div></div></div></div>";
+            //    }
 
-                if (item.Region == "Europe" || item.Region == "Europe" || item.Region == "欧州" || item.Region == "유럽" || item.Region == "欧洲")
-                {
-                    europeContent = europeContent + "<div class=\"col-xl-4 col-lg-4 col-md-6 ofc-details\"><p class=\"ofc-country\">" + item.Country + " </p>  <p class=\"ofc-city\">" + item.Location + "</p><address>" + item.Address + " </address><a class=\"btn btn-info btn-lg btn-map\" data-toggle=\"modal\" data-target=\"" + item.Target + "\" data-backdrop=\"static\" data-keyboard=\"false\"><p class=\"ofc-map\"><i class=\"fa fa-map-marker\" aria-hidden=\"true\">" + item.Title + "</i></p></a><div id =\"" + item.TargetLocation + "\" class=\"modal fade\" role=\"dialog\" tabindex=\"-1\"><div class=\"modal-dialog modal-lg\"><div class=\"modal-content\"><div class=\"modal-header\"><p>" + item.GoogleMapHeading + " </p><button type =\"button\" class=\"close\" data-dismiss=\"modal\">×</button></div> <div class=\"modal-body\"><div class=\"w100\"><iframe width =\"100%\" height=\"600\" src=\" " + item.GoogleMap + "\"></iframe></div><br></div></div></div></div></div>";
-                }
+            //    if (item.Region == "Europe" || item.Region == "Europe" || item.Region == "欧州" || item.Region == "유럽" || item.Region == "欧洲")
+            //    {
+            //        europeContent = europeContent + "<div class=\"col-xl-4 col-lg-4 col-md-6 ofc-details\"><p class=\"ofc-country\">" + item.Country + " </p>  <p class=\"ofc-city\">" + item.Location + "</p><address>" + item.Address + " </address><a class=\"btn btn-info btn-lg btn-map\" data-toggle=\"modal\" data-target=\"" + item.Target + "\" data-backdrop=\"static\" data-keyboard=\"false\"><p class=\"ofc-map\"><i class=\"fa fa-map-marker\" aria-hidden=\"true\">" + item.Title + "</i></p></a><div id =\"" + item.TargetLocation + "\" class=\"modal fade\" role=\"dialog\" tabindex=\"-1\"><div class=\"modal-dialog modal-lg\"><div class=\"modal-content\"><div class=\"modal-header\"><p>" + item.GoogleMapHeading + " </p><button type =\"button\" class=\"close\" data-dismiss=\"modal\">×</button></div> <div class=\"modal-body\"><div class=\"w100\"><iframe width =\"100%\" height=\"600\" src=\" " + item.GoogleMap + "\"></iframe></div><br></div></div></div></div></div>";
+            //    }
 
-            }
-            masterPage.HtmlContent = masterPage.HtmlContent.Replace("<div> Data</div>", asiaContent).Replace("<div> Data1</div>", northAmerica).Replace("<div> Data2</div>", europeContent);
+            //}
+            //masterPage.HtmlContent = masterPage.HtmlContent.Replace("<div> Data</div>", asiaContent).Replace("<div> Data1</div>", northAmerica).Replace("<div> Data2</div>", europeContent);
 
             return View(masterPage);
         }
 
-        [Route("Location")]
+        [Route("location")]
         [Route("{culture}/Location")]
         [AllowAnonymous]
         public IActionResult Location(string culture)
@@ -109,7 +109,7 @@ namespace PTWWebsite2.Controllers
 
 
         [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
-        [Route("ContactEdit")]
+        [Route("contactedit")]
         [HttpGet]
         public IActionResult ContactEdit()
         {
@@ -204,7 +204,7 @@ namespace PTWWebsite2.Controllers
             return Json(resultCode, new JsonSerializerSettings());
         }
 
-        [Route("AddLocations")]
+        [Route("addlocations")]
         public IActionResult AddLocations()
         {
             Main obj = new Main();
@@ -250,7 +250,7 @@ namespace PTWWebsite2.Controllers
         }
 
 
-        [Route("AllLocations")]
+        [Route("alllocations")]
 
         public IActionResult GetLocations()
         {
@@ -262,7 +262,7 @@ namespace PTWWebsite2.Controllers
             return Json(new { Locations = listLocations }, new JsonSerializerSettings());
         }
 
-        [Route("{LocationId}-Location")]
+        [Route("{LocationId}-location")]
         public IActionResult EditLocationById(int LocationId)
         {
             LocationDetails location = _userService.GetLocationById(LocationId);

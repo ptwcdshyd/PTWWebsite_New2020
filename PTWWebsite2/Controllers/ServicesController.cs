@@ -31,8 +31,8 @@ namespace PTWWebsite2.Controllers
         }
 
 
-        [Route("Service")]
-        [Route("{culture}/Service")]
+        [Route("service")]
+        [Route("{culture}/service")]
 
         public IActionResult GetServicecontent(string culture)
         {
@@ -52,8 +52,8 @@ namespace PTWWebsite2.Controllers
             return View(masterPage);
         }
 
-        [Route("Service_Cx")]
-        [Route("{culture}/Service_Cx")]
+        [Route("service_cx")]
+        [Route("{culture}/service_cx")]
 
         public IActionResult GetServicCxecontent(string culture)
         {
@@ -91,8 +91,8 @@ namespace PTWWebsite2.Controllers
             }
             return content;
         }
-        [Route("Service_QA")]
-        [Route("{culture}/Service_QA")]
+        [Route("service_qa")]
+        [Route("{culture}/service_qa")]
         //[Route("{culture}/")]
         public IActionResult GetServiceQacontent(string culture)
         {
@@ -174,8 +174,8 @@ namespace PTWWebsite2.Controllers
             return View(masterPage1);
         }
 
-        [Route("Localization")]
-        [Route("{culture}/Localization")]
+        [Route("localization")]
+        [Route("{culture}/localization")]
         //[Route("{culture}/")]
         public IActionResult GetServiceLocalizationcontent(string culture)
         {
@@ -2066,8 +2066,8 @@ namespace PTWWebsite2.Controllers
 
         #region Views
 
-        [Route("QualityAssurance")]
-        [Route("{culture}/QualityAssurance")]
+        [Route("qualityassurance")]
+        [Route("{culture}/qualityassurance")]
         public IActionResult GetService_qualityAsurance(string culture)
         {
             MasterPage masterPage = new MasterPage();
@@ -2086,8 +2086,8 @@ namespace PTWWebsite2.Controllers
             return View("QualityAssurance", masterPage);
         }
 
-        [Route("AudioProduction")]
-        [Route("{culture}/AudioProduction")]
+        [Route("audioproduction")]
+        [Route("{culture}/audioproduction")]
         public IActionResult GetService_audioProduction(string culture)
         {
             MasterPage masterPage = new MasterPage();
@@ -2126,8 +2126,8 @@ namespace PTWWebsite2.Controllers
         //    return View("Localization", masterPage);
         //}
 
-        [Route("SpeechTech")]
-        [Route("{culture}/SpeechTech")]
+        [Route("speechtech")]
+        [Route("{culture}/speechtech")]
         public IActionResult GetService_SpeechTech(string culture)
         {
             MasterPage masterPage = new MasterPage();
@@ -2146,8 +2146,8 @@ namespace PTWWebsite2.Controllers
             return View("SpeechTech", masterPage);
         }
 
-        [Route("ProductDevelopment")]
-        [Route("{culture}/ProductDevelopment")]
+        [Route("productdevelopment")]
+        [Route("{culture}/productdevelopment")]
         public IActionResult GetService_ProdDev(string culture)
         {
             MasterPage masterPage = new MasterPage();
@@ -2166,8 +2166,8 @@ namespace PTWWebsite2.Controllers
             return View("ProductDevelopment", masterPage);
         }
 
-        [Route("LocalizationQA")]
-        [Route("{culture}/LocalizationQA")]
+        [Route("localizationqa")]
+        [Route("{culture}/localizationqa")]
         public IActionResult GetService_Localization_1(string culture)
         {
             MasterPage masterPage = new MasterPage();
@@ -2186,8 +2186,8 @@ namespace PTWWebsite2.Controllers
             return View("LocalizationQA", masterPage);
         }
 
-        [Route("PlayerSupport")]
-        [Route("{culture}/PlayerSupport")]
+        [Route("playersupport")]
+        [Route("{culture}/playersupport")]
         public IActionResult GetService_PlayerSupport(string culture)
         {
             MasterPage masterPage = new MasterPage();
@@ -2206,8 +2206,8 @@ namespace PTWWebsite2.Controllers
             return View("PlayerSupport", masterPage);
         }
 
-        [Route("TalentSolution")]
-        [Route("{culture}/TalentSolution")]
+        [Route("talentsolution")]
+        [Route("{culture}/talentsolution")]
         public IActionResult GetService_TalentSolution(string culture)
         {
             MasterPage masterPage = new MasterPage();
@@ -2228,7 +2228,7 @@ namespace PTWWebsite2.Controllers
 
         #endregion
 
-        [Route("ServicesBackup")]
+        [Route("servicesbackup")]
         [HttpGet]
         public IActionResult DownloadBackup(int ModuleId, string LanguageCode,string ServiceName)
         {

@@ -46,8 +46,8 @@ namespace PTWWebsite2.Controllers
         }
         [HttpGet]
 
-        [Route("AboutProfile")]
-        [Route("{culture}/AboutProfile")]
+        [Route("aboutprofile")]
+        [Route("{culture}/aboutprofile")]
 
         public IActionResult GetAboutProfile(string culture = "en-US")
         {
@@ -61,7 +61,7 @@ namespace PTWWebsite2.Controllers
         [Authorize]
         [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
         [HttpGet]
-        [Route("GetProfiles")]
+        [Route("getprofiles")]
         public IActionResult GetProfile()
         {
             return View();
@@ -78,8 +78,8 @@ namespace PTWWebsite2.Controllers
         }
 
 
-        [Route("AddProfile")]
-        [Route("{ProfileId}-Profile")]
+        [Route("addprofile")]
+        [Route("{ProfileId}-profile")]
         public IActionResult AddProfile(int ProfileId)
         {
             AboutModel objabout = new AboutModel();
@@ -153,7 +153,7 @@ namespace PTWWebsite2.Controllers
             }
         }
 
-        [Route("AboutEdit")]
+        [Route("aboutedit")]
         [HttpGet]
         public IActionResult AboutEdit()
         {

@@ -35,8 +35,8 @@ namespace PTWWebsite2.Controllers
 
 
 
-        [Route("News")]
-        [Route("{culture}/News")]
+        [Route("news")]
+        [Route("{culture}/news")]
         public IActionResult News(string culture)
         {
             MasterPage masterPage = new MasterPage();
@@ -55,8 +55,8 @@ namespace PTWWebsite2.Controllers
 
 
 
-        [Route("AllNews")]
-        [Route("{culture}/AllNews")]
+        [Route("allnews")]
+        [Route("{culture}/allnews")]
         public IActionResult AllNews()
         {
 
@@ -67,8 +67,8 @@ namespace PTWWebsite2.Controllers
             return Json(newsEvents, new JsonSerializerSettings());
         }
 
-        [Route("News/{NewsTitleUrl}")]
-        [Route("{cultures}/News/{NewsTitleUrl}")]
+        [Route("news/{NewsTitleUrl}")]
+        [Route("{cultures}/news/{NewsTitleUrl}")]
         public IActionResult NewsArticles(string cultures, string NewsTitleUrl)
         {
             MasterPage masterPage = new MasterPage();
@@ -90,7 +90,7 @@ namespace PTWWebsite2.Controllers
 
         [Authorize]
         [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
-        [Route("AddNews")]
+        [Route("addnews")]
         [HttpGet]
         public IActionResult AddNewsEvents()
         {
@@ -99,7 +99,7 @@ namespace PTWWebsite2.Controllers
 
         [Authorize]
         [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
-        [Route("EditNews")]
+        [Route("editnews")]
         public IActionResult EditNewsEvents()
         {
             MasterPage masterPage1 = _masterService.GetLanguageandModules();
@@ -111,7 +111,7 @@ namespace PTWWebsite2.Controllers
             return View(news);
         }
 
-        [Route("Newss/{NewsTitleUrl}")]
+        [Route("newss/{NewsTitleUrl}")]
         [Authorize]
         [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
         [HttpPost]
@@ -161,7 +161,7 @@ namespace PTWWebsite2.Controllers
         }
 
 
-        [Route("EditNewss/GetNews")]
+        [Route("editnewss/getnews")]
         [HttpPost]
         public IActionResult GetNews(News news1)
         {
@@ -179,7 +179,7 @@ namespace PTWWebsite2.Controllers
             return View("EditNewsEvents", news);
         }
 
-        [Route("EditNews/{NewsTitleUrl}")]
+        [Route("editnews/{NewsTitleUrl}")]
         [HttpPost]
         public IActionResult UpdateNews(News news)
         {
@@ -284,7 +284,7 @@ namespace PTWWebsite2.Controllers
 
         //[Authorize]
         [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
-        [Route("NewsDashboard")]
+        [Route("newsdashboard")]
         [HttpGet]
         public IActionResult NewsDashboard()
         {
@@ -369,7 +369,7 @@ namespace PTWWebsite2.Controllers
             }
         }
 
-        [Route("GetNewsByLanguageAndNewsId")]
+        [Route("getnewsbylanguageandnewsid")]
         [HttpGet]
         public IActionResult GetNewsByLanguageAndNewsId(int NewsId, string LanguageCode)
         {
@@ -432,7 +432,7 @@ namespace PTWWebsite2.Controllers
             return Json(resultCode, new JsonSerializerSettings());
         }
 
-        [Route("UpdateNewsImagesToPreview")]
+        [Route("updatenewsimagestopreview")]
         [HttpPost]
         public async Task<IActionResult> UpdateNewsImagesToPreview(News News)
         {
@@ -447,7 +447,7 @@ namespace PTWWebsite2.Controllers
             return Json(1, new JsonSerializerSettings());
         }
 
-        [Route("PreviewNews")]
+        [Route("previewnews")]
         [HttpPost]
         public async Task<IActionResult> PreviewNews(News News)
         {
