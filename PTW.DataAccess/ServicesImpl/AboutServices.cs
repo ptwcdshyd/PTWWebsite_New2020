@@ -9,16 +9,18 @@ using System.Text;
 using System.Buffers.Text;
 using System.Data;
 using System.Linq;
-
-
-
+using LoggerService;
 
 namespace PTW.DataAccess.ServicesImpl
 {
 
     public sealed partial class AboutServices : DBDataAccess, IAboutServices
     {
-
+        private readonly ILoggerManager _loggerManager;
+        public AboutServices(ILoggerManager loggerManager)
+        {
+            _loggerManager = loggerManager;
+        }
         public List<AboutModel> GetAboutProfile(string Languagecode)
         {
             CustomCommand command = null;
@@ -51,18 +53,15 @@ namespace PTW.DataAccess.ServicesImpl
                     }
 
                 }
-                return listabout;
+                
             }
-
-
             catch { throw; }
-
             finally
             {
                 if (command != null) command.Dispose();
                 command = null;
-
             }
+            return listabout;
         }
         public List<AboutModel> GetProfile()
         {
@@ -97,18 +96,14 @@ namespace PTW.DataAccess.ServicesImpl
                         }
                     }
                 }
-                return listabout;
             }
-
-
             catch { throw; }
-
             finally
             {
                 if (command != null) command.Dispose();
                 command = null;
-
             }
+            return listabout;
         }
 
 
@@ -143,7 +138,7 @@ namespace PTW.DataAccess.ServicesImpl
 
 
                     }
-                return Languagelist;
+               
             }
 
 
@@ -153,8 +148,8 @@ namespace PTW.DataAccess.ServicesImpl
             {
                 if (command != null) command.Dispose();
                 command = null;
-
             }
+            return Languagelist;
         }
 
 
@@ -192,9 +187,8 @@ namespace PTW.DataAccess.ServicesImpl
 
                     }
                 }
-                return objAbout;
+                
             }
-
 
             catch { throw; }
 
@@ -202,9 +196,8 @@ namespace PTW.DataAccess.ServicesImpl
             {
                 if (command != null) command.Dispose();
                 command = null;
-
             }
-
+            return objAbout;
         }
 
 
@@ -237,7 +230,7 @@ namespace PTW.DataAccess.ServicesImpl
                     }
 
                 }
-                return result;
+                
             }
 
 
@@ -247,8 +240,8 @@ namespace PTW.DataAccess.ServicesImpl
             {
                 if (command != null) command.Dispose();
                 command = null;
-
             }
+            return result;
         }
 
         public bool UpdateProfileByProfileId(AboutModel objabout)
@@ -278,7 +271,7 @@ namespace PTW.DataAccess.ServicesImpl
                     }
 
                 }
-                return result;
+               
             }
 
 
@@ -288,8 +281,8 @@ namespace PTW.DataAccess.ServicesImpl
             {
                 if (command != null) command.Dispose();
                 command = null;
-
             }
+            return result;
         }
 
 

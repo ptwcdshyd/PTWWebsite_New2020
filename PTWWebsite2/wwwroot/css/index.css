@@ -126,6 +126,10 @@ footer {
 }
 
 
+.footer-parent {
+    background-image: url("../images/New_UI/Footer.png");
+}
+
 .footerbg {
     background-color: #1F1F24;
 }
@@ -405,6 +409,7 @@ footer {
 .bg-txt {
     position: absolute;
     left: 108px;
+    z-index:999;
 }
     .bg-txt .sub_label {
         display: flex;
@@ -952,6 +957,7 @@ footer {
     width: 8%;
     height: 13%;
     z-index: 999;
+    cursor: pointer;
 }
 .home-btns-text {
     font-size: 12px;
@@ -1944,3 +1950,4 @@ footer {
             padding: 35px;
         }
     }
+

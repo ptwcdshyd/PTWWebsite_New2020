@@ -13,8 +13,6 @@ namespace PTW.DataAccess.Services
         int UpdateContentByModelIdAndLanguageId(int moduleId, string languageCode, string contentText, string MetaDescription, string Title);
 
         MasterPage GetLanguageandModules();
-        string SaveImages(string imagePath, int moduleId, List<IFormFile> files);
-        List<Images> GetImageDetails(int moduleId);
 
         DataTable GetModuleContent(string ModuleName, string Languagecode);
         MasterPage GetModuleContentById(int ModuleId, string Languagecode);

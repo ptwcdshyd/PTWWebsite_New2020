@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using LoggerService;
+using Microsoft.AspNetCore.Http;
 using PTW.DataAccess.Models;
 using PTW.DataAccess.Services;
 using PTW.DBAccess;
@@ -12,6 +13,11 @@ namespace PTW.DataAccess.ServicesImpl
 {
     public class NewsEventService : DBDataAccess, INewsEventService
     {
+        private readonly ILoggerManager _loggerManager;
+        public NewsEventService(ILoggerManager loggerManager)
+        {
+            _loggerManager = loggerManager;
+        }
         public List<News> GetAllNewsDetails()
         {
             CustomCommand command = null;
@@ -60,7 +66,7 @@ namespace PTW.DataAccess.ServicesImpl
                     }
 
                 }
-                return newsList;
+                
             }
 
 
@@ -70,8 +76,8 @@ namespace PTW.DataAccess.ServicesImpl
             {
                 if (command != null) command.Dispose();
                 command = null;
-
             }
+            return newsList;
         }
 
         public List<News> GetAllEventDetails()
@@ -123,7 +129,7 @@ namespace PTW.DataAccess.ServicesImpl
                     }
 
                 }
-                return newsList;
+                
             }
 
 
@@ -133,8 +139,8 @@ namespace PTW.DataAccess.ServicesImpl
             {
                 if (command != null) command.Dispose();
                 command = null;
-
             }
+            return newsList;
         }
 
         public NewsDetails GetNewsDetailsByTitle(string NewsUrlTitle, string LanguageCode)
@@ -176,7 +182,7 @@ namespace PTW.DataAccess.ServicesImpl
                     }
 
                 }
-                return newsDetails;
+                
             }
 
 
@@ -186,8 +192,8 @@ namespace PTW.DataAccess.ServicesImpl
             {
                 if (command != null) command.Dispose();
                 command = null;
-
             }
+            return newsDetails;
         }
 
         public bool AddUpdateNews(string xmNewsData, string Description)
@@ -211,7 +217,7 @@ namespace PTW.DataAccess.ServicesImpl
                     }
 
                 }
-                return result;
+                
             }
 
 
@@ -221,8 +227,8 @@ namespace PTW.DataAccess.ServicesImpl
             {
                 if (command != null) command.Dispose();
                 command = null;
-
             }
+            return result;
         }
 
         public bool UpdateNews(int NewsId, string xmNewsData, string Description, string LanguageCode)
@@ -248,7 +254,7 @@ namespace PTW.DataAccess.ServicesImpl
                     }
 
                 }
-                return result;
+                
             }
 
 
@@ -258,8 +264,8 @@ namespace PTW.DataAccess.ServicesImpl
             {
                 if (command != null) command.Dispose();
                 command = null;
-
             }
+            return result;
         }
 
         public News GetAllNewsAndEventDetailsForUpdate()
@@ -295,7 +301,7 @@ namespace PTW.DataAccess.ServicesImpl
                     }
 
                 }
-                return newsList;
+                
             }
 
 
@@ -305,8 +311,8 @@ namespace PTW.DataAccess.ServicesImpl
             {
                 if (command != null) command.Dispose();
                 command = null;
-
             }
+            return newsList;
         }
 
         public News GetNewsAndEventDetailsByNewsId(int NewsId, string LanguageCode)
@@ -365,7 +371,7 @@ namespace PTW.DataAccess.ServicesImpl
                     }
 
                 }
-                return news;
+                
             }
 
 
@@ -375,8 +381,8 @@ namespace PTW.DataAccess.ServicesImpl
             {
                 if (command != null) command.Dispose();
                 command = null;
-
             }
+            return news;
         }
     }
 }

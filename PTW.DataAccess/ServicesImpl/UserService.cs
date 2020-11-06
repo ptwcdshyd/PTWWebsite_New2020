@@ -5,14 +5,20 @@ using System.Collections.Generic;
 using System.Text;
 using PTW.DBAccess;
 using System.Data;
+using LoggerService;
 
 namespace PTW.DataAccess.ServicesImpl
 {
     public class UserService : IUserService
     {
+        private readonly ILoggerManager _loggerManager;
+        public UserService(ILoggerManager loggerManager)
+        {
+            _loggerManager = loggerManager;
+        }
         public DataTable Authenticate(LoginUser model)
         {
-
+            DataTable result = new DataTable();
             CustomCommand command = null;
 
 
@@ -27,10 +33,7 @@ namespace PTW.DataAccess.ServicesImpl
                     command.AddParameterWithValue("@Password", model.Password);
 
                     //  Execute command and get values from output parameters.
-                    DataTable result = DBDataAccess.ExecuteTable(command);
-
-
-                    return result;
+                    result = DBDataAccess.ExecuteTable(command);
 
                 }
 
@@ -47,10 +50,8 @@ namespace PTW.DataAccess.ServicesImpl
             {
                 if (command != null) command.Dispose();
                 command = null;
-
-
-
             }
+            return result;
 
         }
         public void InsertSession(string Sessionid, string UserName)
@@ -115,7 +116,7 @@ namespace PTW.DataAccess.ServicesImpl
 
 
                 }
-                return main.regions;
+                
             }
 
 
@@ -131,7 +132,7 @@ namespace PTW.DataAccess.ServicesImpl
                 command = null;
 
             }
-
+            return main.regions;
 
 
         }
@@ -173,7 +174,7 @@ namespace PTW.DataAccess.ServicesImpl
 
 
                 }
-                return main.countries;
+                
             }
 
 
@@ -187,8 +188,8 @@ namespace PTW.DataAccess.ServicesImpl
             {
                 if (command != null) command.Dispose();
                 command = null;
-
             }
+            return main.countries;
         }
 
         public List<Citys> RetrieveCityData(string countrycode)
@@ -229,7 +230,7 @@ namespace PTW.DataAccess.ServicesImpl
 
 
                 }
-                return main.cities;
+                
             }
 
 
@@ -243,8 +244,8 @@ namespace PTW.DataAccess.ServicesImpl
             {
                 if (command != null) command.Dispose();
                 command = null;
-
             }
+            return main.cities;
         }
         public void InsertUserlog(string username, string sessionid)
         {
@@ -278,6 +279,7 @@ namespace PTW.DataAccess.ServicesImpl
         public List<LocationDetails> RetrieveAllLocations()
         {
             CustomCommand command = null;
+            List<LocationDetails> locationslist = new List<LocationDetails>();
             try
             {
                 using (command = new CustomCommand())
@@ -287,7 +289,7 @@ namespace PTW.DataAccess.ServicesImpl
 
                     DataTable result = DBDataAccess.ExecuteTable(command);
 
-                    List<LocationDetails> locationslist = new List<LocationDetails>();
+                    
 
                     if (result != null && result.Rows.Count > 0)
                     {
@@ -306,32 +308,20 @@ namespace PTW.DataAccess.ServicesImpl
 
                         }
                     }
-
-                    return locationslist;
                 }
-
-
             }
-
-
-
-
             catch { throw; }
-
-
-
             finally
             {
                 if (command != null) command.Dispose();
                 command = null;
-
-
-
             }
+            return locationslist;
         }
         public LocationDetails GetLocationById(int locationId)
         {
             CustomCommand command = null;
+            LocationDetails obj = new LocationDetails();
             try
             {
                 using (command = new CustomCommand())
@@ -341,7 +331,7 @@ namespace PTW.DataAccess.ServicesImpl
                     command.AddParameterWithValue("@LocationId", locationId);
                     DataTable result = DBDataAccess.ExecuteTable(command);
 
-                    LocationDetails obj = new LocationDetails();
+                    
 
                     if (result != null && result.Rows.Count > 0)
                     {                        
@@ -355,15 +345,8 @@ namespace PTW.DataAccess.ServicesImpl
                         obj.IsActive = Convert.ToBoolean(result.Rows[0]["IsActive"]);
 
                     }
-
-                    return obj;
                 }
-
-
             }
-
-
-
 
             catch { throw; }
 
@@ -373,15 +356,14 @@ namespace PTW.DataAccess.ServicesImpl
             {
                 if (command != null) command.Dispose();
                 command = null;
-
-
-
             }
+            return obj;
         }
 
        public int UpdateLocation(LocationDetails loc)
         {
             CustomCommand command = null;
+            int resultcode = 0;
             try
             {
                 using (command = new CustomCommand())
@@ -395,28 +377,21 @@ namespace PTW.DataAccess.ServicesImpl
                     command.AddParameterWithValue("@googleMap", loc.GoogleMap);
                     command.AddParameterWithValue("@id", loc.ID);
                     command.AddParameterWithValue("@isactive", loc.IsActive);
-                    int resultcode=DBDataAccess.ExecuteNonQuery(command,false);
-                    return resultcode;
+                    resultcode=DBDataAccess.ExecuteNonQuery(command,false);
+                    
                 }
 
                 
             }
-
-
-
-
             catch { throw; }
-
 
 
             finally
             {
                 if (command != null) command.Dispose();
                 command = null;
-
-
-
             }
+            return resultcode;
         }
             
     }

@@ -4935,6 +4935,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "LoggerService": "1.0.0",
           "Microsoft.AspNetCore.Http.Features": "2.1.1",
           "PTW.DBAccess": "1.0.0",
           "System.ComponentModel.Annotations": "4.7.0"

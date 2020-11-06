@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using LoggerService;
+using Microsoft.AspNetCore.Http;
 using MySql.Data.MySqlClient;
 using PTW.DataAccess.Models;
 using PTW.DataAccess.Services;
@@ -14,6 +15,12 @@ namespace PTW.DataAccess.ServicesImpl
 {
     public sealed partial class MasterService : DBDataAccess, IMasterService
     {
+        private readonly ILoggerManager _loggerManager;
+        public MasterService(ILoggerManager loggerManager)
+        {
+            _loggerManager = loggerManager;
+        }
+
         //public MasterPage GetDashboardDetails(int LoginUserId, int LanguageID, int ModuleId,string Languagecode)
         //{
         //    CustomCommand command = null;
@@ -67,27 +74,19 @@ namespace PTW.DataAccess.ServicesImpl
                     command.AddParameterWithValue("@Languagecode", Languagecode);
                     //  Execute command and get values from output parameters.
                     dtResult = ExecuteTable(command);
-                    //if (dtResult != null && dtResult.Rows.Count > 0)
-                    //{
-                    //    masterPage.HtmlContent = dtResult.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals(ModuleName)).Select(y => Convert.ToString(y["Content"])).FirstOrDefault(); 
-                    //    masterPage.HeaderContent = dtResult.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Header")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
-                    //    masterPage.FooterContent = dtResult.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Footer")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
-                    //}
-
-
+                    
                 }
-                return dtResult;
             }
-
-
-            catch { throw; }
-
+            catch (Exception exception)
+            {
+                _loggerManager.LogError(string.Format("Method: GetModuleContent, ErrorMessage: file: {0} ", exception));
+            }
             finally
             {
                 if (command != null) command.Dispose();
                 command = null;
-
             }
+            return dtResult;
         }
 
         public MasterPage GetModuleContentById(int ModuleId, string Languagecode)
@@ -113,20 +112,18 @@ namespace PTW.DataAccess.ServicesImpl
                         masterPage.MetaTitle = Convert.ToString(dtResult.Tables[0].Rows[0]["MetaTitle"]);
                         masterPage.MetaUrl = Convert.ToString(dtResult.Tables[0].Rows[0]["MetaUrl"]);
                     }
-
                 }
-                return masterPage;
             }
-
-
-            catch { throw; }
-
+            catch (Exception exception)
+            {
+                _loggerManager.LogError(string.Format("Method: GetModuleContentById, ErrorMessage: file: {0} ", exception));
+            }
             finally
             {
                 if (command != null) command.Dispose();
                 command = null;
-
             }
+            return masterPage;
         }
 
         public int UpdateContentByModelIdAndLanguageId(int moduleId, string languageCode, string contentText, string Metatage, string Title)
@@ -153,27 +150,20 @@ namespace PTW.DataAccess.ServicesImpl
                     {
                         resultCode = 1;
                     }
-
                 }
-
-                return resultCode;
             }
 
-
-
-
-            catch { throw; }
-
-
+            catch (Exception exception)
+            {
+                _loggerManager.LogError(string.Format("Method: UpdateContentByModelIdAndLanguageId, ErrorMessage: file: {0} ", exception));
+            }
 
             finally
             {
                 if (command != null) command.Dispose();
                 command = null;
-
-
-
             }
+            return resultCode;
         }
 
         public MasterPage GetLanguageandModules()
@@ -218,116 +208,20 @@ namespace PTW.DataAccess.ServicesImpl
                             masterPage.ModuleList.Add(module);
                         }
                     }
-
                 }
-                return masterPage;
             }
-
-
-            catch { throw; }
-
+            catch (Exception exception)
+            {
+                _loggerManager.LogError(string.Format("Method: GetLanguageandModules, ErrorMessage: file: {0} ", exception));
+            }
             finally
             {
                 if (command != null) command.Dispose();
                 command = null;
-
             }
+            return masterPage;
         }
 
-        public string SaveImages(string imagePath, int moduleId, List<IFormFile> files)
-        {
-            string message;
-            CustomCommand command = null;
-            CustomXmlHelper customXmlHelper = new CustomXmlHelper();
-            // MasterPage masterPage = new MasterPage();
-
-            try
-            {
-                using (command = new CustomCommand())
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.CommandText = "Insert_Images";
-
-                    command.AddParameterWithValue("@Image_Path", imagePath);
-                    command.AddParameterWithValue("@Module_Id", moduleId);
-                    command.AddParameterWithValue("@Image_Data", customXmlHelper.CustomImagesXml(files));
-                    //  Execute command and get values from output parameters.
-                    int result = ExecuteNonQuery(command, false);
-                    if (result != 0)
-                    {
-                        message = "successfully saved";
-                    }
-                    else
-                    {
-                        message = "not saved";
-                    }
-
-
-
-                }
-                return message;
-            }
-
-
-
-
-            catch { throw; }
-
-
-
-            finally
-            {
-                if (command != null) command.Dispose();
-                command = null;
-
-
-
-            }
-        }
-
-        public List<Images> GetImageDetails(int moduleId)
-        {
-            CustomCommand command = null;
-            List<Images> images = new List<Images>();
-
-            try
-            {
-                using (command = new CustomCommand())
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.CommandText = "RetrieveImages";
-                    command.AddParameterWithValue("@Module_Id", moduleId);
-                    //  Execute command and get values from output parameters.
-                    DataSet dtResult = ExecuteDataSet(command);
-                    if (dtResult != null && dtResult.Tables[0].Rows.Count > 0)
-                    {
-
-                        for (int i = 0; i < dtResult.Tables[0].Rows.Count; i++)
-                        {
-
-                            Images imag = new Images();
-                            imag.ImageName = dtResult.Tables[0].Rows[i]["ImageName"].ToString();
-                            imag.ImagePath = dtResult.Tables[0].Rows[i]["Imagepath"].ToString();
-                            images.Add(imag);
-                        }
-
-                    }
-
-                }
-                return images;
-            }
-
-
-            catch { throw; }
-
-            finally
-            {
-                if (command != null) command.Dispose();
-                command = null;
-
-            }
-
-        }
         public MasterPage GetNewsAndLabDetails(string serviceType, int languageId)
         {
 
@@ -359,27 +253,18 @@ namespace PTW.DataAccess.ServicesImpl
                             masterPage.NewsAndLabs.Add(obj);
                         }
                     }
-
                 }
-
-                return masterPage;
             }
-
-
-
-
-            catch { throw; }
-
-
-
+            catch (Exception exception)
+            {
+                _loggerManager.LogError(string.Format("Method: GetNewsAndLabDetails, ErrorMessage: file: {0} ", exception));
+            }
             finally
             {
                 if (command != null) command.Dispose();
                 command = null;
-
-
-
             }
+            return masterPage;
 
         }
 
@@ -403,26 +288,26 @@ namespace PTW.DataAccess.ServicesImpl
                     command.AddParameterWithValue("@HearAbout", users.HearAbout);
                     command.AddParameterWithValue("@ContactMessage", users.ContactMessage);
                     result = ExecuteNonQuery(command, false);
-
-
                 }
-                return result;
             }
-
-
-            catch { throw; }
+            catch (Exception exception)
+            {
+                _loggerManager.LogError(string.Format("Method: UsersContact, ErrorMessage: file: {0} ", exception));
+            }
 
             finally
             {
                 if (command != null) command.Dispose();
                 command = null;
-
             }
+
+            return result;
 
         }
         public List<LocationDetails> RetrieveLocations(string lang)
         {
             CustomCommand command = null;
+            List<LocationDetails> locationslist = new List<LocationDetails>();
             try
             {
                 using (command = new CustomCommand())
@@ -432,8 +317,6 @@ namespace PTW.DataAccess.ServicesImpl
                     command.AddParameterWithValue("@languagecode", lang);
                     //
                     DataTable result=ExecuteTable(command);
-
-                    List<LocationDetails> locationslist = new List<LocationDetails>();
 
                     if (result != null && result.Rows.Count > 0)
                     {
@@ -453,34 +336,20 @@ namespace PTW.DataAccess.ServicesImpl
                             obj.TargetLocation = Convert.ToString(result.Rows[i]["TargetLocation"]);
                            
                             locationslist.Add(obj);
-
                         }
                     }
-
-                    return locationslist;
                 }
-
-       
             }
-
-
-
-
-            catch { throw; }
-
-
-
+            catch (Exception exception)
+            {
+                _loggerManager.LogError(string.Format("Method: RetrieveLocations, ErrorMessage: file: {0} ", exception));
+            }
             finally
             {
                 if (command != null) command.Dispose();
                 command = null;
-
-
-
             }
-
-
-
+            return locationslist;
         }
        public int AddLocation(LocationDetails obj)
         {
@@ -501,21 +370,18 @@ namespace PTW.DataAccess.ServicesImpl
                     command.AddParameterWithValue("@GoogleMap", obj.GoogleMap);
                     command.AddParameterWithValue("@languagecode", obj.Language);
                     result = ExecuteNonQuery(command, false);
-
-
                 }
-                return result;
             }
-
-
-            catch { throw; }
-
+            catch (Exception exception)
+            {
+                _loggerManager.LogError(string.Format("Method: AddLocation, ErrorMessage: file: {0} ", exception));
+            }
             finally
             {
                 if (command != null) command.Dispose();
                 command = null;
-
             }
+            return result;
         }
 
 
@@ -544,25 +410,25 @@ namespace PTW.DataAccess.ServicesImpl
                     {
                         resultCode = 1;
                     }
-
                 }
-
-                return resultCode;
             }
-
-
-            catch(Exception exception) { throw exception; }
+            catch (Exception exception)
+            {
+                _loggerManager.LogError(string.Format("Method: UpdateHomePageByLanguageId, ErrorMessage: file: {0} ", exception));
+            }
 
             finally
             {
                 if (command != null) command.Dispose();
                 command = null;
             }
+            return resultCode;
         }
 
         public List<HomeLabs> RetrieveHomeLabs(string language)
         {
             CustomCommand command = null;
+            List<HomeLabs> homeLabs = new List<HomeLabs>();
             try
             {
                 using (command = new CustomCommand())
@@ -572,8 +438,6 @@ namespace PTW.DataAccess.ServicesImpl
                     command.AddParameterWithValue("@languageCode", language);
                     //
                     DataTable result = ExecuteTable(command);
-
-                    List<HomeLabs> homeLabs = new List<HomeLabs>();
 
                     if (result != null && result.Rows.Count > 0)
                     {
@@ -589,29 +453,18 @@ namespace PTW.DataAccess.ServicesImpl
 
                         }
                     }
-
-                    return homeLabs;
                 }
-
-
             }
-
-
-
-
-            catch { throw; }
-
-
-
+            catch (Exception exception)
+            {
+                _loggerManager.LogError(string.Format("Method: RetrieveHomeLabs, ErrorMessage: file: {0} ", exception));
+            }
             finally
             {
                 if (command != null) command.Dispose();
                 command = null;
-
-
-
             }
-
+            return homeLabs;
 
 
         }
@@ -644,17 +497,17 @@ namespace PTW.DataAccess.ServicesImpl
 
                 }
 
-                return resultCode;
             }
-
-
-            catch (Exception exception) { throw exception; }
-
+            catch (Exception exception)
+            {
+                _loggerManager.LogError(string.Format("Method: UpdatePreviewPageByLanguageModuleId, ErrorMessage: file: {0} ", exception));
+            }
             finally
             {
                 if (command != null) command.Dispose();
                 command = null;
             }
+            return resultCode;
         }
 
         public Preview ShowPreivew(int ModuleId,string LanguageCode)
@@ -679,29 +532,18 @@ namespace PTW.DataAccess.ServicesImpl
                             preview.MetaUrl = Convert.ToString(result.Rows[0]["MetaUrl"]);
                             preview.HtmlContent = Convert.ToString(result.Rows[0]["HtmlContent"]);
                     }
-
-                    return preview;
                 }
-
-
             }
-
-
-
-
-            catch { throw; }
-
-
-
+            catch (Exception exception)
+            {
+                _loggerManager.LogError(string.Format("Method: ShowPreivew, ErrorMessage: file: {0} ", exception));
+            }
             finally
             {
                 if (command != null) command.Dispose();
                 command = null;
-
-
-
             }
-
+            return preview;
 
 
         }

@@ -1,4 +1,5 @@
-﻿using PTW.DataAccess.Models;
+﻿using LoggerService;
+using PTW.DataAccess.Models;
 using PTW.DataAccess.Services;
 using PTW.DBAccess;
 using System;
@@ -8,8 +9,13 @@ using System.Text;
 
 namespace PTW.DataAccess.ServicesImpl
 {
-    public class LabServicecs: DBDataAccess,ILabService
+    public class LabServicecs : DBDataAccess, ILabService
     {
+        private readonly ILoggerManager _loggerManager;
+        public LabServicecs(ILoggerManager loggerManager)
+        {
+            _loggerManager = loggerManager;
+        }
         public List<Labs> GetAllLabsDetails(string LanguageCode)
         {
             CustomCommand command = null;
@@ -45,11 +51,11 @@ namespace PTW.DataAccess.ServicesImpl
                             labs.MobileImageNameUrl = Convert.ToString(dtResult.Rows[i]["MobileImageNameUrl"]);
                             labs.DefaultImageUrl = Convert.ToString(dtResult.Rows[i]["DefaultImageUrl"]);
                             labs.ImageAlternateText = Convert.ToString(dtResult.Rows[i]["ImageAlternateText"]);
-                            
+
                             labs.Stopped = Convert.ToInt32(dtResult.Rows[i]["Stopped"]);
                             labs.LabType = Convert.ToString(dtResult.Rows[i]["LabType"]);
                             labs.MetaTags = Convert.ToString(dtResult.Rows[i]["MetaTags"]);
-                            
+
                             labs.CustomerExperienceImageUrl = Convert.ToString(dtResult.Rows[i]["CustomerExperienceImageUrl"]);
                             labs.QualityAssuranceImageUrl = Convert.ToString(dtResult.Rows[i]["QualityAssuranceImageUrl"]);
                             labs.LocalizationImageUrl = Convert.ToString(dtResult.Rows[i]["LocalizationImageUrl"]);
@@ -71,9 +77,10 @@ namespace PTW.DataAccess.ServicesImpl
                     }
 
                 }
-                return LabsList;
+
             }
-            catch(Exception ex) {
+            catch (Exception ex)
+            {
                 throw ex;
             }
             finally
@@ -81,6 +88,7 @@ namespace PTW.DataAccess.ServicesImpl
                 if (command != null) command.Dispose();
                 command = null;
             }
+            return LabsList;
         }
 
         public List<Labs> GetAllLatestInsights(string LanguageCode)
@@ -96,7 +104,7 @@ namespace PTW.DataAccess.ServicesImpl
                     //  Execute command and get values from output parameters.
                     command.AddParameterWithValue("@p_Languagecode", LanguageCode);
                     DataTable dtResult = ExecuteTable(command);
-                    
+
                     if (dtResult != null && dtResult.Rows.Count > 0)
                     {
                         for (int i = 0; i < dtResult.Rows.Count; i++)
@@ -136,11 +144,11 @@ namespace PTW.DataAccess.ServicesImpl
                     }
 
                 }
-                return LabsList;
+
             }
 
 
-            catch(Exception ex) 
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -149,8 +157,8 @@ namespace PTW.DataAccess.ServicesImpl
             {
                 if (command != null) command.Dispose();
                 command = null;
-
             }
+            return LabsList;
         }
 
         public List<Labs> GetSlider()
@@ -164,13 +172,13 @@ namespace PTW.DataAccess.ServicesImpl
                     command.CommandType = CommandType.StoredProcedure;
                     command.CommandText = "Proc_RetrieveAllSlighter";
                     //  Execute command and get values from output parameters.
-                    DataTable dtResult = ExecuteTable(command);                   
+                    DataTable dtResult = ExecuteTable(command);
                     if (dtResult != null && dtResult.Rows.Count > 0)
                     {
                         for (int i = 0; i < dtResult.Rows.Count; i++)
                         {
                             Labs labs = new Labs();
-                           
+
                             //labs.LabId = Convert.ToInt32(dtResult.Rows[i]["LabId"]);
                             //labs.ServiceTypeId = Convert.ToInt32(dtResult.Rows[i]["ServiceTypeId"]);
                             //labs.LanguageCode = Convert.ToString(dtResult.Rows[i]["LanguageCode"]);
@@ -187,26 +195,27 @@ namespace PTW.DataAccess.ServicesImpl
                             //labs.DefaultImageUrl = Convert.ToString(dtResult.Rows[i]["DefaultImageUrl"]);
                             labs.ImageAlternateText = Convert.ToString(dtResult.Rows[i]["ImageAlternateText"]);
                             labs.DeskL_ImageURL = Convert.ToString(dtResult.Rows[i]["DeskL_ImageURL"]);
-                            
+
                             LabsList.Add(labs);
                         }
                     }
 
                 }
-                return LabsList;
+
             }
 
 
-            catch (Exception ex) { 
-                throw ex; 
+            catch (Exception ex)
+            {
+                throw ex;
             }
 
             finally
             {
                 if (command != null) command.Dispose();
                 command = null;
-
             }
+            return LabsList;
         }
 
         public List<Labs> GetFutureLabArticles(string LabIdOrShortDescription)
@@ -221,7 +230,7 @@ namespace PTW.DataAccess.ServicesImpl
                     command.CommandText = "RetrievTopFutureLABS";
                     command.AddParameterWithValue("p_LabIdOrShortDescription", LabIdOrShortDescription);
                     //  Execute command and get values from output parameters.
-                    DataSet dtResult = ExecuteDataSet(command);                    
+                    DataSet dtResult = ExecuteDataSet(command);
                     if (dtResult != null && dtResult.Tables[2].Rows.Count > 0)
                     {
                         for (int i = 0; i < dtResult.Tables[2].Rows.Count; i++)
@@ -234,13 +243,13 @@ namespace PTW.DataAccess.ServicesImpl
                             labs.IsActive = Convert.ToInt32(dtResult.Tables[2].Rows[i]["IsActive"]);
                             labs.DefaultImageUrl = Convert.ToString(dtResult.Tables[2].Rows[i]["DefaultImageUrl"]);
 
-                            labs.LabType = Convert.ToString(dtResult.Tables[2].Rows[i]["LabType"]);                            
+                            labs.LabType = Convert.ToString(dtResult.Tables[2].Rows[i]["LabType"]);
                             labs.ReadMoreUrl = Convert.ToString(dtResult.Tables[2].Rows[i]["ReadMoreUrl"]);
                             labs.Stopped = Convert.ToInt32(dtResult.Tables[2].Rows[i]["Stopped"]);
 
                             //labs.CustomerExperience = Convert.ToBoolean(dtResult.Tables[2].Rows[i]["CustomerExperience"] != DBNull.Value ? (dtResult.Tables[2].Rows[i]["CustomerExperience"]) : 0);
 
-                            
+
                             labs.Customer_Experience = Convert.ToString(dtResult.Tables[2].Rows[i]["CustomerExperience"]);
                             labs._Engineering = Convert.ToString(dtResult.Tables[2].Rows[i]["Engineering"]);
                             labs._Localization = Convert.ToString(dtResult.Tables[2].Rows[i]["Localization"]);
@@ -253,7 +262,7 @@ namespace PTW.DataAccess.ServicesImpl
                     }
 
                 }
-                return LabsList;
+
             }
 
 
@@ -266,16 +275,16 @@ namespace PTW.DataAccess.ServicesImpl
             {
                 if (command != null) command.Dispose();
                 command = null;
-
             }
+            return LabsList;
         }
 
         public List<Labs> GetLabsArticleDetails(string LabIdOrShortDescription)
         {
             CustomCommand command = null;
             List<Labs> LabsList = new List<Labs>();
-            //try
-            //{
+            try
+            {
                 using (command = new CustomCommand())
                 {
                     command.CommandType = CommandType.StoredProcedure;
@@ -283,7 +292,7 @@ namespace PTW.DataAccess.ServicesImpl
                     command.AddParameterWithValue("p_LabIdOrShortDescription", LabIdOrShortDescription);
                     //  Execute command and get values from output parameters.
                     DataTable dtResult = ExecuteTable(command);
-                  
+
                     if (dtResult != null && dtResult.Rows.Count > 0)
                     {
                         for (int i = 0; i < dtResult.Rows.Count; i++)
@@ -305,27 +314,28 @@ namespace PTW.DataAccess.ServicesImpl
                             labs.TabImageNamVerticalUrl = Convert.ToString(dtResult.Rows[i]["TabImageNamVerticalUrl"]);
                             labs.MobileImageNameUrl = Convert.ToString(dtResult.Rows[i]["MobileImageNameUrl"]);
                             labs.DefaultImageUrl = Convert.ToString(dtResult.Rows[i]["DefaultImageUrl"]);
-                            labs.ImageAlternateText = Convert.ToString(dtResult.Rows[i]["ImageAlternateText"]);                      
+                            labs.ImageAlternateText = Convert.ToString(dtResult.Rows[i]["ImageAlternateText"]);
                             labs.LabType = Convert.ToString(dtResult.Rows[i]["LabType"]);
                             // labs.MetaTags = Convert.ToString(dtResult.Rows[i]["MetaTags"]);
                             labs.DetailedName = Convert.ToString(dtResult.Rows[i]["DetailedName"]);
                             labs.DetailedDescription = Convert.ToString(dtResult.Rows[i]["DetailedDescription"]);
-                            labs.DetailedShortOrder = Convert.ToString(dtResult.Rows[i]["DetailedShortOrder"]); 
+                            labs.DetailedShortOrder = Convert.ToString(dtResult.Rows[i]["DetailedShortOrder"]);
                             LabsList.Add(labs);
                         }
                     }
                 }
-                return LabsList;
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw ex;
-            //}
-            //finally
-            //{
-            //    if (command != null) command.Dispose();
-            //    command = null;
-            //}
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (command != null) command.Dispose();
+                command = null;
+            }
+            return LabsList;
         }
 
         public bool AddUpdateLabs(string xmNewsData, string Description)
@@ -349,7 +359,7 @@ namespace PTW.DataAccess.ServicesImpl
                     }
 
                 }
-                return result;
+               
             }
 
 
@@ -359,8 +369,8 @@ namespace PTW.DataAccess.ServicesImpl
             {
                 if (command != null) command.Dispose();
                 command = null;
-
             }
+            return result;
         }
 
 
@@ -401,7 +411,7 @@ namespace PTW.DataAccess.ServicesImpl
                             labs.ImageAlternateText = Convert.ToString(dtResult.Rows[i]["ImageAlternateText"]);
                             labs.LabType = Convert.ToString(dtResult.Rows[i]["LabType"]);
                             // labs.MetaTags = Convert.ToString(dtResult.Rows[i]["MetaTags"]);
-                            
+
                             labs.DetailedDescription = Convert.ToString(dtResult.Rows[i]["DetailedDescription"]);
                             labs.DetailedShortOrder = Convert.ToString(dtResult.Rows[i]["DetailedShortOrder"]);
 
@@ -411,7 +421,7 @@ namespace PTW.DataAccess.ServicesImpl
                     }
 
                 }
-                return LabsList;
+                
             }
             catch (Exception ex)
             {
@@ -422,6 +432,7 @@ namespace PTW.DataAccess.ServicesImpl
                 if (command != null) command.Dispose();
                 command = null;
             }
+            return LabsList;
         }
 
         public Labs GetAllLabsForUpdate()
@@ -450,7 +461,7 @@ namespace PTW.DataAccess.ServicesImpl
                         }
                     }
                 }
-                return LabsList;
+                
             }
             catch (Exception ex) { throw; }
 
@@ -458,8 +469,8 @@ namespace PTW.DataAccess.ServicesImpl
             {
                 if (command != null) command.Dispose();
                 command = null;
-
             }
+            return LabsList;
         }
 
         public bool UpdateLabs(int LabId, string xmNewsData, string Description, string LanguageCode)
@@ -485,7 +496,7 @@ namespace PTW.DataAccess.ServicesImpl
                     }
 
                 }
-                return result;
+               
             }
 
 
@@ -495,8 +506,8 @@ namespace PTW.DataAccess.ServicesImpl
             {
                 if (command != null) command.Dispose();
                 command = null;
-
             }
+            return result;
         }
         public Labs GetLabsDetailsByLabId(int LabId, string LanguageCode = "en-US")
         {
@@ -519,15 +530,15 @@ namespace PTW.DataAccess.ServicesImpl
                         labs.LabId = Convert.ToInt32(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["LabId"]);
                         labs.EditLabId = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["LabId"]);
                         labs.ServiceTypeId = Convert.ToInt32(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["ServiceTypeId"]);
-                        labs.Name = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["LabTitle"]);                     
-                       
-                        labs.ShortDescription = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["ShortDescription"]);                       
+                        labs.Name = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["LabTitle"]);
+
+                        labs.ShortDescription = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["ShortDescription"]);
                         labs.Description = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["Description"]);
                         labs.Topic = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["Topic"]);
                         labs.StartDate = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["StartDate"]);
                         labs.EndDate = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["EndDate"]);
                         labs.OnNewWebsiteNow = Convert.ToBoolean(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["OnNewWebsiteNow"]);
-                       // labs.SuitedForHomePage = Convert.ToBoolean(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["SuitedForHomePage"]);
+                        // labs.SuitedForHomePage = Convert.ToBoolean(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["SuitedForHomePage"]);
                         labs.CustomerExperience = Convert.ToBoolean(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["CustomerExperience"]);
                         labs.QualityAssurance = Convert.ToBoolean(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["QualityAssurance"]);
                         labs.Localization = Convert.ToBoolean(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["Localization"]);
@@ -544,7 +555,7 @@ namespace PTW.DataAccess.ServicesImpl
                         labs.DesktopImageUrl = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["DesktopImageUrl"]);
                         labs.TabImageNameHorizondaUrl = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["TabImageNameHorizondaUrl"]);
                         labs.TabImageNamVerticalUrl = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["TabImageNamVerticalUrl"]);
-                       // labs.DefaultImageUrl = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["DefaultImageUrl"]);
+                        // labs.DefaultImageUrl = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["DefaultImageUrl"]);
                         labs.MobileImageNameUrl = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["MobileImageNameUrl"]);
                         labs.MetaTitle = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["MetaTitle"]);
                         labs.MetaDescription = Convert.ToString(dtResult.Tables[dtResult.Tables.Count - 1].Rows[0]["MetaDescription"]);
@@ -553,7 +564,7 @@ namespace PTW.DataAccess.ServicesImpl
                     }
 
                 }
-                return labs;
+                
             }
 
 
@@ -563,8 +574,8 @@ namespace PTW.DataAccess.ServicesImpl
             {
                 if (command != null) command.Dispose();
                 command = null;
-
             }
+            return labs;
         }
     }
 }

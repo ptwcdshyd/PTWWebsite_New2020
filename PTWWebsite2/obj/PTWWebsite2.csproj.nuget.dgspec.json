@@ -86,6 +86,9 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
+              "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\LoggerService\\LoggerService.csproj": {
+                "projectPath": "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\LoggerService\\LoggerService.csproj"
+              },
               "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\PTW.DBAccess\\PTW.DBAccess.csproj": {
                 "projectPath": "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\PTW.DBAccess\\PTW.DBAccess.csproj"
               }

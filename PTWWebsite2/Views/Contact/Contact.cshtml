@@ -20,6 +20,7 @@
 
     $(document).ready(function () {
         LoadLocation();
+        $('.modal-backdrop').remove();
     });
     function LoadLocation() {
         $.ajax({
@@ -39,7 +40,7 @@
                     }
                     if (true) {
                         htmlAsiaContent = htmlAsiaContent + '<div class="col-md-4 d-flex loc" >' +
-                            '<a class="btn btn-info btn-lg btn-map" data-toggle="modal" data-target="#Target_' + result.asiaContent[i].ID + '" data-toggle="modal" data-backdrop="static" data-keyboard="false">' +
+                            '<a class="btn btn-info btn-lg btn-map" onclick="removeBackDropDiv();" data-toggle="modal" data-target="#Target_' + result.asiaContent[i].ID + '" data-toggle="modal" data-backdrop="static" data-keyboard="false">' +
                             '<p class="ofc-map">' +
                             '<i class="fa fa-map-marker" aria-hidden="true"></i>' +
                             '</p>' +
@@ -305,5 +306,8 @@
         }
         return true;
     }
-
+    function removeBackDropDiv() {
+        setTimeout(function () { $('.modal-backdrop').remove(); }, 400);
+    }
+    
 </script>
