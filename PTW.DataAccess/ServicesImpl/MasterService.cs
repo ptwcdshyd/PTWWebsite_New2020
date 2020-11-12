@@ -74,7 +74,7 @@ namespace PTW.DataAccess.ServicesImpl
                     command.AddParameterWithValue("@Languagecode", Languagecode);
                     //  Execute command and get values from output parameters.
                     dtResult = ExecuteTable(command);
-                    
+
                 }
             }
             catch (Exception exception)
@@ -272,7 +272,7 @@ namespace PTW.DataAccess.ServicesImpl
         {
             CustomCommand command = null;
 
-            int result=0;
+            int result = 0;
             try
             {
                 using (command = new CustomCommand())
@@ -316,7 +316,7 @@ namespace PTW.DataAccess.ServicesImpl
                     command.CommandText = "RetrieveLocations";
                     command.AddParameterWithValue("@languagecode", lang);
                     //
-                    DataTable result=ExecuteTable(command);
+                    DataTable result = ExecuteTable(command);
 
                     if (result != null && result.Rows.Count > 0)
                     {
@@ -334,7 +334,7 @@ namespace PTW.DataAccess.ServicesImpl
                             obj.GoogleMap = Convert.ToString(result.Rows[i]["GoogleMap"]);
                             obj.Target = Convert.ToString(result.Rows[i]["Target"]);
                             obj.TargetLocation = Convert.ToString(result.Rows[i]["TargetLocation"]);
-                           
+
                             locationslist.Add(obj);
                         }
                     }
@@ -351,7 +351,7 @@ namespace PTW.DataAccess.ServicesImpl
             }
             return locationslist;
         }
-       public int AddLocation(LocationDetails obj)
+        public int AddLocation(LocationDetails obj)
         {
             CustomCommand command = null;
             int result = 0;
@@ -510,7 +510,7 @@ namespace PTW.DataAccess.ServicesImpl
             return resultCode;
         }
 
-        public Preview ShowPreivew(int ModuleId,string LanguageCode)
+        public Preview ShowPreivew(int ModuleId, string LanguageCode)
         {
             CustomCommand command = null;
             Preview preview = new Preview();
@@ -527,10 +527,10 @@ namespace PTW.DataAccess.ServicesImpl
 
                     if (result != null && result.Rows.Count > 0)
                     {
-                            preview.MetaTitle = Convert.ToString(result.Rows[0]["MetaTitle"]);
-                            preview.MetaDescription = Convert.ToString(result.Rows[0]["MetaDescription"]);
-                            preview.MetaUrl = Convert.ToString(result.Rows[0]["MetaUrl"]);
-                            preview.HtmlContent = Convert.ToString(result.Rows[0]["HtmlContent"]);
+                        preview.MetaTitle = Convert.ToString(result.Rows[0]["MetaTitle"]);
+                        preview.MetaDescription = Convert.ToString(result.Rows[0]["MetaDescription"]);
+                        preview.MetaUrl = Convert.ToString(result.Rows[0]["MetaUrl"]);
+                        preview.HtmlContent = Convert.ToString(result.Rows[0]["HtmlContent"]);
                     }
                 }
             }
@@ -546,6 +546,263 @@ namespace PTW.DataAccess.ServicesImpl
             return preview;
 
 
+        }
+
+        public List<Sections> GetSubModuleList(int ModuleId, string Languagecode)
+        {
+            CustomCommand command = null;
+            DataTable dtResult = new DataTable();
+            List<Sections> sectionList = new List<Sections>();
+
+            try
+            {
+                using (command = new CustomCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "GetSubModuleList";
+                    command.AddParameterWithValue("@_ModuleId", ModuleId);
+                    command.AddParameterWithValue("@_languageCode", Languagecode);
+                    //  Execute command and get values from output parameters.
+                    dtResult = ExecuteTable(command);
+                    if (dtResult != null && dtResult.Rows.Count > 0)
+                    {
+                        for (int i = 0; i < dtResult.Rows.Count; i++)
+                        {
+                            Sections section = new Sections();
+                            section.SectionId = Convert.ToInt32(dtResult.Rows[i]["SectionId"]);
+                            section.SectionName = Convert.ToString(dtResult.Rows[i]["SectionName"]);
+                            sectionList.Add(section);
+                        }
+                    }
+
+                }
+            }
+            catch (Exception exception)
+            {
+                _loggerManager.LogError(string.Format("Method: GetSubModuleList, ErrorMessage: file: {0} ", exception));
+            }
+            finally
+            {
+                if (command != null) command.Dispose();
+                command = null;
+            }
+            return sectionList;
+        }
+
+        public string GetSubModuleContent(int ModuleId, string Languagecode, int SectionId)
+        {
+            CustomCommand command = null;
+            DataTable dtResult = new DataTable();
+            string result = string.Empty;
+
+            try
+            {
+                using (command = new CustomCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "GetSubModuleContent";
+                    command.AddParameterWithValue("@_ModuleId", ModuleId);
+                    command.AddParameterWithValue("@_languageCode", Languagecode);
+                    command.AddParameterWithValue("@_sectionId", SectionId);
+                    //  Execute command and get values from output parameters.
+                    dtResult = ExecuteTable(command);
+                    result = Convert.ToString(dtResult.Rows[0][0]);
+                }
+            }
+            catch (Exception exception)
+            {
+                _loggerManager.LogError(string.Format("Method: GetSubModuleContent, ErrorMessage: file: {0} ", exception));
+            }
+            finally
+            {
+                if (command != null) command.Dispose();
+                command = null;
+            }
+            return result;
+        }
+
+        public MasterPage GetSEODetails(int ModuleId, string Languagecode, int SectionId)
+        {
+            CustomCommand command = null;
+            DataTable dtResult = new DataTable();
+            MasterPage masterPage = new MasterPage();
+            try
+            {
+                using (command = new CustomCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "GetSEODetails";
+                    command.AddParameterWithValue("@_ModuleId", ModuleId);
+                    command.AddParameterWithValue("@_languageCode", Languagecode);
+                    command.AddParameterWithValue("@_sectionId", SectionId);
+                    //  Execute command and get values from output parameters.
+                    dtResult = ExecuteTable(command);
+                    if (dtResult != null && dtResult.Rows.Count > 0)
+                    {
+                        // masterPage.HeaderContent = Convert.ToString(dtResult.Tables[0].Rows[0]["ModuleName"]);
+                        //masterPage.HtmlContent = Convert.ToString(dtResult.Rows[0]["Content"]);
+                        masterPage.MetaDescription = Convert.ToString(dtResult.Rows[0]["MetaDescription"]);
+                        masterPage.MetaTitle = Convert.ToString(dtResult.Rows[0]["MetaTitle"]);
+                        masterPage.MetaUrl = Convert.ToString(dtResult.Rows[0]["MetaUrl"]);
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                _loggerManager.LogError(string.Format("Method: GetSubModuleContent, ErrorMessage: file: {0} ", exception));
+            }
+            finally
+            {
+                if (command != null) command.Dispose();
+                command = null;
+            }
+            return masterPage;
+        }
+
+        public int UpdateSectionContent(int SectionId, int moduleId, string languageCode, string contentText, string Metatage, string Title, string MetUrl)
+        {
+            int resultCode = 0;
+            CustomCommand command = null;
+            // MasterPage masterPage = new MasterPage();
+
+            try
+            {
+                using (command = new CustomCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    // command.CommandText = "UpdateNewContentByModuleIdAndLanguageId";
+                    command.CommandText = "UpdateSectionContent";
+                    command.AddParameterWithValue("@_SectionId", SectionId);
+                    command.AddParameterWithValue("@_ModuleId", moduleId);
+                    command.AddParameterWithValue("@_languageCode", languageCode);
+                    command.AddParameterWithValue("@ContentText", contentText);
+                    command.AddParameterWithValue("@MetaDescription", Metatage);
+                    command.AddParameterWithValue("@MetaTitle", Title);
+                    command.AddParameterWithValue("@MetaUrl", MetUrl);
+
+                    //  Execute command and get values from output parameters.
+                    int result = ExecuteNonQuery(command, false);
+                    if (result > 0)
+                    {
+                        resultCode = 1;
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                _loggerManager.LogError(string.Format("Method: UpdateHomePageByLanguageId, ErrorMessage: file: {0} ", exception));
+            }
+
+            finally
+            {
+                if (command != null) command.Dispose();
+                command = null;
+            }
+            return resultCode;
+        }
+
+        public DataTable GetModuleContentSectionwise(int ModuleId, string Languagecode)
+        {
+            CustomCommand command = null;
+            DataTable dtResult = new DataTable();
+
+            try
+            {
+                using (command = new CustomCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "GetModuleContentSectionWise";
+                    command.AddParameterWithValue("@ModuleId", ModuleId);
+                    command.AddParameterWithValue("@Languagecode", Languagecode);
+                    //  Execute command and get values from output parameters.
+                    dtResult = ExecuteTable(command);
+
+                }
+            }
+            catch (Exception exception)
+            {
+                _loggerManager.LogError(string.Format("Method: GetModuleContent, ErrorMessage: file: {0} ", exception));
+            }
+            finally
+            {
+                if (command != null) command.Dispose();
+                command = null;
+            }
+            return dtResult;
+        }
+
+        public int UpdatePreviewContentByLanguageModuleId(int SectionId, int moduleId, string languageCode, string HtmlContent, string MetaDescription, string MetaTitle, string MetUrl)
+        {
+            int resultCode = 0;
+            CustomCommand command = null;
+            // MasterPage masterPage = new MasterPage();
+
+            try
+            {
+                using (command = new CustomCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "UpdatePreviewPageByLanguageModuleId";
+                    command.AddParameterWithValue("@_sectionId", SectionId);
+                    command.AddParameterWithValue("@_moduleId", moduleId);
+                    command.AddParameterWithValue("@_languageCode", languageCode);
+                    command.AddParameterWithValue("@htmlContent", HtmlContent);
+                    command.AddParameterWithValue("@metaTitle", MetaTitle);
+                    command.AddParameterWithValue("@metaDescription", MetaDescription);
+                    command.AddParameterWithValue("@metaUrl", MetUrl);
+
+                    //  Execute command and get values from output parameters.
+                    int result = ExecuteNonQuery(command, false);
+                    if (result > 0)
+                    {
+                        resultCode = 1;
+                    }
+
+                }
+
+            }
+            catch (Exception exception)
+            {
+                _loggerManager.LogError(string.Format("Method: UpdatePreviewPageByLanguageModuleId, ErrorMessage: file: {0} ", exception));
+            }
+            finally
+            {
+                if (command != null) command.Dispose();
+                command = null;
+            }
+            return resultCode;
+        }
+
+        public string GetPreviewSubContent(int ModuleId, string Languagecode, int SectionId)
+        {
+            CustomCommand command = null;
+            DataTable dtResult = new DataTable();
+            string result = string.Empty;
+
+            try
+            {
+                using (command = new CustomCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "GetPreviewPageSectoinContent";
+                    command.AddParameterWithValue("@_ModuleId", ModuleId);
+                    command.AddParameterWithValue("@_languageCode", Languagecode);
+                    command.AddParameterWithValue("@_sectionId", SectionId);
+                    //  Execute command and get values from output parameters.
+                    dtResult = ExecuteTable(command);
+                    result = Convert.ToString(dtResult.Rows[0][0]);
+                }
+            }
+            catch (Exception exception)
+            {
+                _loggerManager.LogError(string.Format("Method: GetSubModuleContent, ErrorMessage: file: {0} ", exception));
+            }
+            finally
+            {
+                if (command != null) command.Dispose();
+                command = null;
+            }
+            return result;
         }
 
     }

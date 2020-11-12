@@ -8965,3 +8965,952 @@
 2020-11-05 13:47:02.4001 Debug Creating file appender: C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-05_logfile.txt
 2020-11-05 13:47:02.4101 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-05_logfile.txt with allowFileSharedWriting=False
 2020-11-05 13:50:41.1015 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-05_logfile.txt with allowFileSharedWriting=False
+2020-11-10 19:19:22.7306 Debug ScanAssembly('NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2020-11-10 19:19:22.7795 Debug Found assembly location directory: 'C:\Users\Test\.nuget\packages\nlog\4.7.2\lib\netstandard2.0' (NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c)
+2020-11-10 19:19:22.7795 Debug Search for auto loading files in location: C:\Users\Test\.nuget\packages\nlog\4.7.2\lib\netstandard2.0
+2020-11-10 19:19:22.7795 Debug Found assembly location directory: 'C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1' (PTWWebsite2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null)
+2020-11-10 19:19:22.7795 Debug Search for auto loading files in location: C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1
+2020-11-10 19:19:22.7795 Debug Auto loading based on AppDomain-BaseDirectory found location: C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1
+2020-11-10 19:19:22.7795 Debug Search for auto loading files in location: C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1
+2020-11-10 19:19:22.7795 Debug Start auto loading, location: C:\Users\Test\.nuget\packages\nlog\4.7.2\lib\netstandard2.0
+2020-11-10 19:19:22.7863 Trace Assembly 'Microsoft.Extensions.Logging, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2020-11-10 19:19:22.7863 Trace Assembly 'Microsoft.Extensions.Logging.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2020-11-10 19:19:22.7863 Debug Auto loading done
+2020-11-10 19:19:22.7863 Info Message Template Auto Format enabled
+2020-11-10 19:19:22.7863 Info Loading assembly: NLog.Extended
+2020-11-10 19:19:22.8052 Trace Try find 'NLog.Extended' in current domain
+2020-11-10 19:19:22.8052 Trace Haven't found' 'NLog.Extended' in current domain
+2020-11-10 19:19:22.8052 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Error loading extensions: NLog.Extended ---> System.IO.FileNotFoundException: Could not load file or assembly 'NLog.Extended, Culture=neutral, PublicKeyToken=null'. The system cannot find the file specified.
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, IntPtr ptrLoadContextBinder)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, IntPtr ptrLoadContextBinder)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, StackCrawlMark& stackMark, IntPtr pPrivHostBinder)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, StackCrawlMark& stackMark)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NLog.Internal.AssemblyHelpers.LoadFromName(String assemblyName)
+   at NLog.Config.LoggingConfigurationParser.ParseExtensionWithAssembly(String assemblyName, String prefix)
+   --- End of inner exception stack trace ---
+2020-11-10 19:19:22.8289 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-10 19:19:22.8322 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-11-10 19:19:22.8322 Debug Setting 'NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2020-11-10 19:19:22.8322 Trace Wrapping NLog.LayoutRenderers.LevelLayoutRenderer with NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper
+2020-11-10 19:19:22.8322 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-10 19:19:22.8322 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-10 19:19:22.8322 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-10 19:19:22.8322 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-11-10 19:19:22.8322 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-11-10 19:19:22.8322 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-11-10 19:19:22.8475 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-10 19:19:22.8475 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-10 19:19:22.8475 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-10 19:19:22.8475 Trace Scanning LoggerNameLayoutRenderer 'Layout Renderer: ${logger}'
+2020-11-10 19:19:22.8475 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-10 19:19:22.8475 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-11-10 19:19:22.8475 Debug Setting 'NLog.Targets.FileTarget.name' to 'logfile'
+2020-11-10 19:19:22.8475 Debug Setting 'NLog.Targets.FileTarget.fileName' to 'C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt'
+2020-11-10 19:19:22.8475 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-10 19:19:22.8475 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-11-10 19:19:22.8475 Debug Setting 'NLog.Targets.FileTarget.layout' to '${longdate} ${level:uppercase=true} ${message}'
+2020-11-10 19:19:22.8475 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-10 19:19:22.8475 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-11-10 19:19:22.8475 Debug Setting 'NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2020-11-10 19:19:22.8475 Trace Wrapping NLog.LayoutRenderers.LevelLayoutRenderer with NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper
+2020-11-10 19:19:22.8475 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-10 19:19:22.8475 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-10 19:19:22.8475 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-10 19:19:22.8475 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-11-10 19:19:22.8475 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-11-10 19:19:22.8475 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-11-10 19:19:22.8475 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-10 19:19:22.8475 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-10 19:19:22.8475 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-10 19:19:22.8475 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-11-10 19:19:22.8475 Info Adding target FileTarget(Name=logfile)
+2020-11-10 19:19:22.8629 Debug Registered target logfile: NLog.Targets.FileTarget
+2020-11-10 19:19:22.8629 Trace ParseRulesElement
+2020-11-10 19:19:22.8799 Debug Watching path 'C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1' filter 'NLog.config' for changes.
+2020-11-10 19:19:22.8799 Debug --- NLog configuration dump ---
+2020-11-10 19:19:22.8799 Debug Targets:
+2020-11-10 19:19:22.8799 Debug File Target[logfile]
+2020-11-10 19:19:22.8799 Debug Rules:
+2020-11-10 19:19:22.8799 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] appendTo: [ logfile ]
+2020-11-10 19:19:22.8799 Debug --- End of NLog configuration dump ---
+2020-11-10 19:19:22.8799 Trace FindReachableObject<System.Object>:
+2020-11-10 19:19:22.8799 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] appendTo: [ logfile ]'
+2020-11-10 19:19:22.8799 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2020-11-10 19:19:22.8799 Trace  Scanning FileTarget 'File Target[logfile]'
+2020-11-10 19:19:22.8799 Trace   Scanning Property FileName ''C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt'' NLog.Layouts
+2020-11-10 19:19:22.8799 Trace   Scanning SimpleLayout ''C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt''
+2020-11-10 19:19:22.8799 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-10 19:19:22.8799 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-10 19:19:22.8799 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-11-10 19:19:22.8799 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-10 19:19:22.8799 Trace   Scanning Property Layout ''${longdate} ${level:uppercase=true} ${message}'' NLog.Layouts
+2020-11-10 19:19:22.8799 Trace   Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2020-11-10 19:19:22.8799 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-10 19:19:22.8799 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-11-10 19:19:22.8799 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-10 19:19:22.8799 Trace    Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-11-10 19:19:22.8799 Trace     Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-11-10 19:19:22.8799 Trace     Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-11-10 19:19:22.8799 Trace      Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-10 19:19:22.8799 Trace      Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-10 19:19:22.8799 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-10 19:19:22.8799 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-11-10 19:19:22.8799 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2020-11-10 19:19:22.8943 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2020-11-10 19:19:22.8943 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2020-11-10 19:19:22.8943 Info Validating config: TargetNames=logfile, ConfigItems=14, FilePath=C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1\NLog.config
+2020-11-10 19:19:22.8943 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2020-11-10 19:19:22.8943 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2020-11-10 19:19:22.8943 Trace Initializing Layout Renderer: ${message}
+2020-11-10 19:19:22.8943 Trace Initializing Layout Renderer: ${literal}
+2020-11-10 19:19:22.8943 Trace Initializing Layout Renderer: ${level}
+2020-11-10 19:19:22.8943 Trace Initializing SimpleLayout=Layout Renderer: ${level}
+2020-11-10 19:19:22.8943 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-10 19:19:22.8943 Trace Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-11-10 19:19:22.8943 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-10 19:19:22.8943 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-10 19:19:22.9115 Trace Initializing Layout Renderer: ${uppercase}
+2020-11-10 19:19:22.9115 Trace Initializing Layout Renderer: ${literal}
+2020-11-10 19:19:22.9115 Trace Initializing Layout Renderer: ${longdate}
+2020-11-10 19:19:22.9115 Trace Initializing '${longdate} ${level:uppercase=true} ${message}'
+2020-11-10 19:19:22.9115 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-10 19:19:22.9115 Trace Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2020-11-10 19:19:22.9115 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-10 19:19:22.9115 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-11-10 19:19:22.9115 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-10 19:19:22.9115 Trace  Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-11-10 19:19:22.9115 Trace   Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-11-10 19:19:22.9115 Trace   Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-11-10 19:19:22.9115 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-10 19:19:22.9115 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-10 19:19:22.9115 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-10 19:19:22.9115 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-11-10 19:19:22.9115 Trace Initializing Layout Renderer: ${literal}
+2020-11-10 19:19:22.9115 Trace Initializing Layout Renderer: ${shortdate}
+2020-11-10 19:19:22.9115 Trace Initializing Layout Renderer: ${literal}
+2020-11-10 19:19:22.9115 Trace Initializing 'C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt'
+2020-11-10 19:19:22.9115 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-10 19:19:22.9115 Trace Scanning SimpleLayout ''C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt''
+2020-11-10 19:19:22.9115 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-10 19:19:22.9115 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-10 19:19:22.9115 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-11-10 19:19:22.9115 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-10 19:19:22.9115 Trace Initializing File Target[logfile]
+2020-11-10 19:19:22.9115 Trace FindReachableObject<NLog.Layouts.Layout>:
+2020-11-10 19:19:22.9115 Trace Scanning FileTarget 'File Target[logfile]'
+2020-11-10 19:19:22.9115 Trace  Scanning Property FileName ''C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt'' NLog.Layouts
+2020-11-10 19:19:22.9115 Trace  Scanning SimpleLayout ''C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt''
+2020-11-10 19:19:22.9115 Trace  Scanning Property Layout ''${longdate} ${level:uppercase=true} ${message}'' NLog.Layouts
+2020-11-10 19:19:22.9115 Trace  Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2020-11-10 19:19:22.9115 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2020-11-10 19:19:22.9115 Trace File Target[logfile] has 2 layouts
+2020-11-10 19:19:22.9115 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender+Factory
+2020-11-10 19:19:22.9258 Info Configuration initialized.
+2020-11-10 19:19:22.9258 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.2.11786. Product version: 4.7.2+024896f64b840a743d3fd89e29c2186681e7795f. GlobalAssemblyCache: False
+2020-11-10 19:19:22.9258 Debug Targets for LoggerService.LoggerManager by level:
+2020-11-10 19:19:22.9258 Debug Trace =>
+2020-11-10 19:19:22.9258 Debug Debug => logfile
+2020-11-10 19:19:22.9258 Debug Info => logfile
+2020-11-10 19:19:22.9406 Debug Warn => logfile
+2020-11-10 19:19:22.9406 Debug Error => logfile
+2020-11-10 19:19:22.9406 Debug Fatal => logfile
+2020-11-10 19:19:22.9619 Debug FileTarget(Name=logfile): Preparing for new file 'C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-10_logfile.txt'
+2020-11-10 19:19:22.9619 Debug Creating file appender: C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-10_logfile.txt
+2020-11-10 19:19:22.9619 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-10_logfile.txt with allowFileSharedWriting=False
+2020-11-10 19:20:12.7114 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-10_logfile.txt with allowFileSharedWriting=False
+2020-11-10 20:27:08.5722 Debug ScanAssembly('NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2020-11-10 20:27:08.6162 Debug Found assembly location directory: 'C:\Users\Test\.nuget\packages\nlog\4.7.2\lib\netstandard2.0' (NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c)
+2020-11-10 20:27:08.6162 Debug Search for auto loading files in location: C:\Users\Test\.nuget\packages\nlog\4.7.2\lib\netstandard2.0
+2020-11-10 20:27:08.6162 Debug Found assembly location directory: 'C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1' (PTWWebsite2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null)
+2020-11-10 20:27:08.6162 Debug Search for auto loading files in location: C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1
+2020-11-10 20:27:08.6162 Debug Auto loading based on AppDomain-BaseDirectory found location: C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1
+2020-11-10 20:27:08.6162 Debug Search for auto loading files in location: C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1
+2020-11-10 20:27:08.6162 Debug Start auto loading, location: C:\Users\Test\.nuget\packages\nlog\4.7.2\lib\netstandard2.0
+2020-11-10 20:27:08.6162 Trace Assembly 'Microsoft.Extensions.Logging, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2020-11-10 20:27:08.6162 Trace Assembly 'Microsoft.Extensions.Logging.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2020-11-10 20:27:08.6162 Debug Auto loading done
+2020-11-10 20:27:08.6162 Info Message Template Auto Format enabled
+2020-11-10 20:27:08.6299 Info Loading assembly: NLog.Extended
+2020-11-10 20:27:08.6299 Trace Try find 'NLog.Extended' in current domain
+2020-11-10 20:27:08.6299 Trace Haven't found' 'NLog.Extended' in current domain
+2020-11-10 20:27:08.6299 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Error loading extensions: NLog.Extended ---> System.IO.FileNotFoundException: Could not load file or assembly 'NLog.Extended, Culture=neutral, PublicKeyToken=null'. The system cannot find the file specified.
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, IntPtr ptrLoadContextBinder)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, IntPtr ptrLoadContextBinder)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, StackCrawlMark& stackMark, IntPtr pPrivHostBinder)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, StackCrawlMark& stackMark)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NLog.Internal.AssemblyHelpers.LoadFromName(String assemblyName)
+   at NLog.Config.LoggingConfigurationParser.ParseExtensionWithAssembly(String assemblyName, String prefix)
+   --- End of inner exception stack trace ---
+2020-11-10 20:27:08.6538 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-10 20:27:08.6538 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-11-10 20:27:08.6632 Debug Setting 'NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2020-11-10 20:27:08.6632 Trace Wrapping NLog.LayoutRenderers.LevelLayoutRenderer with NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper
+2020-11-10 20:27:08.6632 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-10 20:27:08.6632 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-10 20:27:08.6632 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-10 20:27:08.6632 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-11-10 20:27:08.6632 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-11-10 20:27:08.6632 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-11-10 20:27:08.6632 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-10 20:27:08.6632 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-10 20:27:08.6632 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-10 20:27:08.6632 Trace Scanning LoggerNameLayoutRenderer 'Layout Renderer: ${logger}'
+2020-11-10 20:27:08.6632 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-10 20:27:08.6632 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-11-10 20:27:08.6780 Debug Setting 'NLog.Targets.FileTarget.name' to 'logfile'
+2020-11-10 20:27:08.6780 Debug Setting 'NLog.Targets.FileTarget.fileName' to 'C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt'
+2020-11-10 20:27:08.6780 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-10 20:27:08.6780 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-11-10 20:27:08.6780 Debug Setting 'NLog.Targets.FileTarget.layout' to '${longdate} ${level:uppercase=true} ${message}'
+2020-11-10 20:27:08.6780 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-10 20:27:08.6780 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-11-10 20:27:08.6780 Debug Setting 'NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2020-11-10 20:27:08.6780 Trace Wrapping NLog.LayoutRenderers.LevelLayoutRenderer with NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper
+2020-11-10 20:27:08.6780 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-10 20:27:08.6780 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-10 20:27:08.6780 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-10 20:27:08.6780 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-11-10 20:27:08.6780 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-11-10 20:27:08.6780 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-11-10 20:27:08.6780 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-10 20:27:08.6780 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-10 20:27:08.6780 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-10 20:27:08.6780 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-11-10 20:27:08.6780 Info Adding target FileTarget(Name=logfile)
+2020-11-10 20:27:08.6780 Debug Registered target logfile: NLog.Targets.FileTarget
+2020-11-10 20:27:08.6780 Trace ParseRulesElement
+2020-11-10 20:27:08.7095 Debug Watching path 'C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1' filter 'NLog.config' for changes.
+2020-11-10 20:27:08.7095 Debug --- NLog configuration dump ---
+2020-11-10 20:27:08.7095 Debug Targets:
+2020-11-10 20:27:08.7095 Debug File Target[logfile]
+2020-11-10 20:27:08.7095 Debug Rules:
+2020-11-10 20:27:08.7095 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] appendTo: [ logfile ]
+2020-11-10 20:27:08.7095 Debug --- End of NLog configuration dump ---
+2020-11-10 20:27:08.7095 Trace FindReachableObject<System.Object>:
+2020-11-10 20:27:08.7095 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] appendTo: [ logfile ]'
+2020-11-10 20:27:08.7095 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2020-11-10 20:27:08.7095 Trace  Scanning FileTarget 'File Target[logfile]'
+2020-11-10 20:27:08.7095 Trace   Scanning Property FileName ''C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt'' NLog.Layouts
+2020-11-10 20:27:08.7095 Trace   Scanning SimpleLayout ''C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt''
+2020-11-10 20:27:08.7095 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-10 20:27:08.7221 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-10 20:27:08.7221 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-11-10 20:27:08.7221 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-10 20:27:08.7221 Trace   Scanning Property Layout ''${longdate} ${level:uppercase=true} ${message}'' NLog.Layouts
+2020-11-10 20:27:08.7221 Trace   Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2020-11-10 20:27:08.7221 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-10 20:27:08.7221 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-11-10 20:27:08.7221 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-10 20:27:08.7221 Trace    Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-11-10 20:27:08.7221 Trace     Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-11-10 20:27:08.7221 Trace     Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-11-10 20:27:08.7221 Trace      Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-10 20:27:08.7221 Trace      Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-10 20:27:08.7221 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-10 20:27:08.7221 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-11-10 20:27:08.7221 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2020-11-10 20:27:08.7221 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2020-11-10 20:27:08.7221 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2020-11-10 20:27:08.7221 Info Validating config: TargetNames=logfile, ConfigItems=14, FilePath=C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1\NLog.config
+2020-11-10 20:27:08.7221 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2020-11-10 20:27:08.7221 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2020-11-10 20:27:08.7221 Trace Initializing Layout Renderer: ${message}
+2020-11-10 20:27:08.7386 Trace Initializing Layout Renderer: ${literal}
+2020-11-10 20:27:08.7386 Trace Initializing Layout Renderer: ${level}
+2020-11-10 20:27:08.7386 Trace Initializing SimpleLayout=Layout Renderer: ${level}
+2020-11-10 20:27:08.7386 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-10 20:27:08.7386 Trace Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-11-10 20:27:08.7386 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-10 20:27:08.7386 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-10 20:27:08.7386 Trace Initializing Layout Renderer: ${uppercase}
+2020-11-10 20:27:08.7386 Trace Initializing Layout Renderer: ${literal}
+2020-11-10 20:27:08.7386 Trace Initializing Layout Renderer: ${longdate}
+2020-11-10 20:27:08.7386 Trace Initializing '${longdate} ${level:uppercase=true} ${message}'
+2020-11-10 20:27:08.7386 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-10 20:27:08.7386 Trace Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2020-11-10 20:27:08.7386 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-10 20:27:08.7386 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-11-10 20:27:08.7386 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-10 20:27:08.7386 Trace  Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-11-10 20:27:08.7386 Trace   Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-11-10 20:27:08.7386 Trace   Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-11-10 20:27:08.7386 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-10 20:27:08.7386 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-10 20:27:08.7386 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-10 20:27:08.7386 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-11-10 20:27:08.7386 Trace Initializing Layout Renderer: ${literal}
+2020-11-10 20:27:08.7386 Trace Initializing Layout Renderer: ${shortdate}
+2020-11-10 20:27:08.7386 Trace Initializing Layout Renderer: ${literal}
+2020-11-10 20:27:08.7386 Trace Initializing 'C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt'
+2020-11-10 20:27:08.7386 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-10 20:27:08.7386 Trace Scanning SimpleLayout ''C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt''
+2020-11-10 20:27:08.7386 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-10 20:27:08.7531 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-10 20:27:08.7531 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-11-10 20:27:08.7531 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-10 20:27:08.7531 Trace Initializing File Target[logfile]
+2020-11-10 20:27:08.7531 Trace FindReachableObject<NLog.Layouts.Layout>:
+2020-11-10 20:27:08.7531 Trace Scanning FileTarget 'File Target[logfile]'
+2020-11-10 20:27:08.7531 Trace  Scanning Property FileName ''C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt'' NLog.Layouts
+2020-11-10 20:27:08.7531 Trace  Scanning SimpleLayout ''C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt''
+2020-11-10 20:27:08.7531 Trace  Scanning Property Layout ''${longdate} ${level:uppercase=true} ${message}'' NLog.Layouts
+2020-11-10 20:27:08.7531 Trace  Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2020-11-10 20:27:08.7531 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2020-11-10 20:27:08.7531 Trace File Target[logfile] has 2 layouts
+2020-11-10 20:27:08.7531 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender+Factory
+2020-11-10 20:27:08.7531 Info Configuration initialized.
+2020-11-10 20:27:08.7704 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.2.11786. Product version: 4.7.2+024896f64b840a743d3fd89e29c2186681e7795f. GlobalAssemblyCache: False
+2020-11-10 20:27:08.7704 Debug Targets for LoggerService.LoggerManager by level:
+2020-11-10 20:27:08.7704 Debug Trace =>
+2020-11-10 20:27:08.7704 Debug Debug => logfile
+2020-11-10 20:27:08.7704 Debug Info => logfile
+2020-11-10 20:27:08.7704 Debug Warn => logfile
+2020-11-10 20:27:08.7704 Debug Error => logfile
+2020-11-10 20:27:08.7704 Debug Fatal => logfile
+2020-11-10 20:27:08.7930 Debug FileTarget(Name=logfile): Preparing for new file 'C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-10_logfile.txt'
+2020-11-10 20:27:08.7930 Debug Creating file appender: C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-10_logfile.txt
+2020-11-10 20:27:08.8041 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-10_logfile.txt with allowFileSharedWriting=False
+2020-11-10 20:27:10.2507 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-10_logfile.txt with allowFileSharedWriting=False
+2020-11-10 20:27:17.1115 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-10_logfile.txt with allowFileSharedWriting=False
+2020-11-10 21:00:25.6669 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-10_logfile.txt with allowFileSharedWriting=False
+2020-11-10 21:00:33.0714 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-10_logfile.txt with allowFileSharedWriting=False
+2020-11-10 21:00:43.7836 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-10_logfile.txt with allowFileSharedWriting=False
+2020-11-10 21:01:49.7146 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-10_logfile.txt with allowFileSharedWriting=False
+2020-11-10 21:02:08.3463 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-10_logfile.txt with allowFileSharedWriting=False
+2020-11-10 21:02:10.9566 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-10_logfile.txt with allowFileSharedWriting=False
+2020-11-10 21:02:45.9639 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-10_logfile.txt with allowFileSharedWriting=False
+2020-11-10 21:04:21.3638 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-10_logfile.txt with allowFileSharedWriting=False
+2020-11-10 21:07:20.2376 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-10_logfile.txt with allowFileSharedWriting=False
+2020-11-10 21:08:14.1848 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-10_logfile.txt with allowFileSharedWriting=False
+2020-11-10 21:10:57.0220 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-10_logfile.txt with allowFileSharedWriting=False
+2020-11-10 21:11:57.1617 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-10_logfile.txt with allowFileSharedWriting=False
+2020-11-10 21:12:27.7442 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-10_logfile.txt with allowFileSharedWriting=False
+2020-11-11 18:09:31.5977 Debug ScanAssembly('NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2020-11-11 18:09:31.6452 Debug Found assembly location directory: 'C:\Users\Test\.nuget\packages\nlog\4.7.2\lib\netstandard2.0' (NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c)
+2020-11-11 18:09:31.6452 Debug Search for auto loading files in location: C:\Users\Test\.nuget\packages\nlog\4.7.2\lib\netstandard2.0
+2020-11-11 18:09:31.6452 Debug Found assembly location directory: 'C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1' (PTWWebsite2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null)
+2020-11-11 18:09:31.6452 Debug Search for auto loading files in location: C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1
+2020-11-11 18:09:31.6452 Debug Auto loading based on AppDomain-BaseDirectory found location: C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1
+2020-11-11 18:09:31.6452 Debug Search for auto loading files in location: C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1
+2020-11-11 18:09:31.6452 Debug Start auto loading, location: C:\Users\Test\.nuget\packages\nlog\4.7.2\lib\netstandard2.0
+2020-11-11 18:09:31.6597 Trace Assembly 'Microsoft.Extensions.Logging, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2020-11-11 18:09:31.6597 Trace Assembly 'Microsoft.Extensions.Logging.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2020-11-11 18:09:31.6597 Debug Auto loading done
+2020-11-11 18:09:31.6597 Info Message Template Auto Format enabled
+2020-11-11 18:09:31.6597 Info Loading assembly: NLog.Extended
+2020-11-11 18:09:31.6597 Trace Try find 'NLog.Extended' in current domain
+2020-11-11 18:09:31.6597 Trace Haven't found' 'NLog.Extended' in current domain
+2020-11-11 18:09:31.6597 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Error loading extensions: NLog.Extended ---> System.IO.FileNotFoundException: Could not load file or assembly 'NLog.Extended, Culture=neutral, PublicKeyToken=null'. The system cannot find the file specified.
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, IntPtr ptrLoadContextBinder)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, IntPtr ptrLoadContextBinder)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, StackCrawlMark& stackMark, IntPtr pPrivHostBinder)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, StackCrawlMark& stackMark)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NLog.Internal.AssemblyHelpers.LoadFromName(String assemblyName)
+   at NLog.Config.LoggingConfigurationParser.ParseExtensionWithAssembly(String assemblyName, String prefix)
+   --- End of inner exception stack trace ---
+2020-11-11 18:09:31.6997 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 18:09:31.6997 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-11-11 18:09:31.7096 Debug Setting 'NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2020-11-11 18:09:31.7096 Trace Wrapping NLog.LayoutRenderers.LevelLayoutRenderer with NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper
+2020-11-11 18:09:31.7096 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 18:09:31.7096 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-11 18:09:31.7096 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 18:09:31.7096 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-11-11 18:09:31.7096 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-11-11 18:09:31.7096 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-11-11 18:09:31.7096 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 18:09:31.7096 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-11 18:09:31.7096 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 18:09:31.7096 Trace Scanning LoggerNameLayoutRenderer 'Layout Renderer: ${logger}'
+2020-11-11 18:09:31.7096 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 18:09:31.7096 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-11-11 18:09:31.7239 Debug Setting 'NLog.Targets.FileTarget.name' to 'logfile'
+2020-11-11 18:09:31.7239 Debug Setting 'NLog.Targets.FileTarget.fileName' to 'C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt'
+2020-11-11 18:09:31.7239 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 18:09:31.7239 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-11-11 18:09:31.7239 Debug Setting 'NLog.Targets.FileTarget.layout' to '${longdate} ${level:uppercase=true} ${message}'
+2020-11-11 18:09:31.7239 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 18:09:31.7239 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-11-11 18:09:31.7239 Debug Setting 'NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2020-11-11 18:09:31.7239 Trace Wrapping NLog.LayoutRenderers.LevelLayoutRenderer with NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper
+2020-11-11 18:09:31.7239 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 18:09:31.7239 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-11 18:09:31.7239 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 18:09:31.7239 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-11-11 18:09:31.7239 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-11-11 18:09:31.7239 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-11-11 18:09:31.7239 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 18:09:31.7239 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-11 18:09:31.7239 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 18:09:31.7239 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-11-11 18:09:31.7239 Info Adding target FileTarget(Name=logfile)
+2020-11-11 18:09:31.7239 Debug Registered target logfile: NLog.Targets.FileTarget
+2020-11-11 18:09:31.7239 Trace ParseRulesElement
+2020-11-11 18:09:31.7496 Debug Watching path 'C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1' filter 'NLog.config' for changes.
+2020-11-11 18:09:31.7496 Debug --- NLog configuration dump ---
+2020-11-11 18:09:31.7496 Debug Targets:
+2020-11-11 18:09:31.7496 Debug File Target[logfile]
+2020-11-11 18:09:31.7496 Debug Rules:
+2020-11-11 18:09:31.7548 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] appendTo: [ logfile ]
+2020-11-11 18:09:31.7548 Debug --- End of NLog configuration dump ---
+2020-11-11 18:09:31.7548 Trace FindReachableObject<System.Object>:
+2020-11-11 18:09:31.7548 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] appendTo: [ logfile ]'
+2020-11-11 18:09:31.7548 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2020-11-11 18:09:31.7548 Trace  Scanning FileTarget 'File Target[logfile]'
+2020-11-11 18:09:31.7548 Trace   Scanning Property FileName ''C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt'' NLog.Layouts
+2020-11-11 18:09:31.7548 Trace   Scanning SimpleLayout ''C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt''
+2020-11-11 18:09:31.7548 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 18:09:31.7548 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-11 18:09:31.7548 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-11-11 18:09:31.7548 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-11 18:09:31.7548 Trace   Scanning Property Layout ''${longdate} ${level:uppercase=true} ${message}'' NLog.Layouts
+2020-11-11 18:09:31.7548 Trace   Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2020-11-11 18:09:31.7548 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 18:09:31.7548 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-11-11 18:09:31.7548 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-11 18:09:31.7548 Trace    Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-11-11 18:09:31.7548 Trace     Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-11-11 18:09:31.7548 Trace     Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-11-11 18:09:31.7548 Trace      Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 18:09:31.7548 Trace      Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-11 18:09:31.7548 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-11 18:09:31.7548 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-11-11 18:09:31.7548 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2020-11-11 18:09:31.7548 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2020-11-11 18:09:31.7548 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2020-11-11 18:09:31.7548 Info Validating config: TargetNames=logfile, ConfigItems=14, FilePath=C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1\NLog.config
+2020-11-11 18:09:31.7700 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2020-11-11 18:09:31.7700 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2020-11-11 18:09:31.7700 Trace Initializing Layout Renderer: ${message}
+2020-11-11 18:09:31.7700 Trace Initializing Layout Renderer: ${literal}
+2020-11-11 18:09:31.7700 Trace Initializing Layout Renderer: ${level}
+2020-11-11 18:09:31.7700 Trace Initializing SimpleLayout=Layout Renderer: ${level}
+2020-11-11 18:09:31.7700 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 18:09:31.7700 Trace Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-11-11 18:09:31.7700 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 18:09:31.7700 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-11 18:09:31.7700 Trace Initializing Layout Renderer: ${uppercase}
+2020-11-11 18:09:31.7700 Trace Initializing Layout Renderer: ${literal}
+2020-11-11 18:09:31.7700 Trace Initializing Layout Renderer: ${longdate}
+2020-11-11 18:09:31.7700 Trace Initializing '${longdate} ${level:uppercase=true} ${message}'
+2020-11-11 18:09:31.7700 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 18:09:31.7700 Trace Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2020-11-11 18:09:31.7700 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 18:09:31.7700 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-11-11 18:09:31.7700 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-11 18:09:31.7700 Trace  Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-11-11 18:09:31.7700 Trace   Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-11-11 18:09:31.7700 Trace   Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-11-11 18:09:31.7844 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 18:09:31.7844 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-11 18:09:31.7844 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-11 18:09:31.7844 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-11-11 18:09:31.7844 Trace Initializing Layout Renderer: ${literal}
+2020-11-11 18:09:31.7844 Trace Initializing Layout Renderer: ${shortdate}
+2020-11-11 18:09:31.7844 Trace Initializing Layout Renderer: ${literal}
+2020-11-11 18:09:31.7844 Trace Initializing 'C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt'
+2020-11-11 18:09:31.7844 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 18:09:31.7844 Trace Scanning SimpleLayout ''C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt''
+2020-11-11 18:09:31.7844 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 18:09:31.7844 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-11 18:09:31.7844 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-11-11 18:09:31.7844 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-11 18:09:31.7844 Trace Initializing File Target[logfile]
+2020-11-11 18:09:31.7844 Trace FindReachableObject<NLog.Layouts.Layout>:
+2020-11-11 18:09:31.7844 Trace Scanning FileTarget 'File Target[logfile]'
+2020-11-11 18:09:31.7844 Trace  Scanning Property FileName ''C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt'' NLog.Layouts
+2020-11-11 18:09:31.7844 Trace  Scanning SimpleLayout ''C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt''
+2020-11-11 18:09:31.7844 Trace  Scanning Property Layout ''${longdate} ${level:uppercase=true} ${message}'' NLog.Layouts
+2020-11-11 18:09:31.7844 Trace  Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2020-11-11 18:09:31.7844 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2020-11-11 18:09:31.7844 Trace File Target[logfile] has 2 layouts
+2020-11-11 18:09:31.7844 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender+Factory
+2020-11-11 18:09:31.7844 Info Configuration initialized.
+2020-11-11 18:09:31.8060 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.2.11786. Product version: 4.7.2+024896f64b840a743d3fd89e29c2186681e7795f. GlobalAssemblyCache: False
+2020-11-11 18:09:31.8060 Debug Targets for LoggerService.LoggerManager by level:
+2020-11-11 18:09:31.8060 Debug Trace =>
+2020-11-11 18:09:31.8060 Debug Debug => logfile
+2020-11-11 18:09:31.8060 Debug Info => logfile
+2020-11-11 18:09:31.8060 Debug Warn => logfile
+2020-11-11 18:09:31.8060 Debug Error => logfile
+2020-11-11 18:09:31.8060 Debug Fatal => logfile
+2020-11-11 18:09:31.8314 Debug FileTarget(Name=logfile): Preparing for new file 'C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-11_logfile.txt'
+2020-11-11 18:09:31.8389 Debug Creating file appender: C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-11_logfile.txt
+2020-11-11 18:09:31.8389 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-11_logfile.txt with allowFileSharedWriting=False
+2020-11-11 18:14:40.5512 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-11_logfile.txt with allowFileSharedWriting=False
+2020-11-11 18:15:53.8286 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-11_logfile.txt with allowFileSharedWriting=False
+2020-11-11 18:17:43.3344 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-11_logfile.txt with allowFileSharedWriting=False
+2020-11-11 18:18:53.9517 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-11_logfile.txt with allowFileSharedWriting=False
+2020-11-11 18:20:18.0301 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-11_logfile.txt with allowFileSharedWriting=False
+2020-11-11 18:21:43.3321 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-11_logfile.txt with allowFileSharedWriting=False
+2020-11-11 18:22:08.7800 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-11_logfile.txt with allowFileSharedWriting=False
+2020-11-11 18:36:02.1122 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-11_logfile.txt with allowFileSharedWriting=False
+2020-11-11 20:45:39.7096 Debug ScanAssembly('NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2020-11-11 20:45:39.7561 Debug Found assembly location directory: 'C:\Users\Test\.nuget\packages\nlog\4.7.2\lib\netstandard2.0' (NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c)
+2020-11-11 20:45:39.7561 Debug Search for auto loading files in location: C:\Users\Test\.nuget\packages\nlog\4.7.2\lib\netstandard2.0
+2020-11-11 20:45:39.7561 Debug Found assembly location directory: 'C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1' (PTWWebsite2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null)
+2020-11-11 20:45:39.7561 Debug Search for auto loading files in location: C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1
+2020-11-11 20:45:39.7561 Debug Auto loading based on AppDomain-BaseDirectory found location: C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1
+2020-11-11 20:45:39.7561 Debug Search for auto loading files in location: C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1
+2020-11-11 20:45:39.7561 Debug Start auto loading, location: C:\Users\Test\.nuget\packages\nlog\4.7.2\lib\netstandard2.0
+2020-11-11 20:45:39.7561 Trace Assembly 'Microsoft.Extensions.Logging, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2020-11-11 20:45:39.7691 Trace Assembly 'Microsoft.Extensions.Logging.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2020-11-11 20:45:39.7691 Debug Auto loading done
+2020-11-11 20:45:39.7691 Info Message Template Auto Format enabled
+2020-11-11 20:45:39.7691 Info Loading assembly: NLog.Extended
+2020-11-11 20:45:39.7691 Trace Try find 'NLog.Extended' in current domain
+2020-11-11 20:45:39.7691 Trace Haven't found' 'NLog.Extended' in current domain
+2020-11-11 20:45:39.7691 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Error loading extensions: NLog.Extended ---> System.IO.FileNotFoundException: Could not load file or assembly 'NLog.Extended, Culture=neutral, PublicKeyToken=null'. The system cannot find the file specified.
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, IntPtr ptrLoadContextBinder)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, IntPtr ptrLoadContextBinder)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, StackCrawlMark& stackMark, IntPtr pPrivHostBinder)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, StackCrawlMark& stackMark)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NLog.Internal.AssemblyHelpers.LoadFromName(String assemblyName)
+   at NLog.Config.LoggingConfigurationParser.ParseExtensionWithAssembly(String assemblyName, String prefix)
+   --- End of inner exception stack trace ---
+2020-11-11 20:45:39.8076 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 20:45:39.8076 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-11-11 20:45:39.8167 Debug Setting 'NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2020-11-11 20:45:39.8167 Trace Wrapping NLog.LayoutRenderers.LevelLayoutRenderer with NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper
+2020-11-11 20:45:39.8167 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 20:45:39.8167 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-11 20:45:39.8167 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 20:45:39.8167 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-11-11 20:45:39.8167 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-11-11 20:45:39.8167 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-11-11 20:45:39.8167 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 20:45:39.8167 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-11 20:45:39.8167 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 20:45:39.8167 Trace Scanning LoggerNameLayoutRenderer 'Layout Renderer: ${logger}'
+2020-11-11 20:45:39.8167 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 20:45:39.8167 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-11-11 20:45:39.8167 Debug Setting 'NLog.Targets.FileTarget.name' to 'logfile'
+2020-11-11 20:45:39.8167 Debug Setting 'NLog.Targets.FileTarget.fileName' to 'C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt'
+2020-11-11 20:45:39.8167 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 20:45:39.8319 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-11-11 20:45:39.8319 Debug Setting 'NLog.Targets.FileTarget.layout' to '${longdate} ${level:uppercase=true} ${message}'
+2020-11-11 20:45:39.8319 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 20:45:39.8319 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-11-11 20:45:39.8319 Debug Setting 'NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2020-11-11 20:45:39.8319 Trace Wrapping NLog.LayoutRenderers.LevelLayoutRenderer with NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper
+2020-11-11 20:45:39.8319 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 20:45:39.8319 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-11 20:45:39.8319 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 20:45:39.8319 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-11-11 20:45:39.8319 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-11-11 20:45:39.8319 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-11-11 20:45:39.8319 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 20:45:39.8319 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-11 20:45:39.8319 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 20:45:39.8319 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-11-11 20:45:39.8319 Info Adding target FileTarget(Name=logfile)
+2020-11-11 20:45:39.8319 Debug Registered target logfile: NLog.Targets.FileTarget
+2020-11-11 20:45:39.8319 Trace ParseRulesElement
+2020-11-11 20:45:39.8561 Debug Watching path 'C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1' filter 'NLog.config' for changes.
+2020-11-11 20:45:39.8561 Debug --- NLog configuration dump ---
+2020-11-11 20:45:39.8561 Debug Targets:
+2020-11-11 20:45:39.8561 Debug File Target[logfile]
+2020-11-11 20:45:39.8561 Debug Rules:
+2020-11-11 20:45:39.8561 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] appendTo: [ logfile ]
+2020-11-11 20:45:39.8561 Debug --- End of NLog configuration dump ---
+2020-11-11 20:45:39.8628 Trace FindReachableObject<System.Object>:
+2020-11-11 20:45:39.8628 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] appendTo: [ logfile ]'
+2020-11-11 20:45:39.8628 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2020-11-11 20:45:39.8628 Trace  Scanning FileTarget 'File Target[logfile]'
+2020-11-11 20:45:39.8628 Trace   Scanning Property FileName ''C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt'' NLog.Layouts
+2020-11-11 20:45:39.8628 Trace   Scanning SimpleLayout ''C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt''
+2020-11-11 20:45:39.8628 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 20:45:39.8628 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-11 20:45:39.8628 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-11-11 20:45:39.8628 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-11 20:45:39.8628 Trace   Scanning Property Layout ''${longdate} ${level:uppercase=true} ${message}'' NLog.Layouts
+2020-11-11 20:45:39.8628 Trace   Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2020-11-11 20:45:39.8628 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 20:45:39.8628 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-11-11 20:45:39.8628 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-11 20:45:39.8628 Trace    Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-11-11 20:45:39.8628 Trace     Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-11-11 20:45:39.8628 Trace     Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-11-11 20:45:39.8628 Trace      Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 20:45:39.8628 Trace      Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-11 20:45:39.8628 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-11 20:45:39.8628 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-11-11 20:45:39.8628 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2020-11-11 20:45:39.8628 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2020-11-11 20:45:39.8628 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2020-11-11 20:45:39.8628 Info Validating config: TargetNames=logfile, ConfigItems=14, FilePath=C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1\NLog.config
+2020-11-11 20:45:39.8628 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2020-11-11 20:45:39.8811 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2020-11-11 20:45:39.8811 Trace Initializing Layout Renderer: ${message}
+2020-11-11 20:45:39.8811 Trace Initializing Layout Renderer: ${literal}
+2020-11-11 20:45:39.8811 Trace Initializing Layout Renderer: ${level}
+2020-11-11 20:45:39.8811 Trace Initializing SimpleLayout=Layout Renderer: ${level}
+2020-11-11 20:45:39.8811 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 20:45:39.8811 Trace Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-11-11 20:45:39.8811 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 20:45:39.8811 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-11 20:45:39.8811 Trace Initializing Layout Renderer: ${uppercase}
+2020-11-11 20:45:39.8811 Trace Initializing Layout Renderer: ${literal}
+2020-11-11 20:45:39.8811 Trace Initializing Layout Renderer: ${longdate}
+2020-11-11 20:45:39.8811 Trace Initializing '${longdate} ${level:uppercase=true} ${message}'
+2020-11-11 20:45:39.8811 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 20:45:39.8811 Trace Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2020-11-11 20:45:39.8811 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 20:45:39.8811 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-11-11 20:45:39.8811 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-11 20:45:39.8811 Trace  Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-11-11 20:45:39.8811 Trace   Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-11-11 20:45:39.8938 Trace   Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-11-11 20:45:39.8938 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 20:45:39.8938 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-11 20:45:39.8938 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-11 20:45:39.8938 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-11-11 20:45:39.8938 Trace Initializing Layout Renderer: ${literal}
+2020-11-11 20:45:39.8938 Trace Initializing Layout Renderer: ${shortdate}
+2020-11-11 20:45:39.8938 Trace Initializing Layout Renderer: ${literal}
+2020-11-11 20:45:39.8938 Trace Initializing 'C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt'
+2020-11-11 20:45:39.8938 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 20:45:39.8938 Trace Scanning SimpleLayout ''C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt''
+2020-11-11 20:45:39.8938 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 20:45:39.8938 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-11 20:45:39.8938 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-11-11 20:45:39.8938 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-11 20:45:39.8938 Trace Initializing File Target[logfile]
+2020-11-11 20:45:39.8938 Trace FindReachableObject<NLog.Layouts.Layout>:
+2020-11-11 20:45:39.8938 Trace Scanning FileTarget 'File Target[logfile]'
+2020-11-11 20:45:39.8938 Trace  Scanning Property FileName ''C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt'' NLog.Layouts
+2020-11-11 20:45:39.8938 Trace  Scanning SimpleLayout ''C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt''
+2020-11-11 20:45:39.8938 Trace  Scanning Property Layout ''${longdate} ${level:uppercase=true} ${message}'' NLog.Layouts
+2020-11-11 20:45:39.8938 Trace  Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2020-11-11 20:45:39.8938 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2020-11-11 20:45:39.8938 Trace File Target[logfile] has 2 layouts
+2020-11-11 20:45:39.8938 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender+Factory
+2020-11-11 20:45:39.8938 Info Configuration initialized.
+2020-11-11 20:45:39.9181 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.2.11786. Product version: 4.7.2+024896f64b840a743d3fd89e29c2186681e7795f. GlobalAssemblyCache: False
+2020-11-11 20:45:39.9181 Debug Targets for LoggerService.LoggerManager by level:
+2020-11-11 20:45:39.9181 Debug Trace =>
+2020-11-11 20:45:39.9181 Debug Debug => logfile
+2020-11-11 20:45:39.9181 Debug Info => logfile
+2020-11-11 20:45:39.9181 Debug Warn => logfile
+2020-11-11 20:45:39.9181 Debug Error => logfile
+2020-11-11 20:45:39.9181 Debug Fatal => logfile
+2020-11-11 20:45:39.9407 Debug FileTarget(Name=logfile): Preparing for new file 'C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-11_logfile.txt'
+2020-11-11 20:45:39.9407 Debug Creating file appender: C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-11_logfile.txt
+2020-11-11 20:45:39.9407 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-11_logfile.txt with allowFileSharedWriting=False
+2020-11-11 20:46:13.9232 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-11_logfile.txt with allowFileSharedWriting=False
+2020-11-11 21:52:49.5676 Debug ScanAssembly('NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2020-11-11 21:52:49.6124 Debug Found assembly location directory: 'C:\Users\Test\.nuget\packages\nlog\4.7.2\lib\netstandard2.0' (NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c)
+2020-11-11 21:52:49.6141 Debug Search for auto loading files in location: C:\Users\Test\.nuget\packages\nlog\4.7.2\lib\netstandard2.0
+2020-11-11 21:52:49.6141 Debug Found assembly location directory: 'C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1' (PTWWebsite2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null)
+2020-11-11 21:52:49.6141 Debug Search for auto loading files in location: C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1
+2020-11-11 21:52:49.6141 Debug Auto loading based on AppDomain-BaseDirectory found location: C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1
+2020-11-11 21:52:49.6141 Debug Search for auto loading files in location: C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1
+2020-11-11 21:52:49.6141 Debug Start auto loading, location: C:\Users\Test\.nuget\packages\nlog\4.7.2\lib\netstandard2.0
+2020-11-11 21:52:49.6141 Trace Assembly 'Microsoft.Extensions.Logging, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2020-11-11 21:52:49.6141 Trace Assembly 'Microsoft.Extensions.Logging.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2020-11-11 21:52:49.6141 Debug Auto loading done
+2020-11-11 21:52:49.6141 Info Message Template Auto Format enabled
+2020-11-11 21:52:49.6141 Info Loading assembly: NLog.Extended
+2020-11-11 21:52:49.6141 Trace Try find 'NLog.Extended' in current domain
+2020-11-11 21:52:49.6328 Trace Haven't found' 'NLog.Extended' in current domain
+2020-11-11 21:52:49.6328 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Error loading extensions: NLog.Extended ---> System.IO.FileNotFoundException: Could not load file or assembly 'NLog.Extended, Culture=neutral, PublicKeyToken=null'. The system cannot find the file specified.
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, IntPtr ptrLoadContextBinder)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, IntPtr ptrLoadContextBinder)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, StackCrawlMark& stackMark, IntPtr pPrivHostBinder)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, StackCrawlMark& stackMark)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NLog.Internal.AssemblyHelpers.LoadFromName(String assemblyName)
+   at NLog.Config.LoggingConfigurationParser.ParseExtensionWithAssembly(String assemblyName, String prefix)
+   --- End of inner exception stack trace ---
+2020-11-11 21:52:49.6653 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 21:52:49.6653 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-11-11 21:52:49.6771 Debug Setting 'NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2020-11-11 21:52:49.6771 Trace Wrapping NLog.LayoutRenderers.LevelLayoutRenderer with NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper
+2020-11-11 21:52:49.6771 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 21:52:49.6771 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-11 21:52:49.6771 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 21:52:49.6771 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-11-11 21:52:49.6771 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-11-11 21:52:49.6771 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-11-11 21:52:49.6771 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 21:52:49.6771 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-11 21:52:49.6771 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 21:52:49.6907 Trace Scanning LoggerNameLayoutRenderer 'Layout Renderer: ${logger}'
+2020-11-11 21:52:49.6907 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 21:52:49.6907 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-11-11 21:52:49.6907 Debug Setting 'NLog.Targets.FileTarget.name' to 'logfile'
+2020-11-11 21:52:49.6907 Debug Setting 'NLog.Targets.FileTarget.fileName' to 'C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt'
+2020-11-11 21:52:49.6907 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 21:52:49.6907 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-11-11 21:52:49.6907 Debug Setting 'NLog.Targets.FileTarget.layout' to '${longdate} ${level:uppercase=true} ${message}'
+2020-11-11 21:52:49.6907 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 21:52:49.6907 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-11-11 21:52:49.6907 Debug Setting 'NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2020-11-11 21:52:49.6907 Trace Wrapping NLog.LayoutRenderers.LevelLayoutRenderer with NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper
+2020-11-11 21:52:49.6907 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 21:52:49.6907 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-11 21:52:49.6907 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 21:52:49.6907 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-11-11 21:52:49.6907 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-11-11 21:52:49.6907 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-11-11 21:52:49.6907 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 21:52:49.6907 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-11 21:52:49.6907 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 21:52:49.6907 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-11-11 21:52:49.6907 Info Adding target FileTarget(Name=logfile)
+2020-11-11 21:52:49.6907 Debug Registered target logfile: NLog.Targets.FileTarget
+2020-11-11 21:52:49.7065 Trace ParseRulesElement
+2020-11-11 21:52:49.7065 Debug Watching path 'C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1' filter 'NLog.config' for changes.
+2020-11-11 21:52:49.7232 Debug --- NLog configuration dump ---
+2020-11-11 21:52:49.7232 Debug Targets:
+2020-11-11 21:52:49.7232 Debug File Target[logfile]
+2020-11-11 21:52:49.7232 Debug Rules:
+2020-11-11 21:52:49.7232 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] appendTo: [ logfile ]
+2020-11-11 21:52:49.7232 Debug --- End of NLog configuration dump ---
+2020-11-11 21:52:49.7232 Trace FindReachableObject<System.Object>:
+2020-11-11 21:52:49.7232 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] appendTo: [ logfile ]'
+2020-11-11 21:52:49.7232 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2020-11-11 21:52:49.7232 Trace  Scanning FileTarget 'File Target[logfile]'
+2020-11-11 21:52:49.7232 Trace   Scanning Property FileName ''C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt'' NLog.Layouts
+2020-11-11 21:52:49.7232 Trace   Scanning SimpleLayout ''C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt''
+2020-11-11 21:52:49.7232 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 21:52:49.7232 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-11 21:52:49.7232 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-11-11 21:52:49.7232 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-11 21:52:49.7232 Trace   Scanning Property Layout ''${longdate} ${level:uppercase=true} ${message}'' NLog.Layouts
+2020-11-11 21:52:49.7232 Trace   Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2020-11-11 21:52:49.7232 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 21:52:49.7232 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-11-11 21:52:49.7232 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-11 21:52:49.7232 Trace    Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-11-11 21:52:49.7232 Trace     Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-11-11 21:52:49.7232 Trace     Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-11-11 21:52:49.7232 Trace      Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 21:52:49.7232 Trace      Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-11 21:52:49.7232 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-11 21:52:49.7232 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-11-11 21:52:49.7232 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2020-11-11 21:52:49.7379 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2020-11-11 21:52:49.7379 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2020-11-11 21:52:49.7379 Info Validating config: TargetNames=logfile, ConfigItems=14, FilePath=C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1\NLog.config
+2020-11-11 21:52:49.7379 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2020-11-11 21:52:49.7379 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2020-11-11 21:52:49.7379 Trace Initializing Layout Renderer: ${message}
+2020-11-11 21:52:49.7379 Trace Initializing Layout Renderer: ${literal}
+2020-11-11 21:52:49.7379 Trace Initializing Layout Renderer: ${level}
+2020-11-11 21:52:49.7379 Trace Initializing SimpleLayout=Layout Renderer: ${level}
+2020-11-11 21:52:49.7379 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 21:52:49.7379 Trace Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-11-11 21:52:49.7535 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 21:52:49.7535 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-11 21:52:49.7535 Trace Initializing Layout Renderer: ${uppercase}
+2020-11-11 21:52:49.7535 Trace Initializing Layout Renderer: ${literal}
+2020-11-11 21:52:49.7535 Trace Initializing Layout Renderer: ${longdate}
+2020-11-11 21:52:49.7535 Trace Initializing '${longdate} ${level:uppercase=true} ${message}'
+2020-11-11 21:52:49.7535 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 21:52:49.7535 Trace Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2020-11-11 21:52:49.7535 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 21:52:49.7535 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-11-11 21:52:49.7535 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-11 21:52:49.7535 Trace  Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-11-11 21:52:49.7535 Trace   Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-11-11 21:52:49.7535 Trace   Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-11-11 21:52:49.7535 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 21:52:49.7535 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-11 21:52:49.7535 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-11 21:52:49.7535 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-11-11 21:52:49.7535 Trace Initializing Layout Renderer: ${literal}
+2020-11-11 21:52:49.7535 Trace Initializing Layout Renderer: ${shortdate}
+2020-11-11 21:52:49.7535 Trace Initializing Layout Renderer: ${literal}
+2020-11-11 21:52:49.7535 Trace Initializing 'C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt'
+2020-11-11 21:52:49.7535 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 21:52:49.7535 Trace Scanning SimpleLayout ''C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt''
+2020-11-11 21:52:49.7535 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 21:52:49.7535 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-11 21:52:49.7535 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-11-11 21:52:49.7535 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-11 21:52:49.7535 Trace Initializing File Target[logfile]
+2020-11-11 21:52:49.7535 Trace FindReachableObject<NLog.Layouts.Layout>:
+2020-11-11 21:52:49.7535 Trace Scanning FileTarget 'File Target[logfile]'
+2020-11-11 21:52:49.7535 Trace  Scanning Property FileName ''C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt'' NLog.Layouts
+2020-11-11 21:52:49.7535 Trace  Scanning SimpleLayout ''C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt''
+2020-11-11 21:52:49.7535 Trace  Scanning Property Layout ''${longdate} ${level:uppercase=true} ${message}'' NLog.Layouts
+2020-11-11 21:52:49.7535 Trace  Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2020-11-11 21:52:49.7535 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2020-11-11 21:52:49.7693 Trace File Target[logfile] has 2 layouts
+2020-11-11 21:52:49.7693 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender+Factory
+2020-11-11 21:52:49.7693 Info Configuration initialized.
+2020-11-11 21:52:49.7693 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.2.11786. Product version: 4.7.2+024896f64b840a743d3fd89e29c2186681e7795f. GlobalAssemblyCache: False
+2020-11-11 21:52:49.7693 Debug Targets for LoggerService.LoggerManager by level:
+2020-11-11 21:52:49.7693 Debug Trace =>
+2020-11-11 21:52:49.7693 Debug Debug => logfile
+2020-11-11 21:52:49.7693 Debug Info => logfile
+2020-11-11 21:52:49.7849 Debug Warn => logfile
+2020-11-11 21:52:49.7849 Debug Error => logfile
+2020-11-11 21:52:49.7849 Debug Fatal => logfile
+2020-11-11 21:52:49.8040 Debug FileTarget(Name=logfile): Preparing for new file 'C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-11_logfile.txt'
+2020-11-11 21:52:49.8040 Debug Creating file appender: C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-11_logfile.txt
+2020-11-11 21:52:49.8169 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-11_logfile.txt with allowFileSharedWriting=False
+2020-11-11 21:52:55.5194 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-11_logfile.txt with allowFileSharedWriting=False
+2020-11-11 21:55:35.2705 Debug ScanAssembly('NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2020-11-11 21:55:35.3380 Debug Found assembly location directory: 'C:\Users\Test\.nuget\packages\nlog\4.7.2\lib\netstandard2.0' (NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c)
+2020-11-11 21:55:35.3380 Debug Search for auto loading files in location: C:\Users\Test\.nuget\packages\nlog\4.7.2\lib\netstandard2.0
+2020-11-11 21:55:35.3380 Debug Found assembly location directory: 'C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1' (PTWWebsite2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null)
+2020-11-11 21:55:35.3472 Debug Search for auto loading files in location: C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1
+2020-11-11 21:55:35.3472 Debug Auto loading based on AppDomain-BaseDirectory found location: C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1
+2020-11-11 21:55:35.3472 Debug Search for auto loading files in location: C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1
+2020-11-11 21:55:35.3472 Debug Start auto loading, location: C:\Users\Test\.nuget\packages\nlog\4.7.2\lib\netstandard2.0
+2020-11-11 21:55:35.3472 Trace Assembly 'Microsoft.Extensions.Logging, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2020-11-11 21:55:35.3472 Trace Assembly 'Microsoft.Extensions.Logging.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2020-11-11 21:55:35.3472 Debug Auto loading done
+2020-11-11 21:55:35.3472 Info Message Template Auto Format enabled
+2020-11-11 21:55:35.3675 Info Loading assembly: NLog.Extended
+2020-11-11 21:55:35.3675 Trace Try find 'NLog.Extended' in current domain
+2020-11-11 21:55:35.3675 Trace Haven't found' 'NLog.Extended' in current domain
+2020-11-11 21:55:35.3675 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Error loading extensions: NLog.Extended ---> System.IO.FileNotFoundException: Could not load file or assembly 'NLog.Extended, Culture=neutral, PublicKeyToken=null'. The system cannot find the file specified.
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, IntPtr ptrLoadContextBinder)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, IntPtr ptrLoadContextBinder)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, StackCrawlMark& stackMark, IntPtr pPrivHostBinder)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, StackCrawlMark& stackMark)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NLog.Internal.AssemblyHelpers.LoadFromName(String assemblyName)
+   at NLog.Config.LoggingConfigurationParser.ParseExtensionWithAssembly(String assemblyName, String prefix)
+   --- End of inner exception stack trace ---
+2020-11-11 21:55:35.4245 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 21:55:35.4300 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-11-11 21:55:35.4416 Debug Setting 'NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2020-11-11 21:55:35.4416 Trace Wrapping NLog.LayoutRenderers.LevelLayoutRenderer with NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper
+2020-11-11 21:55:35.4416 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 21:55:35.4416 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-11 21:55:35.4416 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 21:55:35.4416 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-11-11 21:55:35.4416 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-11-11 21:55:35.4568 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-11-11 21:55:35.4568 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 21:55:35.4568 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-11 21:55:35.4568 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 21:55:35.4568 Trace Scanning LoggerNameLayoutRenderer 'Layout Renderer: ${logger}'
+2020-11-11 21:55:35.4568 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 21:55:35.4568 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-11-11 21:55:35.4568 Debug Setting 'NLog.Targets.FileTarget.name' to 'logfile'
+2020-11-11 21:55:35.4568 Debug Setting 'NLog.Targets.FileTarget.fileName' to 'C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt'
+2020-11-11 21:55:35.4733 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 21:55:35.4733 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-11-11 21:55:35.4733 Debug Setting 'NLog.Targets.FileTarget.layout' to '${longdate} ${level:uppercase=true} ${message}'
+2020-11-11 21:55:35.4733 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 21:55:35.4733 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-11-11 21:55:35.4733 Debug Setting 'NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2020-11-11 21:55:35.4733 Trace Wrapping NLog.LayoutRenderers.LevelLayoutRenderer with NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper
+2020-11-11 21:55:35.4733 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 21:55:35.4733 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-11 21:55:35.4733 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 21:55:35.4733 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-11-11 21:55:35.4733 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-11-11 21:55:35.4733 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-11-11 21:55:35.4733 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 21:55:35.4733 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-11 21:55:35.4733 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 21:55:35.4733 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-11-11 21:55:35.4733 Info Adding target FileTarget(Name=logfile)
+2020-11-11 21:55:35.4733 Debug Registered target logfile: NLog.Targets.FileTarget
+2020-11-11 21:55:35.4898 Trace ParseRulesElement
+2020-11-11 21:55:35.5228 Debug Watching path 'C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1' filter 'NLog.config' for changes.
+2020-11-11 21:55:35.5228 Debug --- NLog configuration dump ---
+2020-11-11 21:55:35.5228 Debug Targets:
+2020-11-11 21:55:35.5228 Debug File Target[logfile]
+2020-11-11 21:55:35.5228 Debug Rules:
+2020-11-11 21:55:35.5364 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] appendTo: [ logfile ]
+2020-11-11 21:55:35.5364 Debug --- End of NLog configuration dump ---
+2020-11-11 21:55:35.5364 Trace FindReachableObject<System.Object>:
+2020-11-11 21:55:35.5364 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] appendTo: [ logfile ]'
+2020-11-11 21:55:35.5364 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2020-11-11 21:55:35.5364 Trace  Scanning FileTarget 'File Target[logfile]'
+2020-11-11 21:55:35.5364 Trace   Scanning Property FileName ''C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt'' NLog.Layouts
+2020-11-11 21:55:35.5364 Trace   Scanning SimpleLayout ''C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt''
+2020-11-11 21:55:35.5364 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 21:55:35.5364 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-11 21:55:35.5364 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-11-11 21:55:35.5364 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-11 21:55:35.5364 Trace   Scanning Property Layout ''${longdate} ${level:uppercase=true} ${message}'' NLog.Layouts
+2020-11-11 21:55:35.5506 Trace   Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2020-11-11 21:55:35.5506 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 21:55:35.5506 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-11-11 21:55:35.5506 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-11 21:55:35.5506 Trace    Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-11-11 21:55:35.5506 Trace     Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-11-11 21:55:35.5506 Trace     Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-11-11 21:55:35.5506 Trace      Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 21:55:35.5506 Trace      Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-11 21:55:35.5506 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-11 21:55:35.5506 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-11-11 21:55:35.5506 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2020-11-11 21:55:35.5506 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2020-11-11 21:55:35.5506 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2020-11-11 21:55:35.5506 Info Validating config: TargetNames=logfile, ConfigItems=14, FilePath=C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTWWebsite2\bin\Debug\netcoreapp2.1\NLog.config
+2020-11-11 21:55:35.5675 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2020-11-11 21:55:35.5675 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2020-11-11 21:55:35.5675 Trace Initializing Layout Renderer: ${message}
+2020-11-11 21:55:35.5675 Trace Initializing Layout Renderer: ${literal}
+2020-11-11 21:55:35.5675 Trace Initializing Layout Renderer: ${level}
+2020-11-11 21:55:35.5811 Trace Initializing SimpleLayout=Layout Renderer: ${level}
+2020-11-11 21:55:35.5811 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 21:55:35.5811 Trace Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-11-11 21:55:35.5811 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 21:55:35.5811 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-11 21:55:35.5811 Trace Initializing Layout Renderer: ${uppercase}
+2020-11-11 21:55:35.5811 Trace Initializing Layout Renderer: ${literal}
+2020-11-11 21:55:35.5811 Trace Initializing Layout Renderer: ${longdate}
+2020-11-11 21:55:35.5811 Trace Initializing '${longdate} ${level:uppercase=true} ${message}'
+2020-11-11 21:55:35.5811 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 21:55:35.5811 Trace Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2020-11-11 21:55:35.5811 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 21:55:35.5811 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-11-11 21:55:35.5811 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-11 21:55:35.5811 Trace  Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-11-11 21:55:35.5973 Trace   Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-11-11 21:55:35.5973 Trace   Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-11-11 21:55:35.5973 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 21:55:35.5973 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-11-11 21:55:35.5973 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-11 21:55:35.5973 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-11-11 21:55:35.5973 Trace Initializing Layout Renderer: ${literal}
+2020-11-11 21:55:35.5973 Trace Initializing Layout Renderer: ${shortdate}
+2020-11-11 21:55:35.5973 Trace Initializing Layout Renderer: ${literal}
+2020-11-11 21:55:35.5973 Trace Initializing 'C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt'
+2020-11-11 21:55:35.5973 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-11-11 21:55:35.5973 Trace Scanning SimpleLayout ''C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt''
+2020-11-11 21:55:35.5973 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-11-11 21:55:35.5973 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-11 21:55:35.5973 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-11-11 21:55:35.5973 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-11-11 21:55:35.5973 Trace Initializing File Target[logfile]
+2020-11-11 21:55:35.5973 Trace FindReachableObject<NLog.Layouts.Layout>:
+2020-11-11 21:55:35.5973 Trace Scanning FileTarget 'File Target[logfile]'
+2020-11-11 21:55:35.5973 Trace  Scanning Property FileName ''C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt'' NLog.Layouts
+2020-11-11 21:55:35.5973 Trace  Scanning SimpleLayout ''C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/${shortdate}_logfile.txt''
+2020-11-11 21:55:35.5973 Trace  Scanning Property Layout ''${longdate} ${level:uppercase=true} ${message}'' NLog.Layouts
+2020-11-11 21:55:35.5973 Trace  Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2020-11-11 21:55:35.5973 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2020-11-11 21:55:35.5973 Trace File Target[logfile] has 2 layouts
+2020-11-11 21:55:35.6161 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender+Factory
+2020-11-11 21:55:35.6161 Info Configuration initialized.
+2020-11-11 21:55:35.6356 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.2.11786. Product version: 4.7.2+024896f64b840a743d3fd89e29c2186681e7795f. GlobalAssemblyCache: False
+2020-11-11 21:55:35.6356 Debug Targets for LoggerService.LoggerManager by level:
+2020-11-11 21:55:35.6356 Debug Trace =>
+2020-11-11 21:55:35.6356 Debug Debug => logfile
+2020-11-11 21:55:35.6356 Debug Info => logfile
+2020-11-11 21:55:35.6356 Debug Warn => logfile
+2020-11-11 21:55:35.6356 Debug Error => logfile
+2020-11-11 21:55:35.6440 Debug Fatal => logfile
+2020-11-11 21:55:35.6763 Debug FileTarget(Name=logfile): Preparing for new file 'C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-11_logfile.txt'
+2020-11-11 21:55:35.6763 Debug Creating file appender: C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-11_logfile.txt
+2020-11-11 21:55:35.6925 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-11_logfile.txt with allowFileSharedWriting=False
+2020-11-11 21:56:17.3865 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-11_logfile.txt with allowFileSharedWriting=False
+2020-11-11 21:56:53.1076 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-11_logfile.txt with allowFileSharedWriting=False
+2020-11-11 21:58:42.6827 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-11_logfile.txt with allowFileSharedWriting=False
+2020-11-11 22:06:39.9221 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-11_logfile.txt with allowFileSharedWriting=False
+2020-11-11 22:07:13.8651 Trace Opening C:/GitHub/PTWWebsite_New/PTWWebsite_New2020/PTWWebsite2/Logs/2020-11-11_logfile.txt with allowFileSharedWriting=False

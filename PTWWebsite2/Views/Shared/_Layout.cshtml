@@ -52,7 +52,7 @@
     @RenderBody()
 
 
-    @*@Html.Raw(ViewData["Footer"])*@
+    @Html.Raw(ViewData["Footer"])
 
   
 
@@ -83,7 +83,7 @@
             else if (languages[5] == "fr-CA") {
                 $("#Languages").text('French');
             }
-
+            
             $.each(languages, function (i, val) {
 
                 currentpageurl = currentpageurl.replace(val, '');
@@ -97,6 +97,8 @@
             var redirectURL = origin + (Langauge != "en-US" ? '/' + Langauge : '') + currentpageurl;
 
             window.location.assign(redirectURL);
+            
+
         }
 
 

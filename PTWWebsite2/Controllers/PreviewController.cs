@@ -36,5 +36,31 @@ namespace PTWWebsite2.Controllers
 
             return View("PreviewHome", preview);
         }
+
+        [HttpGet]
+        public IActionResult PreviewPage(int ModuleId, string LanguageCode, int SectionId)
+        {
+            Preview preview = new Preview();
+            DataTable dtContent = _masterService.GetModuleContentSectionwise(ModuleId, LanguageCode);
+            string previewSectionHtml = _masterService.GetPreviewSubContent(ModuleId, LanguageCode, SectionId);
+
+            for (int i = 0; i < dtContent.Rows.Count; i++)
+            {
+                if (Convert.ToInt32(dtContent.Rows[i]["ModuleId"]) == ModuleId && Convert.ToInt32(dtContent.Rows[i]["SectionId"]) == SectionId)
+                {
+                    preview.HtmlContent += previewSectionHtml;
+                }
+                else if (Convert.ToInt32(dtContent.Rows[i]["ModuleId"]) == ModuleId)
+                {
+                    preview.HtmlContent += Convert.ToString(dtContent.Rows[i]["Content"]);
+                }
+                
+            }
+            ViewData["Header"] = dtContent.Rows.Cast<DataRow>().Where(x => x["ModuleId"].Equals(1)).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            ViewData["Footer"] = dtContent.Rows.Cast<DataRow>().Where(x => x["ModuleId"].Equals(2)).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+
+            return View("PreviewHome", preview);
+        }
+
     }
 }

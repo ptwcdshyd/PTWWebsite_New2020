@@ -28,7 +28,7 @@ namespace PTW.DataAccess.Models
 
         public List<Languages> LanguageList { get; set; }
         public List<Module> ModuleList { get; set; }
-
+        public List<Sections> SectionsList { get; set; }
         public List<IFormFile> Photos { get; set; }
 
         public List<Images> Images { get; set; }
@@ -64,6 +64,12 @@ namespace PTW.DataAccess.Models
     {
         public int ModuleId { get; set; }
         public string ModuleName { get; set; }
+    }
+
+    public class Sections
+    {
+        public int SectionId { get; set; }
+        public string SectionName { get; set; }
     }
 
     public class NewsAndLabs

@@ -104,6 +104,31 @@
         display: none;
         border: none;
     }
+    .section1 {
+        display: none;
+        border: none;
+    }
+    .section2 {
+        display: none;
+        border: none;
+    }
+    .section3 {
+        display: none;
+        border: none;
+    }
+    .section4 {
+        display: none;
+        border: none;
+    }
+    .section5 {
+        display: none;
+        border: none;
+    }
+    .section6 {
+        display: none;
+        border: none;
+    }
+
 </style>
 <div id="PostBackMsg" style="display:none;">
     <img alt="loader" class="imageShow" src="~/images/loader.gif" />
@@ -126,7 +151,15 @@
                 </div>
             </div>
             <div class="row">
-                <div class="form-group col-md-8 col-sm-8">
+                <div class="form-group col-md-6 col-sm-4">
+                    <label class="col-form-label">Sections</label>
+                    <select id="SectionList" onchange="GetSectionDescription()" class="form-control input-sm dropdown-select my-3">
+                        <option>Please select</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-8 col-sm-8 section1">
                     <label class="col-form-label">Page Background Image (1920x2986 dimensions)</label>
                     <div class="col-sm-8">
                         <div class="custom-file">
@@ -137,22 +170,20 @@
                     </div>
 
                 </div>
-                @*<div class="col-md-2">
-                        <img id="PageBackgroundImageImg" class="imageShow" src="../images/Homepage/HomeImages/PageBackgroundImage.png" height="150px" width="150px" />
-                    </div>*@
-                <div class="col-md-2 imageShow" style="border: 2px solid #999; margin: 20px;">
+
+                <div class="col-md-2 section1" style="border: 2px solid #999; margin: 20px;">
                     <img id="PageBackgroundImageImg" src="../images/Homepage/HomeImages/PageBackgroundImage.png" height="150px" width="150px" />
-                    <a id="PageBackgroundImage_a" class="imageShow" href="../images/Homepage/HomeImages/PageBackgroundImage.png" title="Save Backup Image" download>
-                        <img src="~/images/downloadIcon.png" class="imageShow" width="20px" style="float:right;margin: -149px auto;" height="20px" />
+                    <a id="PageBackgroundImage_a" class="section1" href="../images/Homepage/HomeImages/PageBackgroundImage.png" title="Save Backup Image" download>
+                        <img src="~/images/downloadIcon.png" class="section1" width="20px" style="float:right;margin: -149px auto;" height="20px" />
                     </a>
                 </div>
             </div>
             <div class="row">
-                <label class="col-form-label serviceLabel">Services Icons</label>
+                <label class="col-form-label serviceLabel section1">Services Icons</label>
             </div>
             <div class="row serviceSection">
 
-                <div class="form-group col-md-6 col-sm-6">
+                <div class="form-group col-md-6 col-sm-6 section1">
                     <label class="col-form-label">
                         Customer Experience (150x150 dimensions)
                     </label>
@@ -164,31 +195,16 @@
 
                     </div>
                 </div>
-                @*<div class="col-md-2">
-                        <img id="CustomerExperienceImg" class="imageShow" src="../images/Homepage/HomeImages/CustomerExperience.png" height="150px" width="150px" />
-                    </div>*@
-                <div class="col-md-2 imageShow" style="display:flex; border: 2px solid #999; margin: 20px;">
-                    <img id="CustomerExperienceImg" class="imageShow" src="../images/Homepage/HomeImages/CustomerExperience.png" height="150px" width="150px" />
+
+                <div class="col-md-2 section1" style="display:flex; border: 2px solid #999; margin: 20px;">
+                    <img id="CustomerExperienceImg" class="section1" src="../images/Homepage/HomeImages/CustomerExperience.png" height="150px" width="150px" />
                     <a id="CustomerExperience_a" href="../images/Homepage/HomeImages/CustomerExperience.png" title="Save Backup Image" download>
-                        <img src="~/images/downloadIcon.png" class="imageShow" width="20px" style="float:right; margin: -149px auto;" height="20px" />
+                        <img src="~/images/downloadIcon.png" class="section1" width="20px" style="float:right; margin: -149px auto;" height="20px" />
                     </a>
                 </div>
 
-                @*<div class="form-group col-md-6 col-sm-6">
-                        <label class="col-form-label">
-                            Customer Experience On Mouse Hover (300x300 dimensions)
-                        </label>
-                        <div class="col-md-8 col-sm-6">
-                            <div class="custom-file">
-                                <input id="CustomerExperienceOnMouseHover" type="file" class="form-control custom-file-input">
-                                <label class="custom-file-label">Choose File...300x300 dimensions</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <img id="CustomerExperienceOnMouseHoverImg" class="imageShow" src="../images/Homepage/HomeImages/CustomerExperienceOnMouseHover.png" height="150px" width="150px"  />
-                    </div>*@
-                <div class="form-group  col-md-6 col-sm-6">
+
+                <div class="form-group  col-md-6 col-sm-6 section1">
                     <label class="col-form-label">Quality Assurance (200x200 dimensions)</label>
                     <div class="col-md-8 col-sm-6">
                         <div class="custom-file">
@@ -197,17 +213,15 @@
                         </div>
                     </div>
                 </div>
-                @*<div class="col-md-2">
-                        <img id="QualityAssuranceImg" class="imageShow" src="../images/Homepage/HomeImages/QualityAssurance.png" height="150px" width="150px" />
-                    </div>*@
-                <div class="col-md-2 imageShow" style="display:flex; border: 2px solid #999; margin: 20px;">
-                    <img id="QualityAssuranceImg" class="imageShow" src="../images/Homepage/HomeImages/QualityAssurance.png" height="150px" width="150px" />
-                    <a id="QualityAssurance_a" class="imageShow" href="../images/Homepage/HomeImages/QualityAssurance.png" title="Save Backup Image" download>
-                        <img src="~/images/downloadIcon.png" class="imageShow" width="20px" style="float:right;margin: -149px auto;" height="20px" />
+
+                <div class="col-md-2 section1" style="display:flex; border: 2px solid #999; margin: 20px;">
+                    <img id="QualityAssuranceImg" class="section1" src="../images/Homepage/HomeImages/QualityAssurance.png" height="150px" width="150px" />
+                    <a id="QualityAssurance_a" class="section1" href="../images/Homepage/HomeImages/QualityAssurance.png" title="Save Backup Image" download>
+                        <img src="~/images/downloadIcon.png" class="section1" width="20px" style="float:right;margin: -149px auto;" height="20px" />
                     </a>
                 </div>
 
-                <div class="form-group col-md-6 col-sm-6">
+                <div class="form-group col-md-6 col-sm-6 section1">
                     <label class="col-form-label">Localization (150x150 dimensions)</label>
                     <div class="col-md-8 col-sm-6">
                         <div class="custom-file">
@@ -216,17 +230,15 @@
                         </div>
                     </div>
                 </div>
-                @*<div class="col-md-2">
-                        <img id="LocalizationImg" class="imageShow" src="../images/Homepage/HomeImages/Localization.png" height="150px" width="150px" />
-                    </div>*@
-                <div class="col-md-2 imageShow" style="display:flex; border: 2px solid #999; margin: 20px;">
-                    <img id="LocalizationImg" class="imageShow" src="../images/Homepage/HomeImages/Localization.png" height="150px" width="150px" />
-                    <a id="Localization_a" class="imageShow" href="../images/Homepage/HomeImages/Localization.png" title="Save Backup Image" download>
-                        <img src="~/images/downloadIcon.png" class="imageShow" width="20px" style="float:right;margin: -149px auto;" height="20px" />
+
+                <div class="col-md-2 section1" style="display:flex; border: 2px solid #999; margin: 20px;">
+                    <img id="LocalizationImg" class="section1" src="../images/Homepage/HomeImages/Localization.png" height="150px" width="150px" />
+                    <a id="Localization_a" class="section1" href="../images/Homepage/HomeImages/Localization.png" title="Save Backup Image" download>
+                        <img src="~/images/downloadIcon.png" class="section1" width="20px" style="float:right;margin: -149px auto;" height="20px" />
                     </a>
                 </div>
 
-                <div class="form-group col-md-6 col-sm-6">
+                <div class="form-group col-md-6 col-sm-6 section1">
                     <label class="col-form-label">Audio Production (150x150 dimensions)</label>
                     <div class="col-md-8 col-sm-6">
                         <div class="custom-file">
@@ -235,17 +247,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2 imageShow" style="display:flex; border: 2px solid #999; margin: 20px;">
-                    <img id="AudioProductionImg" class="imageShow" src="../images/Homepage/HomeImages/AudioProduction.png" height="150px" width="150px" />
-                    <a id="AudioProduction_a" class="imageShow" href="../images/Homepage/HomeImages/AudioProduction.png" title="Save Backup Image" download>
-                        <img src="~/images/downloadIcon.png" class="imageShow" width="20px" style="float:right;margin: -149px auto;" height="20px" />
+                <div class="col-md-2 section1" style="display:flex; border: 2px solid #999; margin: 20px;">
+                    <img id="AudioProductionImg" class="section1" src="../images/Homepage/HomeImages/AudioProduction.png" height="150px" width="150px" />
+                    <a id="AudioProduction_a" class="section1" href="../images/Homepage/HomeImages/AudioProduction.png" title="Save Backup Image" download>
+                        <img src="~/images/downloadIcon.png" class="section1" width="20px" style="float:right;margin: -149px auto;" height="20px" />
                     </a>
                 </div>
-                @*<div class="col-md-2">
-                        <img id="AudioProductionImg" class="imageShow" src="../images/Homepage/HomeImages/AudioProduction.png" height="150px" width="150px" />
-                    </div>*@
 
-                <div class="form-group col-md-6 col-sm-6">
+
+                <div class="form-group col-md-6 col-sm-6 section1">
                     <label class="col-form-label">Product Development (150x150 dimensions)</label>
                     <div class="col-md-8 col-sm-6">
                         <div class="custom-file">
@@ -255,17 +265,17 @@
                     </div>
                 </div>
 
-                <div id="ProductDevelopmentImg" class="col-md-2 imageShow" style="display:flex; border: 2px solid #999; margin: 20px;">
-                    <img id="ProductDevelopmentImg" class="imageShow" src="../images/Homepage/HomeImages/ProductDevelopment.png" height="150px" width="150px" />
-                    <a id="ProductDevelopment_a" class="imageShow" href="../images/Homepage/HomeImages/ProductDevelopment.png" title="Save Backup Image" download>
-                        <img src="~/images/downloadIcon.png" class="imageShow" width="20px" style="float:right;margin: -149px auto;" height="20px" />
+                <div id="ProductDevelopmentImg" class="col-md-2 section1" style="display:flex; border: 2px solid #999; margin: 20px;">
+                    <img id="ProductDevelopmentImg" class="section1" src="../images/Homepage/HomeImages/ProductDevelopment.png" height="150px" width="150px" />
+                    <a id="ProductDevelopment_a" class="section1" href="../images/Homepage/HomeImages/ProductDevelopment.png" title="Save Backup Image" download>
+                        <img src="~/images/downloadIcon.png" class="section1" width="20px" style="float:right;margin: -149px auto;" height="20px" />
                     </a>
                 </div>
 
             </div>
 
             <div class="row">
-                <div class="form-group col-md-8 col-sm-8">
+                <div class="form-group col-md-8 col-sm-8 section5">
                     <label class="col-form-label">Location Map (548x753 dimensions)</label>
                     <div class="col-sm-8">
                         <div class="custom-file">
@@ -274,18 +284,18 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2 imageShow" style="display:flex; border: 2px solid #999; margin: 20px;">
-                    <img id="LocationMapImg" class="imageShow" src="../images/Homepage/HomeImages/LocationMap.svg" height="150px" width="150px" />
+                <div class="col-md-2 section5" style="display:flex; border: 2px solid #999; margin: 20px;">
+                    <img id="LocationMapImg" class="section5" src="../images/Homepage/HomeImages/LocationMap.svg" height="150px" width="150px" />
 
-                    <a id="LocationMap_a" class="imageShow" href="../images/Homepage/HomeImages/LocationMap.svg" title="Save Backup Image" download>
-                        <img src="~/images/downloadIcon.png" class="imageShow" width="20px" style="float:right;margin: -149px auto;" height="20px" />
+                    <a id="LocationMap_a" class="section5" href="../images/Homepage/HomeImages/LocationMap.svg" title="Save Backup Image" download>
+                        <img src="~/images/downloadIcon.png" class="section5" width="20px" style="float:right;margin: -149px auto;" height="20px" />
                     </a>
                 </div>
 
             </div>
 
             <div class="row">
-                <div class="form-group col-md-8 col-sm-8">
+                <div class="form-group col-md-8 col-sm-8 section2">
                     <label class="col-form-label">Kick Start (548x753 dimensions)</label>
                     <div class="col-sm-8">
                         <div class="custom-file">
@@ -294,19 +304,16 @@
                         </div>
                     </div>
                 </div>
-                @*<div class="col-md-2">
-                        <img id="KickStartImageImg" class="imageShow" src="../images/Homepage/HomeImages/KickStartImage.png" height="150px" width="150px" />
-                    </div>*@
-                <div class="col-md-2 imageShow" style="display:flex; border: 2px solid #999; margin: 20px;">
-                    <img id="KickStartImageImg" class="imageShow" src="../images/Homepage/HomeImages/KickStartImage.png" height="150px" width="150px" />
+                <div class="col-md-2 section2" style="display:flex; border: 2px solid #999; margin: 20px;">
+                    <img id="KickStartImageImg" class="section2" src="../images/Homepage/HomeImages/KickStartImage.png" height="150px" width="150px" />
 
-                    <a id="KickStartImage_a" class="imageShow" href="../images/Homepage/HomeImages/KickStartImage.png" title="Save Backup Image" download>
-                        <img src="~/images/downloadIcon.png" class="imageShow" width="20px" style="float:right;margin: -149px auto;" height="20px" />
+                    <a id="KickStartImage_a" class="section2" href="../images/Homepage/HomeImages/KickStartImage.png" title="Save Backup Image" download>
+                        <img src="~/images/downloadIcon.png" class="section2" width="20px" style="float:right;margin: -149px auto;" height="20px" />
                     </a>
                 </div>
             </div>
             <div class="row">
-                <div class="form-group col-md-8 col-sm-8">
+                <div class="form-group col-md-8 col-sm-8 section4">
                     <label class="col-form-label">Squad BackgroundImage (490x163 dimensions)</label>
                     <div class="col-sm-8">
                         <div class="custom-file">
@@ -315,18 +322,16 @@
                         </div>
                     </div>
                 </div>
-                @*<div class="col-md-2">
-                        <img id="SquadImg" class="imageShow" src="../images/Homepage/HomeImages/Squad.png" height="150px" width="150px" />
-                    </div>*@
-                <div class="col-md-2 imageShow" style="display:flex; border: 2px solid #999; margin: 20px;">
-                    <img id="SquadImg" class="imageShow" src="../images/Homepage/HomeImages/Squad.png" height="150px" width="150px" />
-                    <a id="Squad_a" class="imageShow" href="../images/Homepage/HomeImages/Squad.png" title="Save Backup Image" download>
-                        <img src="~/images/downloadIcon.png" class="imageShow" width="20px" style="float:right;margin: -149px auto;" height="20px" />
+
+                <div class="col-md-2 section4" style="display:flex; border: 2px solid #999; margin: 20px;">
+                    <img id="SquadImg" class="section4" src="../images/Homepage/HomeImages/Squad.png" height="150px" width="150px" />
+                    <a id="Squad_a" class="section4" href="../images/Homepage/HomeImages/Squad.png" title="Save Backup Image" download>
+                        <img src="~/images/downloadIcon.png" class="section4" width="20px" style="float:right;margin: -149px auto;" height="20px" />
                     </a>
                 </div>
             </div>
             <div class="row">
-                <div class="form-group col-md-8 col-sm-8">
+                <div class="form-group col-md-8 col-sm-8 section3">
                     <label class="col-form-label">Frame (490x163 dimensions)</label>
                     <div class="col-sm-8">
                         <div class="custom-file">
@@ -335,18 +340,15 @@
                         </div>
                     </div>
                 </div>
-                @*<div class="col-md-2">
-                        <img id="FrameImg" class="imageShow" src="../images/Homepage/HomeImages/Frame.svg" height="150px" width="150px" />
-                    </div>*@
-                <div class="col-md-2 imageShow" style="display:flex; border: 2px solid #999; margin: 20px;">
-                    <img id="FrameImg" class="imageShow" src="../images/Homepage/HomeImages/Frame.svg" height="150px" width="150px" />
-                    <a id="Frame_a" class="imageShow" href="../images/Homepage/HomeImages/Frame.svg" title="Save Backup Image" download>
-                        <img src="~/images/downloadIcon.png" class="imageShow" width="20px" style="float:right;margin: -149px auto;" height="20px" />
+                <div class="col-md-2 section3 frameBorder" style="display:flex; border: 2px solid #999; margin: 20px;">
+                    <img id="FrameImg" class="section3" src="../images/Homepage/HomeImages/Frame.svg" height="150px" width="150px" />
+                    <a id="Frame_a" class="section3" href="../images/Homepage/HomeImages/Frame.svg" title="Save Backup Image" download>
+                        <img src="~/images/downloadIcon.png" class="section3" width="20px" style="float:right;margin: -149px auto;" height="20px" />
                     </a>
                 </div>
             </div>
             <div class="row">
-                <div class="form-group col-md-8 col-sm-8">
+                <div class="form-group col-md-8 col-sm-8 section4">
                     <label class="col-form-label">Careers (651x844 dimensions)</label>
                     <div class="col-sm-8">
                         <div class="custom-file">
@@ -355,9 +357,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2 imageShow" style="display:flex; border: 2px solid #999; margin: 20px;">
-                    <img id="CareersImageImg" class="imageShow" src="../images/Homepage/HomeImages/CareersImage.png" height="150px" width="150px" />
-                    <a id="CareersImage_a" class="imageShow" href="../images/Homepage/HomeImages/CareersImage.png" title="Save Backup Image" download>
+                <div class="col-md-2 section4" style="display:flex; border: 2px solid #999; margin: 20px;">
+                    <img id="CareersImageImg" class="section4" src="../images/Homepage/HomeImages/CareersImage.png" height="150px" width="150px" />
+                    <a id="CareersImage_a" class="section4" href="../images/Homepage/HomeImages/CareersImage.png" title="Save Backup Image" download>
                         <img src="~/images/downloadIcon.png" width="20px" style="float:right;margin: -149px auto;" height="20px" />
                     </a>
                 </div>
@@ -374,14 +376,14 @@
 
 
             <div class="row">
-                <div class="form-group  col-md-6 col-sm-6">
+                <div class="form-group  col-md-6 col-sm-6 section6">
                     <label>Meta Title</label>
                     <div class="col-md-8 col-sm-6">
 
                         <input type="text" id="MetaTitle" class="form-control input-sm" placeholder="Meta Title">
                     </div>
                 </div>
-                <div class="form-group  col-md-6 col-sm-6">
+                <div class="form-group  col-md-6 col-sm-6 section6">
                     <label>Meta Description</label>
                     <div class="col-md-8 col-sm-6">
                         <div class="custom-file">
@@ -392,7 +394,7 @@
 
             </div>
             <div class="row">
-                <div class="form-group  col-md-6 col-sm-6">
+                <div class="form-group  col-md-6 col-sm-6 section6">
                     <label>Meta Url</label>
                     <div class="col-md-8 col-sm-6">
 
@@ -437,7 +439,13 @@
     });
 
     $(document).ready(function () {
-        $('.imageShow').css("display", "none");
+        $('.section1').css("display", "none");
+        $('.section2').css("display", "none");
+        $('.section4').css("display", "none");
+        $('.section5').css("display", "none");
+        $('.section6').css("display", "none");
+        $('.serviceSection').css("border", "none");
+        $('.frameBorder').css("border", "none");
         $('.custom-file-input').on("change", function () {
             var fileLabel = $(this).next('.custom-file-label');
             var files = $(this)[0].files;
@@ -536,8 +544,8 @@
 
     function UpdateHome() {
         // if (Validate()) {
-
-        if ($("#Languages").children("option:selected").val() != "Please select") {
+        debugger;
+        if ($("#Languages").children("option:selected").val() != "Please select" && $("#SectionList").children("option:selected").val() != "Please select") {
 
             var fd = new FormData();
             var files1 = $('#CareersImage')[0].files[0];
@@ -569,6 +577,7 @@
             fd.append('MetaDescription', $("#MetaDescription").val());
             fd.append('ModuleId', 3);
             fd.append('LanguageCode', $("#Languages").children("option:selected").val());
+            fd.append('SectionId', parseInt($("#SectionList").children("option:selected").val()));
             console.log(fd);
 
             $.ajax({
@@ -600,9 +609,11 @@
                     $("#PostBackMsg").fadeOut("slow");
                 }
             });
+
+
         }
         else {
-            AlertMessage('growl-danger', 'Validation', "Please select any Language", false, 3000);
+            AlertMessage('growl-danger', 'Validation', "Please select any Language & section", false, 3000);
         }
        // }
     }
@@ -688,6 +699,7 @@
             fd.append('MetaDescription', $("#MetaDescription").val());
             fd.append('ModuleId', 3);
             fd.append('LanguageCode', $("#Languages").children("option:selected").val());
+            fd.append('SectionId', $("#SectionList").children("option:selected").val());
             console.log(fd);
 
             $.ajax({
@@ -700,7 +712,7 @@
                     if (result == 'Logout') {
                         window.location = '../Logout';
                     }
-                    var Url = "../Preview/PagePreview?ModuleId=" + 3 + "&LanguageCode=" + $("#Languages").children("option:selected").val() + "";
+                    var Url = "../Preview/PreviewPage?ModuleId=" + 3 + "&LanguageCode=" + $("#Languages").children("option:selected").val() + "&SectionId=" + $("#SectionList").children("option:selected").val() +"";
 
                     if (result === 1) {
                         window.open(Url, "_blank");
@@ -784,40 +796,43 @@
         if ($("#Languages").children("option:selected").val() != "" && $("#Languages").children("option:selected").val() != undefined && $("#Languages").children("option:selected").val() != "Please select") {
             $("#PostBackMsg").show();
             $('#Description').summernote('code', '');
-            $('.imageShow').css("display", "block");
-            console.log($("#LanguageCode").children("option:selected").val());
-            $.ajax({
-                type: "GET",
-                url: '../Home/GetContent?ModuleId=' + 3 + '&LanguageCode=' + $("#Languages").children("option:selected").val() + '',
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (result) {
+            GetSectionList();
+            //$('.imageShow').css("display", "block");
+            //console.log($("#LanguageCode").children("option:selected").val());
+            //$.ajax({
+            //    type: "GET",
+            //    url: '../Home/GetContent?ModuleId=' + 3 + '&LanguageCode=' + $("#Languages").children("option:selected").val() + '',
+            //    contentType: "application/json; charset=utf-8",
+            //    dataType: "json",
+            //    success: function (result) {
 
-                    console.log(result);
+            //        console.log(result);
 
-                    if (result == 'Logout') {
-                        window.location = '../Logout';
-                    }
-                    console.log(result);
+            //        if (result == 'Logout') {
+            //            window.location = '../Logout';
+            //        }
+            //        console.log(result);
 
-                    if (result != null) {
-                        $('#Description').summernote('code', result.HtmlContent);
-                        $('#MetaDescription').val(result.MetaDescription);
-                        $('#MetaTitle').val(result.MetaTitle);
-                        $('#MetaUrl').val(result.MetaUrl);
-                    }
+            //        if (result != null) {
+            //            $('#Description').summernote('code', result.HtmlContent);
+            //            $('#MetaDescription').val(result.MetaDescription);
+            //            $('#MetaTitle').val(result.MetaTitle);
+            //            $('#MetaUrl').val(result.MetaUrl);
+            //        }
 
 
-                    $("#PostBackMsg").fadeOut("slow");
-                },
+            //        $("#PostBackMsg").fadeOut("slow");
+            //    },
 
-                error: function (err) {
-                    if (err.status === 0) {
-                        window.location = '../Logout';
-                    }
-                    $("#PostBackMsg").fadeOut("slow");
-                }
-            });
+            //    error: function (err) {
+            //        if (err.status === 0) {
+            //            window.location = '../Logout';
+            //        }
+            //        $("#PostBackMsg").fadeOut("slow");
+            //    }
+            //});
+
+           
         }
         else {
             $('.imageShow').css("display", "none");
@@ -862,7 +877,7 @@
 
         $.ajax({
             type: "GET",
-            url: '../DownloadBackup?ModuleId=' + 3 + '&LanguageCode=' + $("#Languages").children("option:selected").val() + '',
+            url: '../DownloadBackup?ModuleId=' + 3 + '&LanguageCode=' + $("#Languages").children("option:selected").val() + '&SectionId=' + $("#SectionList").children("option:selected").val() + '&fileName=' + $("#SectionList").children("option:selected").text() + '',
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (result) {
@@ -893,8 +908,240 @@
         });
 
 
-        
 
+
+    }
+
+    function GetSectionList() {
+
+        $.ajax({
+            type: "GET",
+            url: '../GetSections?ModuleId=' + 3 + '&LanguageCode=' + $("#Languages").children("option:selected").val() + '',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+
+                if (result == 'Logout') {
+                    window.location = '../Logout';
+                }
+
+                if (result != null) {
+                    $('#SectionList').html('');
+                    for (var i = 0; i < result.length; i++) {
+                        if (i==0) {
+                            $('#SectionList').append(new Option("Please select", ""));
+                        }
+                        
+                        $('#SectionList').append(new Option(result[i].SectionName, result[i].SectionId));
+                    }
+
+                }
+
+                $("#PostBackMsg").fadeOut("slow");
+            },
+
+            error: function (err) {
+                if (err.status === 0) {
+                    window.location = '../Logout';
+                }
+                $("#PostBackMsg").fadeOut("slow");
+            }
+        });
+
+
+
+
+    }
+
+    function GetSectionContent() {
+        debugger;
+        if ($("#Languages").children("option:selected").val() != "" && $("#Languages").children("option:selected").val() != "Please select") {
+            if ($("#SectionList").children("option:selected").val() == "1") {
+                $('.section1').css("display", "block");
+                $('.section2').css("display", "none");
+                $('.section3').css("display", "none");
+                $('.section4').css("display", "none");
+                $('.section5').css("display", "none");
+                $('.section6').css("display", "none");
+                $('.serviceSection').css("border", "2px solid");
+                $('.frameBorder').css("border", "none");
+            }
+            else if ($("#SectionList").children("option:selected").val() == "2") {
+                $('.section2').css("display", "block");
+                $('.section1').css("display", "none");
+                $('.section3').css("display", "none");
+                $('.section4').css("display", "none");
+                $('.section5').css("display", "none");
+                $('.section6').css("display", "none");
+                $('.serviceSection').css("border", "none");
+                $('.frameBorder').css("border", "none");
+            }
+            else if ($("#SectionList").children("option:selected").val() == "4") {
+                $('.section1').css("display", "none");
+                $('.section2').css("display", "none");
+                $('.section3').css("display", "none");
+                $('.section5').css("display", "none");
+                $('.section6').css("display", "none");
+                $('.section4').css("display", "block");
+                $('.serviceSection').css("border", "none");
+                $('.frameBorder').css("border", "none");
+            }
+            else if ($("#SectionList").children("option:selected").val() == "5") {
+                $('.section1').css("display", "none");
+                $('.section2').css("display", "none");
+                $('.section3').css("display", "none");
+                $('.section4').css("display", "none");
+                $('.section6').css("display", "none");
+                $('.section5').css("display", "block");
+                $('.serviceSection').css("border", "none");
+                $('.frameBorder').css("border", "none");
+            }
+            else if ($("#SectionList").children("option:selected").val() == "3") {
+                $('.section1').css("display", "none");
+                $('.section2').css("display", "none");
+                $('.section3').css("display", "block");
+                $('.section4').css("display", "none");
+                $('.section6').css("display", "none");
+                $('.section5').css("display", "none");
+                $('.serviceSection').css("border", "none");
+                $('.frameBorder').css("border", "2px solid #999");
+            }
+            //else if ($("#SectionList").children("option:selected").val() == "5") {
+            //    $('.section1').css("display", "none");
+            //    $('.section2').css("display", "none");
+            //    $('.section4').css("display", "none");
+            //    $('.section5').css("display", "none");
+            //    $('.section6').css("display", "block");
+            //    $('.serviceSection').css("border", "none");
+            //}
+            $("#PostBackMsg").show();
+            $('#Description').summernote('code', '');
+            $('.imageShow').css("display", "block");
+            console.log($("#LanguageCode").children("option:selected").val());
+            $.ajax({
+                type: "GET",
+                url: '../GetSubContent?ModuleId=' + 3 + '&LanguageCode=' + $("#Languages").children("option:selected").val() + '&SectionId=' + $("#SectionList").children("option:selected").val() + '',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+
+                    console.log(result);
+
+                    if (result == 'Logout') {
+                        window.location = '../Logout';
+                    }
+                    console.log(result);
+
+                    if (result != null) {
+                        $('#Description').summernote('code', result);
+                        //$('#MetaDescription').val(result.MetaDescription);
+                        //$('#MetaTitle').val(result.MetaTitle);
+                        //$('#MetaUrl').val(result.MetaUrl);
+                    }
+
+
+                    $("#PostBackMsg").fadeOut("slow");
+                },
+
+                error: function (err) {
+                    if (err.status === 0) {
+                        window.location = '../Logout';
+                    }
+                    $("#PostBackMsg").fadeOut("slow");
+                }
+            });
+        }
+        else {
+            $('.imageShow').css("display", "none");
+            $('#Description').summernote('code', '');
+            $('#MetaDescription').val('');
+            $('#MetaTitle').val('');
+            $('#MetaUrl').val('');
+        }
+    }
+
+    function GetSEODetails() {
+        debugger;
+        if ($("#Languages").children("option:selected").val() != "" && $("#Languages").children("option:selected").val() != "Please select") {
+
+            if ($("#SectionList").children("option:selected").val() != "" && $("#SectionList").children("option:selected").val() != "Please select") {
+                if ($("#SectionList").children("option:selected").val() == "6") {
+                    $('.section1').css("display", "none");
+                    $('.section2').css("display", "none");
+                    $('.section3').css("display", "none");
+                    $('.section4').css("display", "none");
+                    $('.section5').css("display", "none");
+                    $('.section6').css("display", "block");
+                    $('.serviceSection').css("border", "none");
+                    $('.frameBorder').css("border", "none");
+                }
+            $("#PostBackMsg").show();
+            $('#Description').summernote('code', '');
+            $('.imageShow').css("display", "block");
+                console.log($("#Languages").children("option:selected").val());
+            $.ajax({
+                type: "GET",
+                url: '../GetSEODetails?ModuleId=' + 3 + '&LanguageCode=' + $("#Languages").children("option:selected").val() + '&SectionId=' + $("#SectionList").children("option:selected").val() + '',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+
+                    console.log(result);
+
+                    if (result == 'Logout') {
+                        window.location = '../Logout';
+                    }
+                    console.log(result);
+
+                    if (result != null) {
+                        $('#Description').summernote('code', result);
+                        //$('#MetaDescription').val(result.MetaDescription);
+                        //$('#MetaTitle').val(result.MetaTitle);
+                        //$('#MetaUrl').val(result.MetaUrl);
+                    }
+
+
+                    $("#PostBackMsg").fadeOut("slow");
+                },
+
+                error: function (err) {
+                    if (err.status === 0) {
+                        window.location = '../Logout';
+                    }
+                    $("#PostBackMsg").fadeOut("slow");
+                }
+            });
+
+            }
+        }
+        else {
+            $('.imageShow').css("display", "none");
+            $('#Description').summernote('code', '');
+            $('#MetaDescription').val('');
+            $('#MetaTitle').val('');
+            $('#MetaUrl').val('');
+        }
+    }
+
+    function GetSectionDescription() {
+        debugger;
+        if ($("#Languages").children("option:selected").val() != "" && $("#Languages").children("option:selected").val() != "Please select") {
+            if ($("#SectionList").children("option:selected").val() != "" && $("#SectionList").children("option:selected").val() != "Please select") {
+                if ($("#SectionList").children("option:selected").val()!="6") {
+                    GetSectionContent();
+                }
+                else {
+                    GetSEODetails();
+                }
+            }
+            else {
+                AlertMessage('growl-danger', 'Validation', "Please select any section", false, 3000);
+
+            }
+        }
+        else {
+            AlertMessage('growl-danger', 'Validation', "Please select any Language", false, 3000);
+        }
     }
 
 </script>

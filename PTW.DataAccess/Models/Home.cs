@@ -10,6 +10,7 @@ namespace PTW.DataAccess.Models
     {
         public int LanguageId { get; set; }
         public int ModuleId { get; set; }
+        public int SectionId { get; set; }
         public string LanguageCode { get; set; }
         public string Metatage { get; set; }
         public string MetaTitle { get; set; }
@@ -24,6 +25,7 @@ namespace PTW.DataAccess.Models
         public string Filename { get; set; }
 
         public List<Languages> Languages { get; set; }
+        public List<Sections> SectionList { get; set; }
         public IFormFile CareersImage { get; set; }
         public IFormFile KickStartImage { get; set; }
         public IFormFile ProductDevelopmentOnMouseHover { get; set; }

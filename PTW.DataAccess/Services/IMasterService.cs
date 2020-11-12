@@ -27,5 +27,16 @@ namespace PTW.DataAccess.Services
         List<HomeLabs> RetrieveHomeLabs(string language);
         int UpdatePreviewPageByLanguageModuleId(int moduleId, string languageCode, string HtmlContent, string MetaDescription, string MetaTitle, string MetUrl);
         Preview ShowPreivew(int ModuleId, string LanguageCode);
+
+        List<Sections> GetSubModuleList(int ModuleId, string Languagecode);
+        string GetSubModuleContent(int ModuleId, string Languagecode, int SectionId);
+        MasterPage GetSEODetails(int ModuleId, string Languagecode, int SectionId);
+
+        int UpdateSectionContent(int SectionId, int moduleId, string languageCode, string contentText, string Metatage, string Title, string MetUrl);
+
+        DataTable GetModuleContentSectionwise(int ModuleId, string Languagecode);
+
+        int UpdatePreviewContentByLanguageModuleId(int SectionId, int moduleId, string languageCode, string HtmlContent, string MetaDescription, string MetaTitle, string MetUrl);
+        string GetPreviewSubContent(int ModuleId, string Languagecode, int SectionId);
     }
 }

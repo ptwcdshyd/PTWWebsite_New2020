@@ -1,0 +1,54 @@
+2020-11-10 19:19:22.9406 ERROR Method: GetSubModuleContent, ErrorMessage: file: System.ArgumentException: Parameter 'Languagecode' not found in the collection.
+   at PTW.DBAccess.DBDataAccess.ExecuteTable(CustomCommand command) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DBAccess\DBDataAccess.cs:line 139
+   at PTW.DataAccess.ServicesImpl.MasterService.GetSubModuleContent(Int32 ModuleId, String Languagecode, Int32 SectionId) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DataAccess\ServicesImpl\MasterService.cs:line 608 
+2020-11-10 19:20:12.7114 ERROR Method: GetSubModuleContent, ErrorMessage: file: System.ArgumentException: Parameter 'Languagecode' not found in the collection.
+   at PTW.DBAccess.DBDataAccess.ExecuteTable(CustomCommand command) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DBAccess\DBDataAccess.cs:line 139
+   at PTW.DataAccess.ServicesImpl.MasterService.GetSubModuleContent(Int32 ModuleId, String Languagecode, Int32 SectionId) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DataAccess\ServicesImpl\MasterService.cs:line 608 
+2020-11-10 20:27:08.7704 ERROR Method: GetSubModuleContent, ErrorMessage: file: System.ArgumentException: Parameter 'Languagecode' not found in the collection.
+   at PTW.DBAccess.DBDataAccess.ExecuteTable(CustomCommand command) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DBAccess\DBDataAccess.cs:line 139
+   at PTW.DataAccess.ServicesImpl.MasterService.GetSubModuleContent(Int32 ModuleId, String Languagecode, Int32 SectionId) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DataAccess\ServicesImpl\MasterService.cs:line 608 
+2020-11-10 20:27:10.2507 ERROR Method: GetSubModuleContent, ErrorMessage: file: System.ArgumentException: Parameter 'Languagecode' not found in the collection.
+   at PTW.DBAccess.DBDataAccess.ExecuteTable(CustomCommand command) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DBAccess\DBDataAccess.cs:line 139
+   at PTW.DataAccess.ServicesImpl.MasterService.GetSubModuleContent(Int32 ModuleId, String Languagecode, Int32 SectionId) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DataAccess\ServicesImpl\MasterService.cs:line 608 
+2020-11-10 20:27:17.1115 ERROR Method: GetSubModuleContent, ErrorMessage: file: System.ArgumentException: Parameter 'Languagecode' not found in the collection.
+   at PTW.DBAccess.DBDataAccess.ExecuteTable(CustomCommand command) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DBAccess\DBDataAccess.cs:line 139
+   at PTW.DataAccess.ServicesImpl.MasterService.GetSubModuleContent(Int32 ModuleId, String Languagecode, Int32 SectionId) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DataAccess\ServicesImpl\MasterService.cs:line 608 
+2020-11-10 21:00:25.6669 ERROR Method: GetSubModuleContent, ErrorMessage: file: System.ArgumentException: Parameter 'Languagecode' not found in the collection.
+   at PTW.DBAccess.DBDataAccess.ExecuteTable(CustomCommand command) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DBAccess\DBDataAccess.cs:line 139
+   at PTW.DataAccess.ServicesImpl.MasterService.GetSubModuleContent(Int32 ModuleId, String Languagecode, Int32 SectionId) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DataAccess\ServicesImpl\MasterService.cs:line 608 
+2020-11-10 21:00:33.0714 ERROR Method: GetSubModuleContent, ErrorMessage: file: System.ArgumentException: Parameter 'Languagecode' not found in the collection.
+   at PTW.DBAccess.DBDataAccess.ExecuteTable(CustomCommand command) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DBAccess\DBDataAccess.cs:line 139
+   at PTW.DataAccess.ServicesImpl.MasterService.GetSubModuleContent(Int32 ModuleId, String Languagecode, Int32 SectionId) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DataAccess\ServicesImpl\MasterService.cs:line 608 
+2020-11-10 21:00:43.7836 ERROR Method: GetSubModuleContent, ErrorMessage: file: System.ArgumentException: Parameter 'Languagecode' not found in the collection.
+   at PTW.DBAccess.DBDataAccess.ExecuteTable(CustomCommand command) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DBAccess\DBDataAccess.cs:line 139
+   at PTW.DataAccess.ServicesImpl.MasterService.GetSubModuleContent(Int32 ModuleId, String Languagecode, Int32 SectionId) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DataAccess\ServicesImpl\MasterService.cs:line 608 
+2020-11-10 21:01:49.7146 ERROR Method: GetSubModuleContent, ErrorMessage: file: System.ArgumentException: Parameter 'Languagecode' not found in the collection.
+   at PTW.DBAccess.DBDataAccess.ExecuteTable(CustomCommand command) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DBAccess\DBDataAccess.cs:line 139
+   at PTW.DataAccess.ServicesImpl.MasterService.GetSubModuleContent(Int32 ModuleId, String Languagecode, Int32 SectionId) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DataAccess\ServicesImpl\MasterService.cs:line 608 
+2020-11-10 21:02:08.3463 ERROR Method: GetSubModuleContent, ErrorMessage: file: System.ArgumentException: Parameter 'Languagecode' not found in the collection.
+   at PTW.DBAccess.DBDataAccess.ExecuteTable(CustomCommand command) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DBAccess\DBDataAccess.cs:line 139
+   at PTW.DataAccess.ServicesImpl.MasterService.GetSubModuleContent(Int32 ModuleId, String Languagecode, Int32 SectionId) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DataAccess\ServicesImpl\MasterService.cs:line 608 
+2020-11-10 21:02:10.9566 ERROR Method: GetSubModuleContent, ErrorMessage: file: System.ArgumentException: Parameter 'Languagecode' not found in the collection.
+   at PTW.DBAccess.DBDataAccess.ExecuteTable(CustomCommand command) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DBAccess\DBDataAccess.cs:line 139
+   at PTW.DataAccess.ServicesImpl.MasterService.GetSubModuleContent(Int32 ModuleId, String Languagecode, Int32 SectionId) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DataAccess\ServicesImpl\MasterService.cs:line 608 
+2020-11-10 21:02:45.9639 ERROR Method: GetSubModuleContent, ErrorMessage: file: System.ArgumentException: Parameter 'Languagecode' not found in the collection.
+   at PTW.DBAccess.DBDataAccess.ExecuteTable(CustomCommand command) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DBAccess\DBDataAccess.cs:line 139
+   at PTW.DataAccess.ServicesImpl.MasterService.GetSubModuleContent(Int32 ModuleId, String Languagecode, Int32 SectionId) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DataAccess\ServicesImpl\MasterService.cs:line 608 
+2020-11-10 21:04:21.3638 ERROR Method: GetSubModuleContent, ErrorMessage: file: System.ArgumentException: Parameter 'Languagecode' not found in the collection.
+   at PTW.DBAccess.DBDataAccess.ExecuteTable(CustomCommand command) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DBAccess\DBDataAccess.cs:line 139
+   at PTW.DataAccess.ServicesImpl.MasterService.GetSubModuleContent(Int32 ModuleId, String Languagecode, Int32 SectionId) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DataAccess\ServicesImpl\MasterService.cs:line 608 
+2020-11-10 21:07:20.2376 ERROR Method: GetSubModuleContent, ErrorMessage: file: System.ArgumentException: Parameter 'Languagecode' not found in the collection.
+   at PTW.DBAccess.DBDataAccess.ExecuteTable(CustomCommand command) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DBAccess\DBDataAccess.cs:line 139
+   at PTW.DataAccess.ServicesImpl.MasterService.GetSubModuleContent(Int32 ModuleId, String Languagecode, Int32 SectionId) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DataAccess\ServicesImpl\MasterService.cs:line 608 
+2020-11-10 21:08:14.1848 ERROR Method: GetSubModuleContent, ErrorMessage: file: System.ArgumentException: Parameter 'Languagecode' not found in the collection.
+   at PTW.DBAccess.DBDataAccess.ExecuteTable(CustomCommand command) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DBAccess\DBDataAccess.cs:line 139
+   at PTW.DataAccess.ServicesImpl.MasterService.GetSubModuleContent(Int32 ModuleId, String Languagecode, Int32 SectionId) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DataAccess\ServicesImpl\MasterService.cs:line 608 
+2020-11-10 21:10:57.0220 ERROR Method: GetSubModuleContent, ErrorMessage: file: System.ArgumentException: Parameter 'Languagecode' not found in the collection.
+   at PTW.DBAccess.DBDataAccess.ExecuteTable(CustomCommand command) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DBAccess\DBDataAccess.cs:line 139
+   at PTW.DataAccess.ServicesImpl.MasterService.GetSubModuleContent(Int32 ModuleId, String Languagecode, Int32 SectionId) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DataAccess\ServicesImpl\MasterService.cs:line 608 
+2020-11-10 21:11:57.1617 ERROR Method: GetSubModuleContent, ErrorMessage: file: System.ArgumentException: Parameter 'Languagecode' not found in the collection.
+   at PTW.DBAccess.DBDataAccess.ExecuteTable(CustomCommand command) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DBAccess\DBDataAccess.cs:line 139
+   at PTW.DataAccess.ServicesImpl.MasterService.GetSubModuleContent(Int32 ModuleId, String Languagecode, Int32 SectionId) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DataAccess\ServicesImpl\MasterService.cs:line 608 
+2020-11-10 21:12:27.7442 ERROR Method: GetSubModuleContent, ErrorMessage: file: System.ArgumentException: Parameter 'Languagecode' not found in the collection.
+   at PTW.DBAccess.DBDataAccess.ExecuteTable(CustomCommand command) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DBAccess\DBDataAccess.cs:line 139
+   at PTW.DataAccess.ServicesImpl.MasterService.GetSubModuleContent(Int32 ModuleId, String Languagecode, Int32 SectionId) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DataAccess\ServicesImpl\MasterService.cs:line 608 
