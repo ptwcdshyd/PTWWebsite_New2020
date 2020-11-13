@@ -38,10 +38,16 @@ namespace PTWWebsite2.Controllers
 
             MasterPage masterPage = new MasterPage();
             masterPage.Culture = culture;
-            DataTable dtContent = _masterService.GetModuleContent("About", (culture == null ? "en-US" : culture));
-            masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("About")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
-            ViewData["Header"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Header")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
-            ViewData["Footer"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Footer")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            //DataTable dtContent = _masterService.GetModuleContent("About", (culture == null ? "en-US" : culture));
+            DataTable dtContent = _masterService.GetModuleContentSectionwise(13, (culture == null ? "en-US" : culture == "undefined" ? "en-US" : culture));
+            List<string> sectionlist = dtContent.Rows.Cast<DataRow>().Where(x => x["ModuleId"].Equals(13)).Select(y => Convert.ToString(y["Content"])).ToList();
+            for (int i = 0; i < sectionlist.Count - 1; i++)
+            {
+                masterPage.HtmlContent += sectionlist[i];
+            }
+            //masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleId"]).Equals(13)).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            ViewData["Header"] = dtContent.Rows.Cast<DataRow>().Where(x => x["ModuleId"].Equals(1)).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            ViewData["Footer"] = dtContent.Rows.Cast<DataRow>().Where(x => x["ModuleId"].Equals(2)).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
             return View(masterPage);
         }
         [HttpGet]
@@ -194,9 +200,10 @@ namespace PTWWebsite2.Controllers
                 {
                     FilePath(About.AboutPageHeader, path + "AboutPageHeader.png", deletePath + "AboutPageHeader.png", backUpPath + Guid.NewGuid()+ "AboutPageHeader.png");
                 }
-                
 
-                int resultCode = _masterService.UpdateHomePageByLanguageId(About.ModuleId, About.LanguageCode, About.Description, About.MetaDescription, About.MetaTitle, About.MetaUrl);
+
+                //int resultCode = _masterService.UpdateHomePageByLanguageId(About.ModuleId, About.LanguageCode, About.Description, About.MetaDescription, About.MetaTitle, About.MetaUrl);
+                int resultCode = _masterService.UpdateSectionContent(About.SectionId, About.ModuleId, About.LanguageCode, About.Description, About.MetaDescription, About.MetaTitle, About.MetaUrl);
 
                 return Json(resultCode, new JsonSerializerSettings());
             }
@@ -235,7 +242,7 @@ namespace PTWWebsite2.Controllers
             {
                 About.Description = About.Description.Replace(savedPath + "AboutPageHeader.png", previewPath + "AboutPageHeader.png");
             }
-            int resultCode = _masterService.UpdatePreviewPageByLanguageModuleId(About.ModuleId, About.LanguageCode, About.Description, About.MetaDescription, About.MetaTitle, About.MetaUrl);
+            int resultCode = _masterService.UpdatePreviewContentByLanguageModuleId(About.SectionId,About.ModuleId, About.LanguageCode, About.Description, About.MetaDescription, About.MetaTitle, About.MetaUrl);
 
             return Json(resultCode, new JsonSerializerSettings());
         }

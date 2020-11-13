@@ -97,107 +97,117 @@
 <div class="row">
     <a href="../AllLocations"><button> <i class="fas fa-plus"></i> All Locations </button></a>
 </div>
-    <div class="contentpanel report" style="border: 1px solid #00b8ff85;width: 1180px;margin-top: 45px;margin-left:50px;">
+<div class="contentpanel report" style="border: 1px solid #00b8ff85;width: 1180px;margin-top: 45px;margin-left:50px;">
+    <div class="row distribute-container">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="row">
+                <div class="form-group col-md-6 col-sm-4">
+                    <select id="Languages" asp-for="LanguageCode" asp-items="@(new SelectList(Model.LanguageList,"LanguageCode","Language"))" class="form-control input-sm dropdown-select my-3" onchange="GetContent()">
+                        <option>Please select</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-6 col-sm-4">
+                    <label class="col-form-label">Sections</label>
+                    <select id="SectionList" onchange="GetSectionDescription()" class="form-control input-sm dropdown-select my-3">
+                        <option>Please select</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-4 col-sm-4">
+                    @Html.CheckBox("ActiveStatus", true)
+                    <label>Active</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-8 col-sm-6 section1">
+                    <label class="col-form-label">Contact header Image</label>
+                    <div class="col-md-8 col-sm-6 section1">
+                        <div class="custom-file section1">
+                            <input id="ContactHeader" type="file" class="form-control custom-file-input">
+                            <label class="custom-file-label">Choose File...1012x348 dimensions</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 imageShow frameBorder section1" style="display:flex!important; border: 2px solid #999; margin: 20px;">
+                    <img id="ContactHeaderImg" class="section1" src="../images/Contact/ContactImages/ContactHeader.png" height="100px" width="150px" />
+                    <a id="ContactHeader_a" class="section1" href="../images/Contact/ContactImages/ContactHeader.png" title="Save Backup Image" download>
+                        <img src="~/images/downloadIcon.png" class="section1" width="20px" style="float:right;padding:2px;" height="20px" />
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-8 col-sm-6 section2">
+                    <label class="col-form-label">LocationMap Image</label>
+                    <div class="col-md-8 col-sm-6 section2">
+                        <div class="custom-file section2">
+                            <input id="LocationMap" type="file" class="form-control custom-file-input">
+                            <label class="custom-file-label">Choose File...1012x348 dimensions</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 section2">
+                    <img id="LocationMapImg" src="../images/Contact/ContactImages/LocationMap.svg" height="200px" width="200px" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                    <label>Description<span class="mandatory">*</span></label>
+                    <textarea id="Description" class="form-control input-sm">  </textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group  col-md-6 col-sm-6 section6">
+                    <label>Meta Title</label>
+                    <div class="col-md-8 col-sm-6">
+
+                        <input type="text" id="MetaTitle" class="form-control input-sm" placeholder="Meta Title">
+                    </div>
+                </div>
+                <div class="form-group  col-md-6 col-sm-6 section6">
+                    <label>Meta Description</label>
+                    <div class="col-md-8 col-sm-6">
+                        <div class="custom-file">
+                            <textarea id="MetaDescription" class="form-control input-sm"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="form-group  col-md-6 col-sm-6 section6">
+                    <label>Meta Url</label>
+                    <div class="col-md-8 col-sm-6">
+
+                        <input type="text" id="MetaUrl" class="form-control input-sm" placeholder="Meta Url">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
         <div class="row distribute-container">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-                <div class="row">
-                    <div class="form-group col-md-6 col-sm-4">
-                        <select id="Languages" asp-for="LanguageCode" asp-items="@(new SelectList(Model.LanguageList,"LanguageCode","Language"))" class="form-control input-sm dropdown-select my-3" onchange="GetContent()">
-                            <option>Please select</option>
-                        </select>
-                    </div>
-                </div>
-
-
-
-                <div class="row">
-                    <div class="form-group col-md-4 col-sm-4">
-                        @Html.CheckBox("ActiveStatus", true)
-                        <label>Active</label>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="form-group col-md-8 col-sm-6">
-                        <label class="col-form-label">Contact header Image</label>
-                        <div class="col-md-8 col-sm-6">
-                            <div class="custom-file">
-                                <input id="ContactHeader" type="file" class="form-control custom-file-input">
-                                <label class="custom-file-label">Choose File...1012x348 dimensions</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <img id="ContactHeaderImg" src="../images/Contact/ContactImages/ContactHeader.png" height="200px" width="200px" />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-md-8 col-sm-6">
-                        <label class="col-form-label">LocationMap Image</label>
-                        <div class="col-md-8 col-sm-6">
-                            <div class="custom-file">
-                                <input id="LocationMap" type="file" class="form-control custom-file-input">
-                                <label class="custom-file-label">Choose File...1012x348 dimensions</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <img id="LocationMapImg" src="../images/Contact/ContactImages/LocationMap.svg" height="200px" width="200px" />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-lg-12 col-md-12 col-sm-12">
-                        <label>Description<span class="mandatory">*</span></label>
-                        <textarea id="Description" class="form-control input-sm">  </textarea>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group  col-md-6 col-sm-6">
-                        <label>Meta Title</label>
-                        <div class="col-md-8 col-sm-6">
-
-                            <input type="text" id="MetaTitle" class="form-control input-sm" placeholder="Meta Title">
-                        </div>
-                    </div>
-                    <div class="form-group  col-md-6 col-sm-6">
-                        <label>Meta Description</label>
-                        <div class="col-md-8 col-sm-6">
-                            <div class="custom-file">
-                                <textarea id="MetaDescription" class="form-control input-sm"></textarea>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="row">
-                    <div class="form-group  col-md-6 col-sm-6">
-                        <label>Meta Url</label>
-                        <div class="col-md-8 col-sm-6">
-
-                            <input type="text" id="MetaUrl" class="form-control input-sm" placeholder="Meta Url">
-                        </div>
-                    </div>
-                </div>
-
+            <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
+                <button onclick="Update();" class="btn btn-success">Update Contact</button>
             </div>
-
-            <div class="row distribute-container">
-                <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
-                    <button onclick="Update();" class="btn btn-success">Update Contact</button>
-                </div>
-                <div class="col-md-2" style="margin-top:40px;margin-left:150px;margin-bottom:15px;display:flex;">
-                    <button onclick="Preview();" class="btn btn-success">Preview</button>
-                </div>
-                <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
-                    <button onclick="BackUpCode();" class="btn btn-success">Take BackUp</button>
-                </div>
-                <a id="donwloadFile" style="display:none;" href="" download></a>
+            <div class="col-md-2" style="margin-top:40px;margin-left:150px;margin-bottom:15px;display:flex;">
+                <button onclick="Preview();" class="btn btn-success">Preview</button>
             </div>
+            <div class="col-md-2" style="margin-top:40px;margin-left:98px;margin-bottom:15px;display:flex">
+                <button onclick="BackUpCode();" class="btn btn-success">Take BackUp</button>
+            </div>
+            <a id="donwloadFile" style="display:none;" href="" download></a>
         </div>
     </div>
+</div>
 
 
-    <script>
+<script>
     $('#Description').summernote({
         placeholder: 'News or Events here',
         tabsize: 2,
@@ -213,6 +223,10 @@
     });
 
     $(document).ready(function () {
+        $('.section1').css("display", "none");
+        $('.section2').css("display", "none");
+        $('.section6').css("display", "none");
+        $('.frameBorder').css("border", "none");
         $('.custom-file-input').on("change", function () {
 
             var fileLabel = $(this).next('.custom-file-label');
@@ -298,8 +312,8 @@
             fd.append('MetaUrl', $("#MetaUrl").val());
             fd.append('ModuleId', 14);
             fd.append('LanguageCode', $("#Languages").children("option:selected").val());
-
-            console.log(fd);
+            fd.append('SectionId', $("#SectionList").children("option:selected").val());
+            //console.log(fd);
 
             $.ajax({
                     type: "POST",
@@ -368,40 +382,41 @@
         if ($("#Languages").children("option:selected").val() != "" && $("#Languages").children("option:selected").val() != undefined && $("#Languages").children("option:selected").val() != "Please select") {
             $("#PostBackMsg").show();
             $('#Description').summernote('code', '');
-            $('.imageShow').css("display", "block");
-            console.log($("#LanguageCode").children("option:selected").val());
-            $.ajax({
-                type: "GET",
-                url: '../Home/GetContent?ModuleId=' + 14 + '&LanguageCode=' + $("#Languages").children("option:selected").val() + '',
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (result) {
+            GetSectionList();
+            //$('.imageShow').css("display", "block");
+            //console.log($("#LanguageCode").children("option:selected").val());
+            //$.ajax({
+            //    type: "GET",
+            //    url: '../Home/GetContent?ModuleId=' + 14 + '&LanguageCode=' + $("#Languages").children("option:selected").val() + '',
+            //    contentType: "application/json; charset=utf-8",
+            //    dataType: "json",
+            //    success: function (result) {
 
-                    console.log(result);
+            //        console.log(result);
 
-                    if (result == 'Logout') {
-                        window.location = '../Logout';
-                    }
-                    console.log(result);
+            //        if (result == 'Logout') {
+            //            window.location = '../Logout';
+            //        }
+            //        console.log(result);
 
-                    if (result != null) {
-                        $('#Description').summernote('code', result.HtmlContent);
-                        $('#MetaDescription').val(result.MetaDescription);
-                        $('#MetaTitle').val(result.MetaTitle);
-                        $('#MetaUrl').val(result.MetaUrl);
-                    }
+            //        if (result != null) {
+            //            $('#Description').summernote('code', result.HtmlContent);
+            //            $('#MetaDescription').val(result.MetaDescription);
+            //            $('#MetaTitle').val(result.MetaTitle);
+            //            $('#MetaUrl').val(result.MetaUrl);
+            //        }
 
 
-                    $("#PostBackMsg").fadeOut("slow");
-                },
+            //        $("#PostBackMsg").fadeOut("slow");
+            //    },
 
-                error: function (err) {
-                    if (err.status === 0) {
-                        window.location = '../Logout';
-                    }
-                    $("#PostBackMsg").fadeOut("slow");
-                }
-            });
+            //    error: function (err) {
+            //        if (err.status === 0) {
+            //            window.location = '../Logout';
+            //        }
+            //        $("#PostBackMsg").fadeOut("slow");
+            //    }
+            //});
         }
         else {
             $('.imageShow').css("display", "none");
@@ -427,12 +442,13 @@
             fd.append('MetaUrl', "");
             fd.append('ModuleId', 14);
             fd.append('LanguageCode', $("#Languages").children("option:selected").val());
+            fd.append('SectionId', $("#SectionList").children("option:selected").val());
 
-            console.log(fd);
+            //console.log(fd);
 
             $.ajax({
                 type: "POST",
-                url: '@Url.Action("UpdateContactImagesToPreview", "Contact")',
+                url: '@Url.Action("PreviewContact", "Contact")',
                 data: fd,
                 contentType: false,
                 processData: false,
@@ -442,7 +458,7 @@
                         window.location = '../Logout';
                     }
 
-                    var Url = "../Preview/PagePreview?ModuleId=" + 14 + "&LanguageCode=" + $("#Languages").children("option:selected").val() + "";
+                    var Url = "../Preview/PreviewPage?ModuleId=" + 14 + "&LanguageCode=" + $("#Languages").children("option:selected").val() + "&SectionId=" + $("#SectionList").children("option:selected").val() +"";
 
                     if (result === 1) {
                         window.open(Url, "_blank");
@@ -489,11 +505,11 @@
 
         $.ajax({
             type: "GET",
-            url: '../ServicesBackup?ModuleId=' + 14 + '&LanguageCode=' + $("#Languages").children("option:selected").val() + '&ServiceName=Contact',
+            url: '../ServicesBackup?ModuleId=' + 14 + '&LanguageCode=' + $("#Languages").children("option:selected").val() + '&ServiceName=Contact&SectionId=' + $("#SectionList").children("option:selected").val() + '&fileName=' + $("#SectionList").children("option:selected").text() + '',
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (result) {
-                debugger;
+                
                 console.log(result);
 
                 if (result == 'Logout') {
@@ -519,7 +535,246 @@
             }
         });
     }
-    </script>
+
+        function GetSectionList() {
+
+            $.ajax({
+                type: "GET",
+                url: '../GetSections?ModuleId=' + 14 + '&LanguageCode=' + $("#Languages").children("option:selected").val() + '',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+
+                    if (result == 'Logout') {
+                        window.location = '../Logout';
+                    }
+
+                    if (result != null) {
+                        $('#SectionList').html('');
+                        for (var i = 0; i < result.length; i++) {
+                            if (i == 0) {
+                                $('#SectionList').append(new Option("Please select", ""));
+                            }
+
+                            $('#SectionList').append(new Option(result[i].SectionName, result[i].SectionId));
+                        }
+
+                    }
+
+                    $("#PostBackMsg").fadeOut("slow");
+                },
+
+                error: function (err) {
+                    if (err.status === 0) {
+                        window.location = '../Logout';
+                    }
+                    $("#PostBackMsg").fadeOut("slow");
+                }
+            });
+
+
+
+
+        }
+
+        function GetSectionContent() {
+            
+            if ($("#Languages").children("option:selected").val() != "" && $("#Languages").children("option:selected").val() != "Please select") {
+                if ($("#SectionList").children("option:selected").val() == "1") {
+                    $('.section1').css("display", "block");
+                    $('.section2').css("display", "none");
+                    $('.section6').css("display", "none");
+                    $('.frameBorder').css("border", "2px solid");
+                }
+                else if ($("#SectionList").children("option:selected").val() == "2") {
+                    $('.section2').css("display", "block");
+                    $('.section1').css("display", "none");
+                    $('.section6').css("display", "none");
+                    $('.frameBorder').css("border", "none");
+                }
+                else if ($("#SectionList").children("option:selected").val() == "4") {
+                    $('.section1').css("display", "none");
+                    $('.section2').css("display", "none");
+                    $('.section6').css("display", "none");
+                    $('.frameBorder').css("border", "none");
+                }
+                //else if ($("#SectionList").children("option:selected").val() == "5") {
+                //    $('.section1').css("display", "none");
+                //    $('.section2').css("display", "none");
+                //    $('.section6').css("display", "none");
+                //}
+                else if ($("#SectionList").children("option:selected").val() == "3") {
+                    $('.section1').css("display", "none");
+                    $('.section2').css("display", "none");
+                    $('.section6').css("display", "none");
+                    $('.frameBorder').css("border", "none");
+                }
+
+                $("#PostBackMsg").show();
+                $('#Description').summernote('code', '');
+                $('.imageShow').css("display", "block");
+                console.log($("#LanguageCode").children("option:selected").val());
+                $.ajax({
+                    type: "GET",
+                    url: '../GetSubContent?ModuleId=' + 14 + '&LanguageCode=' + $("#Languages").children("option:selected").val() + '&SectionId=' + $("#SectionList").children("option:selected").val() + '',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (result) {
+
+                        console.log(result);
+
+                        if (result == 'Logout') {
+                            window.location = '../Logout';
+                        }
+                        console.log(result);
+
+                        if (result != null) {
+                            $('#Description').summernote('code', result);
+                            //$('#MetaDescription').val(result.MetaDescription);
+                            //$('#MetaTitle').val(result.MetaTitle);
+                            //$('#MetaUrl').val(result.MetaUrl);
+                        }
+
+
+                        $("#PostBackMsg").fadeOut("slow");
+                    },
+
+                    error: function (err) {
+                        if (err.status === 0) {
+                            window.location = '../Logout';
+                        }
+                        $("#PostBackMsg").fadeOut("slow");
+                    }
+                });
+            }
+            else {
+                $('.imageShow').css("display", "none");
+                $('#Description').summernote('code', '');
+                $('#MetaDescription').val('');
+                $('#MetaTitle').val('');
+                $('#MetaUrl').val('');
+            }
+        }
+
+    function GetSEODetails() {
+        
+            if ($("#Languages").children("option:selected").val() != "" && $("#Languages").children("option:selected").val() != "Please select") {
+
+                if ($("#SectionList").children("option:selected").val() != "" && $("#SectionList").children("option:selected").val() != "Please select") {
+                    if ($("#SectionList").children("option:selected").val() == "5") {
+                        $('.section1').css("display", "none");
+                        $('.section2').css("display", "none");
+                        $('.section6').css("display", "block");
+                        $('.frameBorder').css("border", "none");
+                    }
+                    $("#PostBackMsg").show();
+                    $('#Description').summernote('code', '');
+                    $('.imageShow').css("display", "block");
+                    console.log($("#Languages").children("option:selected").val());
+                    $.ajax({
+                        type: "GET",
+                        url: '../GetSEODetails?ModuleId=' + 14 + '&LanguageCode=' + $("#Languages").children("option:selected").val() + '&SectionId=' + $("#SectionList").children("option:selected").val() + '',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (result) {
+
+                            console.log(result);
+
+                            if (result == 'Logout') {
+                                window.location = '../Logout';
+                            }
+                            console.log(result);
+
+                            if (result != null) {
+                                $('#Description').summernote('code', result);
+                                //$('#MetaDescription').val(result.MetaDescription);
+                                //$('#MetaTitle').val(result.MetaTitle);
+                                //$('#MetaUrl').val(result.MetaUrl);
+                            }
+
+
+                            $("#PostBackMsg").fadeOut("slow");
+                        },
+
+                        error: function (err) {
+                            if (err.status === 0) {
+                                window.location = '../Logout';
+                            }
+                            $("#PostBackMsg").fadeOut("slow");
+                        }
+                    });
+
+                }
+            }
+            else {
+                $('.imageShow').css("display", "none");
+                $('#Description').summernote('code', '');
+                $('#MetaDescription').val('');
+                $('#MetaTitle').val('');
+                $('#MetaUrl').val('');
+            }
+        }
+
+        function GetSectionDescription() {
+            
+            if ($("#Languages").children("option:selected").val() != "" && $("#Languages").children("option:selected").val() != "Please select") {
+                if ($("#SectionList").children("option:selected").val() != "" && $("#SectionList").children("option:selected").val() != "Please select") {
+                    if ($("#SectionList").children("option:selected").val() != "5") {
+                        GetSectionContent();
+                    }
+                    else {
+                        GetSEODetails();
+                    }
+                }
+                else {
+                    AlertMessage('growl-danger', 'Validation', "Please select any section", false, 3000);
+
+                }
+            }
+            else {
+                AlertMessage('growl-danger', 'Validation', "Please select any Language", false, 3000);
+            }
+    }
+
+    function BackUpCode() {
+
+        $.ajax({
+            type: "GET",
+            url: '../DownloadBackup?ModuleId=' + 14 + '&LanguageCode=' + $("#Languages").children("option:selected").val() + '&SectionId=' + $("#SectionList").children("option:selected").val() + '&fileName=' + $("#SectionList").children("option:selected").text() + '',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                
+                console.log(result);
+
+                if (result == 'Logout') {
+                    window.location = '../Logout';
+                }
+                console.log(result);
+
+                if (result != null) {
+                    $('#donwloadFile').attr('href', '../images/Homepage/Backup/' + result);
+
+                    $('#donwloadFile')[0].click();
+                }
+
+
+                $("#PostBackMsg").fadeOut("slow");
+            },
+
+            error: function (err) {
+                if (err.status === 0) {
+                    window.location = '../Logout';
+                }
+                $("#PostBackMsg").fadeOut("slow");
+            }
+        });
+
+
+
+
+    }
+</script>
 
 
 

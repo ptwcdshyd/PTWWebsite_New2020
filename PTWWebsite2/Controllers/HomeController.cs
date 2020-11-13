@@ -820,7 +820,8 @@ namespace PTWWebsite2.Controllers
                     FilePath(Labs.LabHeader, path + "LabHeader.png", deletePath + "LabHeader.png", BackupPath);
                 }
 
-                int resultCode = _masterService.UpdateHomePageByLanguageId(Labs.ModuleId, Labs.LanguageCode, Labs.Description, Labs.MetaDescription, Labs.MetaTitle, Labs.MetaUrl);
+                //int resultCode = _masterService.UpdateHomePageByLanguageId(Labs.ModuleId, Labs.LanguageCode, Labs.Description, Labs.MetaDescription, Labs.MetaTitle, Labs.MetaUrl);
+                int resultCode = _masterService.UpdateSectionContent(Labs.SectionId, Labs.ModuleId, Labs.LanguageCode, Labs.Description, Labs.MetaDescription, Labs.MetaTitle, Labs.MetaUrl);
 
                 return Json(resultCode, new JsonSerializerSettings());
             }

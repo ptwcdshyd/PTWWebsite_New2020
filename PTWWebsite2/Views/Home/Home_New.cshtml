@@ -544,7 +544,7 @@
 
     function UpdateHome() {
         // if (Validate()) {
-        debugger;
+        
         if ($("#Languages").children("option:selected").val() != "Please select" && $("#SectionList").children("option:selected").val() != "Please select") {
 
             var fd = new FormData();
@@ -881,7 +881,7 @@
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (result) {
-                debugger;
+                
                 console.log(result);
 
                 if (result == 'Logout') {
@@ -906,8 +906,6 @@
                 $("#PostBackMsg").fadeOut("slow");
             }
         });
-
-
 
 
     }
@@ -948,13 +946,10 @@
             }
         });
 
-
-
-
     }
 
     function GetSectionContent() {
-        debugger;
+        
         if ($("#Languages").children("option:selected").val() != "" && $("#Languages").children("option:selected").val() != "Please select") {
             if ($("#SectionList").children("option:selected").val() == "1") {
                 $('.section1').css("display", "block");
@@ -1061,7 +1056,7 @@
     }
 
     function GetSEODetails() {
-        debugger;
+        
         if ($("#Languages").children("option:selected").val() != "" && $("#Languages").children("option:selected").val() != "Please select") {
 
             if ($("#SectionList").children("option:selected").val() != "" && $("#SectionList").children("option:selected").val() != "Please select") {
@@ -1124,7 +1119,7 @@
     }
 
     function GetSectionDescription() {
-        debugger;
+        
         if ($("#Languages").children("option:selected").val() != "" && $("#Languages").children("option:selected").val() != "Please select") {
             if ($("#SectionList").children("option:selected").val() != "" && $("#SectionList").children("option:selected").val() != "Please select") {
                 if ($("#SectionList").children("option:selected").val()!="6") {

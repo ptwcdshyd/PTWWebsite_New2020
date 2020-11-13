@@ -36,10 +36,19 @@ namespace PTWWebsite2.Controllers
         public IActionResult Contact(string culture)
         {
             MasterPage masterPage = new MasterPage();
-            DataTable dtContent = _masterService.GetModuleContent("Contact", (culture == null ? "en-US" : culture));
-            masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Contact")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
-            ViewData["Header"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Header")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
-            ViewData["Footer"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Footer")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            //DataTable dtContent = _masterService.GetModuleContent("Contact", (culture == null ? "en-US" : culture));
+            //masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Contact")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            //ViewData["Header"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Header")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            //ViewData["Footer"] = dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Footer")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+
+            DataTable dtContent = _masterService.GetModuleContentSectionwise(14, (culture == null ? "en-US" : culture == "undefined" ? "en-US" : culture));
+            List<string> sectionlist = dtContent.Rows.Cast<DataRow>().Where(x => x["ModuleId"].Equals(14)).Select(y => Convert.ToString(y["Content"])).ToList();
+            for (int i = 0; i < sectionlist.Count - 1; i++)
+            {
+                masterPage.HtmlContent += sectionlist[i];
+            }
+
+
 
             //List<LocationDetails> list = _masterService.RetrieveLocations((culture == null ? "en-US" : culture));
             //string asiaContent = "";
@@ -142,7 +151,8 @@ namespace PTWWebsite2.Controllers
                     FilePath(Contact.Frame, path + "Frame.svg", deletePath + "Frame.svg");
                 }
 
-                int resultCode = _masterService.UpdateHomePageByLanguageId(Contact.ModuleId, Contact.LanguageCode, Contact.Description, Contact.MetaDescription, Contact.MetaTitle, Contact.MetaUrl);
+                //int resultCode = _masterService.UpdateHomePageByLanguageId(Contact.ModuleId, Contact.LanguageCode, Contact.Description, Contact.MetaDescription, Contact.MetaTitle, Contact.MetaUrl);
+                int resultCode = _masterService.UpdateSectionContent(Contact.SectionId, Contact.ModuleId, Contact.LanguageCode, Contact.Description, Contact.MetaDescription, Contact.MetaTitle, Contact.MetaUrl);
 
                 return Json(resultCode, new JsonSerializerSettings());
             }
@@ -171,7 +181,8 @@ namespace PTWWebsite2.Controllers
             {
                 FilePath(Contact.Frame, path + "Frame.svg", "");
             }
-            int resultCode = _masterService.UpdatePreviewPageByLanguageModuleId(Contact.ModuleId, Contact.LanguageCode, Contact.Description, Contact.MetaDescription, Contact.MetaTitle, Contact.MetaUrl);
+            //int resultCode = _masterService.UpdatePreviewPageByLanguageModuleId(Contact.ModuleId, Contact.LanguageCode, Contact.Description, Contact.MetaDescription, Contact.MetaTitle, Contact.MetaUrl);
+            int resultCode = _masterService.UpdatePreviewContentByLanguageModuleId(Contact.SectionId, Contact.ModuleId, Contact.LanguageCode, Contact.Description, Contact.MetaDescription, Contact.MetaTitle, Contact.MetaUrl);
 
             return Json(resultCode, new JsonSerializerSettings());
         }
@@ -199,7 +210,8 @@ namespace PTWWebsite2.Controllers
                 Contact.Description = Contact.Description.Replace(savedPath + "Frame.svg", previewPath + "Frame.svg");
             }
 
-            int resultCode = _masterService.UpdatePreviewPageByLanguageModuleId(Contact.ModuleId, Contact.LanguageCode, Contact.Description, Contact.MetaDescription, Contact.MetaTitle, Contact.MetaUrl);
+            //int resultCode = _masterService.UpdatePreviewPageByLanguageModuleId(Contact.ModuleId, Contact.LanguageCode, Contact.Description, Contact.MetaDescription, Contact.MetaTitle, Contact.MetaUrl);
+            int resultCode = _masterService.UpdatePreviewContentByLanguageModuleId(Contact.SectionId, Contact.ModuleId, Contact.LanguageCode, Contact.Description, Contact.MetaDescription, Contact.MetaTitle, Contact.MetaUrl);
 
             return Json(resultCode, new JsonSerializerSettings());
         }

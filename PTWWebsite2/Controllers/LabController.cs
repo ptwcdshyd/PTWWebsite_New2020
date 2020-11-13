@@ -43,12 +43,19 @@ namespace PTWWebsite2.Controllers
             MasterPage masterPage = new MasterPage();
             LabsEvents LabsEvents = new LabsEvents();
             LabsEvents.allLabs = _LabEventService.GetAllLabsDetails(culture);
-            DataTable dtContent = _masterService.GetModuleContent("Labs", (culture == null ? "en-US" : culture));
-
+            //  DataTable dtContent = _masterService.GetModuleContent("Labs", (culture == null ? "en-US" : culture));
+            DataTable dtContent = _masterService.GetModuleContentSectionwise(19, (culture == null ? "en-US" : culture == "undefined" ? "en-US" : culture));
+            List<string> sectionlist = dtContent.Rows.Cast<DataRow>().Where(x => x["ModuleId"].Equals(19)).Select(y => Convert.ToString(y["Content"])).ToList();
+            for (int i = 0; i < sectionlist.Count-1; i++)
+            {
+                LabsEvents.HtmlContent += sectionlist[i];
+            }
+            ViewData["Header"] = dtContent.Rows.Cast<DataRow>().Where(x => x["ModuleId"].Equals(1)).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+            ViewData["Footer"] = dtContent.Rows.Cast<DataRow>().Where(x => x["ModuleId"].Equals(2)).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
             LabsEvents.labInsights = _LabEventService.GetAllLatestInsights(culture);
             LabsEvents.Labs = _LabEventService.GetSlider();
-            LabsEvents.HtmlContent= dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Labs")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
-            GetServicecontent(culture);
+            //LabsEvents.HtmlContent= dtContent.Rows.Cast<DataRow>().Where(x => Convert.ToString(x["ModuleName"]).Equals("Labs")).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
+           // GetServicecontent(culture);
             return View(LabsEvents);
 
 
@@ -94,7 +101,6 @@ namespace PTWWebsite2.Controllers
                 {
                     LabsEvents.LabArticledetails = _LabEventService.GetLabsArticleDetails(LabShortDescription);
                     LabsEvents.FutureLabArticles = _LabEventService.GetFutureLabArticles(LabShortDescription);
-
                 }
             }
             else
@@ -659,7 +665,8 @@ namespace PTWWebsite2.Controllers
                     Labs.Description = Labs.Description.Replace(path + "LabHeader.png", previewPath + "LabHeader.png");
                 }
 
-                int resultCode = _masterService.UpdatePreviewPageByLanguageModuleId(Labs.ModuleId, Labs.LanguageCode, Labs.Description, Labs.MetaDescription, Labs.MetaTitle, Labs.MetaUrl);
+                // int resultCode = _masterService.UpdatePreviewPageByLanguageModuleId(Labs.ModuleId, Labs.LanguageCode, Labs.Description, Labs.MetaDescription, Labs.MetaTitle, Labs.MetaUrl);
+                int resultCode = _masterService.UpdatePreviewContentByLanguageModuleId(Labs.SectionId, Labs.ModuleId, Labs.LanguageCode, Labs.Description, Labs.MetaDescription, Labs.MetaTitle, Labs.MetaUrl);
 
                 return Json(resultCode, new JsonSerializerSettings());
             }

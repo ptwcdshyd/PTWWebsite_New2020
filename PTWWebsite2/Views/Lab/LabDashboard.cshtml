@@ -109,6 +109,49 @@
                 </div>
             </div>
             <div class="row">
+                <div class="form-group col-md-6 col-sm-4">
+                    <label class="col-form-label">Sections</label>
+                    <select id="SectionList" onchange="GetSectionDescription()" class="form-control input-sm dropdown-select my-3">
+                        <option>Please select</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-8 col-sm-6">
+                    <label class="col-form-label section1">Lab Header Image</label>
+                    <div class="col-md-8 col-sm-6 section1">
+                        <div class="custom-file section1">
+                            <input id="LabHeader" type="file" class="form-control custom-file-input">
+                            <label class="custom-file-label">Choose File...1012x348 dimensions</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 frameBorder section1" style="display:flex!important; border: 2px solid #999; margin: 20px;">
+                    <img id="LabHeaderImg" class="section1" src="../images/Lab/LabImages/LabHeader.png" height="150px" width="150px" />
+                    <a id="LabHeader_a" class="section1" href="../images/Lab/LabImages/LabHeader.png" title="Save Backup Image" download>
+                        <img src="~/images/downloadIcon.png" class="section1" width="20px" style="float:right;padding:2px;" height="20px" />
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-8 col-sm-6 section3">
+                    <label class="col-form-label">Labs Image</label>
+                    <div class="col-md-8 col-sm-6 section3">
+                        <div class="custom-file section3">
+                            <input id="LabImage" type="file" class="form-control custom-file-input">
+                            <label class="custom-file-label">Choose File...1012x348 dimensions</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 frameBorder2 section3" style="display:flex!important; border: 2px solid #999; margin: 20px;">
+                    <img id="LabImageImg" class="section3" src="../images/Lab/LabImages/LabImage.png" height="150px" width="150px" />
+                    <a id="LabImageHeader_a" class="section3" href="../images/Lab/LabImages/LabImage.png" title="Save Backup Image" download>
+                        <img src="~/images/downloadIcon.png" class="section3" width="20px" style="float:right;padding:2px;" height="20px" />
+                    </a>
+                </div>
+            </div>
+
+            <div class="row">
                 <div class="form-group col-lg-12 col-md-12 col-sm-12">
                     <label>Description<span class="mandatory">*</span></label>
                     <textarea id="Description" class="form-control input-sm">  </textarea>
@@ -123,43 +166,16 @@
                 </div>
             </div>
 
+
             <div class="row">
-                <div class="form-group col-md-8 col-sm-6">
-                    <label class="col-form-label">Labs Image</label>
-                    <div class="col-md-8 col-sm-6">
-                        <div class="custom-file">
-                            <input id="LabImage" type="file" class="form-control custom-file-input">
-                            <label class="custom-file-label">Choose File...1012x348 dimensions</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <img id="LabImageImg" class="imageShow" src="../images/Lab/LabImages/LabImage.png" height="150px" width="150px" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-md-8 col-sm-6">
-                    <label class="col-form-label">Lab Header Image</label>
-                    <div class="col-md-8 col-sm-6">
-                        <div class="custom-file">
-                            <input id="LabHeader" type="file" class="form-control custom-file-input">
-                            <label class="custom-file-label">Choose File...1012x348 dimensions</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <img id="LabHeaderImg" class="imageShow" src="../images/Lab/LabImages/LabHeader.png" height="150px" width="150px" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group  col-md-6 col-sm-6">
+                <div class="form-group  col-md-6 col-sm-6 section6">
                     <label>Meta Title</label>
                     <div class="col-md-8 col-sm-6">
 
                         <input type="text" id="MetaTitle" class="form-control input-sm" placeholder="Meta Title">
                     </div>
                 </div>
-                <div class="form-group  col-md-6 col-sm-6">
+                <div class="form-group  col-md-6 col-sm-6 section6">
                     <label>Meta Description</label>
                     <div class="col-md-8 col-sm-6">
                         <div class="custom-file">
@@ -170,7 +186,7 @@
 
             </div>
             <div class="row">
-                <div class="form-group  col-md-6 col-sm-6">
+                <div class="form-group  col-md-6 col-sm-6 section6">
                     <label>Meta Url</label>
                     <div class="col-md-8 col-sm-6">
 
@@ -216,6 +232,12 @@
     });
 
     $(document).ready(function () {
+        $('.section1').css("display", "none");
+        $('.section3').css("display", "none");
+        $('.section6').css("display", "none");
+        $('.frameBorder').css("border", "none");
+        $('.frameBorder2').css("border", "none");
+
         $('.custom-file-input').on("change", function () {
             
             var fileLabel = $(this).next('.custom-file-label');
@@ -301,6 +323,7 @@
             fd.append('MetaUrl', $("#MetaUrl").val());
             fd.append('ModuleId', 19);
             fd.append('LanguageCode', $("#Languages").children("option:selected").val());
+            fd.append('SectionId', parseInt($("#SectionList").children("option:selected").val()));
 
             console.log(fd);
 
@@ -371,40 +394,41 @@
         if ($("#Languages").children("option:selected").val() != "" && $("#Languages").children("option:selected").val() != undefined && $("#Languages").children("option:selected").val() != "Please select") {
             $("#PostBackMsg").show();
             $('#Description').summernote('code', '');
-            $('.imageShow').css("display", "block");
-            console.log($("#LanguageCode").children("option:selected").val());
-            $.ajax({
-                type: "GET",
-                url: '../Home/GetContent?ModuleId=' + 19 + '&LanguageCode=' + $("#Languages").children("option:selected").val() + '',
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (result) {
+            GetSectionList();
+            //$('.imageShow').css("display", "block");
+            //console.log($("#LanguageCode").children("option:selected").val());
+            //$.ajax({
+            //    type: "GET",
+            //    url: '../Home/GetContent?ModuleId=' + 19 + '&LanguageCode=' + $("#Languages").children("option:selected").val() + '',
+            //    contentType: "application/json; charset=utf-8",
+            //    dataType: "json",
+            //    success: function (result) {
 
-                    console.log(result);
+            //        console.log(result);
 
-                    if (result == 'Logout') {
-                        window.location = '../Logout';
-                    }
-                    console.log(result);
+            //        if (result == 'Logout') {
+            //            window.location = '../Logout';
+            //        }
+            //        console.log(result);
 
-                    if (result != null) {
-                        $('#Description').summernote('code', result.HtmlContent);
-                        $('#MetaDescription').val(result.MetaDescription);
-                        $('#MetaTitle').val(result.MetaTitle);
-                        $('#MetaUrl').val(result.MetaUrl);
-                    }
+            //        if (result != null) {
+            //            $('#Description').summernote('code', result.HtmlContent);
+            //            $('#MetaDescription').val(result.MetaDescription);
+            //            $('#MetaTitle').val(result.MetaTitle);
+            //            $('#MetaUrl').val(result.MetaUrl);
+            //        }
 
 
-                    $("#PostBackMsg").fadeOut("slow");
-                },
+            //        $("#PostBackMsg").fadeOut("slow");
+            //    },
 
-                error: function (err) {
-                    if (err.status === 0) {
-                        window.location = '../Logout';
-                    }
-                    $("#PostBackMsg").fadeOut("slow");
-                }
-            });
+            //    error: function (err) {
+            //        if (err.status === 0) {
+            //            window.location = '../Logout';
+            //        }
+            //        $("#PostBackMsg").fadeOut("slow");
+            //    }
+            //});
         }
         else {
             $('.imageShow').css("display", "none");
@@ -430,8 +454,9 @@
             fd.append('MetaUrl', "");
             fd.append('ModuleId', 19);
             fd.append('LanguageCode', $("#Languages").children("option:selected").val());
+            fd.append('SectionId', parseInt($("#SectionList").children("option:selected").val()));
 
-            console.log(fd);
+            //console.log(fd);
 
             $.ajax({
                 type: "POST",
@@ -445,7 +470,7 @@
                         window.location = '../Logout';
                     }
 
-                    var Url = "../Preview/PagePreview?ModuleId=" + 19 + "&LanguageCode=" + $("#Languages").children("option:selected").val() + "";
+                    var Url = "../Preview/PreviewPage?ModuleId=" + 19 + "&LanguageCode=" + $("#Languages").children("option:selected").val() + "&SectionId=" + $("#SectionList").children("option:selected").val() +"";
 
                     if (result === 1) {
                         window.open(Url, "_blank");
@@ -493,7 +518,7 @@
 
         $.ajax({
             type: "GET",
-            url: '../ServicesBackup?ModuleId=' + 19 + '&LanguageCode=' + $("#Languages").children("option:selected").val() + '&ServiceName=Lab',
+            url: '../ServicesBackup?ModuleId=' + 19 + '&LanguageCode=' + $("#Languages").children("option:selected").val() + '&ServiceName=Lab&SectionId=' + $("#SectionList").children("option:selected").val() + '&fileName=' + $("#SectionList").children("option:selected").text() + '',
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (result) {
@@ -522,6 +547,211 @@
                 $("#PostBackMsg").fadeOut("slow");
             }
         });
+    }
+
+    function GetSectionList() {
+
+        $.ajax({
+            type: "GET",
+            url: '../GetSections?ModuleId=' + 19 + '&LanguageCode=' + $("#Languages").children("option:selected").val() + '',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+
+                if (result == 'Logout') {
+                    window.location = '../Logout';
+                }
+
+                if (result != null) {
+                    $('#SectionList').html('');
+                    for (var i = 0; i < result.length; i++) {
+                        if (i == 0) {
+                            $('#SectionList').append(new Option("Please select", ""));
+                        }
+
+                        $('#SectionList').append(new Option(result[i].SectionName, result[i].SectionId));
+                    }
+
+                }
+
+                $("#PostBackMsg").fadeOut("slow");
+            },
+
+            error: function (err) {
+                if (err.status === 0) {
+                    window.location = '../Logout';
+                }
+                $("#PostBackMsg").fadeOut("slow");
+            }
+        });
+
+
+
+
+    }
+
+    function GetSectionContent() {
+
+        if ($("#Languages").children("option:selected").val() != "" && $("#Languages").children("option:selected").val() != "Please select") {
+            if ($("#SectionList").children("option:selected").val() == "1") {
+                $('.section1').css("display", "block");
+                $('.section3').css("display", "none");
+                $('.section6').css("display", "none");
+                $('.frameBorder').css("border", "2px solid");
+                $('.frameBorder2').css("border", "none");
+            }
+            else if ($("#SectionList").children("option:selected").val() == "2") {
+                $('.section3').css("display", "block");
+                $('.section1').css("display", "none");
+                $('.section6').css("display", "none");
+                $('.frameBorder').css("border", "none");
+                $('.frameBorder2').css("border", "none");
+            }
+            else if ($("#SectionList").children("option:selected").val() == "4") {
+                $('.section1').css("display", "none");
+                $('.section3').css("display", "none");
+                $('.section6').css("display", "none");
+                $('.frameBorder').css("border", "none");
+                $('.frameBorder2').css("border", "none");
+            }
+            //else if ($("#SectionList").children("option:selected").val() == "5") {
+            //    $('.section1').css("display", "none");
+            //    $('.section3').css("display", "none");
+            //    $('.section6').css("display", "none");
+            //}
+            else if ($("#SectionList").children("option:selected").val() == "3") {
+                $('.section1').css("display", "none");
+                $('.section3').css("display", "block");
+                $('.section6').css("display", "none");
+                $('.frameBorder').css("border", "none");
+                $('.frameBorder2').css("border", "2px solid");
+            }
+
+            $("#PostBackMsg").show();
+            $('#Description').summernote('code', '');
+            $('.imageShow').css("display", "block");
+            console.log($("#LanguageCode").children("option:selected").val());
+            $.ajax({
+                type: "GET",
+                url: '../GetSubContent?ModuleId=' + 19 + '&LanguageCode=' + $("#Languages").children("option:selected").val() + '&SectionId=' + $("#SectionList").children("option:selected").val() + '',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+
+                    console.log(result);
+
+                    if (result == 'Logout') {
+                        window.location = '../Logout';
+                    }
+                    console.log(result);
+
+                    if (result != null) {
+                        $('#Description').summernote('code', result);
+                        //$('#MetaDescription').val(result.MetaDescription);
+                        //$('#MetaTitle').val(result.MetaTitle);
+                        //$('#MetaUrl').val(result.MetaUrl);
+                    }
+
+
+                    $("#PostBackMsg").fadeOut("slow");
+                },
+
+                error: function (err) {
+                    if (err.status === 0) {
+                        window.location = '../Logout';
+                    }
+                    $("#PostBackMsg").fadeOut("slow");
+                }
+            });
+        }
+        else {
+            $('.imageShow').css("display", "none");
+            $('#Description').summernote('code', '');
+            $('#MetaDescription').val('');
+            $('#MetaTitle').val('');
+            $('#MetaUrl').val('');
+        }
+    }
+
+    function GetSEODetails() {
+
+        if ($("#Languages").children("option:selected").val() != "" && $("#Languages").children("option:selected").val() != "Please select") {
+
+            if ($("#SectionList").children("option:selected").val() != "" && $("#SectionList").children("option:selected").val() != "Please select") {
+                if ($("#SectionList").children("option:selected").val() == "5") {
+                    $('.section1').css("display", "none");
+                    $('.section3').css("display", "none");
+                    $('.section6').css("display", "block");
+                    $('.frameBorder').css("border", "none");
+                    $('.frameBorder2').css("border", "none");
+                }
+                $("#PostBackMsg").show();
+                $('#Description').summernote('code', '');
+                //$('.imageShow').css("display", "block");
+                //console.log($("#Languages").children("option:selected").val());
+                $.ajax({
+                    type: "GET",
+                    url: '../GetSEODetails?ModuleId=' + 19 + '&LanguageCode=' + $("#Languages").children("option:selected").val() + '&SectionId=' + $("#SectionList").children("option:selected").val() + '',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (result) {
+
+                        //console.log(result);
+
+                        if (result == 'Logout') {
+                            window.location = '../Logout';
+                        }
+                        //console.log(result);
+
+                        if (result != null) {
+                            $('#Description').summernote('code', result);
+                            //$('#MetaDescription').val(result.MetaDescription);
+                            //$('#MetaTitle').val(result.MetaTitle);
+                            //$('#MetaUrl').val(result.MetaUrl);
+                        }
+
+
+                        $("#PostBackMsg").fadeOut("slow");
+                    },
+
+                    error: function (err) {
+                        if (err.status === 0) {
+                            window.location = '../Logout';
+                        }
+                        $("#PostBackMsg").fadeOut("slow");
+                    }
+                });
+
+            }
+        }
+        else {
+            $('.imageShow').css("display", "none");
+            $('#Description').summernote('code', '');
+            $('#MetaDescription').val('');
+            $('#MetaTitle').val('');
+            $('#MetaUrl').val('');
+        }
+    }
+
+    function GetSectionDescription() {
+
+        if ($("#Languages").children("option:selected").val() != "" && $("#Languages").children("option:selected").val() != "Please select") {
+            if ($("#SectionList").children("option:selected").val() != "" && $("#SectionList").children("option:selected").val() != "Please select") {
+                if ($("#SectionList").children("option:selected").val() != "5") {
+                    GetSectionContent();
+                }
+                else {
+                    GetSEODetails();
+                }
+            }
+            else {
+                AlertMessage('growl-danger', 'Validation', "Please select any section", false, 3000);
+
+            }
+        }
+        else {
+            AlertMessage('growl-danger', 'Validation', "Please select any Language", false, 3000);
+        }
     }
 </script>
 

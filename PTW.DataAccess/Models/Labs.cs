@@ -12,6 +12,7 @@ namespace PTW.DataAccess.Models
     {
         public int ModuleId { get; set; }
         public int LabId { get; set; }
+        public int SectionId { get; set; }
         public int ServiceTypeId { get; set; }
         public string EditLabId { get; set; }
         // [Required(ErrorMessage = "Name is required")]

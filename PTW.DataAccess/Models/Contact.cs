@@ -9,6 +9,8 @@ namespace PTW.DataAccess.Models
     {
         public int LanguageId { get; set; }
         public int ModuleId { get; set; }
+
+        public int SectionId { get; set; }
         public string LanguageCode { get; set; }
         public string Metatage { get; set; }
         public string MetaTitle { get; set; }

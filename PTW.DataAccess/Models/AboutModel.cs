@@ -24,6 +24,7 @@ namespace PTW.DataAccess.Models
         public string Culture { get; set; }
 
         public int ModuleId { get; set; }
+        public int SectionId { get; set; }
         public string MetaTitle { get; set; }
         public string MetaUrl { get; set; }
         public string MetaDescription { get; set; }

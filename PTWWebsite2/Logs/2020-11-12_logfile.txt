@@ -1,0 +1,8 @@
+2020-11-12 19:12:29.2549 ERROR Method: GetSubModuleContent, ErrorMessage: file: System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at PTW.DataAccess.ServicesImpl.MasterService.GetPreviewSubContent(Int32 ModuleId, String Languagecode, Int32 SectionId) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DataAccess\ServicesImpl\MasterService.cs:line 793 
+2020-11-12 19:13:12.2352 ERROR Method: GetSubModuleContent, ErrorMessage: file: System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at PTW.DataAccess.ServicesImpl.MasterService.GetPreviewSubContent(Int32 ModuleId, String Languagecode, Int32 SectionId) in C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\PTW.DataAccess\ServicesImpl\MasterService.cs:line 793 
