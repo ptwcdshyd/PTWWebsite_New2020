@@ -638,11 +638,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\LoggerService\\LoggerService.csproj",
+      "projectUniqueName": "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\LoggerService\\LoggerService.csproj",
       "projectName": "LoggerService",
-      "projectPath": "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\LoggerService\\LoggerService.csproj",
+      "projectPath": "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\LoggerService\\LoggerService.csproj",
       "packagesPath": "C:\\Users\\Test\\.nuget\\packages\\",
-      "outputPath": "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\LoggerService\\obj\\",
+      "outputPath": "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\LoggerService\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Test\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\PTW.DBAccess\\PTW.DBAccess.csproj": {}
+    "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\PTW.DBAccess\\PTW.DBAccess.csproj": {}
   },
   "projects": {
-    "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\PTW.DBAccess\\PTW.DBAccess.csproj": {
+    "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\PTW.DBAccess\\PTW.DBAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\PTW.DBAccess\\PTW.DBAccess.csproj",
+        "projectUniqueName": "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\PTW.DBAccess\\PTW.DBAccess.csproj",
         "projectName": "PTW.DBAccess",
-        "projectPath": "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\PTW.DBAccess\\PTW.DBAccess.csproj",
+        "projectPath": "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\PTW.DBAccess\\PTW.DBAccess.csproj",
         "packagesPath": "C:\\Users\\Test\\.nuget\\packages\\",
-        "outputPath": "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\PTW.DBAccess\\obj\\",
+        "outputPath": "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\PTW.DBAccess\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Test\\AppData\\Roaming\\NuGet\\NuGet.Config",

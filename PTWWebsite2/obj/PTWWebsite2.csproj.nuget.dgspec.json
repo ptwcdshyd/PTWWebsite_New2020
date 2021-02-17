@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\PTWWebsite2\\PTWWebsite2.csproj": {}
+    "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\PTWWebsite2\\PTWWebsite2.csproj": {}
   },
   "projects": {
-    "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\LoggerService\\LoggerService.csproj": {
+    "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\LoggerService\\LoggerService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\LoggerService\\LoggerService.csproj",
+        "projectUniqueName": "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\LoggerService\\LoggerService.csproj",
         "projectName": "LoggerService",
-        "projectPath": "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\LoggerService\\LoggerService.csproj",
+        "projectPath": "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\LoggerService\\LoggerService.csproj",
         "packagesPath": "C:\\Users\\Test\\.nuget\\packages\\",
-        "outputPath": "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\LoggerService\\obj\\",
+        "outputPath": "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\LoggerService\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Test\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -63,14 +63,14 @@
         }
       }
     },
-    "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\PTW.DataAccess\\PTW.DataAccess.csproj": {
+    "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\PTW.DataAccess\\PTW.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\PTW.DataAccess\\PTW.DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\PTW.DataAccess\\PTW.DataAccess.csproj",
         "projectName": "PTW.DataAccess",
-        "projectPath": "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\PTW.DataAccess\\PTW.DataAccess.csproj",
+        "projectPath": "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\PTW.DataAccess\\PTW.DataAccess.csproj",
         "packagesPath": "C:\\Users\\Test\\.nuget\\packages\\",
-        "outputPath": "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\PTW.DataAccess\\obj\\",
+        "outputPath": "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\PTW.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Test\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -86,11 +86,11 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\LoggerService\\LoggerService.csproj": {
-                "projectPath": "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\LoggerService\\LoggerService.csproj"
+              "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\LoggerService\\LoggerService.csproj": {
+                "projectPath": "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\LoggerService\\LoggerService.csproj"
               },
-              "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\PTW.DBAccess\\PTW.DBAccess.csproj": {
-                "projectPath": "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\PTW.DBAccess\\PTW.DBAccess.csproj"
+              "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\PTW.DBAccess\\PTW.DBAccess.csproj": {
+                "projectPath": "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\PTW.DBAccess\\PTW.DBAccess.csproj"
               }
             }
           }
@@ -133,14 +133,14 @@
         }
       }
     },
-    "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\PTW.DBAccess\\PTW.DBAccess.csproj": {
+    "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\PTW.DBAccess\\PTW.DBAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\PTW.DBAccess\\PTW.DBAccess.csproj",
+        "projectUniqueName": "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\PTW.DBAccess\\PTW.DBAccess.csproj",
         "projectName": "PTW.DBAccess",
-        "projectPath": "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\PTW.DBAccess\\PTW.DBAccess.csproj",
+        "projectPath": "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\PTW.DBAccess\\PTW.DBAccess.csproj",
         "packagesPath": "C:\\Users\\Test\\.nuget\\packages\\",
-        "outputPath": "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\PTW.DBAccess\\obj\\",
+        "outputPath": "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\PTW.DBAccess\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Test\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -204,14 +204,14 @@
         }
       }
     },
-    "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\PTWWebsite2\\PTWWebsite2.csproj": {
+    "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\PTWWebsite2\\PTWWebsite2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\PTWWebsite2\\PTWWebsite2.csproj",
+        "projectUniqueName": "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\PTWWebsite2\\PTWWebsite2.csproj",
         "projectName": "PTWWebsite2",
-        "projectPath": "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\PTWWebsite2\\PTWWebsite2.csproj",
+        "projectPath": "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\PTWWebsite2\\PTWWebsite2.csproj",
         "packagesPath": "C:\\Users\\Test\\.nuget\\packages\\",
-        "outputPath": "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\PTWWebsite2\\obj\\",
+        "outputPath": "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\PTWWebsite2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Test\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -227,14 +227,14 @@
         "frameworks": {
           "netcoreapp2.1": {
             "projectReferences": {
-              "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\LoggerService\\LoggerService.csproj": {
-                "projectPath": "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\LoggerService\\LoggerService.csproj"
+              "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\LoggerService\\LoggerService.csproj": {
+                "projectPath": "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\LoggerService\\LoggerService.csproj"
               },
-              "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\PTW.DataAccess\\PTW.DataAccess.csproj": {
-                "projectPath": "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\PTW.DataAccess\\PTW.DataAccess.csproj"
+              "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\PTW.DataAccess\\PTW.DataAccess.csproj": {
+                "projectPath": "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\PTW.DataAccess\\PTW.DataAccess.csproj"
               },
-              "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\PTW.DBAccess\\PTW.DBAccess.csproj": {
-                "projectPath": "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\PTW.DBAccess\\PTW.DBAccess.csproj"
+              "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\PTW.DBAccess\\PTW.DBAccess.csproj": {
+                "projectPath": "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\PTW.DBAccess\\PTW.DBAccess.csproj"
               }
             }
           }

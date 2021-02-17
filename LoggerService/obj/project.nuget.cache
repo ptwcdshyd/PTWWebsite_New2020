@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7d14tHNM7u2Hv0fwRgHBUDLdmaLTc3fLeltgh2PD89K7+MLmblQsAyFpq4uNm4Hb1BE3YroiBTCeMhAfIzpqxQ==",
+  "dgSpecHash": "jfOLVRmC5qVqu7AsMEDRxdjGRLtzRyXwgQp2fxAICukGxvMi/nQVPykzC2L3Yi/WRhyMUZMaJ/hpqNwn5AU6ng==",
   "success": true,
-  "projectFilePath": "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\LoggerService\\LoggerService.csproj",
+  "projectFilePath": "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\LoggerService\\LoggerService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Test\\.nuget\\packages\\microsoft.extensions.configuration\\2.1.0\\microsoft.extensions.configuration.2.1.0.nupkg.sha512",
     "C:\\Users\\Test\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\2.1.0\\microsoft.extensions.configuration.abstractions.2.1.0.nupkg.sha512",

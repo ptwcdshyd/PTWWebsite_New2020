@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "s/ZoBvZuCtEusVrA+oWJZwQdpuOr2vktCZ9GtbuyaxjJoGXr6HhCca+tq6H9yYzolDSX+zhVyrbANl5OXbBYmw==",
+  "dgSpecHash": "E1N4DbNC8pLudGApSsGZk4p4WXIG2De+v/8ofJA1cHGPJtYycTgP6E2scKLVfYlsEkwhXvfEz0xKSqnbQxDjLA==",
   "success": true,
-  "projectFilePath": "C:\\GitHub\\PTWWebsite_New\\PTWWebsite_New2020\\PTW.DBAccess\\PTW.DBAccess.csproj",
+  "projectFilePath": "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\PTW.DBAccess\\PTW.DBAccess.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Test\\.nuget\\packages\\bouncycastle.netcore\\1.8.3\\bouncycastle.netcore.1.8.3.nupkg.sha512",
     "C:\\Users\\Test\\.nuget\\packages\\google.protobuf\\3.6.1\\google.protobuf.3.6.1.nupkg.sha512",
