@@ -2,6 +2,8 @@
 @{
     Layout = "~/Views/Shared/_LayoutForPtwCms.cshtml";
     ViewData["Title"] = "Home";
+
+    var imageLanguage = "en-US";
 }
 <link href="~/css/Editor/Css/4.4.1.bootstrap.min.css" rel="stylesheet" />
 <link href="~/css/jquery.gritter.css" rel="stylesheet" />
@@ -172,8 +174,8 @@
                 </div>
 
                 <div class="col-md-2 section1" style="border: 2px solid #999; margin: 20px;">
-                    <img id="PageBackgroundImageImg" src="../images/Homepage/HomeImages/PageBackgroundImage.png" height="150px" width="150px" />
-                    <a id="PageBackgroundImage_a" class="section1" href="../images/Homepage/HomeImages/PageBackgroundImage.png" title="Save Backup Image" download>
+                    <img id="PageBackgroundImageImg" src="../images/Homepage/HomeImages/@imageLanguage/PageBackgroundImage.png" height="150px" width="150px" />
+                    <a id="PageBackgroundImage_a" class="section1" href="../images/Homepage/HomeImages/@imageLanguage/PageBackgroundImage.png" title="Save Backup Image" download>
                         <img src="~/images/downloadIcon.png" class="section1" width="20px" style="float:right;margin: -149px auto;" height="20px" />
                     </a>
                 </div>
@@ -197,8 +199,8 @@
                 </div>
 
                 <div class="col-md-2 section1" style="display:flex; border: 2px solid #999; margin: 20px;">
-                    <img id="CustomerExperienceImg" class="section1" src="../images/Homepage/HomeImages/CustomerExperience.png" height="150px" width="150px" />
-                    <a id="CustomerExperience_a" href="../images/Homepage/HomeImages/CustomerExperience.png" title="Save Backup Image" download>
+                    <img id="CustomerExperienceImg" class="section1" src="../images/Homepage/HomeImages/@imageLanguage/CustomerExperience.png" height="150px" width="150px" />
+                    <a id="CustomerExperience_a" href="../images/Homepage/HomeImages/@imageLanguage/CustomerExperience.png" title="Save Backup Image" download>
                         <img src="~/images/downloadIcon.png" class="section1" width="20px" style="float:right; margin: -149px auto;" height="20px" />
                     </a>
                 </div>
@@ -215,8 +217,8 @@
                 </div>
 
                 <div class="col-md-2 section1" style="display:flex; border: 2px solid #999; margin: 20px;">
-                    <img id="QualityAssuranceImg" class="section1" src="../images/Homepage/HomeImages/QualityAssurance.png" height="150px" width="150px" />
-                    <a id="QualityAssurance_a" class="section1" href="../images/Homepage/HomeImages/QualityAssurance.png" title="Save Backup Image" download>
+                    <img id="QualityAssuranceImg" class="section1" src="../images/Homepage/HomeImages/@imageLanguage/QualityAssurance.png" height="150px" width="150px" />
+                    <a id="QualityAssurance_a" class="section1" href="../images/Homepage/HomeImages/@imageLanguage/QualityAssurance.png" title="Save Backup Image" download>
                         <img src="~/images/downloadIcon.png" class="section1" width="20px" style="float:right;margin: -149px auto;" height="20px" />
                     </a>
                 </div>
@@ -232,8 +234,8 @@
                 </div>
 
                 <div class="col-md-2 section1" style="display:flex; border: 2px solid #999; margin: 20px;">
-                    <img id="LocalizationImg" class="section1" src="../images/Homepage/HomeImages/Localization.png" height="150px" width="150px" />
-                    <a id="Localization_a" class="section1" href="../images/Homepage/HomeImages/Localization.png" title="Save Backup Image" download>
+                    <img id="LocalizationImg" class="section1" src="../images/Homepage/HomeImages/@imageLanguage/Localization.png" height="150px" width="150px" />
+                    <a id="Localization_a" class="section1" href="../images/Homepage/HomeImages/@imageLanguage/Localization.png" title="Save Backup Image" download>
                         <img src="~/images/downloadIcon.png" class="section1" width="20px" style="float:right;margin: -149px auto;" height="20px" />
                     </a>
                 </div>
@@ -248,8 +250,8 @@
                     </div>
                 </div>
                 <div class="col-md-2 section1" style="display:flex; border: 2px solid #999; margin: 20px;">
-                    <img id="AudioProductionImg" class="section1" src="../images/Homepage/HomeImages/AudioProduction.png" height="150px" width="150px" />
-                    <a id="AudioProduction_a" class="section1" href="../images/Homepage/HomeImages/AudioProduction.png" title="Save Backup Image" download>
+                    <img id="AudioProductionImg" class="section1" src="../images/Homepage/HomeImages/@imageLanguage/AudioProduction.png" height="150px" width="150px" />
+                    <a id="AudioProduction_a" class="section1" href="../images/Homepage/HomeImages/@imageLanguage/AudioProduction.png" title="Save Backup Image" download>
                         <img src="~/images/downloadIcon.png" class="section1" width="20px" style="float:right;margin: -149px auto;" height="20px" />
                     </a>
                 </div>
@@ -266,8 +268,8 @@
                 </div>
 
                 <div id="ProductDevelopmentImg" class="col-md-2 section1" style="display:flex; border: 2px solid #999; margin: 20px;">
-                    <img id="ProductDevelopmentImg" class="section1" src="../images/Homepage/HomeImages/ProductDevelopment.png" height="150px" width="150px" />
-                    <a id="ProductDevelopment_a" class="section1" href="../images/Homepage/HomeImages/ProductDevelopment.png" title="Save Backup Image" download>
+                    <img id="ProductDevelopmentImg" class="section1" src="../images/Homepage/HomeImages/@imageLanguage/ProductDevelopment.png" height="150px" width="150px" />
+                    <a id="ProductDevelopment_a" class="section1" href="../images/Homepage/HomeImages/@imageLanguage/ProductDevelopment.png" title="Save Backup Image" download>
                         <img src="~/images/downloadIcon.png" class="section1" width="20px" style="float:right;margin: -149px auto;" height="20px" />
                     </a>
                 </div>
@@ -285,9 +287,9 @@
                     </div>
                 </div>
                 <div class="col-md-2 section5" style="display:flex; border: 2px solid #999; margin: 20px;">
-                    <img id="LocationMapImg" class="section5" src="../images/Homepage/HomeImages/LocationMap.svg" height="150px" width="150px" />
+                    <img id="LocationMapImg" class="section5" src="../images/Homepage/HomeImages/@imageLanguage/LocationMap.svg" height="150px" width="150px" />
 
-                    <a id="LocationMap_a" class="section5" href="../images/Homepage/HomeImages/LocationMap.svg" title="Save Backup Image" download>
+                    <a id="LocationMap_a" class="section5" href="../images/Homepage/HomeImages/@imageLanguage/LocationMap.svg" title="Save Backup Image" download>
                         <img src="~/images/downloadIcon.png" class="section5" width="20px" style="float:right;margin: -149px auto;" height="20px" />
                     </a>
                 </div>
@@ -305,9 +307,9 @@
                     </div>
                 </div>
                 <div class="col-md-2 section2" style="display:flex; border: 2px solid #999; margin: 20px;">
-                    <img id="KickStartImageImg" class="section2" src="../images/Homepage/HomeImages/KickStartImage.png" height="150px" width="150px" />
+                    <img id="KickStartImageImg" class="section2" src="../images/Homepage/HomeImages/@imageLanguage/KickStartImage.png" height="150px" width="150px" />
 
-                    <a id="KickStartImage_a" class="section2" href="../images/Homepage/HomeImages/KickStartImage.png" title="Save Backup Image" download>
+                    <a id="KickStartImage_a" class="section2" href="../images/Homepage/HomeImages/@imageLanguage/KickStartImage.png" title="Save Backup Image" download>
                         <img src="~/images/downloadIcon.png" class="section2" width="20px" style="float:right;margin: -149px auto;" height="20px" />
                     </a>
                 </div>
@@ -324,8 +326,8 @@
                 </div>
 
                 <div class="col-md-2 section4" style="display:flex; border: 2px solid #999; margin: 20px;">
-                    <img id="SquadImg" class="section4" src="../images/Homepage/HomeImages/Squad.png" height="150px" width="150px" />
-                    <a id="Squad_a" class="section4" href="../images/Homepage/HomeImages/Squad.png" title="Save Backup Image" download>
+                    <img id="SquadImg" class="section4" src="../images/Homepage/HomeImages/@imageLanguage/Squad.png" height="150px" width="150px" />
+                    <a id="Squad_a" class="section4" href="../images/Homepage/HomeImages/@imageLanguage/Squad.png" title="Save Backup Image" download>
                         <img src="~/images/downloadIcon.png" class="section4" width="20px" style="float:right;margin: -149px auto;" height="20px" />
                     </a>
                 </div>
@@ -341,8 +343,8 @@
                     </div>
                 </div>
                 <div class="col-md-2 section3 frameBorder" style="display:flex; border: 2px solid #999; margin: 20px;">
-                    <img id="FrameImg" class="section3" src="../images/Homepage/HomeImages/Frame.svg" height="150px" width="150px" />
-                    <a id="Frame_a" class="section3" href="../images/Homepage/HomeImages/Frame.svg" title="Save Backup Image" download>
+                    <img id="FrameImg" class="section3" src="../images/Homepage/HomeImages/@imageLanguage/Frame.svg" height="150px" width="150px" />
+                    <a id="Frame_a" class="section3" href="../images/Homepage/HomeImages/@imageLanguage/Frame.svg" title="Save Backup Image" download>
                         <img src="~/images/downloadIcon.png" class="section3" width="20px" style="float:right;margin: -149px auto;" height="20px" />
                     </a>
                 </div>
@@ -358,8 +360,8 @@
                     </div>
                 </div>
                 <div class="col-md-2 section4" style="display:flex; border: 2px solid #999; margin: 20px;">
-                    <img id="CareersImageImg" class="section4" src="../images/Homepage/HomeImages/CareersImage.png" height="150px" width="150px" />
-                    <a id="CareersImage_a" class="section4" href="../images/Homepage/HomeImages/CareersImage.png" title="Save Backup Image" download>
+                    <img id="CareersImageImg" class="section4" src="../images/Homepage/HomeImages/@imageLanguage/CareersImage.png" height="150px" width="150px" />
+                    <a id="CareersImage_a" class="section4" href="../images/Homepage/HomeImages/@imageLanguage/CareersImage.png" title="Save Backup Image" download>
                         <img src="~/images/downloadIcon.png" width="20px" style="float:right;margin: -149px auto;" height="20px" />
                     </a>
                 </div>
@@ -484,7 +486,7 @@
                 var files1 = $(this)[0].files[0];
                 fd.append($(this)[0].id, files1);
                 fd.append('Filename', $(this)[0].id);
-
+                fd.append('LanguageCode', $("#Languages").children("option:selected").val());
                 $.ajax({
                     type: "POST",
                     url: '@Url.Action("UpdateImagesToPreview", "Home")',
@@ -671,44 +673,44 @@
 
             if ($('#CareersImage')[0].files[0] != undefined) {
                 fd.append('CareersImage', files1);
-                // pagecontent = pagecontent.replace("/HomeImages/CareersImage.svg", "/PreviewImages/CareersImage.svg");
+                // pagecontent = pagecontent.replace("/HomeImages/@imageLanguage/CareersImage.svg", "/PreviewImages/CareersImage.svg");
             }
             if ($('#KickStartImage')[0].files[0] != undefined) {
                 fd.append('KickStartImage', files2);
-                // pagecontent = pagecontent.replace("/HomeImages/KickStartImage.png", "/PreviewImages/KickStartImage.png");
+                // pagecontent = pagecontent.replace("/HomeImages/@imageLanguage/KickStartImage.png", "/PreviewImages/KickStartImage.png");
             }
 
             if ($('#ProductDevelopment')[0].files[0] != undefined) {
                 fd.append('ProductDevelopment', files4);
-                // pagecontent = pagecontent.replace("/HomeImages/ProductDevelopment.png", "/PreviewImages/ProductDevelopment.png");
+                // pagecontent = pagecontent.replace("/HomeImages/@imageLanguage/ProductDevelopment.png", "/PreviewImages/ProductDevelopment.png");
             }
 
             if ($('#AudioProduction')[0].files[0] != undefined) {
                 fd.append('AudioProduction', files6);
-                // pagecontent = pagecontent.replace("/HomeImages/AudioProduction.png", "/PreviewImages/AudioProduction.png");
+                // pagecontent = pagecontent.replace("/HomeImages/@imageLanguage/AudioProduction.png", "/PreviewImages/AudioProduction.png");
             }
 
             if ($('#Localization')[0].files[0] != undefined) {
                 fd.append('Localization', files8);
-                // pagecontent = pagecontent.replace("/HomeImages/Localization.png", "/PreviewImages/Localization.png");
+                // pagecontent = pagecontent.replace("/HomeImages/@imageLanguage/Localization.png", "/PreviewImages/Localization.png");
             }
 
             if ($('#QualityAssurance')[0].files[0] != undefined) {
                 fd.append('QualityAssurance', files10);
-                // pagecontent = pagecontent.replace("/HomeImages/QualityAssurance.png", "/PreviewImages/QualityAssurance.png");
+                // pagecontent = pagecontent.replace("/HomeImages/@imageLanguage/QualityAssurance.png", "/PreviewImages/QualityAssurance.png");
             }
 
             if ($('#CustomerExperience')[0].files[0] != undefined) {
                  fd.append('CustomerExperience', files12);
-                // pagecontent = pagecontent.replace("/HomeImages/CustomerExperience.png", "/PreviewImages/CustomerExperience.png");
+                // pagecontent = pagecontent.replace("/HomeImages/@imageLanguage/CustomerExperience.png", "/PreviewImages/CustomerExperience.png");
             }
             if ($('#PageBackgroundImage')[0].files[0] != undefined) {
                  fd.append('PageBackgroundImage', files13);
-                // pagecontent = pagecontent.replace("/HomeImages/PageBackgroundImage.png", "/PreviewImages/PageBackgroundImage.png");
+                // pagecontent = pagecontent.replace("/HomeImages/@imageLanguage/PageBackgroundImage.png", "/PreviewImages/PageBackgroundImage.png");
             }
             if ($('#Frame')[0].files[0] != undefined) {
                  fd.append('Frame', files14);
-                // pagecontent = pagecontent.replace("/HomeImages/Frame.svg", "/PreviewImages/Frame.svg");
+                // pagecontent = pagecontent.replace("/HomeImages/@imageLanguage/Frame.svg", "/PreviewImages/Frame.svg");
             }
 
             //fd.append('Description', $("#Description").val());
@@ -992,6 +994,9 @@
                 $("#divShortOrder").show();
                 $("#divActive").show();
                 $("#divButtons").show();
+
+                ImageLocalization("section1");
+                
             }
             else if ($("#SectionList").children("option:selected").val() == "2") {
                 $('.section2').css("display", "block");
@@ -1006,6 +1011,7 @@
                 $("#divShortOrder").show();
                 $("#divActive").show();
                 $("#divButtons").show();
+                ImageLocalization("section2");
             }
             else if ($("#SectionList").children("option:selected").val() == "4") {
                 $('.section1').css("display", "none");
@@ -1020,6 +1026,7 @@
                 $("#divShortOrder").show();
                 $("#divActive").show();
                 $("#divButtons").show();
+                ImageLocalization("section4");
             }
             else if ($("#SectionList").children("option:selected").val() == "5") {
                 $('.section1').css("display", "none");
@@ -1034,6 +1041,7 @@
                 $("#divShortOrder").show();
                 $("#divActive").show();
                 $("#divButtons").show();
+                ImageLocalization("section5");
             }
             else if ($("#SectionList").children("option:selected").val() == "3") {
                 $('.section1').css("display", "none");
@@ -1048,6 +1056,19 @@
                 $("#divShortOrder").show();
                 $("#divActive").show();
                 $("#divButtons").show();
+                ImageLocalization("section3");
+            }
+            else if ($("#SectionList").children("option:selected").val() == "7") {
+                $("#divDescription").show();
+                $("#divShortOrder").show();
+                $("#divActive").show();
+                $("#divButtons").show();
+                $('.section1').css("display", "none");
+                $('.section2').css("display", "none");
+                $('.section4').css("display", "none");
+                $('.section5').css("display", "none");
+                $('.section6').css("display", "none");
+
             }
             else {
                 $("#divDescription").hide();
@@ -1060,16 +1081,7 @@
                 $('.section5').css("display", "none");
                 $('.section6').css("display", "none");
             }
-            //else if ($("#SectionList").children("option:selected").val() == "6") {
-            //    $("#divDescription").hide();
-                //$('.section1').css("display", "none");
-                //$('.section2').css("display", "none");
-                //$('.section4').css("display", "none");
-                //$('.section5').css("display", "none");
-                //$('.section6').css("display", "block");
-                //$('.serviceSection').css("border", "none");
-
-            //}
+            
             $("#PostBackMsg").show();
             $('#Description').summernote('code', '');
             $('.imageShow').css("display", "block");
@@ -1198,12 +1210,63 @@
                 }
             }
             else {
-                AlertMessage('growl-danger', 'Validation', "Please select any section", false, 3000);
+                $("#divDescription").hide();
+                $("#divShortOrder").hide();
+                $("#divActive").hide();
+                $("#divButtons").hide();
+                $('.section1').css("display", "none");
+                $('.section2').css("display", "none");
+                $('.section4').css("display", "none");
+                $('.section5').css("display", "none");
+                $('.section6').css("display", "none");
+              //  AlertMessage('growl-danger', 'Validation', "Please select any section", false, 3000);
 
             }
         }
         else {
+            $("#divDescription").hide();
+            $("#divShortOrder").hide();
+            $("#divActive").hide();
+            $("#divButtons").hide();
+            $('.section1').css("display", "none");
+            $('.section2').css("display", "none");
+            $('.section4').css("display", "none");
+            $('.section5').css("display", "none");
+            $('.section6').css("display", "none");
             AlertMessage('growl-danger', 'Validation', "Please select any Language", false, 3000);
+        }
+    }
+
+    function ImageLocalization(section) {
+      
+        for (var i = 0; i < $("." + section + " img").length; i++) {
+            if ($("." + section + " img")[i].id != undefined) {
+                var id = $("." + section + " img")[i].id;
+                if (id != "" && id != undefined) {
+                    var imgSrc = $("#" + id).attr("src");
+                    if (imgSrc != "" && imgSrc != undefined) {
+                        $('select#Languages').find('option').each(function (index) {
+                            imgSrc = imgSrc.replace("/" + $('select#Languages').find('option')[index].value + "/", "/" + $("#Languages").children("option:selected").val() + "/");
+                        });
+                        $("#" + id).attr("src", imgSrc);
+                    }
+                }
+            }
+        }
+
+        for (var i = 0; i < $("." + section + " a").length; i++) {
+            if ($("." + section + " a")[i].id != undefined) {
+                var id = $("." + section + " a")[i].id;
+                if (id != "" && id != undefined) {
+                    var ahref = $("#" + id).attr("href");
+                    if(ahref != "" && ahref != undefined) {
+                        $('select#Languages').find('option').each(function (index) {
+                            ahref = ahref.replace("/" + $('select#Languages').find('option')[index].value + "/", "/" + $("#Languages").children("option:selected").val() + "/");
+                        });
+                        $("#" + id).attr("href", ahref);
+                    }
+                }
+            }
         }
     }
 

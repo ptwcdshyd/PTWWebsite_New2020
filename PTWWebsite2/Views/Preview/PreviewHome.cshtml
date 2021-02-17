@@ -16,7 +16,7 @@
     var handle1;
     //
 
-    
+
     var sPageURL = window.location.search.substring(1),
         sURLVariables = sPageURL.split('&');
     var ModuleId = sURLVariables[0].replace('ModuleId=', '')
@@ -34,232 +34,270 @@
         if (ModuleId == '18') {
             LoadNews();
         }
+        if (ModuleId == '3') {
+            LoadHomepageLinks()
+        }
 
     });
-    function LoadProfile() {
-        
+
+    function LoadHomepageLinks() {
         $.ajax({
-            url: "../" + LanguageCode + "/AboutProfile",
-            type: "GET",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (result) {
-                var htmlContent = "";
-                var count = 1;
-                $.each(result.Profiles, function (result, item) {
-                    if (count == 1 || (count - 1) % 3 == 0) {
-                        htmlContent = htmlContent + '<div class="grid">'
-                    }
-                    htmlContent = htmlContent +
-                        '<figure class="effect-sadie">' +
-                        '<img src="' + item.ImgPath + '" alt="img02" />' +
-                        '<figcaption>' +
-                        '<p>' + item.Title + '<br/>' + item.Description + '</p>' +
-                        '<a href="#">View more</a>' +
-                        '</figcaption>' +
-                        '</figure>';
+            /**/
+            url: "../Home/GetHompageLabOrNewsArticles?LanguageCode=" + LanguageCode + "",
+    /**/
+    type: "GET",
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function (result) {
+        var appendLabs = "<div class=\"row helpfulDivs\" style=\"Background-color:#fff;\">";
 
-                    if (count % 3 == 0) {
-                        htmlContent = htmlContent + '</div>'
-                    }
+        for (var i = 0; i < result.length; i++) {
+            appendLabs += "<div class=\"col-md-4\"><div class=\"animationDiv\">" +
+                "<img class=\"btnImage\" src=\"" + result[i].ImagePath + "\">" +
+                "<div class=\"squaredDiv\" style=\"background-image: url(../Images/Homepage/HomeImages/Frame.svg);\">" +
+                "<div class=\"squaredText\">" +
+                "<p>" + result[i].Title + "</p>" +
+                "</div>" +
+                "<div class=\"MoreDiv\">" +
+                "<p>More..</p>" +
+                "</div>" +
+                "  </div>" +
+                "</div>" +
+                " </div>";
+        }
+        $('.helpfulDivs').append(appendLabs);
+    },
+    error: function (err) {
+        // window.location = '../Logout';
+    }
+});
 
-                    count++;
-                });
-                if (result.Profiles.length % 3 != 0) {
-                    htmlContent = htmlContent + '</div>'
-                }
-                $('#Profiles').append(htmlContent);
+}
 
-            },
-            error: function (err) {
+function LoadProfile() {
 
+$.ajax({
+    url: "../" + LanguageCode + "/AboutProfile",
+    type: "GET",
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function (result) {
+        var htmlContent = "";
+        var count = 1;
+        $.each(result.Profiles, function (result, item) {
+            if (count == 1 || (count - 1) % 3 == 0) {
+                htmlContent = htmlContent + '<div class="grid">'
             }
+            htmlContent = htmlContent +
+                '<figure class="effect-sadie">' +
+                '<img src="' + item.ImgPath + '" alt="img02" />' +
+                '<figcaption>' +
+                '<p>' + item.Title + '<br/>' + item.Description + '</p>' +
+                '<a href="#">View more</a>' +
+                '</figcaption>' +
+                '</figure>';
+
+            if (count % 3 == 0) {
+                htmlContent = htmlContent + '</div>'
+            }
+
+            count++;
         });
+        if (result.Profiles.length % 3 != 0) {
+            htmlContent = htmlContent + '</div>'
+        }
+        $('#Profiles').append(htmlContent);
+
+    },
+    error: function (err) {
 
     }
+});
 
-    function LoadNews() {
-        $.ajax({
-            url: "../AllNews",
-            type: "GET",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (result) {
+}
 
-                var htmlContent = '';
-                var htmlEventsContent = '';
-                var mainhtmlContent = '<div class="nEAnim" style="background-image: url(../' + result.News[0].LongImageUrl + result.News[0].LongImageName + ');">' +
-                    '<a href="../news/' + $.trim(result.News[0].ShortDescription.replace(/\b \b/g, '-')) + '">' +
-                    '<div class="borders">' +
-                    '<img style="width: 90%;" src="../Images/news/News&amp;events/border.svg">' +
-                    //'<img style="width: 90%;" src="Images/news/News&amp;events/border.svg">'
-                    '</div>' +
-                    '<div class="imageContent">' +
-                    '</div>' +
-                    '<div class="textContent">' +
-                    '<p>' + result.News[0].ShortDescription + '</p>' +
-                    '<div class="nE ReadMe">' +
-                    '<a href="#" class="ReadMeBtn">Read More</a>' +
-                    '</div>' +
-                    '</div>' +
-                    '</a>' +
-                    '</div>';
+function LoadNews() {
+$.ajax({
+    url: "../AllNews",
+    type: "GET",
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function (result) {
 
-                for (var j = 0; j < result.Events.length; j++) {
+        var htmlContent = '';
+        var htmlEventsContent = '';
+        var mainhtmlContent = '<div class="nEAnim" style="background-image: url(../' + result.News[0].LongImageUrl + result.News[0].LongImageName + ');">' +
+            '<a href="../news/' + $.trim(result.News[0].ShortDescription.replace(/\b \b/g, '-')) + '">' +
+            '<div class="borders">' +
+            '<img style="width: 90%;" src="../Images/news/News&amp;events/border.svg">' +
+            //'<img style="width: 90%;" src="Images/news/News&amp;events/border.svg">'
+            '</div>' +
+            '<div class="imageContent">' +
+            '</div>' +
+            '<div class="textContent">' +
+            '<p>' + result.News[0].ShortDescription + '</p>' +
+            '<div class="nE ReadMe">' +
+            '<a href="#" class="ReadMeBtn">Read More</a>' +
+            '</div>' +
+            '</div>' +
+            '</a>' +
+            '</div>';
 
-                    htmlEventsContent = htmlEventsContent + '<div class="col-md-12">' +
-                        '<a href="../news/' + $.trim(result.Events[j].ShortDescription.replace(/\b \b/g, '-')) + '">' +
-                        '<div class="d-flex upComingSection">' +
-                        '<div class="eventsImage event2" style="background-image: url(' + result.Events[j].ShortImageUrl.replace('~', '..') + result.Events[j].ShortImageName + ');">' +
-                        '<img src="../Images/news/News&events/event.svg">' +
-                        //'<img src="~/Images/news/2020/small/' + 61.png+'">' +
-                        '</div>' +
-                        '<div class="content" style="width:50%">' +
-                        '<p class="title">' + result.Events[j].NewsTitle + '</p>' +
-                        '<p class="date">' + result.Events[j].EventDate + '</p>' +
-                        '<p class="date">' + result.Events[j].Location + '</p>' +
-                        '<div class="shareSec">' +
-                        '<div class="d-flex">' +
-                        '<p class="share marginRight">Share Now</p>' +
-                        '<p class="bookNow orange ">Book Now</p>' +
-                        '</div>' +
-                        '</div>' +
-                        '</div>' +
-                        '</div>' +
-                        '</a>' +
-                        '</div>'
+        for (var j = 0; j < result.Events.length; j++) {
 
-                }
-                for (var i = 1; i < result.News.length; i++) {
+            htmlEventsContent = htmlEventsContent + '<div class="col-md-12">' +
+                '<a href="../news/' + $.trim(result.Events[j].ShortDescription.replace(/\b \b/g, '-')) + '">' +
+                '<div class="d-flex upComingSection">' +
+                '<div class="eventsImage event2" style="background-image: url(' + result.Events[j].ShortImageUrl.replace('~', '..') + result.Events[j].ShortImageName + ');">' +
+                '<img src="../Images/news/News&events/event.svg">' +
+                //'<img src="~/Images/news/2020/small/' + 61.png+'">' +
+                '</div>' +
+                '<div class="content" style="width:50%">' +
+                '<p class="title">' + result.Events[j].NewsTitle + '</p>' +
+                '<p class="date">' + result.Events[j].EventDate + '</p>' +
+                '<p class="date">' + result.Events[j].Location + '</p>' +
+                '<div class="shareSec">' +
+                '<div class="d-flex">' +
+                '<p class="share marginRight">Share Now</p>' +
+                '<p class="bookNow orange ">Book Now</p>' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '</a>' +
+                '</div>'
 
-                    if (i == 1 || (i - 1) % 3 == 0) {
-                        htmlContent = htmlContent + '<div class="row mt-10 mb-5" >'
-                    }
+        }
+        for (var i = 1; i < result.News.length; i++) {
 
-                    htmlContent = htmlContent + '<div class="col-md-4">' +
-                        '<a href="../news/' + $.trim(result.News[i].ShortDescription.replace(/\b \b/g, '-')) + '">' +
-                        '<div class="animationDiv">' +
-                        '<img class="btnImage" src="' + result.News[i].ShortImageUrl.replace('~', '..') + result.News[i].ShortImageName + '">' +
-                        //'<img class="btnImage" src="~/Images/news/2018/small/'+result.News[i].ShortImageName+'">' +
-                        '<div class="squaredDiv">' +
-                        '<div class="squaredText">' +
-                        '<p>' + result.News[i].ShortDescription + '</p>' +
-                        '</div>' +
-                        '<div class="MoreDiv">' +
-                        '<p>More..</p>' +
-                        '</div>' +
-                        '</div>' +
-                        '</div>' +
-                        '</a>' +
-                        '</div>'
-
-                    if (i % 3 == 0) {
-                        htmlContent = htmlContent + '</div >'
-                    }
-                }
-                if (result.News.length % 3 != 0) {
-                    htmlContent = htmlContent + '</div>'
-                }
-
-                $('#newsgrid').append(htmlContent);
-                $('#eventsgrid').append(htmlEventsContent);
-                $('#mainnews').append(mainhtmlContent);
-
-
-            },
-            error: function (err) {
-                // window.location = '../Logout';
+            if (i == 1 || (i - 1) % 3 == 0) {
+                htmlContent = htmlContent + '<div class="row mt-10 mb-5" >'
             }
-        });
 
-    }
+            htmlContent = htmlContent + '<div class="col-md-4">' +
+                '<a href="../news/' + $.trim(result.News[i].ShortDescription.replace(/\b \b/g, '-')) + '">' +
+                '<div class="animationDiv">' +
+                '<img class="btnImage" src="' + result.News[i].ShortImageUrl.replace('~', '..') + result.News[i].ShortImageName + '">' +
+                //'<img class="btnImage" src="~/Images/news/2018/small/'+result.News[i].ShortImageName+'">' +
+                '<div class="squaredDiv">' +
+                '<div class="squaredText">' +
+                '<p>' + result.News[i].ShortDescription + '</p>' +
+                '</div>' +
+                '<div class="MoreDiv">' +
+                '<p>More..</p>' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '</a>' +
+                '</div>'
 
-    function LoadLab() {
-        $.ajax({
-            url: "../Labs",
-            type: "GET",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (result) {
-
-                var htmlContent = '';
-                var htmlEventsContent = '';
-                var mainhtmlContent = '<div class="nEAnim" style="background-image: url(' + result.allLabs[0].ImageUrl + result.allLabs[0].ImageName + ');">' +
-                    '<a href="../lab/' + $.trim(result.allLabs[0].ShortDescription.replace(/\b \b/g, '-')) + '">' +
-                    '<div class="borders">' +
-                    '<img src="/Images/New_UI/news/border.svg">' +
-                    '</div>' +
-                    '<div class="imageContent">' +
-                    '</div>' +
-                    '<div class="textContent">' +
-                    '<p>Non-Technical Guide for Player Support</p>' +
-                    '<div class="ReadMe">' +
-                    '<a href="#" class="ReadMeBtn">Read More</a>' +
-                    '</div>' +
-                    '</div>' +
-                    '</a>' +
-                    '</div>'
-
-                for (var j = 0; j < 2; j++) {
-
-                    htmlEventsContent = htmlEventsContent +
-                        '<div class="col-md-12 mt-5">' +
-                        '<a href="../lab/' + $.trim(result.labInsights[j].ShortDescription.replace(/\b \b/g, '-')) + '">' +
-                        '<div class="animationDiv">' +
-
-                        '<img class="btnImage" src="' + result.labInsights[j].ImageUrl + result.allLabs[j].ImageName + '">' +
-                        '<div class="squaredDiv">' +
-                        '<div class="squaredText">' +
-                        '<p class="title">' + result.labInsights[j].ShortDescription + '</p>' +
-                        '</div>' +
-                        '<div class="MoreDiv">' +
-                        '<p>More..</p>' +
-                        '</div>' +
-                        '</a>' +
-                        '</div></div></div>'
-                }
-                for (var i = 1; i < result.allLabs.length; i++) {
-
-                    if (i == 1 || (i - 1) % 3 == 0) {
-                        htmlContent = htmlContent + '<div class="row lab mb-5 animediv">'
-                    }
-
-                    htmlContent = htmlContent + '<div class="col-md-4">' +
-                        '<a href="../lab/' + $.trim(result.allLabs[i].ShortDescription.replace(/\b \b/g, '-')) + '">' +
-                        '<div class="animationDiv">' +
-                        '<img class="btnImage" src="' + result.allLabs[i].ImageUrl + result.allLabs[i].ImageName + '">' +
-                        '<div class="squaredDiv">' +
-                        '<div class="squaredText">' +
-                        '<p>' + result.allLabs[i].ShortDescription + '</p>' +
-                        '</div>' +
-                        '<div class="MoreDiv">' +
-                        '<p>More..</p>' +
-                        '</div>' +
-                        '</div>' +
-                        '</div>' +
-                        '</a>' +
-                        '</div>'
-
-                    if (i % 3 == 0) {
-                        htmlContent = htmlContent + '</div >'
-                    }
-                }
-                if (result.allLabs.length % 3 != 0) {
-                    htmlContent = htmlContent + '</div>'
-                }
-
-                $('#labs').append(htmlContent);
-                $('#eventsgrid').append(htmlEventsContent);
-                $('#mainlab').append(mainhtmlContent);
-
-
-            },
-            error: function (err) {
-                // window.location = '../Logout';
+            if (i % 3 == 0) {
+                htmlContent = htmlContent + '</div >'
             }
-        });
+        }
+        if (result.News.length % 3 != 0) {
+            htmlContent = htmlContent + '</div>'
+        }
 
+        $('#newsgrid').append(htmlContent);
+        $('#eventsgrid').append(htmlEventsContent);
+        $('#mainnews').append(mainhtmlContent);
+
+
+    },
+    error: function (err) {
+        // window.location = '../Logout';
     }
+});
+
+}
+
+function LoadLab() {
+$.ajax({
+    url: "../Labs",
+    type: "GET",
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function (result) {
+
+        var htmlContent = '';
+        var htmlEventsContent = '';
+        var mainhtmlContent = '<div class="nEAnim" style="background-image: url(' + result.allLabs[0].ImageUrl + result.allLabs[0].ImageName + ');">' +
+            '<a href="../lab/' + $.trim(result.allLabs[0].ShortDescription.replace(/\b \b/g, '-')) + '">' +
+            '<div class="borders">' +
+            '<img src="/Images/New_UI/news/border.svg">' +
+            '</div>' +
+            '<div class="imageContent">' +
+            '</div>' +
+            '<div class="textContent">' +
+            '<p>Non-Technical Guide for Player Support</p>' +
+            '<div class="ReadMe">' +
+            '<a href="#" class="ReadMeBtn">Read More</a>' +
+            '</div>' +
+            '</div>' +
+            '</a>' +
+            '</div>'
+
+        for (var j = 0; j < 2; j++) {
+
+            htmlEventsContent = htmlEventsContent +
+                '<div class="col-md-12 mt-5">' +
+                '<a href="../lab/' + $.trim(result.labInsights[j].ShortDescription.replace(/\b \b/g, '-')) + '">' +
+                '<div class="animationDiv">' +
+
+                '<img class="btnImage" src="' + result.labInsights[j].ImageUrl + result.allLabs[j].ImageName + '">' +
+                '<div class="squaredDiv">' +
+                '<div class="squaredText">' +
+                '<p class="title">' + result.labInsights[j].ShortDescription + '</p>' +
+                '</div>' +
+                '<div class="MoreDiv">' +
+                '<p>More..</p>' +
+                '</div>' +
+                '</a>' +
+                '</div></div></div>'
+        }
+        for (var i = 1; i < result.allLabs.length; i++) {
+
+            if (i == 1 || (i - 1) % 3 == 0) {
+                htmlContent = htmlContent + '<div class="row lab mb-5 animediv">'
+            }
+
+            htmlContent = htmlContent + '<div class="col-md-4">' +
+                '<a href="../lab/' + $.trim(result.allLabs[i].ShortDescription.replace(/\b \b/g, '-')) + '">' +
+                '<div class="animationDiv">' +
+                '<img class="btnImage" src="' + result.allLabs[i].ImageUrl + result.allLabs[i].ImageName + '">' +
+                '<div class="squaredDiv">' +
+                '<div class="squaredText">' +
+                '<p>' + result.allLabs[i].ShortDescription + '</p>' +
+                '</div>' +
+                '<div class="MoreDiv">' +
+                '<p>More..</p>' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '</a>' +
+                '</div>'
+
+            if (i % 3 == 0) {
+                htmlContent = htmlContent + '</div >'
+            }
+        }
+        if (result.allLabs.length % 3 != 0) {
+            htmlContent = htmlContent + '</div>'
+        }
+
+        $('#labs').append(htmlContent);
+        $('#eventsgrid').append(htmlEventsContent);
+        $('#mainlab').append(mainhtmlContent);
+
+
+    },
+    error: function (err) {
+        // window.location = '../Logout';
+    }
+});
+
+}
 
 
 </script>

@@ -581,10 +581,10 @@ namespace PTWWebsite2.Controllers
             {
                 
                 _loggerManager.LogInfo("Method :UpdateHomePageByLanguageId Data: " + JsonConvert.SerializeObject(HomeContent));
-                string path = Path.Combine(_hostingEnvironment.WebRootPath, "images/Homepage/HomeImages/");
-                string deletePath = Path.Combine(_hostingEnvironment.WebRootPath, "images/Homepage/PreviewImages/");
-                string backUpPath = Path.Combine(_hostingEnvironment.WebRootPath, "images/Homepage/Backup/");
-               
+                string path = Path.Combine(_hostingEnvironment.WebRootPath, "images/Homepage/HomeImages/" + HomeContent.LanguageCode + "/");
+                string deletePath = Path.Combine(_hostingEnvironment.WebRootPath, "images/Homepage/PreviewImages/" + HomeContent.LanguageCode + "/");
+                string backUpPath = Path.Combine(_hostingEnvironment.WebRootPath, "images/Homepage/Backup/" + HomeContent.LanguageCode + "/");
+
 
                 if (HomeContent.PageBackgroundImage != null)
                 {
@@ -650,55 +650,55 @@ namespace PTWWebsite2.Controllers
         [HttpPost]
         public async Task<IActionResult> PreviewHome(Home HomeContent)
         {
-            string path = Path.Combine(_hostingEnvironment.WebRootPath, "images/Homepage/PreviewImages/");
+            //string path = Path.Combine(_hostingEnvironment.WebRootPath, "images/Homepage/PreviewImages/" + HomeContent.LanguageCode + "/");
 
             if (HomeContent.PageBackgroundImage != null)
             {
-                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/PageBackgroundImage.png", "/PreviewImages/PageBackgroundImage.png");
+                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/" + HomeContent.LanguageCode + "/PageBackgroundImage.png", "/PreviewImages/" + HomeContent.LanguageCode + "/PageBackgroundImage.png");
             }
             if (HomeContent.CustomerExperience != null)
             {
-                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/CustomerExperience.png", "/PreviewImages/CustomerExperience.png");
+                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/" + HomeContent.LanguageCode + "/CustomerExperience.png", "/PreviewImages/" + HomeContent.LanguageCode + "/CustomerExperience.png");
             }
             if (HomeContent.Squad != null)
             {
-                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/Squad.png", "/PreviewImages/Squad.png");
+                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/" + HomeContent.LanguageCode + "/Squad.png", "/PreviewImages/" + HomeContent.LanguageCode + "/Squad.png");
             }
             if (HomeContent.QualityAssurance != null)
             {
-                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/QualityAssurance.png", "/PreviewImages/QualityAssurance.png");
+                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/" + HomeContent.LanguageCode + "/QualityAssurance.png", "/PreviewImages/" + HomeContent.LanguageCode + "/QualityAssurance.png");
             }
             if (HomeContent.Localization != null)
             {
-                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/Localization.png", "/PreviewImages/Localization.png");
+                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/" + HomeContent.LanguageCode + "/" + HomeContent.LanguageCode + "/Localization.png", "/PreviewImages/" + HomeContent.LanguageCode + "/Localization.png");
             }
             if (HomeContent.AudioProduction != null)
             {
-                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/AudioProduction.png", "/PreviewImages/AudioProduction.png");
+                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/" + HomeContent.LanguageCode + "/AudioProduction.png", "/PreviewImages/" + HomeContent.LanguageCode + "/AudioProduction.png");
             }
             if (HomeContent.LocationMap != null)
             {
-                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/LocationMap.svg", "/PreviewImages/LocationMap.svg");
+                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/" + HomeContent.LanguageCode + "/LocationMap.svg", "/PreviewImages/" + HomeContent.LanguageCode + "/LocationMap.svg");
             }
             if (HomeContent.ProductDevelopment != null)
             {
-                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/ProductDevelopment.png", "/PreviewImages/ProductDevelopment.png");
+                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/" + HomeContent.LanguageCode + "/ProductDevelopment.png", "/PreviewImages/" + HomeContent.LanguageCode + "/ProductDevelopment.png");
             }
             if (HomeContent.ProductDevelopmentOnMouseHover != null)
             {
-                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/ProductDevelopmentOnMouseHover.png", "/PreviewImages/ProductDevelopmentOnMouseHover.png");
+                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/" + HomeContent.LanguageCode + "/ProductDevelopmentOnMouseHover.png", "/PreviewImages/" + HomeContent.LanguageCode + "/ProductDevelopmentOnMouseHover.png");
             }
             if (HomeContent.KickStartImage != null)
             {
-                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/KickStartImage.png", "/PreviewImages/KickStartImage.png");
+                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/" + HomeContent.LanguageCode + "/KickStartImage.png", "/PreviewImages/" + HomeContent.LanguageCode + "/KickStartImage.png");
             }
             if (HomeContent.CareersImage != null)
             {
-                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/CareersImage.svg", "/PreviewImages/CareersImage.svg");
+                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/" + HomeContent.LanguageCode + "/CareersImage.svg", "/PreviewImages/" + HomeContent.LanguageCode + "/CareersImage.svg");
             }
             if (HomeContent.Frame != null)
             {
-                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/Frame.svg", "/PreviewImages/Frame.svg");
+                HomeContent.Description = HomeContent.Description.Replace("/HomeImages/" + HomeContent.LanguageCode + "/Frame.svg", "/PreviewImages/" + HomeContent.LanguageCode + "/Frame.svg");
             }
 
             int resultCode = _masterService.UpdatePreviewContentByLanguageModuleId(HomeContent.SectionId,HomeContent.ModuleId, HomeContent.LanguageCode, HomeContent.Description, HomeContent.MetaDescription, HomeContent.MetaTitle, HomeContent.MetaUrl);
@@ -710,7 +710,7 @@ namespace PTWWebsite2.Controllers
         public async Task<IActionResult> UpdateImagesToPreview(Home HomeContent)
         {
             _loggerManager.LogInfo("Method :UpdateImagesToPreview Data: " + JsonConvert.SerializeObject(HomeContent));
-            string path = Path.Combine(_hostingEnvironment.WebRootPath, "images/Homepage/PreviewImages/");
+            string path = Path.Combine(_hostingEnvironment.WebRootPath, "images/Homepage/PreviewImages/" + HomeContent.LanguageCode + "/");
 
             try
             {
