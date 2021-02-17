@@ -30,5 +30,7 @@ namespace PTW.DataAccess.Models
         public IFormFile MarketingAndAdvertisingTranslation { get; set; }
 
         public IFormFile Frame { get; set; }
+        public bool IsActive { get; set; }
+        public string ShortOrder { get; set; }
     }
 }

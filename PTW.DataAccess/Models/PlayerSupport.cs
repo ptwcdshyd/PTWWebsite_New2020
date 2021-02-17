@@ -36,5 +36,7 @@ namespace PTW.DataAccess.Models
         public IFormFile SupportHoned { get; set; }
         public IFormFile GamerforGamer { get; set; }
         public IFormFile Frame { get; set; }
+        public bool IsActive { get; set; }
+        public string ShortOrder { get; set; }
     }
 }

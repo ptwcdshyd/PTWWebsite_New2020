@@ -52,7 +52,7 @@ body {
 
 .bg {
     /* The image used */
-    background-image: url("../Images/Page_1BG.png");
+
     /* Half height */
     height: 100%;
     /* Center and scale the image nicely */
@@ -125,10 +125,6 @@ footer {
     
 }
 
-
-.footer-parent {
-    background-image: url("../images/New_UI/Footer.png");
-}
 
 .footerbg {
     background-color: #1F1F24;
@@ -214,6 +210,9 @@ footer {
     margin: 0;
     color: #fff;
     background-color: #fff;
+    position: absolute;
+    top: 0;
+    height: 0px;
 }
 
 .tieppe {
@@ -409,7 +408,6 @@ footer {
 .bg-txt {
     position: absolute;
     left: 108px;
-    z-index:999;
 }
     .bg-txt .sub_label {
         display: flex;
@@ -957,7 +955,6 @@ footer {
     width: 8%;
     height: 13%;
     z-index: 999;
-    cursor: pointer;
 }
 .home-btns-text {
     font-size: 12px;
@@ -978,6 +975,7 @@ footer {
     font-size: 18px;
     font-weight: 500;
     background-size: 100%;
+z-index:9999;
 }
 
 .green-btn {
@@ -1333,6 +1331,7 @@ footer {
         .sub-content {
             font-size: 12px;
             line-height: 18px;
+
         }
 
         .btn-red {
@@ -1951,3 +1950,9 @@ footer {
         }
     }
 
+
+.HomeVideoBG {
+position: relative;
+    width: 100%;
+    height: 100%;
+}

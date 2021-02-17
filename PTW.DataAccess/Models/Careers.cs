@@ -26,5 +26,7 @@ namespace PTW.DataAccess.Models
         public IFormFile CareerHeader { get; set; }
         public IFormFile Deborah { get; set; }
         public IFormFile Frame { get; set; }
+        public bool IsActive { get; set; }
+        public string ShortOrder { get; set; }
     }
 }

@@ -6,6 +6,7 @@ using PTW.DataAccess.Services;
 using PTW.DBAccess;
 using System;
 using System.Buffers.Text;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -589,11 +590,11 @@ namespace PTW.DataAccess.ServicesImpl
             return sectionList;
         }
 
-        public string GetSubModuleContent(int ModuleId, string Languagecode, int SectionId)
+        public ArrayList GetSubModuleContent(int ModuleId, string Languagecode, int SectionId)
         {
             CustomCommand command = null;
             DataTable dtResult = new DataTable();
-            string result = string.Empty;
+            ArrayList result = new ArrayList();
 
             try
             {
@@ -606,7 +607,9 @@ namespace PTW.DataAccess.ServicesImpl
                     command.AddParameterWithValue("@_sectionId", SectionId);
                     //  Execute command and get values from output parameters.
                     dtResult = ExecuteTable(command);
-                    result = Convert.ToString(dtResult.Rows[0][0]);
+                    result.Add(Convert.ToString(dtResult.Rows[0][0]));//html code
+                    result.Add(Convert.ToBoolean(dtResult.Rows[0][1]));//IsActive
+                    result.Add(Convert.ToInt32(dtResult.Rows[0][2]));//Short Order
                 }
             }
             catch (Exception exception)
@@ -659,7 +662,7 @@ namespace PTW.DataAccess.ServicesImpl
             return masterPage;
         }
 
-        public int UpdateSectionContent(int SectionId, int moduleId, string languageCode, string contentText, string Metatage, string Title, string MetUrl)
+        public int UpdateSectionContent(int SectionId, int moduleId, string languageCode, string contentText, string Metatage, string Title, string MetUrl,bool IsActive,int ShortOrder)
         {
             int resultCode = 0;
             CustomCommand command = null;
@@ -679,7 +682,8 @@ namespace PTW.DataAccess.ServicesImpl
                     command.AddParameterWithValue("@MetaDescription", Metatage);
                     command.AddParameterWithValue("@MetaTitle", Title);
                     command.AddParameterWithValue("@MetaUrl", MetUrl);
-
+                    command.AddParameterWithValue("@_IsActive", IsActive);
+                    command.AddParameterWithValue("@_ShortOrder", ShortOrder);
                     //  Execute command and get values from output parameters.
                     int result = ExecuteNonQuery(command, false);
                     if (result > 0)
@@ -795,7 +799,7 @@ namespace PTW.DataAccess.ServicesImpl
             }
             catch (Exception exception)
             {
-                _loggerManager.LogError(string.Format("Method: GetSubModuleContent, ErrorMessage: file: {0} ", exception));
+                _loggerManager.LogError(string.Format("Method: GetPreviewSubContent, ErrorMessage: file: {0} ", exception));
             }
             finally
             {

@@ -27,5 +27,7 @@ namespace PTW.DataAccess.Models
         public IFormFile LinguisticTesting { get; set; }
         public IFormFile LinguisticCertification{ get; set; }
         public IFormFile Frame { get; set; }
+        public bool IsActive { get; set; }
+        public string ShortOrder { get; set; }
     }
 }

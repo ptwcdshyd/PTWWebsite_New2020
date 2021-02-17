@@ -203,7 +203,7 @@ namespace PTWWebsite2.Controllers
 
 
                 //int resultCode = _masterService.UpdateHomePageByLanguageId(About.ModuleId, About.LanguageCode, About.Description, About.MetaDescription, About.MetaTitle, About.MetaUrl);
-                int resultCode = _masterService.UpdateSectionContent(About.SectionId, About.ModuleId, About.LanguageCode, About.Description, About.MetaDescription, About.MetaTitle, About.MetaUrl);
+                int resultCode = _masterService.UpdateSectionContent(About.SectionId, About.ModuleId, About.LanguageCode, About.Description, About.MetaDescription, About.MetaTitle, About.MetaUrl,About.IsActive,About.ShortOrder);
 
                 return Json(resultCode, new JsonSerializerSettings());
             }

@@ -18,7 +18,7 @@ namespace PTW.DataAccess.Models
         public IFormFile AboutPageHeader { get; set; }
         public IFormFile Frame { get; set; }
         public int OrderNo { get; set; }
-        public bool? IsActive { get; set; }
+        public bool IsActive { get; set; }
 
         public string LanguageCode { get; set; }
         public string Culture { get; set; }
@@ -31,7 +31,8 @@ namespace PTW.DataAccess.Models
         public List<Languages> Languages { get; set; }
         public List<Language> Languagelist { get; set; }
         public List<AboutProfile> AboutProfilelist { get; set; }
-       
+        public int ShortOrder { get; set; }
+
     }
 
     public class Language

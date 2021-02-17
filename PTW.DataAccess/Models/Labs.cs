@@ -51,8 +51,9 @@ namespace PTW.DataAccess.Models
         public string Reason { get; set; }
         public int ShortOrder { get; set; }
         public int IsActive { get; set; }
+        public bool IsActiveLab { get; set; }
 
-       // [Required(ErrorMessage = "Lab Type is required")]
+        // [Required(ErrorMessage = "Lab Type is required")]
         public string LabType { get; set; }
         public int LabTypeId { get; set; }
         public string ImageAlternateText { get; set; }
@@ -138,6 +139,7 @@ namespace PTW.DataAccess.Models
         public List<Labs> LabsList { get; set; }
 
         public List<LabUrlList> LabListUpdate { get; set; }
+
     }
     public class LabsArticles
     {

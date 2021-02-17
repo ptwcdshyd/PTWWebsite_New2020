@@ -152,7 +152,7 @@ namespace PTWWebsite2.Controllers
                 }
 
                 //int resultCode = _masterService.UpdateHomePageByLanguageId(Contact.ModuleId, Contact.LanguageCode, Contact.Description, Contact.MetaDescription, Contact.MetaTitle, Contact.MetaUrl);
-                int resultCode = _masterService.UpdateSectionContent(Contact.SectionId, Contact.ModuleId, Contact.LanguageCode, Contact.Description, Contact.MetaDescription, Contact.MetaTitle, Contact.MetaUrl);
+                int resultCode = _masterService.UpdateSectionContent(Contact.SectionId, Contact.ModuleId, Contact.LanguageCode, Contact.Description, Contact.MetaDescription, Contact.MetaTitle, Contact.MetaUrl,Contact.IsActive, Contact.ShortOrder);
 
                 return Json(resultCode, new JsonSerializerSettings());
             }

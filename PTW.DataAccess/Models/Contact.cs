@@ -28,6 +28,8 @@ namespace PTW.DataAccess.Models
         public IFormFile ContactHeader { get; set; }
         public IFormFile LocationMap { get; set; }
         public IFormFile Frame { get; set; }
+        public bool IsActive { get; set; }
+        public int ShortOrder { get; set; }
 
     }
 }

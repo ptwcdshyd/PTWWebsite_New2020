@@ -43,5 +43,7 @@ namespace PTW.DataAccess.Models
         public IFormFile LocationMap { get; set; }
 
         public IFormFile Squad { get; set; }
+        public bool IsActive { get; set; }
+        public int ShortOrder { get; set; }
     }
 }

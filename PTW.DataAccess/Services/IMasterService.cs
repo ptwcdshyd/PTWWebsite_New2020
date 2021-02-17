@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using PTW.DataAccess.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
@@ -29,10 +30,10 @@ namespace PTW.DataAccess.Services
         Preview ShowPreivew(int ModuleId, string LanguageCode);
 
         List<Sections> GetSubModuleList(int ModuleId, string Languagecode);
-        string GetSubModuleContent(int ModuleId, string Languagecode, int SectionId);
+        ArrayList GetSubModuleContent(int ModuleId, string Languagecode, int SectionId);
         MasterPage GetSEODetails(int ModuleId, string Languagecode, int SectionId);
 
-        int UpdateSectionContent(int SectionId, int moduleId, string languageCode, string contentText, string Metatage, string Title, string MetUrl);
+        int UpdateSectionContent(int SectionId, int moduleId, string languageCode, string contentText, string Metatage, string Title, string MetUrl, bool IsActive, int ShortOrder);
 
         DataTable GetModuleContentSectionwise(int ModuleId, string Languagecode);
 

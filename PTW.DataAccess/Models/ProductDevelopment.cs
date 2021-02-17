@@ -36,5 +36,8 @@ namespace PTW.DataAccess.Models
         public IFormFile LiveOps { get; set; }
         public IFormFile GameDevelopment { get; set; }
         public IFormFile Frame { get; set; }
+
+        public bool IsActive { get; set; }
+        public string ShortOrder { get; set; }
     }
 }

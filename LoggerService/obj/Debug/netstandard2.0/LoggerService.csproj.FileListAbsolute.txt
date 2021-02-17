@@ -52,3 +52,11 @@ C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\LoggerService\obj\Debug\netstandard2
 C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\LoggerService\obj\Debug\netstandard2.0\LoggerService.dll
 C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\LoggerService\obj\Debug\netstandard2.0\LoggerService.pdb
 C:\GitHub\PTWWebsite_New\PTWWebsite_New2020\LoggerService\obj\Debug\netstandard2.0\LoggerService.csprojAssemblyReference.cache
+C:\Users\Test\source\repos\PTWWebsite_New2020\LoggerService\bin\Debug\netstandard2.0\LoggerService.deps.json
+C:\Users\Test\source\repos\PTWWebsite_New2020\LoggerService\bin\Debug\netstandard2.0\LoggerService.dll
+C:\Users\Test\source\repos\PTWWebsite_New2020\LoggerService\bin\Debug\netstandard2.0\LoggerService.pdb
+C:\Users\Test\source\repos\PTWWebsite_New2020\LoggerService\obj\Debug\netstandard2.0\LoggerService.AssemblyInfoInputs.cache
+C:\Users\Test\source\repos\PTWWebsite_New2020\LoggerService\obj\Debug\netstandard2.0\LoggerService.AssemblyInfo.cs
+C:\Users\Test\source\repos\PTWWebsite_New2020\LoggerService\obj\Debug\netstandard2.0\LoggerService.csproj.CoreCompileInputs.cache
+C:\Users\Test\source\repos\PTWWebsite_New2020\LoggerService\obj\Debug\netstandard2.0\LoggerService.dll
+C:\Users\Test\source\repos\PTWWebsite_New2020\LoggerService\obj\Debug\netstandard2.0\LoggerService.pdb

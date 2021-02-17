@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using System.Security.Claims;
 using LoggerService;
+using System.Collections;
 
 namespace PTWWebsite2.Controllers
 {
@@ -52,10 +53,17 @@ namespace PTWWebsite2.Controllers
             //DataTable dtContent = _masterService.GetModuleContent("Home", (culture == null ? "en-US" : culture == "undefined" ? "en-US" : culture));
             DataTable dtContent = _masterService.GetModuleContentSectionwise(3, (culture == null ? "en-US" : culture == "undefined" ? "en-US" : culture));
             //masterPage.HtmlContent = dtContent.Rows.Cast<DataRow>().Where(x =>x["ModuleId"].Equals(3)).Select(y => Convert.ToString(y["Content"])).FirstOrDefault();
-            List<string> sectionlist= dtContent.Rows.Cast<DataRow>().Where(x => x["ModuleId"].Equals(3)).Select(y => Convert.ToString(y["Content"])).ToList();
-            for (int i = 0; i < sectionlist.Count-1; i++)
+
+            //IEnumerable<DataRow> largeProducts = dtContent.AsEnumerable().where(p => p.Field<string>("Size") == "L");
+            //List<string> sectionlist = dtContent.Rows.Cast<DataRow>().Where(x => x["ModuleId"].Equals(3)).Select(y => Convert.ToString(y["Content"])).ToList();
+
+            List<string> sectionlist= dtContent.Rows.Cast<DataRow>().Where(x => x["ModuleId"].Equals(3)).OrderBy(z => Convert.ToInt32(z["ShortOrder"])).Select(y => Convert.ToString(y["Content"])).ToList();
+            for (int i = 0; i < sectionlist.Count; i++)
             {
-                masterPage.HtmlContent += sectionlist[i];
+                if (!string.IsNullOrEmpty(sectionlist[i]))
+                {
+                    masterPage.HtmlContent += sectionlist[i]; 
+                }
             }
             masterPage.LanguageCode = culture == null ? "en-US" : culture == "undefined" ? "en-US" : culture;
             List<HomeLabs> homeLabs = _masterService.RetrieveHomeLabs(culture == null ? "en-US" : culture == "undefined" ? "en-US" : culture);
@@ -572,7 +580,6 @@ namespace PTWWebsite2.Controllers
             try
             {
                 
-
                 _loggerManager.LogInfo("Method :UpdateHomePageByLanguageId Data: " + JsonConvert.SerializeObject(HomeContent));
                 string path = Path.Combine(_hostingEnvironment.WebRootPath, "images/Homepage/HomeImages/");
                 string deletePath = Path.Combine(_hostingEnvironment.WebRootPath, "images/Homepage/PreviewImages/");
@@ -627,8 +634,7 @@ namespace PTWWebsite2.Controllers
                     FilePath(HomeContent.Frame, path + "Frame.svg", deletePath + "Frame.svg", backUpPath + Guid.NewGuid() + "_" + "Frame.svg");
                 }
 
-                //int resultCode = _masterService.UpdateHomePageByLanguageId(HomeContent.ModuleId, HomeContent.LanguageCode, HomeContent.Description, HomeContent.MetaDescription, HomeContent.MetaTitle, HomeContent.MetaUrl);
-                int resultCode = _masterService.UpdateSectionContent(HomeContent.SectionId, HomeContent.ModuleId, HomeContent.LanguageCode, HomeContent.Description, HomeContent.MetaDescription, HomeContent.MetaTitle, HomeContent.MetaUrl);
+                int resultCode = _masterService.UpdateSectionContent(HomeContent.SectionId, HomeContent.ModuleId, HomeContent.LanguageCode, HomeContent.Description, HomeContent.MetaDescription, HomeContent.MetaTitle, HomeContent.MetaUrl, HomeContent.IsActive, HomeContent.ShortOrder);
 
                 return Json(resultCode, new JsonSerializerSettings());
             }
@@ -821,7 +827,7 @@ namespace PTWWebsite2.Controllers
                 }
 
                 //int resultCode = _masterService.UpdateHomePageByLanguageId(Labs.ModuleId, Labs.LanguageCode, Labs.Description, Labs.MetaDescription, Labs.MetaTitle, Labs.MetaUrl);
-                int resultCode = _masterService.UpdateSectionContent(Labs.SectionId, Labs.ModuleId, Labs.LanguageCode, Labs.Description, Labs.MetaDescription, Labs.MetaTitle, Labs.MetaUrl);
+                int resultCode = _masterService.UpdateSectionContent(Labs.SectionId, Labs.ModuleId, Labs.LanguageCode, Labs.Description, Labs.MetaDescription, Labs.MetaTitle, Labs.MetaUrl,Labs.IsActiveLab, Labs.ShortOrder);
 
                 return Json(resultCode, new JsonSerializerSettings());
             }
@@ -842,8 +848,8 @@ namespace PTWWebsite2.Controllers
             //string filePath = "home" + Guid.NewGuid() + ".html";
             string filePath = fileName+"_" + Guid.NewGuid() + ".html";
             //MasterPage master = _masterService.GetModuleContentById(ModuleId, LanguageCode);
-            string htmlContent = _masterService.GetSubModuleContent(ModuleId, LanguageCode, SectionId);
-            System.IO.File.WriteAllText(backUpPath+filePath, htmlContent);
+            ArrayList htmlContent = _masterService.GetSubModuleContent(ModuleId, LanguageCode, SectionId);
+            System.IO.File.WriteAllText(backUpPath+filePath, Convert.ToString(htmlContent[0]));
             return Json(filePath, new JsonSerializerSettings());
         }
 
@@ -860,7 +866,7 @@ namespace PTWWebsite2.Controllers
         [HttpGet]
         public IActionResult GetSubContent(int ModuleId, string LanguageCode, int SectionId)
         {
-            string SectionList = _masterService.GetSubModuleContent(ModuleId, LanguageCode, SectionId);
+            ArrayList SectionList = _masterService.GetSubModuleContent(ModuleId, LanguageCode, SectionId);
             return Json(SectionList, new JsonSerializerSettings());
         }
 

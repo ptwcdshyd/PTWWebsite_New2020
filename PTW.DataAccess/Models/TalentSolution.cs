@@ -40,5 +40,7 @@ namespace PTW.DataAccess.Models
         public IFormFile DataManagement { get; set; }
         public IFormFile ProjectManagement { get; set; }
         public IFormFile Frame { get; set; }
+        public bool IsActive { get; set; }
+        public string ShortOrder { get; set; }
     }
 }
