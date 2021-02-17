@@ -86,3 +86,17 @@ C:\Users\Test\source\repos\PTWWebsite_New2020\PTW.DataAccess\obj\Debug\netstanda
 C:\Users\Test\source\repos\PTWWebsite_New2020\PTW.DataAccess\obj\Debug\netstandard2.0\PTW.DataAccess.csproj.CopyComplete
 C:\Users\Test\source\repos\PTWWebsite_New2020\PTW.DataAccess\obj\Debug\netstandard2.0\PTW.DataAccess.dll
 C:\Users\Test\source\repos\PTWWebsite_New2020\PTW.DataAccess\obj\Debug\netstandard2.0\PTW.DataAccess.pdb
+C:\Users\ptw\PTW_Latest1\PTW.DataAccess\bin\Debug\netstandard2.0\PTW.DataAccess.deps.json
+C:\Users\ptw\PTW_Latest1\PTW.DataAccess\bin\Debug\netstandard2.0\PTW.DataAccess.dll
+C:\Users\ptw\PTW_Latest1\PTW.DataAccess\bin\Debug\netstandard2.0\PTW.DataAccess.pdb
+C:\Users\ptw\PTW_Latest1\PTW.DataAccess\bin\Debug\netstandard2.0\LoggerService.dll
+C:\Users\ptw\PTW_Latest1\PTW.DataAccess\bin\Debug\netstandard2.0\PTW.DBAccess.dll
+C:\Users\ptw\PTW_Latest1\PTW.DataAccess\bin\Debug\netstandard2.0\LoggerService.pdb
+C:\Users\ptw\PTW_Latest1\PTW.DataAccess\bin\Debug\netstandard2.0\PTW.DBAccess.pdb
+C:\Users\ptw\PTW_Latest1\PTW.DataAccess\obj\Debug\netstandard2.0\PTW.DataAccess.csprojAssemblyReference.cache
+C:\Users\ptw\PTW_Latest1\PTW.DataAccess\obj\Debug\netstandard2.0\PTW.DataAccess.AssemblyInfoInputs.cache
+C:\Users\ptw\PTW_Latest1\PTW.DataAccess\obj\Debug\netstandard2.0\PTW.DataAccess.AssemblyInfo.cs
+C:\Users\ptw\PTW_Latest1\PTW.DataAccess\obj\Debug\netstandard2.0\PTW.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\ptw\PTW_Latest1\PTW.DataAccess\obj\Debug\netstandard2.0\PTW.DataAccess.csproj.CopyComplete
+C:\Users\ptw\PTW_Latest1\PTW.DataAccess\obj\Debug\netstandard2.0\PTW.DataAccess.dll
+C:\Users\ptw\PTW_Latest1\PTW.DataAccess\obj\Debug\netstandard2.0\PTW.DataAccess.pdb

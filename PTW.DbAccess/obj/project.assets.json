@@ -4796,19 +4796,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Test\\.nuget\\packages\\": {}
+    "C:\\Users\\ptw\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\PTW.DBAccess\\PTW.DBAccess.csproj",
+      "projectUniqueName": "C:\\Users\\ptw\\PTW_Latest1\\PTW.DBAccess\\PTW.DBAccess.csproj",
       "projectName": "PTW.DBAccess",
-      "projectPath": "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\PTW.DBAccess\\PTW.DBAccess.csproj",
-      "packagesPath": "C:\\Users\\Test\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Test\\source\\repos\\PTWWebsite_New2020\\PTW.DBAccess\\obj\\",
+      "projectPath": "C:\\Users\\ptw\\PTW_Latest1\\PTW.DBAccess\\PTW.DBAccess.csproj",
+      "packagesPath": "C:\\Users\\ptw\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ptw\\PTW_Latest1\\PTW.DBAccess\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Test\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ptw\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4820,6 +4820,7 @@
       },
       "frameworks": {
         "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
           "projectReferences": {}
         }
       },
@@ -4831,6 +4832,7 @@
     },
     "frameworks": {
       "netstandard2.0": {
+        "targetAlias": "netstandard2.0",
         "dependencies": {
           "Microsoft.AspNetCore.Http.Features": {
             "target": "Package",
@@ -4865,7 +4867,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }

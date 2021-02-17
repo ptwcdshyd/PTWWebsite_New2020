@@ -60,3 +60,12 @@ C:\Users\Test\source\repos\PTWWebsite_New2020\LoggerService\obj\Debug\netstandar
 C:\Users\Test\source\repos\PTWWebsite_New2020\LoggerService\obj\Debug\netstandard2.0\LoggerService.csproj.CoreCompileInputs.cache
 C:\Users\Test\source\repos\PTWWebsite_New2020\LoggerService\obj\Debug\netstandard2.0\LoggerService.dll
 C:\Users\Test\source\repos\PTWWebsite_New2020\LoggerService\obj\Debug\netstandard2.0\LoggerService.pdb
+C:\Users\ptw\PTW_Latest1\LoggerService\bin\Debug\netstandard2.0\LoggerService.deps.json
+C:\Users\ptw\PTW_Latest1\LoggerService\bin\Debug\netstandard2.0\LoggerService.dll
+C:\Users\ptw\PTW_Latest1\LoggerService\bin\Debug\netstandard2.0\LoggerService.pdb
+C:\Users\ptw\PTW_Latest1\LoggerService\obj\Debug\netstandard2.0\LoggerService.csprojAssemblyReference.cache
+C:\Users\ptw\PTW_Latest1\LoggerService\obj\Debug\netstandard2.0\LoggerService.AssemblyInfoInputs.cache
+C:\Users\ptw\PTW_Latest1\LoggerService\obj\Debug\netstandard2.0\LoggerService.AssemblyInfo.cs
+C:\Users\ptw\PTW_Latest1\LoggerService\obj\Debug\netstandard2.0\LoggerService.csproj.CoreCompileInputs.cache
+C:\Users\ptw\PTW_Latest1\LoggerService\obj\Debug\netstandard2.0\LoggerService.dll
+C:\Users\ptw\PTW_Latest1\LoggerService\obj\Debug\netstandard2.0\LoggerService.pdb
